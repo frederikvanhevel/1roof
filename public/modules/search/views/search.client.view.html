@@ -1,0 +1,86 @@
+<section data-ng-controller="SearchController" class="search-map" ng-init="init()">
+  <div class="map">
+    <div class="map-canvas" search-map map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" map-markers="results"></div>
+  </div>
+  <div class="sidebar">
+    <div class="filters">
+      <div class="filter">
+        <h6 class="filter-title">Room type</h6>
+        <div class="btn-group" ng-model="filter.roomType" checkbox-group>
+          <button type="button" class="btn btn-default" data-val="house">Entire house</button>
+          <button type="button" class="btn btn-default" data-val="room">Room</button>
+          <button type="button" class="btn btn-default" data-val="studio">Studio</button>
+          <button type="button" class="btn btn-default" data-val="appartment">Appartment</button>
+        </div>
+      </div>
+      <div class="filter">
+        <h6 class="filter-title">Price range</h6>
+        <div range-slider min="0" max="1000" step="50" filter="currency" filter-options="€" prevent-equal-min-max model-min="filter.minPrice" model-max="filter.maxPrice"></div>
+      </div>
+      <div class="filter-extra">
+        <div class="filter">
+          <h6 class="filter-title">Size</h6>
+          <input ng-model="filter.size" type="text" class="form-control" placeholder="Size in square meters">
+        </div>
+        <div class="filter">
+          <h6 class="filter-title">Ameneties</h6>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">
+              Kitchen
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <input type="checkbox">
+              Toilet
+            </label>
+          </div>
+        </div>
+        <div class="filter-showresults">
+          <button ng-click="fetchRooms()" class="btn btn-block btn-primary">Show results</div>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <button class="btn btn primary">More filters</button>
+      </div>
+      <div class="search-results">
+        <ul class="results-container clearfix">
+          <li class="search-result" ng-repeat="room in results">
+            <div class="search-result-container">
+              <div class="result-image">
+                <a ng-href="/#!/rooms/{{room._id}}"><img src="http://placehold.it/600x600"></a>
+              </div>
+              <div class="result-footer">
+                <div class="result-price pull-right">
+                  € {{room.price.total}}
+                </div>
+                <div class="result-info">
+                  <span class="result-room-type">{{room.classification}}</span>
+                  <br>
+                  <span class="result-location">{{room.location.street}}, {{room.location.city}}</span>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="results-footer">
+        <div class="pagination-container">
+          <ul class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&raquo;</a></li>
+          </ul>
+        </div>
+        <div class="breadcrumbs">
+
+        </div>
+        
+      </div>
+  </div>
+</section>

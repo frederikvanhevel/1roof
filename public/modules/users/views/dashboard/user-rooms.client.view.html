@@ -1,0 +1,9 @@
+<ul class="list-group" ng-init="getMyRooms()">
+  <div class="list-group-item" ng-repeat="room in myrooms">
+    <div class="pull-right">
+        <a ng-href="/#!/rooms/{{room._id}}/edit/" class="btn btn-xs btn-danger">edit</a>
+    </div>
+    <h4 class="list-group-item-heading">{{room.location.street}}, {{room.location.city}}</h4>
+    <p class="list-group-item-text">...</p>
+  </div>
+</ul>

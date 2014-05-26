@@ -1,0 +1,139 @@
+<section data-ng-controller="ManageRoomsController" data-ng-init="init()" class="container">
+    <div class="page-header">
+        <h1></h1>
+    </div>
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Panel title</h3>
+            </div>
+            <div class="list-group">
+              <a ng-href="/#!/rooms/{{room._id}}/edit/general" ng-class="{ active: nav == 'general'}" class="list-group-item">
+                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+                <p class="list-group-item-text">General</p>
+              </a>
+              <a ng-href="/#!/rooms/{{room._id}}/edit/availability" ng-class="{ active: nav == 'availability'}" class="list-group-item">
+                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+                <p class="list-group-item-text">Availability</p>
+              </a>
+              <a ng-href="/#!/rooms/{{room._id}}/edit/costs" ng-class="{ active: nav == 'costs'}" class="list-group-item">
+                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+                <p class="list-group-item-text">Costs</p>
+              </a>
+              <a ng-href="/#!/rooms/{{room._id}}/edit/address" ng-class="{ active: nav == 'address'}" class="list-group-item list-group-item-danger">
+                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+                <p class="list-group-item-text">Address</p>
+              </a>
+              <a ng-href="/#!/rooms/{{room._id}}/edit/amneties" ng-class="{ active: nav == 'amneties'}" class="list-group-item">
+                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+                <p class="list-group-item-text">Amneties</p>
+              </a>
+              <a ng-href="/#!/rooms/{{room._id}}/edit/pictures" ng-class="{ active: nav == 'pictures'}" class="list-group-item">
+                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+                <p class="list-group-item-text">Pictures</p>
+              </a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6" ng-switch on="nav">
+        <div ng-switch-when="general" class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel title</h3>
+            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+          </div>
+          <div class="panel-body">
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <label class="control-label">Title</label>
+                <input ng-model="room.info.title" type="text" class="form-control"  placeholder="Extra costs">
+              </div>
+              <div class="form-group">
+                <label class="control-label">Description</label>
+                <textarea ng-model="room.info.description" type="text" class="form-control"  placeholder="Cleaning"></textarea>
+              </div>
+            </form>
+            <hr>
+            <div class="text-center">
+                <a href="" ng-click="remove()" class="text-danger">Verwijder deze kamer</a>
+            </div>
+          </div>
+        </div>
+
+        <div ng-switch-when="availability" class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel title</h3>
+            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+          </div>
+          <div class="panel-body">
+            <form class="form-inline" role="form">
+              <div class="form-group">
+                <input type="text" class="form-control"  placeholder="dd//mm/jjjj">
+              </div>
+              till
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="dd//mm/jjjj">
+              </div>
+              <button type="submit" class="btn btn-default">Save</button>
+            </form>
+          </div>
+        </div>
+
+        <div ng-switch-when="costs" class="panel panel-default">
+          <div class="panel-heading">
+            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+            <h3 class="panel-title">Costs</h3>
+            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+          </div>
+          <div class="panel-body">
+            <form role="form">
+              <div class="form-group">
+                <label class="control-label">Base price</label>
+                <input ng-model="room.price.base" type="text" class="form-control"  placeholder="dd//mm/jjjj">
+              </div>
+              <div class="form-group">
+                <label class="control-label">Period</label>
+                <select ng-model="room.price.period" class="form-control">
+                  <option value="monthly">Monthly</option>
+                  <option value="monthly">Quarterly</option>
+                  <option value="monthly">Yearly</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Gas, electricity and water (optional)</label>
+                <input ng-model="room.price.egw" type="text" class="form-control"  placeholder="Extra costs">
+              </div>
+              <div class="form-group">
+                <label class="control-label">Cleaning (optional)</label>
+                <input ng-model="room.price.cleaning" type="text" class="form-control"  placeholder="Cleaning">
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div ng-switch-when="address" class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Panel title</h3>
+            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+          </div>
+          <div class="panel-body">
+            <form role="form">
+              <div class="form-group">
+                <label class="control-label">Street and number</label>
+                <input type="text" class="form-control" placeholder="Meersstraat 34" ng-model="room.location.street">
+              </div>
+              <div class="form-group">
+                <label class="control-label">City</label>
+                <input type="text" class="form-control" placeholder="Gent" ng-model="room.location.city">
+              </div>
+              <div class="form-group">
+              <button type="submit" class="btn btn-default">Sign in</button>
+              </div>
+            </form>
+          </div>
+        </div>
+    </div>
+
+    <div class="info col-sm-3">
+
+    </div>
+</section>

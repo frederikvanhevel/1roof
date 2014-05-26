@@ -1,0 +1,14 @@
+<section data-ng-controller="HomeController">
+    
+    
+    <div class="parallax">
+      <div class="text-center">
+        <form class="form-inline" role="form" ng-submit="goToSearch()">
+          <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+              <input ng-autocomplete details="searchDetails" ng-model="search" type="text" class="center-block form-control input-lg" placeholder="Where do you want to go?">
+              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">OK</button></span>
+            </div>
+        </form>
+      </div>
+    </div>
+</section>

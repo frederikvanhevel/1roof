@@ -1,0 +1,164 @@
+<section data-ng-controller="RoomsController" data-ng-init="findOne()" class="container">
+	<!--
+	<div class="pull-right" data-ng-show="authentication.user._id == room.user._id">
+		<a class="btn btn-primary" href="/#!/rooms/{{room._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+	-->
+	<div class="page-header row">
+		<div class="crumbs col-xs-9 col-sm-9">
+			<i class="glyphicon" ng-click="toggleFavorite()" ng-class="{ 'glyphicon-heart': isFavorite, 'glyphicon-heart-empty': !isFavorite }"></i>
+			<a ng-href="#!/?city={{room.house.city}}">{{room.house.city}}</a> > <a ng-href="/#!/houses/{{room.house._id}}">{{room.house.street}}</a> > <strong>{{room.classification}}</strong>
+		</div>
+		<div class=" col-xs-3 col-sm-3">
+			<span class="text-muted pull-right">Last updated {{room.updated | date:'mediumDate'}}</span>
+		</div>
+	</div>
+
+	<a href="#" ng-click="remove()">remove</a>
+
+	<div class="row">
+		<div class="leftcolumn col-sm-8">
+
+			<div class="panel panel-default">
+					<ul rn-carousel rn-carousel-index="slideIndex" class="image">
+					  <li ng-repeat="slide in room.pictures" ng-style="{'background-image':'url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{ slide }}.png)'}">
+					  </li>
+					  <li>
+					      <google-map center="map.center" zoom="map.zoom" options="map.options"></google-map>
+					  </li>
+					  <li>
+					      <h1>HAHAHZHUAZHAUHZUAHZUAHZUHAZHZUA</h1>
+					  </li>
+					</ul>
+	        <div class="ng-cloak thumbs">
+	            <div class="thumb" ng-repeat="slide in room.pictures" ng-click="$parent.slideIndex=$index" ng-style="{'background-image':'url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{ slide }}.png)'}" ng-class="{'is-active': ($parent.slideIndex==$index)}"></div>
+							<div class="thumb" ng-click="$parent.slideIndex=$index" ng-class="{'is-active': ($parent.slideIndex==$index)}"><i class="glyphicon glyphicon-road"></i></div>
+	        </div>
+				<div class="panel-body">
+					<ul class="nav nav-pills nav-justified">
+					  <li class="active"><a href="#" ng-click="slideIndex = 0" ng-class="{ active: slideIndex < room.pictures.length - 1 }">Photos</a></li>
+					  <li><a href="#" ng-click="slideIndex = room.pictures.length + 1" ng-class="{ active: slideIndex == room.pictures.length + 1 }">Street View</a></li>
+					  <li><a href="#" ng-click="slideIndex = room.pictures.length + 2" ng-class="{ active: slideIndex == room.pictures.length + 2 }">Map</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>{{room.house.description}}</p>
+				</div>
+			</div>
+
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div class="room-header row">
+						<div class="col-xs-6 col-md-3">
+	              {{room.surface}}
+	              <span class="small text-muted">sqft</span>
+	          </div>
+	          <div class="col-xs-6 col-md-3">
+	          		<span class="small text-muted">€</span>
+	              {{room.price.total}}
+	          </div>
+	          <div class="col-xs-6 col-md-3">
+	              {{room.sublease ? 'Sublease' : 'Lease'}}
+	          </div>
+	        </div>
+					<hr>
+					<div class="room-info row">
+						<div class="room-properties col-xs-6">
+							<ul>
+								<li><i class="glyphicon glyphicon-calendar"></i> <span>Available from {{room.availableFrom | amDateFormat: 'ddd D MMM'}}</span></li>
+								<li><i class="glyphicon glyphicon-time"></i> Updated <span am-time-ago="room.updated"></span></li>
+							</ul>
+						</div>
+						<div class="room-extras col-xs-6">
+							<span></i> Plenty of light</span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		  <div class="map">
+		    
+		  </div>
+
+
+			<div class="contact text-center">
+				<h3>Are you ready to see this room?</h3>
+				<button ng-click="openContactModal()" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-ok"></i> Contact</button>
+			</div>
+
+			<div class="otherRooms" ng-hide="room.house.rooms.length == 1">
+				<h4>{{room.house.rooms.length - 1}} other rooms in this house</h4>
+				<div class="panel panel-default" ng-cloak ng-repeat="id in room.house.rooms | filter: '!'+room._id" ng-init="otherRoom = findRoomById(id)">
+					<div class="panel-body">
+						<div class="room-header row">
+							<div class="col-xs-6 col-md-3">
+		              {{otherRoom.surface}}
+		              <span class="small text-muted">sqft</span>
+		          </div>
+		          <div class="col-xs-6 col-md-3">
+		          		<span class="small text-muted">€</span>
+		              {{otherRoom.price.total}}
+		          </div>
+		          <div class="col-xs-6 col-md-3">
+	              	{{otherRoom.sublease ? 'Sublease' : 'Lease'}}
+	          	</div>
+		          <div class="col-xs-6 col-md-3">
+		          		<a ng-href="#!/rooms/{{otherRoom._id}}" class="btn btn-xs btn-info">View this room</a>
+		          </div>
+		        </div>
+						<hr>
+						<div class="room-info row">
+							<div class="room-properties col-xs-6">
+								<ul>
+									<li><i class="glyphicon glyphicon-calendar"></i> <span>Available from {{room.availableFrom | amDateFormat: 'ddd D MMM'}}</span></li>
+									<li><i class="glyphicon glyphicon-time"></i> Updated <span am-time-ago="otherRoom.updated"></span></li>
+								</ul>
+							</div>
+							<div class="room-extras col-xs-6">
+								<span></i> Plenty of light</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	
+
+		<div class="rightcolumn col-sm-4">
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<form role="form" name"contactForm" ng-submit="openContactModal(true)" novalidate>
+					  <div class="form-group">
+					    <input type="text" class="form-control" data-ng-model="contact.name" id="name" placeholder="Name">
+					  </div>
+					  <div class="form-group">
+					    <input type="text" class="form-control" data-ng-model="contact.email" id="email" placeholder="email@domain.com">
+					  </div>
+					  <button type="submit" class="btn btn-success btn-block"><i class="glyphicon glyphicon-ok"></i> Tour it</button>
+					</form>
+			  </div>
+			</div>
+
+			<div class="panel panel-default">
+			  <div class="panel-body">
+					<form role="form">
+					  <h5>Questions about this room?</h5>
+					  {{room.user.name}}
+					  <button ng-click="openContactModal()" class="btn btn-default btn-block"><i class="glyphicon glyphicon-envelope"></i> Contact</button>
+					</form>
+			  </div>
+			</div>
+	  </div>
+
+	</div>
+</section>

@@ -1,0 +1,19 @@
+<section data-ng-controller="DashboardController" data-ng-init="init()">
+  <div class="col-sm-offset-2 col-sm-8">
+    <span class="pull-right">Frederik</span> 
+    <ul class="nav nav-tabs">
+      <li ng-class="{ active: nav == 'rooms'}"><a ng-href="/#!/dashboard/rooms">My rooms</a></li>
+      <li ng-class="{ active: nav == 'messages'}"><a ng-href="/#!/dashboard/messages">Messages</a></li>
+      <li ng-class="{ active: nav == 'account'}"><a ng-href="/#!/dashboard/account">My account</a></li>
+    </ul>
+    
+    <div class="tab-container" ng-switch="nav">
+      <div ng-switch-when="rooms">
+        <div ng-include="'/modules/users/views/dashboard/user-rooms.client.view.html'"></div>
+      </div>
+      <div ng-switch-when="messages">
+        <div ng-include="'/modules/users/views/dashboard/user-messages.client.view.html'"></div>
+      </div>
+    </div>
+  </div>
+</div>
