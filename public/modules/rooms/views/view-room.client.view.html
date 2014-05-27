@@ -1,18 +1,9 @@
 <section data-ng-controller="RoomsController" data-ng-init="findOne()" class="container">
-	<!--
-	<div class="pull-right" data-ng-show="authentication.user._id == room.user._id">
-		<a class="btn btn-primary" href="/#!/rooms/{{room._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div>
-	-->
+
 	<div class="page-header row">
 		<div class="crumbs col-xs-9 col-sm-9">
-			<i class="glyphicon" ng-click="toggleFavorite()" ng-class="{ 'glyphicon-heart': isFavorite, 'glyphicon-heart-empty': !isFavorite }"></i>
-			<a ng-href="#!/?city={{room.house.city}}">{{room.house.city}}</a> > <a ng-href="/#!/houses/{{room.house._id}}">{{room.house.street}}</a> > <strong>{{room.classification}}</strong>
+			<i class="glyphicon" ng-class=""></i>
+			<a ng-href="#!/s/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> > {{room.location.street}} > <strong>{{room.info.title}}</strong>
 		</div>
 		<div class=" col-xs-3 col-sm-3">
 			<span class="text-muted pull-right">Last updated {{room.updated | date:'mediumDate'}}</span>
@@ -27,12 +18,6 @@
 			<div class="panel panel-default">
 					<ul rn-carousel rn-carousel-index="slideIndex" class="image">
 					  <li ng-repeat="slide in room.pictures" ng-style="{'background-image':'url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{ slide }}.png)'}">
-					  </li>
-					  <li>
-					      <google-map center="map.center" zoom="map.zoom" options="map.options"></google-map>
-					  </li>
-					  <li>
-					      <h1>HAHAHZHUAZHAUHZUAHZUAHZUHAZHZUA</h1>
 					  </li>
 					</ul>
 	        <div class="ng-cloak thumbs">
@@ -50,7 +35,7 @@
 
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<p>{{room.house.description}}</p>
+					<p>{{room.info.description}}</p>
 				</div>
 			</div>
 
@@ -66,14 +51,14 @@
 	              {{room.price.total}}
 	          </div>
 	          <div class="col-xs-6 col-md-3">
-	              {{room.sublease ? 'Sublease' : 'Lease'}}
+	              {{room.leasetype}
 	          </div>
 	        </div>
 					<hr>
 					<div class="room-info row">
 						<div class="room-properties col-xs-6">
 							<ul>
-								<li><i class="glyphicon glyphicon-calendar"></i> <span>Available from {{room.availableFrom | amDateFormat: 'ddd D MMM'}}</span></li>
+								<li><i class="glyphicon glyphicon-calendar"></i> <span>Available from {{room.available.from | amDateFormat: 'ddd D MMM'}}</span></li>
 								<li><i class="glyphicon glyphicon-time"></i> Updated <span am-time-ago="room.updated"></span></li>
 							</ul>
 						</div>
@@ -84,19 +69,14 @@
 				</div>
 			</div>
 
-		  <div class="map">
-		    
-		  </div>
-
-
 			<div class="contact text-center">
 				<h3>Are you ready to see this room?</h3>
 				<button ng-click="openContactModal()" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-ok"></i> Contact</button>
 			</div>
 
-			<div class="otherRooms" ng-hide="room.house.rooms.length == 1">
+			<div class="otherRooms" ng-hide="otherRooms.length == 0">
 				<h4>{{room.house.rooms.length - 1}} other rooms in this house</h4>
-				<div class="panel panel-default" ng-cloak ng-repeat="id in room.house.rooms | filter: '!'+room._id" ng-init="otherRoom = findRoomById(id)">
+				<div class="panel panel-default" ng-cloak ng-repeat="otherRoom in otherRooms">
 					<div class="panel-body">
 						<div class="room-header row">
 							<div class="col-xs-6 col-md-3">

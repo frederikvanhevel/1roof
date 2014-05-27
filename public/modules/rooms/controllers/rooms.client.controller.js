@@ -14,6 +14,8 @@ angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams',
         };
         $scope.addressDetails = null;
         $scope.busy = false;
+        $scope.slideIndex = 0;
+        $scope.otherRooms = [];
 
         // Create new Room
         $scope.create = function() {
@@ -47,7 +49,7 @@ angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams',
 
             // Redirect after save
             room.$save(function(response) {
-                $location.path('rooms/' + response._id);
+                $location.path('rooms/' + response._id + '/edit/');
             }, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -91,10 +93,12 @@ angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams',
 
         // Find existing Room
         $scope.findOne = function() {
-            Rooms.getMyRooms();
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
+            }, function() {
+                $scope.otherRooms = room.$getRoomsOfSameLocation();
             });
+
         };
     }
 ]);

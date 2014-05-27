@@ -116,6 +116,10 @@ exports.list = function(req, res) {
 		params.roomType = params.roomType instanceof Array ? params.roomType : [params.roomType];
 		query.classification = { $in: params.roomType };
 	}
+	if (params.amenities) {
+		params.amenities = params.amenities instanceof Array ? params.amenities : [params.amenities];
+		query.amenities = { $all: params.amenities };
+	}
 
 	Room.find(query).exec(function(err, rooms) {
 		if (err) {
@@ -150,6 +154,7 @@ exports.listOfUserRooms = function(req, res) {
 exports.listOfRoomsInSameLocation= function(req, res) {
 	var room = req.room;
 	var query = {
+		'_id': { $not: room._id },
 		'location.street': room.location.street,
 		'location.city': room.location.city,
 		'location.country': room.location.country

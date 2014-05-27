@@ -81,7 +81,14 @@ var UserSchema = new Schema({
 	created: {
 		type: Date,
 		default: Date.now
-	}
+	},
+	alerts: [{
+		enabled: {
+			type: Boolean,
+			default: true
+		},
+		filters: Schema.Types.Mixed
+	}]
 });
 
 /**

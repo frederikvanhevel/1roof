@@ -18,7 +18,8 @@ var express = require('express'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
-	path = require('path');
+	path = require('path'),
+	cloudinary = require('cloudinary');
 
 module.exports = function(db) {
 	// Initialize express app
@@ -36,6 +37,8 @@ module.exports = function(db) {
 	app.locals.facebookAppId = config.facebook.clientID;
 	app.locals.jsFiles = config.getJavaScriptAssets();
 	app.locals.cssFiles = config.getCSSAssets();
+	// Set cloudinary config
+	cloudinary.config(config.cloudinary);
 
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {

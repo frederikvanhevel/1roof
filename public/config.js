@@ -16,9 +16,9 @@ var ApplicationConfiguration = (function() {
 		'ui-rangeSlider',
 		'ngAutocomplete',
 		'LocalStorageModule',
-		'flow',
 		'angularMoment',
-		'angular-carousel'
+		'angular-carousel',
+		'angularFileUpload'
 	];
 
 	// Add a new vertical module

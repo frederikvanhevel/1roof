@@ -1,0 +1,38 @@
+.rn-carousel-container {
+    height: 525px;
+}
+
+.rn-carousel-container .rn-carousel-slides {
+    height: 100%;
+}
+
+.rn-carousel-slide {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rn-carousel-slide .angular-google-map-container {
+  height: 525px;
+  width: 100%;
+}
+
+.thumbs {
+    height: 40px;
+}
+
+.thumb {
+    height: 100%;
+}
+
+.thumb {
+    display: inline-block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid transparent;
+    margin: 2px 4px;
+    width: 60px;
+    height: 40px;
+    transition: border 0.2s ease-in;
+}

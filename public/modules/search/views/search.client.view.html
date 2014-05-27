@@ -2,9 +2,11 @@
   <div class="map">
     <div class="map-canvas" search-map map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" map-markers="results"></div>
   </div>
+
   <div class="sidebar">
     <div class="filters">
       <div class="filter">
+        <a href="" ng-click="saveQueryAsUserAlert()">Save query</a>
         <h6 class="filter-title">Room type</h6>
         <div class="btn-group" ng-model="filter.roomType" checkbox-group>
           <button type="button" class="btn btn-default" data-val="house">Entire house</button>
@@ -24,21 +26,19 @@
         </div>
         <div class="filter">
           <h6 class="filter-title">Ameneties</h6>
-          <div class="checkbox">
+          <div class="checkbox" ng-repeat="amenity in amenities">
             <label>
-              <input type="checkbox">
-              Kitchen
-            </label>
-          </div>
-          <div class="checkbox">
-            <label>
-              <input type="checkbox">
-              Toilet
+               <input
+                  type="checkbox"
+                  name="{{amenity.value}}"
+                  value="{{amenity.value}}"
+                  ng-click="toggleAmenitySelection(amenity.value)"
+                > {{amenity.name}}
             </label>
           </div>
         </div>
         <div class="filter-showresults">
-          <button ng-click="fetchRooms()" class="btn btn-block btn-primary">Show results</div>
+          <button ng-click="runSearch()" class="btn btn-block btn-primary">Show results</div>
         </div>
       </div>
       <div class="sidebar-header">

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').controller('SearchController', ['$scope', '$location', '$stateParams', 'Geocoder', 'Rooms', '$window',
-	function($scope, $location, $stateParams, Geocoder, Rooms, $window) {
+angular.module('search').controller('SearchController', ['$scope', '$location', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
+	function($scope, $location, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
     $scope.mapCenter = [4.469936, 50.503887];
     $scope.mapZoom = 9;
     $scope.fetchOnMapChange = true;
@@ -12,9 +12,11 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
       minPrice: 0,
       maxPrice: 2000,
       size: null,
-      amneties: []
+      amenities: []
     };
     $scope.results = [];
+    $scope.extraFilterMenuOpen = false;
+    $scope.amenities = Amenity.list();
     
 
     $scope.init = function() {
@@ -27,7 +29,7 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
       }
 
       $scope.$watch('filter', function(newValue, oldValue) {
-        if (newValue !== oldValue) $scope.searchFunction();
+        if (newValue !== oldValue && !$scope.extraFilterMenuOpen) $scope.searchFunction();
       }, true);
     };
 
@@ -63,6 +65,35 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
       });
     };
 
-    $scope.searchFunction = $window._.throttle($scope.fetchRooms, 400);
+    $scope.runSearch = function() {
+      $scope.fetchRooms();
+      $scope.extraFilterMenuOpen = false;
+    };
+
+    $scope.toggleAmenitySelection = function(amenity) {
+        var idx = $scope.filter.amenities.indexOf(amenity);
+
+        if (idx > -1) {
+          $scope.filter.amenities.splice(idx, 1);
+        }
+        else {
+          $scope.filter.amenities.push(amenity);
+        }
+    };
+
+    $scope.saveQueryAsUserAlert = function() {
+      console.log(Authentication.user);
+      if (Authentication.user) {
+        var query = angular.copy($scope.filter);
+        // Set bigger proximity
+        query.proximity = 50000;
+
+        Authentication.user.alerts.push({ filters: query });
+        var user = new Users(Authentication.user);
+        user.$update();
+      }
+    };
+
+    $scope.searchFunction = $window._.debounce($scope.fetchRooms, 400);
 	}
 ]);

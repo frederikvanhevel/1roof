@@ -4,6 +4,7 @@
     <ul class="nav nav-tabs">
       <li ng-class="{ active: nav == 'rooms'}"><a ng-href="/#!/dashboard/rooms">My rooms</a></li>
       <li ng-class="{ active: nav == 'messages'}"><a ng-href="/#!/dashboard/messages">Messages</a></li>
+      <li ng-class="{ active: nav == 'alerts'}"><a ng-href="/#!/dashboard/alerts">Alerts</a></li>
       <li ng-class="{ active: nav == 'account'}"><a ng-href="/#!/dashboard/account">My account</a></li>
     </ul>
     
@@ -13,6 +14,9 @@
       </div>
       <div ng-switch-when="messages">
         <div ng-include="'/modules/users/views/dashboard/user-messages.client.view.html'"></div>
+      </div>
+      <div ng-switch-when="alerts">
+        <div ng-include="'/modules/users/views/dashboard/user-alerts.client.view.html'"></div>
       </div>
     </div>
   </div>

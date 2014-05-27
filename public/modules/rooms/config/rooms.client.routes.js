@@ -5,10 +5,6 @@ angular.module('rooms').config(['$stateProvider',
 	function($stateProvider) {
 		// Rooms state routing
 		$stateProvider.
-		state('listRooms', {
-			url: '/rooms',
-			templateUrl: 'modules/rooms/views/list-rooms.client.view.html'
-		}).
 		state('createRoom', {
 			url: '/rooms/new',
 			templateUrl: 'modules/rooms/views/create-room.client.view.html'
