@@ -27,5 +27,9 @@ angular.module('users').controller('InboxController', ['$scope', '$stateParams',
         $scope.newMessage = '';
       });
     };
+
+    $scope.isMessageOwner = function(message) {
+      return message.sender === Authentication.user._id;
+    };
 	}
 ]);

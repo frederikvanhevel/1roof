@@ -43,8 +43,9 @@
 
       <div class="list-group messages" ng-model="inbox.messages.length" scroll-bottom>
         <a data-ng-repeat="message in inbox.messages" class="list-group-item">
+            {{isMessageOwner(message)}}
             <small class="list-group-item-text">{{message.sent | date:'medium'}} / {{message.sender.displayName}}</small>
-            <h4 class="list-group-item-heading">{{message.message}}</h4>
+            <h4 ng-class="{ 'pull-right': isMessageOwner(message) }" class="list-group-item-heading">{{message.message}}</h4>
         </a>
       </div>
 

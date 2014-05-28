@@ -5,7 +5,8 @@
       <li ng-class="{ active: nav == 'rooms'}"><a ng-href="/#!/dashboard/rooms">My rooms</a></li>
       <li ng-class="{ active: nav == 'messages'}"><a ng-href="/#!/dashboard/messages">Messages</a></li>
       <li ng-class="{ active: nav == 'alerts'}"><a ng-href="/#!/dashboard/alerts">Alerts</a></li>
-      <li ng-class="{ active: nav == 'account'}"><a ng-href="/#!/dashboard/account">My account</a></li>
+      <li ng-class="{ active: nav == 'profile'}"><a ng-href="/#!/dashboard/profile">Profile</a></li>
+      <li ng-class="{ active: nav == 'account'}"><a ng-href="/#!/dashboard/account">Account</a></li>
     </ul>
     
     <div class="tab-container" ng-switch="nav">
@@ -17,6 +18,12 @@
       </div>
       <div ng-switch-when="alerts">
         <div ng-include="'/modules/users/views/dashboard/user-alerts.client.view.html'"></div>
+      </div>
+      <div ng-switch-when="profile">
+        <div ng-include="'/modules/users/views/dashboard/user-profile.client.view.html'"></div>
+      </div>
+      <div ng-switch-when="account">
+        <div ng-include="'/modules/users/views/settings/change-password.client.view.html'"></div>
       </div>
     </div>
   </div>

@@ -87,7 +87,11 @@ var UserSchema = new Schema({
 			type: Boolean,
 			default: true
 		},
-		filters: Schema.Types.Mixed
+		lastChecked: {
+			type: Date,
+			default: Date.now
+		},
+		filters: String
 	}, {_id: false})]
 });
 

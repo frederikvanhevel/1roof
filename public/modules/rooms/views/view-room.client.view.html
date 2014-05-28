@@ -74,8 +74,8 @@
 				<button ng-click="openContactModal()" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-ok"></i> Contact</button>
 			</div>
 
-			<div class="otherRooms" ng-hide="otherRooms.length == 0">
-				<h4>{{room.house.rooms.length - 1}} other rooms in this house</h4>
+			<div ng-hide="otherRooms.length == 0">
+				<h4>{{otherRooms.length}} other rooms in this house</h4>
 				<div class="panel panel-default" ng-cloak ng-repeat="otherRoom in otherRooms">
 					<div class="panel-body">
 						<div class="room-header row">

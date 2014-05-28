@@ -96,7 +96,9 @@ angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams',
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
             }, function() {
-                $scope.otherRooms = $scope.room.$getRoomsOfSameLocation();
+                $scope.otherRooms = Rooms.getRoomsOfSameLocation({
+                    roomId: $scope.room._id
+                });
             });
         };
 

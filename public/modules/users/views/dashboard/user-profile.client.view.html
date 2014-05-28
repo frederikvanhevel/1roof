@@ -1,0 +1,33 @@
+<section class="row" data-ng-controller="SettingsController">
+
+  <div class="col-sm-3">
+    <div class="list-group">
+      <a href="" ng-click="nav = 'info'" class="list-group-item" ng-class="{ active: nav == 'info'}">
+        My information
+      </a>
+      <a href="" ng-click="nav = 'password'" class="list-group-item" ng-class="{ active: nav == 'password'}">
+        Password
+      </a>
+      <a href="" ng-click="nav = 'social'" class="list-group-item" ng-class="{ active: nav == 'social'}">
+        Social accounts
+      </a>
+    </div>
+  </div>
+
+  <div class="col-sm-6" ng-switch on="nav">
+
+    <div class="panel panel-default" ng-switch-when="info">
+      <div ng-include="'/modules/users/views/settings/edit-profile.client.view.html'"></div>
+    </div>
+
+    <div class="panel panel-default" ng-switch-when="password">
+      <div ng-include="'/modules/users/views/settings/change-password.client.view.html'"></div>
+    </div>
+
+    <div class="panel panel-default" ng-switch-when="social">
+      <div ng-include="'/modules/users/views/settings/social-accounts.client.view.html'"></div>
+    </div>
+
+  </div>
+
+</section>
