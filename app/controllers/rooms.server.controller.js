@@ -154,11 +154,12 @@ exports.listOfUserRooms = function(req, res) {
 exports.listOfRoomsInSameLocation= function(req, res) {
 	var room = req.room;
 	var query = {
-		'_id': { $not: room._id },
+		'_id': { $ne: room._id },
 		'location.street': room.location.street,
 		'location.city': room.location.city,
 		'location.country': room.location.country
 	};
+	console.log(query);
 	Room.find(query).exec(function(err, rooms) {
 		if (err) {
 			return res.send(400, {

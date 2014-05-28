@@ -1,0 +1,64 @@
+<section data-ng-controller="InboxController" data-ng-init="findOne()" class="container">
+  <div class="page-header">
+    <h1>Message inbox</h1>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
+      <div class="list-group">
+        <a data-ng-repeat="other in inboxes" href="" ng-href="/#!/dashboard/messages/{{other._id}}" class="list-group-item" ng-class="{ active: other._id == inbox._id }">
+          <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
+          <i class="glyphicon glyphicon-comment"></i>
+          {{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}
+        </a>
+      </div>
+    </div>
+    
+    <div class="col-sm-9" ng-cloak>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="panel-title">
+            <h3>
+              Messages concerning 
+              <a ng-href="#!/rooms/{{inbox.room._id}}">{{inbox.room.classification}}</a>
+            </h3>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="room-header row">
+            <div class="col-xs-6 col-md-3">
+                {{inbox.room.surface}}
+                <span class="small text-muted">sqft</span>
+            </div>
+            <div class="col-xs-6 col-md-3">
+                <span class="small text-muted">€</span>
+                {{inbox.room.total}}
+            </div>
+            <div class="col-xs-6 col-md-3">
+                {{inbox.room.leaseType}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="list-group messages" ng-model="inbox.messages.length" scroll-bottom>
+        <a data-ng-repeat="message in inbox.messages" class="list-group-item">
+            <small class="list-group-item-text">{{message.sent | date:'medium'}} / {{message.sender.displayName}}</small>
+            <h4 class="list-group-item-heading">{{message.message}}</h4>
+        </a>
+      </div>
+
+      <div class="row">
+        <form ng-submit="sendMessage()" class="col-sm-12">
+          <div class="input-group">
+            <input type="text" ng-model="newMessage" class="form-control" placeholder="Type your message" required>
+            <span class="input-group-btn">
+              <button type="submit"  class="btn btn-default">Send</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>

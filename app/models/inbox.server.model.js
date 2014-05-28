@@ -10,9 +10,12 @@ var mongoose = require('mongoose'),
  * Inbox Schema
  */
 var InboxSchema = new Schema({
-  messages: [{
+  messages: [new Schema({
     message: String,
-    sent: Date,
+    sent: {
+      type: Date,
+      default: Date.now
+    },
     sender: {
       type: Schema.ObjectId,
       ref: 'User'
@@ -21,8 +24,12 @@ var InboxSchema = new Schema({
       type: Boolean,
       default: false
     }
-  }],
+  }, {_id: false})],
   sender: {
+    type: Schema.ObjectId,
+    ref: 'User'
+  },
+  roomOwner: {
     type: Schema.ObjectId,
     ref: 'User'
   },

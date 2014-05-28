@@ -1,13 +1,15 @@
-<div class="list-group">
-  <a href="#" class="list-group-item row">
-    <div class="col-sm-1">
-        <small>Ma 32 juni</small>
+<section data-ng-controller="InboxController" ng-init="list()">
+    <div class="list-group">
+      <div class="list-group-item row" ng-repeat="inbox in inboxes">
+        <div class="col-sm-1">
+            <small>{{inbox.messages[inbox.messages.length-1].sent}}</small>
+        </div>
+        <div class="col-sm-11">
+            <a ng-href="/#!/dashboard/messages/{{inbox._id}}" class="btn btn-xs btn-default pull-right">Reply <i class="glyphicon glyphicon-share-alt"></i></a>
+            <h4 class="list-group-item-heading">{{inbox.messages[inbox.messages.length-1].message}}</h4>
+            <p class="list-group-item-text">{{inbox.messages[inbox.messages.length-1].sender.displayName}}</p>
+        </div>
+      </div>
     </div>
-    <div class="col-sm-11">
-        <button class="btn btn-xs btn-default pull-right">Reply <i class="glyphicon glyphicon-share-alt"></i></button>
-        <h4 class="list-group-item-heading">Hey ik heb je kot hier gezien en vroeg mij af...</h4>
-        <p class="list-group-item-text">Jan Peeters</p>
-
-    </div>
-  </a>
-</div>
+    
+</section>

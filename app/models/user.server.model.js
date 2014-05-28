@@ -82,13 +82,13 @@ var UserSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	alerts: [{
+	alerts: [new Schema({
 		enabled: {
 			type: Boolean,
 			default: true
 		},
 		filters: Schema.Types.Mixed
-	}]
+	}, {_id: false})]
 });
 
 /**

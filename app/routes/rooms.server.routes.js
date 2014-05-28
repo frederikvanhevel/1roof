@@ -19,8 +19,8 @@ module.exports = function(app) {
 		.put(users.requiresLogin, rooms.hasAuthorization, rooms.update)
 	    .delete(users.requiresLogin, rooms.hasAuthorization, rooms.delete);
 
-  app.route('/rooms/:roomId/addmessage')
-    .post(users.requiresLogin, inbox.addMessage);
+  app.route('/rooms/:roomId/sendmessage')
+    .post(users.requiresLogin, inbox.sendMessageOrCreate);
 
 	app.route('/rooms/:roomId/same')
 		.get(rooms.listOfRoomsInSameLocation);

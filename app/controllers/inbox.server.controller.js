@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
+  Inbox = mongoose.model('Inbox'),
 	_ = require('lodash');
 
 /**
@@ -26,21 +27,46 @@ exports.create = function(req, res) {
 */
 
 /**
+ *  Add message to the current Inbox or create a new one
+ */
+exports.sendMessageOrCreate = function(req, res) {
+  var room = req.room;
+  var message = req.query;
+  message.sender = req.user._id;
+
+  var contents = {
+    room: room._id,
+    roomOwner: room.user._id,
+    sender: req.user._id
+  };
+
+  Inbox.update(contents, { $addToSet: { messages: message }}, { upsert: true }, function(err) {
+    if (err) {
+      return res.send(400);
+    } else {
+      res.send(200);
+    }
+  });
+};
+
+/**
  *  Add message to the current Inbox
  */
-exports.addMessage = function(req, res) {
-  var room = req.room;
-  inbox.update({ sender: req.user, room: room }, { $push: req.body }, { upsert: true }, function(err) {
+exports.sendMessage = function(req, res) {
+  var inbox = req.inbox;
+  inbox.messages.push({
+    message: req.query.message,
+    sender: req.user
+  });
+
+  inbox.save(function(err) {
     if (err) {
-      return res.send(400, {
-        message: getErrorMessage(err)
-      });
+      return res.send(400);
     } else {
       res.jsonp(inbox);
     }
   });
 };
-
 
 /**
  * Show the current Inbox
@@ -54,14 +80,11 @@ exports.read = function(req, res) {
  */
 exports.update = function(req, res) {
   var inbox = req.inbox;
-
   inbox = _.extend(inbox, req.body);
 
   inbox.save(function(err) {
     if (err) {
-      return res.send(400, {
-        message: getErrorMessage(err)
-      });
+      return res.send(400);
     } else {
       res.jsonp(inbox);
     }
@@ -76,9 +99,7 @@ exports.delete = function(req, res) {
 
   inbox.remove(function(err) {
     if (err) {
-      return res.send(400, {
-        message: getErrorMessage(err)
-      });
+      return res.send(400);
     } else {
       res.jsonp(inbox);
     }
@@ -91,11 +112,11 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
   var user = req.user;
 
-  Inbox.find({ $or: [ {'sender': user }, { 'room.user': user } ] }).exec(function(err, inboxes) {
+  Inbox.find({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ] })
+  .populate('sender', 'displayName').populate('roomOwner', 'displayName')
+  .populate('room').exec(function(err, inboxes) {
     if (err) {
-      return res.send(400, {
-        message: getErrorMessage(err)
-      });
+      return res.send(400);
     } else {
       res.jsonp(inboxes);
     }
@@ -106,7 +127,8 @@ exports.list = function(req, res) {
  * Inbox middleware
  */
 exports.inboxByID = function(req, res, next, id) {
-  Inbox.findById(id).exec(function(err, inbox) {
+  Inbox.findById(id).populate('room').populate('sender', 'displayName').populate('roomOwner', 'displayName')
+  .exec(function(err, inbox) {
     if (err) return next(err);
     if (!inbox) return next(new Error('Failed to load Inbox ' + id));
     req.inbox = inbox;
@@ -118,8 +140,6 @@ exports.inboxByID = function(req, res, next, id) {
  * Inbox authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-  if (req.inbox.sender.id !== req.user.id || req.inbox.room.user.id !== req.user.id) {
-    return res.send(403, 'User is not authorized');
-  }
-  next();
+  if (req.inbox.sender.id == req.user.id || req.inbox.roomOwner.id == req.user.id) next()
+  else return res.send(403, 'User is not authorized');
 };
