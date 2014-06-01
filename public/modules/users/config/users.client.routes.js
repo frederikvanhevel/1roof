@@ -27,11 +27,13 @@ angular.module('users').config(['$stateProvider',
 		}).
 		state('dashboard', {
 			url: '/dashboard/:nav',
-			templateUrl: 'modules/users/views/dashboard.client.view.html'
+			templateUrl: 'modules/users/views/dashboard.client.view.html',
+			reloadOnSearch: false
 		}).
 		state('viewInbox', {
 			url: '/dashboard/messages/:inboxId',
-			templateUrl: 'modules/users/views/inbox.client.view.html'
+			templateUrl: 'modules/users/views/inbox.client.view.html',
+			reloadOnSearch: false
 		});
 	}
 ]);

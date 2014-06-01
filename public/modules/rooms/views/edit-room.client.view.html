@@ -3,40 +3,48 @@
         <h1></h1>
     </div>
     <div class="col-md-3">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Panel title</h3>
-            </div>
-            <div class="list-group">
-              <a ng-href="/#!/rooms/{{room._id}}/edit/general" ng-class="{ active: nav == 'general'}" class="list-group-item">
-                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
-                <p class="list-group-item-text">General</p>
-              </a>
-              <a ng-href="/#!/rooms/{{room._id}}/edit/availability" ng-class="{ active: nav == 'availability'}" class="list-group-item">
-                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
-                <p class="list-group-item-text">Availability</p>
-              </a>
-              <a ng-href="/#!/rooms/{{room._id}}/edit/costs" ng-class="{ active: nav == 'costs'}" class="list-group-item">
-                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
-                <p class="list-group-item-text">Costs</p>
-              </a>
-              <a ng-href="/#!/rooms/{{room._id}}/edit/address" ng-class="{ active: nav == 'address'}" class="list-group-item list-group-item-danger">
-                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
-                <p class="list-group-item-text">Address</p>
-              </a>
-              <a ng-href="/#!/rooms/{{room._id}}/edit/amenities" ng-class="{ active: nav == 'amenities'}" class="list-group-item">
-                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
-                <p class="list-group-item-text">Amenities</p>
-              </a>
-              <a ng-href="/#!/rooms/{{room._id}}/edit/pictures" ng-class="{ active: nav == 'pictures'}" class="list-group-item">
-                <i class="glyphicon glyphicon-chevron-right pull-right"></i>
-                <p class="list-group-item-text">Pictures</p>
-              </a>
-            </div>
-        </div>
+      <ul class="sidenav">
+        <li ng-class="{ active: nav == 'general'}">
+          <a ng-click="setTab('general')" href="">
+            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+            General
+          </a>
+        </li>
+        <li ng-class="{ active: nav == 'availability'}">
+          <a ng-click="setTab('availability')" href="">
+            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+            Availability
+          </a>
+        </li>
+        <li ng-class="{ active: nav == 'costs'}">
+          <a ng-click="setTab('costs')" href="">
+            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+            Costs
+          </a>
+        </li>
+        <li ng-class="{ active: nav == 'address'}">
+          <a ng-click="setTab('address')" href="">
+            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+            Address
+          </a>
+        </li>
+        <li ng-class="{ active: nav == 'amenities'}">
+          <a ng-click="setTab('amenities')" href="">
+            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+            Amenities
+          </a>
+        </li>
+        <li ng-class="{ active: nav == 'pictures'}">
+          <a ng-click="setTab(pictures)" href="">
+            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
+            Pictures
+          </a>
+        </li>
+      </ul>
     </div>
+
     <div class="col-md-6" ng-switch on="nav">
-        <div ng-switch-when="general" class="panel panel-default">
+        <div ng-switch-when="general" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
             <h3 class="panel-title">Panel title</h3>
@@ -60,7 +68,7 @@
           </div>
         </div>
 
-        <div ng-switch-when="availability" class="panel panel-default">
+        <div ng-switch-when="availability" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
             <h3 class="panel-title">Panel title</h3>
@@ -80,7 +88,7 @@
           </div>
         </div>
 
-        <div ng-switch-when="costs" class="panel panel-default">
+        <div ng-switch-when="costs" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
             <h3 class="panel-title">Costs</h3>
@@ -112,7 +120,7 @@
           </div>
         </div>
 
-        <div ng-switch-when="address" class="panel panel-default">
+        <div ng-switch-when="address" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
             <h3 class="panel-title">Panel title</h3>
@@ -135,7 +143,7 @@
           </div>
         </div>
 
-        <div ng-switch-when="amenities" class="panel panel-default">
+        <div ng-switch-when="amenities" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
             <h3 class="panel-title">Panel title</h3>
@@ -156,7 +164,7 @@
           </div>
         </div>
 
-        <div ng-switch-when="pictures" class="panel panel-default">
+        <div ng-switch-when="pictures" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
             <h3 class="panel-title">Panel title</h3>

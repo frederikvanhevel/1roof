@@ -121,13 +121,13 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'csslint', 'concurrent']);
+    grunt.registerTask('default', ['jshint', 'concurrent']);
 
     // Lint task(s).
-    grunt.registerTask('lint', ['jshint', 'csslint']);
+    grunt.registerTask('lint', ['jshint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['jshint', 'csslint', 'loadConfig' ,'uglify', 'cssmin']);
+    grunt.registerTask('build', ['jshint', 'loadConfig' ,'uglify', 'cssmin']);
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

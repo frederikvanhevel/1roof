@@ -18,7 +18,8 @@ var ApplicationConfiguration = (function() {
 		'LocalStorageModule',
 		'angularMoment',
 		'angular-carousel',
-		'angularFileUpload'
+		'angularFileUpload',
+		'angularMoment'
 	];
 
 	// Add a new vertical module

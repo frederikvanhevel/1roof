@@ -1,12 +1,13 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$location', '$modal', 'Authentication', 'Menus', 'Geocoder', 'Modal',
-	function($scope, $location,  $modal, Authentication, Menus, Geocoder, Modal) {
+angular.module('core').controller('HeaderController', ['$scope', '$location', '$modal', '$http', 'Authentication', 'Menus', 'Geocoder', 'Modal',
+	function($scope, $location,  $modal, $http, Authentication, Menus, Geocoder, Modal) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
     $scope.search = '';
     $scope.searchDetails = {};
+    $scope.unreadMessageCount = 0;
 
 		$scope.toggleCollapsibleMenu = function() {
 			$scope.isCollapsed = !$scope.isCollapsed;
@@ -33,6 +34,13 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
 
     $scope.openSigninModal = function() {
       Modal.signin();
+    };
+
+    $scope.getUnreadMessageCount = function() {
+      $http({ method: 'GET', url: '/users/unreadmessages'})
+        .then(function(result) {
+          $scope.unreadMessageCount = result.data;
+        });
     };
 	}
 ]);

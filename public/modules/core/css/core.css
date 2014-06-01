@@ -1,4 +1,13 @@
-.content {
+header {
+  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 3px 10px;
+  background: #FFF;
+}
+
+header .advertise-button {
+  padding: 5px 13px 6px;
+}
+
+section .container {
 	margin-top: 50px;
 }
 .undecorated-link:hover {
@@ -8,3 +17,20 @@
 	display: none !important;
 }
 
+
+.header-messages-icon {
+  font-size: 19px;
+}
+
+.header-messages-icon .label {
+  position: relative;
+  top: -10px;
+  right: -10px;
+  font-size: 10px;
+  margin: 0;
+}
+
+.panel-container {
+  background: #FFF;
+/*  border: 1px solid #CED7E0; */
+}

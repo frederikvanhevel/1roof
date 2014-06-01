@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var passport = require('passport');
+var inbox = require('../../app/controllers/inbox');
 
 module.exports = function(app) {
 	// User Routes
@@ -40,6 +41,8 @@ module.exports = function(app) {
 	// Setting the linkedin oauth routes
 	app.route('/auth/linkedin').get(passport.authenticate('linkedin'));
 	app.route('/auth/linkedin/callback').get(users.oauthCallback('linkedin'));
+
+	app.route('/users/unreadmessages').get(inbox.getUnreadMessageCount);
 
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);

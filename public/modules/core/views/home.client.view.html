@@ -1,14 +1,47 @@
 <section data-ng-controller="HomeController">
     
-    
-    <div class="parallax">
-      <div class="text-center">
+  <div id="hero">
+    <div class="raster">
+      <div class="hero-content col-sm-offset-2 ">
+        <h1>Find your ideal place to live.</h1>
         <form class="form-inline" role="form" ng-submit="goToSearch()">
-          <div class="input-group input-group-lg col-sm-offset-4 col-sm-4">
+          <div class="input-group input-group-lg col-sm-6">
               <input ng-autocomplete details="searchDetails" ng-model="search" type="text" class="center-block form-control input-lg" placeholder="Where do you want to go?">
               <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="submit">OK</button></span>
             </div>
         </form>
       </div>
     </div>
+  </div>
+
+  <section id="share" class="light-bg">
+    <div class="container">
+      
+      <div class="col-sm-4 reset-padding animated fadeInUp">
+        <a href="#" class="btn-share-md">
+          <p class="name">Facebook</p>
+          <i class="icon-s-facebook"></i>
+          <p class="counter">1080</p>
+        </a>
+      </div><!-- /.col -->
+      
+      <div class="col-sm-4 reset-padding animated fadeInUp">
+        <a href="#" class="btn-share-md">
+          <p class="name">Twitter</p>
+          <i class="icon-s-twitter"></i>
+          <p class="counter">1263</p>
+        </a>
+      </div><!-- /.col -->
+      
+      <div class="col-sm-4 reset-padding animated fadeInUp">
+        <a href="#" class="btn-share-md">
+          <p class="name">Google +</p>
+          <i class="icon-s-gplus"></i>
+          <p class="counter">963</p>
+        </a>
+      </div><!-- /.col -->
+      
+    </div><!-- /.container -->
+  </section>
+  
 </section>

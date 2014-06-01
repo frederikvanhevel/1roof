@@ -1,30 +1,50 @@
-<section data-ng-controller="DashboardController" data-ng-init="init()">
-  <div class="col-sm-offset-2 col-sm-8">
-    <span class="pull-right">Frederik</span> 
-    <ul class="nav nav-tabs">
-      <li ng-class="{ active: nav == 'rooms'}"><a ng-href="/#!/dashboard/rooms">My rooms</a></li>
-      <li ng-class="{ active: nav == 'messages'}"><a ng-href="/#!/dashboard/messages">Messages</a></li>
-      <li ng-class="{ active: nav == 'alerts'}"><a ng-href="/#!/dashboard/alerts">Alerts</a></li>
-      <li ng-class="{ active: nav == 'profile'}"><a ng-href="/#!/dashboard/profile">Profile</a></li>
-      <li ng-class="{ active: nav == 'account'}"><a ng-href="/#!/dashboard/account">Account</a></li>
-    </ul>
+<section data-ng-controller="DashboardController" data-ng-init="init()" class="">
+  <div class="">
+
+    <div class="dashboard-tabs tabs tabs-circle-top tab-container dark-bg">
+                
+      <ul class="etabs text-center">
+        <li ng-class="{ active: nav == 'rooms'}" class="tab">
+          <a href="" ng-click="setTab('rooms')" class="active"><div><i class="icon-lamp"></i></div>My rooms</a>
+        </li>
+        <li ng-class="{ active: nav == 'messages'}" class="tab">
+          <a href="" ng-click="setTab('messages')"><div><i class="icon-flow-tree"></i></div>Messages</a>
+        </li>
+        <li ng-class="{ active: nav == 'alerts'}" class="tab">
+          <a href="" ng-click="setTab('alerts')"><div><i class="icon-beaker"></i></div>Alerts</a>
+        </li>
+        <li ng-class="{ active: nav == 'profile'}" class="tab">
+          <a href="" ng-click="setTab('profile')"><div><i class="icon-code"></i></div>Profile</a>
+        </li>
+        <li ng-class="{ active: nav == 'account'}" class="tab">
+          <a href="" ng-click="setTab('account')"><div><i class="icon-thumbs-up-1"></i></div>Account</a>
+        </li>
+      </ul><!-- /.etabs -->
+    </div>
+      
+      <div ng-switch="nav" class="container">
+        
+        <div ng-switch-when="rooms">
+          <div ng-include="'/modules/users/views/dashboard/user-rooms.client.view.html'"></div>
+        </div>
+        <div ng-switch-when="messages">
+          <div ng-include="'/modules/users/views/dashboard/user-messages.client.view.html'"></div>
+        </div>
+        <div ng-switch-when="alerts">
+          <div ng-include="'/modules/users/views/dashboard/user-alerts.client.view.html'"></div>
+        </div>
+        <div ng-switch-when="profile">
+          <div ng-include="'/modules/users/views/dashboard/user-profile.client.view.html'"></div>
+        </div>
+        <div ng-switch-when="account">
+          <div ng-include="'/modules/users/views/dashboard/user-account.client.view.html'"></div>
+        </div>
+           
+      </div><!-- /.panel-container -->
+       
     
     <div class="tab-container" ng-switch="nav">
-      <div ng-switch-when="rooms">
-        <div ng-include="'/modules/users/views/dashboard/user-rooms.client.view.html'"></div>
-      </div>
-      <div ng-switch-when="messages">
-        <div ng-include="'/modules/users/views/dashboard/user-messages.client.view.html'"></div>
-      </div>
-      <div ng-switch-when="alerts">
-        <div ng-include="'/modules/users/views/dashboard/user-alerts.client.view.html'"></div>
-      </div>
-      <div ng-switch-when="profile">
-        <div ng-include="'/modules/users/views/dashboard/user-profile.client.view.html'"></div>
-      </div>
-      <div ng-switch-when="account">
-        <div ng-include="'/modules/users/views/settings/change-password.client.view.html'"></div>
-      </div>
+
     </div>
   </div>
 </div>

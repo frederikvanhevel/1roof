@@ -4,37 +4,44 @@
   </div>
 
   <div class="sidebar">
-    <div class="filters">
-      <div class="filter">
-        <a href="" ng-click="saveQueryAsUserAlert()">Save query</a>
-        <h6 class="filter-title">Room type</h6>
-        <div class="btn-group" ng-model="filter.roomType" checkbox-group>
-          <button type="button" class="btn btn-default" data-val="house">Entire house</button>
-          <button type="button" class="btn btn-default" data-val="room">Room</button>
-          <button type="button" class="btn btn-default" data-val="studio">Studio</button>
-          <button type="button" class="btn btn-default" data-val="appartment">Appartment</button>
+    <div class="filters collapsed">
+      <div class="filter row">
+        <h6 class="filter-title col-sm-2">Room type</h6>
+        <div class="col-sm-8">
+          <div class="btn-group" ng-model="filter.roomType" checkbox-group>
+            <button type="button" class="btn btn-default" data-val="house">Entire house</button>
+            <button type="button" class="btn btn-default" data-val="room">Room</button>
+            <button type="button" class="btn btn-default" data-val="studio">Studio</button>
+            <button type="button" class="btn btn-default" data-val="appartment">Appartment</button>
+          </div>
         </div>
       </div>
-      <div class="filter">
-        <h6 class="filter-title">Price range</h6>
-        <div range-slider min="0" max="1000" step="50" filter="currency" filter-options="€" prevent-equal-min-max model-min="filter.minPrice" model-max="filter.maxPrice"></div>
+      <div class="filter row">
+        <h6 class="filter-title col-sm-2">Price range</h6>
+        <div class="col-sm-8">
+          <div range-slider min="0" max="1000" step="50" filter="currency" filter-options="€" prevent-equal-min-max model-min="filter.minPrice" model-max="filter.maxPrice"></div>
+        </div>
       </div>
       <div class="filter-extra">
-        <div class="filter">
-          <h6 class="filter-title">Size</h6>
-          <input ng-model="filter.size" type="text" class="form-control" placeholder="Size in square meters">
+        <div class="filter row">
+          <h6 class="filter-title col-sm-2">Size</h6>
+          <div class="col-sm-8">
+            <input ng-model="filter.size" type="text" class="form-control" placeholder="Size in square meters">
+          </div>
         </div>
-        <div class="filter">
-          <h6 class="filter-title">Ameneties</h6>
-          <div class="checkbox" ng-repeat="amenity in amenities">
-            <label>
-               <input
-                  type="checkbox"
-                  name="{{amenity.value}}"
-                  value="{{amenity.value}}"
-                  ng-click="toggleAmenitySelection(amenity.value)"
-                > {{amenity.name}}
-            </label>
+        <div class="filter row">
+          <h6 class="filter-title col-sm-2">Amenities</h6>
+          <div class="col-sm-8">
+            <div class="checkbox" ng-repeat="amenity in amenities">
+              <label>
+                 <input
+                    type="checkbox"
+                    name="{{amenity.value}}"
+                    value="{{amenity.value}}"
+                    ng-click="toggleAmenitySelection(amenity.value)"
+                  > {{amenity.name}}
+              </label>
+            </div>
           </div>
         </div>
         <div class="filter-showresults">
@@ -42,7 +49,8 @@
         </div>
       </div>
       <div class="sidebar-header">
-        <button class="btn btn primary">More filters</button>
+        <small class="pull-right">{{results.length}} rooms found</small>
+        <button class="btn btn-sm"><i class="icon-menu"></i> More filters</button>
       </div>
       <div class="search-results">
         <ul class="results-container clearfix">
@@ -51,7 +59,7 @@
               <div class="result-image">
                 <a ng-href="/#!/rooms/{{room._id}}"><img src="http://placehold.it/600x600"></a>
               </div>
-              <div class="result-footer">
+              <div class="result-footer bordered no-top-border">
                 <div class="result-price pull-right">
                   € {{room.price.total}}
                 </div>
@@ -68,13 +76,13 @@
       <div class="results-footer">
         <div class="pagination-container">
           <ul class="pagination">
-            <li><a href="#">&laquo;</a></li>
-            <li><a href="#">1</a></li>
+            <li><a href="#">prev</a></li>
+            <li class="active"><a href="#">1</a></li>
             <li><a href="#">2</a></li>
             <li><a href="#">3</a></li>
             <li><a href="#">4</a></li>
             <li><a href="#">5</a></li>
-            <li><a href="#">&raquo;</a></li>
+            <li><a href="#">next</a></li>
           </ul>
         </div>
         <div class="breadcrumbs">

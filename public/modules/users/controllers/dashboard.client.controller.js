@@ -1,10 +1,9 @@
 'use strict';
 
-angular.module('users').controller('DashboardController', ['$scope', '$stateParams', 'Rooms', 'Authentication',
-	function($scope, $stateParams, Rooms, Authentication) {
+angular.module('users').controller('DashboardController', ['$scope', '$stateParams', '$location', 'Rooms', 'Authentication',
+	function($scope, $stateParams, $location, Rooms, Authentication) {
         $scope.authentication = Authentication;
         $scope.nav = 'rooms';
-        console.log(Authentication);
 
         // Init
         $scope.init = function() {
@@ -13,6 +12,11 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
 
         $scope.getMyRooms = function() {
             $scope.myrooms = Rooms.getMyRooms();
+        };
+
+        $scope.setTab = function(tab) {
+            $scope.nav = tab;
+            $location.path('dashboard/' + tab);
         };
 	}
 ]);

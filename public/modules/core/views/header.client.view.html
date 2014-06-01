@@ -9,11 +9,11 @@
 		<a href="/#!/" class="navbar-brand">Apollo</a>
 	</div>
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-		<form ng-submit="goToSearch()" class="navbar-form navbar-left" ng-class="{ 'simple-search': simpleSearchButton }" role="search">
+		<form ng-submit="goToSearch()" class="navbar-form navbar-left" role="search">
       <div class="input-group input-group-sm" style="max-width:260px;">
 	      <input  ng-autocomplete details="searchDetails" ng-model="search" class="form-control" placeholder="Search" name="srch-term" type="text">
 	      <div class="input-group-btn">
-	        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+	        <button class="btn btn-blue" type="submit"><i class="glyphicon glyphicon-search"></i></button>
 	      </div>
 	    </div>
     </form>
@@ -24,7 +24,7 @@
 		</ul>
 		<div class="navbar-form navbar-right">
 			<div class="form-group">
-        <a class="btn btn-warning" href="/#!/rooms/new">Advertise your room</a>
+        <a class="btn btn-orange advertise-button" href="/#!/rooms/new">Advertise your room</a>
       </div>
 		</div>
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
@@ -37,10 +37,13 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
+			<li ng-init="getUnreadMessageCount()"><a href="/#!/dashboard/messages" class="header-messages-icon">
+				<span ng-if="unreadMessageCount != 0"class="label label-danger">{{unreadMessageCount}}</span> <i class="icon-mail-1"></i></a>
+			</li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    {{authentication.user.displayName}} <b class="caret"></b>
-                </a>
+            {{authentication.user.displayName}} <b class="caret"></b>
+        </a>
 				<ul class="dropdown-menu">
 					<li>
 						<a href="/#!/dashboard/">Dashboard</a>

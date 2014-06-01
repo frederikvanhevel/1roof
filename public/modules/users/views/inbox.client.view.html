@@ -1,52 +1,28 @@
-<section data-ng-controller="InboxController" data-ng-init="findOne()" class="container">
-  <div class="page-header">
-    <h1>Message inbox</h1>
-  </div>
+<section data-ng-controller="InboxController" data-ng-init="init()" class="container">
 
   <div class="row">
     <div class="col-sm-3">
-      <div class="list-group">
-        <a data-ng-repeat="other in inboxes" href="" ng-href="/#!/dashboard/messages/{{other._id}}" class="list-group-item" ng-class="{ active: other._id == inbox._id }">
-          <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
-          <i class="glyphicon glyphicon-comment"></i>
-          {{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}
-        </a>
-      </div>
+      <ul class="sidenav">
+        <li data-ng-repeat="other in inboxes" ng-class="{ active: other._id == inbox._id }">
+          <a href="" ng-click="showInbox(other._id)">
+            <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
+            <i class="glyphicon glyphicon-comment"></i>
+            {{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}
+          </a>
+        </li>
+      </ul>
     </div>
     
-    <div class="col-sm-9" ng-cloak>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <div class="panel-title">
-            <h3>
-              Messages concerning 
-              <a ng-href="#!/rooms/{{inbox.room._id}}">{{inbox.room.classification}}</a>
-            </h3>
-          </div>
-        </div>
-        <div class="panel-body">
-          <div class="room-header row">
-            <div class="col-xs-6 col-md-3">
-                {{inbox.room.surface}}
-                <span class="small text-muted">sqft</span>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <span class="small text-muted">€</span>
-                {{inbox.room.total}}
-            </div>
-            <div class="col-xs-6 col-md-3">
-                {{inbox.room.leaseType}}
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="col-sm-6" ng-cloak>
 
-      <div class="list-group messages" ng-model="inbox.messages.length" scroll-bottom>
-        <a data-ng-repeat="message in inbox.messages" class="list-group-item">
-            {{isMessageOwner(message)}}
-            <small class="list-group-item-text">{{message.sent | date:'medium'}} / {{message.sender.displayName}}</small>
-            <h4 ng-class="{ 'pull-right': isMessageOwner(message) }" class="list-group-item-heading">{{message.message}}</h4>
-        </a>
+      <div class="messages bordered" ng-model="inbox.messages.length" scroll-bottom>
+        <p class="serverinfo text-center">
+          <small>you guys are talking about the <a href="#!/rooms/{{inbox.room._id}}">{{inbox.room.classification}} in {{inbox.room.location.street}}, {{inbox.room.location.city}}</a></small>
+        </p>
+        <div data-ng-repeat="message in inbox.messages" class="bubble" ng-class="{ 'bubble--alt': isMessageOwner(message) }">
+            <!-- <small class="list-group-item-text">{{message.sent | date:'medium'}} / {{message.sender.displayName}}</small> -->
+            {{message.message}}
+        </div>
       </div>
 
       <div class="row">
@@ -60,6 +36,7 @@
         </form>
       </div>
     </div>
+
 
   </div>
 </section>

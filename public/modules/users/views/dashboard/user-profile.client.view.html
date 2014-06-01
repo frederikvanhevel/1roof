@@ -1,32 +1,32 @@
-<section class="row" data-ng-controller="SettingsController">
+<section class="col-sm-offset-2 col-sm-8" data-ng-controller="SettingsController">
 
-  <div class="col-sm-3">
-    <div class="list-group">
-      <a href="" ng-click="nav = 'info'" class="list-group-item" ng-class="{ active: nav == 'info'}">
-        My information
-      </a>
-      <a href="" ng-click="nav = 'password'" class="list-group-item" ng-class="{ active: nav == 'password'}">
-        Password
-      </a>
-      <a href="" ng-click="nav = 'social'" class="list-group-item" ng-class="{ active: nav == 'social'}">
-        Social accounts
-      </a>
+  <div class="tabs tabs-side tab-container">
+                
+    <ul class="etabs">
+      <li class="tab" ng-class="{ active: nav == 'info'}"><a href="" ng-click="nav = 'info'" class="active">My information</a></li>
+      <li class="tab" ng-class="{ active: nav == 'password'}"><a href="" ng-click="nav = 'password'">Password</a></li>
+      <li class="tab" ng-class="{ active: nav == 'social'}"><a href="" ng-click="nav = 'social'">Social accounts</a></li>
+    </ul><!-- /.etabs -->
+
+    <div class="panel-container" ng-switch on="nav">
+      <div ng-switch-when="info">
+        <div ng-include="'/modules/users/views/settings/edit-profile.client.view.html'"></div>
+      </div>
+
+      <div ng-switch-when="password">
+        <div ng-include="'/modules/users/views/settings/change-password.client.view.html'"></div>
+      </div>
+
+      <div ng-switch-when="social">
+        <div ng-include="'/modules/users/views/settings/social-accounts.client.view.html'"></div>
+      </div>
     </div>
+     
   </div>
 
-  <div class="col-sm-6" ng-switch on="nav">
+  <div class="col-sm-6 col-sm-offset-1" >
 
-    <div class="panel panel-default" ng-switch-when="info">
-      <div ng-include="'/modules/users/views/settings/edit-profile.client.view.html'"></div>
-    </div>
 
-    <div class="panel panel-default" ng-switch-when="password">
-      <div ng-include="'/modules/users/views/settings/change-password.client.view.html'"></div>
-    </div>
-
-    <div class="panel panel-default" ng-switch-when="social">
-      <div ng-include="'/modules/users/views/settings/social-accounts.client.view.html'"></div>
-    </div>
 
   </div>
 

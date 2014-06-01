@@ -105,5 +105,10 @@ angular.module('rooms').controller('ManageRoomsController', ['$scope', '$statePa
                 return $scope.room.amenities.indexOf(amenity) !== -1;
             else return false;
         };
+
+        $scope.setTab = function(tab) {
+            $scope.nav = tab;
+            $location.path('rooms/' + $scope.room._id + '/edit/' + tab);
+        };
     }
 ]);

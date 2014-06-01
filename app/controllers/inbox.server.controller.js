@@ -124,6 +124,22 @@ exports.list = function(req, res) {
 };
 
 /**
+ * Total unread messages for this user
+ */
+exports.getUnreadMessageCount = function(req, res) {
+  var user = req.user;
+
+  Inbox.count({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ], 'messages.sender': { $ne: user._id }, 'messages.isRead': false  })
+  .exec(function(err, inboxes) {
+    if (err) {
+      return res.send(400);
+    } else {
+      res.jsonp(inboxes);
+    }
+  });
+};
+
+/**
  * Inbox middleware
  */
 exports.inboxByID = function(req, res, next, id) {

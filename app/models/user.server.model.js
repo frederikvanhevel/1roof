@@ -92,7 +92,11 @@ var UserSchema = new Schema({
 			default: Date.now
 		},
 		filters: String
-	}, {_id: false})]
+	}, {_id: false})],
+	favorites: [{
+		type: Schema.ObjectId,
+		ref: 'Room'
+	}]
 });
 
 /**
