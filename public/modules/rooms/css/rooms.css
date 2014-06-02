@@ -48,3 +48,12 @@
     background-position: center;
 }
 
+.room-map search-map {
+  width: 100%;
+  height: 400px;
+}
+
+.room-map .map-canvas {
+  height: 100%;
+}
+

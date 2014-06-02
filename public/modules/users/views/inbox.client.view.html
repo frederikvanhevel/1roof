@@ -19,7 +19,7 @@
         <p class="serverinfo text-center">
           <small>you guys are talking about the <a href="#!/rooms/{{inbox.room._id}}">{{inbox.room.classification}} in {{inbox.room.location.street}}, {{inbox.room.location.city}}</a></small>
         </p>
-        <div data-ng-repeat="message in inbox.messages" class="bubble" ng-class="{ 'bubble--alt': isMessageOwner(message) }">
+        <div data-ng-repeat="message in inbox.messages" class="" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
             <!-- <small class="list-group-item-text">{{message.sent | date:'medium'}} / {{message.sender.displayName}}</small> -->
             {{message.message}}
         </div>
@@ -28,7 +28,7 @@
       <div class="row">
         <form ng-submit="sendMessage()" class="col-sm-12">
           <div class="input-group">
-            <input type="text" ng-model="newMessage" class="form-control" placeholder="Type your message" required>
+            <input type="text" ng-model="newMessage" ng-maxlength="500" class="form-control" placeholder="Type your message" required>
             <span class="input-group-btn">
               <button type="submit"  class="btn btn-default">Send</button>
             </span>

@@ -16,6 +16,8 @@ angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams',
         $scope.busy = false;
         $scope.slideIndex = 0;
         $scope.otherRooms = [];
+        $scope.mapCenter = [4.469936, 50.503887];
+        $scope.mapZoom = 9;
 
         // Create new Room
         $scope.create = function() {
@@ -96,6 +98,7 @@ angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams',
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
             }, function() {
+                $scope.mapCenter = $scope.room.loc;
                 $scope.otherRooms = Rooms.getRoomsOfSameLocation({
                     roomId: $scope.room._id
                 });

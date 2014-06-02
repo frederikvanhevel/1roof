@@ -30,14 +30,15 @@ module.exports = function(grunt) {
                 options: {
                     livereload: true,
                 }
-            },
-            clientCSS: {
-                files: ['public/**/css/*.css'],
-                tasks: ['csslint'],
-                options: {
-                    livereload: true,
-                }
             }
+            // ,
+            // clientCSS: {
+            //     files: ['public/**/css/*.css'],
+            //     tasks: ['csslint'],
+            //     options: {
+            //         livereload: true,
+            //     }
+            // }
         },
         jshint: {
             all: {

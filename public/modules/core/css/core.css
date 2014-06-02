@@ -1,5 +1,5 @@
 header {
-  box-shadow: rgba(0, 0, 0, 0.0980392) 0px 3px 10px;
+  box-shadow: rgba(0, 0, 0, 0.0980392) 0 3px 10px;
   background: #FFF;
 }
 
@@ -33,4 +33,12 @@ section .container {
 .panel-container {
   background: #FFF;
 /*  border: 1px solid #CED7E0; */
+}
+
+footer {
+  position:absolute;
+  bottom:0;
+  background: #283645;
+  width: 100%;
+  margin-top: 100px;
 }
