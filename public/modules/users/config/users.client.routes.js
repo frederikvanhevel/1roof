@@ -34,6 +34,10 @@ angular.module('users').config(['$stateProvider',
 			url: '/dashboard/messages/:inboxId',
 			templateUrl: 'modules/users/views/inbox.client.view.html',
 			reloadOnSearch: false
+		}).
+		state('favorites', {
+			url: '/users/:userId/favorites',
+			templateUrl: 'modules/users/views/favorites.client.view.html'
 		});
 	}
 ]);

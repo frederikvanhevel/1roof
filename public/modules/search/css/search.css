@@ -81,6 +81,7 @@
 .sidebar .search-result {
   width: 50%;
   float: left;
+  cursor: pointer !important;
 }
 
 .sidebar .search-result-container {
@@ -90,12 +91,25 @@
 
 .sidebar .result-image {
   width: 100%;
-  height: 200px;
+  height: 250px;
+}
+
+.sidebar .result-image.empty {
+  text-align: center;
+  line-height: 250px;
+  font-size: 100px;
+  opacity: 0.9;
+  padding: 0; 
+  margin-top: 0; 
 }
 
 .sidebar .result-image img {
   width: 100%;
   height: 100%;
+}
+
+.sidebar .result-image .owl-item .item {
+  height: 250px;
 }
 
 .sidebar .result-footer {

@@ -1,4 +1,4 @@
-<section data-ng-controller="RoomsController" data-ng-init="findOne()" class="container">
+<section data-ng-controller="RoomsController" data-ng-init="findOne()" class="container viewRoom">
 
 	<div class="page-header row">
 
@@ -17,27 +17,16 @@
 
 			<div class="panel panel-default">
 
-				<div id="owl-work" class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel>
-					
-					<div class="item">
-						<figure style="background-image: url('http://placehold.it/700x700');">
-						</figure>
-					</div><!-- /.item -->
-					
-					<div class="item">
-						<figure style="background-image: url('http://placehold.it/700x700');">
-						</figure>
-					</div><!-- /.item -->
+        <div class="room-image" ng-class="{ 'tint-bg empty': room.pictures.length == 0 }">
+          
+          <i ng-if="room.pictures.length == 0" class="icon-camera-1"></i>
+          <div ng-if="room.pictures.length > 0" class="owl-carousel owl-inner-pagination owl-ui-md" owl-carousel>
+            <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
+              <figure style="background-image: url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png);"></figure>
+            </div>
+          </div>
 
-					<div class="item">
-						<figure>
-						  <div class="room-map">
-						    <div class="map-canvas" search-map map-center="mapCenter" map-zoom="mapZoom" map-markers="[room]"></div>
-						  </div>
-						</figure>
-					</div>
-					
-				</div><!-- /.owl-carousel -->			
+        </div>	
 
 <!--
 
@@ -120,7 +109,7 @@
 	              	{{otherRoom.leaseType}}
 	          	</div>
 		          <div class="col-xs-6 col-md-3">
-		          		<a ng-href="#!/rooms/{{otherRoom._id}}" class="btn btn-xs btn-info">View this room</a>
+		          		<a ng-href="#!/rooms/{{otherRoom._id}}" class="btn btn-xs">View this room</a>
 		          </div>
 		        </div>
 						<hr>
@@ -153,7 +142,7 @@
 					  <div class="form-group">
 					    <input type="text" class="form-control" data-ng-model="contact.email" id="email" placeholder="email@domain.com">
 					  </div>
-					  <button type="submit" class="btn btn-success btn-block"><i class="glyphicon glyphicon-ok"></i> Tour it</button>
+					  <button type="submit" class="btn btn-block"><i class="glyphicon glyphicon-ok"></i> Tour it</button>
 					</form>
 			  </div>
 			</div>
@@ -163,7 +152,7 @@
 					<form role="form">
 					  <h5>Questions about this room?</h5>
 					  {{room.user.name}}
-					  <button ng-click="openContactModal()" class="btn btn-default btn-block"><i class="glyphicon glyphicon-envelope"></i> Contact</button>
+					  <button ng-click="openContactModal()" class="btn btn-block"><i class="glyphicon glyphicon-envelope"></i> Contact</button>
 					</form>
 			  </div>
 			</div>

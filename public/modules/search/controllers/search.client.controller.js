@@ -82,7 +82,6 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
     };
 
     $scope.saveQueryAsUserAlert = function() {
-      console.log(Authentication.user);
       if (Authentication.user) {
         var query = angular.copy($scope.filter);
         // Set bigger proximity

@@ -35,7 +35,7 @@
           </a>
         </li>
         <li ng-class="{ active: nav == 'pictures'}">
-          <a ng-click="setTab(pictures)" href="">
+          <a ng-click="setTab('pictures')" href="">
             <i class="glyphicon glyphicon-chevron-right pull-right"></i>
             Pictures
           </a>
@@ -54,11 +54,13 @@
             <form role="form">
               <div class="form-group">
                 <label class="control-label">Title</label>
-                <input ng-model="room.info.title" type="text" class="form-control"  placeholder="Title">
+                <input ng-model="room.info.title" ng-maxlength="maxTitleLength" type="text" class="form-control"  placeholder="Title">
+                <small ng-bind="maxTitleLength - room.info.title.length"></small>
               </div>
               <div class="form-group">
                 <label class="control-label">Description</label>
-                <textarea ng-model="room.info.description" type="text" class="form-control"  placeholder="Description"></textarea>
+                <textarea ng-model="room.info.description" ng-maxlength="maxDescriptionLength" type="text"  placeholder="Description"></textarea>
+                <small ng-bind="maxDescriptionLength - room.info.description.length"></small>
               </div>
             </form>
             <hr>
@@ -102,7 +104,7 @@
               </div>
               <div class="form-group">
                 <label class="control-label">Period</label>
-                <select ng-model="room.price.period" class="form-control">
+                <select ng-model="room.price.period" >
                   <option value="monthly">Monthly</option>
                   <option value="monthly">Quarterly</option>
                   <option value="monthly">Yearly</option>

@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 header {
   box-shadow: rgba(0, 0, 0, 0.0980392) 0 3px 10px;
   background: #FFF;
@@ -5,6 +9,18 @@ header {
 
 header .advertise-button {
   padding: 5px 13px 6px;
+}
+
+.alert-container {
+  position: fixed;
+  width: 400px;
+  right: 50px;
+  top: 20px;
+  z-index: 99999;
+}
+
+.content {
+  min-height: 100%; 
 }
 
 section .container {
@@ -16,7 +32,6 @@ section .container {
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
 	display: none !important;
 }
-
 
 .header-messages-icon {
   font-size: 19px;
@@ -36,9 +51,9 @@ section .container {
 }
 
 footer {
-  position:absolute;
-  bottom:0;
   background: #283645;
   width: 100%;
-  margin-top: 100px;
+  position:relative;
+  height: 82px;
+  clear:both;
 }

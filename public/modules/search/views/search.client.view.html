@@ -55,21 +55,31 @@
       <div class="search-results">
         <ul class="results-container clearfix">
           <li class="search-result" ng-repeat="room in results">
-            <div class="search-result-container">
-              <div class="result-image">
-                <a ng-href="/#!/rooms/{{room._id}}"><img src="http://placehold.it/600x600"></a>
-              </div>
-              <div class="result-footer bordered no-top-border">
-                <div class="result-price pull-right">
-                  € {{room.price.total}}
+            <a ng-href="/#!/rooms/{{room._id}}">
+              <div class="search-result-container">
+                <div class="result-image" ng-class="{ 'tint-bg empty': room.pictures.length == 0 }">
+
+                  <i ng-if="room.pictures.length == 0" class="icon-camera-1"></i>
+
+                  <div ng-if="room.pictures.length > 0" class="owl-carousel owl-inner-pagination owl-ui-md" owl-carousel>
+                    <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
+                      <figure style="background-image: url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png);"></figure>
+                    </div>
+                  </div>
+
                 </div>
-                <div class="result-info">
-                  <span class="result-room-type">{{room.classification}}</span>
-                  <br>
-                  <span class="result-location">{{room.location.street}}, {{room.location.city}}</span>
+                <div class="result-footer bordered no-top-border">
+                  <div class="result-price pull-right">
+                    € {{room.price.total}}
+                  </div>
+                  <div class="result-info">
+                    <span class="result-room-type">{{room.classification}}</span>
+                    <br>
+                    <span class="result-location">{{room.location.street}}, {{room.location.city}}</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
           </li>
         </ul>
       </div>

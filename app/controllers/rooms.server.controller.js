@@ -185,6 +185,23 @@ exports.roomByID = function(req, res, next, id) {
 };
 
 /**
+ * Get a user's favorite rooms
+ */
+exports.getUserFavorites = function(req, res, next) {
+	var user = req.user;
+
+	Room.find({ '_id': { $in: user.favorites }}).exec(function(err, rooms) {
+		if (err) {
+			return res.send(400, {
+				message: getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(rooms);
+		}
+	});
+};
+
+/**
  * Room authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {

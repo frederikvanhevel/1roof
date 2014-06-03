@@ -1,38 +1,61 @@
 <section data-ng-controller="RoomsController" class="container">
-		<div class="page-header row">
-				<h1>New room</h1>
-		</div>
 
-    stap 1: maaken account V
-    stap 2: maak een kamer V
-    stap 3: perfectioneer je kameeeur
+    <div class="tabs tabs-2-big-top tab-container" data-easytabs="true">
+                  
+      <ul class="etabs text-center">
+        
+        <li class="tab active">
+          <a href="#tab-1" class="active">
+            <h3>Step 1: create an account</h3>
+          </a><!-- /#tab-1 -->
+        </li><!-- /.tabs -->
+        
+        <li class="tab">
+          <a href="#tab-2">
+            <h3>Step 2: create a room</h3>
+          </a><!-- /#tab-2 -->
+        </li><!-- /.tabs -->
 
-		<form class="form-horizontal" name="createRoomForm" role="form" ng-submit="create()">
-      <div class="form-group" ng-class="{ 'has-error' : createRoomForm.address.$invalid && !createRoomForm.address.$pristine || createRoomForm.$error.noStreet || createRoomForm.$error.noStreetNumber}">
-          <label class="control-label col-sm-3" for="address">Address</label>
-          <div class="col-sm-9">
-              <input type="text" ng-model="createForm.address" name="address" class="form-control" placeholder="Type the address" data-options="autocompleteOptions" details="autoCompleteDetails"  ng-autocomplete check-address required>
-              <p ng-show="createRoomForm.$error.noStreet && !createRoomForm.address.$pristine" class="help-block">YYou have to type a street.</p>
-              <p ng-show="createRoomForm.$error.noStreetNumber && !createRoomForm.address.$pristine" class="help-block">You need to specify a street number.</p>
-          </div>
-      </div>
-		  <div class="form-group">
-		    <label for="inputPassword3" class="col-sm-3 control-label">Room type</label>
-		    <div class="col-sm-9">
-	        <div class="btn-group" ng-model="createForm.roomType" radio-group>
-	          <button type="button" class="btn btn-default" data-val="house">Entire house</button>
-	          <button type="button" class="btn btn-default" data-val="room">Room</button>
-	          <button type="button" class="btn btn-default" data-val="studio">Studio</button>
-	          <button type="button" class="btn btn-default" data-val="appartment">Appartment</button>
-	        </div>
-		    </div>
-		  </div>
-		  <div class="form-group">
-		    <div class="col-sm-offset-3 col-sm-9">
-		      <button ng-class="{ disabled: busy || createRoomForm.$invalid }" type="submit" class="btn btn-default">Continue <i class="glyphicon glyphicon-ok"></i></button>
-          <img ng-show="busy" class="spinner" src="/modules/core/img/loaders/loading.svg">
-		    </div>
-		  </div>
-		</form>
+        <li class="tab">
+          <a href="#tab-2">
+            <h3>Step 3: add details</h3>
+          </a><!-- /#tab-2 -->
+        </li><!-- /.tabs -->
 
+      </ul><!-- /.etabs -->
+       
+    </div>
+
+
+    <div class="bordered">
+      <h1 class="text-center">Advertise your room on Apollo</h1>
+      <hr>
+  		<form class="form-horizontal" name="createRoomForm" role="form" ng-submit="create()">
+        <div class="form-group" ng-class="{ 'has-error' : createRoomForm.address.$invalid && !createRoomForm.address.$pristine || createRoomForm.$error.noStreet || createRoomForm.$error.noStreetNumber}">
+            <label class="control-label col-sm-3" for="address">Address</label>
+            <div class="col-sm-9">
+                <input type="text" ng-model="createForm.address" name="address" class="form-control" placeholder="Type the address" data-options="autocompleteOptions" details="autoCompleteDetails"  ng-autocomplete check-address required>
+                <p ng-show="createRoomForm.$error.noStreet && !createRoomForm.address.$pristine" class="help-block">YYou have to type a street.</p>
+                <p ng-show="createRoomForm.$error.noStreetNumber && !createRoomForm.address.$pristine" class="help-block">You need to specify a street number.</p>
+            </div>
+        </div>
+  		  <div class="form-group">
+  		    <label for="inputPassword3" class="col-sm-3 control-label">Room type</label>
+  		    <div class="col-sm-9">
+  	        <div class="btn-group" ng-model="createForm.roomType" radio-group>
+  	          <button type="button" class="btn btn-default" data-val="house">Entire house</button>
+  	          <button type="button" class="btn btn-default" data-val="room">Room</button>
+  	          <button type="button" class="btn btn-default" data-val="studio">Studio</button>
+  	          <button type="button" class="btn btn-default" data-val="appartment">Appartment</button>
+  	        </div>
+  		    </div>
+  		  </div>
+  		  <div class="form-group">
+  		    <div class="col-sm-offset-3 col-sm-9">
+  		      <button ng-class="{ disabled: busy || createRoomForm.$invalid }" type="submit" class="btn">Continue <i class="glyphicon glyphicon-ok"></i></button>
+            <img ng-show="busy" class="spinner" src="/modules/core/img/loaders/loading.svg">
+  		    </div>
+  		  </div>
+  		</form>
+    </div>
 </section>

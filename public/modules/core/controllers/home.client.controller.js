@@ -1,11 +1,13 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', '$location', 'Authentication', 'Geocoder',
-  function ($scope, $location, Authentication, Geocoder) {
+angular.module('core').controller('HomeController', ['$scope', '$location', 'Authentication', 'Geocoder', 'Alert',
+  function ($scope, $location, Authentication, Geocoder, Alert) {
     $scope.authentication = Authentication;
 
     $scope.search = '';
     $scope.searchDetails = {};
+
+    Alert.add('danger', 'WTF IS DEZE SHIT MAAAN????', 5000);
 
     $scope.goToSearch = function() {
       if ($scope.searchDetails.geometry) {

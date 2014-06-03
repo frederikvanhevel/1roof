@@ -37,10 +37,13 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
     };
 
     $scope.getUnreadMessageCount = function() {
-      $http({ method: 'GET', url: '/users/unreadmessages'})
-        .then(function(result) {
-          $scope.unreadMessageCount = result.data;
-        });
+      if (Authentication.user) {
+        // TODO: interval for checking for new messages
+        $http({ method: 'GET', url: '/users/unreadmessages'})
+          .then(function(result) {
+            $scope.unreadMessageCount = result.data;
+          });
+      }
     };
 	}
 ]);

@@ -5,6 +5,7 @@
  */
 var passport = require('passport');
 var inbox = require('../../app/controllers/inbox');
+var rooms = require('../../app/controllers/rooms');
 
 module.exports = function(app) {
 	// User Routes
@@ -43,6 +44,8 @@ module.exports = function(app) {
 	app.route('/auth/linkedin/callback').get(users.oauthCallback('linkedin'));
 
 	app.route('/users/unreadmessages').get(inbox.getUnreadMessageCount);
+
+	app.route('/users/:userId/favorites').get(rooms.getUserFavorites);
 
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);
