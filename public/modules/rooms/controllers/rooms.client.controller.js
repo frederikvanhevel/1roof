@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder',
-    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder) {
+angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity',
+    function($window, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity) {
         $scope.authentication = Authentication;
         $scope.createForm = {
             address: '',
@@ -18,6 +18,7 @@ angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams',
         $scope.otherRooms = [];
         $scope.mapCenter = [4.469936, 50.503887];
         $scope.mapZoom = 9;
+        $scope.amenities = Amenity.list();
 
         // Create new Room
         $scope.create = function() {
@@ -103,6 +104,10 @@ angular.module('rooms').controller('RoomsController', ['$scope', '$stateParams',
                     roomId: $scope.room._id
                 });
             });
+        };
+
+        $scope.getAmenityName = function(amenityValue) {
+            return $window._.findWhere($scope.amenities, { value: amenityValue }).name;
         };
 
         $scope.sendMessage = function() {

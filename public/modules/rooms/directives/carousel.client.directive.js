@@ -6,7 +6,6 @@ angular.module('rooms').directive('owlCarousel', [ '$window',
 			restrict: 'A',
 			link: function postLink(scope, element, attrs) {
 				scope.$on('pictures_rendered', function( domainElement ) {
-					console.log('errrr');
 					$window.$(element).owlCarousel({
 						autoPlay: 5000,
 						slideSpeed: 200,

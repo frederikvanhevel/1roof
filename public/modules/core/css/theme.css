@@ -167,6 +167,7 @@ ul {
 }
 ul.arrowed li,
 ul.circled li,
+ul.checked li,
 ol li {
     margin-bottom: 5px;
 }
@@ -184,6 +185,16 @@ ul.circled li:before {
     font-family: 'fontello-circle';
     content: '\e800';
     font-size: 8px;
+    font-weight: normal;
+    color: #1ABB9C;
+    padding-top: 1px;
+    margin-left: -20px;
+    vertical-align: top;
+    position: absolute;
+}
+ul.checked li:before {
+    font-family: 'fontello';
+    content: '\2713';
     font-weight: normal;
     color: #1ABB9C;
     padding-top: 1px;
@@ -661,7 +672,7 @@ footer p {
 }
 
 .btn:hover,
-.btn:focus,
+/*.btn:focus,*/
 .btn:active,
 .btn.active {
     background: #17A78B;
@@ -675,49 +686,49 @@ footer p {
 }
 
 .btn-green:hover,
-.btn-green:focus,
+/*.btn-green:focus,*/
 .btn-green:active,
 .btn-green.active {
     background: #17A78B !important;
 }
 .btn-blue:hover,
-.btn-blue:focus,
+/*.btn-blue:focus,*/
 .btn-blue:active,
 .btn-blue.active {
     background: #387EAA !important;
 }
 .btn-red:hover,
-.btn-red:focus,
+/*.btn-red:focus,*/
 .btn-red:active,
 .btn-red.active {
     background: #CF4C45 !important;
 }
 .btn-pink:hover,
-.btn-pink:focus,
+/*.btn-pink:focus,*/
 .btn-pink:active,
 .btn-pink.active {
     background: #BD78A9 !important;
 }
 .btn-purple:hover,
-.btn-purple:focus,
+/*.btn-purple:focus,*/
 .btn-purple:active,
 .btn-purple.active {
     background: #8A4FA2 !important;
 }
 .btn-orange:hover,
-.btn-orange:focus,
+/*.btn-orange:focus,*/
 .btn-orange:active,
 .btn-orange.active {
     background: #D96716 !important;
 }
 .btn-navy:hover,
-.btn-navy:focus,
+/*.btn-navy:focus,*/
 .btn-navy:active,
 .btn-navy.active {
     background: #2C3E50 !important;
 }
 .btn-gray:hover,
-.btn-gray:focus,
+/*.btn-gray:focus,*/
 .btn-gray:active,
 .btn-gray.active {
     background: #859394 !important;

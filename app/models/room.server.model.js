@@ -39,8 +39,14 @@ var RoomSchema = new Schema({
 	},
 	amenities: [String],
 	info: {
-		title: String,
-		description: String
+		title: {
+			type: String,
+			default: ''
+		},
+		description: {
+			type: String,
+			default: ''
+		}
 	},
 	location: {
 		street: {

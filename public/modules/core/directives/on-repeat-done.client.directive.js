@@ -5,7 +5,7 @@ angular.module('core').directive('onRepeatDone', [
 		return {
         restriction: 'A',
         link: function($scope, element, attributes ) {
-            $scope.$emit(attributes.onRepeatDone || 'repeat_done', element);
+        		if ($scope.$last) $scope.$emit(attributes.onRepeatDone || 'repeat_done', element);
         }
     }
 	}

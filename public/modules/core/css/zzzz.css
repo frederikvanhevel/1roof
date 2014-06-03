@@ -25,6 +25,7 @@ a:focus,
 .text-center .panel-title > a:hover span:after,
 ul.arrowed li:before,
 ul.circled li:before,
+ul.checked li:before,
 .yamm .yamm-content a:hover {
   color: #FA6C65;
 }
@@ -64,7 +65,7 @@ ul.circled li:before,
 }
 
 .btn:hover,
-.btn:focus,
+/*.btn:focus,*/
 .btn:active,
 .btn.active,
 .pagination > .active > a,
