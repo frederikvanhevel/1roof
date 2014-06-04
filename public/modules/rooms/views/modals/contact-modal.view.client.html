@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()">&times;</button>
+    <h4 ng-hide="contactInfo.isTour" class="modal-title">Send a message</h4>
+    <h4 ng-show="contactInfo.isTour" class="modal-title">Ask for a tour</h4>
+</div>
+<div class="modal-body">
+  <form class="form-horizontal" name="contactForm" novalidate>
+    <div ng-hide="contactInfo.isTour" class="form-group">
+      <label class="control-label col-sm-3" for="message">Message</label>
+      <div class="col-sm-9">
+          <textarea data-ng-model="message" id="message" placeholder="What's your question?">
+            I would like to schedule a tour of this room.
+          </textarea>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : contactForm.name.$invalid && !contactForm.name.$pristine }">
+      <label class="control-label col-sm-3" for="name">Name</label>
+      <div class="col-sm-9">
+        <input data-ng-model="contactInfo.name" name="name" type="text" placeholder="First and last name" required>
+        <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">You name is required.</p>
+      </div>
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine }">
+      <label class="control-label col-sm-3" for="email">Email address</label>
+      <div class="col-sm-9">
+        <input data-ng-model="contactInfo.email" name="email" type="email" placeholder="example@domain.com" required>
+        <p ng-show="contactForm.email.$invalid && !contactForm.email.$pristine" class="help-block">Enter a valid email.</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-3" for="phone">Phone</label>
+      <div class="col-sm-9">
+        <input data-ng-model="phone" type="tel" placeholder="(#)### ## ## ##">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-3 col-sm-9">
+        <button ng-hide="contactInfo.isTour" class="btn" ng-click="ok()" ng-disabled="contactForm.$invalid">Send message</button>
+        <button ng-show="contactInfo.isTour" class="btn" ng-click="ok()" ng-disabled="contactForm.$invalid">Ask for tour</button>
+      </div>
+    </div>
+  </form>
+</div>

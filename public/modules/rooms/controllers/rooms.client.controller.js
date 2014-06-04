@@ -1,12 +1,17 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity',
-    function($window, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity) {
+angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity', 'Modal',
+    function($window, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity, Modal) {
         $scope.authentication = Authentication;
         $scope.createForm = {
             address: '',
             roomType: ''
+        };
+        $scope.contactInfo = {
+            isTour: false,
+            name: '',
+            email: ''
         };
         $scope.autocompleteOptions = {
             country: 'be',
@@ -115,6 +120,10 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
             $scope.room.$sendMessage({
                 message: 'macheert da iere?'
             });
+        };
+
+        $scope.openContactModal = function() {
+            Modal.contact($scope.contactInfo);
         };
     }
 ]);

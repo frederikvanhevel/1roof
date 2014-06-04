@@ -21,6 +21,7 @@ header .advertise-button {
 
 .content {
   min-height: 100%; 
+  margin-bottom: 50px;
 }
 
 section .container {

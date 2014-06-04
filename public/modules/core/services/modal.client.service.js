@@ -19,15 +19,22 @@ angular.module('core').service('Modal', [ '$modal',
       });
     };
 
-    this.contact = function() {
+    this.contact = function(contactInfo) {
       this.closeInstance();
       modalInstance = $modal.open({
-        templateUrl: 'modules/rooms/views/contact-modal.view.client.html'
+        templateUrl: 'modules/rooms/views/modals/contact-modal.view.client.html',
+        controller: 'RoomsController',
+        resolve: {
+          contactInfo: function () {
+            return contactInfo;
+          }
+        }
       });
     };
 
     this.closeInstance = function() {
       if (modalInstance) modalInstance.close();
+      modalInstance = undefined;
     };
   }
 ]);

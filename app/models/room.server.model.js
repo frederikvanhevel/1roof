@@ -7,6 +7,23 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
+ * Check if enough details are filled in
+ */
+var checkRoomCompleteness = function(room) {
+	var complete = true;
+	
+	if (!room.info.title || room.info.title === '') complete = false;
+  if (!room.price.base || room.price.base === 0) complete = false;
+  if (!room.available.from) complete = false;
+  if (!room.available.till) complete = false;
+
+  // Room is incomplete so can't be visible
+  if (!complete) room.visible = false;
+
+  return complete;
+};
+
+/**
  * Room Schema
  */
 var RoomSchema = new Schema({
@@ -109,6 +126,10 @@ var RoomSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
+	isInOrder: {
+		type: Boolean,
+		default: false
+	},
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
@@ -123,6 +144,8 @@ RoomSchema.index({ loc: '2dsphere' });
 RoomSchema.pre('save', function(next) {
 	this.updated = Date.now();
 	this.price.total = this.price.base + this.price.egw + this.price.cleaning;
+	this.isInOrder = checkRoomCompleteness(this);
+
 	next();
 });
 

@@ -6,7 +6,7 @@
 				<a href="/#!/rooms/{{room._id}}/edit/">edit this room <i class="icon-right-open"></i></a>
 			</span>
 			<span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
-      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span>
+      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline<span ng-if="room.isInOrder"> - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span></span>
 		</div>
 	</div>
 
@@ -55,6 +55,10 @@
 					<div class="panel-body">
 						<div class="room-header row">
 							<div class="col-sm-4">
+		          	<h6>Lease type</h6>
+		              {{room.leaseType}
+		          </div>
+		          <div class="col-sm-4">
 								<h6>Size</h6>
 	              <h2>{{room.surface}} <span class="small text-muted">m²</span></h2>
 		          </div>
@@ -88,10 +92,8 @@
 		            	</tr>
 		            </table>
 		          </div>
-		          <div class="col-sm-4">
-		          	<h6>Lease type</h6>
-		              {{room.leaseType}
-		          </div>
+
+		          
 		        </div>
 						
 						<div class="room-info row">
@@ -162,12 +164,12 @@
 			<div class="rightcolumn col-sm-4">
 				<div class="panel panel-default">
 				  <div class="panel-body">
-						<form role="form" name"contactForm" ng-submit="sendMessage()" novalidate>
+						<form role="form" name"contactForm" ng-submit="openContactModal()" novalidate>
 						  <div class="form-group">
-						    <input type="text" class="form-control" data-ng-model="contact.name" id="name" placeholder="Name">
+						    <input type="text" class="form-control" data-ng-model="contactInfo.name" id="name" placeholder="Name">
 						  </div>
 						  <div class="form-group">
-						    <input type="text" class="form-control" data-ng-model="contact.email" id="email" placeholder="email@domain.com">
+						    <input type="text" class="form-control" data-ng-model="contactInfo.email" id="email" placeholder="email@domain.com">
 						  </div>
 						  <button type="submit" class="btn btn-block"><i class="glyphicon glyphicon-ok"></i> Tour it</button>
 						</form>

@@ -7,7 +7,7 @@
     <h4 class="list-group-item-heading">{{room.location.street}}, {{room.location.city}}</h4>
     <p class="list-group-item-text">
       <span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
-      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span>
+      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline<span ng-if="room.isInOrder"> - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span></span>
     </p>
   </div>
   <div ng-if="myrooms.length == 0" class="alert alert-warning col-sm-6 col-sm-offset-3" ng-cloak>
