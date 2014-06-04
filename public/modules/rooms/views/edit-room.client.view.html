@@ -9,7 +9,7 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container room-edit">
     <div class="page-header">
         <p class="red" ng-show="errors.length != 0">You have to fill in some more info damnit!</p>
     </div>
@@ -111,23 +111,23 @@
             <form role="form">
               <div class="form-group">
                 <label class="control-label">Base price</label>
-                <input ng-model="room.price.base" type="text" class="form-control"  placeholder="dd//mm/jjjj">
+                <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="dd//mm/jjjj">
               </div>
               <div class="form-group">
                 <label class="control-label">Period</label>
                 <select ng-model="room.price.period" >
-                  <option value="monthly">Monthly</option>
-                  <option value="monthly">Quarterly</option>
-                  <option value="monthly">Yearly</option>
+                  <option value="month">Monthly</option>
+                  <option value="quarter">Quarterly</option>
+                  <option value="year">Yearly</option>
                 </select>
               </div>
               <div class="form-group">
                 <label class="control-label">Gas, electricity and water (optional)</label>
-                <input ng-model="room.price.egw" type="text" class="form-control"  placeholder="Extra costs">
+                <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="Extra costs">
               </div>
               <div class="form-group">
                 <label class="control-label">Cleaning (optional)</label>
-                <input ng-model="room.price.cleaning" type="text" class="form-control"  placeholder="Cleaning">
+                <input ng-model="room.price.cleaning" type="number" min="0" class="form-control"  placeholder="Cleaning">
               </div>
             </form>
           </div>
@@ -163,7 +163,8 @@
             <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
           </div>
           <div class="panel-body">
-            <div class="checkbox" ng-repeat="amenity in amenities">
+            <ul class="amenities">
+            <li class="checkbox" ng-repeat="amenity in amenities">
               <label>
                  <input
                     type="checkbox"
@@ -173,7 +174,8 @@
                     ng-click="toggleAmenitySelection(amenity.value)"
                   > {{amenity.name}}
               </label>
-            </div>
+            </li>
+            </ul>
           </div>
         </div>
 

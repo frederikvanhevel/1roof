@@ -43,7 +43,7 @@
 }
 
 .room-image {
-  height: 400px;
+  height: 500px;
 }
 
 .room-image.empty {
@@ -55,10 +55,69 @@
   margin-top: 0; 
 }
 
+.room-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+
+.room-costs {
+  width: 100%;
+  vertical-align: bottom;
+}
+.room-costs i {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.room-costs i:hover {
+  opacity: 1;
+}
+.room-costs tr:nth-child(odd):not(.divider,.total) {
+  background: #CCC;
+}
+.room-costs tr.total {
+  height: 50px;
+}
+.room-costs td {
+  height: 25px;
+}
+.room-costs h2, .room-costs h4 {
+  text-align: right;
+  margin: 0;
+}
+.room-costs .divider td {
+  height: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+
+.room-info {
+  margin-top: 30px;
+}
+.room-info ul.amenities li {
+  float:left;
+  display:inline;
+  width: 50%;
+}
+.room-info ul.amenities li:before {
+  font-family: 'fontello';
+  font-weight: normal;
+  padding-top: 1px;
+  margin-left: -20px;
+  vertical-align: top;
+  position: absolute;
+}
+.room-info ul.amenities li.checked:before {
+  content: '\2713';
+  color: #1ABB9C;
+}
+.room-info ul.amenities li.crossed:before {
+  content: '\2715';
+  color: #FA6C65;
+}
+
 .room-owner-panel {
   height: 40px;
 }
-
 .room-owner-panel .container {
   line-height: 40px;
   text-transform: uppercase;
@@ -114,4 +173,11 @@
   border-top-color: #E1E7ED;
   border-width: 23px;
   margin-left: -23px;
+}
+
+.room-edit ul.amenities li {
+  float:left;
+  display:inline;
+  width: 50%;
+  margin: 3px 0;
 }

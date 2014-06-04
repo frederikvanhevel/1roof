@@ -25,8 +25,8 @@ var RoomSchema = new Schema({
 		},
 		period: {
 			type: String,
-			enum: ['monthly', 'quarterly', 'yearly'],
-			default: 'monthly'
+			enum: ['month', 'quarter', 'year'],
+			default: 'month'
 		},
 		egw: {
 			type: Number,

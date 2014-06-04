@@ -32,8 +32,8 @@
 	            <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
 	              <figure style="background-image: url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png);"></figure>
 	            </div>
-	            <div class="room-map item">
-						    <div class="map-canvas" room-map map-center="mapCenter"></div>
+	            <div class="item room-map">
+						    <div room-map map-center="mapCenter" class="map-canvas"></div>
 						  </div>
 						  <div class="item">
 						  	<div street-view map-center="mapCenter" class="streetView"></div>
@@ -44,7 +44,7 @@
 
 				</div>
 
-				<div class="panel panel-default">
+				<div ng-if="room.info.description != ''" class="panel panel-default">
 					<div class="panel-body">
 						<h6>Description</h6>
 						<p>{{room.info.description}}</p>
@@ -54,19 +54,46 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="room-header row">
-							<div class="col-xs-6 col-md-3">
-		              {{room.surface}}
-		              <span class="small text-muted">sqft</span>
+							<div class="col-sm-4">
+								<h6>Size</h6>
+	              <h2>{{room.surface}} <span class="small text-muted">m²</span></h2>
 		          </div>
-		          <div class="col-xs-6 col-md-3">
-		          		<span class="small text-muted">€</span>
-		              {{room.price.total}}
+		          <div class="col-sm-4">
+		          	<h6>Costs <small>per {{room.price.period}}</small></h6>
+
+		            <table class="room-costs">
+		            	<tr>
+		            		<td></td>
+		            		<td></td>
+		            		<td><h4><span class="small text-muted">€ </span> {{room.price.base}}</h4></td>
+		            		
+		            	</tr>
+		            	<tr ng-show="room.price.egw != 0">
+		            		<td>+ </td>
+		            		<td>(E.G.W. <i class="icon-info-circled" tooltip="Electricity, Gas and Water"></i>)</td>
+		            		<td><h4><span class="small text-muted">€ </span> {{room.price.egw}}</h4></td>
+		            	</tr>
+		            	<tr ng-show="room.price.cleaning != 0">
+		            		<td>+ </td>
+		            		<td>(cleaning)</td>
+		            		<td><h4><span class="small text-muted">€ </span> {{room.price.cleaning}}</h4></td>
+		            	</tr>
+		            	<tr class="divider">
+		            		<td colspan="3"></td>
+		            	</tr>
+		            	<tr class="total">
+		            		<td>= </td>
+		            		<td></td>
+		            		<td><h2><span class="small text-muted">€ </span> {{room.price.total}}</h2></td>
+		            	</tr>
+		            </table>
 		          </div>
-		          <div class="col-xs-6 col-md-3">
+		          <div class="col-sm-4">
+		          	<h6>Lease type</h6>
 		              {{room.leaseType}
 		          </div>
 		        </div>
-						<hr>
+						
 						<div class="room-info row">
 							<div class="room-properties col-xs-6">
 								<ul>
@@ -79,8 +106,8 @@
 								</ul>
 							</div>
 							<div class="room-extras col-xs-6">
-								<ul class="checked">
-									<li ng-repeat="amenity in room.amenities">{{getAmenityName(amenity)}}</li>
+								<ul class="amenities">
+									<li ng-class="isAmenityChecked(amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in amenities">{{amenity.name}}</li>
 								</ul>
 							</div>
 						</div>
@@ -89,7 +116,7 @@
 
 				<div class="contact text-center">
 					<h3>Are you ready to see this room?</h3>
-					<button ng-click="openContactModal()" class="btn btn-lg btn-success"><i class="glyphicon glyphicon-ok"></i> Contact</button>
+					<button ng-click="openContactModal()" class="btn"><i class="glyphicon glyphicon-ok"></i> Contact</button>
 				</div>
 
 				<div ng-hide="otherRooms.length == 0">

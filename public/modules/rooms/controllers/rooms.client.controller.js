@@ -105,8 +105,10 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
             });
         };
 
-        $scope.getAmenityName = function(amenityValue) {
-            return $window._.findWhere($scope.amenities, { value: amenityValue }).name;
+        $scope.isAmenityChecked = function(amenity) {
+            if ($scope.room.amenities)
+                return $scope.room.amenities.indexOf(amenity.value) !== -1;
+            else return false;
         };
 
         $scope.sendMessage = function() {

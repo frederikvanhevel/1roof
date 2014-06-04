@@ -16,8 +16,6 @@ angular.module('rooms').controller('ManageRoomsController', ['$scope', '$statePa
         $scope.busy = false;
         $scope.nav = 'general';
         $scope.amenities = Amenity.list();
-        $scope.maxTitleLength = 100;
-        $scope.maxDescriptionLength = 500;
         $scope.errors = [];
 
          // Init

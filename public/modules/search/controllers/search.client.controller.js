@@ -3,11 +3,11 @@
 angular.module('search').controller('SearchController', ['$scope', '$location', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
 	function($scope, $location, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
     $scope.mapCenter = [4.469936, 50.503887];
-    $scope.mapZoom = 9;
+    $scope.mapZoom = 13;
     $scope.fetchOnMapChange = true;
 		$scope.filter = {
       location: [],
-      proximity: 50000,
+      proximity: 5000,
       roomType: [],
       minPrice: 0,
       maxPrice: 2000,
@@ -55,6 +55,7 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
       $location.search('lat', result.lat).search('lng', result.lng);
       $scope.filter.location = [result.lng, result.lat];
       $scope.filter.proximity = result.proximity / 2;
+      console.log($scope.filter.proximity);
       //if ($scope.fetchOnMapChange) $scope.searchFunction();
       $scope.$apply();
     };
