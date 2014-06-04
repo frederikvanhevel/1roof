@@ -52,7 +52,8 @@ angular.module('search').directive('searchMap', [ '$window',
             newValues.forEach(function(value) {
               var marker = new $window.google.maps.Marker({
                 map: map,
-                position: new $window.google.maps.LatLng(value.loc.coordinates[1], value.loc.coordinates[0])
+                position: new $window.google.maps.LatLng(value.loc.coordinates[1], value.loc.coordinates[0]),
+                icon: new $window.google.maps.MarkerImage('/modules/rooms/img/map-marker2.svg')
               });
               markers.push(marker);
             });

@@ -1,3 +1,10 @@
+.online-icon {
+  color: #71DE22;
+}
+
+.offline-icon {
+  color: #B6B6B6;
+}
 
 .viewRoom .owl-item .item {
     height: 400px;
@@ -47,3 +54,48 @@
 .favorite-icon:hover:before {
   content: '\e803';
 };
+
+.room-creation-steps {
+  margin-bottom: 40px;
+}
+
+.room-creation-steps i {
+  font-size: 50px;
+}
+
+.room-creation-steps .room-step {
+  position: relative;
+  text-align: center;
+  background: #FFF;
+  border-bottom: 2px solid transparent;
+  border-color: #E1E7ED;
+  border-radius: 3px;
+  padding: 20px 0;
+  opacity: .5;
+}
+
+.room-creation-steps .room-step.active {
+  opacity: 1;
+}
+
+.room-creation-steps .room-step:after, .room-creation-steps .room-step:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.room-creation-steps .room-step:after {
+  border-top-color: #FFF;
+  border-width: 20px;
+  margin-left: -20px;
+}
+.room-creation-steps .room-step:before {
+  border-top-color: #E1E7ED;
+  border-width: 23px;
+  margin-left: -23px;
+}

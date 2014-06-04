@@ -5,6 +5,8 @@
 			<span class="pull-right">
 				<a href="/#!/rooms/{{room._id}}/edit/">edit this room <i class="icon-right-open"></i></a>
 			</span>
+			<span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
+      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span>
 		</div>
 	</div>
 
@@ -12,14 +14,12 @@
 		<div class="page-header row">
 
 			<div class="crumbs col-sm-12">
-				<h1><i class="favorite-icon icon-heart-empty-1" title="Add this room to your favorites"></i> {{room.info.title}}</h1>
+				<h1><i class="favorite-icon icon-heart-empty-1" tooltip="Add to favorites"></i> {{room.info.title}}</h1>
 				<i class="glyphicon" ng-class=""></i>
 				<a ng-href="#!/s/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> > {{room.location.street}} > <strong>{{room.classification}}</strong>
 				<span class="text-muted pull-right">Last updated {{room.updated | date:'mediumDate'}}</span>
 			</div>
 		</div>
-
-		<a href="#" ng-click="remove()">remove</a>
 
 		<div class="row">
 			<div class="leftcolumn col-sm-8">
@@ -29,7 +29,7 @@
 	        <div class="room-image" ng-class="{ 'tint-bg empty': room.pictures.length == 0 }">
 	          
 	          <i ng-if="room.pictures.length == 0" class="icon-camera-1"></i>
-	          <div ng-if="room.pictures.length > 0" class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel>
+	          <div ng-if="room.pictures.length > 0" class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel owl-pagination="true">
 	            <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
 	              <figure style="background-image: url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png);"></figure>
 	            </div>

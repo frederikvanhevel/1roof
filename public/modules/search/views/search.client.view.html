@@ -61,7 +61,7 @@
 
                   <i ng-if="room.pictures.length == 0" class="icon-camera-1"></i>
 
-                  <div ng-if="room.pictures.length > 0" class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel owl-pagination="true">
+                  <div ng-if="room.pictures.length > 0" class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel owl-pagination="false">
                     <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
                       <figure style="background-image: url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png);"></figure>
                     </div>

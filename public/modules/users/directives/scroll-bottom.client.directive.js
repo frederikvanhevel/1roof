@@ -14,8 +14,6 @@ angular.module('users').directive('scrollBottom',
                 function scrollToBottom(){
                     el.scrollTop = el.scrollHeight;
                 }
-
-                scrollToBottom();
                 
                 scope.$watch('model', function(newValue, oldValue){
                     if (newValue) scrollToBottom();

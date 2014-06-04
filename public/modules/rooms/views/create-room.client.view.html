@@ -1,31 +1,26 @@
 <section data-ng-controller="RoomsController" class="container">
 
-    <div class="tabs tabs-2-big-top tab-container" data-easytabs="true">
-                  
-      <ul class="etabs text-center">
-        
-        <li class="tab active">
-          <a href="#tab-1" class="active">
-            <h3>Step 1: create an account</h3>
-          </a><!-- /#tab-1 -->
-        </li><!-- /.tabs -->
-        
-        <li class="tab">
-          <a href="#tab-2">
-            <h3>Step 2: create a room</h3>
-          </a><!-- /#tab-2 -->
-        </li><!-- /.tabs -->
-
-        <li class="tab">
-          <a href="#tab-2">
-            <h3>Step 3: add details</h3>
-          </a><!-- /#tab-2 -->
-        </li><!-- /.tabs -->
-
-      </ul><!-- /.etabs -->
-       
+    <div class="room-creation-steps">
+      <div class="col-sm-4">
+        <div class="room-step active">
+          <i class="icon-user-add"></i>
+          <h3>Step 1: create an account</h3>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="room-step">
+          <i class="icon-home"></i>
+          <h3>Step 2: create a room</h3>
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="room-step">
+          <i class="icon-list-add"></i>
+          <h3>Step 3: customize</h3>
+        </div>
+      </div>
+      <div class="clearfix"></div>
     </div>
-
 
     <div class="bordered">
       <h1 class="text-center">Advertise your room on Apollo</h1>

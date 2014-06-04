@@ -5,7 +5,7 @@ angular.module('rooms').directive('owlCarousel', [ '$window',
 		return {
 			restrict: 'A',
 			link: function postLink(scope, element, attrs) {
-
+				
 				var defaults = {
 					autoPlay: 5000,
 					slideSpeed: 200,
@@ -13,7 +13,7 @@ angular.module('rooms').directive('owlCarousel', [ '$window',
 					rewindSpeed: 800,
 					stopOnHover: true,
 					navigation: true,
-					pagination: attrs.owlPagination ? !!attrs.owlPagination : true,
+					pagination: attrs.owlPagination == 'true',
 					rewindNav: true,
 					singleItem: true,
 					autoHeight: false,

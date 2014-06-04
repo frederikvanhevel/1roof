@@ -1,10 +1,14 @@
 <div class="list-group col-sm-offset-2 col-sm-8" ng-init="getMyRooms()">
   <div class="list-group-item" ng-repeat="room in myrooms">
     <div class="pull-right">
+        <a ng-href="/#!/rooms/{{room._id}}" class="btn btn-xs btn-danger">view</a>
         <a ng-href="/#!/rooms/{{room._id}}/edit/" class="btn btn-xs btn-danger"><i class="icon-pencil-1"></i> edit</a>
     </div>
     <h4 class="list-group-item-heading">{{room.location.street}}, {{room.location.city}}</h4>
-    <p class="list-group-item-text"><i class="glyphicon glyphicon-ok"></i> online</p>
+    <p class="list-group-item-text">
+      <span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
+      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span>
+    </p>
   </div>
   <div ng-if="myrooms.length == 0" class="alert alert-warning col-sm-6 col-sm-offset-3" ng-cloak>
     <a href="/#!/rooms/new" class="btn btn-sm pull-right">Advertise a room</a>

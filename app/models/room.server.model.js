@@ -118,17 +118,10 @@ var RoomSchema = new Schema({
 RoomSchema.index({ loc: '2dsphere' });
 
 /**
- * Hook a pre save method to update the updated date
+ * Hook a pre save method to update the total price and set updated date
  */
 RoomSchema.pre('save', function(next) {
-	this.updated = Date.now;
-	next();
-});
-
-/**
- * Hook a pre save method to update the total price
- */
-RoomSchema.pre('save', function(next) {
+	this.updated = Date.now();
 	this.price.total = this.price.base + this.price.egw + this.price.cleaning;
 	next();
 });
