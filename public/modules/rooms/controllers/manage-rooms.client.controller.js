@@ -18,6 +18,7 @@ angular.module('rooms').controller('ManageRoomsController', ['$scope', '$statePa
         $scope.amenities = Amenity.list();
         $scope.maxTitleLength = 100;
         $scope.maxDescriptionLength = 500;
+        $scope.errors = [];
 
          // Init
         $scope.init = function() {
@@ -35,6 +36,7 @@ angular.module('rooms').controller('ManageRoomsController', ['$scope', '$statePa
             $scope.$watch('room', function(newValue, oldValue) {
                 if (newValue !== oldValue && !$scope.busy) {
                     console.log('eh?');
+                    $scope.checkRoomCompleteness();
                     updateFunction();
                 }
             }, true);
@@ -111,6 +113,19 @@ angular.module('rooms').controller('ManageRoomsController', ['$scope', '$statePa
         $scope.setTab = function(tab) {
             $scope.nav = tab;
             $location.path('rooms/' + $scope.room._id + '/edit/' + tab);
+        };
+
+        $scope.checkRoomCompleteness = function() {
+            var errors = [];
+
+            if (!$scope.room.info.title || $scope.room.info.title === '') errors.push('title');
+            if (!$scope.room.price.base || $scope.room.price.base === 0) errors.push('price');
+            if (!$scope.room.available.from) errors.push('availableFrom');
+            if (!$scope.room.available.till) errors.push('availableTill');
+
+            console.log(errors);
+
+            $scope.errors = errors;
         };
     }
 ]);

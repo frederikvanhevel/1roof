@@ -19,7 +19,7 @@
         <p class="serverinfo text-center">
           <small>you guys are talking about the <a href="#!/rooms/{{inbox.room._id}}">{{inbox.room.classification}} in {{inbox.room.location.street}}, {{inbox.room.location.city}}</a></small>
         </p>
-        <div data-ng-repeat="message in inbox.messages" class="" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
+        <div data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
             <!-- <small class="list-group-item-text">{{message.sent | date:'medium'}} / {{message.sender.displayName}}</small> -->
             {{message.message}}
         </div>

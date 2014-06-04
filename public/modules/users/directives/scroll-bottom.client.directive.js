@@ -14,6 +14,11 @@ angular.module('users').directive('scrollBottom',
                 function scrollToBottom(){
                     el.scrollTop = el.scrollHeight;
                 }
+
+                scope.$on('messages_rendered', function( domainElement ) {
+                    console.log('ej');
+                    scrollToBottom();
+                });
                 
                 scope.$watch('model', function(newValue, oldValue){
                     if (newValue) scrollToBottom();

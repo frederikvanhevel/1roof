@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$window', '$rootScope', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity',
-    function($window, $rootScope, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity) {
+angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity',
+    function($window, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity) {
         $scope.authentication = Authentication;
         $scope.createForm = {
             address: '',
@@ -100,7 +100,8 @@ angular.module('rooms').controller('RoomsController', ['$window', '$rootScope', 
                 $scope.otherRooms = Rooms.getRoomsOfSameLocation({
                     roomId: $scope.room._id
                 });
-                $rootScope.$broadcast('room_loaded', $scope.room.loc.coordinates);
+                $scope.$broadcast('room_loaded', $scope.room.loc.coordinates);
+                if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
             });
         };
 

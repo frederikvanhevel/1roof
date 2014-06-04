@@ -43,4 +43,9 @@ var InboxSchema = new Schema({
   }
 });
 
+InboxSchema.pre('save', function(next) {
+  this.updated = Date.now();
+  next();
+});
+
 mongoose.model('Inbox', InboxSchema);

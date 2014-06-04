@@ -14,6 +14,6 @@ angular.module('core').directive('limitText', [
                 scope.model = scope.model.substring(0, attributes.limitText);
             });
         }
-    }
+    };
   }
 ]);

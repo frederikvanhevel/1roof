@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('rooms').directive('streetView', [ '$window', '$rootScope',
+angular.module('rooms').directive('streetView', [ '$window',
   function($window, $rootScope) {
     return {
       scope: {
@@ -10,9 +10,9 @@ angular.module('rooms').directive('streetView', [ '$window', '$rootScope',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
 
-        $rootScope.$on('room_loaded', function(event, coords) {
+        scope.$on('room_loaded', function(event, coords) {
             var position = new $window.google.maps.LatLng(coords[1], coords[0]);
-            var streetview = new google.maps.StreetViewPanorama(element[0], {
+            var streetview = new $window.google.maps.StreetViewPanorama(element[0], {
                 position: position,
                 pov: {
                     heading: 0,
@@ -25,11 +25,11 @@ angular.module('rooms').directive('streetView', [ '$window', '$rootScope',
             var streetViewMaxDistance = 50;
 
             streetViewService.getPanoramaByLocation(position, streetViewMaxDistance, function (streetViewPanoramaData, status) {
-                if(status === google.maps.StreetViewStatus.OK){
+                if(status === $window.google.maps.StreetViewStatus.OK){
                     var oldPoint = position;
                     position = streetViewPanoramaData.location.latLng;
 
-                    var heading = google.maps.geometry.spherical.computeHeading(position,oldPoint);            
+                    var heading = $window.google.maps.geometry.spherical.computeHeading(position,oldPoint);            
 
                     setStreetViewSettings(streetview, position, heading);
                 }

@@ -1,12 +1,12 @@
 'use strict';
 
-angular.module('rooms').directive('roomMap', [ '$window', '$rootScope',
-  function($window, $rootScope) {
+angular.module('rooms').directive('roomMap', [ '$window',
+  function($window) {
     return {
       template: '<div id="map" class="map-canvas"></div>',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
-        $rootScope.$on('room_loaded', function(event, coords) {
+        scope.$on('room_loaded', function(event, coords) {
 
           var mapOptions = {
             center: new $window.google.maps.LatLng(coords[1], coords[0]),

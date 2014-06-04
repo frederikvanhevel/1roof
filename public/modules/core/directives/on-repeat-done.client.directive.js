@@ -7,6 +7,6 @@ angular.module('core').directive('onRepeatDone', [
         link: function($scope, element, attributes ) {
         		if ($scope.$last) $scope.$emit(attributes.onRepeatDone || 'repeat_done', element);
         }
-    }
+    };
 	}
 ]);

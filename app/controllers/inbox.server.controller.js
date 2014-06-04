@@ -113,6 +113,7 @@ exports.list = function(req, res) {
   var user = req.user;
 
   Inbox.find({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ] })
+  .sort('-updated')
   .populate('sender', 'displayName').populate('roomOwner', 'displayName')
   .populate('room').exec(function(err, inboxes) {
     if (err) {
