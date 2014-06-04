@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity',
-    function($window, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity) {
+angular.module('rooms').controller('RoomsController', ['$window', '$rootScope', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity',
+    function($window, $rootScope, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity) {
         $scope.authentication = Authentication;
         $scope.createForm = {
             address: '',
@@ -16,8 +16,6 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
         $scope.busy = false;
         $scope.slideIndex = 0;
         $scope.otherRooms = [];
-        $scope.mapCenter = [4.469936, 50.503887];
-        $scope.mapZoom = 9;
         $scope.amenities = Amenity.list();
 
         // Create new Room
@@ -99,10 +97,10 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
             }, function() {
-                $scope.mapCenter = $scope.room.loc;
                 $scope.otherRooms = Rooms.getRoomsOfSameLocation({
                     roomId: $scope.room._id
                 });
+                $rootScope.$broadcast('room_loaded', $scope.room.loc.coordinates);
             });
         };
 

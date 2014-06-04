@@ -17,6 +17,18 @@
     background-position: center;
 }
 
+.owl-carousel {
+  display: block !important;
+}
+
+.streetView {
+  height: 400px;
+}
+
+.room-map {
+  height: 400px;
+}
+
 .room-map search-map {
   width: 100%;
   height: 400px;
@@ -28,6 +40,10 @@
 
 .room-image {
   width: 100%;
+}
+
+.room-image {
+  height: 400px;
 }
 
 .room-image.empty {
