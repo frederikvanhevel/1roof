@@ -2,12 +2,12 @@
 
 angular.module('search').controller('SearchController', ['$scope', '$location', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
 	function($scope, $location, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
-    $scope.mapCenter = [4.469936, 50.503887];
+    $scope.mapCenter = [4.3517100, 50.8503400]; // Brussel
     $scope.mapZoom = 13;
     $scope.fetchOnMapChange = true;
 		$scope.filter = {
       location: [],
-      proximity: 5000,
+      proximity: 3600,
       roomType: [],
       minPrice: 0,
       maxPrice: 2000,
@@ -23,9 +23,11 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
       var urlParamaters = $location.search();
       if ((!urlParamaters.lat || !urlParamaters.lng) && $stateParams.address) {
         $scope.doSearchLookup($stateParams.address);
-      } else {
+      } else if (urlParamaters.lat && urlParamaters.lng) {
         $scope.parseUrlParameters(urlParamaters);
         $scope.mapCenter = $scope.filter.location;
+      } else {
+        $scope.mapZoom = 9;
       }
 
       $scope.$watch('filter', function(newValue, oldValue) {

@@ -2,13 +2,49 @@ html, body {
   height: 100%;
 }
 
-header {
+header.navbar {
   box-shadow: rgba(0, 0, 0, 0.0980392) 0 3px 10px;
   background: #FFF;
+  position:fixed;
 }
 
 header .advertise-button {
   padding: 5px 13px 6px;
+}
+
+header .messages-popover {
+  position: absolute;
+  left: 0;
+  width: 300px;
+  background: #FFF;
+  border: 1px solid #ddd;
+  border-top: transparent;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+header .messages-popover ul {
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 21px;
+}
+header .messages-popover li {
+  padding: 0 5px;
+  cursor: pointer;
+}
+header .messages-popover li:hover {
+background: #F7F7F7;
+}
+header .messages-popover li p {
+  margin: 0;
+  font-size: 12px;
+}
+header .messages-popover a.view-all {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .alert-container {
@@ -21,6 +57,7 @@ header .advertise-button {
 
 .content {
   min-height: 100%; 
+  margin-top: 50px;
   margin-bottom: 50px;
 }
 

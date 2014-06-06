@@ -8,6 +8,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
     $scope.search = '';
     $scope.searchDetails = {};
     $scope.unreadMessageCount = 0;
+    $scope.messagesPopoverVisible = false;
 
 		$scope.toggleCollapsibleMenu = function() {
 			$scope.isCollapsed = !$scope.isCollapsed;

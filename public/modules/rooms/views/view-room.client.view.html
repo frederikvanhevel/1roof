@@ -55,12 +55,12 @@
 					<div class="panel-body">
 						<div class="room-header row">
 							<div class="col-sm-4">
-		          	<h6>Lease type</h6>
-		              {{room.leaseType}
+		          	<h6>Size</h6>
+	              <h2>{{room.surface}} <span class="small text-muted">m²</span></h2>
 		          </div>
 		          <div class="col-sm-4">
-								<h6>Size</h6>
-	              <h2>{{room.surface}} <span class="small text-muted">m²</span></h2>
+	              <h6>Contract</h6>
+		            <h2>{{room.leaseType}}</h2>
 		          </div>
 		          <div class="col-sm-4">
 		          	<h6>Costs <small>per {{room.price.period}}</small></h6>
@@ -127,21 +127,22 @@
 						<div class="panel-body">
 							<div class="room-header row">
 								<div class="col-xs-6 col-md-3">
-			              {{otherRoom.surface}}
-			              <span class="small text-muted">sqft</span>
+			              <h6>Size</h6>
+	              		<h2>{{room.surface}} <span class="small text-muted">m²</span></h2>
 			          </div>
 			          <div class="col-xs-6 col-md-3">
-			          		<span class="small text-muted">€</span>
-			              {{otherRoom.price.total}}
+			          		<h6>Contract</h6>
+		              	<h2>{{room.leaseType}}</h2>
 			          </div>
 			          <div class="col-xs-6 col-md-3">
-		              	{{otherRoom.leaseType}}
+		              	<h6>Costs</h6>
+	              		<h2><span class="small text-muted">€</span> {{room.price.total}}</h2>
 		          	</div>
 			          <div class="col-xs-6 col-md-3">
 			          		<a ng-href="#!/rooms/{{otherRoom._id}}" class="btn btn-xs">View this room</a>
 			          </div>
 			        </div>
-							<hr>
+							
 							<div class="room-info row">
 								<div class="room-properties col-xs-6">
 									<ul>
