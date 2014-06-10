@@ -18,5 +18,9 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
             $scope.nav = tab;
             $location.path('dashboard/' + tab);
         };
+
+        $scope.goToRoom = function(roomId) {
+            $location.path('rooms/' + roomId);
+        };
 	}
 ]);

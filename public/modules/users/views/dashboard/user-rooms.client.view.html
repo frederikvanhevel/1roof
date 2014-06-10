@@ -1,18 +1,11 @@
-<div class="list-group col-sm-offset-2 col-sm-8" ng-init="getMyRooms()">
-  <div class="list-group-item" ng-repeat="room in myrooms">
-    <div class="pull-right">
-        <a ng-href="/#!/rooms/{{room._id}}" class="btn btn-xs btn-danger">view</a>
-        <a ng-href="/#!/rooms/{{room._id}}/edit/" class="btn btn-xs btn-danger"><i class="icon-pencil-1"></i> edit</a>
+
+<div ng-init="getMyRooms()" class="my-rooms col-sm-offset-1 col-sm-10">
+  <div class="room" ng-repeat="room in myrooms" ng-click="goToRoom(room._id)">
+      <div class="room-image" style="background-image: url('http://placehold.it/500x500');"></div>
+      <div class="info bordered no-top-border">
+          <h4>{{room.location.street}} <small>{{room.location.city}}</h4>
+          <p><span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
+      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline<span ng-if="room.isInOrder"> - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span></span></p>
     </div>
-    <h4 class="list-group-item-heading">{{room.location.street}}, {{room.location.city}}</h4>
-    <p class="list-group-item-text">
-      <span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
-      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline<span ng-if="room.isInOrder"> - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span></span>
-    </p>
-  </div>
-  <div ng-if="myrooms.length == 0" class="alert alert-warning col-sm-6 col-sm-offset-3" ng-cloak>
-    <a href="/#!/rooms/new" class="btn btn-sm pull-right">Advertise a room</a>
-    You haven't advertised any rooms yet. 
   </div>
 </div>
-

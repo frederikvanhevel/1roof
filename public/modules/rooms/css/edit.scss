@@ -1,0 +1,44 @@
+.room-edit {
+  ul.amenities li {
+    float:left;
+    display:inline;
+    width: 50%;
+    margin: 3px 0;
+  }
+
+  .file-input {
+    display: none;
+  }
+
+  .pictures-header {
+    margin-bottom: 30px;
+
+    button {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  }
+
+  .pictures {
+    .picture {
+      position: relative;
+
+      .remove-button {
+        position: absolute;
+        bottom: 10px;
+        padding: 5px 10px;
+        right: 25px;
+      }
+
+      .image {
+        height: 150px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+    }    
+
+  }
+
+}

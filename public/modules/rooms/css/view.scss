@@ -1,0 +1,149 @@
+.view-room {
+
+  .favorite-icon {
+    cursor: pointer;
+
+    &:hover:before {
+      content: '\e803';
+    }
+  }
+
+  .room-owner-panel {
+    height: 40px;
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+
+    .container {
+      line-height: 40px;
+      text-transform: uppercase;
+    }
+  }
+
+  .room-header {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+  }
+
+  .room-image {
+    width: 100%;
+    height: 500px;
+
+    &.empty {
+      text-align: center;
+      line-height: 250px;
+      font-size: 100px;
+      opacity: 0.9;
+      padding: 0; 
+      margin-top: 0; 
+    }
+
+    .owl-item {
+      .item {
+        height: 400px;
+      }
+    }
+
+    .item figure {
+      height: 100%;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .owl-carousel {
+      display: block !important;
+    }
+
+  }
+
+  .streetView {
+    height: 400px;
+  }
+
+  .room-map {
+    height: 400px;
+
+    search-map {
+      width: 100%;
+      height: 400px;
+    }
+
+    .map-canvas {
+      height: 100%;
+    }
+
+  }
+
+  .room-costs {
+    width: 100%;
+    vertical-align: bottom;
+
+    i {
+      cursor: pointer;
+      opacity: 0.8;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    tr {
+      &.total {
+        height: 50px;
+      }
+
+      &:nth-child(odd):not(.divider,.total) {
+        background: #CCC;
+      }
+
+      td {
+        height: 25px;
+      }
+
+      &.divider {
+        td {
+          height: 15px;
+          border-bottom: 1px solid #ddd;
+        }
+      }
+    }
+
+    h2, h4 {
+      text-align: right;
+      margin: 0;
+    }
+
+  }
+
+  .room-info {
+    margin-top: 30px;
+
+    ul.amenities {
+      li {
+        float:left;
+        display:inline;
+        width: 50%;
+
+        &:before {
+          font-family: 'fontello';
+          font-weight: normal;
+          padding-top: 1px;
+          margin-left: -20px;
+          vertical-align: top;
+          position: absolute;
+        }
+
+        &.checked:before {
+          content: '\2713';
+          color: #1ABB9C;
+        }
+
+        &.crossed:before {
+          content: '\2715';
+          color: #FA6C65;
+        }
+      }
+    }
+  }
+}

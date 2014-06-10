@@ -30,15 +30,14 @@ module.exports = function(grunt) {
                 options: {
                     livereload: true,
                 }
+            },
+            clientCSS: {
+                files: ['public/**/css/*.scss'],
+                tasks: ['sass'],
+                options: {
+                    livereload: true,
+                }
             }
-            // ,
-            // clientCSS: {
-            //     files: ['public/**/css/*.css'],
-            //     tasks: ['csslint'],
-            //     options: {
-            //         livereload: true,
-            //     }
-            // }
         },
         jshint: {
             all: {
@@ -71,6 +70,14 @@ module.exports = function(grunt) {
                 files: {
                     'public/dist/application.min.css': '<%= applicationCSSFiles %>'
                 }
+            }
+        },
+        sass: {
+            options: {                       // Target options
+                style: 'expanded'
+            },
+            all: {
+                files: { 'public/css/main.css': 'public/css/main.scss' }
             }
         },
         nodemon: {
@@ -122,13 +129,13 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'concurrent']);
+    grunt.registerTask('default', ['jshint', 'sass' , 'concurrent']);
 
     // Lint task(s).
     grunt.registerTask('lint', ['jshint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['jshint', 'loadConfig' ,'uglify', 'cssmin']);
+    grunt.registerTask('build', ['jshint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

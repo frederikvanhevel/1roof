@@ -1,0 +1,24 @@
+.my-rooms {
+
+  .room {
+    width: 200px;
+    float: left;
+    margin: 20px;
+    cursor: pointer;
+
+    .info {
+      padding: 10px;
+      text-align: center;
+    }
+
+    .room-image {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 150px;
+    }
+
+  }
+
+}
+ 

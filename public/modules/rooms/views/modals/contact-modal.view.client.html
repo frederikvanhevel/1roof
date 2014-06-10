@@ -1,3 +1,4 @@
+<!--
 <div class="modal-header">
   <button type="button" class="close" ng-click="cancel()">&times;</button>
     <h4 ng-hide="contactInfo.isTour" class="modal-title">Send a message</h4>
@@ -33,11 +34,38 @@
         <input data-ng-model="phone" type="tel" placeholder="(#)### ## ## ##">
       </div>
     </div>
-    <div class="form-group">
+    <div class="form-group" ng-show="!authentication.user && contactForm.$valid">
+      <h3>Hey, it seems like you are not logged in!</h3>
+      <h4>Do you want to make an account? You'll get alot of benefits, such as: </h4>
+      <ul>
+        <li>View all your messages in one place, instead of keeping your emails organized</li>
+        <li>Add rooms to your favorites list, to decide later between your top</li>
+        <li>...</li>
+      </ul>
+      <div class="col-sm-offset-3 col-sm-9">
+        <button class="btn" ng-click="makeAccount()" ng-disabled="contactForm.$invalid">Okay!</button>
+        <button class="btn-link" ng-click="ok()" ng-disabled="contactForm.$invalid">Nah, just send my message</button>
+      </div>
+    </div>
+    <div class="form-group" ng-hide="!authentication.user">
       <div class="col-sm-offset-3 col-sm-9">
         <button ng-hide="contactInfo.isTour" class="btn" ng-click="ok()" ng-disabled="contactForm.$invalid">Send message</button>
         <button ng-show="contactInfo.isTour" class="btn" ng-click="ok()" ng-disabled="contactForm.$invalid">Ask for tour</button>
       </div>
     </div>
   </form>
+</div>
+-->
+<div class="modal-header">
+  <button type="button" class="close" ng-click="cancel()">&times;</button>
+  <h3>Hey, it seems like you are not logged in!</h3>
+</div>
+<div class="modal-body">
+  
+  <h4>Do you want to make an account? You'll get alot of benefits, such as: </h4>
+  <ul>
+    <li>View all your messages in one place, instead of keeping your emails organized</li>
+    <li>Add rooms to your favorites list, to decide later between your top</li>
+    <li>View which rooms you already watched or sent a message to</li>
+  </ul>
 </div>

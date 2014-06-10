@@ -1,6 +1,6 @@
-<section data-ng-controller="RoomsController" data-ng-init="findOne()" class="viewRoom">
+<section data-ng-controller="RoomsController" data-ng-init="findOne()" class="view-room">
 
-	<div ng-if="room.user._id == authentication.user._id" class="room-owner-panel dark-bg">
+	<div ng-if="room.user._id == authentication.user._id" class="room-owner-panel dark-bg" ng-cloak>
 		<div class="container">
 			<span class="pull-right">
 				<a href="/#!/rooms/{{room._id}}/edit/">edit this room <i class="icon-right-open"></i></a>

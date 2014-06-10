@@ -1,0 +1,63 @@
+.messages {
+  max-height: 300px;
+  overflow: auto;
+  padding: 10px;
+
+  .serverinfo {
+    padding: 20px 0;
+    border-bottom: 1px solid #E6E9ED;
+    border-top: 1px solid #E6E9ED;
+    width: 300px;
+    margin: 20px auto;
+  }
+
+  .bubble,.bubble--alt{
+    position: relative; 
+    margin-top: 3px;
+    margin-bottom: 20px;
+    padding: 2px 8px 4px;
+    max-width: 80%;
+    clear: both;
+    color: #FFF;
+  }
+
+  .bubble {
+    float: left;
+    margin-right: auto;
+    background-color: #FA6C65;
+
+    &:after {
+      content: ' ';
+      position: absolute;
+      bottom: -15px;
+      left: 10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 15px 15px 0 0;
+      border-color: #fa6c65 transparent transparent transparent;
+    }
+
+  }
+
+  .bubble--alt {
+    float: right;
+    margin-left: auto;
+    text-align: right;
+    background-color: #1ABB9C;
+
+    &:after {
+      content: ' ';
+      position: absolute;
+      bottom: -15px;
+      right: 10px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 15px 15px 0;
+      border-color: transparent #1ABB9C transparent transparent;
+    }
+
+  }
+
+}

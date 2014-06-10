@@ -21,7 +21,8 @@
         </p>
         <div data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
             <!-- <small class="list-group-item-text">{{message.sent | date:'medium'}} / {{message.sender.displayName}}</small> -->
-            {{message.message}}
+            <!-- {{message.message | parseUrl}} -->
+            <span ng-bind-html="message.message | parseUrl"></span>
         </div>
       </div>
 

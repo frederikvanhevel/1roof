@@ -186,22 +186,19 @@
             <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
           </div>
           <div class="panel-body">
+            <div class="pictures-header">
+              <h5 class="pull-right">{{room.pictures.length}} images</h5>
+              <button class="btn"><i class="icon-upload-cloud"></i> Add an image</button>
+              <input class="file-input" type="file" ng-file-select="onImageSelect($files)" accept="image/*">
+            </div>
             <div class="pictures" ng-hide="room.pictures.length == 0">
-              <div class="thumbnail col-sm-4" ng-repeat="picture in room.pictures">
-                <img ng-src="http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png" alt="...">
-                <div class="caption">
-                  <p>{{picture.caption}}</p>
-                  <button ng-click="removeImage($index)">remove</button>
-                </div>
+              <div class="picture col-sm-6" ng-repeat="picture in room.pictures">
+                <div class="image" style="background-image: url('http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png');" alt="..."></div>
+                <button class="remove-button btn" ng-click="removeImage($index)"><i class="icon-trash-1"></i></button>
               </div>
-
-              <button>Add pics</button>
-              <input type="file" ng-file-select="onImageSelect($files)" accept="image/*">
+              
             </div>
-            <div ng-show="room.pictures.length == 0">
-              <button>Add pics</button>
-               <input type="file" ng-file-select="onImageSelect($files)" accept="image/*">
-            </div>
+            
           </div>
         </div>
 
