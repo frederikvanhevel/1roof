@@ -159,7 +159,7 @@ exports.listOfRoomsInSameLocation= function(req, res) {
 		'location.city': room.location.city,
 		'location.country': room.location.country
 	};
-	console.log(query);
+
 	Room.find(query).exec(function(err, rooms) {
 		if (err) {
 			return res.send(400, {

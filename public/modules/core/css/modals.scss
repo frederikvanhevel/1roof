@@ -1,0 +1,38 @@
+.modal {
+  .modal-content {
+    border-radius: 2px;
+
+    .modal-header {
+      padding: 10px 15px;
+      background: #E6E9ED;
+
+      h3 {
+        margin-bottom: 0;
+      }
+
+      .close {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  &.small .modal-dialog {
+    width: 300px;
+  }
+    
+}
+
+.line-seperator {
+  height: 2px; 
+  background-color: #E6E9ED;
+  text-align: center;
+  margin: 35px 0;
+
+  span {
+    background-color: white;
+    position: relative; 
+    top: -0.8em;
+    padding: 0 10px;
+    font-size: 14px;
+  }
+}

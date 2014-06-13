@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
   Inbox = mongoose.model('Inbox'),
+  Appointment = mongoose.model('Appointment'),
 	_ = require('lodash');
 
 /**
@@ -64,6 +65,33 @@ exports.sendMessage = function(req, res) {
       return res.send(400);
     } else {
       res.jsonp(inbox);
+    }
+  });
+};
+
+/**
+ *  Schedule an appointment
+ */
+exports.scheduleAppointment = function(req, res) {
+  var inbox = req.inbox;
+
+  var appointment = new Appointment({
+    date: req.body.date,
+    room: inbox.room
+  });
+
+  appointment.save(function(err) {
+    if (err) {
+      return res.send(400);
+    } else {
+      inbox.appointment = appointment;
+      inbox.save(function(err) {
+        if (err) {
+          return res.send(400);
+        } else {
+          res.jsonp(inbox);
+        }
+      });
     }
   });
 };

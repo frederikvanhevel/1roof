@@ -5,3 +5,15 @@
 .offline-icon {
   color: #B6B6B6;
 }
+
+.room-owner-panel {
+  height: 40px;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+
+  .container {
+    line-height: 40px;
+    text-transform: uppercase;
+  }
+}

@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                 }
             },
             clientCSS: {
-                files: ['public/**/css/*.scss'],
+                files: ['public/css/main.scss', 'public/modules/**/css/*.scss'],
                 tasks: ['sass'],
                 options: {
                     livereload: true,
@@ -73,7 +73,7 @@ module.exports = function(grunt) {
             }
         },
         sass: {
-            options: {                       // Target options
+            options: {
                 style: 'expanded'
             },
             all: {
