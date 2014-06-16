@@ -93,7 +93,7 @@ section .container {
 
 .panel-container {
   background: #FFF;
-/*  border: 1px solid #CED7E0; */
+  /*  border: 1px solid #CED7E0; */
 }
 
 
@@ -103,6 +103,10 @@ footer {
   position:relative;
   height: 82px;
   clear:both;
+}
+
+.white-bg {
+  background-color: #FFF;
 }
 
 

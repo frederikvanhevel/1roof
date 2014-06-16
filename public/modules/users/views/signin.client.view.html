@@ -1,32 +1,35 @@
 <section ng-controller="AuthenticationController">
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="$dismiss()">&times;</button>
-	  <h3>Sign in</h3>
+	  <h4>Sign in</h4>
 	</div>
 
 	<div class="modal-body">
-		<a href="/auth/facebook" class="btn btn-lg btn-block btn-social btn-facebook"><i class="icon-s-facebook"></i> Facebook</a>
-		<a href="/auth/google" class="btn btn-lg btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
+		<a href="/auth/facebook" class="btn btn-blue btn-block btn-social btn-facebook"><i class="icon-s-facebook"></i> Facebook</a>
+		<a href="/auth/google" class="btn btn-red btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
 
-		<div class="line-seperator">
+		<!-- <div class="line-seperator">
 		  <span>or</span>
-		</div>
+		</div> -->
 
-		<form data-ng-submit="signin()" class="signin" autocomplete="off">
-			<div class="form-group">
-				<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="example@email.com">
-			</div>
-			<div class="form-group">
-				<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="password">
-			</div>
-			<div class="text-center form-group">
-				<button type="submit" class="btn btn-block">Sign in</button>
-				<a class="btn-link" href="/#!/signup">or sign up</a>
-			</div>
-			<div data-ng-show="error" class="text-center text-danger">
-				<strong>{{error}}</strong>
-			</div>
+		<p class="sidelines text-center"><span>or</span></p>
+
+		<form data-ng-submit="signin()" class="signin">
+			<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="example@email.com">
+			<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="password">
+			<button type="submit" class="btn btn-block">Sign in</button>
 		</form>
 
+		<div data-ng-show="error" class="text-center text-danger">
+			<strong>{{error}}</strong>
+		</div>
+
+	</div>
+
+	<div class="modal-footer">
+		<p>
+			No account?
+			<a href="" ng-click="openSignupModal()"> Sign up</a>
+		</p>
 	</div>
 </section>

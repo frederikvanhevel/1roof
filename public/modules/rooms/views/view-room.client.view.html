@@ -54,9 +54,13 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="room-header row">
+							<div class="col-sm-3">
+		              <h6>Rate <small> € / m² / {{room.price.period}}</small></h6>
+              		<h2><span class="small text-muted">€ </span> {{room.price.total / 22 | number}}</h2>
+		          </div>
 							<div class="col-sm-4">
 		          	<h6>Size</h6>
-	              <h2>{{room.surface}} <span class="small text-muted">m²</span></h2>
+	              <h2>{{room.surface | number}} <span class="small text-muted">m²</span></h2>
 		          </div>
 		          <div class="col-sm-4">
 	              <h6>Contract</h6>
@@ -69,17 +73,17 @@
 		            	<tr>
 		            		<td></td>
 		            		<td></td>
-		            		<td><h4><span class="small text-muted">€ </span> {{room.price.base}}</h4></td>
+		            		<td><h4><span class="small text-muted">€ </span> {{room.price.base | number}}</h4></td>
 		            	</tr>
 		            	<tr ng-show="room.price.egw != 0">
 		            		<td>+ </td>
 		            		<td>(E.G.W. <i class="icon-info-circled" tooltip="Electricity, Gas and Water"></i>)</td>
-		            		<td><h4><span class="small text-muted">€ </span> {{room.price.egw}}</h4></td>
+		            		<td><h4><span class="small text-muted">€ </span> {{room.price.egw | number}}</h4></td>
 		            	</tr>
 		            	<tr ng-show="room.price.cleaning != 0">
 		            		<td>+ </td>
 		            		<td>(cleaning)</td>
-		            		<td><h4><span class="small text-muted">€ </span> {{room.price.cleaning}}</h4></td>
+		            		<td><h4><span class="small text-muted">€ </span> {{room.price.cleaning | number}}</h4></td>
 		            	</tr>
 		            	<tr class="divider">
 		            		<td colspan="3"></td>
@@ -87,7 +91,7 @@
 		            	<tr class="total">
 		            		<td>= </td>
 		            		<td></td>
-		            		<td><h2><span class="small text-muted">€ </span> {{room.price.total}}</h2></td>
+		            		<td><h2><span class="small text-muted">€ </span> {{room.price.total | number}}</h2></td>
 		            	</tr>
 		            </table>
 		          </div>
@@ -107,7 +111,7 @@
 							</div>
 							<div class="room-extras col-xs-6">
 								<ul class="amenities">
-									<li ng-class="isAmenityChecked(amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in amenities">{{amenity.name}}</li>
+									<li ng-class="isAmenityChecked(room, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in amenities">{{amenity.name}}</li>
 								</ul>
 							</div>
 						</div>
@@ -126,18 +130,18 @@
 							<div class="room-header row">
 								<div class="col-xs-6 col-md-3">
 			              <h6>Size</h6>
-	              		<h2>{{room.surface}} <span class="small text-muted">m²</span></h2>
+	              		<h2>{{otherRoom.surface | number}} <span class="small text-muted">m²</span></h2>
 			          </div>
 			          <div class="col-xs-6 col-md-3">
 			          		<h6>Contract</h6>
-		              	<h2>{{room.leaseType}}</h2>
+		              	<h2>{{otherRoom.leaseType}}</h2>
 			          </div>
 			          <div class="col-xs-6 col-md-3">
 		              	<h6>Costs</h6>
-	              		<h2><span class="small text-muted">€</span> {{room.price.total}}</h2>
+	              		<h2><span class="small text-muted">€</span> {{otherRoom.price.total | number}}</h2>
 		          	</div>
 			          <div class="col-xs-6 col-md-3">
-			          		<a ng-href="#!/rooms/{{otherRoom._id}}" class="btn btn-xs">View this room</a>
+			          		<a ng-href="#!/rooms/{{otherRoom._id}}" class="btn">View this room</a>
 			          </div>
 			        </div>
 							
@@ -149,9 +153,12 @@
 									</ul>
 								</div>
 								<div class="room-extras col-xs-6">
-									<span></i> Plenty of light</span>
+									<ul class="amenities">
+										<li ng-class="isAmenityChecked(otherRoom, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in amenities">{{amenity.name}}</li>
+									</ul>
 								</div>
 							</div>
+
 						</div>
 					</div>
 				</div>
@@ -170,7 +177,7 @@
 						  <div class="form-group">
 						    <input type="text" class="form-control" data-ng-model="contactInfo.email" id="email" placeholder="email@domain.com">
 						  </div>
-						  <button type="submit" class="btn btn-block"><i class="glyphicon glyphicon-ok"></i> Tour it</button>
+						  <button type="submit" class="btn btn-block btn-blue"><i class="glyphicon glyphicon-ok"></i> Tour it</button>
 						</form>
 				  </div>
 				</div>

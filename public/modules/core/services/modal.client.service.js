@@ -11,9 +11,7 @@ angular.module('core').service('Modal', [ '$modal',
         windowClass: 'small'
       };
 
-      this.showModal(options, {}).then(function (result) {
-        console.log(result);
-      });
+      return this.showModal(options, {});
     };
 
     this.signin = function() {
@@ -23,9 +21,7 @@ angular.module('core').service('Modal', [ '$modal',
         windowClass: 'small'
       };
 
-      this.showModal(options, {}).then(function (result) {
-        console.log(result);
-      });
+      return this.showModal(options, {});
     };
 
     this.contact = function(contactInfo) {
@@ -39,9 +35,7 @@ angular.module('core').service('Modal', [ '$modal',
         }
       };
 
-      this.showModal(options, {}).then(function (result) {
-        console.log(result);
-      });
+      return this.showModal(options, {});
     };
 
     var modalDefaults = {

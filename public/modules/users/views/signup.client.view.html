@@ -1,38 +1,35 @@
 <section ng-controller="AuthenticationController">
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="$dismiss()">&times;</button>
-	  <h3>Sign up</h3>
+	  <h4>Sign up</h4>
 	</div>
 
 	<div class="modal-body">
-		<a href="/auth/facebook" class="btn btn-lg btn-block btn-social btn-facebook"><i class="icon-s-facebook"></i> Facebook</a>
-		<a href="/auth/google" class="btn btn-lg btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
+		<a href="/auth/facebook" class="btn btn-blue btn-block btn-social btn-facebook"><i class="icon-s-facebook"></i> Facebook</a>
+		<a href="/auth/google" class="btn btn-red btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
 
-		<div class="line-seperator">
-		  <span>or</span>
-		</div>
+		<p class="sidelines text-center"><span>or</span></p>
 
-		<form data-ng-submit="signup()" class="signin" novalidate autocomplete="off">
-			<div class="form-group">
-				<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="first Name">
-			</div>
-			<div class="form-group">
-				<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="last Name">
-			</div>
-			<div class="form-group">
-				<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="email@example.com">
-			</div>
-			<div class="form-group">
-				<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="password">
-			</div>
-			<div class="text-center form-group">
-				<button type="submit" class="btn btn-block">Sign up</button>
-				<a href="/#!/signin" class="show-signup btn-link">or sign in</a>
-			</div>
-			<div data-ng-show="error" class="text-center text-danger">
-				<strong>{{error}}</strong>
-			</div>
+		<button ng-hide="emailSignupOpen" ng-click="emailSignupOpen = true" class="btn-link btn-block"> Sign up with your email</button>
+
+		<form ng-show="emailSignupOpen" data-ng-submit="signup()" class="signin" novalidate autocomplete="off">
+			<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="first Name">
+			<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="last Name">
+			<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="email@example.com">
+			<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="password">
+			<button type="submit" class="btn btn-block">Sign up</button>
 		</form>
 
+		<div data-ng-show="error" class="text-center text-danger">
+			<strong>{{error}}</strong>
+		</div>
+
+	</div>
+
+	<div class="modal-footer">
+		<p>
+			Already have an account?
+			<a href="" ng-click="openSigninModal()"> Sign in</a>
+		</p>
 	</div>
 </section>

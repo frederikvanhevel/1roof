@@ -1,7 +1,7 @@
 <section data-ng-controller="DashboardController" data-ng-init="init()" class="">
-  <div class="">
+  <div class="container">
 
-    <div class="dashboard-tabs tabs tabs-circle-top tab-container dark-bg">
+    <div class="dashboard-tabs tabs tabs-circle-top tab-container">
                 
       <ul class="etabs text-center">
         <li ng-class="{ active: nav == 'rooms'}" class="tab">
@@ -10,19 +10,22 @@
         <li ng-class="{ active: nav == 'messages'}" class="tab">
           <a href="" ng-click="setTab('messages')"><div><i class="icon-chat"></i></div>Messages</a>
         </li>
-        <li ng-class="{ active: nav == 'alerts'}" class="tab">
+<!--         <li ng-class="{ active: nav == 'alerts'}" class="tab">
           <a href="" ng-click="setTab('alerts')"><div><i class="icon-bell-1"></i></div>Alerts</a>
-        </li>
+        </li> -->
         <li ng-class="{ active: nav == 'profile'}" class="tab">
           <a href="" ng-click="setTab('profile')"><div><i class="icon-user"></i></div>Profile</a>
         </li>
         <li ng-class="{ active: nav == 'account'}" class="tab">
           <a href="" ng-click="setTab('account')"><div><i class="icon-cog-alt"></i></div>Account</a>
         </li>
-      </ul><!-- /.etabs -->
+      </ul>
+
     </div>
       
-      <div ng-switch="nav" class="container">
+    <div style="">
+
+      <div ng-switch="nav" class="">
         
         <div ng-switch-when="rooms">
           <div ng-include="'/modules/users/views/dashboard/user-rooms.client.view.html'"></div>
@@ -40,11 +43,10 @@
           <div ng-include="'/modules/users/views/dashboard/user-account.client.view.html'"></div>
         </div>
            
-      </div><!-- /.panel-container -->
-       
-    
-    <div class="tab-container" ng-switch="nav">
+      </div>
 
-    </div>
+   </div>
+
   </div>
-</div>
+
+</section>

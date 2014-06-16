@@ -53,7 +53,12 @@
         <button class="btn btn-sm"><i class="icon-menu"></i> More filters</button>
       </div>
       <div class="search-results">
+
         <ul class="results-container clearfix">
+          <div ng-if="results.length == 0">
+            No results were found with this criteria. Try using less filters or zoom out the map!
+          </div>
+        
           <li class="search-result" ng-repeat="room in results">
             <a ng-href="/#!/rooms/{{room._id}}">
               <div class="search-result-container">

@@ -4,35 +4,40 @@
 
     .modal-header {
       padding: 10px 15px;
-      background: #E6E9ED;
+      background: #F5F7FA;
 
-      h3 {
+      h4 {
         margin-bottom: 0;
       }
 
       .close {
-        margin-top: 5px;
+        margin-top: 2px;
       }
+    }
+
+    .modal-body {
+      .sidelines {
+        margin: 25px 0 35px;
+        font-size: 14px;
+
+        span {
+          background-color: #FFF;
+        }
+      }
+    }
+
+    .modal-footer {
+      padding: 10px 20px;
+      text-align: left;
     }
   }
 
   &.small .modal-dialog {
     width: 300px;
   }
-    
-}
 
-.line-seperator {
-  height: 2px; 
-  background-color: #E6E9ED;
-  text-align: center;
-  margin: 35px 0;
-
-  span {
-    background-color: white;
-    position: relative; 
-    top: -0.8em;
-    padding: 0 10px;
-    font-size: 14px;
-  }
+  &.medium .modal-dialog {
+    width: 350px;
+  }  
+  
 }

@@ -1,9 +1,10 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http',
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http',
     function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http) {
         $scope.authentication = Authentication;
+        
         $scope.createForm = {
             address: '',
             roomType: ''
