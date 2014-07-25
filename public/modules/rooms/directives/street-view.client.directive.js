@@ -10,8 +10,9 @@ angular.module('rooms').directive('streetView', [ '$window',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
 
-        scope.$on('room_loaded', function(event, coords) {
-            var position = new $window.google.maps.LatLng(coords[1], coords[0]);
+        scope.$on('room_loaded', function(event, loc) {
+            var coordinates = loc.coordinates;
+            var position = new $window.google.maps.LatLng(coordinates[1], coordinates[0]);
             var streetview = new $window.google.maps.StreetViewPanorama(element[0], {
                 position: position,
                 pov: {

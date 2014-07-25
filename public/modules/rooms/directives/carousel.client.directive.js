@@ -22,8 +22,14 @@ angular.module('rooms').directive('owlCarousel', [ '$window',
 					navigationText: ['<i class="icon-left-open-mini"></i>', '<i class="icon-right-open-mini"></i>']
 				};
 
-				scope.$on('pictures_rendered', function( domainElement ) {
-					$window.$(element).owlCarousel(defaults);    
+				var el = $window.$(element);
+				var carousel;
+
+				scope.$on('pictures_rendered', function() {
+					//$window.$(element).data('owlCarousel');
+					
+					carousel = el.owlCarousel(defaults).data('owlCarousel');
+					
 		    });
 			}
 		};

@@ -1,7 +1,7 @@
-<section data-ng-controller="RoomsController" data-ng-init="findOne()" class="view-room">
+<section data-ng-controller="RoomsController" data-ng-init="init()" class="view-room">
 
-	<div ng-if="room.user._id == authentication.user._id" class="room-owner-panel dark-bg" ng-cloak>
-		<div class="container">
+	<div ng-if="room.user._id && room.user._id == authentication.user._id" class="room-owner-panel dark-bg" ng-cloak>
+		<div class="">
 			<span class="pull-right">
 				<a href="/#!/rooms/{{room._id}}/edit/">edit this room <i class="icon-right-open"></i></a>
 			</span>
@@ -10,19 +10,20 @@
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="inner">
 		<div class="page-header row">
 
 			<div class="crumbs col-sm-12">
-				<h1><i class="favorite-icon icon-heart-empty-1" tooltip="Add to favorites"></i> {{room.info.title}}</h1>
+				<button class="btn btn-gray pull-right"><i class="icon-globe-1"></i> Back to map</button>
+				<h1><i class="favorite-icon icon-heart-empty-1" tooltip="Add to favorites" tooltip-placement="right"></i> {{room.info.title}}</h1>
 				<i class="glyphicon" ng-class=""></i>
-				<a ng-href="#!/s/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> > {{room.location.street}} > <strong>{{room.classification}}</strong>
+				<a ng-href="#!/search/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> > {{room.location.street}} > <strong>{{room.classification}}</strong>
 				<span class="text-muted pull-right">Last updated {{room.updated | date:'mediumDate'}}</span>
 			</div>
 		</div>
 
 		<div class="row">
-			<div class="leftcolumn col-sm-8">
+			<div class="leftcolumn col-lg-8">
 
 				<div class="panel panel-default">
 					
@@ -54,10 +55,6 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="room-header row">
-							<div class="col-sm-3">
-		              <h6>Rate <small> € / m² / {{room.price.period}}</small></h6>
-              		<h2><span class="small text-muted">€ </span> {{room.price.total / 22 | number}}</h2>
-		          </div>
 							<div class="col-sm-4">
 		          	<h6>Size</h6>
 	              <h2>{{room.surface | number}} <span class="small text-muted">m²</span></h2>
@@ -69,7 +66,7 @@
 		          <div class="col-sm-4">
 		          	<h6>Costs <small>per {{room.price.period}}</small></h6>
 
-		            <table class="room-costs">
+		            <table class="room-costs collapsed">
 		            	<tr>
 		            		<td></td>
 		            		<td></td>
@@ -118,7 +115,7 @@
 					</div>
 				</div>
 
-				<div class="contact text-center">
+				<div class="contact-bottom text-center">
 					<h3>Are you ready to see this room?</h3>
 					<button ng-click="openContactModal()" class="btn"><i class="glyphicon glyphicon-ok"></i> Contact</button>
 				</div>
@@ -167,7 +164,7 @@
 			</div>
 		
 
-			<div class="rightcolumn col-sm-4">
+			<div class="rightcolumn col-lg-4">
 				<div class="panel panel-default">
 				  <div class="panel-body">
 						<form role="form" name"contactForm" ng-submit="openContactModal()" novalidate>
@@ -186,7 +183,8 @@
 				  <div class="panel-body">
 						<form role="form">
 						  <h5>Questions about this room?</h5>
-						  {{room.user.name}}
+						  <h6><i class="icon-user"></i> {{room.user.displayName}}</h6>
+						  
 						  <button ng-click="openContactModal()" class="btn btn-block"><i class="glyphicon glyphicon-envelope"></i> Contact</button>
 						</form>
 				  </div>

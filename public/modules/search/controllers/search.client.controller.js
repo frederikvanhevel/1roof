@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').controller('SearchController', ['$scope', '$location', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
-	function($scope, $location, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
+angular.module('search').controller('SearchController', ['$scope', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
+	function($scope, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
     $scope.mapCenter = [4.3517100, 50.8503400]; // Brussel
     $scope.mapZoom = 13;
     $scope.fetchOnMapChange = true;
@@ -17,6 +17,8 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
     $scope.results = [];
     $scope.extraFilterMenuOpen = false;
     $scope.amenities = Amenity.list();
+
+    $scope.selectedRoomId = null;
     
 
     $scope.init = function() {
@@ -30,6 +32,13 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
         $scope.mapZoom = 9;
       }
 
+
+      // Show a room if its in the url
+      if ($stateParams.roomId) {
+        $scope.selectedRoomId = $stateParams.roomId;
+        $scope.showRoomOverlay();
+      }
+
       $scope.$watch('filter', function(newValue, oldValue) {
         if (newValue !== oldValue && !$scope.extraFilterMenuOpen) $scope.searchFunction();
       }, true);
@@ -37,6 +46,7 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
 
     $scope.parseUrlParameters = function(urlParamaters) {
       if (urlParamaters.lat && urlParamaters.lng) $scope.filter.location = [ parseFloat(urlParamaters.lng), parseFloat(urlParamaters.lat) ];
+      if (urlParamaters.proximity) $scope.filter.proximity = urlParamaters.proximity;
       if (urlParamaters.minPrice) $scope.filter.minPrice = +urlParamaters.price;
       if (urlParamaters.maxPrice) $scope.filter.maxPrice = +urlParamaters.maxPrice;
       if (urlParamaters.roomType) $scope.filter.roomType = urlParamaters.roomType;
@@ -54,9 +64,11 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
     };
 
     $scope.mapChangedEvent = function(result) {
-      $location.search('lat', result.lat).search('lng', result.lng);
-      $scope.filter.location = [result.lng, result.lat];
       $scope.filter.proximity = result.proximity / 2;
+      $scope.filter.location = [result.lng, result.lat];
+
+      $location.search('lat', result.lat).search('lng', result.lng).search('proximity', $scope.filter.proximity);
+      
       console.log($scope.filter.proximity);
       //if ($scope.fetchOnMapChange) $scope.searchFunction();
       $scope.$apply();
@@ -94,6 +106,22 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
         var user = new Users(Authentication.user);
         user.$update();
       }
+    };
+
+    $scope.selectRoom = function(roomId) {
+      if (!$scope.selectedRoomId || $scope.selectedRoomId !== roomId) {
+        $scope.selectedRoomId = roomId;
+        $window._.extend($stateParams,{ roomId: roomId });
+
+        $scope.showRoomOverlay();
+      } else {
+        $scope.selectedRoomId = null;
+        $state.transitionTo('search', $stateParams, { reload: false, location: false });
+      } 
+    };
+
+    $scope.showRoomOverlay = function() {
+      $state.transitionTo('search.overlay', $stateParams, { reload: false, location: false });
     };
 
     $scope.searchFunction = $window._.debounce($scope.fetchRooms, 400);

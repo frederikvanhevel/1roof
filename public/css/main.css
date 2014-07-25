@@ -852,6 +852,10 @@ footer p {
   background: #95A5A6;
 }
 
+.btn.btn-empty {
+  background: none;
+}
+
 .btn:hover,
 .btn:active,
 .btn.active {
@@ -6178,6 +6182,9 @@ ROOMS MODULE
   content: '\2715';
   color: #FA6C65;
 }
+.view-room .contact-bottom {
+  margin-bottom: 30px;
+}
 
 .create-room .creationStep-content {
   margin-top: 50px;
@@ -6261,97 +6268,72 @@ ROOMS MODULE
 /*
 SEARCH MODULE
 */
-.search-view .map {
+.search-view .sidebar {
   position: fixed;
   top: 50px;
   left: 0;
   bottom: 0;
-  width: 40%;
+  width: 280px;
+  overflow-x: hidden;
+  /*-webkit-overflow-scrolling: touch;*/
+  background: #f7f7f7;
+  box-shadow: 10px 0px 10px -10px #aaaaaa;
+  z-index: 5;
+  padding: 10px;
+}
+.search-view .sidebar .btn.minimal {
+  font-weight: initial;
+  padding: 5px 10px;
+}
+.search-view .sidebar .input.minimal {
+  border: none;
+  border-bottom: 1px dotted #222;
+  width: 58px;
+  padding: 2px;
+  letter-spacing: -0.1px;
+  font-size: 14px;
+  text-align: center;
+  background: none transparent;
+  font-style: italic;
+}
+.search-view .sidebar .search-results ul.results-list {
+  padding: 0;
+}
+.search-view .sidebar .search-results ul.results-list li.search-result {
+  padding: 6px 6px;
+  background: #FFF;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.search-view .map, .search-view .room-overlay {
+  position: fixed;
+  top: 50px;
+  left: 280px;
+  right: 0;
+  bottom: 0;
 }
 .search-view .map .map-canvas {
   height: 100%;
 }
-.search-view .sidebar {
-  position: fixed;
-  top: 50px;
-  right: 0;
-  bottom: 0;
-  width: 60%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  /*-webkit-overflow-scrolling: touch;*/
-  background: #f7f7f7;
-  box-shadow: -10px 0px 10px -10px #aaaaaa;
+.search-view .room-overlay {
+  background: rgba(255, 255, 255, 0.8);
+  overflow: auto;
 }
-.search-view .sidebar .filters {
-  margin-top: 5px;
+.search-view .room-overlay.ng-enter, .search-view .room-overlay.ng-leave {
+  transition: opacity .2s;
+  opacity: 0;
 }
-.search-view .sidebar .filters.collapsed {
-  height: 158px;
-  overflow: hidden;
+.search-view .room-overlay.ng-enter-active {
+  opacity: 1;
 }
-.search-view .sidebar .filters .filter {
-  padding: 10px 20px;
-  border-bottom: 1px solid #CED7E0;
+.search-view .room-overlay.ng-leave-active {
+  opacity: 0;
 }
-.search-view .sidebar .filters .filter h6 {
-  width: 20 0px;
+.search-view .room-overlay .view-room .room-owner-panel {
+  position: relative;
 }
-.search-view .sidebar .filters .filter .filter-content {
-  float: left;
-}
-.search-view .sidebar .filters .filter-extra .filter-showresults {
-  padding: 40px 20px;
-}
-.search-view .sidebar .sidebar-header {
-  padding: 10px 20px;
-}
-.search-view .sidebar .search-results .results-container {
-  list-style-type: none;
-  padding: 0 20px;
-}
-.search-view .sidebar .search-results .results-container .search-result {
-  width: 50%;
-  float: left;
-  cursor: pointer !important;
-}
-.search-view .sidebar .search-results .results-container .search-result .search-result-container {
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
-.search-view .sidebar .search-results .results-container .search-result .search-result-container .result-image {
-  width: 100%;
-  height: 250px;
-}
-.search-view .sidebar .search-results .results-container .search-result .search-result-container .result-image.empty {
-  text-align: center;
-  line-height: 250px;
-  font-size: 100px;
-  opacity: 0.9;
-  padding: 0;
-  margin-top: 0;
-}
-.search-view .sidebar .search-results .results-container .search-result .search-result-container .result-image img {
-  width: 100%;
-  height: 100%;
-}
-.search-view .sidebar .search-results .results-container .search-result .search-result-container .result-image .owl-item .item {
-  height: 250px;
-}
-.search-view .sidebar .search-results .results-container .search-result .search-result-container .result-image .owl-item .item figure {
-  height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #F0F0F0;
-}
-.search-view .sidebar .search-results .results-container .search-result .search-result-container .result-footer {
-  background: white;
-  padding: 14px;
-}
-.search-view .sidebar .results-footer {
-  padding: 0 20px;
-  margin-bottom: 30px;
+.search-view .room-overlay .view-room .inner {
+  margin: 20px;
 }
 
 /*

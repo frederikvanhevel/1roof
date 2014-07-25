@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('search').directive('searchMap', [ '$window',
+angular.module('search').directive('googleMap', [ '$window',
 	function($window) {
 		return {
 			scope: {
