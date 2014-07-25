@@ -692,6 +692,10 @@ footer p {
     margin-right: 1px;
 }
 
+.btn-xs {
+    padding: 1px 5px;
+    font-size: 11px;
+}
 .btn-sm {
     padding: 5px 13px 6px;
     font-size: 13px;
@@ -725,8 +729,9 @@ footer p {
 .btn.btn-gray {
     background: #95A5A6;
 }
-.btn.btn-empty {
-    background: none;
+.btn.btn-default {
+    background: transparent;
+    border: 1px solid #fff;
 }
 
 .btn:hover,

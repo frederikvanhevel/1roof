@@ -62,6 +62,52 @@
       height: 100%;
     }
 
+    .marker {
+      padding: 0;
+      margin: 0;
+      -webkit-transition: height .6s ease;
+      transition: height .6s ease;
+      max-height: 400px;
+      overflow-x: hidden;
+      color: #fff;
+      background-size: cover;
+      background-position: 25%;
+      min-height: 149px;
+      cursor: pointer;
+      position: relative;
+      font-weight: bold;
+
+      .col-xs-12 {
+        padding: 4px;
+        background-image: url('/modules/search/img/gradient-overlay.png');
+        min-height: 149px;
+
+        h1 {
+          font-weight: 700;
+          font-size: 20px;
+          color: white;
+        }
+
+        .bottom-right {
+          position: absolute;
+          right: 6px;
+          bottom: 2px;
+          font-size: 16px;
+        }
+      }
+    }
+
+    .leaflet-popup-content {
+      overflow: hidden!important;
+      padding:4px;
+    }
+    .leaflet-container h1 a {
+      color:#fff;
+    }
+    .leaflet-container h1 a:hover {
+      color:#fff;
+    }
+
   }
 
   .room-overlay {

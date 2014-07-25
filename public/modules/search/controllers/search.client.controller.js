@@ -114,10 +114,16 @@ angular.module('search').controller('SearchController', ['$scope', '$location', 
         $window._.extend($stateParams,{ roomId: roomId });
 
         $scope.showRoomOverlay();
+        $scope.$broadcast('overlay_open');
       } else {
         $scope.selectedRoomId = null;
         $state.transitionTo('search', $stateParams, { reload: false, location: false });
+        $scope.$broadcast('overlay_closed');
       } 
+    };
+
+    $scope.openRoomPopup = function(roomId) {
+      $scope.$broadcast('room_hover', roomId);
     };
 
     $scope.showRoomOverlay = function() {

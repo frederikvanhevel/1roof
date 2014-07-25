@@ -30,7 +30,7 @@
     <div class="search-results">
 
       <ul class="results-list">        
-        <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id)">
+        <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id)" ng-mouseover="openRoomPopup(room._id)">
             <span class="result-price pull-right">€ {{room.price.total}}</span>
             <a href="#" class="result-location">{{room.location.street}}</a>
         </li>

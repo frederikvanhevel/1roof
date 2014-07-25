@@ -14,10 +14,37 @@ angular.module('search').directive('mapboxMap', [ '$window',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
 
-        var markerLayer = null;
+      	var enablePopups = true;
 
         var map = $window.L.mapbox.map(element[0], 'defreek.j27p0821')
           .setView([scope.center[1], scope.center[0]], scope.zoom);
+
+        var markerLayer = $window.L.mapbox.featureLayer().addTo(map);
+        markerLayer.on('layeradd', function(e) {
+          var marker = e.layer,
+              room = marker.feature.properties.room;
+
+          var image = room.pictures.length > 0 ? room.pictures[0] : '';
+          var popupContent = '' +
+            '<div class="row marker" style="background-image:url(//res.cloudinary.com/dv8yfamzc/image/upload/' + image + '.png);">' +
+              '<div class="col-xs-12">' +
+
+                '<div class="pull-right">' +
+                  '<a href="#" class="btn btn-default btn-xs">More info <i class="icon-right-open-1"></i></a>' +
+                '</div>' +
+                '<h1>' + room.location.street + '</h1>' +
+
+                '<span class="bottom-right">&euro; ' + room.price.total + '</span>' +
+
+              '</div>' +
+            '</div>';
+
+          // http://leafletjs.com/reference.html#popup
+          marker.bindPopup(popupContent,{
+              closeButton: false,
+              minWidth: 320
+          });
+        });
 
         if (scope.changedEvent) {
           map.on('moveend', function(e) {
@@ -31,8 +58,23 @@ angular.module('search').directive('mapboxMap', [ '$window',
           });
         }
 
+        scope.$on('room_hover', function(event, id) {
+          if (enablePopups) openMarkerPopupById(id);
+        });
+        scope.$on('overlay_open', function(event, id) {
+        	enablePopups = false;
+        	closePopups();
+        });
+        scope.$on('overlay_closed', function(event, id) {
+        	enablePopups = true;
+          	closePopups();
+        });
         scope.$watchCollection('markers', function(newValues, oldValues) {
           if (newValues !== oldValues) {
+
+            //var toAdd = getDifferenceOfArrays(oldValues, newValues);
+            //var toRemove = getDifferenceOfArrays(newValues, oldValues);
+
             if (markerLayer !== null) markerLayer.clearLayers();
 
             addMarkers(newValues);
@@ -47,16 +89,16 @@ angular.module('search').directive('mapboxMap', [ '$window',
             map.setZoom(newValue);
         });
 
+
         function addMarkers(markers) {
 
           var mappedMarkers = markers.map(function(marker) {
-            console.log(marker);
             return {
               type: 'Feature',
               geometry: marker.loc,
               properties: {
-                  title: marker.info.title,
-                  description: marker.info.description,
+                  id: marker._id,
+                  room: marker,
                   // one can customize markers by adding simplestyle properties
                   // https://www.mapbox.com/foundations/an-open-platform/#simplestyle
                   'marker-size': 'medium',
@@ -65,11 +107,21 @@ angular.module('search').directive('mapboxMap', [ '$window',
               }
             };
           });
+          markerLayer.setGeoJSON(mappedMarkers);
+        }
 
-          markerLayer = $window.L.mapbox.featureLayer({
-            type: 'FeatureCollection',
-            features: mappedMarkers
-          }).addTo(map);
+        function openMarkerPopupById(roomId) {
+          markerLayer.eachLayer(function(marker) {
+            if (marker.feature.properties.id === roomId) {
+              marker.openPopup();
+            }
+          });
+        }
+
+        function closePopups() {
+          markerLayer.eachLayer(function(marker) {
+            marker.closePopup();
+          });
         }
 
         function getBoundsDistance() {
@@ -78,6 +130,19 @@ angular.module('search').directive('mapboxMap', [ '$window',
           var southEast = bounds.getSouthEast();
 
           return Math.floor(northWest.distanceTo(southEast));
+        }
+
+        function getDifferenceOfArrays(firstArray, secondArray) {
+          // Make hashtable of ids in B
+          var oldIds = {};
+          firstArray.forEach(function(room){
+              oldIds[room._id] = room;
+          });
+
+          // Return all elements in A, unless in B
+          return secondArray.filter(function(room){
+      		return !(room._id in oldIds);
+          });
         }
 
       }

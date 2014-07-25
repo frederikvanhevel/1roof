@@ -24,15 +24,17 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
         $scope.init = function() {
             console.log('INIT ROOM');
 
+            console.log($scope.room);
+
             if ($scope.room) {
                 $scope.isOverlay = true;
-                $scope.postLoad();
+                postLoad();
             } else {
                 $scope.findOne();
             }
 
             $scope.$watch('room', function(newValue, oldValue) {
-                if (newValue !== oldValue) $scope.postLoad();
+                if (newValue !== oldValue) postLoad();
             });
         };
 
@@ -40,15 +42,7 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
         $scope.findOne = function() {
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
-            }, $scope.postLoad);
-        };
-
-        $scope.postLoad = function() {
-            $scope.otherRooms = Rooms.getRoomsOfSameLocation({
-                roomId: $scope.room._id
-            });
-            $scope.$broadcast('room_loaded', $scope.room.loc);
-            if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
+            }, postLoad);
         };
 
         $scope.isAmenityChecked = function(room, amenity) {
@@ -66,5 +60,13 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
         $scope.openContactModal = function() {
             Modal.contact($scope.contactInfo);
         };
+
+        function postLoad() {
+            $scope.otherRooms = Rooms.getRoomsOfSameLocation({
+                roomId: $scope.room._id
+            });
+            $scope.$broadcast('room_loaded', $scope.room.loc);
+            if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
+        }
     }
 ]);

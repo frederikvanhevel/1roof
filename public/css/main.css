@@ -810,6 +810,11 @@ footer p {
   margin-right: 1px;
 }
 
+.btn-xs {
+  padding: 1px 5px;
+  font-size: 11px;
+}
+
 .btn-sm {
   padding: 5px 13px 6px;
   font-size: 13px;
@@ -852,8 +857,9 @@ footer p {
   background: #95A5A6;
 }
 
-.btn.btn-empty {
-  background: none;
+.btn.btn-default {
+  background: transparent;
+  border: 1px solid #fff;
 }
 
 .btn:hover,
@@ -6314,6 +6320,47 @@ SEARCH MODULE
 }
 .search-view .map .map-canvas {
   height: 100%;
+}
+.search-view .map .marker {
+  padding: 0;
+  margin: 0;
+  -webkit-transition: height .6s ease;
+  transition: height .6s ease;
+  max-height: 400px;
+  overflow-x: hidden;
+  color: #fff;
+  background-size: cover;
+  background-position: 25%;
+  min-height: 149px;
+  cursor: pointer;
+  position: relative;
+  font-weight: bold;
+}
+.search-view .map .marker .col-xs-12 {
+  padding: 4px;
+  background-image: url("/modules/search/img/gradient-overlay.png");
+  min-height: 149px;
+}
+.search-view .map .marker .col-xs-12 h1 {
+  font-weight: 700;
+  font-size: 20px;
+  color: white;
+}
+.search-view .map .marker .col-xs-12 .bottom-right {
+  position: absolute;
+  right: 6px;
+  bottom: 2px;
+  font-size: 16px;
+}
+.search-view .map .leaflet-popup-content {
+  overflow: hidden !important;
+  padding: 4px;
+}
+.search-view .map .leaflet-container h1 a {
+  color: #fff;
+}
+.search-view .map .leaflet-container h1 a:hover {
+  color: #fff;
 }
 .search-view .room-overlay {
   background: rgba(255, 255, 255, 0.8);
