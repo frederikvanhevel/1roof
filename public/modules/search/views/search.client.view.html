@@ -30,7 +30,7 @@
     <div class="search-results">
 
       <ul class="results-list">        
-        <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id)" ng-mouseover="openRoomPopup(room._id)">
+        <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id)" ng-mouseenter="openRoomPopup(room._id)">
             <span class="result-price pull-right">€ {{room.price.total}}</span>
             <a href="#" class="result-location">{{room.location.street}}</a>
         </li>
@@ -41,7 +41,26 @@
   </div>
 
   <div class="map">
-    <div class="map-canvas" mapbox-map map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" map-markers="results"></div>
+    <!-- <div class="map-canvas" mapbox-map-legacy map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" map-markers="results"></div> -->
+
+    
+    <mapbox-map class="map-canvas" map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" prevent-popups="isOverLayOpen">
+        <mapbox-marker lat="{{room.loc.coordinates[1]}}" lng="{{room.loc.coordinates[0]}}" color="#f44" icon="lodging"  ng-repeat="room in results" room-id="{{room._id}}">
+
+            <div class="row marker" style="background-image:url(//res.cloudinary.com/dv8yfamzc/image/upload/{{room.pictures[0]}}.png);">
+              <div class="col-xs-12">
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-xs">More info <i class="icon-right-open-1"></i></a>
+                </div>
+                <h1>{{room.location.street}}</h1>
+                <span class="bottom-right">&euro; {{room.price.total}}</span>
+              </div>
+            </div>
+
+        </mapbox-marker>
+    </mapbox-map>
+    
+
   </div>
 
   <div class="room-overlay" ui-view ng-if="selectedRoomId != null"></div>
