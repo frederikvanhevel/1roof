@@ -1,19 +1,22 @@
 <section data-ng-controller="InboxController" ng-init="list()">
 
-    <div class="col-sm-offset-2 col-sm-8">
-      
-      <h3 class="text-center" ng-hide="inboxes.length > 0">You don't have any messages yet :)</h3>
-
-      <div class="list-group">
-        <div class="list-group-item" ng-repeat="inbox in inboxes">
-
-          <a ng-href="/#!/dashboard/messages/{{inbox._id}}" class="btn btn-xs btn-default pull-right">Reply <i class="glyphicon glyphicon-share-alt"></i></a>
-          <h4 class="list-group-item-heading">{{inbox.sender._id == authentication.user._id ? inbox.roomOwner.displayName : inbox.sender.displayName }}</h4>
-          <p class="list-group-item-text">{{inbox.messages[inbox.messages.length-1].message}}</p>
-          <small am-time-ago="inbox.messages[inbox.messages.length-1].sent"></small>
-
+  <div class="col-sm-offset-2 col-sm-8">
+    <div class="panel panel-default">
+      <div class="panel-heading">Message inbox</div>
+        <div class="panel-body" ng-hide="inboxes.length > 0">
+          You don't have any messages yet :)
         </div>
-      </div>
-    </div>
+        <div class="list-group">
+          <div class="list-group-item" ng-repeat="inbox in inboxes">
+
+            <a ng-href="/#!/dashboard/messages/{{inbox._id}}" class="btn btn-xs btn-default pull-right">Reply <i class="glyphicon glyphicon-share-alt"></i></a>
+            <h4 class="list-group-item-heading">{{inbox.sender._id == authentication.user._id ? inbox.roomOwner.displayName : inbox.sender.displayName }}</h4>
+            <p class="list-group-item-text">{{inbox.messages[inbox.messages.length-1].message}}</p>
+            <small am-time-ago="inbox.messages[inbox.messages.length-1].sent"></small>
+
+          </div>
+        </div>
+    </div>  
+  </div>
     
 </section>

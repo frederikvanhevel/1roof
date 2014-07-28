@@ -1619,8 +1619,10 @@ p .btn {
 .panel-heading {
   background-color: inherit !important;
   color: inherit !important;
-  padding: 0;
+  padding: 25px;
   border-color: inherit !important;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .panel-title {
@@ -5697,6 +5699,11 @@ html, body {
   height: 100%;
 }
 
+.wrapper {
+  min-height: 100%;
+  position: relative;
+}
+
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -5706,6 +5713,7 @@ header.navbar {
   background: #FFF;
   position: fixed;
   z-index: 1000;
+  min-height: initial;
 }
 header.navbar .advertise-button {
   padding: 5px 13px 6px;
@@ -5765,12 +5773,8 @@ header.navbar .messages-popover ul li a.view-all {
 
 .content {
   min-height: 100%;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-section .container {
-  /*margin-top: 50px;*/
+  padding-top: 50px;
+  padding-bottom: 82px;
 }
 
 .panel-container {
@@ -5781,9 +5785,10 @@ section .container {
 footer {
   background: #283645;
   width: 100%;
-  position: relative;
   height: 82px;
   clear: both;
+  position: absolute;
+  bottom: 0;
 }
 
 .white-bg {
@@ -6021,7 +6026,7 @@ footer {
   margin-top: 2px;
 }
 .modal .modal-content .modal-body .sidelines {
-  margin: 25px 0 35px;
+  margin: 25px 0 20px;
   font-size: 14px;
 }
 .modal .modal-content .modal-body .sidelines span {
@@ -6318,6 +6323,9 @@ SEARCH MODULE
   right: 0;
   bottom: 0;
 }
+.search-view .map {
+  z-index: 1;
+}
 .search-view .map .map-canvas {
   height: 100%;
 }
@@ -6405,6 +6413,37 @@ USERS MODULE
 .dashboard-tabs {
   margin-top: 150px;
   padding-bottom: 50px;
+}
+
+.dashboard-top-bar {
+  margin-bottom: 20px;
+}
+.dashboard-top-bar ul {
+  position: relative;
+  left: -10px;
+}
+.dashboard-top-bar ul li {
+  display: inline-block;
+  position: relative;
+  padding: 10px 16px;
+}
+.dashboard-top-bar ul li a {
+  padding: 10px 0;
+}
+.dashboard-top-bar ul li a:first-child {
+  left: -16px;
+}
+.dashboard-top-bar ul li.active {
+  font-weight: bold;
+}
+.dashboard-top-bar ul li.active:after {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  left: 16px;
+  right: 16px;
+  height: 4px;
+  background: #1ABB9C;
 }
 
 .messages {

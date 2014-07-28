@@ -24,6 +24,17 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window',
 
         _mapboxMap.resolve(scope.map);
 
+        scope.isClusteringMarkers = attrs.clusterMarkers !== undefined;
+
+        var shouldRefitMap = attrs.scaleToFit !== undefined;
+        scope.fitMapToMarkers = function() {
+          if(!shouldRefitMap) return;
+          // TODO: only call this after all markers have been added, instead of per marker add
+
+          var group = new $window.L.featureGroup(scope.markers);
+          scope.map.fitBounds(group.getBounds());
+        };
+
         if (scope.changedEvent) {
           scope.map.on('moveend', function(e) {
             var center = scope.map.getCenter();
@@ -70,6 +81,13 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window',
         $scope.getMap = this.getMap = function() {
           return _mapboxMap.promise;
         };
+        console.log($window.L.MarkerClusterGroup);
+        if($window.L.MarkerClusterGroup) {
+          $scope.clusterGroup = new $window.L.MarkerClusterGroup();
+          this.getMap().then(function(map) {
+            map.addLayer($scope.clusterGroup);
+          });
+        }
 
         this.$scope = $scope;
       }

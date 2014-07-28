@@ -62,7 +62,7 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         };
 
         $scope.openSingupModal = function() {
-            Modal.singup().then(function() {
+            Modal.signup().then(function() {
                 $scope.creationStep = 2;
             });
         };

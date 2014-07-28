@@ -2,3 +2,41 @@
   margin-top: 150px;
   padding-bottom: 50px;
 }
+
+.dashboard-top-bar {
+  margin-bottom: 20px;
+  
+  ul {
+    position: relative;
+    left: -10px;
+
+    li {
+      display: inline-block;
+      position: relative;
+      padding: 10px 16px;
+
+      a {
+        padding: 10px 0;
+
+        &:first-child {
+          left: -16px;
+        }
+      }
+
+      &.active {
+        font-weight: bold;
+
+        &:after {
+          position: absolute;
+          content: '';
+          bottom: 0;
+          left: 16px;
+          right: 16px;
+          height: 4px;
+          //background: #cacccd;
+          background: #1ABB9C;
+        }
+      }
+    }
+  }
+}

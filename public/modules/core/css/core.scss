@@ -6,6 +6,11 @@ html, body {
   height: 100%;
 }
 
+.wrapper {
+  min-height:100%;
+   position:relative;
+}
+
 .undecorated-link:hover {
   text-decoration: none;
 }
@@ -15,6 +20,7 @@ header.navbar {
   background: #FFF;
   position: fixed;
   z-index: 1000;
+  min-height: initial;
 
   .advertise-button {
     padding: 5px 13px 6px;
@@ -83,12 +89,8 @@ header.navbar {
 
 .content {
   min-height: 100%; 
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-section .container {
-	/*margin-top: 50px;*/
+  padding-top: 50px;
+  padding-bottom: 82px;
 }
 
 .panel-container {
@@ -100,9 +102,10 @@ section .container {
 footer {
   background: #283645;
   width: 100%;
-  position:relative;
   height: 82px;
   clear:both;
+  position:absolute;
+  bottom:0;
 }
 
 .white-bg {

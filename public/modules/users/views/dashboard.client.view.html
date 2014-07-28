@@ -1,6 +1,18 @@
 <section data-ng-controller="DashboardController" data-ng-init="init()" class="">
+
+
+  <div class="dashboard-top-bar dark-bg " ng-cloak>
+    <ul class="container">
+      <li ng-class="{ active: nav == 'rooms'}"><a href="" ng-click="setTab('rooms')">My rooms</a></li>
+      <li ng-class="{ active: nav == 'messages'}"><a href="" ng-click="setTab('messages')">Messages</a></li>
+      <li ng-class="{ active: nav == 'profile'}"><a href="" ng-click="setTab('profile')">Profile</a></li>
+      <li ng-class="{ active: nav == 'account'}"><a href="" ng-click="setTab('account')">Account</a></li>
+    </ul>
+  </div>
+
   <div class="container">
 
+    <!--
     <div class="dashboard-tabs tabs tabs-circle-top tab-container">
                 
       <ul class="etabs text-center">
@@ -10,9 +22,6 @@
         <li ng-class="{ active: nav == 'messages'}" class="tab">
           <a href="" ng-click="setTab('messages')"><div><i class="icon-chat"></i></div>Messages</a>
         </li>
-<!--         <li ng-class="{ active: nav == 'alerts'}" class="tab">
-          <a href="" ng-click="setTab('alerts')"><div><i class="icon-bell-1"></i></div>Alerts</a>
-        </li> -->
         <li ng-class="{ active: nav == 'profile'}" class="tab">
           <a href="" ng-click="setTab('profile')"><div><i class="icon-user"></i></div>Profile</a>
         </li>
@@ -22,30 +31,27 @@
       </ul>
 
     </div>
+  -->
       
-    <div style="">
-
-      <div ng-switch="nav" class="">
-        
-        <div ng-switch-when="rooms">
-          <div ng-include="'/modules/users/views/dashboard/user-rooms.client.view.html'"></div>
-        </div>
-        <div ng-switch-when="messages">
-          <div ng-include="'/modules/users/views/dashboard/user-messages.client.view.html'"></div>
-        </div>
-        <div ng-switch-when="alerts">
-          <div ng-include="'/modules/users/views/dashboard/user-alerts.client.view.html'"></div>
-        </div>
-        <div ng-switch-when="profile">
-          <div ng-include="'/modules/users/views/dashboard/user-profile.client.view.html'"></div>
-        </div>
-        <div ng-switch-when="account">
-          <div ng-include="'/modules/users/views/dashboard/user-account.client.view.html'"></div>
-        </div>
-           
+    <div ng-switch="nav" class="">
+      
+      <div ng-switch-when="rooms">
+        <div ng-include="'/modules/users/views/dashboard/user-rooms.client.view.html'"></div>
       </div>
-
-   </div>
+      <div ng-switch-when="messages">
+        <div ng-include="'/modules/users/views/dashboard/user-messages.client.view.html'"></div>
+      </div>
+      <div ng-switch-when="alerts">
+        <div ng-include="'/modules/users/views/dashboard/user-alerts.client.view.html'"></div>
+      </div>
+      <div ng-switch-when="profile">
+        <div ng-include="'/modules/users/views/dashboard/user-profile.client.view.html'"></div>
+      </div>
+      <div ng-switch-when="account">
+        <div ng-include="'/modules/users/views/dashboard/user-account.client.view.html'"></div>
+      </div>
+         
+    </div>
 
   </div>
 

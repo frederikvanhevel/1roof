@@ -1402,8 +1402,11 @@ p .btn {
 .panel-heading {
     background-color: inherit !important;
     color: inherit !important;
-    padding: 0;
+    padding: 25px;
     border-color: inherit !important;
+
+    font-weight: 700;
+    font-size: 16px;
 }
 .panel-title {
     font-family: 'Source Sans Pro', sans-serif;

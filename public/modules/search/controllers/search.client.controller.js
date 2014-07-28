@@ -23,15 +23,23 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
 
     $scope.init = function() {
       var urlParamaters = $location.search();
+
+      function getZoomLevel(m){
+        var z=Math.floor((Math.log(20088000/m))/Math.log(2));
+        if (z>19) z=19;
+        if (z<0) z=0;
+        return z;
+      }
+
       if ((!urlParamaters.lat || !urlParamaters.lng) && $stateParams.address) {
         $scope.doSearchLookup($stateParams.address);
       } else if (urlParamaters.lat && urlParamaters.lng) {
         $scope.parseUrlParameters(urlParamaters);
         $scope.mapCenter = $scope.filter.location;
+        $scope.mapZoom = getZoomLevel($scope.filter.proximity);
       } else {
         $scope.mapZoom = 9;
       }
-
 
       // Show a room if its in the url
       if ($stateParams.roomId) {
