@@ -19,6 +19,8 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
 
     $scope.selectedRoomId = null;
     $scope.isOverLayOpen = false;
+
+    var viewedRooms = [];
     
 
     $scope.init = function() {
@@ -32,9 +34,10 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
       }
 
       if ((!urlParamaters.lat || !urlParamaters.lng) && $stateParams.address) {
-        $scope.doSearchLookup($stateParams.address);
+        doSearchLookup($stateParams.address);
       } else if (urlParamaters.lat && urlParamaters.lng) {
-        $scope.parseUrlParameters(urlParamaters);
+        parseUrlParameters(urlParamaters);
+        
         $scope.mapCenter = $scope.filter.location;
         $scope.mapZoom = getZoomLevel($scope.filter.proximity);
       } else {
@@ -44,15 +47,17 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
       // Show a room if its in the url
       if ($stateParams.roomId) {
         $scope.selectedRoomId = $stateParams.roomId;
-        $scope.showRoomOverlay();
+        showRoomOverlay();
       }
+
+      $scope.fetchRooms();
 
       $scope.$watch('filter', function(newValue, oldValue) {
         if (newValue !== oldValue) $scope.searchFunction();
       }, true);
     };
 
-    $scope.parseUrlParameters = function(urlParamaters) {
+    function parseUrlParameters(urlParamaters) {
       if (urlParamaters.lat && urlParamaters.lng) $scope.filter.location = [ parseFloat(urlParamaters.lng), parseFloat(urlParamaters.lat) ];
       if (urlParamaters.proximity) $scope.filter.proximity = urlParamaters.proximity;
       if (urlParamaters.minPrice) $scope.filter.minPrice = +urlParamaters.price;
@@ -60,15 +65,15 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
       if (urlParamaters.roomType) $scope.filter.roomType = urlParamaters.roomType;
       if (urlParamaters.size) $scope.filter.size = +urlParamaters.size;
       if (urlParamaters.amneties) $scope.filter.amneties = urlParamaters.amneties;
-    };
+    }
 
-    $scope.doSearchLookup = function(address) {
+    function doSearchLookup(address) {
       Geocoder.geocodeAddress(address).then(function(result) {
         //$location.search('lat', result.lat).search('lng', result.lng);
         $scope.mapCenter = [result.lng, result.lat];
         $scope.filter.proximity = result.proximity;
       });
-    };
+    }
 
     $scope.mapChangedEvent = function(result) {
       $scope.filter.proximity = result.proximity / 2;
@@ -84,6 +89,7 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
     };
 
     $scope.fetchRooms = function() {
+      console.log('oi');
       Rooms.query($scope.filter, function(results) {
 
         // Non-destructively rebuild the array of rooms, otherwise all the markers would
@@ -112,10 +118,6 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
 
         $scope.results = oldRooms;
       });
-    };
-
-    $scope.runSearch = function() {
-      $scope.fetchRooms();
     };
 
     $scope.toggleAmenitySelection = function(amenity) {
@@ -147,7 +149,9 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
 
         $window._.extend($stateParams,{ roomId: roomId });
 
-        $scope.showRoomOverlay();
+        showRoomOverlay();
+
+        viewedRooms.push(roomId);
 
         $scope.isOverLayOpen = true;
       } else {
@@ -159,14 +163,24 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
       } 
     };
 
+    $scope.hasSeenRoom = function(roomId) {
+      return viewedRooms.indexOf(roomId) !== -1;
+    };
+
     $scope.openRoomPopup = function(roomId) {
       $scope.$broadcast('open_marker_popup', roomId);
     };
 
-    $scope.showRoomOverlay = function() {
+    $scope.getRoomTypeIcon = function(roomType) {
+      if (roomType === 'room') return 'lodging';
+      else if (roomType === 'appartment') return 'commercial';
+      else return 'building';
+    };
+
+    function showRoomOverlay() {
       $state.transitionTo('search.overlay', $stateParams, { reload: false, location: false });
       $scope.$broadcast('close_marker_popups');
-    };
+    }
 
     $scope.searchFunction = $window._.debounce($scope.fetchRooms, 400);
 	}

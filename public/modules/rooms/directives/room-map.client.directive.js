@@ -6,11 +6,11 @@ angular.module('rooms').directive('roomMap', [ '$window',
       template: '<div id="map" class="map-canvas"></div>',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
-        scope.$on('room_loaded', function(event, loc) {
+        scope.$on('room_loaded', function(event, room) {
 
           var map = $window.L.mapbox.map(element[0], 'defreek.j27p0821', {
             zoomControl: false
-          }).setView([loc.coordinates[1], loc.coordinates[0]], 15);
+          }).setView([room.loc.coordinates[1], room.loc.coordinates[0]], 15);
 
           // Disable drag and zoom handlers.
           map.dragging.disable();
@@ -23,15 +23,21 @@ angular.module('rooms').directive('roomMap', [ '$window',
 
           $window.L.mapbox.featureLayer({
             type: 'Feature',
-            geometry: loc,
+            geometry: room.loc,
             properties: {
               'marker-size': 'medium',
               'marker-color': '#f44',
-              'marker-symbol': 'lodging'
+              'marker-symbol': getRoomTypeIcon(room.classification)
             }
           }).addTo(map);
 
         });      
+
+        function getRoomTypeIcon(roomType) {
+          if (roomType === 'room') return 'lodging';
+          else if (roomType === 'appartment') return 'commercial';
+          else return 'building';
+        }
       }
     };
   }

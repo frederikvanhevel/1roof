@@ -3,26 +3,29 @@
   <div class="sidebar">
 
 
-    <div class="filters">
-      <div class="filter">
+    <div class="filters bordered">
+      <h6 class="title">Narrow down your search</h6>
+
+      <div class="filter type-filter">
         <div class="btn-group" ng-model="filter.roomType" checkbox-group>
-          <button type="button" class="btn minimal" data-val="house">House</button>
-          <button type="button" class="btn minimal" data-val="room">Room</button>
+          <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> House</button>
+          <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Room</button>
           <!--<button type="button" class="btn" data-val="studio">Studio</button>-->
-          <button type="button" class="btn minimal" data-val="appartment">App.</button>
-          <button type="button" class="btn minimal" data-val="all">All</button>
+          <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> App.</button>
+          <button type="button" class="btn minimal active" data-val="all">All</button>
         </div>
       </div>
 
       <div class="filter">
-          <div range-slider min="0" max="1000" step="50" filter="currency" filter-options="€" prevent-equal-min-max model-min="filter.minPrice" model-max="filter.maxPrice"></div>
+        <div class="slider-label"><h6>€ {{filter.minPrice}} - € {{filter.maxPrice}} <small>per month</small></h6></div>
+        <div class="slider" range-slidera ng-from="filter.minPrice" ng-to="filter.maxPrice" start="0" end="1200" step="50"></div>
       </div>
     </div>
 
     
     <div class="sidebar-header">
-      <small ng-if="results.length > 0">{{results.length}} rooms found</small>
-      <small ng-if="results.length == 0">
+      <small class="text-center" ng-if="results.length > 0">{{results.length}} rooms found</small>
+      <small class="text-center" ng-if="results.length == 0">
         No results were found with this criteria. Try using less filters or zoom out the map!
       </small>
     </div>
@@ -30,11 +33,17 @@
     <div class="search-results">
 
       <ul class="results-list">        
-        <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id)" ng-mouseenter="openRoomPopup(room._id)">
-            <span class="result-price pull-right">€ {{room.price.total}}</span>
-            <a href="#" class="result-location">{{room.location.street}}</a>
-            <br>
-            2 bathrooms
+        <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id)" ng-mouseenter="openRoomPopup(room._id)" ng-class="{ 'active': room._id == selectedRoomId, 'is-seen': hasSeenRoom(room._id) }">
+            <div class="result-type">
+              <div class="maki-icon" ng-class="getRoomTypeIcon(room.classification)"></div>
+            </div>
+            <div class="result-info">
+              <span class="result-price pull-right">€ {{room.price.total}}</span>
+              <a href="#" class="result-location">{{room.location.street}}</a>
+              <br>
+              <small>2 bathrooms</small>
+            </div>
+            <div class="clearfix"></div>
         </li>
       </ul>
 
@@ -45,7 +54,7 @@
   <div class="map">
 
     <mapbox-map class="map-canvas" map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" prevent-popups="isOverLayOpen" cluster-markers="false">
-        <mapbox-marker lat="{{room.loc.coordinates[1]}}" lng="{{room.loc.coordinates[0]}}" color="#f44" icon="lodging"  ng-repeat="room in results" room-id="{{room._id}}">
+        <mapbox-marker lat="{{room.loc.coordinates[1]}}" lng="{{room.loc.coordinates[0]}}" color="#f44" icon="{{getRoomTypeIcon(room.classification)}}"  ng-repeat="room in results" room-id="{{room._id}}">
 
             <div class="row marker" style="background-image:url(//res.cloudinary.com/dv8yfamzc/image/upload/{{room.pictures[0]}}.png);">
               <div class="col-xs-12">

@@ -65,7 +65,7 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
             $scope.otherRooms = Rooms.getRoomsOfSameLocation({
                 roomId: $scope.room._id
             });
-            $scope.$broadcast('room_loaded', $scope.room.loc);
+            $scope.$broadcast('room_loaded', $scope.room);
             if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
         }
     }
