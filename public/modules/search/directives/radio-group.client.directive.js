@@ -1,18 +1,28 @@
 'use strict';
 
-angular.module('search').directive('radioGroup', [ '$window',
-  function($window) {
+angular.module('search').directive('radioGroup', [ '$window', '$timeout',
+  function($window, $timeout) {
     return {
       require: 'ngModel',
       restrict: 'A',
       scope: {
-        model: '=ngModel'
+        model: '=ngModel',
+        outputFunction: '='
       },
       link: function postLink(scope, element, attrs) {
         
         var buttons = element.children('button');
         var active = element.children('button.active');
-        scope.model = active.attr('data-val');
+
+        function setModel(data) {
+          scope.model = scope.outputFunction ? scope.outputFunction(data) : data;
+
+          $timeout(function() {
+            scope.$apply();
+          });
+        }
+
+        setModel(active.attr('data-val'));
 
         buttons.bind('click', function(e) {
           var el = $window.$(e.currentTarget);
@@ -22,11 +32,10 @@ angular.module('search').directive('radioGroup', [ '$window',
             el.addClass('active');
           }
 
-          scope.model = el.attr('data-val');
+          setModel(el.attr('data-val'));
 
           e.stopPropagation();
         });
-
       }
     };
   }

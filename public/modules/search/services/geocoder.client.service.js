@@ -36,12 +36,24 @@ angular.module('core').factory('Geocoder', ['localStorageService', '$q', '$timeo
     geocoder.geocode({ address : task.address }, function (result, status) {
  
       if (status === google.maps.GeocoderStatus.OK) {
+
         var parsedResult = {
           lat: result[0].geometry.location.lat(),
           lng: result[0].geometry.location.lng(),
-          formattedAddress: result[0].formatted_address,
-          accuracy: result[0].address_components.length
+          formattedAddress: result[0].formatted_address
+          //accuracy: result[0].address_components.length
         };
+
+        for (var i = 0; i < result[0].address_components.length; i++) {
+          var type = result[0].address_components[i].types[0];
+          switch (type) {
+            case 'street_number': parsedResult.streetNumber = result[0].address_components[i].long_name; break;
+            case 'route': parsedResult.street = result[0].address_components[i].long_name; break;
+            case 'locality': parsedResult.city = result[0].address_components[i].long_name; break;
+            case 'country': parsedResult.country = result[0].address_components[i].long_name; break;
+          }
+        }
+
         locations[task.address] = parsedResult;
  
         //$localStorage.locations = JSON.stringify(locations);

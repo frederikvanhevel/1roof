@@ -14,10 +14,10 @@
 		<div class="page-header row">
 
 			<div class="crumbs col-sm-12">
-				<button class="btn btn-gray pull-right"><i class="icon-globe-1"></i> Back to map</button>
+				<button class="btn btn-gray pull-right" ng-click="closeOverlay()"><i class="icon-globe-1"></i> Back to map</button>
 				<h1><i class="favorite-icon icon-heart-empty-1" tooltip="Add to favorites" tooltip-placement="right"></i> {{room.info.title}}</h1>
 				<i class="glyphicon" ng-class=""></i>
-				<a ng-href="#!/search/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> > {{room.location.street}} > <strong>{{room.classification}}</strong>
+				<a ng-href="#!/search/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> <i class="icon-right-open"></i> {{room.location.street}} <i class="icon-right-open"></i> <strong>{{room.classification}}</strong>
 				<span class="text-muted pull-right">Last updated {{room.updated | date:'mediumDate'}}</span>
 			</div>
 		</div>

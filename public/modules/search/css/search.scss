@@ -44,7 +44,7 @@
 
     .filter {
       &.type-filter {
-        margin-left: 18px;
+        margin-left: 16px;
 
         .maki-icon {
           margin: 0 auto;
@@ -63,10 +63,13 @@
           border-bottom: 1px solid rgba(0,0,0,0.1);
           cursor: pointer;
           margin-bottom: 3px;
+          border-right: 3px solid #fff;
+          margin-right: -3px;
+          transition: all 0.3s ease;
 
           &:hover, &.active {
-            border-right: 3px solid #1ABB9C;
-            margin-right: -3px;
+            border-right: 3px solid #FA6C65;
+            
           }
 
           &.is-seen {
@@ -240,6 +243,35 @@
       }
     }
 
+  }
+
+  .marker-cluster {
+    background-clip: padding-box;
+    border-radius: 20px;
+    background-color: rgba(26, 187, 156, .4);
+
+    &:hover {
+      background-color: rgba(191, 144, 144, .4);
+
+      div {
+        background-color: #FA6C65;
+      }
+    }
+  }
+  .marker-cluster div {
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    margin-top: 5px;
+
+    text-align: center;
+    border-radius: 15px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #1ABB9C;
+  }
+  .marker-cluster span {
+    line-height: 30px;
   }
 
 }

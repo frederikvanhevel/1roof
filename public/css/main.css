@@ -3016,6 +3016,15 @@ input:focus:-ms-input-placeholder {
   opacity: 1;
 }
 
+.panel {
+  border-radius: 3px;
+}
+.panel .panel-heading {
+  box-shadow: initial;
+  background: #edefed !important;
+  padding: 15px 25px;
+}
+
 .maki-icon {
   background-image: url(/modules/core/img/maki/maki-sprite.png);
   background-position: 24px 24px;
@@ -6264,7 +6273,7 @@ header.navbar .messages-popover ul li a.view-all {
 .content {
   min-height: 100%;
   padding-top: 50px;
-  padding-bottom: 82px;
+  padding-bottom: 102px;
 }
 
 .panel-container {
@@ -6733,6 +6742,9 @@ ROOMS MODULE
   border-width: 23px;
   margin-top: -23px;
 }
+.create-room .type-buttons .maki-icon {
+  margin: 0 auto;
+}
 
 .room-edit ul.amenities li {
   float: left;
@@ -6807,7 +6819,7 @@ SEARCH MODULE
   margin-bottom: 20px;
 }
 .search-view .sidebar .filter.type-filter {
-  margin-left: 18px;
+  margin-left: 16px;
 }
 .search-view .sidebar .filter.type-filter .maki-icon {
   margin: 0 auto;
@@ -6821,10 +6833,12 @@ SEARCH MODULE
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   cursor: pointer;
   margin-bottom: 3px;
+  border-right: 3px solid #fff;
+  margin-right: -3px;
+  transition: all 0.3s ease;
 }
 .search-view .sidebar .search-results ul.results-list li.search-result:hover, .search-view .sidebar .search-results ul.results-list li.search-result.active {
-  border-right: 3px solid #1ABB9C;
-  margin-right: -3px;
+  border-right: 3px solid #FA6C65;
 }
 .search-view .sidebar .search-results ul.results-list li.search-result.is-seen {
   color: grey;
@@ -6961,6 +6975,31 @@ SEARCH MODULE
 }
 .search-view .slider .noUi-handle:hover {
   border-color: #1ABB9C;
+}
+.search-view .marker-cluster {
+  background-clip: padding-box;
+  border-radius: 20px;
+  background-color: rgba(26, 187, 156, 0.4);
+}
+.search-view .marker-cluster:hover {
+  background-color: rgba(191, 144, 144, 0.4);
+}
+.search-view .marker-cluster:hover div {
+  background-color: #FA6C65;
+}
+.search-view .marker-cluster div {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+  margin-top: 5px;
+  text-align: center;
+  border-radius: 15px;
+  color: #fff;
+  font-weight: bold;
+  background-color: #1ABB9C;
+}
+.search-view .marker-cluster span {
+  line-height: 30px;
 }
 
 /*

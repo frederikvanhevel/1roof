@@ -55,13 +55,12 @@
 
       		  <div class="form-group">
       		    <label for="inputPassword3" class="col-sm-3 control-label">Room type</label>
-      		    <div class="col-sm-9">
-      	        <div class="btn-group" ng-model="createForm.roomType" radio-group>
-      	          <button type="button" class="btn" data-val="house">Entire house</button>
-      	          <button type="button" class="btn" data-val="room">Room</button>
-      	          <button type="button" class="btn" data-val="studio">Studio</button>
-      	          <button type="button" class="btn" data-val="appartment">Appartment</button>
-      	        </div>
+              <div class="col-sm-9">
+                <div class="btn-group type-buttons" ng-model="createForm.roomType" radio-group>
+                  <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> Entire house</button>
+                  <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> Appartment</button>
+                  <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Room</button>          
+                </div>
       		    </div>
       		  </div>
 

@@ -58,8 +58,7 @@
         <div ng-switch-when="general" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Panel title</h3>
-            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+            <h3 class="panel-title">Basic information about the room</h3>
           </div>
           <div class="panel-body">
             <form role="form">
@@ -84,8 +83,7 @@
         <div ng-switch-when="availability" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Panel title</h3>
-            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+            <h3 class="panel-title">When will this room be available</h3>
           </div>
           <div class="panel-body">
             <form class="form-inline" role="form">
@@ -105,14 +103,9 @@
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
             <h3 class="panel-title">Costs</h3>
-            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
           </div>
           <div class="panel-body">
             <form role="form">
-              <div class="form-group">
-                <label class="control-label">Base price</label>
-                <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="dd//mm/jjjj">
-              </div>
               <div class="form-group">
                 <label class="control-label">Period</label>
                 <select ng-model="room.price.period" >
@@ -121,6 +114,12 @@
                   <option value="year">Yearly</option>
                 </select>
               </div>
+
+              <div class="form-group">
+                <label class="control-label">Base price</label>
+                <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="dd//mm/jjjj">
+              </div>
+              
               <div class="form-group">
                 <label class="control-label">Gas, electricity and water (optional)</label>
                 <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="Extra costs">
@@ -136,31 +135,21 @@
         <div ng-switch-when="address" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Panel title</h3>
-            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+            <h3 class="panel-title">Specify the address of this room</h3>
           </div>
           <div class="panel-body">
-            <form role="form">
-              <div class="form-group">
-                <label class="control-label">Street and number</label>
-                <input type="text" class="form-control" placeholder="Meersstraat 34" ng-model="room.location.street">
-              </div>
-              <div class="form-group">
-                <label class="control-label">City</label>
-                <input type="text" class="form-control" placeholder="Gent" ng-model="room.location.city">
-              </div>
-              <div class="form-group">
-              <button type="submit" class="btn btn-default">Sign in</button>
-              </div>
-            </form>
+
+            <div style="width:100%;height:200px;" room-map map-center="room.loc.coordinates" class="map-canvas"></div>
+
+            <button class="btn btn-blue"><i class="icon-location-1"></i> Change address</button>
+
           </div>
         </div>
 
         <div ng-switch-when="amenities" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Panel title</h3>
-            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+            <h3 class="panel-title">Available amenities</h3>
           </div>
           <div class="panel-body">
             <ul class="amenities">
@@ -182,13 +171,13 @@
         <div ng-switch-when="pictures" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Panel title</h3>
-            <small>Blalazdjfkdf sjdqsf sjsdkf.</small>
+            <h3 class="panel-title">Add pictures</h3>
+            <small>Maximum 8 pictures per room</small>
           </div>
           <div class="panel-body">
             <div class="pictures-header">
-              <h5 class="pull-right">{{room.pictures.length}} images</h5>
-              <button class="btn"><i class="icon-upload-cloud"></i> Add an image</button>
+              <h5 class="pull-right"><small>{{room.pictures.length}} images</small></h5>
+              <button class="btn btn-blue"><i class="icon-upload-cloud"></i> Add an image</button>
               <input class="file-input" type="file" ng-file-select="onImageSelect($files)" accept="image/*">
             </div>
             <div class="pictures" ng-hide="room.pictures.length == 0">

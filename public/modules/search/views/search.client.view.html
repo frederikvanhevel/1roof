@@ -7,11 +7,10 @@
       <h6 class="title">Narrow down your search</h6>
 
       <div class="filter type-filter">
-        <div class="btn-group" ng-model="filter.roomType" checkbox-group>
+        <div class="btn-group" ng-model="filter.roomType" output-function="setRoomType" radio-group>
           <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> House</button>
-          <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Room</button>
-          <!--<button type="button" class="btn" data-val="studio">Studio</button>-->
           <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> App.</button>
+          <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Room</button>          
           <button type="button" class="btn minimal active" data-val="all">All</button>
         </div>
       </div>
@@ -54,10 +53,10 @@
   <div class="map">
 
     <mapbox-map class="map-canvas" map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" prevent-popups="isOverLayOpen" cluster-markers="false">
-        <mapbox-marker lat="{{room.loc.coordinates[1]}}" lng="{{room.loc.coordinates[0]}}" color="#f44" icon="{{getRoomTypeIcon(room.classification)}}"  ng-repeat="room in results" room-id="{{room._id}}">
+        <mapbox-marker lat="{{room.loc.coordinates[1]}}" lng="{{room.loc.coordinates[0]}}" color="#FA6C65" icon="{{getRoomTypeIcon(room.classification)}}"  ng-repeat="room in results" room-id="{{room._id}}">
 
             <div class="row marker" style="background-image:url(//res.cloudinary.com/dv8yfamzc/image/upload/{{room.pictures[0]}}.png);">
-              <div class="col-xs-12">
+              <div class="col-xs-12" ng-click="selectRoom(room._id)">
                 <div class="pull-right">
                   <button class="btn btn-default btn-xs" ng-click="selectRoom(room._id)">More info <i class="icon-right-open-1"></i></button>
                 </div>

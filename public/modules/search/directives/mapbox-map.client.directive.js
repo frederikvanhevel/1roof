@@ -81,9 +81,9 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window',
         $scope.getMap = this.getMap = function() {
           return _mapboxMap.promise;
         };
-        console.log($window.L.MarkerClusterGroup);
+
         if($window.L.MarkerClusterGroup) {
-          $scope.clusterGroup = new $window.L.MarkerClusterGroup();
+          $scope.clusterGroup = new $window.L.MarkerClusterGroup({ showCoverageOnHover: false });
           this.getMap().then(function(map) {
             map.addLayer($scope.clusterGroup);
           });

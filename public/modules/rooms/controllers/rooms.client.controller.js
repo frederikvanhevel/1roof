@@ -24,14 +24,7 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
         $scope.init = function() {
             console.log('INIT ROOM');
 
-            console.log($scope.room);
-
-            if ($scope.room) {
-                $scope.isOverlay = true;
-                postLoad();
-            } else {
-                $scope.findOne();
-            }
+            $scope.findOne();
 
             $scope.$watch('room', function(newValue, oldValue) {
                 if (newValue !== oldValue) postLoad();
@@ -59,6 +52,10 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
 
         $scope.openContactModal = function() {
             Modal.contact($scope.contactInfo);
+        };
+
+        $scope.closeOverlay = function() {
+            $scope.$broadcast('close_overlay');
         };
 
         function postLoad() {

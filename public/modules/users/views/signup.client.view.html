@@ -13,8 +13,8 @@
 		<button ng-hide="emailSignupOpen" ng-click="emailSignupOpen = true" class="btn-link btn-block"> Sign up with your email</button>
 
 		<form ng-show="emailSignupOpen" data-ng-submit="signup()" class="signin" novalidate autocomplete="off">
-			<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="first Name">
-			<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="last Name">
+			<input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First name">
+			<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last name">
 			<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="email@example.com">
 			<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="password">
 			<button type="submit" class="btn btn-block">Sign up</button>

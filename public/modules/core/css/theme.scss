@@ -2629,6 +2629,15 @@ input:focus:-ms-input-placeholder {
     opacity: 1;
 }
 
+.panel {
+    border-radius: 3px;
+
+    .panel-heading {
+        box-shadow: initial;
+        background: #edefed !important;
+        padding: 15px 25px;
+    }
+}
 
 
 

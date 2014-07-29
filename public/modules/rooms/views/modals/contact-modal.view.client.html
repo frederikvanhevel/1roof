@@ -1,8 +1,8 @@
-<!--
+
 <div class="modal-header">
   <button type="button" class="close" ng-click="cancel()">&times;</button>
-    <h4 ng-hide="contactInfo.isTour" class="modal-title">Send a message</h4>
-    <h4 ng-show="contactInfo.isTour" class="modal-title">Ask for a tour</h4>
+    <h4 ng-hide="contactInfo.isTour" class="modal-title"><i class="icon-mail-1"></i> Send a message</h4>
+    <h4 ng-show="contactInfo.isTour" class="modal-title"><i class="icon-mail-1"></i> Ask for a tour</h4>
 </div>
 <div class="modal-body">
   <form class="form-horizontal" name="contactForm" novalidate>
@@ -14,14 +14,14 @@
           </textarea>
       </div>
     </div>
-    <div class="form-group" ng-class="{ 'has-error' : contactForm.name.$invalid && !contactForm.name.$pristine }">
+    <div class="form-group" ng-class="{ 'has-error' : contactForm.name.$invalid && !contactForm.name.$pristine }" ng-show="!authentication.user">
       <label class="control-label col-sm-3" for="name">Name</label>
       <div class="col-sm-9">
         <input data-ng-model="contactInfo.name" name="name" type="text" placeholder="First and last name" required>
         <p ng-show="contactForm.name.$invalid && !contactForm.name.$pristine" class="help-block">You name is required.</p>
       </div>
     </div>
-    <div class="form-group" ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine }">
+    <div class="form-group" ng-class="{ 'has-error' : contactForm.email.$invalid && !contactForm.email.$pristine }" ng-show="!authentication.user">
       <label class="control-label col-sm-3" for="email">Email address</label>
       <div class="col-sm-9">
         <input data-ng-model="contactInfo.email" name="email" type="email" placeholder="example@domain.com" required>
@@ -29,25 +29,6 @@
       </div>
     </div>
     <div class="form-group">
-      <label class="control-label col-sm-3" for="phone">Phone</label>
-      <div class="col-sm-9">
-        <input data-ng-model="phone" type="tel" placeholder="(#)### ## ## ##">
-      </div>
-    </div>
-    <div class="form-group" ng-show="!authentication.user && contactForm.$valid">
-      <h3>Hey, it seems like you are not logged in!</h3>
-      <h4>Do you want to make an account? You'll get alot of benefits, such as: </h4>
-      <ul>
-        <li>View all your messages in one place, instead of keeping your emails organized</li>
-        <li>Add rooms to your favorites list, to decide later between your top</li>
-        <li>...</li>
-      </ul>
-      <div class="col-sm-offset-3 col-sm-9">
-        <button class="btn" ng-click="makeAccount()" ng-disabled="contactForm.$invalid">Okay!</button>
-        <button class="btn-link" ng-click="ok()" ng-disabled="contactForm.$invalid">Nah, just send my message</button>
-      </div>
-    </div>
-    <div class="form-group" ng-hide="!authentication.user">
       <div class="col-sm-offset-3 col-sm-9">
         <button ng-hide="contactInfo.isTour" class="btn" ng-click="ok()" ng-disabled="contactForm.$invalid">Send message</button>
         <button ng-show="contactInfo.isTour" class="btn" ng-click="ok()" ng-disabled="contactForm.$invalid">Ask for tour</button>
@@ -55,8 +36,8 @@
     </div>
   </form>
 </div>
--->
-<div class="modal-header">
+
+<!-- <div class="modal-header">
   <button type="button" class="close" ng-click="$dismiss()">&times;</button>
   <h4>Hey, it seems like you are not logged in!</h4>
 </div>
@@ -74,4 +55,4 @@
     <a class="btn" href="/#!/signin">Let's do this!</a>
     <a class="btn-lg btn-link" href="/#!/signin">no thanks</a>
   </p>
-</div>
+</div> -->

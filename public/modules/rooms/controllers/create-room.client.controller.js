@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', 'Authentication', 'Rooms', 'Modal',
-	function($scope, $location, Authentication, Rooms, Modal) {
+angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', 'Authentication', 'Rooms', 'Modal', 'Geocoder',
+	function($scope, $location, Authentication, Rooms, Modal, Geocoder) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -24,13 +24,11 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         $scope.create = function() {
 
             if ($scope.addressDetails === null) {
-                console.log('no details');
+                doSearchLookup($scope.createForm.address);
                 return;
             }
 
-            console.log($scope.addressDetails);
-
-          // Create new Room object
+            // Create new Room object
             var room = new Rooms({
                 price: {
                     base: Math.random()*400,
@@ -48,7 +46,6 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
                 },
                 roomType: $scope.createForm.roomType
             });
-            console.log($scope.room);
 
             // Redirect after save
             room.$save(function(response) {
@@ -60,6 +57,19 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
             // Clear form fields
             $scope.createForm.address = '';
         };
+
+        function doSearchLookup(address) {
+          Geocoder.geocodeAddress(address).then(function(result) {
+            $scope.addressDetails = {
+                street: result.street + ' ' + result.streetNumber,
+                city: result.city,
+                country: result.country,
+                geo: [ result.lat, result.lng ]
+            };
+
+            $scope.create();
+          });
+        }
 
         $scope.openSingupModal = function() {
             Modal.signup().then(function() {

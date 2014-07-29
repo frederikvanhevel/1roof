@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').controller('SearchController', ['$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
-	function($scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
+angular.module('search').controller('SearchController', ['$urlRouter', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
+	function($urlRouter, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
     $scope.mapCenter = [4.3517100, 50.8503400]; // Brussel
     $scope.mapZoom = 13;
     $scope.fetchOnMapChange = true;
@@ -33,11 +33,19 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
         return z;
       }
 
+      $scope.$on('$viewContentLoading', function(evt) {
+        // Halt state change from even starting
+        evt.preventDefault();
+
+        console.log(evt);
+        // Perform custom logic
+      });
+
       if ((!urlParamaters.lat || !urlParamaters.lng) && $stateParams.address) {
         doSearchLookup($stateParams.address);
       } else if (urlParamaters.lat && urlParamaters.lng) {
         parseUrlParameters(urlParamaters);
-        
+
         $scope.mapCenter = $scope.filter.location;
         $scope.mapZoom = getZoomLevel($scope.filter.proximity);
       } else {
@@ -52,7 +60,10 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
 
       $scope.fetchRooms();
 
+      $scope.$on('close_overlay', closeRoomOverlay);
+
       $scope.$watch('filter', function(newValue, oldValue) {
+         console.log('eek');
         if (newValue !== oldValue) $scope.searchFunction();
       }, true);
     };
@@ -89,7 +100,6 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
     };
 
     $scope.fetchRooms = function() {
-      console.log('oi');
       Rooms.query($scope.filter, function(results) {
 
         // Non-destructively rebuild the array of rooms, otherwise all the markers would
@@ -151,15 +161,13 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
 
         showRoomOverlay();
 
-        viewedRooms.push(roomId);
+        if (viewedRooms.indexOf(roomId) === -1) viewedRooms.push(roomId);
 
-        $scope.isOverLayOpen = true;
+       
       } else {
         $scope.selectedRoomId = null;
 
-        $state.transitionTo('search', $stateParams, { reload: false, location: false });
-        
-        $scope.isOverLayOpen = false;
+        closeRoomOverlay();
       } 
     };
 
@@ -177,9 +185,23 @@ angular.module('search').controller('SearchController', ['$scope', '$timeout', '
       else return 'building';
     };
 
+    $scope.setRoomType = function(selection) {
+      if (selection === 'all') return [];
+      else return [selection];
+    };
+
+    function closeRoomOverlay() {
+      $state.transitionTo('search', $stateParams, { reload: false, location: false });
+        
+      $scope.isOverLayOpen = false;
+    }
+
     function showRoomOverlay() {
       $state.transitionTo('search.overlay', $stateParams, { reload: false, location: false });
       $scope.$broadcast('close_marker_popups');
+      //$location.path('/rooms' + $scope.selectedRoomId);
+
+      $scope.isOverLayOpen = true;
     }
 
     $scope.searchFunction = $window._.debounce($scope.fetchRooms, 400);
