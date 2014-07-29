@@ -38,6 +38,15 @@ angular.module('core').service('Modal', [ '$modal',
       return this.showModal(options, {});
     };
 
+    this.changeAddress = function() {
+      var options = {
+        templateUrl: 'modules/rooms/views/modals/change-address-modal.client.view.html',
+        controller: 'ManageRoomController'
+      };
+
+      return this.showModal(options, {});
+    };
+
     var modalDefaults = {
         backdrop: true,
         keyboard: true,

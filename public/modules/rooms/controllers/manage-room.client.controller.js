@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http',
-    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http) {
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal',
+    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal) {
         $scope.authentication = Authentication;
         
         $scope.createForm = {
@@ -30,6 +30,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         $scope.watchForUpdates = function() {
+            $scope.$broadcast('room_loaded', $scope.room);
+
             var updateFunction = $window._.debounce($scope.update, 1200);
             // Use watchGroup in angular 3.1
             $scope.$watch('room', function(newValue, oldValue) {
@@ -127,8 +129,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $scope.errors = errors;
         };
 
-        $scope.initMap = function() {
-            $scope.$broadcast('room_loaded', $scope.room);
+        $scope.openAddressMdoal = function() {
+            Modal.changeAddress();
         };
     }
 ]);

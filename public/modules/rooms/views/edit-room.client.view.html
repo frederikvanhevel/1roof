@@ -132,16 +132,16 @@
           </div>
         </div>
 
-        <div ng-switch-when="address" class="bordered" ng-init="initMap()">
+        <div ng-switch-when="address" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
             <h3 class="panel-title">Specify the address of this room</h3>
           </div>
           <div class="panel-body">
 
-            <div style="width:100%;height:200px;" room-map class="map-canvas"></div>
+            <div room-map class="map-canvas"></div>
 
-            <button class="btn btn-blue"><i class="icon-location-1"></i> Change address</button>
+            <button class="btn btn-blue btn-block" ng-click="openAddressMdoal()"><i class="icon-location-1"></i> Change address</button>
 
           </div>
         </div>

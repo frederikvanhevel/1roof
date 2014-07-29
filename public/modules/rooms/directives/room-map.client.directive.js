@@ -6,8 +6,9 @@ angular.module('rooms').directive('roomMap', [ '$window',
       template: '<div id="map" class="map-canvas"></div>',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
+        console.log('init');
         scope.$on('room_loaded', function(event, room) {
-
+          console.log('loaded');
           var map = $window.L.mapbox.map(element[0], 'defreek.j27p0821', {
             zoomControl: false
           }).setView([room.loc.coordinates[1], room.loc.coordinates[0]], 15);

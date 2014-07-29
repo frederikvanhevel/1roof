@@ -7,6 +7,7 @@
         <div class="panel-body" ng-hide="myrooms.length > 0">
           You don't have any room yet! <a href="/#!/rooms/new">create one</a>?
         </div>
+
         <div class="list-group">
           <div class="list-group-item" ng-repeat="room in myrooms">
 
@@ -15,10 +16,21 @@
 
                 <span class="indicator col-sm-1"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
 
-                <select class="col-sm-2" ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)"></select>
+                <select class="col-sm-2" ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
             </div>
+            <p ng-if="!room.isInOrder">
+              <small>
+                <span class="red"><i class="icon-attention-1"></i> You need to complete more details before this room can be put online. </span>
+                <a href="/#!/rooms/{{room._id}}/edit/">Edit this room</a>
+              </small>
+            </p>
 
           </div>
+        </div>
+
+        <div class="panel-footer">
+          <a href="/#!/rooms/new" class="btn btn-sm pull-right"><i class="icon-plus-1"></i> Add a new room</a>
+          <div class="clearfix"></div>
         </div>
     </div>  
   </div>

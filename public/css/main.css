@@ -6777,6 +6777,10 @@ ROOMS MODULE
   background-repeat: no-repeat;
   background-position: center;
 }
+.room-edit .map-canvas {
+  width: 100%;
+  height: 200px;
+}
 
 /*
 SEARCH MODULE
@@ -7114,6 +7118,10 @@ USERS MODULE
 
 .my-rooms h4, .my-rooms .indicator {
   padding-top: 10px;
+}
+.my-rooms select[disabled] {
+  color: gray;
+  opacity: 0.7;
 }
 .my-rooms .indicator {
   padding-left: 30px;

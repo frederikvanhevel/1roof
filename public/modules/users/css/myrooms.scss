@@ -4,6 +4,11 @@
     padding-top: 10px;
   }
 
+  select[disabled] {
+    color: gray;
+    opacity: 0.7;
+  }
+
   .indicator {
     padding-left: 30px;
   }
