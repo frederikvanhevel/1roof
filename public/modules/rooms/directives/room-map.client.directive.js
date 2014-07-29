@@ -6,12 +6,13 @@ angular.module('rooms').directive('roomMap', [ '$window',
       template: '<div id="map" class="map-canvas"></div>',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
-        console.log('init');
+
+        var map = $window.L.mapbox.map(element[0], 'defreek.j27p0821', {
+          zoomControl: false
+        });
+
         scope.$on('room_loaded', function(event, room) {
-          console.log('loaded');
-          var map = $window.L.mapbox.map(element[0], 'defreek.j27p0821', {
-            zoomControl: false
-          }).setView([room.loc.coordinates[1], room.loc.coordinates[0]], 15);
+          map.setView([room.loc.coordinates[1], room.loc.coordinates[0]], 15);
 
           // Disable drag and zoom handlers.
           map.dragging.disable();
@@ -32,7 +33,11 @@ angular.module('rooms').directive('roomMap', [ '$window',
             }
           }).addTo(map);
 
-        });      
+        });
+
+        scope.$on('$destroy', function() {
+          map.remove();
+        });
 
         function getRoomTypeIcon(roomType) {
           if (roomType === 'room') return 'lodging';

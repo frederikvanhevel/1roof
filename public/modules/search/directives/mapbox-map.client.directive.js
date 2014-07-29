@@ -50,10 +50,15 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window',
         scope.$on('open_marker_popup', function(event, id) {
           if (!scope.preventPopups) openMarkerPopupById(id);
         });
+        
         scope.$on('close_marker_popups', function(event) {
           scope.markers.forEach(function(marker) {
             marker.closePopup();
           });
+        });
+
+        scope.$on('$destroy', function() {
+          scope.map.remove();
         });
 
         function openMarkerPopupById(roomId) {

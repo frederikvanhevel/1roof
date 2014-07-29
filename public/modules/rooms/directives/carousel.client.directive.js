@@ -25,12 +25,13 @@ angular.module('rooms').directive('owlCarousel', [ '$window',
 				var el = $window.$(element);
 				var carousel;
 
-				scope.$on('pictures_rendered', function() {
-					//$window.$(element).data('owlCarousel');
-					
+				scope.$on('pictures_rendered', function() {					
 					carousel = el.owlCarousel(defaults).data('owlCarousel');
-					
 		    });
+
+		    scope.$on('$destroy', function() {
+          carousel.destroy();
+        });
 			}
 		};
 	}
