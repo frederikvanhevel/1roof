@@ -14,6 +14,7 @@ angular.module('rooms').directive('streetView', [ '$window',
             var coordinates = room.loc.coordinates;
             var position = new $window.google.maps.LatLng(coordinates[1], coordinates[0]);
             var streetview = new $window.google.maps.StreetViewPanorama(element[0], {
+                zoomControl: false,
                 position: position,
                 pov: {
                     heading: 0,

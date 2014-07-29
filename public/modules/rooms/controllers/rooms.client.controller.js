@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity', 'Modal',
-    function($window, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity, Modal) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity', 'Modal',
+    function($rootScope, $window, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity, Modal) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
@@ -23,8 +23,6 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
 
         $scope.init = function() {
             console.log('INIT ROOM');
-
-            console.log($stateParams);
 
             $scope.findOne();
 
@@ -57,7 +55,7 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
         };
 
         $scope.closeOverlay = function() {
-            $scope.$broadcast('close_overlay');
+            $rootScope.$broadcast('close_overlay');
         };
 
         $scope.isOverlay = function() {

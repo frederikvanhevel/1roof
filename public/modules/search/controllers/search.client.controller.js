@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').controller('SearchController', ['$urlRouter', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
-	function($urlRouter, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
+angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
+	function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
     $scope.mapCenter = [4.3517100, 50.8503400]; // Brussel
     $scope.mapZoom = 13;
     $scope.fetchOnMapChange = true;
@@ -33,14 +33,6 @@ angular.module('search').controller('SearchController', ['$urlRouter', '$scope',
         return z;
       }
 
-      $scope.$on('$viewContentLoading', function(evt) {
-        // Halt state change from even starting
-        evt.preventDefault();
-
-        console.log(evt);
-        // Perform custom logic
-      });
-
       if ((!urlParamaters.lat || !urlParamaters.lng) && $stateParams.address) {
         doSearchLookup($stateParams.address);
       } else if (urlParamaters.lat && urlParamaters.lng) {
@@ -60,7 +52,7 @@ angular.module('search').controller('SearchController', ['$urlRouter', '$scope',
 
       $scope.fetchRooms();
 
-      $scope.$on('close_overlay', closeRoomOverlay);
+      $rootScope.$on('close_overlay', closeRoomOverlay);
 
       $scope.$watch('filter', function(newValue, oldValue) {
          console.log('eek');
@@ -193,6 +185,7 @@ angular.module('search').controller('SearchController', ['$urlRouter', '$scope',
     function closeRoomOverlay() {
       $state.transitionTo('search', $stateParams, { reload: false, location: false });
         
+      $scope.selectedRoomId = null;
       $scope.isOverLayOpen = false;
     }
 
