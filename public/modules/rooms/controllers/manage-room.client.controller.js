@@ -36,7 +36,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             // Use watchGroup in angular 3.1
             $scope.$watch('room', function(newValue, oldValue) {
                 if (newValue !== oldValue && !$scope.busy) {
-                    console.log('eh?');
                     $scope.checkRoomCompleteness();
                     updateFunction();
                 }
@@ -62,12 +61,12 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
         // Update existing Room
         $scope.update = function() {
-            var room = $scope.room;
+            var room = angular.copy($scope.room);
             $scope.busy = true;
             console.log('updating');
 
             room.$update(function() {
-                //$location.path('rooms/' + room._id);
+                $scope.room = room;
                 $scope.busy = false;
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;

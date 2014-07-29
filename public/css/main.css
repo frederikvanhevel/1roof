@@ -7036,6 +7036,7 @@ USERS MODULE
 .dashboard-top-bar ul {
   position: relative;
   left: -10px;
+  margin-bottom: 0;
 }
 .dashboard-top-bar ul li {
   display: inline-block;
