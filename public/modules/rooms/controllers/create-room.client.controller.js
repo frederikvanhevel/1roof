@@ -64,7 +64,7 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
                 street: result.street + ' ' + result.streetNumber,
                 city: result.city,
                 country: result.country,
-                geo: [ result.lat, result.lng ]
+                geo: [ result.lng, result.lat ]
             };
 
             $scope.create();

@@ -157,7 +157,7 @@ angular.module('search').controller('SearchController', ['$urlRouter', '$scope',
       if (!$scope.selectedRoomId || $scope.selectedRoomId !== roomId) {
         $scope.selectedRoomId = roomId;
 
-        $window._.extend($stateParams,{ roomId: roomId });
+        $window._.extend($stateParams,{ roomId: roomId, isOverlay: true });
 
         showRoomOverlay();
 
@@ -197,6 +197,9 @@ angular.module('search').controller('SearchController', ['$urlRouter', '$scope',
     }
 
     function showRoomOverlay() {
+
+      console.log($stateParams);
+
       $state.transitionTo('search.overlay', $stateParams, { reload: false, location: false });
       $scope.$broadcast('close_marker_popups');
       //$location.path('/rooms' + $scope.selectedRoomId);

@@ -22,5 +22,14 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
         $scope.goToRoom = function(roomId) {
             $location.path('rooms/' + roomId);
         };
+
+        $scope.visibilityText = function(item) {
+            return item ? 'online' : 'offline';
+        };
+
+        $scope.updateRoom = function(room) {
+            console.log(room.visible);
+            room.$update();
+        };
 	}
 ]);

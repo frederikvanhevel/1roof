@@ -24,6 +24,8 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
         $scope.init = function() {
             console.log('INIT ROOM');
 
+            console.log($stateParams);
+
             $scope.findOne();
 
             $scope.$watch('room', function(newValue, oldValue) {
@@ -56,6 +58,10 @@ angular.module('rooms').controller('RoomsController', ['$window', '$scope', '$st
 
         $scope.closeOverlay = function() {
             $scope.$broadcast('close_overlay');
+        };
+
+        $scope.isOverlay = function() {
+            return $stateParams.isOverlay;
         };
 
         function postLoad() {

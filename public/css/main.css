@@ -7112,6 +7112,12 @@ USERS MODULE
   border-color: transparent #1ABB9C transparent transparent;
 }
 
+.my-rooms h4, .my-rooms .indicator {
+  padding-top: 10px;
+}
+.my-rooms .indicator {
+  padding-left: 30px;
+}
 .my-rooms .room {
   width: 200px;
   height: 250px;

@@ -1,7 +1,7 @@
 <section data-ng-controller="RoomsController" data-ng-init="init()" class="view-room">
 
-	<div ng-if="room.user._id && room.user._id == authentication.user._id" class="room-owner-panel dark-bg" ng-cloak>
-		<div class="">
+	<div ng-if="!isOverlay() && room.user._id && room.user._id == authentication.user._id" class="room-owner-panel dark-bg" ng-cloak>
+		<div class="container">
 			<span class="pull-right">
 				<a href="/#!/rooms/{{room._id}}/edit/">edit this room <i class="icon-right-open"></i></a>
 			</span>
@@ -10,11 +10,11 @@
 		</div>
 	</div>
 
-	<div class="inner">
+	<div class="inner" ng-class="{ 'container': !isOverlay() }">
 		<div class="page-header row">
 
 			<div class="crumbs col-sm-12">
-				<button class="btn btn-gray pull-right" ng-click="closeOverlay()"><i class="icon-globe-1"></i> Back to map</button>
+				<button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> Back to map</button>
 				<h1><i class="favorite-icon icon-heart-empty-1" tooltip="Add to favorites" tooltip-placement="right"></i> {{room.info.title}}</h1>
 				<i class="glyphicon" ng-class=""></i>
 				<a ng-href="#!/search/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> <i class="icon-right-open"></i> {{room.location.street}} <i class="icon-right-open"></i> <strong>{{room.classification}}</strong>
@@ -34,10 +34,10 @@
 	              <figure style="background-image: url(http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png);"></figure>
 	            </div>
 	            <div class="item room-map">
-						    <div room-map map-center="mapCenter" class="map-canvas"></div>
+						    <div room-map class="map-canvas"></div>
 						  </div>
 						  <div class="item">
-						  	<div street-view map-center="mapCenter" class="streetView"></div>
+						  	<div street-view class="streetView"></div>
 						  </div>
 	          </div>
 

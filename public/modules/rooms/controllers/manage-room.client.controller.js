@@ -126,5 +126,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
             $scope.errors = errors;
         };
+
+        $scope.initMap = function() {
+            $scope.$broadcast('room_loaded', $scope.room);
+        };
     }
 ]);
