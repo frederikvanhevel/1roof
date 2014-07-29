@@ -27,8 +27,7 @@ angular.module('users').config(['$stateProvider',
 		}).
 		state('dashboard', {
 			url: '/dashboard/:nav',
-			templateUrl: 'modules/users/views/dashboard.client.view.html',
-			reloadOnSearch: false
+			templateUrl: 'modules/users/views/dashboard.client.view.html'
 		}).
 		state('viewInbox', {
 			url: '/dashboard/messages/:inboxId',
