@@ -3,10 +3,10 @@
   <div class="dashboard-top-bar dark-bg " ng-cloak>
     <div class="container">
       <ul class="col-sm-offset-2">
-        <li><a href="" ng-click="setTab('rooms')">My rooms</a></li>
+        <li><a href="/#!/dashboard/rooms" ng-click="setTab('rooms')">My rooms</a></li>
         <li class="active"><a href="" ng-click="setTab('messages')">Messages</a></li>
-        <li><a href="" ng-click="setTab('profile')">Profile</a></li>
-        <li><a href="" ng-click="setTab('account')">Account</a></li>
+        <li><a href="/#!/dashboard/profile" ng-click="setTab('profile')">Profile</a></li>
+        <li><a href="/#!/dashboard/account" ng-click="setTab('account')">Account</a></li>
       </ul>
     </div>
   </div>
@@ -31,8 +31,10 @@
       <div class="col-sm-6" ng-cloak>
 
         <div class="bordered room-card">
-          <!-- <div class="room-image" style="background-image:url(//res.cloudinary.com/dv8yfamzc/image/upload/{{room.pictures[0]}}.png);"></div> -->
-          <div class="room-image" style="background-image:url(http://placehold.it/400x400);"></div>
+          <div ng-if="inbox.room.pictures.length == 0" class="room-image empty tint-bg">
+            <i class="icon-camera-1"></i>
+          </div>
+          <div ng-if="inbox.room.pictures.length > 0" class="room-image" style="background-image:url(//res.cloudinary.com/dv8yfamzc/image/upload/{{inbox.room.pictures[0]}}.png);"></div>
 
           <div class="room-info">
             <h3>{{inbox.room.info.title}}</h3>
@@ -55,13 +57,13 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row message-input">
 
           <form ng-submit="sendMessage()" class="col-sm-12">
             <div class="input-group input-group-lg">
               <input type="text" ng-model="newMessage" ng-maxlength="500" class="form-control input-lg" placeholder="Type your message" required>
               <span class="input-group-btn">
-                <button type="submit" class="btn" ng-disabled="busy">Send</button>
+                <button type="submit" class="btn btn-blue" ng-disabled="busy">Send</button>
               </span>
             </div>
           </form>

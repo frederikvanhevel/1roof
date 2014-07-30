@@ -2,7 +2,7 @@
 
   .room-card {
     padding: 0;
-
+    margin-bottom: 10px;
 
     .room-image {
       float: left;
@@ -11,6 +11,12 @@
       background-position: center;
       height: 100px;
       width: 150px;
+
+      &.empty {
+        font-size: 40px;
+        text-align: center;
+        line-height: 95px;
+      }
     }
 
     .room-info {
@@ -81,6 +87,10 @@
 
     }
 
+  }
+
+  .message-input {
+    margin-top: 10px;
   }
 
 }

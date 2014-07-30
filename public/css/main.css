@@ -7246,6 +7246,7 @@ USERS MODULE
 
 .inbox .room-card {
   padding: 0;
+  margin-bottom: 10px;
 }
 .inbox .room-card .room-image {
   float: left;
@@ -7254,6 +7255,11 @@ USERS MODULE
   background-position: center;
   height: 100px;
   width: 150px;
+}
+.inbox .room-card .room-image.empty {
+  font-size: 40px;
+  text-align: center;
+  line-height: 95px;
 }
 .inbox .room-card .room-info {
   float: left;
@@ -7312,6 +7318,9 @@ USERS MODULE
   border-style: solid;
   border-width: 0 15px 15px 0;
   border-color: transparent #1ABB9C transparent transparent;
+}
+.inbox .message-input {
+  margin-top: 10px;
 }
 
 .my-rooms h4, .my-rooms .indicator {
