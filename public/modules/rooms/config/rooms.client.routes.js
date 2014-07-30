@@ -15,8 +15,7 @@ angular.module('rooms').config(['$stateProvider',
 		}).
 		state('editRoom', {
 			url: '/rooms/:roomId/edit/:nav',
-			templateUrl: 'modules/rooms/views/edit-room.client.view.html',
-			reloadOnSearch: false
+			templateUrl: 'modules/rooms/views/edit-room.client.view.html'
 		});
 	}
 ]);

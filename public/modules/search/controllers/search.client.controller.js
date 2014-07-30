@@ -136,8 +136,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
     $scope.saveQueryAsUserAlert = function() {
       if (Authentication.user) {
         var query = angular.copy($scope.filter);
-        // Set bigger proximity
-        query.proximity = 50000;
 
         Authentication.user.alerts.push({ filters: query });
         var user = new Users(Authentication.user);
@@ -155,7 +153,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
 
         if (viewedRooms.indexOf(roomId) === -1) viewedRooms.push(roomId);
 
-       
       } else {
         $scope.selectedRoomId = null;
 
@@ -192,10 +189,10 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
     function showRoomOverlay() {
 
       console.log($stateParams);
-
+      //$location.path('/rooms/' + $scope.selectedRoomId);
       $state.transitionTo('search.overlay', $stateParams, { reload: false, location: false });
       $scope.$broadcast('close_marker_popups');
-      //$location.path('/rooms' + $scope.selectedRoomId);
+      
 
       $scope.isOverLayOpen = true;
     }

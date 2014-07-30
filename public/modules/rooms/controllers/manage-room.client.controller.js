@@ -19,6 +19,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.amenities = Amenity.list();
         $scope.errors = [];
 
+        $scope.newAddress = '';
+        $scope.newAddressDetails = {};
+
          // Init
         $scope.init = function() {
             if ($stateParams.nav) $scope.nav = $stateParams.nav;
@@ -79,19 +82,27 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         $scope.uploadImage = function(image) {
+            $scope.busy = true;
             $upload.upload({
                 url: 'rooms/' + $scope.room._id + '/upload',
                 data: { index: $scope.room.pictures.length },
                 file: image
             }).success(function(data, status, headers, config) {
                 $scope.room.pictures.push(data.id);
+                 $scope.busy = false;
             });
         };
 
         $scope.removeImage = function(index) {
-            var room = $scope.room;
+            $scope.busy = true;
 
-            room.$removeImage({index: index, id: $scope.room.pictures[index]});
+            var room = angular.copy($scope.room);
+            console.log('removing image');
+
+            room.$removeImage({index: index, id: $scope.room.pictures[index]}).then(function(result) {
+                $scope.room = result;
+                $scope.busy = false;
+            });
         };
 
         $scope.toggleAmenitySelection = function(amenity) {
@@ -129,7 +140,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         $scope.openAddressMdoal = function() {
-            Modal.changeAddress();
+            Modal.changeAddress($scope.newAddressDetails).then(function(e) {
+                console.log($scope.newAddressDetails);
+            });
         };
     }
 ]);

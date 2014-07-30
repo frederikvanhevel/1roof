@@ -151,4 +151,12 @@
   .contact-bottom {
     margin-bottom: 30px;
   }
+
+  .datepicker {
+    .pika-single {
+      z-index: 0;
+      width: 100%;
+      border: none;
+    }
+  }
 }

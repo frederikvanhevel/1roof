@@ -6294,6 +6294,10 @@ footer {
   background-color: #FFF;
 }
 
+.pac-container {
+  z-index: 1051 !important;
+}
+
 .btn-social {
   position: relative;
   padding-left: 50px;
@@ -6576,7 +6580,6 @@ footer {
   background: #fff;
   border: 1px solid #ccc;
   border-bottom-color: #bbb;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .pika-single.is-hidden {
@@ -6864,6 +6867,11 @@ ROOMS MODULE
 .view-room .contact-bottom {
   margin-bottom: 30px;
 }
+.view-room .datepicker .pika-single {
+  z-index: 0;
+  width: 100%;
+  border: none;
+}
 
 .create-room .creationStep-content {
   margin-top: 50px;
@@ -6936,10 +6944,11 @@ ROOMS MODULE
 }
 .room-edit .pictures .picture {
   position: relative;
+  margin-bottom: 25px;
 }
 .room-edit .pictures .picture .remove-button {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   padding: 5px 10px;
   right: 25px;
 }
@@ -7018,6 +7027,7 @@ SEARCH MODULE
 }
 .search-view .sidebar .search-results ul.results-list li.search-result.is-seen {
   color: grey;
+  opacity: 0.7;
 }
 .search-view .sidebar .search-results ul.results-list li.search-result .result-type, .search-view .sidebar .search-results ul.results-list li.search-result .result-info {
   float: left;

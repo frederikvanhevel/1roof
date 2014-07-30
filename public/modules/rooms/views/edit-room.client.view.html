@@ -180,13 +180,14 @@
           <div class="panel-body">
             <div class="pictures-header">
               <h5 class="pull-right"><small>{{room.pictures.length}} images</small></h5>
-              <button class="btn btn-blue"><i class="icon-upload-cloud"></i> Add an image</button>
-              <input class="file-input" type="file" ng-file-select="onImageSelect($files)" accept="image/*">
+              <button class="btn btn-blue" ng-file-select="onImageSelect($files)" accept="image/*">
+                <i class="icon-upload-cloud"></i> Add an image
+              </button>
             </div>
             <div class="pictures" ng-hide="room.pictures.length == 0">
               <div class="picture col-sm-6" ng-repeat="picture in room.pictures">
                 <div class="image" style="background-image: url('http://res.cloudinary.com/dv8yfamzc/image/upload/{{picture}}.png');" alt="..."></div>
-                <button class="remove-button btn" ng-click="removeImage($index)"><i class="icon-trash-1"></i></button>
+                <button class="remove-button btn btn-red" ng-click="removeImage($index)"><i class="icon-trash-1"></i></button>
               </div>
               
             </div>

@@ -40,8 +40,11 @@ angular.module('core').directive('datePicker', [ '$window',
         });
 
         scope.$watch('minDate', function() {
-          picker.setMinDate(new Date(scope.minDate));
-          picker.setDate(new Date(scope.minDate), true);
+          var min = new Date(scope.minDate);
+          picker.setMinDate(min);
+
+          if (min > scope.dateModel)
+            picker.setDate(min, true);
         });
 
       }

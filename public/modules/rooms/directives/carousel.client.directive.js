@@ -30,7 +30,7 @@ angular.module('rooms').directive('owlCarousel', [ '$window',
 		    });
 
 		    scope.$on('$destroy', function() {
-          carousel.destroy();
+          if (carousel) carousel.destroy();
         });
 			}
 		};

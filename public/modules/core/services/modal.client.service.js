@@ -38,10 +38,15 @@ angular.module('core').service('Modal', [ '$modal',
       return this.showModal(options, {});
     };
 
-    this.changeAddress = function() {
+    this.changeAddress = function(addressDetails) {
       var options = {
         templateUrl: 'modules/rooms/views/modals/change-address-modal.client.view.html',
-        controller: 'ManageRoomController'
+        controller: 'ManageRoomController',
+        resolve: {
+          addressDetails: function () {
+            return addressDetails;
+          }
+        }
       };
 
       return this.showModal(options, {});
