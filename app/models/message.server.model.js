@@ -11,11 +11,7 @@ var mongoose = require('mongoose'),
  */
 var MessageSchema = new Schema({
     message: String,
-    from: {
-      type: Schema.ObjectId,
-      ref: 'User'
-    },
-    to: {
+    sender: {
       type: Schema.ObjectId,
       ref: 'User'
     },
@@ -27,6 +23,6 @@ var MessageSchema = new Schema({
       type: Boolean,
       default: false
     }
-});
+}, { _id: false });
 
 mongoose.model('Message', MessageSchema);

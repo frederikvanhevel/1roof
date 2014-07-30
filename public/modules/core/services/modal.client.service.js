@@ -26,7 +26,7 @@ angular.module('core').service('Modal', [ '$modal',
 
     this.contact = function(contactInfo) {
       var options = {
-        templateUrl: 'modules/rooms/views/modals/contact-modal.view.client.html',
+        templateUrl: 'modules/rooms/views/modals/contact-modal.client.view.html',
         controller: 'RoomsController',
         resolve: {
           contactInfo: function () {

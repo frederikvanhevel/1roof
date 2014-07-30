@@ -7244,19 +7244,34 @@ USERS MODULE
   background: #1ABB9C;
 }
 
-.messages {
+.inbox .room-card {
+  padding: 0;
+}
+.inbox .room-card .room-image {
+  float: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100px;
+  width: 150px;
+}
+.inbox .room-card .room-info {
+  float: left;
+  padding: 10px;
+}
+.inbox .messages {
   max-height: 300px;
   overflow: auto;
   padding: 10px;
 }
-.messages .serverinfo {
+.inbox .messages .serverinfo {
   padding: 20px 0;
   border-bottom: 1px solid #E6E9ED;
   border-top: 1px solid #E6E9ED;
   width: 300px;
   margin: 20px auto;
 }
-.messages .bubble, .messages .bubble--alt {
+.inbox .messages .bubble, .inbox .messages .bubble--alt {
   position: relative;
   margin-top: 3px;
   margin-bottom: 20px;
@@ -7265,12 +7280,12 @@ USERS MODULE
   clear: both;
   color: #FFF;
 }
-.messages .bubble {
+.inbox .messages .bubble {
   float: left;
   margin-right: auto;
   background-color: #FA6C65;
 }
-.messages .bubble:after {
+.inbox .messages .bubble:after {
   content: ' ';
   position: absolute;
   bottom: -15px;
@@ -7281,13 +7296,13 @@ USERS MODULE
   border-width: 15px 15px 0 0;
   border-color: #fa6c65 transparent transparent transparent;
 }
-.messages .bubble--alt {
+.inbox .messages .bubble--alt {
   float: right;
   margin-left: auto;
   text-align: right;
   background-color: #1ABB9C;
 }
-.messages .bubble--alt:after {
+.inbox .messages .bubble--alt:after {
   content: ' ';
   position: absolute;
   bottom: -15px;

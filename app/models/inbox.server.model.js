@@ -10,10 +10,7 @@ var mongoose = require('mongoose'),
  * Inbox Schema
  */
 var InboxSchema = new Schema({
-  messages: [{
-    type: Schema.ObjectId,
-    ref: 'Message'
-  }],
+  messages: ['Message'],
   appointment : {
     type: Schema.ObjectId,
     ref: 'Appointment'

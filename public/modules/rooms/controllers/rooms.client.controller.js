@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', '$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', 'Amenity', 'Modal',
-    function($rootScope, $window, $scope, $stateParams, $location, Authentication, Rooms, Geocoder, Amenity, Modal) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', '$scope', '$stateParams', '$location', '$http', 'Authentication', 'Rooms', 'Geocoder', 'Amenity', 'Modal',
+    function($rootScope, $window, $scope, $stateParams, $location, $http, Authentication, Rooms, Geocoder, Amenity, Modal) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
@@ -44,14 +44,14 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
             else return false;
         };
 
-        $scope.sendMessage = function() {
-            $scope.room.$sendMessage({
-                message: 'macheert da iere?'
-            });
-        };
-
         $scope.openContactModal = function() {
-            Modal.contact($scope.contactInfo);
+            if (!Authentication.user) {
+                Modal.signup().then(function() {
+                    Modal.contact($scope.contactInfo).then(sendMessage);
+                });
+            } else {
+                Modal.contact($scope.contactInfo).then(sendMessage);
+            }
         };
 
         $scope.closeOverlay = function() {
@@ -61,6 +61,14 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
         $scope.isOverlay = function() {
             return $stateParams.isOverlay;
         };
+
+        function sendMessage(message) {
+            $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {
+                // notify
+            }).error(function(response) {
+                
+            });
+        }
 
         function postLoad() {
             $scope.otherRooms = Rooms.getRoomsOfSameLocation({

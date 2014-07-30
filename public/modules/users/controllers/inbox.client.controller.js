@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('InboxController', ['$scope', '$location', '$stateParams', 'Inbox', 'Authentication',
-	function($scope, $location, $stateParams, Inbox, Authentication) {
+angular.module('users').controller('InboxController', ['$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication',
+	function($scope, $location, $http, $stateParams, Inbox, Authentication) {
     $scope.authentication = Authentication;
     $scope.newMessage = '';
     $scope.busy = false;
@@ -23,13 +23,20 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
     };
 
     $scope.sendMessage = function() {
+     
+      console.log($scope.newMessage);
+      if (!$scope.newMessage || $scope.newMessage === '') return;
+
       $scope.busy = true;
-      $scope.inbox.$sendMessage({
-        message:  $scope.newMessage
-      }, function() {
-        $scope.busy = false;
-        $scope.newMessage = '';
+
+      $http.post('/inbox/' + $scope.inbox._id + '/sendmessage', { message: $scope.newMessage }).success(function(response) {
+          $scope.busy = false;
+          $scope.newMessage = '';
+          $scope.inbox = response;
+      }).error(function(response) {
+          $scope.busy = false;
       });
+
     };
 
     $scope.isMessageOwner = function(message) {

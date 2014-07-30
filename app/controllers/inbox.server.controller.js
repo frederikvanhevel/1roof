@@ -5,35 +5,17 @@
  */
 var mongoose = require('mongoose'),
   Inbox = mongoose.model('Inbox'),
+  Message = mongoose.model('Message'),
   Appointment = mongoose.model('Appointment'),
-	_ = require('lodash');
+	_ = require('lodash'),
+  winston = require('winston');
 
-/**
- * Create an Inbox
- 
-exports.create = function(req, res) {
-  var inbox = new Inbox(req.body);
-  inbox.sender = req.user;
-
-  inbox.update(function(err) {
-    if (err) {
-      return res.send(400, {
-        message: getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(inbox);
-    }
-  });
-};
-*/
 
 /**
  *  Add message to the current Inbox or create a new one
  */
 exports.sendMessageOrCreate = function(req, res) {
   var room = req.room;
-  var message = req.query;
-  message.sender = req.user._id;
 
   var contents = {
     room: room._id,
@@ -41,8 +23,14 @@ exports.sendMessageOrCreate = function(req, res) {
     sender: req.user._id
   };
 
+  var message = new Message({
+    message: req.body.message,
+    sender: req.user._id
+  });
+
   Inbox.update(contents, { $addToSet: { messages: message }}, { upsert: true }, function(err) {
     if (err) {
+      winston.error('Error saving new inbox', { inbox: contents, message: message });
       return res.send(400);
     } else {
       res.send(200);
@@ -55,10 +43,13 @@ exports.sendMessageOrCreate = function(req, res) {
  */
 exports.sendMessage = function(req, res) {
   var inbox = req.inbox;
-  inbox.messages.push({
-    message: req.query.message,
-    sender: req.user
+
+  var message = new Message({
+    message: req.body.message,
+    sender: req.user._id
   });
+
+  inbox.messages.push(message);
 
   inbox.save(function(err) {
     if (err) {
