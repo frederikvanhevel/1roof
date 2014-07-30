@@ -22,6 +22,9 @@ module.exports = function(app) {
   app.route('/rooms/:roomId/message')
     .post(users.requiresLogin, inbox.sendMessageOrCreate);
 
+   app.route('/rooms/:roomId/favorite')
+    .post(users.requiresLogin, rooms.toggleFavorite);
+
 	app.route('/rooms/:roomId/same')
 		.get(rooms.listOfRoomsInSameLocation);
 

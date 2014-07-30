@@ -61,12 +61,28 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
         $scope.openContactModal = function() {
             if (!Authentication.user) {
                 Modal.signup().then(function() {
-                    console.log('ou');
                     Modal.contact($scope.contactInfo).then(sendMessage);
                 });
             } else {
                 Modal.contact($scope.contactInfo).then(sendMessage);
             }
+        };
+
+        $scope.toggleFavorite = function() {
+            console.log('elaa');
+            if (!Authentication.user) {
+                Modal.signup().then(function() {
+                    sendFavorite();
+                });
+            } else {
+                sendFavorite();
+            }
+        };
+
+        $scope.isInfavorites = function() {
+            if (Authentication.user)
+                return Authentication.user.favorites.indexOf($scope.room._id) !== -1;
+            else return false;
         };
 
         $scope.closeOverlay = function() {
@@ -76,6 +92,20 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
         $scope.isOverlay = function() {
             return $stateParams.isOverlay;
         };
+
+        function sendFavorite() {
+            $http.post('/rooms/' + $scope.room._id + '/favorite').success(function(response) {
+                var index = Authentication.user.favorites.indexOf($scope.room._id);
+                if (index === -1) {
+                    Authentication.user.favorites.push($scope.room._id);
+                    Alert.add('success', 'Added to favorites!', 3000);
+                } else {
+                    Authentication.user.favorites.splice(index, 1);
+                }
+            }).error(function(response) {
+                Alert.add('danger', 'There was a problem with adding this favorite, try again later.', 5000);
+            });
+        }
 
         function sendMessage(message) {
             $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {

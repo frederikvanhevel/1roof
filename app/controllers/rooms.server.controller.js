@@ -202,6 +202,29 @@ exports.getUserFavorites = function(req, res, next) {
 };
 
 /**
+ * Toggle room favorite
+ */
+exports.toggleFavorite = function(req, res, next) {
+	var user = req.user;
+	var room = req.room;
+
+	var index = user.favorites.indexOf(room._id);
+	if (index === -1) {
+		user.favorites.push(room._id);
+	} else {
+		user.favorites.splice(index, 1);
+	}
+
+	user.save(function(err) {
+		if (err) {
+			return res.send(400);
+		} else {
+			res.send(200);
+		}
+	});
+};
+
+/**
  * Room authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {

@@ -273,6 +273,7 @@
     background-clip: padding-box;
     border-radius: 20px;
     background-color: rgba(26, 187, 156, .4);
+    z-index: 6;
 
     &:hover {
       background-color: rgba(191, 144, 144, .4);

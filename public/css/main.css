@@ -6208,6 +6208,17 @@ html, body {
   text-decoration: none;
 }
 
+.alert-item.ng-leave {
+  -webkit-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+}
+.alert-item.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+.alert-item.ng-leave {
+  opacity: 1;
+}
+
 header.navbar {
   box-shadow: rgba(0, 0, 0, 0.09804) 0 3px 10px;
   background: #FFF;
@@ -7205,6 +7216,7 @@ SEARCH MODULE
   background-clip: padding-box;
   border-radius: 20px;
   background-color: rgba(26, 187, 156, 0.4);
+  z-index: 6;
 }
 .search-view .marker-cluster:hover {
   background-color: rgba(191, 144, 144, 0.4);
