@@ -7140,10 +7140,7 @@ SEARCH MODULE
 .search-view .room-overlay {
   background: rgba(255, 255, 255, 0.8);
   overflow: auto;
-}
-.search-view .room-overlay.ng-enter, .search-view .room-overlay.ng-leave {
   transition: opacity .2s;
-  opacity: 0;
 }
 .search-view .room-overlay.ng-enter-active {
   opacity: 1;

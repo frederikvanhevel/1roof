@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').directive('scrollBottom', [
-  function() {
+angular.module('users').directive('scrollBottom', [ '$timeout',
+  function($timeout) {
         return {
             require: 'ngModel',
             scope: {
@@ -15,9 +15,10 @@ angular.module('users').directive('scrollBottom', [
                     el.scrollTop = el.scrollHeight;
                 }
 
-                scope.$on('messages_rendered', function() {
-                    console.log('ej');
-                    scrollToBottom();
+                scope.$parent.$on('messages_rendered', function() {
+                    $timeout(function() {
+                        scrollToBottom();
+                    }, 100);
                 });                
                 scope.$watch('model', function(newValue, oldValue){
                     if (newValue) scrollToBottom();

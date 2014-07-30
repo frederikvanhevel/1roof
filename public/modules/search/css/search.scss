@@ -191,11 +191,8 @@
 
     background: rgba(255, 255, 255, 0.8);
     overflow: auto;
+    transition: opacity .2s;
 
-    &.ng-enter, &.ng-leave {
-      transition: opacity .2s;
-      opacity: 0;
-    }
     &.ng-enter-active {
       opacity: 1
     }

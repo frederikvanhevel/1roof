@@ -34,7 +34,6 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
       }).error(function(response) {
           $scope.busy = false;
       });
-
     };
 
     $scope.isMessageOwner = function(message) {
@@ -45,8 +44,6 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
       $scope.findOne(inboxId);
       $location.path('dashboard/messages/' + inboxId);
     };
-
-
 
     $scope.getUserPicture = function(inbox) {
       var user = inbox.sender._id === Authentication.user._id ? inbox.roomOwner : inbox.sender;
