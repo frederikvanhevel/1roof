@@ -7072,6 +7072,15 @@ SEARCH MODULE
 .search-view .map .map-canvas {
   height: 100%;
 }
+.search-view .map .maki-icon.college {
+  width: 24px !important;
+  height: 24px !important;
+  z-index: 5 !important;
+  opacity: 0.5;
+}
+.search-view .map .maki-icon.college:hover {
+  opacity: 1;
+}
 .search-view .map .marker {
   padding: 0;
   margin: 0;

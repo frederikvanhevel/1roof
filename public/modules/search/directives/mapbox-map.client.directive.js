@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window',
-  function($compile, $q, $window) {
+angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window', '$http',
+  function($compile, $q, $window, $http) {
 
     var _mapboxMap;
 
@@ -34,6 +34,8 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window',
           var group = new $window.L.featureGroup(scope.markers);
           scope.map.fitBounds(group.getBounds());
         };
+
+        var foursquareMarkers = new $window.L.featureGroup().addTo(scope.map);
 
         if (scope.changedEvent) {
           scope.map.on('moveend', function(e) {
@@ -76,6 +78,46 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window',
 
           return Math.floor(northWest.distanceTo(southEast));
         }
+
+        function getFoursquareData() {
+          var center = scope.map.getCenter();
+
+          var params = {
+            client_id: '4I5SHYQHG4OXY2ZCCRTFPNYFVK0U0G4NPLIBKLWGM2SWLPVY',
+            client_secret: '11YEGLXWQBXX4KERSY2CXLMC4E3C2X021DGZLXVVMK0KRWJZ',
+            ll: center.lat + ',' + center.lng,
+            radius: getBoundsDistance(),
+            v: '20140701',
+            categoryId: '4bf58dd8d48988d1ae941735'  // university category
+          };
+
+          $http({
+            url: 'https://api.foursquare.com/v2/venues/search', 
+            method: 'GET',
+            params: params
+          }).success(function(result) {
+            result.response.venues.forEach(function(venue) {
+
+              var latlng = $window.L.latLng(venue.location.lat, venue.location.lng);
+              var marker = $window.L.marker(latlng, {
+                icon: $window.L.divIcon({className: 'maki-icon college'})
+              })
+              .bindPopup('<a target="_blank" href="https://foursquare.com/v/' + venue.id + '">' + venue.name + '</a>')
+              .addTo(foursquareMarkers);
+
+            });
+          });
+
+          //scope.map.on('zoomend', function() {
+          //  if (scope.map.getZoom() >= 13) {
+          //      foursquareMarkers.setFilter(function() { return true; });
+          //  } else {
+          //      foursquareMarkers.setFilter(function() { return false; });
+          //  }
+          //});
+        }
+
+        getFoursquareData();
 
       },
       controller: function($scope) {

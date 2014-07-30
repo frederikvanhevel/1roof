@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').directive('mapboxMarker', [ '$compile', '$window',
-  function($compile, $window) {
+angular.module('search').directive('mapboxMarker', [ '$compile', '$window', '$http',
+  function($compile, $window, $http) {
 
     var _colors = {
       navy: '#001f3f',
@@ -137,6 +137,7 @@ angular.module('search').directive('mapboxMarker', [ '$compile', '$window',
               });
             }
           }, 0);
+
         });
       }
     };
