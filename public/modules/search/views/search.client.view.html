@@ -52,17 +52,25 @@
 
   <div class="map">
 
-    <mapbox-map class="map-canvas" map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" prevent-popups="isOverLayOpen" cluster-markers="false">
+    <mapbox-map class="map-canvas" map-center="mapCenter" map-zoom="mapZoom" map-changed="mapChangedEvent" prevent-popups="isOverLayOpen" cluster-markers="false" select-room="selectRoom">
         <mapbox-marker lat="{{room.loc.coordinates[1]}}" lng="{{room.loc.coordinates[0]}}" color="#FA6C65" icon="{{getRoomTypeIcon(room.classification)}}"  ng-repeat="room in results" room-id="{{room._id}}">
 
-            <div class="row marker" style="background-image:url(//res.cloudinary.com/dv8yfamzc/image/upload/{{room.pictures[0]}}.png);">
-              <div class="col-xs-12" ng-click="selectRoom(room._id)">
+            <div class="row marker" style="background-image: url(//res.cloudinary.com/dv8yfamzc/image/upload/{{room.pictures[0]}}.png);" ng-click="selectRoom('{{room._id}}')">
+
+              <div data-val="{{room.pictures.length == 0}}" class="no-image tint-bg">
+                <i class="icon-camera-1"></i>
+              </div>
+
+              <div class="col-xs-12">
+
                 <div class="pull-right">
-                  <button class="btn btn-default btn-xs" ng-click="selectRoom(room._id)">More info <i class="icon-right-open-1"></i></button>
+                  <button class="btn btn-default btn-xs">More info <i class="icon-right-open-1"></i></button>
                 </div>
                 <h1>{{room.location.street}}</h1>
                 <span class="bottom-right">&euro; {{room.price.total}}</span>
+
               </div>
+
             </div>
 
         </mapbox-marker>

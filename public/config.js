@@ -17,7 +17,6 @@ var ApplicationConfiguration = (function() {
 		'ngAutocomplete',
 		'LocalStorageModule',
 		'angularMoment',
-		'angular-carousel',
 		'angularFileUpload',
 		'angularMoment'
 	];

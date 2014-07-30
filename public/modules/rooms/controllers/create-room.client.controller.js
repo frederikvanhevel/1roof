@@ -30,11 +30,6 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
 
             // Create new Room object
             var room = new Rooms({
-                price: {
-                    base: Math.random()*400,
-                    egw: Math.random()*100,
-                    cleaning: Math.random()*30
-                },
                 location: {
                     street: $scope.addressDetails.street,
                     city: $scope.addressDetails.city,
@@ -44,7 +39,7 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
                     type: 'Point',
                     coordinates: $scope.addressDetails.geo
                 },
-                roomType: $scope.createForm.roomType
+                classification: $scope.createForm.roomType
             });
 
             // Redirect after save

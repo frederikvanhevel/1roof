@@ -34,6 +34,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
         $scope.watchForUpdates = function() {
             $scope.$broadcast('room_loaded', $scope.room);
+            $scope.checkRoomCompleteness();
 
             var updateFunction = $window._.debounce($scope.update, 1200);
             // Use watchGroup in angular 3.1
@@ -129,14 +130,19 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.checkRoomCompleteness = function() {
             var errors = [];
 
-            if (!$scope.room.info.title || $scope.room.info.title === '') errors.push('title');
-            if (!$scope.room.price.base || $scope.room.price.base === 0) errors.push('price');
-            if (!$scope.room.available.from) errors.push('availableFrom');
-            if (!$scope.room.available.till) errors.push('availableTill');
+            if (!$scope.room.info.title || $scope.room.info.title === '') errors.push('general');
+            if (!$scope.room.price.base || $scope.room.price.base === 0) errors.push('costs');
+            if (!$scope.room.available.from) errors.push('availability');
+            if (!$scope.room.available.till) errors.push('availability');
 
             console.log(errors);
 
             $scope.errors = errors;
+        };
+
+        $scope.tabHasError = function(tab) {
+            console.log($scope.errors);
+            return $scope.errors.indexOf(tab) !== -1;
         };
 
         $scope.openAddressMdoal = function() {

@@ -1,4 +1,4 @@
-<section data-ng-controller="ManageRoomController" data-ng-init="init()">
+<section data-ng-controller="ManageRoomController" data-ng-init="init()" class="edit-room">
 
 
   <div class="room-owner-panel dark-bg">
@@ -6,27 +6,29 @@
       <span class="pull-right">
         <a href="/#!/rooms/{{room._id}}">view how this room will look for the users <i class="icon-right-open"></i></a>
       </span>
+      <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> You need to fill in some more details before you can publish the room.</span>
     </div>
   </div>
 
-  <div class="container room-edit">
-    <div class="page-header">
-        <p class="red" ng-show="errors.length != 0">You have to fill in some more info damnit!</p>
-    </div>
+  <div class="edit-details container">
+
     <div class="col-md-3">
       <ul class="sidenav">
         <li ng-class="{ active: nav == 'general'}">
           <a ng-click="setTab('general')" href="">
+            <i ng-if="tabHasError('general')" class="icon-attention-1 red"></i> 
             General
           </a>
         </li>
         <li ng-class="{ active: nav == 'availability'}">
           <a ng-click="setTab('availability')" href="">
+            <i ng-if="tabHasError('availability')" class="icon-attention-1 red"></i> 
             Availability
           </a>
         </li>
         <li ng-class="{ active: nav == 'costs'}">
           <a ng-click="setTab('costs')" href="">
+            <i ng-if="tabHasError('costs')" class="icon-attention-1 red"></i> 
             Costs
           </a>
         </li>
@@ -44,6 +46,11 @@
           <a ng-click="setTab('pictures')" href="">
             Pictures
           </a>
+        </li>
+        <li ng-class="{ active: nav == 'pictures'}">
+          <button class="btn btn-blue btn-block" ng-disabled="errors.length > 0" disabled>
+            <i class="glyphicon glyphicon-ok"></i> Publish
+          </button>
         </li>
       </ul>
     </div>

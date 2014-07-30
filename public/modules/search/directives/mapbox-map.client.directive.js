@@ -13,7 +13,8 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window', '
         center: '=mapCenter',
         zoom: '=mapZoom',
         changedEvent: '=mapChanged',
-        preventPopups: '=preventPopups'
+        preventPopups: '=',
+        selectRoom: '='
       },
       template: '<div class="map-canvas" ng-transclude></div>',
 
@@ -57,6 +58,12 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window', '
           scope.markers.forEach(function(marker) {
             marker.closePopup();
           });
+        });
+
+        scope.map.on('popupopen', function(e) {
+          var popup = angular.element(document.getElementsByClassName('leaflet-popup-content'));
+          $compile(popup)(scope);
+          if(!scope.$$phase) scope.$digest();
         });
 
         scope.$on('$destroy', function() {

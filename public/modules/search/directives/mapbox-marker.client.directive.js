@@ -31,7 +31,7 @@ angular.module('search').directive('mapboxMarker', [ '$compile', '$window', '$ht
       replace: true,
       link: function(scope, element, attrs, controller, transclude) {
         var opts = { draggable: attrs.draggable !== undefined };
-        
+
         var marker;
 
         function setStyleOptions(attrs, default_opts) {
@@ -95,17 +95,13 @@ angular.module('search').directive('mapboxMarker', [ '$compile', '$window', '$ht
         };
 
         controller.getMap().then(function(map) {
-          map.on('popupopen', function(e) {
-            // ensure that popups are compiled
-            var popup = angular.element(document.getElementsByClassName('leaflet-popup-content'));
-            $compile(popup)(scope);
-            if(!scope.$$phase) scope.$digest();
-          });
 
           setTimeout(function() {
             // there's got to be a better way to programmatically access transcluded content
             var popupHTML = '';
+
             var transcluded = transclude(scope, function() {});
+
             for(var i = 0; i < transcluded.length; i++) {
               if(transcluded[i].outerHTML !== undefined) popupHTML += transcluded[i].outerHTML;
             }
@@ -116,6 +112,7 @@ angular.module('search').directive('mapboxMarker', [ '$compile', '$window', '$ht
               if(popupHTML) {
                 var popup = angular.element(popupHTML);
                 $compile(popup)(scope);
+
                 if(!scope.$$phase) scope.$digest();
 
                 var newPopupHTML = '';

@@ -118,6 +118,7 @@
       height: 24px !important;
       z-index: 5 !important;
       opacity: 0.5;
+      transition: opacity .3s ease;
 
       &:hover {
         opacity: 1;
@@ -138,6 +139,20 @@
       cursor: pointer;
       position: relative;
       font-weight: bold;
+
+      .no-image {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        font-size: 36px;
+        text-align: center;
+        line-height: 149px;
+
+        // dirty hack :)
+        &[data-val="false"] {
+          display: none;
+        }
+      }
 
       .col-xs-12 {
         padding: 4px;

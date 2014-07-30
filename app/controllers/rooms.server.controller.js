@@ -97,7 +97,7 @@ exports.delete = function(req, res) {
  */
 exports.list = function(req, res) {
 	var params = req.query;
-	var query = {};
+	var query = { visible: true };
 	
 	if (params.location) {
 		query.loc = {
