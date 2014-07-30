@@ -25,8 +25,24 @@ angular.module('core').service('Modal', [ '$modal',
     };
 
     this.contact = function(contactInfo) {
+      console.log(contactInfo);
+
       var options = {
         templateUrl: 'modules/rooms/views/modals/contact-modal.client.view.html',
+        controller: 'RoomsController',
+        resolve: {
+          contactInfo: function () {
+            return contactInfo;
+          }
+        }
+      };
+
+      return this.showModal(options, {});
+    };
+
+    this.reservation = function(contactInfo) {
+      var options = {
+        templateUrl: 'modules/rooms/views/modals/reservation-modal.client.view.html',
         controller: 'RoomsController',
         resolve: {
           contactInfo: function () {

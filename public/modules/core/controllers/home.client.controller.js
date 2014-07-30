@@ -7,8 +7,6 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
     $scope.search = '';
     $scope.searchDetails = {};
 
-    Alert.add('danger', 'WTF IS DEZE SHIT MAAAN????', 5000);
-
     $scope.goToSearch = function() {
       if ($scope.searchDetails.geometry) {
         $location.path('search/' + $scope.search.replace(/, /g, '--'))

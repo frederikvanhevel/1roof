@@ -167,7 +167,9 @@
 			<div class="rightcolumn col-lg-4">
 				<div class="panel panel-default">
 				  <div class="panel-body">
-				  	<div class="datepicker" date-picker append-element></div>
+				  	<div class="datepicker" date-picker append-element date-model="appointmentDate"></div>
+
+				  	<button ng-click="openReservationModal()" class="btn btn-blue btn-block"><i class="icon-calendar-1"></i> Schedule appointment</button>
 
 						<!-- <form role="form" name"contactForm" ng-submit="sendMessage()" novalidate>
 						  <div class="form-group">
@@ -179,6 +181,7 @@
 						  <button type="submit" class="btn btn-block btn-blue"><i class="glyphicon glyphicon-ok"></i> Tour it</button>
 						</form> -->
 				  </div>
+
 				</div>
 
 				<div class="panel panel-default">

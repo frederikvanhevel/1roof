@@ -1,15 +1,16 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', '$scope', '$stateParams', '$location', '$http', 'Authentication', 'Rooms', 'Geocoder', 'Amenity', 'Modal',
-    function($rootScope, $window, $scope, $stateParams, $location, $http, Authentication, Rooms, Geocoder, Amenity, Modal) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', '$scope', '$stateParams', '$location', '$http', 'Authentication', 'Rooms', 'Geocoder', 'Amenity', 'Modal', 'Alert',
+    function($rootScope, $window, $scope, $stateParams, $location, $http, Authentication, Rooms, Geocoder, Amenity, Modal, Alert) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
-            isTour: false,
+            appointmentDate: new Date(),
             name: '',
             email: ''
         };
+        $scope.appointmentDate = new Date();
         $scope.slideIndex = 0;
         $scope.otherRooms = [];
         $scope.amenities = Amenity.list();
@@ -44,6 +45,19 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
             else return false;
         };
 
+        $scope.openReservationModal = function() {
+            var contactDetails = angular.copy($scope.contactInfo);
+            contactDetails.appointmentDate = $scope.appointmentDate;
+
+            if (!Authentication.user) {
+                Modal.signup().then(function() {
+                    Modal.reservation(contactDetails).then(sendMessage);
+                });
+            } else {
+                Modal.reservation(contactDetails).then(sendMessage);
+            }
+        };
+
         $scope.openContactModal = function() {
             if (!Authentication.user) {
                 Modal.signup().then(function() {
@@ -64,9 +78,9 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
 
         function sendMessage(message) {
             $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {
-                // notify
+                Alert.add('success', 'Your message has been sent!', 5000);
             }).error(function(response) {
-                
+                Alert.add('danger', 'There was a problem with sending your message, try again later.', 5000);
             });
         }
 

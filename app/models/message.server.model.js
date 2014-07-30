@@ -22,6 +22,10 @@ var MessageSchema = new Schema({
     isRead: {
       type: Boolean,
       default: false
+    },
+    isServerMessage: {
+      type: Boolean,
+      default: false
     }
 }, { _id: false });
 

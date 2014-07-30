@@ -23,8 +23,6 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
     };
 
     $scope.sendMessage = function() {
-     
-      console.log($scope.newMessage);
       if (!$scope.newMessage || $scope.newMessage === '') return;
 
       $scope.busy = true;
