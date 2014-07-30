@@ -22,8 +22,32 @@ header.navbar {
   z-index: 1000;
   min-height: initial;
 
+  .profile {
+
+    .profile-name {
+      margin-left: 40px;
+    }
+
+    .profile-picture {
+      float: left;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      position: absolute;
+      left: 0;
+      top: 6px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin-left: 10px;
+    }
+
+  }
+
+
   .advertise-button {
     padding: 5px 13px 6px;
+    margin-left: 5px;
   }
 
   .header-messages-icon {

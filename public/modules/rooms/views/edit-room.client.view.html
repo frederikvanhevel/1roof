@@ -17,37 +17,31 @@
       <ul class="sidenav">
         <li ng-class="{ active: nav == 'general'}">
           <a ng-click="setTab('general')" href="">
-            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
             General
           </a>
         </li>
         <li ng-class="{ active: nav == 'availability'}">
           <a ng-click="setTab('availability')" href="">
-            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
             Availability
           </a>
         </li>
         <li ng-class="{ active: nav == 'costs'}">
           <a ng-click="setTab('costs')" href="">
-            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
             Costs
           </a>
         </li>
         <li ng-class="{ active: nav == 'address'}">
           <a ng-click="setTab('address')" href="">
-            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
             Address
           </a>
         </li>
         <li ng-class="{ active: nav == 'amenities'}">
           <a ng-click="setTab('amenities')" href="">
-            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
             Amenities
           </a>
         </li>
         <li ng-class="{ active: nav == 'pictures'}">
           <a ng-click="setTab('pictures')" href="">
-            <i class="glyphicon glyphicon-chevron-right pull-right"></i>
             Pictures
           </a>
         </li>
@@ -180,7 +174,7 @@
           <div class="panel-body">
             <div class="pictures-header">
               <h5 class="pull-right"><small>{{room.pictures.length}} images</small></h5>
-              <button class="btn btn-blue" ng-file-select="onImageSelect($files)" accept="image/*">
+              <button class="btn btn-blue" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
                 <i class="icon-upload-cloud"></i> Add an image
               </button>
             </div>

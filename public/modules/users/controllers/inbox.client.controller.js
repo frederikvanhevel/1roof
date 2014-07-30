@@ -45,5 +45,22 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
       $scope.findOne(inboxId);
       $location.path('dashboard/messages/' + inboxId);
     };
+
+
+
+    $scope.getUserPicture = function(inbox) {
+      var user = inbox.sender._id === Authentication.user._id ? inbox.roomOwner : inbox.sender;
+
+      var pictureSrc = '';
+
+      if (user.provider === 'local')
+        pictureSrc = '/modules/core/img/default-user-icon.png';
+      else if (user.provider === 'google')
+        pictureSrc = user.providerData.picture;
+      else if (user.provider === 'facebook')
+        pictureSrc = user.providerData.picture;
+
+      return { 'background-image': 'url(' + pictureSrc + ')' };
+    };
 	}
 ]);

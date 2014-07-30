@@ -61,6 +61,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
         $scope.openContactModal = function() {
             if (!Authentication.user) {
                 Modal.signup().then(function() {
+                    console.log('ou');
                     Modal.contact($scope.contactInfo).then(sendMessage);
                 });
             } else {

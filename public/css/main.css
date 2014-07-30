@@ -6215,8 +6215,25 @@ header.navbar {
   z-index: 1000;
   min-height: initial;
 }
+header.navbar .profile .profile-name {
+  margin-left: 40px;
+}
+header.navbar .profile .profile-picture {
+  float: left;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  left: 0;
+  top: 6px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
 header.navbar .advertise-button {
   padding: 5px 13px 6px;
+  margin-left: 5px;
 }
 header.navbar .header-messages-icon {
   font-size: 19px;
@@ -7245,6 +7262,20 @@ USERS MODULE
   background: #1ABB9C;
 }
 
+.inbox .profile-picture {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  float: left;
+  position: absolute;
+  top: 5px;
+}
+.inbox .sender-name {
+  margin-left: 50px;
+}
 .inbox .room-card {
   padding: 0;
   margin-bottom: 10px;
@@ -7270,6 +7301,10 @@ USERS MODULE
   max-height: 300px;
   overflow: auto;
   padding: 10px;
+  position: relative;
+}
+.inbox .messages .message {
+  position: relative;
 }
 .inbox .messages .serverinfo {
   padding: 20px 0;
@@ -7290,7 +7325,7 @@ USERS MODULE
 .inbox .messages .bubble {
   float: left;
   margin-right: auto;
-  background-color: #FA6C65;
+  background-color: #1ABB9C;
 }
 .inbox .messages .bubble:after {
   content: ' ';
@@ -7301,13 +7336,13 @@ USERS MODULE
   height: 0;
   border-style: solid;
   border-width: 15px 15px 0 0;
-  border-color: #fa6c65 transparent transparent transparent;
+  border-color: #1ABB9C transparent transparent transparent;
 }
 .inbox .messages .bubble--alt {
   float: right;
   margin-left: auto;
   text-align: right;
-  background-color: #1ABB9C;
+  background-color: #3F8DBF;
 }
 .inbox .messages .bubble--alt:after {
   content: ' ';
@@ -7318,7 +7353,7 @@ USERS MODULE
   height: 0;
   border-style: solid;
   border-width: 0 15px 15px 0;
-  border-color: transparent #1ABB9C transparent transparent;
+  border-color: transparent #3F8DBF transparent transparent;
 }
 .inbox .message-input {
   margin-top: 10px;

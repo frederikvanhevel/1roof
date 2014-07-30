@@ -37,22 +37,11 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-			<li><a href="/#!/users/{{authentication.user._id}}/favorites"><i class="icon-heart-empty-1"></i> My Favorites</a></li>
-			<li ng-init="getUnreadMessageCount()"><a href="/#!/dashboard/messages" class="header-messages-icon">
-				<span ng-if="unreadMessageCount != 0"class="label label-danger">{{unreadMessageCount}}</span> <i class="icon-mail-1"></i></a>
-				<!-- <div class="messages-popover" ng-show="messagesPopoverVisible">
-					<ul>
-						<li>
-							<p><strong>Frederik Vanhevel</strong></p>
-							<p>Jo vriend, cava nog me u e? dfkkjz akdjakzk az</p>
-						</li>
-					</ul>
-					<a class="view-all light-bg" href="/#!/dashboard/messages">View all my messages</a>
-				</div> -->
-			</li>
+			
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            {{authentication.user.displayName}} <b class="caret"></b>
+				<a href="#" class="dropdown-toggle profile" data-toggle="dropdown">
+						<div class="profile-picture" ng-style="getUserPicture()"></div>
+            <span class="profile-name">{{authentication.user.displayName}} <b class="caret"></b></span>
         </a>
 				<ul class="dropdown-menu">
 					<li>
@@ -73,6 +62,22 @@
 					</li>
 				</ul>
 			</li>
+
+			<li ng-init="getUnreadMessageCount()"><a href="/#!/dashboard/messages" class="header-messages-icon">
+				<span ng-if="unreadMessageCount != 0"class="label label-danger">{{unreadMessageCount}}</span> <i class="icon-mail-1"></i></a>
+				<!-- <div class="messages-popover" ng-show="messagesPopoverVisible">
+					<ul>
+						<li>
+							<p><strong>Frederik Vanhevel</strong></p>
+							<p>Jo vriend, cava nog me u e? dfkkjz akdjakzk az</p>
+						</li>
+					</ul>
+					<a class="view-all light-bg" href="/#!/dashboard/messages">View all my messages</a>
+				</div> -->
+			</li>
+
+			<li><a href="/#!/users/{{authentication.user._id}}/favorites"><i class="icon-heart-empty-1"></i> My Favorites</a></li>
+
 		</ul>
 	</nav>
 </div>

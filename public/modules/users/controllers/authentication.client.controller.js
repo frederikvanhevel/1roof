@@ -48,12 +48,12 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
         };
 
         $scope.openSignupModal = function() {
-            if ($scope.$close) $scope.$close();
+            if ($scope.$dismiss) $scope.$dismiss();
             Modal.signup();
         };
 
         $scope.openSigninModal = function() {
-            if ($scope.$close) $scope.$close();
+            if ($scope.$dismiss) $scope.$dismiss();
             Modal.signin();
         };
     }

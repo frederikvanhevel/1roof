@@ -1,5 +1,22 @@
 .inbox {
 
+  .profile-picture {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    float: left;
+    position: absolute;
+    top: 5px;
+  }
+
+  .sender-name {
+    margin-left: 50px;
+  }
+
+
   .room-card {
     padding: 0;
     margin-bottom: 10px;
@@ -29,6 +46,11 @@
     max-height: 300px;
     overflow: auto;
     padding: 10px;
+    position: relative;
+
+    .message {
+      position: relative;
+    }
 
     .serverinfo {
       padding: 20px 0;
@@ -51,7 +73,7 @@
     .bubble {
       float: left;
       margin-right: auto;
-      background-color: #FA6C65;
+      background-color: #1ABB9C;
 
       &:after {
         content: ' ';
@@ -62,7 +84,7 @@
         height: 0;
         border-style: solid;
         border-width: 15px 15px 0 0;
-        border-color: #fa6c65 transparent transparent transparent;
+        border-color: #1ABB9C transparent transparent transparent;
       }
 
     }
@@ -71,7 +93,7 @@
       float: right;
       margin-left: auto;
       text-align: right;
-      background-color: #1ABB9C;
+      background-color: #3F8DBF;
 
       &:after {
         content: ' ';
@@ -82,7 +104,7 @@
         height: 0;
         border-style: solid;
         border-width: 0 15px 15px 0;
-        border-color: transparent #1ABB9C transparent transparent;
+        border-color: transparent #3F8DBF transparent transparent;
       }
 
     }

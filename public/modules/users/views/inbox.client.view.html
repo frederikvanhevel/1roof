@@ -20,8 +20,10 @@
           <li data-ng-repeat="other in inboxes" ng-class="{ active: other._id == inbox._id }">
             <a href="" ng-click="showInbox(other._id)">
               <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
-              <i class="glyphicon glyphicon-comment"></i>
-              {{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}
+              
+              <div class="profile-picture" ng-style="getUserPicture(other)"></div>
+              <div class="sender-name">{{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}</div>
+              
             </a>
           </li>
         </ul>
@@ -49,12 +51,16 @@
             <small>you guys are talking about the <a href="#!/rooms/{{inbox.room._id}}">{{inbox.room.classification}} in {{inbox.room.location.street}}, {{inbox.room.location.city}}</a></small>
           </p> -->
 
-          <div data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered">
-            <!-- <span am-time-ago="message.sent" class="sentDate"></span> -->
-            <span ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
+          <div class="message" data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered">
+
+            <!-- <div class="profile-picture" ng-style="getUserPicture()"></div> -->
+            <div ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
               {{message.message}}
-            </span>
+            </div>
+            
+          
           </div>
+
         </div>
 
         <div class="row message-input">

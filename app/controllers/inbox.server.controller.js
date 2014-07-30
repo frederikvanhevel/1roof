@@ -133,7 +133,7 @@ exports.list = function(req, res) {
 
   Inbox.find({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ] })
   .sort('-updated')
-  .populate('sender', 'displayName').populate('roomOwner', 'displayName')
+  .populate('sender').populate('roomOwner')
   .populate('room').exec(function(err, inboxes) {
     if (err) {
       return res.send(400);
