@@ -182,8 +182,9 @@
             <div class="pictures-header">
               <h5 class="pull-right"><small>{{room.pictures.length}} images</small></h5>
               <button class="btn btn-blue" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
-                <i class="icon-upload-cloud"></i> Add an image
+                <i class="icon-upload-cloud"></i> Upload an image
               </button>
+              <div dropbox-chooser chooser-function="onDropboxSelect"></div>
             </div>
             <div class="pictures" ng-hide="room.pictures.length == 0">
               <div class="picture col-sm-6" ng-repeat="picture in room.pictures">

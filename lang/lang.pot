@@ -1,0 +1,8 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: public/modules/core/views/home.client.view.html
+msgid "Find your ideal place to live."
+msgstr ""

@@ -11,16 +11,10 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
             email: ''
         };
         $scope.appointmentDate = new Date();
-        $scope.slideIndex = 0;
         $scope.otherRooms = [];
         $scope.amenities = Amenity.list();
 
         $scope.isOverlay = false;
-
-        // Find a list of Rooms
-        $scope.find = function() {
-            $scope.rooms = Rooms.query();
-        };
 
         $scope.init = function() {
             console.log('INIT ROOM');
@@ -103,7 +97,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
                     Authentication.user.favorites.splice(index, 1);
                 }
             }).error(function(response) {
-                Alert.add('danger', 'There was a problem with adding this favorite, try again later.', 5000);
+                Alert.add('danger', 'There was a problem adding this favorite, try again later.', 5000);
             });
         }
 
@@ -111,7 +105,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
             $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {
                 Alert.add('success', 'Your message has been sent!', 5000);
             }).error(function(response) {
-                Alert.add('danger', 'There was a problem with sending your message, try again later.', 5000);
+                Alert.add('danger', 'There was a problem sending your message, try again later.', 5000);
             });
         }
 

@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal',
-    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal) {
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert',
+    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal, Alert) {
         $scope.authentication = Authentication;
         
         $scope.createForm = {
@@ -82,6 +82,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             if ($files.length > 0) $scope.uploadImage($files[0]);
         };
 
+        $scope.onDropboxSelect = function(files) {
+            console.log(files);
+        };
+
         $scope.uploadImage = function(image) {
             $scope.busy = true;
             $upload.upload({
@@ -90,7 +94,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 file: image
             }).success(function(data, status, headers, config) {
                 $scope.room.pictures.push(data.id);
-                 $scope.busy = false;
+                $scope.busy = false;
+            }).error(function(response) {
+                Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
             });
         };
 

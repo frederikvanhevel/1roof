@@ -1,10 +1,41 @@
-<section data-ng-controller="FavoritesController" ng-init="getFavoriteRooms()" class="container my-favorites">
+<section data-ng-controller="FavoritesController" ng-init="init()" class="my-favorites">
 
+  <div class="favorites-header blue-bg">
+    <div class="container">
+      <div class="col-sm-offset-2 col-sm-8">
+        <div class="profile-picture" ng-style="getUserPicture()"></div>
+        <div class="sender-name">
+          <h3>{{ user.displayName }}' favorites</h3>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <h1>My Favorites</h1>
+  <div class="container">
 
-  <div class="alert alert-warning" ng-show="favorites.length == 0">
-    <p><i class="icon-attention"></i> You haven't favored any rooms yet! Go on to <a href="/#!/search/">the search page</a> and start looking around!</p>
+    <div class="col-sm-offset-2 col-sm-8">
+      <h1>Favorites</h1>
+
+      <div class="panel panel-default">
+
+        <div class="panel-heading">My rooms</div>
+          <div class="panel-body" ng-hide="user.favorites.length > 0">
+            You don't have any room yet! <a href="/#!/rooms/new">create one</a>?
+          </div>
+
+          <div class="list-group">
+            <div class="list-group-item" ng-repeat="room in user.favorites">
+
+              <div class="info row">
+                  <h4 class="col-sm-8"><a href="/#!/rooms/{{room._id}}">{{room.location.street}} <small>{{room.location.city}}</small></a></h4>
+              </div>
+
+            </div>
+          </div>
+
+      </div>  
+    </div>
+
   </div>
 
 </section>

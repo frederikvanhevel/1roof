@@ -18,7 +18,8 @@ var ApplicationConfiguration = (function() {
 		'LocalStorageModule',
 		'angularMoment',
 		'angularFileUpload',
-		'angularMoment'
+		'angularMoment',
+		'gettext'
 	];
 
 	// Add a new vertical module

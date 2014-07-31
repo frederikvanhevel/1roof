@@ -45,6 +45,8 @@ module.exports = function(app) {
 
 	app.route('/users/unreadmessages').get(inbox.getUnreadMessageCount);
 
+	app.route('/users/:userId').get(users.read);
+
 	app.route('/users/:userId/favorites').get(rooms.getUserFavorites);
 
 	// Finish by binding the user middleware

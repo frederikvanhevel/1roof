@@ -6209,8 +6209,8 @@ html, body {
 }
 
 .alert-item.ng-leave {
-  -webkit-transition: 0.5s linear all;
-  transition: 0.5s linear all;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
 }
 .alert-item.ng-leave.ng-leave-active {
   opacity: 0;
@@ -7420,6 +7420,12 @@ USERS MODULE
   height: 150px;
 }
 
-.my-favorites {
-  margin-top: 30px;
+.my-favorites .profile-picture {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  float: left;
 }

@@ -33,6 +33,19 @@ var getErrorMessage = function(err) {
 };
 
 /**
+ * Get the user by id
+ */
+exports.read = function(req, res) {
+	var user = req.user;
+	
+	delete user.salt;
+	delete user.password;
+	delete user.email;
+
+	res.jsonp(req.user);
+};
+
+/**
  * Signup
  */
 exports.signup = function(req, res) {

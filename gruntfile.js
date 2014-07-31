@@ -110,7 +110,21 @@ module.exports = function(grunt) {
             unit: {
                 configFile: 'karma.conf.js'
             }
-        }
+        },
+        nggettext_extract: {
+            pot: {
+                files: {
+                    'lang/lang.pot': ['public/modules/**/views/*.html']
+                }
+            },
+        },
+        nggettext_compile: {
+            all: {
+                files: {
+                    'public/translations.js': ['lang/*.po']
+                }
+            },
+        },
     });
 
     // Load NPM tasks 
@@ -139,4 +153,8 @@ module.exports = function(grunt) {
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+
+    // Extract languages task.
+    grunt.registerTask('langextract', ['nggettext_extract:pot']);
+    grunt.registerTask('langcompile', ['nggettext_compile']);
 };
