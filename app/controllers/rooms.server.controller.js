@@ -5,7 +5,9 @@
  */
 var mongoose = require('mongoose'),
 	Room = mongoose.model('Room'),
-	_ = require('lodash');
+	_ = require('lodash'),
+	cloudinary = require('../../app/util/uploader'),
+  winston = require('winston');
 
 /**
  * Get the error message from error object
@@ -66,6 +68,7 @@ exports.update = function(req, res) {
 
 	room.save(function(err) {
 		if (err) {
+			winston.error('Error updating room', err);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -222,6 +225,38 @@ exports.toggleFavorite = function(req, res, next) {
 			res.send(200);
 		}
 	});
+};
+
+/**
+ * Remove picture
+ */
+exports.removePicture = function(req, res, next) {
+	var room = req.room;
+
+	var index = req.body.index;
+	var picture = room.pictures[index];
+
+	if (picture.provider === 'cloudinary') {
+		cloudinary.remove(req, res, next, index, function() {
+			room.pictures.splice(index, 1);
+			room.save(function(err) {
+				if (err) {
+					return res.send(400);
+				} else {
+					res.jsonp(room);
+				}
+			});
+		});
+	} else {
+		room.pictures.splice(index, 1);
+		room.save(function(err) {
+			if (err) {
+				return res.send(400);
+			} else {
+				res.jsonp(room);
+			}
+		});
+	}
 };
 
 /**

@@ -5,11 +5,14 @@ angular.module('core').directive('dropboxChooser', [ '$window',
     return {
         restrict: 'A',
         scope: {
-          chooserSuccess: '='
+          chooserSuccess: '&'
         },
         link: function(scope, element, attributes ) {
+
           var options = {
-            success: scope.chooserSuccess,
+            success: function(files) {
+              scope.$emit('dropbox_chosen', files);
+            },
             linkType: 'direct', 
             multiselect: false,
             extensions: ['images'],

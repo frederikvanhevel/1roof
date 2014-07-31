@@ -17,14 +17,6 @@ angular.module('rooms').factory('Rooms', ['$resource', function($resource) {
             method:'GET',
             url: 'rooms/:roomId/same',
             isArray: true
-        },
-        removeImage: {
-            method:'POST',
-            url: 'rooms/:roomId/removepicture'
-        },
-        sendMessage: {
-            method:'POST',
-            url: 'rooms/:roomId/sendmessage'
         }
     });
 }]);

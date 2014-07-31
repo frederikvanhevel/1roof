@@ -6,6 +6,8 @@
       <span class="pull-right">
         <a href="/#!/rooms/{{room._id}}">view how this room will look for the users <i class="icon-right-open"></i></a>
       </span>
+      <span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
+      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline</span>
       <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> You need to fill in some more details before you can publish the room.</span>
     </div>
   </div>
@@ -145,7 +147,7 @@
 
             <div room-map class="map-canvas"></div>
 
-            <button class="btn btn-blue btn-block" ng-click="openAddressMdoal()"><i class="icon-location-1"></i> Change address</button>
+            <button class="btn btn-blue btn-block" ng-click="openAddressModal()"><i class="icon-location-1"></i> Change address</button>
 
           </div>
         </div>

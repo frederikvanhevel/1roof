@@ -30,6 +30,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
             }, $scope.watchForUpdates);
+
+            $scope.$on('dropbox_chosen', onDropboxSelect);
         };
 
         $scope.watchForUpdates = function() {
@@ -65,12 +67,12 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
         // Update existing Room
         $scope.update = function() {
-            var room = angular.copy($scope.room);
+            // var room = angular.copy($scope.room);
             $scope.busy = true;
             console.log('updating');
-
-            room.$update(function() {
-                $scope.room = room;
+            console.log($scope.room);
+            $scope.room.$update(function() {
+                // $scope.room = room;
                 $scope.busy = false;
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
@@ -79,38 +81,16 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         $scope.onImageSelect = function($files) {
-            if ($files.length > 0) $scope.uploadImage($files[0]);
-        };
-
-        $scope.onDropboxSelect = function(files) {
-            console.log(files);
-        };
-
-        $scope.uploadImage = function(image) {
-            $scope.busy = true;
-            $upload.upload({
-                url: 'rooms/' + $scope.room._id + '/upload',
-                data: { index: $scope.room.pictures.length },
-                file: image
-            }).success(function(data, status, headers, config) {
-                $scope.room.pictures.push({
-                    provider: 'cloudinary',
-                    link: data.id
-                });
-                $scope.busy = false;
-            }).error(function(response) {
-                Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
-            });
+            if ($files.length > 0) uploadImage($files[0]);
         };
 
         $scope.removeImage = function(index) {
             $scope.busy = true;
 
-            var room = angular.copy($scope.room);
-            console.log('removing image');
-
-            room.$removeImage({index: index, id: $scope.room.pictures[index]}).then(function(result) {
-                $scope.room = result;
+            $http.post('/rooms/' + $scope.room._id + '/removepicture', { index: index }).success(function(response) {
+                $scope.room.pictures.splice(index, 1);
+                $scope.busy = false;
+            }).error(function(response) {
                 $scope.busy = false;
             });
         };
@@ -150,20 +130,45 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         $scope.tabHasError = function(tab) {
-            console.log($scope.errors);
             return $scope.errors.indexOf(tab) !== -1;
         };
 
-        $scope.openAddressMdoal = function() {
+        $scope.openAddressModal = function() {
             Modal.changeAddress($scope.newAddressDetails).then(function(e) {
                 console.log($scope.newAddressDetails);
             });
         };
 
-        $scope.getRoomPicture = function(picture) {
-            console.log(picture);
-            if (picture.provider === 'cloudinary')
-                return 'http://res.cloudinary.com/dv8yfamzc/image/upload/' + picture.link + '.png';
-        };
+        function uploadImage(image) {
+            $scope.busy = true;
+            $upload.upload({
+                url: 'rooms/' + $scope.room._id + '/upload',
+                data: { index: $scope.room.pictures.length },
+                file: image
+            }).success(function(data, status, headers, config) {
+                $scope.room.pictures.push({
+                    provider: 'cloudinary',
+                    link: data.id
+                });
+                $scope.busy = false;
+            }).error(function(response) {
+                Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
+            });
+        }
+
+        function onDropboxSelect(e, files) {
+            var pictures = [];
+
+            files.forEach(function(file) {
+                $scope.room.pictures.push({
+                    provider: 'dropbox',
+                    link: file.link
+                });
+            });
+
+            $scope.$apply();
+        }
+
+
     }
 ]);

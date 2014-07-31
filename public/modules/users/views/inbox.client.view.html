@@ -33,17 +33,19 @@
       <div class="col-sm-6" ng-cloak>
 
         <div class="bordered room-card">
-          <div ng-if="inbox.room.pictures.length == 0" class="room-image empty tint-bg">
-            <i class="icon-camera-1"></i>
-          </div>
-          <div ng-if="inbox.room.pictures.length > 0" class="room-image" back-img img-provider="{{inbox.room.pictures[0].provider}}" img-link="{{inbox.room.pictures[0].link}}"></div>
+          <a ng-href="/#!/rooms/{{inbox.room._id}}">
+            <div ng-if="inbox.room.pictures.length == 0" class="room-image empty tint-bg">
+              <i class="icon-camera-1"></i>
+            </div>
+            <div ng-if="inbox.room.pictures.length > 0" class="room-image" back-img img-provider="{{inbox.room.pictures[0].provider}}" img-link="{{inbox.room.pictures[0].link}}"></div>
 
-          <div class="room-info">
-            <h3>{{inbox.room.info.title}}</h3>
-            <p><small>{{inbox.room.location.street}}, {{inbox.room.location.city}}</small></p>
-          </div>
+            <div class="room-info">
+              <h3>{{inbox.room.info.title}}</h3>
+              <p><small>{{inbox.room.location.street}}, {{inbox.room.location.city}}</small></p>
+            </div>
 
-          <div class="clearfix"></div>
+            <div class="clearfix"></div>
+          </a>
         </div>
 
         <div class="messages bordered" ng-model="inbox.messages.length" scroll-bottom>

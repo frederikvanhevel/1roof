@@ -55,7 +55,7 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
       else if (user.provider === 'google')
         pictureSrc = user.providerData.picture;
       else if (user.provider === 'facebook')
-        pictureSrc = user.providerData.picture;
+        pictureSrc = 'http://graph.facebook.com/' + user.providerData.id + '/picture?type=normal';
 
       return { 'background-image': 'url(' + pictureSrc + ')' };
     };

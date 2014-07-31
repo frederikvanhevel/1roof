@@ -53,19 +53,6 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
       }
     };
 
-    $scope.getUserPicture = function() {
-      var pictureSrc = '';
-
-      if (Authentication.user.provider === 'local')
-        pictureSrc = '/modules/core/img/default-user-icon.png';
-      else if (Authentication.user.provider === 'google')
-        pictureSrc = Authentication.user.providerData.picture;
-      else if (Authentication.user.provider === 'facebook')
-        pictureSrc = Authentication.user.providerData.picture;
-
-      return { 'background-image': 'url(' + pictureSrc + ')' };
-    };
-
     $scope.setLanguage = function(language) {
       gettextCatalog.currentLanguage = language;
       gettextCatalog.debug = true;

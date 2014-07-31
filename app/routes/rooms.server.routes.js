@@ -4,7 +4,7 @@ module.exports = function(app) {
 	var users = require('../../app/controllers/users');
 	var rooms = require('../../app/controllers/rooms');
 	var inbox = require('../../app/controllers/inbox');
-	var uploader = require('../../app/util/uploader');
+	var cloudinary = require('../../app/util/uploader');
 
 	// Rooms Routes
 	app.route('/rooms')
@@ -29,10 +29,10 @@ module.exports = function(app) {
 		.get(rooms.listOfRoomsInSameLocation);
 
 	app.route('/rooms/:roomId/upload')
-		.post(users.requiresLogin, rooms.hasAuthorization, uploader.cloudinaryUploader.upload);
+		.post(users.requiresLogin, rooms.hasAuthorization, cloudinary.upload);
 
 	app.route('/rooms/:roomId/removepicture')
-		.post(users.requiresLogin, rooms.hasAuthorization, uploader.cloudinaryUploader.remove);
+		.post(users.requiresLogin, rooms.hasAuthorization, rooms.removePicture);
 
 	// Finish by binding the Room middleware
 	app.param('roomId', rooms.roomByID);

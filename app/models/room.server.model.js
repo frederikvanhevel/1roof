@@ -113,10 +113,10 @@ var RoomSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-	pictures: [{
+	pictures: [new Schema({
 		provider: String,
 		link: String
-	}],
+	}, {_id: false})],
 	updated: {
 		type: Date,
 		default: Date.now
