@@ -1,11 +1,8 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', '$location', 'Authentication', 'Geocoder', 'Alert', 'gettextCatalog',
-  function ($scope, $location, Authentication, Geocoder, Alert, gettextCatalog) {
+angular.module('core').controller('HomeController', ['$scope', '$location', 'Authentication', 'Geocoder', 'Alert',
+  function ($scope, $location, Authentication, Geocoder, Alert) {
     $scope.authentication = Authentication;
-
-    gettextCatalog.currentLanguage = 'en';
-    gettextCatalog.debug = true;
 
     $scope.search = '';
     $scope.searchDetails = {};

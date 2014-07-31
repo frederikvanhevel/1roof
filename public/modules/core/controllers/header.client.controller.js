@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$location', '$modal', '$http', 'Authentication', 'Menus', 'Geocoder', 'Modal',
-	function($scope, $location,  $modal, $http, Authentication, Menus, Geocoder, Modal) {
+angular.module('core').controller('HeaderController', ['$scope', '$location', '$modal', '$http', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog',
+	function($scope, $location,  $modal, $http, Authentication, Menus, Geocoder, Modal, gettextCatalog) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
@@ -9,6 +9,13 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
     $scope.searchDetails = {};
     $scope.unreadMessageCount = 0;
     $scope.messagesPopoverVisible = false;
+
+    $scope.init = function() {
+      var language = window.navigator.userLanguage || window.navigator.language;
+
+      if (language.indexOf('en') !== -1) $scope.setLanguage('en');
+      else if (language.indexOf('nl') !== -1) $scope.setLanguage('nl');
+    };
 
 		$scope.toggleCollapsibleMenu = function() {
 			$scope.isCollapsed = !$scope.isCollapsed;
@@ -58,6 +65,11 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
         pictureSrc = Authentication.user.providerData.picture;
 
       return { 'background-image': 'url(' + pictureSrc + ')' };
+    };
+
+    $scope.setLanguage = function(language) {
+      gettextCatalog.currentLanguage = language;
+      gettextCatalog.debug = true;
     };
 	}
 ]);
