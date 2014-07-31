@@ -36,7 +36,7 @@
           <div ng-if="inbox.room.pictures.length == 0" class="room-image empty tint-bg">
             <i class="icon-camera-1"></i>
           </div>
-          <div ng-if="inbox.room.pictures.length > 0" class="room-image" style="background-image:url(//res.cloudinary.com/dv8yfamzc/image/upload/{{inbox.room.pictures[0]}}.png);"></div>
+          <div ng-if="inbox.room.pictures.length > 0" class="room-image" back-img img-provider="{{inbox.room.pictures[0].provider}}" img-link="{{inbox.room.pictures[0].link}}"></div>
 
           <div class="room-info">
             <h3>{{inbox.room.info.title}}</h3>

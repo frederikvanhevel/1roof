@@ -113,7 +113,10 @@ var RoomSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
-	pictures: [String],
+	pictures: [{
+		provider: String,
+		link: String
+	}],
 	updated: {
 		type: Date,
 		default: Date.now

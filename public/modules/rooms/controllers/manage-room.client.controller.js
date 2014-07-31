@@ -93,7 +93,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 data: { index: $scope.room.pictures.length },
                 file: image
             }).success(function(data, status, headers, config) {
-                $scope.room.pictures.push(data.id);
+                $scope.room.pictures.push({
+                    provider: 'cloudinary',
+                    link: data.id
+                });
                 $scope.busy = false;
             }).error(function(response) {
                 Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
@@ -155,6 +158,12 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             Modal.changeAddress($scope.newAddressDetails).then(function(e) {
                 console.log($scope.newAddressDetails);
             });
+        };
+
+        $scope.getRoomPicture = function(picture) {
+            console.log(picture);
+            if (picture.provider === 'cloudinary')
+                return 'http://res.cloudinary.com/dv8yfamzc/image/upload/' + picture.link + '.png';
         };
     }
 ]);
