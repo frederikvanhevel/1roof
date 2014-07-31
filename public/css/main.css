@@ -6992,6 +6992,7 @@ ROOMS MODULE
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border: 1px solid #E6E9ED;
 }
 .edit-room .map-canvas {
   width: 100%;
@@ -7323,6 +7324,7 @@ USERS MODULE
   background-position: center;
   height: 100px;
   width: 25%;
+  margin: 0;
 }
 .inbox .room-card .room-image.empty {
   font-size: 40px;

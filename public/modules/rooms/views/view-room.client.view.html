@@ -16,7 +16,7 @@
 			<div class="crumbs col-sm-12">
 				<button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> Back to map</button>
 				<h1>
-					<i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1': isInfavorites() }" tooltip="Add to favorites" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{room.info.title}}
+					<i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1': isInfavorites() }" tooltip="Add to wishlist" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{room.info.title}}
 				</h1>
 				<i class="glyphicon" ng-class=""></i>
 				<a ng-href="#!/search/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> <i class="icon-right-open"></i> {{room.location.street}} <i class="icon-right-open"></i> <strong>{{room.classification}}</strong>
@@ -102,8 +102,8 @@
 								<ul>
 									<li>
 										<i class="glyphicon glyphicon-calendar"></i>
-										<span>Available from {{room.available.from | amDateFormat: 'ddd D MMM'}}</span>
-										<span ng-show="room.available.till">till {{room.available.till | amDateFormat: 'ddd D MMM'}}</span>
+										<span>Available from <strong>{{room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+										<span ng-show="room.available.till">till <strong>{{room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
 									</li>
 									<li><i class="glyphicon glyphicon-time"></i> Updated <span am-time-ago="room.updated"></span></li>
 								</ul>

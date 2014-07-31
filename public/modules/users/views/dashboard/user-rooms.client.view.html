@@ -12,23 +12,24 @@
         </div>
 
         <div class="list-group">
-          <div class="list-group-item" ng-repeat="room in myrooms">
+          <a ng-href="/#!/rooms/{{room._id}}" class="list-group-item" ng-repeat="room in myrooms">
 
             <div class="info row">
-                <h4 class="col-sm-8"><a href="/#!/rooms/{{room._id}}">{{room.location.street}} <small>{{room.location.city}}</small></a></h4>
+                <h4 class="col-sm-8">
+                  <span>{{room.info.title != '' ? room.info.title : room.location.street}} <small>{{room.location.city}}</small></span>
+                </h4>
 
                 <span class="indicator col-sm-1"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
 
                 <select class="col-sm-2" ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
             </div>
-            <p ng-if="!room.isInOrder">
-              <small>
-                <span class="red"><i class="icon-attention-1"></i> You need to complete more details before this room can be put online. </span>
-                <a href="/#!/rooms/{{room._id}}/edit/">Edit this room</a>
-              </small>
-            </p>
 
-          </div>
+            <small ng-if="!room.isInOrder">
+                <span class="red"><i class="icon-attention-1"></i> You need to complete more details before this room can be put online. </span>
+                
+            </small>
+
+          </a>
         </div>
 
         <div class="panel-footer">

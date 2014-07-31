@@ -28,6 +28,8 @@ exports.sendMessageOrCreate = function(req, res) {
     sender: req.user._id
   });
 
+  if (req.body.messageType) message.messageType = req.body.messageType;
+
   Inbox.update(contents, { $addToSet: { messages: message }}, { upsert: true }, function(err) {
     if (err) {
       winston.error('Error saving new inbox', { inbox: contents, message: message });
@@ -48,6 +50,8 @@ exports.sendMessage = function(req, res) {
     message: req.body.message,
     sender: req.user._id
   });
+
+  if (req.body.messageType) message.messageType = req.body.messageType;
 
   inbox.messages.push(message);
 

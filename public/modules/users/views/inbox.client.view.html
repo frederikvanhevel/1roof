@@ -56,7 +56,11 @@
           <div class="message" data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered">
 
             <!-- <div class="profile-picture" ng-style="getUserPicture()"></div> -->
-            <div ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
+<!--             <div ng-if="message.messageType == 'reservation'">
+              Asked for a reservation on <span>{{ message | amDateFormat:'DD/MM/YYYY' }}</span>
+            </div>
+ -->
+            <div ng-if="message.messageType == 'default'" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
               {{message.message}}
             </div>
             

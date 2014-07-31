@@ -134,8 +134,12 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         $scope.openAddressModal = function() {
-            Modal.changeAddress($scope.newAddressDetails).then(function(e) {
-                console.log($scope.newAddressDetails);
+            var obj = {
+                newAddress: $scope.newAddress,
+                newAddressDetails: $scope.newAddressDetails
+            };
+            Modal.changeAddress(obj).then(function(e) {
+                console.log(obj);
             });
         };
 

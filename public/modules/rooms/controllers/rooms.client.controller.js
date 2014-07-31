@@ -40,15 +40,12 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
         };
 
         $scope.openReservationModal = function() {
-            var contactDetails = angular.copy($scope.contactInfo);
-            contactDetails.appointmentDate = $scope.appointmentDate;
-
             if (!Authentication.user) {
                 Modal.signup().then(function() {
-                    Modal.reservation(contactDetails).then(sendMessage);
+                    Modal.reservation($scope.appointmentDate).then(sendReservation);
                 });
             } else {
-                Modal.reservation(contactDetails).then(sendMessage);
+                Modal.reservation($scope.appointmentDate).then(sendReservation);
             }
         };
 
@@ -104,6 +101,15 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
         function sendMessage(message) {
             $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {
                 Alert.add('success', 'Your message has been sent!', 5000);
+            }).error(function(response) {
+                Alert.add('danger', 'There was a problem sending your message, try again later.', 5000);
+            });
+        }
+
+        function sendReservation(extraMessage) {
+            $http.post('/rooms/' + $scope.room._id + '/message', { message: $scope.appointmentDate.getTime(), messageType: 'reservation' }).success(function(response) {
+                if (extraMessage) sendMessage(extraMessage);
+                else Alert.add('success', 'Your reservation has been sent!', 5000);
             }).error(function(response) {
                 Alert.add('danger', 'There was a problem sending your message, try again later.', 5000);
             });
