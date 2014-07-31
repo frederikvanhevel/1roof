@@ -40,8 +40,8 @@ angular.module('core').factory('Geocoder', ['localStorageService', '$q', '$timeo
         var parsedResult = {
           lat: result[0].geometry.location.lat(),
           lng: result[0].geometry.location.lng(),
-          formattedAddress: result[0].formatted_address
-          //accuracy: result[0].address_components.length
+          formattedAddress: result[0].formatted_address,
+          accuracy: result[0].address_components.length
         };
 
         for (var i = 0; i < result[0].address_components.length; i++) {

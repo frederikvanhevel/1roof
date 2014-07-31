@@ -2,10 +2,22 @@
 
   <div class="favorites-header blue-bg">
     <div class="container">
-      <div class="col-sm-offset-2 col-sm-8">
+
+      <div class="col-sm-12">
+        <div class="pull-right">
+            <h3>Share</h3>
+            <ul class="share-buttons">
+                <li><a href="#"><i class="icon-s-facebook"></i></a></li>
+                <li><a href="#"><i class="icon-s-gplus"></i></a></li>
+                <li><a href="#"><i class="icon-s-twitter"></i></a></li>
+                <li><a href="#"><i class="icon-s-pinterest"></i></a></li>
+                <li><a href="#"><i class="icon-s-behance"></i></a></li>
+                <li><a href="#"><i class="icon-s-dribbble"></i></a></li>
+            </ul>
+        </div>
         <div class="profile-picture" user-picture user-model="user"></div>
         <div class="sender-name">
-          <h3>{{ user.displayName }}' favorites</h3>
+          <h3>{{ user.displayName }}'s favorites</h3>
         </div>
       </div>
     </div>
@@ -13,27 +25,26 @@
 
   <div class="container">
 
-    <div class="col-sm-offset-2 col-sm-8">
-      <h1>Favorites</h1>
+    <div class="row">
 
-      <div class="panel panel-default">
-
-        <div class="panel-heading">My rooms</div>
-          <div class="panel-body" ng-hide="user.favorites.length > 0">
-            You don't have any room yet! <a href="/#!/rooms/new">create one</a>?
+      <div class="col-sm-4 favorite" ng-repeat="room in favorites">
+        <a ng-href="/#!/rooms/{{room._id}}">
+          <div class="image" ng-class="{ 'empty': room.pictures.length == 0 }" back-img img-provider="{{room.pictures[0].provider}}" img-link="{{room.pictures[0].link}}">
+            <i class="icon-camera-1"></i>
           </div>
 
-          <div class="list-group">
-            <div class="list-group-item" ng-repeat="room in user.favorites">
-
-              <div class="info row">
-                  <h4 class="col-sm-8"><a href="/#!/rooms/{{room._id}}">{{room.location.street}} <small>{{room.location.city}}</small></a></h4>
-              </div>
-
+          <div class="bordered no-top-border">
+           
+            <div class="info">
+              <h4>{{room.info.title}}</h4>
+              <p>{{room.location.street}} <small>{{room.location.city}}</small></p>
             </div>
+          
           </div>
+        </a>
 
-      </div>  
+      </div>
+
     </div>
 
   </div>

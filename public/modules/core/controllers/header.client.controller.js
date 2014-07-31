@@ -13,8 +13,7 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
     $scope.init = function() {
       var language = window.navigator.userLanguage || window.navigator.language;
 
-      if (language.indexOf('en') !== -1) $scope.setLanguage('en');
-      else if (language.indexOf('nl') !== -1) $scope.setLanguage('nl');
+      if (language.indexOf('nl') !== -1) $scope.setLanguage('nl');
     };
 
 		$scope.toggleCollapsibleMenu = function() {

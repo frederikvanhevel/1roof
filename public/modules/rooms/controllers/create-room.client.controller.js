@@ -23,6 +23,9 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         // Create new Room
         $scope.create = function() {
 
+            // we need a roomType
+            if (!$scope.createForm.roomType) return;
+
             if ($scope.addressDetails === null) {
                 doSearchLookup($scope.createForm.address);
                 return;
@@ -55,6 +58,10 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
 
         function doSearchLookup(address) {
           Geocoder.geocodeAddress(address).then(function(result) {
+
+            // we need a valid street address
+            if (result.accuracy < 7) return;
+
             $scope.addressDetails = {
                 street: result.street + ' ' + result.streetNumber,
                 city: result.city,

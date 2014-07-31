@@ -27,7 +27,7 @@
       background-repeat: no-repeat;
       background-position: center;
       height: 100px;
-      width: 150px;
+      width: 25%;
 
       &.empty {
         font-size: 40px;
@@ -39,11 +39,18 @@
     .room-info {
       float: left;
       padding: 10px;
+      width: 75%;
+      max-height: 100px;
+
+      h3 {
+        margin-bottom: 0;
+      }
     }
   }
 
   .messages {
     max-height: 300px;
+    min-height: 300px;
     overflow: auto;
     padding: 10px;
     position: relative;
