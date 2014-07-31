@@ -6964,6 +6964,9 @@ ROOMS MODULE
 .edit-room .file-input {
   display: none;
 }
+.edit-room .btn-upload input {
+  cursor: pointer !important;
+}
 .edit-room .pictures-header {
   margin-bottom: 30px;
 }

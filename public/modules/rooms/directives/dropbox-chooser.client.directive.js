@@ -15,8 +15,9 @@ angular.module('core').directive('dropboxChooser', [ '$window',
             extensions: ['images'],
           };
 
-          var button = $window.Dropbox.createChooseButton(options);
-          element.append(button);
+          element.click(function() {
+            $window.Dropbox.choose(options);
+          });
         }
     };
   }
