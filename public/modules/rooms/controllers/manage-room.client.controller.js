@@ -143,6 +143,13 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             });
         };
 
+        $scope.setRoomVisible = function() {
+            if ($scope.errors.length === 0) {
+                $scope.room.visible = true;
+                $location.path('/rooms/' + $scope.room._id);
+            }
+        };
+
         function uploadImage(image) {
             $scope.busy = true;
             $upload.upload({

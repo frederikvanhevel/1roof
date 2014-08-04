@@ -49,8 +49,8 @@
             Pictures
           </a>
         </li>
-        <li ng-class="{ active: nav == 'pictures'}">
-          <button class="btn btn-blue btn-block" ng-disabled="errors.length > 0" disabled>
+        <li ng-if="!room.visible" ng-class="{ active: nav == 'pictures'}">
+          <button class="btn btn-blue btn-block" ng-disabled="errors.length > 0" ng-click="setRoomVisible()" disabled>
             <i class="glyphicon glyphicon-ok"></i> Publish
           </button>
         </li>
