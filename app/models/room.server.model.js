@@ -4,7 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	Schema = mongoose.Schema;
+	Schema = mongoose.Schema,
+	shortId = require('shortid');
 
 /**
  * Check if enough details are filled in
@@ -23,10 +24,26 @@ var checkRoomCompleteness = function(room) {
   return complete;
 };
 
+var slugify = function(text) {
+
+  return text.toString().toLowerCase()
+    .replace(/\s+/g, '-')        // Replace spaces with -
+    .replace(/[^\w\-]+/g, '')    // Remove all non-word chars
+    .replace(/\-\-+/g, '-')      // Replace multiple - with single -
+    .replace(/^-+/, '')          // Trim - from start of text
+    .replace(/-+$/, '');         // Trim - from end of text
+};
+
 /**
  * Room Schema
  */
 var RoomSchema = new Schema({
+	// custom short ids
+	_id: {
+    type: String,
+    unique: true,
+    'default': shortId.generate
+	},
 	surface: {
 		type: Number,
 		default: 0
@@ -133,6 +150,9 @@ var RoomSchema = new Schema({
 		type: Boolean,
 		default: false
 	},
+	slug: {
+		type: String
+	},
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
@@ -145,12 +165,27 @@ RoomSchema.index({ loc: '2dsphere' });
  * Hook a pre save method to update the total price and set updated date
  */
 RoomSchema.pre('save', function(next) {
+
+	// update 'updated' field
 	this.updated = Date.now();
+
+	// calculate total price
 	this.price.total = this.price.base + this.price.egw + this.price.cleaning;
+
+	// check if all necessary fields are filled in
 	this.isInOrder = checkRoomCompleteness(this);
+
+	// set the slug for seo purposes
+	this.slug = slugify(this.location.city) + '/' + (this.info.title !== '' ? slugify(this.info.title) : slugify(this.location.street));
 
 	next();
 });
+
+RoomSchema.virtual('url').get(function() {
+  return '/l/' + this._id + '/' + this.slug;
+});
+// make sure the server sents our getter in the JSON object
+RoomSchema.set('toJSON', { virtuals: true });
 
 
 mongoose.model('Room', RoomSchema);

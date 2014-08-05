@@ -146,7 +146,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.setRoomVisible = function() {
             if ($scope.errors.length === 0) {
                 $scope.room.visible = true;
-                $location.path('/rooms/' + $scope.room._id);
+                $location.path($scope.room.url);
             }
         };
 

@@ -10,7 +10,7 @@ angular.module('rooms').config(['$stateProvider',
 			templateUrl: 'modules/rooms/views/create-room.client.view.html'
 		}).
 		state('viewRoom', {
-			url: '/rooms/:roomId',
+			url: '/l/:roomId/:city/:title',
 			templateUrl: 'modules/rooms/views/view-room.client.view.html'
 		}).
 		state('editRoom', {

@@ -39,7 +39,8 @@
     "glob": "~3.2.9",
     "cloudinary": "~1.0.9",
     "multiparty": "~3.2.6",
-    "winston": "~0.7.3"
+    "winston": "~0.7.3",
+    "shortid": "~2.0.1"
   },
   "devDependencies": {
     "supertest": "~0.10.0",

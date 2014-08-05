@@ -154,6 +154,10 @@ exports.getUnreadMessageCount = function(req, res) {
   var user = req.user;
 
   Inbox.count({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ], 'messages.sender': { $ne: user._id }, 'messages.isRead': false  })
+  //.tailable().stream()
+  //stream.on('data', function (doc) {
+  //  socket.io emit event
+  //});
   .exec(function(err, inboxes) {
     if (err) {
       return res.send(400);
