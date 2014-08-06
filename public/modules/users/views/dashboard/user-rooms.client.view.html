@@ -12,11 +12,13 @@
         </div>
 
         <div class="list-group">
-          <a ng-href="/#!{{room.url}}" class="list-group-item" ng-repeat="room in myrooms">
+          <div class="list-group-item" ng-repeat="room in myrooms">
 
             <div class="info row">
                 <h4 class="col-sm-8">
-                  <span>{{room.info.title != '' ? room.info.title : room.location.street}} <small>{{room.location.city}}</small></span>
+                  <a href="/#!{{room.url}}">
+                    {{room.info.title != '' ? room.info.title : room.location.street}} <small>{{room.location.city}}</small>
+                  </a>
                 </h4>
 
                 <span class="indicator col-sm-1"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
@@ -29,7 +31,7 @@
                 
             </small>
 
-          </a>
+          </div>
         </div>
 
         <div class="panel-footer">

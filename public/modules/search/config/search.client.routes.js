@@ -1,8 +1,8 @@
 'use strict';
 
 //Setting up route
-angular.module('search').config(['$stateProvider',
-	function($stateProvider) {
+angular.module('search').config(['$stateProvider', '$urlRouterProvider',
+	function($stateProvider, $urlRouterProvider) {
 		// Search state routing
 		$stateProvider.
 		state('search', {
@@ -14,5 +14,24 @@ angular.module('search').config(['$stateProvider',
       templateUrl: 'modules/rooms/views/view-room.client.view.html'
     });
 
+    console.log($urlRouterProvider);
+
+    $urlRouterProvider.deferIntercept();
+
 	}
+])  
+.run(['$rootScope', '$urlRouter', '$location', '$state', function ($rootScope, $urlRouter, $location, $state) {
+    $rootScope.$on('$locationChangeSuccess', function(e, newUrl, oldUrl) {
+      // Prevent $urlRouter's default handler from firing
+      e.preventDefault();
+
+      if ($state.current.name !== 'search.overlay') {
+        // your stuff
+        $urlRouter.sync();
+      }
+
+      // Configures $urlRouter's listener *after* your custom listener
+      $urlRouter.listen();
+    });
+  }
 ]);

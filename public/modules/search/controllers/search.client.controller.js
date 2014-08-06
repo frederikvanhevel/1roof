@@ -21,6 +21,7 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
     $scope.isOverLayOpen = false;
 
     var viewedRooms = [];
+    var oldLocation = null;
     
 
     $scope.init = function() {
@@ -143,12 +144,17 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
       }
     };
 
-    $scope.selectRoom = function(roomId) {
+    $scope.selectRoom = function(roomId, url) {
       console.log('SELECTROOM');
       if (!$scope.selectedRoomId || $scope.selectedRoomId !== roomId) {
         $scope.selectedRoomId = roomId;
 
         $window._.extend($stateParams,{ roomId: roomId, isOverlay: true });
+
+        // remember the url of the search map and set the new url to the room
+        oldLocation = $location.url();
+        console.log(oldLocation);
+        $location.url(url);
 
         showRoomOverlay();
 
@@ -182,17 +188,21 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
 
     function closeRoomOverlay() {
       $state.transitionTo('search', $stateParams, { reload: false, location: false });
-        
+
+      // restore the original url of the search map
+      console.log(oldLocation);
+      if (oldLocation) {
+        $location.url(oldLocation);
+        oldLocation = null;
+      }
+      
       $scope.selectedRoomId = null;
       $scope.isOverLayOpen = false;
     }
 
-    function showRoomOverlay() {
-
-      //$location.path('/rooms/' + $scope.selectedRoomId);
+    function showRoomOverlay() {      
       $state.transitionTo('search.overlay', $stateParams, { reload: false, location: false });
       $scope.$broadcast('close_marker_popups');
-      
 
       $scope.isOverLayOpen = true;
     }
