@@ -153,7 +153,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
 
         // remember the url of the search map and set the new url to the room
         oldLocation = $location.url();
-        console.log(oldLocation);
         $location.url(url);
 
         showRoomOverlay();
@@ -190,7 +189,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
       $state.transitionTo('search', $stateParams, { reload: false, location: false });
 
       // restore the original url of the search map
-      console.log(oldLocation);
       if (oldLocation) {
         $location.url(oldLocation);
         oldLocation = null;

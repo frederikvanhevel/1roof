@@ -25,8 +25,7 @@ angular.module('search').config(['$stateProvider', '$urlRouterProvider',
       // Prevent $urlRouter's default handler from firing
       e.preventDefault();
 
-      if ($state.current.name !== 'search.overlay') {
-        // your stuff
+      if ($state.current.name.indexOf('search') === -1) {
         $urlRouter.sync();
       }
 

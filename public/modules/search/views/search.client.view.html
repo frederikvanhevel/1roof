@@ -32,13 +32,13 @@
     <div class="search-results">
 
       <ul class="results-list">        
-        <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id)" ng-mouseenter="openRoomPopup(room._id)" ng-class="{ 'active': room._id == selectedRoomId, 'is-seen': hasSeenRoom(room._id) }">
+        <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id, room.url)" ng-mouseenter="openRoomPopup(room._id)" ng-class="{ 'active': room._id == selectedRoomId, 'is-seen': hasSeenRoom(room._id) }">
             <div class="result-type">
               <div class="maki-icon" ng-class="getRoomTypeIcon(room.classification)"></div>
             </div>
             <div class="result-info">
               <span class="result-price pull-right">€ {{room.price.total}}</span>
-              <a href="#" class="result-location">{{room.location.street}}</a>
+              <a href="" class="result-location">{{room.location.street}}</a>
               <br>
               <small>2 bathrooms</small>
             </div>
