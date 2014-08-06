@@ -1,10 +1,57 @@
-{% extends 'layout.server.view.html' %}
 
-{% block content %}
-<div class="container">
-  <h1>Server Error</h1>
-  <pre>
-  	{{error}}
-  </pre>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>800 Server Error</title>
+
+  <!-- General META -->
+  <meta charset="utf-8">
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <!-- Semantic META -->
+  <meta name="keywords" content="{{keywords}}">
+  <meta name="description" content="{{description}}">
+
+  <!-- Facebook META -->
+  <meta property="fb:app_id" content="{{facebookAppId}}">
+  <meta property="og:site_name" content="{{title}}">
+  <meta property="og:title" content="{{title}}">
+  <meta property="og:description" content="{{description}}">
+  <meta property="og:url" content="{{url}}">
+  <meta property="og:image" content="/img/brand/logo.png">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter META -->
+  <meta name="twitter:title" content="{{title}}">
+  <meta name="twitter:description" content="{{description}}">
+  <meta name="twitter:url" content="{{url}}">
+  <meta name="twitter:image" content="/img/brand/logo.png">
+
+  <!-- Fav Icon -->
+  <link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link href="http://fonts.googleapis.com/css?family=Lato:400,900,300,700" rel="stylesheet">
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet">
+
+  <!--Application CSS Files-->
+  {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
+  {% endfor %}
+
+  <!-- HTML5 Shim -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body class="blue-bg not-found-page">
+  <div class="text-center">
+    <h1>ಠ_ಠ</h1>
+    <h2>500 Server Error</h2>
+  </div>
+</body>
+
+</html>

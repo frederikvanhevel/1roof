@@ -14,10 +14,7 @@ angular.module('search').config(['$stateProvider', '$urlRouterProvider',
       templateUrl: 'modules/rooms/views/view-room.client.view.html'
     });
 
-    console.log($urlRouterProvider);
-
     $urlRouterProvider.deferIntercept();
-
 	}
 ])  
 .run(['$rootScope', '$urlRouter', '$location', '$state', function ($rootScope, $urlRouter, $location, $state) {

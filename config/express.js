@@ -19,7 +19,8 @@ var express = require('express'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
 	path = require('path'),
-	cloudinary = require('cloudinary');
+	cloudinary = require('cloudinary'),
+	scheduler = require('./scheduler');
 
 module.exports = function(db) {
 	// Initialize express app
@@ -138,6 +139,8 @@ module.exports = function(db) {
 			error: 'Not Found'
 		});
 	});
+
+	//scheduler.start();
 
 	return app;
 };

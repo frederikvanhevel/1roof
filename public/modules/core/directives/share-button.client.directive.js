@@ -23,7 +23,7 @@ angular.module('core').directive('shareButton', [
                 window.open(
                   '//twitter.com/share?url=' + encodeURIComponent(location.href), 
                   'facebook-share-dialog', 
-                  'width=626,height=436'
+                  'width=626,height=448'
                 ); 
                 e.preventDefault();
               });
@@ -41,7 +41,7 @@ angular.module('core').directive('shareButton', [
                 window.open(
                   '//plus.google.com/share?url=' + encodeURIComponent(location.href), 
                   'facebook-share-dialog', 
-                  'width=626,height=436'
+                  'width=626,height=359'
                 ); 
                 e.preventDefault();
               });

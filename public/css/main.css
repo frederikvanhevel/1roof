@@ -6191,6 +6191,13 @@ input:focus:-ms-input-placeholder {
 }
 
 /* '' */
+.not-found-page h1, .not-found-page h2 {
+  color: white;
+}
+.not-found-page h1 {
+  font-size: 76px;
+}
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
 }
