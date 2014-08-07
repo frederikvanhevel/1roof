@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', '$scope', '$stateParams', '$location', '$http', 'Authentication', 'Rooms', 'Geocoder', 'Amenity', 'Modal', 'Alert',
-    function($rootScope, $window, $scope, $stateParams, $location, $http, Authentication, Rooms, Geocoder, Amenity, Modal, Alert) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics',
+    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
@@ -116,6 +116,9 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$window', 
         }
 
         function postLoad() {
+            // increment view count for statistics
+            Statistics.aggregate($scope.room._id);
+
             $scope.otherRooms = Rooms.getRoomsOfSameLocation({
                 roomId: $scope.room._id
             });

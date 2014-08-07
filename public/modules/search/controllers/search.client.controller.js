@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users',
-	function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users) {
+angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users', 'localStorageService',
+	function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users, localStorageService) {
     $scope.mapCenter = [4.3517100, 50.8503400]; // Brussel
     $scope.mapZoom = 13;
     $scope.fetchOnMapChange = true;
@@ -20,7 +20,7 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
     $scope.selectedRoomId = null;
     $scope.isOverLayOpen = false;
 
-    var viewedRooms = [];
+    var viewedRooms = localStorageService.get('viewedRooms') || [];
     var oldLocation = null;
     
 
