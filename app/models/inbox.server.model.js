@@ -28,7 +28,7 @@ var InboxSchema = new Schema({
     default: Date.now
   },
   room: {
-    type: Schema.ObjectId,
+    type: String,
     ref: 'Room'
   }
 });

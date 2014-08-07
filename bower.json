@@ -25,6 +25,8 @@
     "nouislider": "~6.2.0",
     "vide": "~0.1.0",
     "pikaday": "~1.2.0",
-    "angular-gettext": "~0.4.0"
+    "angular-gettext": "~0.4.0",
+    "angular-socket-io": "~0.6.0",
+    "socket.io-client": "~1.0.6"
   }
 }

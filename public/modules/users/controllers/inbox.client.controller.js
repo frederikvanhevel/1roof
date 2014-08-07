@@ -1,13 +1,29 @@
 'use strict';
 
-angular.module('users').controller('InboxController', ['$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication',
-	function($scope, $location, $http, $stateParams, Inbox, Authentication) {
+angular.module('users').controller('InboxController', ['$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication', 'Socket',
+	function($scope, $location, $http, $stateParams, Inbox, Authentication, Socket) {
     $scope.authentication = Authentication;
     $scope.newMessage = '';
     $scope.busy = false;
 
     $scope.init = function() {
       $scope.findOne($stateParams.inboxId);
+
+
+      // subscribe to this inbox session
+      $scope.inbox.$promise.then(function(inbox) {
+        Socket.emit('join', inbox._id);
+      });
+
+      // leave this inbox session
+      $scope.$on('$destroy', function() {
+        Socket.emit('leave', $scope.inbox._id);
+      });
+
+      // instantly recieve new messages
+      Socket.on('newMessage', function(message) {
+        $scope.inbox.messages.push(message);
+      });
     };
 
     $scope.list = function() {

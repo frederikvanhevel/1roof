@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog',
-	function($scope, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog) {
+angular.module('core').controller('HeaderController', ['$scope', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket',
+	function($scope, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
@@ -16,7 +16,10 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
       if (language.indexOf('nl') !== -1) $scope.setLanguage('nl');
 
       // poll for messages every 30 seconds
-      $interval($scope.getUnreadMessageCount, 30000);
+      //$interval($scope.getUnreadMessageCount, 30000);
+      //Socket.on('newMessages', function(count) {
+      //  $scope.unreadMessageCount = count;
+      //});
     };
 
 		$scope.toggleCollapsibleMenu = function() {

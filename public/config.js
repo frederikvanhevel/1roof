@@ -19,7 +19,8 @@ var ApplicationConfiguration = (function() {
 		'angularMoment',
 		'angularFileUpload',
 		'angularMoment',
-		'gettext'
+		'gettext',
+		'btford.socket-io'
 	];
 
 	// Add a new vertical module

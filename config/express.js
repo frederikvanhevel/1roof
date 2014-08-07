@@ -20,11 +20,19 @@ var express = require('express'),
 	consolidate = require('consolidate'),
 	path = require('path'),
 	cloudinary = require('cloudinary'),
-	scheduler = require('./scheduler');
+	scheduler = require('./scheduler'),
+	// added for socketio
+	http = require('http');
 
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
+
+	// added for socketio
+	var server = http.createServer(app);
+	var io = require('socket.io').listen(server);
+	io.serveClient(false);
+	server.listen(3001);
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
@@ -113,6 +121,12 @@ module.exports = function(db) {
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
 
+	// socketio middleware
+	app.use(function(req, res, next) {
+	  req.io = io;
+	  next();
+	});
+
 	// Globbing routing files
 	config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
 		require(path.resolve(routePath))(app);
@@ -138,6 +152,17 @@ module.exports = function(db) {
 			url: req.originalUrl,
 			error: 'Not Found'
 		});
+	});
+
+	// allow socket clients to connect privately in rooms
+	io.on('connection', function(socket) {
+		console.log('Socket client connected.');
+		socket.on('join', function(room) {
+      socket.join(room);
+    });
+    socket.on('leave', function(room) {
+      socket.leave(room);
+    });
 	});
 
 	//scheduler.start();

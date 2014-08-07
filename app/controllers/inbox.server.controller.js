@@ -59,6 +59,8 @@ exports.sendMessage = function(req, res) {
     if (err) {
       return res.send(400);
     } else {
+      req.io.sockets.in(inbox._id).emit('newMessage', message);
+
       res.jsonp(inbox);
     }
   });

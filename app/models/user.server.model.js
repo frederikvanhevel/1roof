@@ -94,7 +94,7 @@ var UserSchema = new Schema({
 		filters: String
 	}, {_id: false})],
 	favorites: [{
-		type: Schema.ObjectId,
+		type: String,
 		ref: 'Room'
 	}]
 });
