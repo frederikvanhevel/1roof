@@ -96,6 +96,12 @@ module.exports = function(grunt) {
             }
         },
         env: {
+            dev: {
+                NODE_ENV: 'development'
+            },
+            prod: {
+                NODE_ENV: 'production'
+            },
             test: {
                 NODE_ENV: 'test'
             }
@@ -144,13 +150,19 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'sass' , 'concurrent']);
+    grunt.registerTask('default', ['env:dev', 'dev']);
+
+    // Run dev
+    grunt.registerTask('dev', ['jshint', 'sass' , 'concurrent']);
 
     // Lint task(s).
     grunt.registerTask('lint', ['jshint']);
 
     // Build task(s).
     grunt.registerTask('build', ['jshint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
+
+    // Run Build task(s).
+    grunt.registerTask('runbuild', ['env:prod','build', 'concurrent']);
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

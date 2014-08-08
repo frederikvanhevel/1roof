@@ -182,8 +182,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                     Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
                 });
             });
-
-            //$scope.$apply();
         }
 
 

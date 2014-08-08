@@ -31,33 +31,3 @@ exports.remove = function(req, res, next, index, callback) {
   var room = req.room;
   cloudinary.uploader.destroy(room.pictures[index].link, callback);
 };
-
-/*
-  var index = 0;
-  var url = '';
-
-  if (req.body.link) {
-    url = req.body.link;
-    index = req.body.index;
-  } else {
-
-    console.log(req.body);
-
-    var form = new multiparty.Form();
-
-    form.parse(req, function(err, fields, files) {
-      console.log(err);
-      if (files === undefined || files.file.length === 0) return;
-      url = files.file[0].path;
-      index = fields.index[0];
-
-    });
-  }
-
-  cloudinary.uploader.upload(url, function(result) {
-    res.send(200, {
-      id: result.public_id
-    });
-  }, { public_id: room._id + '_' + index });
-
-  */

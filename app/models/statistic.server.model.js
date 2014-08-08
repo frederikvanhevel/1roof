@@ -12,7 +12,8 @@ var mongoose = require('mongoose'),
 var StatisticSchema = new Schema({
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
+    expires: '30d'
   },
   room: {
     type: String,
