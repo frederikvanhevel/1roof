@@ -1,14 +1,12 @@
-<div class="container" data-ng-controller="HeaderController" ng-init="init()">
+<div class="top-header" data-ng-controller="HeaderController" ng-init="init()">
+
 	<div class="navbar-header">
-		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<a href="/#!/" class="navbar-brand">Apollo</a>
+			<a href="/#!/" class="navbar-brand">Apollo</a>
+			<a class="btn responsive-menu pull-right collapsed navbar-toggle" data-ng-click="toggleCollapsibleMenu()" data-toggle="collapse" data-target=".navbar-collapse"><i class="icon-menu-1"></i></a>
 	</div>
+
 	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+
 		<form ng-submit="goToSearch()" class="navbar-form navbar-left" role="search">
       <div class="input-group input-group-sm">
 	      <input  ng-autocomplete details="searchDetails" ng-model="search" class="form-control" placeholder="Search" name="srch-term" type="text">
@@ -17,16 +15,19 @@
 	      </div>
 	    </div>
     </form>
+
 		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
 			<li data-ng-repeat="item in menu.items" data-ng-if="item.shouldRender(authentication.user);" ui-route="{{item.uiRoute}}" ng-class="{active: $uiRoute}">
 				<a href="/#!/{{item.link}}">{{item.title}}</a>
 			</li>
 		</ul>
+
 		<div class="navbar-form navbar-right">
 			<div class="form-group">
         <a class="btn btn-orange advertise-button" href="/#!/rooms/new">Advertise your room</a>
       </div>
 		</div>
+
 		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
 			<li ui-route="/signup" ng-class="{active: $uiRoute}">
 				<a href="" ng-click="openSignupModal()">Signup</a>
@@ -36,6 +37,7 @@
 				<a href="" ng-click="openSigninModal()">Signin</a>
 			</li>
 		</ul>
+
 		<ul class="nav navbar-nav navbar-right" data-ng-if="authentication.user">
 			
 			<li class="dropdown">
@@ -79,5 +81,6 @@
 			<li><a href="/#!/users/{{authentication.user._id}}/favorites"><i class="icon-heart-empty-1"></i> My Favorites</a></li>
 
 		</ul>
+
 	</nav>
 </div>

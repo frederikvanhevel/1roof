@@ -6227,78 +6227,6 @@ html, body {
   opacity: 1;
 }
 
-header.navbar {
-  box-shadow: rgba(0, 0, 0, 0.09804) 0 3px 10px;
-  background: #FFF;
-  position: fixed;
-  z-index: 1000;
-  min-height: initial;
-}
-header.navbar .profile .profile-name {
-  margin-left: 40px;
-}
-header.navbar .profile .profile-picture {
-  float: left;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  position: absolute;
-  left: 0;
-  top: 6px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-left: 10px;
-}
-header.navbar .advertise-button {
-  padding: 5px 13px 6px;
-  margin-left: 5px;
-}
-header.navbar .header-messages-icon {
-  font-size: 19px;
-}
-header.navbar .header-messages-icon .label {
-  position: relative;
-  top: -10px;
-  right: -10px;
-  font-size: 10px;
-  margin: 0;
-}
-header.navbar .messages-popover {
-  position: absolute;
-  left: 0;
-  width: 300px;
-  background: #FFF;
-  border: 1px solid #ddd;
-  border-top: transparent;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-}
-header.navbar .messages-popover ul {
-  padding: 0;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 21px;
-}
-header.navbar .messages-popover ul li {
-  padding: 0 5px;
-  cursor: pointer;
-}
-header.navbar .messages-popover ul li:hover {
-  background: #F7F7F7;
-}
-header.navbar .messages-popover ul li p {
-  margin: 0;
-  font-size: 12px;
-}
-header.navbar .messages-popover ul li a.view-all {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-}
-
 .alert-container {
   position: fixed;
   width: 400px;
@@ -6550,6 +6478,95 @@ footer {
 .btn-twitter.disabled, .btn-twitter[disabled], fieldset[disabled] .btn-twitter, .btn-twitter.disabled:hover, .btn-twitter[disabled]:hover, fieldset[disabled] .btn-twitter:hover, .btn-twitter.disabled:focus, .btn-twitter[disabled]:focus, fieldset[disabled] .btn-twitter:focus, .btn-twitter.disabled:active, .btn-twitter[disabled]:active, fieldset[disabled] .btn-twitter:active, .btn-twitter.disabled.active, .btn-twitter[disabled].active, fieldset[disabled] .btn-twitter.active {
   background-color: #2ba9e1;
   border-color: rgba(0, 0, 0, 0.2);
+}
+
+header.navbar {
+  box-shadow: rgba(0, 0, 0, 0.09804) 0 3px 10px;
+  background: #FFF;
+  position: fixed;
+  z-index: 1000;
+  min-height: initial;
+}
+header.navbar .btn.responsive-menu.navbar-toggle {
+  padding: 7px 14px;
+}
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  header.navbar .top-header {
+    display: table;
+    padding: 0;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+@media all and (min-width: 1024px) {
+  header.navbar .top-header {
+    margin-right: 30px;
+    margin-left: 30px;
+  }
+}
+header.navbar .profile .profile-name {
+  margin-left: 40px;
+}
+header.navbar .profile .profile-picture {
+  float: left;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  left: 0;
+  top: 6px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-left: 10px;
+}
+header.navbar .advertise-button {
+  padding: 5px 13px 6px;
+  margin-left: 5px;
+}
+header.navbar .header-messages-icon {
+  font-size: 19px;
+}
+header.navbar .header-messages-icon .label {
+  position: relative;
+  top: -10px;
+  right: -10px;
+  font-size: 10px;
+  margin: 0;
+}
+header.navbar .messages-popover {
+  position: absolute;
+  left: 0;
+  width: 300px;
+  background: #FFF;
+  border: 1px solid #ddd;
+  border-top: transparent;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+header.navbar .messages-popover ul {
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 21px;
+}
+header.navbar .messages-popover ul li {
+  padding: 0 5px;
+  cursor: pointer;
+}
+header.navbar .messages-popover ul li:hover {
+  background: #F7F7F7;
+}
+header.navbar .messages-popover ul li p {
+  margin: 0;
+  font-size: 12px;
+}
+header.navbar .messages-popover ul li a.view-all {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .modal .modal-content {
