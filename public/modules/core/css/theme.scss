@@ -1400,8 +1400,12 @@ p .btn {
     padding: 25px;
 }
 .panel-heading {
-    background-color: inherit !important;
-    color: inherit !important;
+    //background-color: inherit !important;
+    background-color: #3F8DBF !important;
+    background-image: none !important;
+    color: white !important;
+    border-bottom: none;
+    //color: inherit !important;
     padding: 25px;
     border-color: inherit !important;
 
@@ -2635,7 +2639,7 @@ input:focus:-ms-input-placeholder {
 
     .panel-heading {
         box-shadow: initial;
-        background: #edefed !important;
+        //background: #edefed !important;
         padding: 15px 25px;
     }
 }

@@ -1,20 +1,27 @@
 .inbox {
 
-  .profile-picture {
-    border-radius: 50%;
-    width: 36px;
-    height: 36px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    float: left;
-    position: absolute;
-    top: 5px;
+  .sidenav {
+    max-height: 468px;
+    overflow: auto;
+
+    .profile-picture {
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      float: left;
+      position: absolute;
+      top: 5px;
+    }
+
+    .sender-name {
+      margin-left: 50px;
+    }
+
   }
 
-  .sender-name {
-    margin-left: 50px;
-  }
 
 
   .room-card {
@@ -57,7 +64,15 @@
     position: relative;
 
     .message {
-      position: relative;
+      position: relative; 
+      margin-top: 3px;
+      margin-bottom: 25px;
+      clear: both;
+      height: 27px;
+    }
+
+    .reservation {
+      text-align: center;
     }
 
     .serverinfo {
@@ -66,15 +81,13 @@
       border-top: 1px solid #E6E9ED;
       width: 300px;
       margin: 20px auto;
+
     }
 
     .bubble,.bubble--alt{
-      position: relative; 
-      margin-top: 3px;
-      margin-bottom: 20px;
       padding: 2px 8px 4px;
       max-width: 80%;
-      clear: both;
+      min-width: 35px;
       color: #FFF;
     }
 

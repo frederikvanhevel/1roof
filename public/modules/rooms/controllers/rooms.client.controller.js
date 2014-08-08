@@ -17,13 +17,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         $scope.isOverlay = false;
 
         $scope.init = function() {
-            console.log('INIT ROOM');
-
             $scope.findOne();
-
-            $scope.$watch('room', function(newValue, oldValue) {
-                if (newValue !== oldValue) postLoad();
-            });
         };
 
         // Find existing Room

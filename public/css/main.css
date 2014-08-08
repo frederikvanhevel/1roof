@@ -1617,8 +1617,10 @@ p .btn {
 }
 
 .panel-heading {
-  background-color: inherit !important;
-  color: inherit !important;
+  background-color: #3F8DBF !important;
+  background-image: none !important;
+  color: white !important;
+  border-bottom: none;
   padding: 25px;
   border-color: inherit !important;
   font-weight: 700;
@@ -3022,7 +3024,6 @@ input:focus:-ms-input-placeholder {
 }
 .panel .panel-heading {
   box-shadow: initial;
-  background: #edefed !important;
   padding: 15px 25px;
 }
 
@@ -6962,6 +6963,9 @@ ROOMS MODULE
 .edit-room .edit-details {
   padding-top: 70px;
 }
+.edit-room .edit-details .bordered {
+  padding: 0;
+}
 .edit-room ul.amenities li {
   float: left;
   display: inline;
@@ -7306,7 +7310,11 @@ USERS MODULE
   background: #1ABB9C;
 }
 
-.inbox .profile-picture {
+.inbox .sidenav {
+  max-height: 468px;
+  overflow: auto;
+}
+.inbox .sidenav .profile-picture {
   border-radius: 50%;
   width: 36px;
   height: 36px;
@@ -7317,7 +7325,7 @@ USERS MODULE
   position: absolute;
   top: 5px;
 }
-.inbox .sender-name {
+.inbox .sidenav .sender-name {
   margin-left: 50px;
 }
 .inbox .room-card {
@@ -7356,6 +7364,13 @@ USERS MODULE
 }
 .inbox .messages .message {
   position: relative;
+  margin-top: 3px;
+  margin-bottom: 25px;
+  clear: both;
+  height: 27px;
+}
+.inbox .messages .reservation {
+  text-align: center;
 }
 .inbox .messages .serverinfo {
   padding: 20px 0;
@@ -7365,12 +7380,9 @@ USERS MODULE
   margin: 20px auto;
 }
 .inbox .messages .bubble, .inbox .messages .bubble--alt {
-  position: relative;
-  margin-top: 3px;
-  margin-bottom: 20px;
   padding: 2px 8px 4px;
   max-width: 80%;
-  clear: both;
+  min-width: 35px;
   color: #FFF;
 }
 .inbox .messages .bubble {

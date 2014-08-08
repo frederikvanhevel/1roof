@@ -59,9 +59,10 @@ exports.sendMessage = function(req, res) {
     if (err) {
       return res.send(400);
     } else {
-      req.io.sockets.in(inbox._id).emit('newMessage', message);
-
       res.jsonp(inbox);
+
+      req.io.sockets.in(inbox._id).emit('newMessage', message);
+      req.io.sockets.in(req.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
     }
   });
 };
@@ -156,10 +157,6 @@ exports.getUnreadMessageCount = function(req, res) {
   var user = req.user;
 
   Inbox.count({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ], 'messages.sender': { $ne: user._id }, 'messages.isRead': false  })
-  //.tailable().stream()
-  //stream.on('data', function (doc) {
-  //  socket.io emit event
-  //});
   .exec(function(err, inboxes) {
     if (err) {
       return res.send(400);

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket',
-	function($scope, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket) {
+angular.module('core').controller('HeaderController', ['$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket',
+	function($scope, $stateParams, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
@@ -15,11 +15,12 @@ angular.module('core').controller('HeaderController', ['$scope', '$location', '$
 
       if (language.indexOf('nl') !== -1) $scope.setLanguage('nl');
 
-      // poll for messages every 30 seconds
-      //$interval($scope.getUnreadMessageCount, 30000);
-      //Socket.on('newMessages', function(count) {
-      //  $scope.unreadMessageCount = count;
-      //});
+      // subscribe to new messages
+      Socket.emit('join', Authentication.user._id);
+      Socket.on('newMessageCount', function(response) {
+        if ($stateParams.inboxId !== response.inbox)
+          $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
+      });
     };
 
 		$scope.toggleCollapsibleMenu = function() {

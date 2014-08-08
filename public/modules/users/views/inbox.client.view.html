@@ -54,15 +54,17 @@
 
             <!-- <div class="profile-picture" ng-style="getUserPicture()"></div> -->
 
+            <!-- <div class="timestamp text-center claerfix"><small>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</small></div> -->
+
             <div ng-if="message.messageType == 'default'" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
               {{message.message}}
             </div>
 
-            <div ng-if="message.messageType == 'reservation'">
-              Asked for a reservation on <span>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</span>
+            <div ng-if="message.messageType == 'reservation'" class="reservation orange-bg">
+              <i class="icon-calendar-1"></i>
+              {{message.sender != authentication.user._id ? other.roomOwner.displayName + 'a' : 'A'}}sked for a reservation on <strong>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</strong>
             </div>
-
-            <div class="timestamp text-center claerfix"><small>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</small></div>
+          
             
           </div>
 

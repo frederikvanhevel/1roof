@@ -163,21 +163,27 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 });
                 $scope.busy = false;
             }).error(function(response) {
+                $scope.busy = false;
                 Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
             });
         }
 
         function onDropboxSelect(e, files) {
-            var pictures = [];
-
+            $scope.busy = true;
             files.forEach(function(file) {
-                $scope.room.pictures.push({
-                    provider: 'dropbox',
-                    link: file.link
+                $http.post('/rooms/' + $scope.room._id + '/upload', { link: file.link, index: $scope.room.pictures.length }).success(function(data) {
+                    $scope.room.pictures.push({
+                        provider: 'cloudinary',
+                        link: data.id
+                    });
+                    $scope.busy = false;
+                }).error(function(response) {
+                    $scope.busy = false;
+                    Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
                 });
             });
 
-            $scope.$apply();
+            //$scope.$apply();
         }
 
 

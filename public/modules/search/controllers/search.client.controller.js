@@ -56,7 +56,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
       $rootScope.$on('close_overlay', closeRoomOverlay);
 
       $scope.$watch('filter', function(newValue, oldValue) {
-         console.log('eek');
         if (newValue !== oldValue) $scope.searchFunction();
       }, true);
     };
@@ -145,7 +144,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
     };
 
     $scope.selectRoom = function(roomId, url) {
-      console.log('SELECTROOM');
       if (!$scope.selectedRoomId || $scope.selectedRoomId !== roomId) {
         $scope.selectedRoomId = roomId;
 

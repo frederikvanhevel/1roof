@@ -21,8 +21,12 @@ angular.module('search').config(['$stateProvider', '$urlRouterProvider',
     $rootScope.$on('$locationChangeSuccess', function(e, newUrl, oldUrl) {
       // Prevent $urlRouter's default handler from firing
       e.preventDefault();
+      console.log($state.current.name);
 
-      if ($state.current.name.indexOf('search') === -1) {
+      if (oldUrl.indexOf('/search/') !== -1 && newUrl.indexOf('/l/') !== -1) {
+        console.log('skipping route');
+      }
+      else {
         $urlRouter.sync();
       }
 
