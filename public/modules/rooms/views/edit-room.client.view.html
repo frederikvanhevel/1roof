@@ -49,6 +49,11 @@
             Pictures
           </a>
         </li>
+        <li ng-class="{ active: nav == 'cohabit'}">
+          <a ng-click="setTab('cohabit')" href="">
+            Living together
+          </a>
+        </li>
         <li ng-if="!room.visible" ng-class="{ active: nav == 'pictures'}">
           <button class="btn btn-blue btn-block" ng-disabled="errors.length > 0" ng-click="setRoomVisible()" disabled>
             <i class="glyphicon glyphicon-ok"></i> Publish
@@ -196,6 +201,36 @@
               
             </div>
             
+          </div>
+        </div>
+
+        <div ng-switch-when="cohabit" class="bordered">
+          <div class="panel-heading">
+            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+            <h3 class="panel-title">Living together</h3>
+            <small>Are you going to live together with other people?</small>
+          </div>
+          <div class="panel-body">
+            <form role="form">
+              <div class="form-group">
+                <label class="control-label">
+                  <input type="checkbox">
+                  I'm looking for a roommate
+                </label>
+              </div>
+
+              <div class="form-group">
+                <label class="control-label">With how many people do you intend to live in total?</label>
+                <select>
+                  <option value="">1</option>
+                  <option value="">2</option>
+                  <option value="">3</option>
+                  <option value="">4</option>
+                  <option value="">5</option>
+                </select>
+              </div>
+
+            </form>
           </div>
         </div>
 

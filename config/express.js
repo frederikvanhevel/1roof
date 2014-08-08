@@ -165,7 +165,7 @@ module.exports = function(db) {
     });
 	});
 
-	//scheduler.start();
+	scheduler.start();
 
 	return app;
 };

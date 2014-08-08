@@ -11,10 +11,6 @@ var mongoose = require('mongoose'),
  */
 var InboxSchema = new Schema({
   messages: ['Message'],
-  appointment : {
-    type: Schema.ObjectId,
-    ref: 'Appointment'
-  },
   sender: {
     type: Schema.ObjectId,
     ref: 'User'

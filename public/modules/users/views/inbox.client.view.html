@@ -62,10 +62,9 @@
 
             <div ng-if="message.messageType == 'reservation'" class="reservation orange-bg">
               <i class="icon-calendar-1"></i>
-              {{message.sender != authentication.user._id ? other.roomOwner.displayName + 'a' : 'A'}}sked for a reservation on <strong>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</strong>
+              {{message.sender != authentication.user._id ? other.roomOwner.displayName : 'You'}} asked for an appointment for <strong>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</strong>
             </div>
           
-            
           </div>
 
         </div>

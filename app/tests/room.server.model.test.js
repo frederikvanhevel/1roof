@@ -23,26 +23,42 @@ describe('Room Model Unit Tests:', function() {
 			lastName: 'Name',
 			displayName: 'Full Name',
 			email: 'test@test.com',
-			username: 'username',
-			password: 'password'
+			password: 'password',
+			provider: 'local'
 		});
 
 		user.save(function() { 
-			room = new Room ({
+			room = new Room({
+				surface: 30,
 				price: {
-					base: 400,
-					egw: 50
+					base: 450,
+					period: 'month',
+					egw: 50,
+					cleaning: 10
 				},
-				surface: 17,
-				location: {
-					street: 'Ekkergemstraat 17',
-					city: 'Gent',
-					country: 'België'
+				amenities: ['pets'],
+				info: {
+					title: 'Test room',
+					description: 'Description for test room'
 				},
-				loc: {
-					type: 'Point',
-					coordinates: [3.709059400000001, 51.0526937]
+		    location: {
+	        country: 'België',
+	        city: 'Sint-Niklaas',
+	        street: 'Voskenslaan 5'
+		    },
+		    loc: {
+	        type: 'Point',
+	        coordinates: [ 
+	          4.160534200000029, 
+	          51.1555844
+	        ]
+		    },
+				available: {
+					from: new Date(),
+					till: new Date()
 				},
+				classification: 'room',
+				leaseType: 'lease',
 				user: user
 			});
 
@@ -63,10 +79,28 @@ describe('Room Model Unit Tests:', function() {
 			return room .save(function(err) {
 				should.not.exist(err);
 
-				should.equal(room.price.total, 450);
+				should.equal(room.price.total, 510);
 
 				done();
 			});
+		});
+
+		it('should generate a slug based on certain properties', function(done) { 
+
+		});
+	});
+
+	describe('Method Delete', function() {
+		it('should be able to delete without problems', function(done) {
+
+		});
+
+		it('should remove all pictures from the hosting provider', function(done) { 
+
+		});
+
+		it('should remove the room id from users favorites', function(done) { 
+
 		});
 	});
 

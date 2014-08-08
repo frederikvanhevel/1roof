@@ -23,7 +23,6 @@ describe('Inbox Model Unit Tests:', function() {
 			lastName: 'Name',
 			displayName: 'Full Name',
 			email: 'test@test.com',
-			username: 'username',
 			password: 'password'
 		});
 

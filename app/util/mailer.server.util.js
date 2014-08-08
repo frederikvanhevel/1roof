@@ -5,7 +5,7 @@ var path = require('path'),
   nodemailer = require('nodemailer'),
   config = require('../../config/config');
 
-exports.send = function(template, context, from, to, subject) {
+exports.send = function(template, context, to, subject) {
 
   var options = {
     root: path.join(__dirname, '../views/email'),
@@ -27,7 +27,7 @@ exports.send = function(template, context, from, to, subject) {
       var transporter = nodemailer.createTransport(config.email);
 
       var mailOptions = {
-        from: from, // sender address
+        from: 'Apollo <noreply@apollo.be>', // sender address
         to: to, // list of receivers
         subject: subject, // Subject line
         html: html // html body
