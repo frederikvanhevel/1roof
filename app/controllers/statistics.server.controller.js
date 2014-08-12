@@ -23,7 +23,10 @@ exports.aggregate = function(req, res) {
     room: req.room._id
   };
 
-  Statistic.update(find, { $inc: { views: 1 } }, { upsert: true }, function(err) {
+  var increment = {};
+  increment.$inc[req.body.type] = 1;
+
+  Statistic.update(find, increment, { upsert: true }, function(err) {
     if (err) {
       return res.send(400);
     } else {

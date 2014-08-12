@@ -5,21 +5,23 @@ angular.module('core').service('Statistics', [ '$http', 'localStorageService',
 
     var uniqueViews = false;
     
-    this.aggregate = function(roomId) {
+    this.aggregate = function(roomId, type) {
+      // type can be 'views', 'messages' or 'reservations'
+
       if (uniqueViews) {
         var seenRooms = localStorageService.get('viewedRooms') || [];
         if (seenRooms.indexOf(roomId) === -1) {
-          postAggregation(roomId);
+          postStatistic(roomId);
           seenRooms.push(roomId);
         }
         localStorageService.set('viewedRooms', seenRooms);
       } else {
-        postAggregation(roomId);
+        postStatistic(roomId);
       }
     };
 
-    function postAggregation(roomId) {
-      $http.post('/statistics/' + roomId + '/aggregate');
+    function postStatistic(roomId, type) {
+      $http.post('/statistics/' + roomId + '/aggregate', { type: type });
     }
 
   }

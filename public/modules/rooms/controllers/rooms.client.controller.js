@@ -54,7 +54,6 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         };
 
         $scope.toggleFavorite = function() {
-            console.log('elaa');
             if (!Authentication.user) {
                 Modal.signup().then(function() {
                     sendFavorite();
@@ -93,6 +92,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         }
 
         function sendMessage(message) {
+            Statistics.aggregate($scope.room._id, 'messages');
+
             $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {
                 Alert.add('success', 'Your message has been sent!', 5000);
             }).error(function(response) {
@@ -101,6 +102,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         }
 
         function sendReservation(extraMessage) {
+            Statistics.aggregate($scope.room._id, 'reservations');
+
             $http.post('/rooms/' + $scope.room._id + '/message', { message: $scope.appointmentDate.getTime(), messageType: 'reservation' }).success(function(response) {
                 if (extraMessage) sendMessage(extraMessage);
                 else Alert.add('success', 'Your reservation has been sent!', 5000);
@@ -111,7 +114,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
 
         function postLoad() {
             // increment view count for statistics
-            Statistics.aggregate($scope.room._id);
+            Statistics.aggregate($scope.room._id, 'views');
 
             $scope.otherRooms = Rooms.getRoomsOfSameLocation({
                 roomId: $scope.room._id
