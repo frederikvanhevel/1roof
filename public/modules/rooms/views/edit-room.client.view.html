@@ -18,19 +18,19 @@
       <ul class="sidenav">
         <li ng-class="{ active: nav == 'general'}">
           <a ng-click="setTab('general')" href="">
-            <i ng-if="tabHasError('general')" class="icon-attention-1 red"></i> 
+            <i ng-if="tabHasError('general')" class="icon-alert red"></i> 
             General
           </a>
         </li>
         <li ng-class="{ active: nav == 'availability'}">
           <a ng-click="setTab('availability')" href="">
-            <i ng-if="tabHasError('availability')" class="icon-attention-1 red"></i> 
+            <i ng-if="tabHasError('availability')" class="icon-alert red"></i> 
             Availability
           </a>
         </li>
         <li ng-class="{ active: nav == 'costs'}">
           <a ng-click="setTab('costs')" href="">
-            <i ng-if="tabHasError('costs')" class="icon-attention-1 red"></i> 
+            <i ng-if="tabHasError('costs')" class="icon-alert red"></i> 
             Costs
           </a>
         </li>
@@ -237,6 +237,25 @@
     </div>
 
     <div class="info col-sm-3">
+
+      <h2>
+        <i class="icon-lamp"></i>
+        Wist je dat
+      </h2>
+
+      <div ng-switch on="nav">
+        <div ng-switch-when="pictures">
+          <h5>
+            Foto's zijn het eerste waar iemand op let. Zorg er voor dus dat je veel en duidelijke foto's hebt! Op deze manier zal je advertentie veel sneller verhuurd worden!
+          </h5>
+        </div>
+
+        <div ng-switch-when="general">
+          <h5>
+            Geef een duidelijke titel miljaardedjuè!è
+          </h5>
+        </div>
+      </div>
 
     </div>
   </div>

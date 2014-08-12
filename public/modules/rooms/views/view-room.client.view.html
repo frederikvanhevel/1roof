@@ -16,7 +16,7 @@
 			<div class="crumbs col-sm-12">
 				<button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> Back to map</button>
 				<h1>
-					<i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1': isInfavorites() }" tooltip="Add to wishlist" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{ room.info.title != '' ? room.info.title : room.location.street }} 
+					<i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1': isInfavorites() }" tooltip="Add to wishlist" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{room.info.title != '' ?room.info.title : room.location.street }} 
 				</h1>
 				<i class="glyphicon" ng-class=""></i>
 				<a ng-href="#!/search/{{room.location.city}}--{{room.location.country}}">{{room.location.city}}</a> <i class="icon-right-open"></i> {{room.location.street}} <i class="icon-right-open"></i> <strong>{{room.classification}}</strong>
@@ -59,7 +59,7 @@
 						<div class="room-header row">
 							<div class="col-sm-4">
 		          	<h6>Size</h6>
-	              <h2>{{room.surface | number}} <span class="small text-muted">m²</span></h2>
+	              <h2>{{ room.surface | number}} <span class="small text-muted">m²</span></h2>
 		          </div>
 		          <div class="col-sm-4">
 	              <h6>Contract</h6>
@@ -72,17 +72,17 @@
 		            	<tr>
 		            		<td></td>
 		            		<td></td>
-		            		<td><h4><span class="small text-muted">€ </span> {{room.price.base | number}}</h4></td>
+		            		<td><h4><span class="small text-muted">€ </span> {{ room.price.base | number}}</h4></td>
 		            	</tr>
 		            	<tr ng-show="room.price.egw != 0">
 		            		<td>+ </td>
 		            		<td>(E.G.W. <i class="icon-info-circled" tooltip="Electricity, Gas and Water"></i>)</td>
-		            		<td><h4><span class="small text-muted">€ </span> {{room.price.egw | number}}</h4></td>
+		            		<td><h4><span class="small text-muted">€ </span> {{ room.price.egw | number}}</h4></td>
 		            	</tr>
 		            	<tr ng-show="room.price.cleaning != 0">
 		            		<td>+ </td>
 		            		<td>(cleaning)</td>
-		            		<td><h4><span class="small text-muted">€ </span> {{room.price.cleaning | number}}</h4></td>
+		            		<td><h4><span class="small text-muted">€ </span> {{ room.price.cleaning | number}}</h4></td>
 		            	</tr>
 		            	<tr class="divider">
 		            		<td colspan="3"></td>
@@ -90,7 +90,7 @@
 		            	<tr class="total">
 		            		<td>= </td>
 		            		<td></td>
-		            		<td><h2><span class="small text-muted">€ </span> {{room.price.total | number}}</h2></td>
+		            		<td><h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2></td>
 		            	</tr>
 		            </table>
 		          </div>
@@ -102,8 +102,8 @@
 								<ul>
 									<li>
 										<i class="glyphicon glyphicon-calendar"></i>
-										<span>Available from <strong>{{room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-										<span ng-show="room.available.till">till <strong>{{room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+										<span>Available from <strong>{{ room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+										<span ng-show="room.available.till">till <strong>{{ room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
 									</li>
 									<li><i class="glyphicon glyphicon-time"></i> Updated <span am-time-ago="room.updated"></span></li>
 								</ul>
@@ -129,7 +129,7 @@
 							<div class="room-header row">
 								<div class="col-xs-6 col-md-3">
 			              <h6>Size</h6>
-	              		<h2>{{otherRoom.surface | number}} <span class="small text-muted">m²</span></h2>
+	              		<h2>{{ otherRoom.surface | number}} <span class="small text-muted">m²</span></h2>
 			          </div>
 			          <div class="col-xs-6 col-md-3">
 			          		<h6>Contract</h6>
@@ -137,7 +137,7 @@
 			          </div>
 			          <div class="col-xs-6 col-md-3">
 		              	<h6>Costs</h6>
-	              		<h2><span class="small text-muted">€</span> {{otherRoom.price.total | number}}</h2>
+	              		<h2><span class="small text-muted">€</span> {{ otherRoom.price.total | number}}</h2>
 		          	</div>
 			          <div class="col-xs-6 col-md-3">
 			          		<a ng-href="#!{{otherRoom.url}}" class="btn">View this room</a>
@@ -147,7 +147,7 @@
 							<div class="room-info row">
 								<div class="room-properties col-xs-6">
 									<ul>
-										<li><i class="glyphicon glyphicon-calendar"></i> <span>Available from {{otherRoom.available.from | amDateFormat: 'ddd D MMM'}}</span></li>
+										<li><i class="glyphicon glyphicon-calendar"></i> <span>Available from {{ otherRoom.available.from | amDateFormat: 'ddd D MMM'}}</span></li>
 										<li><i class="glyphicon glyphicon-time"></i> Updated <span am-time-ago="otherRoom.updated"></span></li>
 									</ul>
 								</div>

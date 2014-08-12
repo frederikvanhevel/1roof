@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
 	Room = mongoose.model('Room'),
 	_ = require('lodash'),
 	cloudinary = require('../../app/util/uploader'),
+	mailer = require('../../app/util/mailer'),
   winston = require('winston');
 
 /**
@@ -239,18 +240,7 @@ exports.removePicture = function(req, res, next) {
 	var index = req.body.index;
 	var picture = room.pictures[index];
 
-	if (picture.provider === 'cloudinary') {
-		cloudinary.remove(req, res, next, index, function() {
-			room.pictures.splice(index, 1);
-			room.save(function(err) {
-				if (err) {
-					return res.send(400);
-				} else {
-					res.jsonp(room);
-				}
-			});
-		});
-	} else {
+	cloudinary.remove(req, res, next, index, function() {
 		room.pictures.splice(index, 1);
 		room.save(function(err) {
 			if (err) {
@@ -259,7 +249,7 @@ exports.removePicture = function(req, res, next) {
 				res.jsonp(room);
 			}
 		});
-	}
+	});
 };
 
 /**

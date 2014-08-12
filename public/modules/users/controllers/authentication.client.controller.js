@@ -11,13 +11,15 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
             var deferred = $q.defer();
 
             $http.post('/auth/signup', $scope.credentials).success(function(response) {
-                //If successful we assign the response to the global user model
+                // If successful we assign the response to the global user model
                 $scope.authentication.user = response;
 
                 // CLose the modal if there is one
                 if ($scope.$close) $scope.$close();
-                //And redirect to the index page
-                // $location.path(redirectTo || '/');
+
+                // And redirect to the index page
+                $location.path(redirectTo || '/');
+
                 deferred.resolve();
                 return deferred.promise;
             }).error(function(response) {
@@ -31,13 +33,15 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$http
             var deferred = $q.defer();
 
             $http.post('/auth/signin', $scope.credentials).success(function(response) {
-                //If successful we assign the response to the global user model
+                // If successful we assign the response to the global user model
                 $scope.authentication.user = response;
 
                 // CLose the modal if there is one
                 if ($scope.$close) $scope.$close();
-                //And redirect to the index page
-                // $location.path(redirectTo || '/');
+
+                // And redirect to the index page
+                $location.path(redirectTo || '/');
+
                 deferred.resolve();
                 return deferred.promise;
             }).error(function(response) {

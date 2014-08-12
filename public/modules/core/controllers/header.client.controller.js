@@ -16,11 +16,13 @@ angular.module('core').controller('HeaderController', ['$scope', '$stateParams',
       if (language.indexOf('nl') !== -1) $scope.setLanguage('nl');
 
       // subscribe to new messages
-      Socket.emit('join', Authentication.user._id);
-      Socket.on('newMessageCount', function(response) {
-        if ($stateParams.inboxId !== response.inbox)
-          $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
-      });
+      if (Authentication.user) {
+        Socket.emit('join', Authentication.user._id);
+        Socket.on('newMessageCount', function(response) {
+          if ($stateParams.inboxId !== response.inbox)
+            $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
+        });
+      }
     };
 
 		$scope.toggleCollapsibleMenu = function() {

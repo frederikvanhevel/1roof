@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').service('Modal', [ '$modal',
-  function($modal) {
+angular.module('core').service('Modal', [ '$modal', '$location',
+  function($modal, $location) {
     var modalInstance;
 
     this.signup = function() {
@@ -15,10 +15,18 @@ angular.module('core').service('Modal', [ '$modal',
     };
 
     this.signin = function() {
+      var currentPath = $location.path();
+      console.log(currentPath);
+
       var options = {
         templateUrl: 'modules/users/views/signin.client.view.html',
         controller: 'AuthenticationController',
-        windowClass: 'small'
+        windowClass: 'small',
+        resolve: {
+          redirectTo: function () {
+            return currentPath;
+          }
+        }
       };
 
       return this.showModal(options, {});

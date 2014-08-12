@@ -39,8 +39,23 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $scope.checkRoomCompleteness();
 
             var updateFunction = $window._.debounce($scope.update, 1200);
-            // Use watchGroup in angular 3.1
-            $scope.$watch('room', function(newValue, oldValue) {
+
+            function watchRoomProperties() {
+              return {
+                visible: $scope.room.visible,
+                pictures: $scope.room.pictures,
+                leaseType: $scope.room.leaseType,
+                available: $scope.room.available,
+                loc: $scope.room.loc,
+                location: $scope.room.location,
+                info: $scope.room.info,
+                amenities: $scope.room.amenities,
+                price: $scope.room.price,
+                surface: $scope.room.surface
+              };
+            }
+
+            $scope.$watch(watchRoomProperties, function(newValue, oldValue) {
                 if (newValue !== oldValue && !$scope.busy) {
                     $scope.checkRoomCompleteness();
                     updateFunction();

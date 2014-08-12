@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	passport = require('passport'),
 	User = mongoose.model('User'),
+	mailer = require('../../app/util/mailer'),
 	_ = require('lodash');
 
 /**
