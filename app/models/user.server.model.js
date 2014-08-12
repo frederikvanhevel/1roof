@@ -43,10 +43,16 @@ var UserSchema = new Schema({
 	},
 	email: {
 		type: String,
+		unique: 'testing error message',
+		required: 'Please fill in an email',
 		trim: true,
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your email'],
 		match: [/.+\@.+\..+/, 'Please fill a valid email address']
+	},
+	username: {
+		type: String,	
+		trim: true
 	},
 	password: {
 		type: String,
@@ -90,7 +96,14 @@ var UserSchema = new Schema({
 	favorites: [{
 		type: String,
 		ref: 'Room'
-	}]
+	}],
+	/* For reset password */
+	resetPasswordToken: {
+		type: String
+	},
+ 	resetPasswordExpires: {
+ 		type: Date
+ 	}
 });
 
 /**

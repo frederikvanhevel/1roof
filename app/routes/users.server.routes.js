@@ -20,6 +20,10 @@ module.exports = function(app) {
 	app.route('/auth/signin').post(users.signin);
 	app.route('/auth/signout').get(users.signout);
 
+ 	app.route('/auth/forgot').post(users.forgot);
+ 	app.route('/auth/reset/:token').get(users.resetGet);
+ 	app.route('/auth/reset/:token').post(users.resetPost);
+
 	// Setting the facebook oauth routes
 	app.route('/auth/facebook').get(passport.authenticate('facebook', {
 		scope: ['email']
