@@ -187,5 +187,7 @@ RoomSchema.virtual('url').get(function() {
 // make sure the server sents our getter in the JSON object
 RoomSchema.set('toJSON', { virtuals: true });
 
+RoomSchema.index({ classification: 1, price: 1 }); // schema level
+
 
 mongoose.model('Room', RoomSchema);

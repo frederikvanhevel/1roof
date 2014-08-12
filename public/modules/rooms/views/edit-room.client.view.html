@@ -54,10 +54,24 @@
             Living together
           </a>
         </li>
-        <li ng-if="!room.visible" ng-class="{ active: nav == 'pictures'}">
-          <button class="btn btn-blue btn-block" ng-disabled="errors.length > 0" ng-click="setRoomVisible()" disabled>
+        <li ng-class="{ active: nav == 'pictures'}">
+<!--           <button class="btn btn-blue btn-block" ng-disabled="errors.length > 0" ng-click="setRoomVisible()" disabled>
             <i class="glyphicon glyphicon-ok"></i> Publish
-          </button>
+          </button> -->
+<!-- 
+          <div class="btn-group">
+            <button type="button" class="btn btn-blue btn-block dropdown-toggle">
+              Button dropdown <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
+          </div>
+ -->
         </li>
       </ul>
     </div>
