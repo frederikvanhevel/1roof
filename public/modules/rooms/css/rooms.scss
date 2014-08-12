@@ -16,4 +16,21 @@
     line-height: 40px;
     text-transform: uppercase;
   }
+
+  .visibility-switch {
+
+    .indicator {
+      float: left;
+    }
+
+    select {
+      float: left;
+      width: 120px;
+      margin-left: 20px;
+      margin-right: 20px;
+      margin-top: 5px;
+      height: 30px;
+    }
+
+  }
 }

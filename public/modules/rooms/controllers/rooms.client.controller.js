@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics',
-    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta',
+    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
@@ -77,6 +77,14 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             return $stateParams.isOverlay;
         };
 
+        $scope.visibilityText = function(item) {
+            return item ? 'online' : 'offline';
+        };
+
+        $scope.updateRoom = function() {
+            $scope.room.$update();
+        };
+
         function sendFavorite() {
             $http.post('/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);
@@ -113,6 +121,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         }
 
         function postLoad() {
+            Meta.setTitle($scope.room.info.title + ' - ' + $scope.room.location.city, true);
+
             // increment view count for statistics
             Statistics.aggregate($scope.room._id, 'views');
 

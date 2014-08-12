@@ -165,6 +165,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             }
         };
 
+        $scope.visibilityText = function(item) {
+            return item ? 'online' : 'offline';
+        };
+
         function uploadImage(image) {
             $scope.busy = true;
             $upload.upload({

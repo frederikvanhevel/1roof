@@ -6812,6 +6812,17 @@ ROOMS MODULE
   line-height: 40px;
   text-transform: uppercase;
 }
+.room-owner-panel .visibility-switch .indicator {
+  float: left;
+}
+.room-owner-panel .visibility-switch select {
+  float: left;
+  width: 120px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  height: 30px;
+}
 
 .view-room .favorite-icon {
   cursor: pointer;

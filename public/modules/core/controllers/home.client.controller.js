@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', '$location', 'Authentication', 'Geocoder', 'Alert',
-  function ($scope, $location, Authentication, Geocoder, Alert) {
+angular.module('core').controller('HomeController', ['$scope', '$location', 'Authentication', 'Geocoder', 'Alert', 'Meta',
+  function ($scope, $location, Authentication, Geocoder, Alert, Meta) {
     $scope.authentication = Authentication;
 
     $scope.search = '';

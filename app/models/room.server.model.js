@@ -6,7 +6,7 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	shortId = require('shortid');
-
+mongoose.set('debug', true);
 /**
  * Check if enough details are filled in
  */
@@ -187,7 +187,7 @@ RoomSchema.virtual('url').get(function() {
 // make sure the server sents our getter in the JSON object
 RoomSchema.set('toJSON', { virtuals: true });
 
-RoomSchema.index({ classification: 1, price: 1 }); // schema level
+// RoomSchema.index({ classification: 1, price: 1 }); // schema level
 
 
 mongoose.model('Room', RoomSchema);

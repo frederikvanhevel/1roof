@@ -127,6 +127,7 @@ exports.list = function(req, res) {
 
 	Room.find(query).exec(function(err, rooms) {
 		if (err) {
+			console.log(err);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});

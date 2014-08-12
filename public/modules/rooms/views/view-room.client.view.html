@@ -3,10 +3,15 @@
 	<div ng-if="!isOverlay() && room.user._id && room.user._id == authentication.user._id" class="room-owner-panel dark-bg" ng-cloak>
 		<div class="container">
 			<span class="pull-right">
-				<a href="/#!/rooms/{{room._id}}/edit/">edit this room <i class="icon-right-open"></i></a>
+				<a href="/#!/rooms/{{room._id}}/edit/"><i class="icon-pencil"></i> edit this room <i class="icon-right-open"></i></a>
 			</span>
-			<span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
+			<!-- <span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
       <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline<span ng-if="room.isInOrder"> - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span></span>
+ -->
+ 			<div class="visibility-switch">
+	      <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
+	      <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
+	    </div>
 		</div>
 	</div>
 
