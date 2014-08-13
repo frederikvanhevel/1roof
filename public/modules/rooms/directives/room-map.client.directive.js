@@ -7,6 +7,7 @@ angular.module('rooms').directive('roomMap', [ '$window',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {
 
+        var layer = null;
         var map = $window.L.mapbox.map(element[0], 'defreek.j27p0821', {
           zoomControl: false
         });
@@ -23,7 +24,8 @@ angular.module('rooms').directive('roomMap', [ '$window',
           // Disable tap handler, if present.
           if (map.tap) map.tap.disable();
 
-          $window.L.mapbox.featureLayer({
+          if (layer) layer.clearLayers();
+          layer = $window.L.mapbox.featureLayer({
             type: 'Feature',
             geometry: room.loc,
             properties: {

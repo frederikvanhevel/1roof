@@ -7643,3 +7643,7 @@ USERS MODULE
 .my-favorites .favorite .image.empty i {
   display: inline-block;
 }
+
+.messages-overview .unread {
+  color: #d9534f;
+}

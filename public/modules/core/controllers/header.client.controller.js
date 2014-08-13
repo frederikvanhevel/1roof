@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket',
-	function($scope, $stateParams, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket) {
+angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket',
+	function($rootScope, $scope, $stateParams, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
@@ -19,8 +19,12 @@ angular.module('core').controller('HeaderController', ['$scope', '$stateParams',
       if (Authentication.user) {
         Socket.emit('join', Authentication.user._id);
         Socket.on('newMessageCount', function(response) {
-          if ($stateParams.inboxId !== response.inbox)
+          if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox)
             $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
+        });
+
+        $rootScope.$on('inbox_read', function() {
+          if ($scope.unreadMessageCount > 0) $scope.unreadMessageCount--;
         });
       }
     };

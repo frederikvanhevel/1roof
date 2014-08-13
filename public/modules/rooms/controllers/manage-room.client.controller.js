@@ -155,10 +155,20 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 newAddress: $scope.newAddress,
                 newAddressDetails: $scope.newAddressDetails
             };
-            Modal.changeAddress(obj).then(function(e) {
-                console.log(obj);
+            Modal.changeAddress(obj).then(function(result) {
+                $scope.room.location = {
+                    street: result.street + ' ' + result.streetNumber,
+                    city: result.city,
+                    country: result.country
+                };
+                $scope.room.loc = {
+                    type: 'Point',
+                    coordinates: result.geo
+                };
+                $scope.$broadcast('room_loaded', $scope.room);
             });
         };
+
 
         $scope.setRoomVisible = function() {
             if ($scope.errors.length === 0) {

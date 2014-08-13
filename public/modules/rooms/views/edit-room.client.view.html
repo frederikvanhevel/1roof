@@ -89,10 +89,10 @@
           </div>
           <div class="panel-body">
             <form role="form">
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'has-error': tabHasError('general') }">
                 <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' characters left'"></small>
                 <label class="control-label">Titel</label>
-                <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="Geef een gepaste titel in">
+                <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="Geef een gepaste titel in" required>
               </div>
               <div class="form-group">
                 <small class="pull-right" ng-bind="(200 - room.info.description.length) + ' characters left'"></small>
@@ -144,7 +144,7 @@
                 </select>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'has-error': tabHasError('costs') }">
                 <label class="control-label">Basis prijs</label>
                 <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="dd//mm/jjjj">
               </div>

@@ -5,11 +5,12 @@
 </div>
 <div class="modal-body">
 
-  <form class="form-horizontal" name="changeAddressForm" role="form">
+  <form class="form-horizontal" name="changeAddressForm" role="form" novalidate>
     <div class="form-group" ng-class="{ 'has-error' : changeAddressForm.address.$invalid && !changeAddressForm.address.$pristine || changeAddressForm.$error.noStreet || changeAddressForm.$error.noStreetNumber}">
         <label class="control-label col-sm-3" for="address">Nieuw adres</label>
         <div class="col-sm-9">
-            <input type="text" ng-model="modalContent.newAddress" name="address" class="form-control" placeholder="Typ het adres" details="modalContent.addressDetails"  ng-autocomplete required>
+            <input type="text"name="address" class="form-control" placeholder="Typ het adres" address-lookup result-object="modalContent.addressDetails" required>
+
             <p ng-show="changeAddressForm.$error.noStreet && !changeAddressForm.address.$pristine" class="help-block">Je moet een straat intypen.</p>
             <p ng-show="changeAddressForm.$error.noStreetNumber && !changeAddressForm.address.$pristine" class="help-block">Je moet een straatnummer ingeven.</p>
         </div>
@@ -17,7 +18,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-9">
-        <button class="btn" ng-click="$close(addressDetails)">Opslaan</button>
+        <button class="btn" ng-click="$close(modalContent.addressDetails)" ng-disabled="changeAddressForm.$invalid">Opslaan</button>
       </div>
     </div>
 

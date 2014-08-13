@@ -29,11 +29,13 @@ exports.sendMessageOrCreate = function(req, res) {
 
   if (req.body.messageType) message.messageType = req.body.messageType;
 
-  Inbox.update(contents, { $addToSet: { messages: message }}, { upsert: true }, function(err) {
+  Inbox.update(contents, { $addToSet: { messages: message }}, { upsert: true }, function(err, inbox) {
     if (err) {
       winston.error('Error saving new inbox', { inbox: contents, message: message });
       return res.send(400);
     } else {
+      req.io.sockets.in(room.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
+
       res.send(200);
     }
   });
@@ -60,8 +62,10 @@ exports.sendMessage = function(req, res) {
     } else {
       res.jsonp(inbox);
 
+      var notifyUser = message.sender.equals(inbox.roomOwner._id) ? inbox.sender._id : inbox.roomOwner._id;
+
       req.io.sockets.in(inbox._id).emit('newMessage', message);
-      req.io.sockets.in(req.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
+      req.io.sockets.in(notifyUser).emit('newMessageCount', { count: 1, inbox: inbox._id });
     }
   });
 };

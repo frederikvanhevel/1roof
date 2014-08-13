@@ -1,14 +1,13 @@
 'use strict';
 
-angular.module('users').controller('InboxController', ['$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication', 'Socket',
-	function($scope, $location, $http, $stateParams, Inbox, Authentication, Socket) {
+angular.module('users').controller('InboxController', ['$rootScope', '$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication', 'Socket',
+	function($rootScope, $scope, $location, $http, $stateParams, Inbox, Authentication, Socket) {
     $scope.authentication = Authentication;
     $scope.newMessage = '';
     $scope.busy = false;
 
     $scope.init = function() {
       $scope.findOne($stateParams.inboxId);
-
 
       // subscribe to this inbox session
       $scope.inbox.$promise.then(function(inbox) {
@@ -30,11 +29,19 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
       $scope.inboxes = Inbox.query();
     };
 
-    // Find existing Room
+    // Find existing Inbox
     $scope.findOne = function(inboxId) {
       $scope.inboxes = Inbox.query();
       $scope.inbox = Inbox.get({
           inboxId: inboxId
+      }, function(inbox) {
+
+        if ($scope.hasUnreadMessages(inbox)) {
+          setInboxAsRead(inbox);
+
+          $rootScope.$broadcast('inbox_read');
+        }
+        
       });
     };
 
@@ -58,6 +65,7 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
 
     $scope.showInbox = function(inboxId) {
       $scope.findOne(inboxId);
+      
       $location.path('dashboard/messages/' + inboxId);
     };
 
@@ -75,5 +83,25 @@ angular.module('users').controller('InboxController', ['$scope', '$location', '$
 
       return { 'background-image': 'url(' + pictureSrc + ')' };
     };
+
+    $scope.getLastMessage = function(inbox) {
+      return inbox.messages[inbox.messages.length - 1];
+    };
+
+    $scope.hasUnreadMessages = function(inbox) {
+      for(var i = 0; i < inbox.messages.length; i++) {
+        var message = inbox.messages[i];
+        if (message.sender !== Authentication.user._id && !message.isRead) return true;
+      }
+      return false;
+    };
+
+    function setInboxAsRead(inbox) {
+      inbox.messages.forEach(function(message) {
+        if (message.sender !== Authentication.user._id) message.isRead = true;
+      });
+      inbox.$update();
+    }
+
 	}
 ]);
