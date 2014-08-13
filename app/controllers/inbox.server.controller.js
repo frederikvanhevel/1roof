@@ -34,7 +34,9 @@ exports.sendMessageOrCreate = function(req, res) {
       winston.error('Error saving new inbox', { inbox: contents, message: message });
       return res.send(400);
     } else {
-      req.io.sockets.in(room.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
+
+      if (!room.user._id.equals(req.user._id))
+        req.io.sockets.in(room.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
 
       res.send(200);
     }

@@ -3614,22 +3614,22 @@ input:focus:-ms-input-placeholder {
 
 @font-face {
   font-family: 'fontello';
-  src: url("./fontello/fontello.eot");
-  src: url("./fontello/fontello-.eot#iefix") format("embedded-opentype"), url("./fontello/fontello.woff") format("woff"), url("./fontello/fontello.ttf") format("truetype"), url("./fontello/fontello.svg#fontello") format("svg");
+  src: url("/assets/fontello/fontello.eot");
+  src: url("/assets/fontello/fontello-.eot#iefix") format("embedded-opentype"), url("/assets/fontello/fontello.woff") format("woff"), url("/assets/fontello/fontello.ttf") format("truetype"), url("/assets/fontello/fontello.svg#fontello") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'fontello-social';
-  src: url("./fontello/fontello-social.eot");
-  src: url("./fontello/fontello-social-.eot#iefix") format("embedded-opentype"), url("./fontello/fontello-social.woff") format("woff"), url("./fontello/fontello-social.ttf") format("truetype"), url("./fontello/fontello-social.svg#fontello") format("svg");
+  src: url("/assets/fontello/fontello-social.eot");
+  src: url("/assets/fontello/fontello-social-.eot#iefix") format("embedded-opentype"), url("/assets/fontello/fontello-social.woff") format("woff"), url("/assets/fontello/fontello-social.ttf") format("truetype"), url("/assets/fontello/fontello-social.svg#fontello") format("svg");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'fontello-circle';
-  src: url("./fontello/fontello-circle.eot");
-  src: url("./fontello/fontello-circle.eot#iefix") format("embedded-opentype"), url("./fontello/fontello-circle.woff") format("woff"), url("./fontello/fontello-circle.ttf") format("truetype"), url("./fontello/fontello-circle.svg#fontello") format("svg");
+  src: url("/assets/fontello/fontello-circle.eot");
+  src: url("/assets/fontello/fontello-circle.eot#iefix") format("embedded-opentype"), url("/assets/fontello/fontello-circle.woff") format("woff"), url("/assets/fontello/fontello-circle.ttf") format("truetype"), url("/assets/fontello/fontello-circle.svg#fontello") format("svg");
   font-weight: normal;
   font-style: normal;
 }
@@ -6723,10 +6723,246 @@ header.navbar .messages-popover ul li a.view-all {
   font-size: 18px;
 }
 
-/*!
- * Pikaday
- * Copyright © 2014 David Bushell | BSD & MIT license | http://dbushell.com/
- */
+/*
+ROOMS MODULE
+*/
+.online-icon {
+  color: #71DE22;
+}
+
+.offline-icon {
+  color: #B6B6B6;
+}
+
+.room-owner-panel {
+  height: 40px;
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+.room-owner-panel .container {
+  line-height: 40px;
+  text-transform: uppercase;
+}
+.room-owner-panel .visibility-switch .indicator {
+  float: left;
+}
+.room-owner-panel .visibility-switch select {
+  float: left;
+  width: 120px;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 5px;
+  height: 30px;
+}
+
+.view-room .favorite-icon {
+  cursor: pointer;
+}
+.view-room .favorite-icon:hover:before {
+  content: '\e803';
+}
+.view-room .room-header {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 20px;
+}
+.view-room .room-image {
+  width: 100%;
+  height: 500px;
+}
+.view-room .room-image.empty {
+  text-align: center;
+  line-height: 250px;
+  font-size: 100px;
+  opacity: 0.9;
+  padding: 0;
+  margin-top: 0;
+}
+.view-room .room-image .owl-item .item {
+  height: 400px;
+}
+.view-room .room-image .item figure {
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+.view-room .room-image .owl-carousel {
+  display: block !important;
+}
+.view-room .streetView {
+  height: 400px;
+}
+.view-room .room-map {
+  height: 400px;
+}
+.view-room .room-map .map-canvas {
+  height: 100%;
+}
+.view-room .room-costs {
+  width: 100%;
+  vertical-align: bottom;
+}
+.view-room .room-costs i {
+  cursor: pointer;
+  opacity: 0.8;
+}
+.view-room .room-costs i:hover {
+  opacity: 1;
+}
+.view-room .room-costs tr.total {
+  height: 50px;
+}
+.view-room .room-costs tr td {
+  height: 25px;
+}
+.view-room .room-costs tr.divider td {
+  height: 15px;
+  border-bottom: 1px solid #ddd;
+}
+.view-room .room-costs h2, .view-room .room-costs h4 {
+  text-align: right;
+  margin: 0;
+}
+.view-room .room-costs.collapsed tr.total td:first-child {
+  display: none;
+}
+.view-room .room-costs.collapsed tr:not(.total) {
+  display: none;
+}
+.view-room .room-info {
+  margin-top: 30px;
+}
+.view-room .room-info ul.amenities li {
+  float: left;
+  display: inline;
+  width: 50%;
+}
+.view-room .room-info ul.amenities li:before {
+  font-family: 'fontello';
+  font-weight: normal;
+  padding-top: 1px;
+  margin-left: -20px;
+  vertical-align: top;
+  position: absolute;
+}
+.view-room .room-info ul.amenities li.checked:before {
+  content: '\2713';
+  color: #1ABB9C;
+}
+.view-room .room-info ul.amenities li.crossed:before {
+  content: '\2715';
+  color: #FA6C65;
+}
+.view-room .contact-bottom {
+  margin-bottom: 30px;
+}
+.view-room .datepicker .pika-single {
+  z-index: 0;
+  width: 100%;
+  border: none;
+}
+
+.create-room .creationStep-content {
+  margin-top: 50px;
+}
+.create-room .room-creation-steps {
+  margin: 50px 0;
+}
+.create-room .room-creation-steps i {
+  font-size: 50px;
+  color: #73879C;
+}
+.create-room .room-creation-steps .room-step {
+  position: relative;
+  text-align: center;
+  background: #FFF;
+  border-bottom: 2px solid transparent;
+  border-color: #E1E7ED;
+  border-radius: 3px;
+  padding: 20px 0;
+  opacity: .5;
+}
+.create-room .room-creation-steps .room-step h3 {
+  color: #73879C;
+}
+.create-room .room-creation-steps .room-step.active {
+  opacity: 1;
+}
+.create-room .room-creation-steps .room-step:after, .create-room .room-creation-steps .room-step:before {
+  left: 100%;
+  top: 50%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+.create-room .room-creation-steps .room-step:after {
+  border-left-color: #FFF;
+  border-width: 20px;
+  margin-top: -20px;
+}
+.create-room .room-creation-steps .room-step:before {
+  border-left-color: #E1E7ED;
+  border-width: 23px;
+  margin-top: -23px;
+}
+.create-room .type-buttons .maki-icon {
+  margin: 0 auto;
+}
+
+.edit-room .edit-details {
+  padding-top: 70px;
+}
+.edit-room .edit-details .bordered {
+  padding: 0;
+}
+.edit-room ul.amenities li {
+  float: left;
+  display: inline;
+  width: 50%;
+  margin: 3px 0;
+}
+.edit-room .file-input {
+  display: none;
+}
+.edit-room .btn-upload input {
+  cursor: pointer !important;
+}
+.edit-room .pictures-header {
+  margin-bottom: 30px;
+}
+.edit-room .pictures-header button {
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.edit-room .availability h4 {
+  padding-top: 5px;
+}
+.edit-room .pictures .picture {
+  position: relative;
+  margin-bottom: 25px;
+}
+.edit-room .pictures .picture .remove-button {
+  position: absolute;
+  top: 10px;
+  padding: 5px 10px;
+  right: 25px;
+}
+.edit-room .pictures .picture .image {
+  height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid #E6E9ED;
+}
+.edit-room .map-canvas {
+  width: 100%;
+  height: 200px;
+}
+
 .pika-single {
   z-index: 9999;
   display: block;
@@ -6892,253 +7128,6 @@ header.navbar .messages-popover ul li a.view-all {
   background: #1ABB9C !important;
   box-shadow: none !important;
   border-radius: 2px !important;
-}
-
-/*
-ROOMS MODULE
-*/
-.online-icon {
-  color: #71DE22;
-}
-
-.offline-icon {
-  color: #B6B6B6;
-}
-
-.room-owner-panel {
-  height: 40px;
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-}
-.room-owner-panel .container {
-  line-height: 40px;
-  text-transform: uppercase;
-}
-.room-owner-panel .visibility-switch .indicator {
-  float: left;
-}
-.room-owner-panel .visibility-switch select {
-  float: left;
-  width: 120px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 5px;
-  height: 30px;
-}
-
-.view-room .favorite-icon {
-  cursor: pointer;
-}
-.view-room .favorite-icon:hover:before {
-  content: '\e803';
-}
-.view-room .room-header {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
-}
-.view-room .room-image {
-  width: 100%;
-  height: 500px;
-}
-.view-room .room-image.empty {
-  text-align: center;
-  line-height: 250px;
-  font-size: 100px;
-  opacity: 0.9;
-  padding: 0;
-  margin-top: 0;
-}
-.view-room .room-image .owl-item .item {
-  height: 400px;
-}
-.view-room .room-image .item figure {
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-}
-.view-room .room-image .owl-carousel {
-  display: block !important;
-}
-.view-room .streetView {
-  height: 400px;
-}
-.view-room .room-map {
-  height: 400px;
-}
-.view-room .room-map search-map {
-  width: 100%;
-  height: 400px;
-}
-.view-room .room-map .map-canvas {
-  height: 100%;
-}
-.view-room .room-costs {
-  width: 100%;
-  vertical-align: bottom;
-}
-.view-room .room-costs i {
-  cursor: pointer;
-  opacity: 0.8;
-}
-.view-room .room-costs i:hover {
-  opacity: 1;
-}
-.view-room .room-costs tr.total {
-  height: 50px;
-}
-.view-room .room-costs tr:nth-child(odd):not(.divider,.total) {
-  background: #CCC;
-}
-.view-room .room-costs tr td {
-  height: 25px;
-}
-.view-room .room-costs tr.divider td {
-  height: 15px;
-  border-bottom: 1px solid #ddd;
-}
-.view-room .room-costs h2, .view-room .room-costs h4 {
-  text-align: right;
-  margin: 0;
-}
-.view-room .room-costs.collapsed tr.total td:first-child {
-  display: none;
-}
-.view-room .room-costs.collapsed tr:not(.total) {
-  display: none;
-}
-.view-room .room-info {
-  margin-top: 30px;
-}
-.view-room .room-info ul.amenities li {
-  float: left;
-  display: inline;
-  width: 50%;
-}
-.view-room .room-info ul.amenities li:before {
-  font-family: 'fontello';
-  font-weight: normal;
-  padding-top: 1px;
-  margin-left: -20px;
-  vertical-align: top;
-  position: absolute;
-}
-.view-room .room-info ul.amenities li.checked:before {
-  content: '\2713';
-  color: #1ABB9C;
-}
-.view-room .room-info ul.amenities li.crossed:before {
-  content: '\2715';
-  color: #FA6C65;
-}
-.view-room .contact-bottom {
-  margin-bottom: 30px;
-}
-.view-room .datepicker .pika-single {
-  z-index: 0;
-  width: 100%;
-  border: none;
-}
-
-.create-room .creationStep-content {
-  margin-top: 50px;
-}
-.create-room .room-creation-steps {
-  margin: 50px 0;
-}
-.create-room .room-creation-steps i {
-  font-size: 50px;
-  color: #73879C;
-}
-.create-room .room-creation-steps .room-step {
-  position: relative;
-  text-align: center;
-  background: #FFF;
-  border-bottom: 2px solid transparent;
-  border-color: #E1E7ED;
-  border-radius: 3px;
-  padding: 20px 0;
-  opacity: .5;
-}
-.create-room .room-creation-steps .room-step h3 {
-  color: #73879C;
-}
-.create-room .room-creation-steps .room-step.active {
-  opacity: 1;
-}
-.create-room .room-creation-steps .room-step:after, .create-room .room-creation-steps .room-step:before {
-  left: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.create-room .room-creation-steps .room-step:after {
-  border-left-color: #FFF;
-  border-width: 20px;
-  margin-top: -20px;
-}
-.create-room .room-creation-steps .room-step:before {
-  border-left-color: #E1E7ED;
-  border-width: 23px;
-  margin-top: -23px;
-}
-.create-room .type-buttons .maki-icon {
-  margin: 0 auto;
-}
-
-.edit-room .edit-details {
-  padding-top: 70px;
-}
-.edit-room .edit-details .bordered {
-  padding: 0;
-}
-.edit-room ul.amenities li {
-  float: left;
-  display: inline;
-  width: 50%;
-  margin: 3px 0;
-}
-.edit-room .file-input {
-  display: none;
-}
-.edit-room .btn-upload input {
-  cursor: pointer !important;
-}
-.edit-room .pictures-header {
-  margin-bottom: 30px;
-}
-.edit-room .pictures-header button {
-  padding: 5px 10px;
-  font-size: 12px;
-}
-.edit-room .availability h4 {
-  padding-top: 5px;
-}
-.edit-room .pictures .picture {
-  position: relative;
-  margin-bottom: 25px;
-}
-.edit-room .pictures .picture .remove-button {
-  position: absolute;
-  top: 10px;
-  padding: 5px 10px;
-  right: 25px;
-}
-.edit-room .pictures .picture .image {
-  height: 150px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border: 1px solid #E6E9ED;
-}
-.edit-room .map-canvas {
-  width: 100%;
-  height: 200px;
 }
 
 /*

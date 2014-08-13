@@ -421,7 +421,7 @@ exports.forgot = function(req, res, next) {
           		}
 
           		user.resetPasswordToken = token;
-          		user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
+          		user.resetPasswordExpires = Date.now() + 86400000; // 1 day
 
           		user.save(function(err) {
           		    done(err, token, user);
@@ -436,29 +436,13 @@ exports.forgot = function(req, res, next) {
     	},
     	// If valid email, send reset email using service
     	function(token, user, done) {
-        console.log('http://' + req.headers.host + '/auth/reset/' + token);
-      // 		var smtpTransport = nodemailer.createTransport('SMTP', {
-      //   		service: 'SendGrid', // Choose email service, default SendGrid
-      //   		auth: {
-      //     			user: 'your_sendgrid_email@domain.com',
-      //     			pass: 'your_sendgrid_password'
-      //   		}
-      // 		});
-      // 		var mailOptions = {
-      //   		to: user.email,
-      //   		from: 'your_email@domain.com',
-      //   		subject: 'Password Reset',
-      //   		text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n' +
-      //     		'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
-      //     		'http://' + req.headers.host + '/auth/reset/' + token + '\n\n' +
-      //     		'If you did not request this, please ignore this email and your password will remain unchanged.\n'
-      // 		};
-      // 		smtpTransport.sendMail(mailOptions, function(err) {
-      // 			res.send(200, {
-						// 	message: 'An email has been sent to ' + user.email + ' with further instructions.'
-						// });
-						// done(err, 'done');
-      // 		});
+        var context = {
+          user: user,
+          resetLink: 'http://' + req.headers.host + '/auth/reset/' + token
+        };
+        mailer.send('resetpassword.email.html', context, user.email, 'Wachtwoord herstellen');
+
+        res.send(200);
   		}
     ], function(err) {
     	if (err) return next(err);
@@ -471,10 +455,10 @@ exports.forgot = function(req, res, next) {
 exports.resetGet = function(req, res) {
   	User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
     	if (!user) {
-    		// res.render('404');
+    		  // res.render('404');
        		res.send(400, {
-					message: 'Password reset token is invalid or has expired.'
-			});
+    					message: 'Password reset token is invalid or has expired.'
+    			});
       		return res.redirect('/#!/forgot');
     	}
 
@@ -498,7 +482,7 @@ exports.resetPost = function(req, res) {
                     if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
                         user.password = passwordDetails.newPassword;
                         user.resetPasswordToken = undefined;
-        				user.resetPasswordExpires = undefined;
+        				        user.resetPasswordExpires = undefined;
 
                         user.save(function(err) {
                             if (err) {
