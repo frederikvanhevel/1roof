@@ -1,7 +1,7 @@
 <section ng-controller="AuthenticationController">
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="$dismiss()">&times;</button>
-	  <h4>Sign in</h4>
+	  <h4>Inloggen</h4>
 	</div>
 
 	<div class="modal-body">
@@ -12,12 +12,12 @@
 		  <span>or</span>
 		</div> -->
 
-		<p class="sidelines text-center"><span>or</span></p>
+		<p class="sidelines text-center"><span>of</span></p>
 
 		<form data-ng-submit="signin()" class="signin">
-			<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="example@email.com">
-			<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="password">
-			<button type="submit" class="btn btn-block">Sign in</button>
+			<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="voorbeeld@email.com">
+			<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="wachtwoord">
+			<button type="submit" class="btn btn-block">Inloggen</button>
 		</form>
 
 		<div data-ng-show="error" class="text-center text-danger">
@@ -27,12 +27,11 @@
 	</div>
 
 	<div class="modal-footer">
-		<p>
-			No account?
-			<a href="" ng-click="openSignupModal()"> Sign up</a>
+		<p class="pull-right">
+			<a href="/#!/forgot" ng-click="$dismiss()">Wachtwoord vergeten?</a>
 		</p>
 		<p>
-			<a href="/#!/forgot">Forgot password?</a>
+			<a href="" ng-click="openSignupModal()"> Nieuwe account</a>
 		</p>
 	</div>
 </section>

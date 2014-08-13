@@ -6,17 +6,17 @@ angular.module('core').service('Statistics', [ '$http', 'localStorageService',
     var uniqueViews = false;
     
     this.aggregate = function(roomId, type) {
-      // type can be 'views', 'messages' or 'reservations'
+      // type can be 'views', 'messages', 'reservations', 'favorites'
 
       if (uniqueViews) {
         var seenRooms = localStorageService.get('viewedRooms') || [];
         if (seenRooms.indexOf(roomId) === -1) {
-          postStatistic(roomId);
+          postStatistic(roomId, type);
           seenRooms.push(roomId);
         }
         localStorageService.set('viewedRooms', seenRooms);
       } else {
-        postStatistic(roomId);
+        postStatistic(roomId, type);
       }
     };
 

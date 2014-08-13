@@ -786,7 +786,6 @@ footer p {
   color: #FFF !important;
   background: #1ABB9C;
   padding: 11px 20px 13px;
-  /*margin: 15px 0;*/
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -1824,6 +1823,102 @@ p .btn {
 
 .light-bg .blank.panel-group .bordered {
   background: #FFF;
+}
+
+/*===================================================================================*/
+/*  PRICING TABLES
+/*===================================================================================*/
+.pricing .plan {
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  overflow: hidden;
+}
+
+.pricing .plan header {
+  background: #2F4052;
+  text-align: center;
+  padding: 50px;
+}
+
+.pricing .plan h2 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #FFF;
+}
+
+.pricing .plan .btn {
+  margin-bottom: 0;
+}
+
+.pricing .plan .price {
+  margin-bottom: 15px;
+}
+
+.pricing .plan .price * {
+  font-family: 'Lato', sans-serif;
+  line-height: 100%;
+}
+
+.pricing .plan .price .amount {
+  font-size: 120px;
+  font-weight: 900;
+  color: #FFF;
+}
+
+.pricing .plan .price .currency {
+  position: relative;
+  top: 16px;
+  font-size: 24px;
+  vertical-align: top;
+  margin-right: 5px;
+}
+
+.pricing .plan .price .period {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.pricing .plan .features {
+  background: #F5F7FA;
+  padding: 25px 35px;
+  border: 1px solid #E6E9ED;
+  border-top: none;
+  border-bottom-width: 2px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  margin-top: 0 !important;
+}
+
+.pricing .plan .features li {
+  padding: 15px 0;
+  /*border-top: 1px solid #CED7E0;*/
+  border-top: 1px solid #BCC7D1;
+}
+
+.pricing .plan .features li:first-child {
+  border: none;
+}
+
+.pricing .plan .features li i {
+  margin-right: 10px;
+}
+
+.pricing.col-4 .plan header {
+  padding: 40px;
+}
+
+.pricing.col-4 .plan h2 {
+  font-size: 18px;
+}
+
+.pricing.col-4 .plan .price .amount {
+  font-size: 90px;
+}
+
+.pricing.col-4 .plan .features {
+  padding: 20px 30px;
 }
 
 /*===================================================================================*/
@@ -6263,6 +6358,10 @@ footer {
   z-index: 1051 !important;
 }
 
+.footer-bottom .social-buttons li {
+  display: inline-block;
+}
+
 .btn-social {
   position: relative;
   padding-left: 50px;
@@ -6600,24 +6699,28 @@ header.navbar .messages-popover ul li a.view-all {
   width: 350px;
 }
 
-#hero {
+.home-view #hero {
   width: 100%;
   height: 550px;
 }
-#hero .raster {
+.home-view #hero .raster {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAX/GZH4/4FsRpgAmAOSBBFwDkgAAIKuBATRTAAZAAAAAElFTkSuQmCC) repeat;
   height: 100%;
 }
-#hero .raster .hero-content {
+.home-view #hero .raster .hero-content {
   padding-top: 200px;
 }
-#hero .raster .hero-content h1 {
+.home-view #hero .raster .hero-content h1 {
   display: inline;
   color: white;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
-#hero .raster .hero-content form {
+.home-view #hero .raster .hero-content form {
   margin-top: 30px;
+}
+.home-view .pricing .features {
+  background: white;
+  font-size: 18px;
 }
 
 /*!
@@ -7299,6 +7402,10 @@ USERS MODULE
   top: 10px;
   right: 10px;
   position: absolute;
+}
+
+.reset-view {
+  margin-top: 30px;
 }
 
 .dashboard-tabs {

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', 'Authentication', 'Rooms', 'Modal', 'Geocoder',
-	function($scope, $location, Authentication, Rooms, Modal, Geocoder) {
+angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', 'Authentication', 'Rooms', 'Modal', 'Geocoder', 'Meta',
+	function($scope, $location, Authentication, Rooms, Modal, Geocoder, Meta) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -17,6 +17,8 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         $scope.busy = false;
 
         $scope.init = function() {
+            Meta.setTitle('Advertentie toevoegen');
+            
             if (Authentication.user) $scope.creationStep = 2;
         };
 

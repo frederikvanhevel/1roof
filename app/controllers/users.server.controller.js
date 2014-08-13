@@ -7,12 +7,12 @@ var mongoose = require('mongoose'),
 	passport = require('passport'),
 	User = mongoose.model('User'),
 	mailer = require('../../app/util/mailer'),
-	_ = require('lodash');
+	_ = require('lodash'),
 
-var	LocalStrategy = require('passport-local').Strategy;
-var	bcrypt = require('bcrypt-nodejs');
-var	async = require('async');
-var	crypto = require('crypto');
+  LocalStrategy = require('passport-local').Strategy,
+  bcrypt = require('bcrypt-nodejs'),
+  async = require('async'),
+  crypto = require('crypto');
 
 /**
  * Get the error message from error object

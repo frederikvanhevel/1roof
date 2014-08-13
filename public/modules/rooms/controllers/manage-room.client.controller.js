@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert',
-    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal, Alert) {
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta',
+    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal, Alert, Meta) {
         $scope.authentication = Authentication;
         
         $scope.createForm = {
@@ -24,6 +24,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
          // Init
         $scope.init = function() {
+            Meta.setTitle('Advertentie aanpassen');
+
             if ($stateParams.nav) $scope.nav = $stateParams.nav;
             if (!$stateParams.roomId) $location.path('/');
 
@@ -38,7 +40,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $scope.$broadcast('room_loaded', $scope.room);
             $scope.checkRoomCompleteness();
 
-            var updateFunction = $window._.debounce($scope.update, 1200);
+            var updateFunction = $window._.debounce($scope.update, 800);
 
             function watchRoomProperties() {
               return {

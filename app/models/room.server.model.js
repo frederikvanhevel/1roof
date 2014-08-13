@@ -6,7 +6,7 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	shortId = require('shortid');
-mongoose.set('debug', true);
+
 /**
  * Check if enough details are filled in
  */

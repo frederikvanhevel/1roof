@@ -89,6 +89,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             $http.post('/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);
                 if (index === -1) {
+                    Statistics.aggregate($scope.room._id, 'favorites');
+
                     Authentication.user.favorites.push($scope.room._id);
                     Alert.add('success', 'Added to favorites!', 3000);
                 } else {
@@ -122,6 +124,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
 
         function postLoad() {
             Meta.setTitle($scope.room.info.title + ' - ' + $scope.room.location.city, true);
+            Meta.setDescription($scope.room.info.description);
 
             // increment view count for statistics
             Statistics.aggregate($scope.room._id, 'views');

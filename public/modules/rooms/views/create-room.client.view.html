@@ -8,20 +8,20 @@
             <div class="room-step" ng-class="{ active: creationStep == 1 }">
               <i ng-hide="creationStep > 1" class="icon-user-add"></i>
               <i ng-show="creationStep > 1" class="icon-check green"></i>
-              <h3>Step 1: create an account</h3>
+              <h3>Stap 1: meld je aan</h3>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="room-step" ng-class="{ active: creationStep == 2 }">
               <i ng-hide="creationStep > 2"  class="icon-home"></i>
               <i ng-show="creationStep > 2" class="icon-check green"></i>
-              <h3>Step 2: create a room</h3>
+              <h3>Stap 2: maak een advertentie aan</h3>
             </div>
           </div>
           <div class="col-sm-4">
             <div class="room-step" ng-class="{ active: creationStep == 3 }">
               <i class="icon-pencil-1"></i>
-              <h3>Step 3: customize</h3>
+              <h3>Stap 3: pas ze aan</h3>
             </div>
           </div>
           <div class="clearfix"></div>
@@ -35,38 +35,38 @@
       <div class="creationStep-content col-sm-offset-2 col-sm-7">
 
         <div ng-if="creationStep == 1" class="text-center">
-          <h3>To continue, you need to create an account or sign in</h3>
+          <h3>Om verder te gaan moet je je registreren of inloggen met een bestaande account</h3>
           <p>
-            <button ng-click="openSingupModal()" class="btn">Create an account</button>
-            <button ng-click="openSinginModal()" class="btn btn-blue">Sign in</button>
+            <button ng-click="openSingupModal()" class="btn">Maak een account aan</button>
+            <button ng-click="openSinginModal()" class="btn btn-blue">Inloggen</button>
           </p>
         </div>
 
         <div ng-if="creationStep == 2">
       		<form class="form-horizontal" name="createRoomForm" role="form" ng-submit="create()">
             <div class="form-group" ng-class="{ 'has-error' : createRoomForm.address.$invalid && !createRoomForm.address.$pristine || createRoomForm.$error.noStreet || createRoomForm.$error.noStreetNumber}">
-                <label class="control-label col-sm-3" for="address">Address</label>
+                <label class="control-label col-sm-3" for="address">Adres</label>
                 <div class="col-sm-9">
-                    <input type="text" ng-model="createForm.address" name="address" class="form-control" placeholder="Type the address" data-options="autocompleteOptions" details="autoCompleteDetails"  ng-autocomplete check-address required>
-                    <p ng-show="createRoomForm.$error.noStreet && !createRoomForm.address.$pristine" class="help-block">YYou have to type a street.</p>
-                    <p ng-show="createRoomForm.$error.noStreetNumber && !createRoomForm.address.$pristine" class="help-block">You need to specify a street number.</p>
+                    <input type="text" ng-model="createForm.address" name="address" class="form-control" placeholder="Geef het adres in" data-options="autocompleteOptions" details="autoCompleteDetails"  ng-autocomplete check-address required>
+                    <p ng-show="createRoomForm.$error.noStreet && !createRoomForm.address.$pristine" class="help-block">Je moet een straat intypen</p>
+                    <p ng-show="createRoomForm.$error.noStreetNumber && !createRoomForm.address.$pristine" class="help-block">Je moet een huisnummer ingeven</p>
                 </div>
             </div>
 
       		  <div class="form-group">
-      		    <label for="inputPassword3" class="col-sm-3 control-label">Room type</label>
+      		    <label for="inputPassword3" class="col-sm-3 control-label">Type ruimte</label>
               <div class="col-sm-9">
                 <div class="btn-group type-buttons" ng-model="createForm.roomType" radio-group>
-                  <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> Entire house</button>
-                  <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> Appartment</button>
-                  <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Room</button>          
+                  <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> Volledig huis</button>
+                  <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> Appartement</button>
+                  <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Kamer</button>          
                 </div>
       		    </div>
       		  </div>
 
       		  <div class="form-group">
       		    <div class="col-sm-offset-3 col-sm-9">
-      		      <button ng-class="{ disabled: busy || createRoomForm.$invalid || !createForm.roomType }" type="submit" class="btn btn-blue">Continue <i class="glyphicon glyphicon-ok"></i></button>
+      		      <button ng-class="{ disabled: busy || createRoomForm.$invalid || !createForm.roomType }" type="submit" class="btn btn-blue">Ga verder <i class="glyphicon glyphicon-ok"></i></button>
                 <img ng-show="busy" class="spinner" src="/modules/core/img/loaders/loading.svg">
       		    </div>
       		  </div>

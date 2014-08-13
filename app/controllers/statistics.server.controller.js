@@ -19,7 +19,7 @@ function getDateWithoutTime(date) {
 exports.aggregate = function(req, res) {
   var user = req.user;
 
-  if (req.user && req.user._id === req.room.user) return res.send(200);
+  if (req.user && req.user._id === req.room.user._id) return res.send(200);
 
   var find = {
     date: getDateWithoutTime(new Date()),

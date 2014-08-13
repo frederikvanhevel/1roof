@@ -3,9 +3,9 @@
   <div class="dashboard-top-bar dark-bg " ng-cloak>
     <div class="container">
       <ul class="col-sm-offset-2">
-        <li><a href="/#!/dashboard/rooms" ng-click="setTab('rooms')">My rooms</a></li>
-        <li class="active"><a href="" ng-click="setTab('messages')">Messages</a></li>
-        <li><a href="/#!/dashboard/profile" ng-click="setTab('profile')">Profile</a></li>
+        <li><a href="/#!/dashboard/rooms" ng-click="setTab('rooms')">Mijn advertenties</a></li>
+        <li class="active"><a href="" ng-click="setTab('messages')">Berichten</a></li>
+        <li><a href="/#!/dashboard/profile" ng-click="setTab('profile')">Profiel</a></li>
         <li><a href="/#!/dashboard/account" ng-click="setTab('account')">Account</a></li>
       </ul>
     </div>
@@ -62,7 +62,7 @@
 
             <div ng-if="message.messageType == 'reservation'" class="reservation orange-bg">
               <i class="icon-calendar-1"></i>
-              {{message.sender != authentication.user._id ? other.roomOwner.displayName : 'You'}} asked for an appointment for <strong>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</strong>
+              {{message.sender != authentication.user._id ? other.roomOwner.displayName : 'Je'}} wil een afspraak maken op <strong>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</strong>
             </div>
           
           </div>
@@ -73,9 +73,9 @@
 
           <form ng-submit="sendMessage()" class="col-sm-12">
             <div class="input-group input-group-lg">
-              <input type="text" ng-model="newMessage" ng-maxlength="500" class="form-control input-lg" placeholder="Type your message" required>
+              <input type="text" ng-model="newMessage" ng-maxlength="500" class="form-control input-lg" placeholder="Typ je bericht" required>
               <span class="input-group-btn">
-                <button type="submit" class="btn btn-blue" ng-disabled="busy">Send</button>
+                <button type="submit" class="btn btn-blue" ng-disabled="busy">Verzend</button>
               </span>
             </div>
           </form>

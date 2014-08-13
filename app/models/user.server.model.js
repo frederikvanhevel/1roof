@@ -97,12 +97,16 @@ var UserSchema = new Schema({
 		type: String,
 		ref: 'Room'
 	}],
-	/* For reset password */
+	// For reset password
 	resetPasswordToken: {
 		type: String
 	},
  	resetPasswordExpires: {
  		type: Date
+ 	},
+ 	// For stripe
+ 	customerToken: {
+ 		Type: String
  	}
 });
 

@@ -7,6 +7,8 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
     $scope.search = '';
     $scope.searchDetails = {};
 
+    Meta.setTitle('Apollo', true);
+
     $scope.goToSearch = function() {
       if ($scope.searchDetails.geometry) {
         $location.path('search/' + $scope.search.replace(/, /g, '--'))

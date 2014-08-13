@@ -1,18 +1,125 @@
-<section data-ng-controller="HomeController">
+<section data-ng-controller="HomeController" class="home-view">
     
   <div id="hero" video-background video-path="/modules/core/img/video/ocean">
     <div class="raster">
       <div class="hero-content col-sm-offset-2 col-sm-8">
-        <h1 translate>Find your ideal place to live.</h1>
+        <h1 translate>Vind je ideale woonst.</h1>
         <form class="form-inline" role="form" ng-submit="goToSearch()">
           <div class="input-group input-group-lg col-sm-6">
-            <input ng-autocomplete details="searchDetails" ng-model="search" type="text" class="center-block form-control input-lg" placeholder="Where do you want to go?">
-            <span class="input-group-btn"><button class="btn" type="submit">OK</button></span>
+            <input ng-autocomplete details="searchDetails" ng-model="search" type="text" class="center-block form-control input-lg" placeholder="Waar wil je naartoe?">
+            <span class="input-group-btn"><button class="btn" type="submit">Ga</button></span>
           </div>
         </form>
       </div>
     </div>
   </div>
+
+  <section id="pricing-tables">
+    <div class="container inner">
+      
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 text-center">
+          <header>
+            <h1>Simple pricing, no surprises</h1>
+            <p>Magnis modipsae que voloratati andigen daepeditem quiate re porem aut labor. Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam.</p>
+          </header>
+        </div>
+      </div>
+      
+      <div class="row pricing">
+        
+        <div class="col-md-4 col-sm-6 inner-top-sm">
+          <div class="plan">
+            
+            <header>
+              <h2>Persoonlijk</h2>
+              
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">0</span>
+                <span class="period">/ Mo</span>
+              </div>
+              
+              <a href="#" class="btn">Kies dit plan</a>
+            </header>
+            
+            <ul class="features">
+              <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
+              <li><i class="icon-window"></i> 1 advertentie</li>
+              <li><i class="icon-window"></i> 4 afbeeldingen</li>
+              <li><i class="icon-hdd"></i> geen analytics</li>
+              <li><i class="icon-switch"></i> geen widgets</li>
+            </ul>
+            
+          </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6 inner-top-sm">
+          <div class="plan">
+            
+            <header>
+              <h2>Professioneel</h2>
+              
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">9</span>
+                <span class="period">/ Mo</span>
+              </div>
+              
+              <a href="#" class="btn">Kies dit plan</a>
+            </header>
+            
+            <ul class="features">
+              <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
+              <li><i class="icon-window"></i> 4 advertenties</li>
+              <li><i class="icon-hdd"></i> 8 afbeeldingen per advertentie</li>
+              <li><i class="icon-switch"></i> Geen analytics</li>
+              <li><i class="icon-globe"></i> Aangepaste widgets</li>
+            </ul>
+            
+          </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6 inner-top-sm">
+          <div class="plan">
+            
+            <header>
+              <h2>Zakelijk</h2>
+              
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">15</span>
+                <span class="period">/ Mo</span>
+              </div>
+              
+              <a href="#" class="btn">Kies dit plan</a>
+            </header>
+            
+            <ul class="features">
+              <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
+              <li><i class="icon-window"></i> Onbeperkt aantal advertenties</li>
+              <li><i class="icon-hdd"></i> Onbeperkt aantal afbeeldingen</li>
+              <li><i class="icon-switch"></i> Krachtige analytics</li>
+              <li><i class="icon-globe"></i> Aangepaste widgets</li>
+            </ul>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <section id="contact-us" class="tint-bg">
+    <div class="container inner-sm">
+      <div class="row">
+        <div class="col-sm-10 center-block text-center">
+          <h1 class="single-block">Need help? <a href="#" class="btn btn-large">Contact us</a></h1>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section id="share" class="light-bg">
     <div class="container">

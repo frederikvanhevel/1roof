@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('FavoritesController', ['$scope', '$http', '$location', '$stateParams', 'Authentication',
-  function($scope, $http, $location, $stateParams, Authentication) {
+angular.module('users').controller('FavoritesController', ['$scope', '$http', '$location', '$stateParams', 'Authentication', 'Meta',
+  function($scope, $http, $location, $stateParams, Authentication, Meta) {
     $scope.authentication = Authentication;
     $scope.favorites = [];
 
@@ -10,6 +10,9 @@ angular.module('users').controller('FavoritesController', ['$scope', '$http', '$
     $scope.init = function() {
       $http.get('/users/' + $stateParams.userId).success(function(response) {
         $scope.user = response;
+
+        Meta.setTitle('Wishlist van ' + $scope.user.displayName);
+
         getUserFavorites();
       });
     };

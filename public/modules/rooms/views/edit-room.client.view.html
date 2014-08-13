@@ -4,7 +4,7 @@
   <div class="room-owner-panel dark-bg">
     <div class="container">
       <span class="pull-right">
-        <a href="/#!{{room.url}}">view how this room will look for the users <i class="icon-right-open"></i></a>
+        <a href="/#!{{room.url}}">bekijk de advertentie <i class="icon-right-open"></i></a>
       </span>
 <!--       <span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
       <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline</span> -->
@@ -13,7 +13,7 @@
         <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
         <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="update()" ng-disabled="!room.isInOrder"></select>
       </div>
-      <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> You need to fill in some more details before you can publish the room.</span>
+      <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> Je moet meer details ingeven voor je deze advertentie online kan plaatsen</span>
     </div>
   </div>
 
@@ -24,39 +24,39 @@
         <li ng-class="{ active: nav == 'general'}">
           <a ng-click="setTab('general')" href="">
             <i ng-if="tabHasError('general')" class="icon-attention-1 red"></i> 
-            General
+            Algemeen
           </a>
         </li>
         <li ng-class="{ active: nav == 'availability'}">
           <a ng-click="setTab('availability')" href="">
             <i ng-if="tabHasError('availability')" class="icon-attention-1 red"></i> 
-            Availability
+            Beschikbaarheid
           </a>
         </li>
         <li ng-class="{ active: nav == 'costs'}">
           <a ng-click="setTab('costs')" href="">
             <i ng-if="tabHasError('costs')" class="icon-attention-1 red"></i> 
-            Costs
+            Kosten
           </a>
         </li>
         <li ng-class="{ active: nav == 'address'}">
           <a ng-click="setTab('address')" href="">
-            Address
+            Adres
           </a>
         </li>
         <li ng-class="{ active: nav == 'amenities'}">
           <a ng-click="setTab('amenities')" href="">
-            Amenities
+            Voorzieningen
           </a>
         </li>
         <li ng-class="{ active: nav == 'pictures'}">
           <a ng-click="setTab('pictures')" href="">
-            Pictures
+            Afbeeldingen
           </a>
         </li>
         <li ng-class="{ active: nav == 'cohabit'}">
           <a ng-click="setTab('cohabit')" href="">
-            Living together
+            Samenwonen
           </a>
         </li>
         <li ng-class="{ active: nav == 'pictures'}">
@@ -85,19 +85,19 @@
         <div ng-switch-when="general" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Basic information about the room</h3>
+            <h3 class="panel-title">Algemene informatie over de ruimte</h3>
           </div>
           <div class="panel-body">
             <form role="form">
               <div class="form-group">
                 <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' characters left'"></small>
-                <label class="control-label">Title</label>
-                <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="Title">
+                <label class="control-label">Titel</label>
+                <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="Geef een gepaste titel in">
               </div>
               <div class="form-group">
                 <small class="pull-right" ng-bind="(200 - room.info.description.length) + ' characters left'"></small>
-                <label class="control-label">Description</label>
-                <textarea ng-model="room.info.description" maxlength="200" limit-text="200" type="text"  placeholder="Description"></textarea>
+                <label class="control-label">Beschrijving</label>
+                <textarea ng-model="room.info.description" maxlength="200" limit-text="200" type="text"  placeholder="Geef een duidelijke beschrijving over je ruimte"></textarea>
               </div>
             </form>
             <hr>
@@ -110,15 +110,15 @@
         <div ng-switch-when="availability" class="bordered availability">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">When will this room be available</h3>
+            <h3 class="panel-title">In welke periode is deze ruimte beschikbaar?</h3>
           </div>
           <div class="panel-body">
             <form class="form-inline row" role="form">
-              <h4 class="col-sm-1">from</h4>
+              <h4 class="col-sm-1">van</h4>
               <div class="form-group col-sm-5">
                 <input type="text" class="form-control"  placeholder="dd/mm/jjjj" value="{{ room.available.from | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.from" start-date="{{room.available.from}}" date-picker>
               </div>
-              <h4 class="col-sm-1">till</h4>
+              <h4 class="col-sm-1">tot</h4>
               <div class="form-group col-sm-5">
                 <input type="text" class="form-control" placeholder="dd/mm/jjjj" value="{{ room.available.till | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.till" start-date="{{room.available.till}}" min-date="room.available.from" date-picker>
               </div>
@@ -131,31 +131,31 @@
         <div ng-switch-when="costs" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Costs</h3>
+            <h3 class="panel-title">Kosten</h3>
           </div>
           <div class="panel-body">
             <form role="form">
               <div class="form-group">
-                <label class="control-label">Period</label>
+                <label class="control-label">Facturatie periode</label>
                 <select ng-model="room.price.period" >
-                  <option value="month">Monthly</option>
-                  <option value="quarter">Quarterly</option>
-                  <option value="year">Yearly</option>
+                  <option value="month">Maandelijks</option>
+                  <option value="quarter">Driemaandelijks</option>
+                  <option value="year">Jaarlijks</option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label class="control-label">Base price</label>
+                <label class="control-label">Basis prijs</label>
                 <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="dd//mm/jjjj">
               </div>
               
               <div class="form-group">
-                <label class="control-label">Gas, electricity and water (optional)</label>
-                <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="Extra costs">
+                <label class="control-label">Gas, elektriciteit en water (optioneel)</label>
+                <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="Extra kosten">
               </div>
               <div class="form-group">
-                <label class="control-label">Cleaning (optional)</label>
-                <input ng-model="room.price.cleaning" type="number" min="0" class="form-control"  placeholder="Cleaning">
+                <label class="control-label">Schoonmaak (optioneel)</label>
+                <input ng-model="room.price.cleaning" type="number" min="0" class="form-control"  placeholder="Schoonmaak kosten">
               </div>
             </form>
           </div>
@@ -164,14 +164,14 @@
         <div ng-switch-when="address" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Specify the address of this room</h3>
+            <h3 class="panel-title">Adres van de ruimte</h3>
           </div>
           <div class="panel-body">
             <h5><i class="icon-location"></i> {{room.location.street}} <small>{{room.location.city}}</small></h5>
 
             <div room-map class="map-canvas"></div>
 
-            <button class="btn btn-blue btn-block" ng-click="openAddressModal()"><i class="icon-location-1"></i> Change address</button>
+            <button class="btn btn-blue btn-block" ng-click="openAddressModal()"><i class="icon-location-1"></i> Adres aanpassen</button>
 
           </div>
         </div>
@@ -179,7 +179,7 @@
         <div ng-switch-when="amenities" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Available amenities</h3>
+            <h3 class="panel-title">Beschikbare voorzieningen</h3>
           </div>
           <div class="panel-body">
             <ul class="amenities">
@@ -201,16 +201,16 @@
         <div ng-switch-when="pictures" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Add pictures</h3>
-            <small>Maximum 8 pictures per room</small>
+            <h3 class="panel-title">Afbeeldingen toevoegen</h3>
+            <small>Maximum 8 afbeeldingen per ruimte</small>
           </div>
           <div class="panel-body">
             <div class="pictures-header">
-              <h5 class="pull-right"><small>{{room.pictures.length}} images</small></h5>
+              <h5 class="pull-right"><small>{{room.pictures.length}} foto's</small></h5>
               <button class="btn-upload btn btn-blue btn-sm" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
-                <i class="icon-upload-cloud"></i> Upload an image
+                <i class="icon-upload-cloud"></i> Foto uploaden
               </button>
-              <button class="dropbox-button btn btn-sm" dropbox-chooser chooser-function="onDropboxSelect"><i class="icon-dropbox"></i> Choose from Dropbox</button>
+              <button class="dropbox-button btn btn-sm" dropbox-chooser chooser-function="onDropboxSelect"><i class="icon-dropbox"></i> Kiezen van Dropbox</button>
             </div>
             <div class="pictures" ng-hide="room.pictures.length == 0">
               <div class="picture col-sm-6" ng-repeat="picture in room.pictures">
@@ -226,20 +226,20 @@
         <div ng-switch-when="cohabit" class="bordered">
           <div class="panel-heading">
             <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Living together</h3>
-            <small>Are you going to live together with other people?</small>
+            <h3 class="panel-title">Samenwonen</h3>
+            <small>Zoek je andere personen om met je mee samen te wonen in deze ruimte?</small>
           </div>
           <div class="panel-body">
             <form role="form">
               <div class="form-group">
                 <label class="control-label">
                   <input type="checkbox">
-                  I'm looking for a roommate
+                  Ik zoek een huisgenoot
                 </label>
               </div>
 
               <div class="form-group">
-                <label class="control-label">With how many people do you intend to live in total?</label>
+                <label class="control-label">Met hoeveel mensen wil je samenwonen?</label>
                 <select>
                   <option value="">1</option>
                   <option value="">2</option>
