@@ -213,8 +213,6 @@ exports.toggleFavorite = function(req, res, next) {
 	var user = req.user;
 	var room = req.room;
 
-
-
 	var index = user.favorites.indexOf(room._id);
 	if (index === -1) {
 		user.favorites.push(room._id);

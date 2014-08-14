@@ -536,3 +536,16 @@ exports.resetPost = function(req, res) {
     	res.redirect('/');
   	});
 };
+
+/**
+ * User authorizations routing middleware
+ */
+exports.hasAnalytics = function(req, res, next) {
+  if(req.user.subscription === 'PRO' || req.user.subscription === 'BUSINESS') {
+    res.next();
+  } else {
+     return res.send(400, {
+        message: 'User is not authorized.'
+    });
+  }
+};

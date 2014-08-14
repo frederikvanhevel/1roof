@@ -22,6 +22,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.newAddress = '';
         $scope.newAddressDetails = {};
 
+        $scope.statisticsData = [];
+
          // Init
         $scope.init = function() {
             Meta.setTitle('Advertentie aanpassen');
@@ -39,6 +41,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.watchForUpdates = function() {
             $scope.$broadcast('room_loaded', $scope.room);
             $scope.checkRoomCompleteness();
+            getStatisticsData();
 
             var updateFunction = $window._.debounce($scope.update, 800);
 
@@ -215,6 +218,11 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             });
         }
 
+        function getStatisticsData() {
+            $http.get('/statistics/' + $scope.room._id + '/lastmonth').success(function(response) {
+                $scope.statisticsData = response;
+            });
+        }
 
     }
 ]);

@@ -12,7 +12,6 @@ function getDateWithoutTime(date) {
   return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
-
 /**
  * Aggregate a Statistic
  */
@@ -39,3 +38,22 @@ exports.aggregate = function(req, res) {
 
 };
 
+exports.lastMonth = function(req, res) {
+  var room = req.room;
+
+  var today = new Date();
+  var query = {
+    room: room,
+    date: {
+      $gte: today.setDate(today.getDate() - 30)
+    }
+  };
+
+  Statistic.find(query).exec(function(err, statistics) {
+    if (err) {
+      return res.send(400);
+    } else {
+      res.jsonp(statistics);
+    }
+  });
+};

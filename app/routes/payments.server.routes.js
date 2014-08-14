@@ -5,7 +5,7 @@ module.exports = function(app) {
   var payments = require('../../app/controllers/payments');
 
   // Statistics Routes
-  app.route('/subscriptions')
-    .post(users.requiresLogin, payments.subscribe);
+  // app.route('/subscriptions')
+  //   .post(users.requiresLogin, payments.subscribe);
 
 };

@@ -6723,6 +6723,20 @@ header.navbar .messages-popover ul li a.view-all {
   font-size: 18px;
 }
 
+.statistics-chart .axis path, .statistics-chart .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+.statistics-chart .x.axis path {
+  display: none;
+}
+.statistics-chart .line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
 /*
 ROOMS MODULE
 */

@@ -6,6 +6,7 @@
 var passport = require('passport');
 var inbox = require('../../app/controllers/inbox');
 var rooms = require('../../app/controllers/rooms');
+var payments = require('../../app/controllers/payments');
 
 module.exports = function(app) {
 	// User Routes

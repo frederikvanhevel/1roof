@@ -17,7 +17,7 @@
 		<form data-ng-submit="signin()" class="signin">
 			<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="voorbeeld@email.com">
 			<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="wachtwoord">
-			<button type="submit" class="btn btn-block">Inloggen</button>
+			<button type="submit" class="btn btn-block" ng-disabled="busy">Inloggen</button>
 		</form>
 
 		<div data-ng-show="error" class="text-center text-danger">

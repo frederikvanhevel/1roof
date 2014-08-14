@@ -1,224 +1,236 @@
-/* ------------------------------------- 
-    GLOBAL 
-------------------------------------- */
-* { 
-  margin:0;
-  padding:0;
-}
-* { font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
 
-img { 
-  max-width: 100%; 
-}
-.collapse {
-  margin:0;
-  padding:0;
-}
-body {
-  -webkit-font-smoothing:antialiased; 
-  -webkit-text-size-adjust:none; 
-  width: 100%!important; 
-  height: 100%;
+/* ensure that clients don’t add any padding or spaces around the email design and allow us to style emails for the entire width of the preview pane */
+body,
+#bodyTable {
+   height:100% !important;
+   width:100% !important;
+   margin:0;
+   padding:0;
 }
 
-
-/* ------------------------------------- 
-    ELEMENTS 
-------------------------------------- */
-a { color: #2BA6CB;}
-
-.btn {
-  text-decoration:none;
-  color: #FFF;
-  background-color: #666;
-  padding:10px 16px;
-  font-weight:bold;
-  margin-right:10px;
-  text-align:center;
-  cursor:pointer;
-  display: inline-block;
+/* Ensures Webkit- and Windows-based clients don’t automatically resize the email text. */
+body,
+table,
+td,
+p,
+a,
+li,
+blockquote {
+   -ms-text-size-adjust:100%;
+   -webkit-text-size-adjust:100%;
 }
 
-p.callout {
-  padding:15px;
-  background-color:#ECF8FF;
-  margin-bottom: 15px;
-}
-.callout a {
-  font-weight:bold;
-  color: #2BA6CB;
+/* Forces Yahoo! to display emails at full width */
+.msg-body {
+   width: 100% !important;
+   display: block !important
 }
 
-table.social {
-/*  padding:15px; */
-  background-color: #ebebeb;
+/* Forces Hotmail to display emails at full width */
+.ReadMsgBody
+.ExternalClass {
+     width: 100%;
+     background-color: #eeeeee;
+}
+
+/* Forces Hotmail to display normal line spacing. */
+  .ExternalClass,
+  .ExternalClass p,
+  .ExternalClass span,
+  .ExternalClass font,
+  .ExternalClass td,
+  .ExternalClass div {
+     line-height:100%;
+}
+
+/* Resolves webkit padding issue. */
+table {
+     border-spacing:0;
+}
+
+/* Resolves the Outlook 2007, 2010, and Gmail td padding issue, and removes spacing around tables that Outlook adds. */
+table,
+td {
+     border-collapse:collapse;
+     mso-table-lspace:0pt;
+     mso-table-rspace:0pt;
+}
+
+/* Corrects the way Internet Explorer renders resized images in emails. */
+img {
+   -ms-interpolation-mode: bicubic;
+}
+
+/* Ensures images don’t have borders or text-decorations applied to them by default. */
+img,
+a img {
+   border:0;
+   outline:none;
+   text-decoration:none;       
+}
+
+/* Styles Yahoo's auto-sensing link color and border */
+.yshortcuts a {
+     border-bottom: none !important;
+}
+
+/* Styles the tel URL scheme */
+a[href^=tel]{
+   color:#000000 !important;
+}
   
-}
-.social .soc-btn {
-  padding: 3px 7px;
-  font-size:12px;
-  margin-bottom:10px;
-  text-decoration:none;
-  color: #FFF;font-weight:bold;
-  display:block;
-  text-align:center;
-}
-a.fb { background-color: #3B5998!important; }
-a.tw { background-color: #1daced!important; }
-a.gp { background-color: #DB4A39!important; }
-a.ms { background-color: #000!important; }
+/* Media queries for when the viewport is smaller than the default email width but not too narrow. */
+@media screen and (max-device-width: 600px), screen and (max-width: 600px) {
 
-.sidebar .soc-btn { 
-  display:block;
-  width:100%;
-}
-
-/* ------------------------------------- 
-    HEADER 
-------------------------------------- */
-table.head-wrap { width: 100%;}
-
-.header.container table td.logo { padding: 15px; }
-.header.container table td.label { padding: 15px; padding-left:0px;}
-
-
-/* ------------------------------------- 
-    BODY 
-------------------------------------- */
-table.body-wrap { width: 100%;}
-
-
-/* ------------------------------------- 
-    FOOTER 
-------------------------------------- */
-table.footer-wrap { width: 100%;  clear:both!important;
-}
-.footer-wrap .container td.content  p { border-top: 1px solid rgb(215,215,215); padding-top:15px;}
-.footer-wrap .container td.content p {
-  font-size:10px;
-  font-weight: bold;
-  
-}
-
-
-/* ------------------------------------- 
-    TYPOGRAPHY 
-------------------------------------- */
-h1,h2,h3,h4,h5,h6 {
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; line-height: 1.1; margin-bottom:15px; color:#000;
-}
-h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
-
-h1 { font-weight:200; font-size: 44px;}
-h2 { font-weight:200; font-size: 37px;}
-h3 { font-weight:500; font-size: 27px;}
-h4 { font-weight:500; font-size: 23px;}
-h5 { font-weight:900; font-size: 17px;}
-h6 { font-weight:900; font-size: 14px; text-transform: uppercase; color:#444;}
-
-.collapse { margin:0!important;}
-
-p, ul { 
-  margin-bottom: 10px; 
-  font-weight: normal; 
-  font-size:14px; 
-  line-height:1.6;
-}
-p.lead { font-size:17px; }
-p.last { margin-bottom:0px;}
-
-ul li {
-  margin-left:5px;
-  list-style-position: inside;
+     /* Constrains email width for small screens */
+     table[class="email-container"] {
+        width: 100% !important;
+     }
+     /* Constrains tables for small screens */
+     table[class="fluid"] {
+        width: 100% !important;
+     }
+     
+     /* Forces images to resize to full width of their container */
+     img[class="fluid"],
+     img[class="force-col-center"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+     }
+     /* And centers these ones */
+        img[class="force-col-center"] {
+        margin: auto !important;
+     }
+     
+     /* Forces table cells into rows */
+     td[class="force-col"],
+     td[class="force-col-center"] {
+        display: block !important;
+        width: 100% !important;
+        clear: both;
+     }
+     /* And centers these ones */
+     td[class="force-col-center"] {
+        text-align: center !important;
+     }
+     
+     /* Forces table cells into rows */
+     /* Floats a previously stacked image to the left */
+     img[class="col-3-img-l"] {
+        float: left;
+        margin: 0 15px 15px 0;
+     }
+     /* Floats a previously stacked image to the right */
+     img[class="col-3-img-r"] {
+        float: right;
+        margin: 0 0 15px 15px;
+     }
+     
+     /* Makes buttons full width */
+     table[class="button"] {
+        width: 100% !important;
+     }
+     
 }
 
-/* ------------------------------------- 
-    SIDEBAR 
-------------------------------------- */
-ul.sidebar {
-  background:#ebebeb;
-  display:block;
-  list-style-type: none;
+/* Media queries for when the viewport is narrow. */
+/* Rules prefixed with 'hh-' (for 'handheld') repeat much of what's above, but these don't trigger until the smaller screen width. */
+@media screen and (max-device-width: 320px), screen and (max-width: 320px) {
+
+     /* Helper only visible on handhelds. All styles are inline along with a `display:none`, which this class overrides */
+     #textLogo {
+        display: none !important;
+        visibility: hidden !important;
+     }
+     
+     div[class="hh-visible"] {
+        display: block !important;
+     }
+     
+     /* Center stuff */
+     div[class="hh-center"] {
+        text-align: center;
+        width: 100% !important;
+     }
+     
+     /* Constrain tables for small screens */
+     table[class="hh-fluid"] {
+        width: 100% !important;
+     }
+     
+     /* Force images to resize to full width of their container */
+     img[class="hh-fluid"],
+     img[class="hh-force-col-center"] {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+     }
+     /* And center these ones */
+     img[class="hh-force-col-center"] {
+        margin: auto !important;
+     }
+     
+     /* Force table cells into rows */
+     td[class="hh-force-col"],
+     td[class="hh-force-col-center"] {
+        display: block !important;
+        width: 100% !important;
+        clear: both;
+     }
+     /* And center these ones */
+     td[class="hh-force-col-center"] {
+        text-align: center !important;
+     }
+     
+     /* Stack the previously floated images */
+     img[class="col-3-img-l"],
+     img[class="col-3-img-r"] {
+        float: none !important;
+        margin: 15px auto !important;
+        text-align: center !important;
+     }
+
 }
-ul.sidebar li { display: block; margin:0;}
-ul.sidebar li a {
-  text-decoration:none;
-  color: #666;
-  padding:10px 16px;
-/*  font-weight:bold; */
-  margin-right:10px;
-/*  text-align:center; */
-  cursor:pointer;
-  border-bottom: 1px solid #777777;
-  border-top: 1px solid #FFFFFF;
-  display:block;
-  margin:0;
-}
-ul.sidebar li a.last { border-bottom-width:0px;}
-ul.sidebar li a h1,ul.sidebar li a h2,ul.sidebar li a h3,ul.sidebar li a h4,ul.sidebar li a h5,ul.sidebar li a h6,ul.sidebar li a p { margin-bottom:0!important;}
 
-
-
-/* --------------------------------------------------- 
-    RESPONSIVENESS
-    Nuke it from orbit. It's the only way to be sure. 
------------------------------------------------------- */
-
-/* Set a max-width, and make it display as block so it will automatically stretch to that width, but will also shrink down on a phone or something */
-.container {
-  display:block!important;
-  max-width:600px!important;
-  margin:0 auto!important; /* makes it centered */
-  clear:both!important;
-}
-
-/* This should also be a block element, so that it will fill 100% of the .container */
-.content {
-  padding:15px;
-  max-width:600px;
-  margin:0 auto;
-  display:block; 
-}
-
-/* Let's make sure tables in the content area are 100% wide */
-.content table { width: 100%; }
-
-
-/* Odds and ends */
-.column {
+.button {
+  font-size: 13px;
+  font-weight: 100;
+  font-family: Helvetica,Arial,sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin: 30px auto;
+  line-height: 62px;
+  background: #398bce;
+  display: block;
   width: 300px;
-  float:left;
-}
-.column tr td { padding: 15px; }
-.column-wrap { 
-  padding:0!important; 
-  margin:0 auto; 
-  max-width:600px!important;
-}
-.column table { width:100%;}
-.social .column {
-  width: 280px;
-  min-width: 279px;
-  float:left;
+  height: 60px;
+  border-radius: 3px;
+  color: #ffffff;
 }
 
-/* Be sure to place a .clear element after each set of columns, just to be safe */
-.clear { display: block; clear: both; }
-
-
-/* ------------------------------------------- 
-    PHONE
-    For clients that support media queries.
-    Nothing fancy. 
--------------------------------------------- */
-@media only screen and (max-width: 600px) {
-  
-  a[class="btn"] { display:block!important; margin-bottom:10px!important; background-image:none!important; margin-right:0!important;}
-
-  div[class="column"] { width: auto!important; float:none!important;}
-  
-  table.social div[class="column"] {
-    width:auto!important;
-  }
-
+hr.line {
+  height:0;
+  border:0;
+  border-bottom:1px solid #f0f0f0;
+  margin: 30px 0 0;
 }
+
+td.default {
+  padding: 30px 30px 0px 30px;
+  font-family: sans-serif;
+  font-size: 15px;
+  line-height: 22px;
+  color: #656565;
+}
+
+td.small {
+  padding: 10px 30px 20px 30px;
+  font-family: sans-serif;
+  font-size: 10px;
+  line-height: 15px;
+  color: #aaa;
+}
+      

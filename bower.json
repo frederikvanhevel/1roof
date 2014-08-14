@@ -27,6 +27,7 @@
     "pikaday": "~1.2.0",
     "angular-gettext": "~0.4.0",
     "angular-socket-io": "~0.6.0",
-    "socket.io-client": "~1.0.6"
+    "socket.io-client": "~1.0.6",
+    "d3": "~3.4.11"
   }
 }

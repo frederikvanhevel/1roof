@@ -107,6 +107,11 @@ var UserSchema = new Schema({
  	// For stripe
  	customerToken: {
  		Type: String
+ 	},
+ 	subscription: {
+ 		type: String,
+ 		enum: ['FREE', 'PRO', 'BUSINESS'],
+ 		defailt: 'FREE'
  	}
 });
 

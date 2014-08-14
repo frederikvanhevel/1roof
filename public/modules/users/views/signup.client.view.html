@@ -17,7 +17,7 @@
 			<input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Achternaam">
 			<input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="voorbeeld@gmail.com">
 			<input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Wachtwoord">
-			<button type="submit" class="btn btn-block">Registreren</button>
+			<button type="submit" class="btn btn-block" ng-disabled="busy">Registreren</button>
 		</form>
 
 		<div data-ng-show="error" class="text-center text-danger">
