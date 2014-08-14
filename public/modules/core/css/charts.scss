@@ -1,19 +1,41 @@
 .statistics-chart {
 
+  font: 10px sans-serif;
+
+  text {
+    fill: #7d8398;
+  }
+
   .axis path, .axis line {
     fill: none;
-    stroke: #000;
     shape-rendering: crispEdges;
+    stroke: lightgrey;
+    opacity: 0.7;
   }
 
   .x.axis path {
     display: none;
   }
 
+  .y.axis path {
+    display: none;
+  }
+
   .line {
     fill: none;
-    stroke: steelblue;
+    stroke: #3F8DBF;
     stroke-width: 1.5px;
+  }
+
+  .data-point {
+    stroke: #3F8DBF;
+    stroke-width: 1px;
+    fill: white;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
 }

@@ -23,7 +23,6 @@ angular.module('core').directive('statisticsChart', [ '$window',
             });
 
             return newData;
-
           }
 
           function interpolateDataInRange(data, range) {
@@ -52,16 +51,12 @@ angular.module('core').directive('statisticsChart', [ '$window',
           scope.$watch('model', function(newValue) {
 
             if (newValue.length > 0) {
-              console.log(newValue);
               interpolateDataInRange(newValue, range);
-
               drawChart(range);
             }
           });
 
           function drawChart(data) {
-
-            console.log('DRAW CHART');
 
             var margin = {top: 20, right: 20, bottom: 30, left: 50},
                 width = 1000 - margin.left - margin.right,
@@ -79,11 +74,14 @@ angular.module('core').directive('statisticsChart', [ '$window',
 
             var yAxis = d3.svg.axis()
                 .scale(y)
-                .orient('left');
+                .orient('left')
+                .tickSize(-width)
+                .ticks(5);
 
             var line = d3.svg.line()
                 .x(function(d) { return x( new Date(d.date) ); })
-                .y(function(d) { return y( +d[dataAttribute] ); });
+                .y(function(d) { return y( +d[dataAttribute] ); })
+                .interpolate('monotone');
 
             var svg = d3.select(element[0]).append('svg')
                 .attr('width', width + margin.left + margin.right)
@@ -107,13 +105,22 @@ angular.module('core').directive('statisticsChart', [ '$window',
                 .attr('y', 6)
                 .attr('dy', '.71em')
                 .style('text-anchor', 'end')
-                .text('Price ($)');
+                .text(dataAttribute);
 
             svg.append('path')
                 .datum(data)
                 .attr('class', 'line')
                 .attr('d', line);
 
+            svg.append('g')
+              .selectAll('circle')
+                .data(data)
+              .enter().append('circle')
+                .attr('class', 'data-point')
+                .attr('cx', function(d) { return x( new Date(d.date) ); })
+                .attr('cy', function(d) { return y( +d[dataAttribute] ); })
+                .attr('r', 3.5)
+                .attr('tooltip', 'JHDFISDHFSF');
           }
 
         }

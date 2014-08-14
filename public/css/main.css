@@ -6723,18 +6723,37 @@ header.navbar .messages-popover ul li a.view-all {
   font-size: 18px;
 }
 
+.statistics-chart {
+  font: 10px sans-serif;
+}
+.statistics-chart text {
+  fill: #7d8398;
+}
 .statistics-chart .axis path, .statistics-chart .axis line {
   fill: none;
-  stroke: #000;
   shape-rendering: crispEdges;
+  stroke: lightgrey;
+  opacity: 0.7;
 }
 .statistics-chart .x.axis path {
   display: none;
 }
+.statistics-chart .y.axis path {
+  display: none;
+}
 .statistics-chart .line {
   fill: none;
-  stroke: steelblue;
+  stroke: #3F8DBF;
   stroke-width: 1.5px;
+}
+.statistics-chart .data-point {
+  stroke: #3F8DBF;
+  stroke-width: 1px;
+  fill: white;
+  cursor: pointer;
+}
+.statistics-chart .data-point:hover {
+  opacity: 0.7;
 }
 
 /*
