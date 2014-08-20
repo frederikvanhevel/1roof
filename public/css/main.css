@@ -6718,6 +6718,16 @@ header.navbar .messages-popover ul li a.view-all {
 .home-view #hero .raster .hero-content form {
   margin-top: 30px;
 }
+.home-view .intro-image {
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+}
+.home-view .intro-image.intro-image-1 {
+  background-image: url(/modules/core/img/home/intro_1.png);
+}
 .home-view .pricing .features {
   background: white;
   font-size: 18px;

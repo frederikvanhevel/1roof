@@ -28,6 +28,20 @@
     }
   }
 
+  .intro-image {
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+
+    &.intro-image-1 {
+      background-image: url(/modules/core/img/home/intro_1.png);
+
+    }
+
+  }
+
   .pricing {
 
     .features {

@@ -5,7 +5,9 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
-	shortId = require('shortid');
+	shortId = require('shortid'),
+	uploader = require('../../app/util/uploader'),
+	winston = require('winston');
 
 /**
  * Check if enough details are filled in
@@ -179,6 +181,14 @@ RoomSchema.pre('save', function(next) {
 	this.slug = slugify(this.location.city) + '/' + (this.info.title !== '' ? slugify(this.info.title) : slugify(this.location.street));
 
 	next();
+});
+
+RoomSchema.pre('remove', function (room) {
+  room.pictures.forEach(function(picture) {
+  	uploader.removeFromCloudinary(picture.link, function() {
+  		winston.info('Removed picture from room %s', room._id);
+  	});
+  });
 });
 
 RoomSchema.virtual('url').get(function() {

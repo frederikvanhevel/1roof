@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
+	Room = mongoose.model('Room'),
 	crypto = require('crypto');
 
 /**
@@ -125,6 +126,12 @@ UserSchema.pre('save', function(next) {
 	}
 
 	next();
+});
+
+UserSchema.pre('remove', function (user) {
+  Room.find({ '_id': { $in: user.favorites} }).remove(function(err) {
+	  console.log(err);
+	});
 });
 
 /**

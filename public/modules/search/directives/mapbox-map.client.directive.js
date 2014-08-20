@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window', '$http',
-  function($compile, $q, $window, $http) {
+angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window', '$http', '$timeout',
+  function($compile, $q, $window, $http, $timeout) {
 
     var _mapboxMap;
 
@@ -63,7 +63,11 @@ angular.module('search').directive('mapboxMap', [ '$compile', '$q', '$window', '
         scope.map.on('popupopen', function(e) {
           var popup = angular.element(document.getElementsByClassName('leaflet-popup-content'));
           $compile(popup)(scope);
-          if(!scope.$$phase) scope.$digest();
+
+          $timeout(function() {
+            scope.$apply();
+          });
+
         });
 
         scope.$on('$destroy', function() {

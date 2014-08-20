@@ -11,6 +11,10 @@ function uploadToCloudinary(roomId, url, index, res) {
   }, { public_id: roomId + '_' + index });
 }
 
+exports.removeFromCloudinary = function(link, callback) {
+  cloudinary.uploader.destroy(link, callback);
+};
+
 exports.upload = function(req, res) {
   var room = req.room;
 
@@ -29,5 +33,5 @@ exports.upload = function(req, res) {
 
 exports.remove = function(req, res, next, index, callback) {
   var room = req.room;
-  cloudinary.uploader.destroy(room.pictures[index].link, callback);
+  this.removeFromCloudinary(room.pictures[index].link, callback);
 };
