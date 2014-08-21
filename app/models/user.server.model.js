@@ -113,6 +113,12 @@ var UserSchema = new Schema({
  		type: String,
  		enum: ['FREE', 'PRO', 'BUSINESS'],
  		defailt: 'FREE'
+ 	},
+ 	settings: {
+ 		mails: {
+ 			roomCheck: true,
+ 			messageCheck: true
+ 		}
  	}
 });
 

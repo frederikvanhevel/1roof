@@ -6728,6 +6728,12 @@ header.navbar .messages-popover ul li a.view-all {
 .home-view .intro-image.intro-image-1 {
   background-image: url(/modules/core/img/home/intro_1.png);
 }
+.home-view .intro-image.intro-image-2 {
+  background-image: url(/modules/core/img/home/intro_1.png);
+}
+.home-view .intro-image.intro-image-3 {
+  background-image: url(/modules/core/img/home/intro_1.png);
+}
 .home-view .pricing .features {
   background: white;
   font-size: 18px;

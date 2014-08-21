@@ -7,15 +7,15 @@ angular.module('rooms').factory('Amenity', [
 				return [
 					{ name: 'TV', value: 'television'},
 					{ name: 'Internet', value: 'internet'},
-					{ name: 'Terrace', value: 'terrace'},
-					{ name: 'Car parking', value: 'parking' },
-					{ name: 'Bicycle parking', value: 'bicycleParking'},
-					{ name: 'Double glass', value: 'doubleGlass'},
-					{ name: 'Furnished', value: 'furnished'},
-					{ name: 'Seperate bathroom', value: 'seperateBathroom'},
-					{ name: 'Seperate kitchen', value: 'seperateKitchen'},
-					{ name: 'Pets allowed', value: 'pets'},
-					{ name: 'Domicile compulsory', value: 'domicile' }
+					{ name: 'Terras', value: 'terrace'},
+					{ name: 'Auto garage', value: 'parking' },
+					{ name: 'Fietsstalling parking', value: 'bicycleParking'},
+					{ name: 'Dubbel glas', value: 'doubleGlass'},
+					{ name: 'Bemeubeld', value: 'furnished'},
+					{ name: 'Aparte badkamer', value: 'seperateBathroom'},
+					{ name: 'Aparte keuken', value: 'seperateKitchen'},
+					{ name: 'Huisdieren toegelaten', value: 'pets'},
+					{ name: 'Domicilie verplicht', value: 'domicile' }
 				];
 			}
 		};

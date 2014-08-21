@@ -24,6 +24,8 @@
                 <span class="indicator col-sm-1"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
 
                 <select class="col-sm-2" ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
+
+                <a href="" class="btn btn-small btn-blue"><i class="icon-pencil"></i></a>
             </div>
 
             <small ng-if="!room.isInOrder">
