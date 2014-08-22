@@ -10,7 +10,7 @@
           <td class="default">
             Beste {{ user.displayName }},
             <br><br>
-            De advertentie <em>{{ room.info.title }}</em> is automatisch offline gezet omdat de beschikbaarheidsdatum die je ingegeven hebt verlopen is.
+            De advertentie <em>{{ room.info.title }}</em> is automatisch op offline gezet omdat de beschikbaarheidsdatum die je hebt ingegeven verlopen is.
             <br><br>
             Indien dit de bedoeling is kan je deze mail negeren, anders kan je je advertentie wijzigen via de website.
             <br>
@@ -29,7 +29,7 @@
           <td class="default">
             Klik op de knop onderaan om je advertentie te wijzigen.
 
-            <a target="_blank" title="Activate Account" href="{{ resetLink }}" class="button">Advertentie wijzigen</a>
+            <a target="_blank" title="Activate Account" href="{{ app.host }}{{ resetLink }}" class="button">Advertentie wijzigen</a>
           </td>
         </tr>
       </table>

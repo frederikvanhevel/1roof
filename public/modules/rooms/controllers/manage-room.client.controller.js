@@ -141,8 +141,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
             if (!$scope.room.info.title || $scope.room.info.title === '') errors.push('general');
             if (!$scope.room.price.base || $scope.room.price.base === 0) errors.push('costs');
-            if (!$scope.room.available.from) errors.push('availability');
-            if (!$scope.room.available.till) errors.push('availability');
+            if (!$scope.room.available.from || !$scope.room.available.till || new Date($scope.room.available.till) < new Date()) errors.push('availability');
 
             console.log(errors);
 

@@ -11,9 +11,13 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
     $scope.messagesPopoverVisible = false;
 
     $scope.init = function() {
-      var language = window.navigator.userLanguage || window.navigator.language;
+      $rootScope.language = window.navigator.userLanguage || window.navigator.language;
 
-      if (language.indexOf('nl') !== -1) $scope.setLanguage('nl');
+      if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl');
+
+      $rootScope.$watch('language', function(newVal, oldVal) {
+        if(newVal !== oldVal) setLanguage(newVal);
+      });
 
       // subscribe to new messages
       if (Authentication.user) {
@@ -65,9 +69,11 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
       }
     };
 
-    $scope.setLanguage = function(language) {
+    function setLanguage(language) {
+      // TODO: save language in localStorage
+      console.log('changing language to %s', language);
       gettextCatalog.currentLanguage = language;
       gettextCatalog.debug = true;
-    };
+    }
 	}
 ]);

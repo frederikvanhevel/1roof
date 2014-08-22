@@ -85,10 +85,6 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             $scope.room.$update();
         };
 
-        $scope.isAvailableImmediately = function() {
-            return $scope.room.available.from.getTime() === $scope.room.available.till.getTime();
-        };
-
         function sendFavorite() {
             $http.post('/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);

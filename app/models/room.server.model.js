@@ -17,8 +17,7 @@ var checkRoomCompleteness = function(room) {
 	
 	if (!room.info.title || room.info.title === '') complete = false;
   if (!room.price.base || room.price.base === 0) complete = false;
-  if (!room.available.from) complete = false;
-  if (!room.available.till) complete = false;
+  if (!room.available.from || !room.available.till || room.available.till < new Date()) complete = false;
 
   // Room is incomplete so can't be visible
   if (!complete) room.visible = false;
@@ -119,6 +118,10 @@ var RoomSchema = new Schema({
 		coordinates: [Number]
 	},
 	available: {
+		immediately: {
+			type: Boolean,
+			default: true
+		},
 		from: {
 			type: Date,
 			default: Date.now

@@ -1,0 +1,21 @@
+footer {
+  background: #283645;
+  width: 100%;
+  height: 82px;
+  clear:both;
+  position:absolute;
+  bottom:0;
+
+  .footer-bottom {
+
+    .language-select {
+      margin-top: -7px;
+      background-color: #42505F;
+    }
+
+    .social-buttons li {
+      display: inline-block;
+    }
+  }
+}
+

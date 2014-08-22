@@ -102,19 +102,19 @@
           <div class="panel-body">
             <form class="form-inline row" role="form">
               <div class="">
-                <label class="control-label">
-                  <input type="checkbox">
+                <label class="control-label checkbox">
+                  <input type="checkbox" ng-model="available.immediately">
                   Onmiddelijk beschikbaar
                 </label>
               </div>
               <br>
-              <h4 class="col-sm-1">van</h4>
+              <h4 class="col-sm-1" ng-class="{ 'disabled': available.immediately }">van</h4>
               <div class="form-group col-sm-5">
-                <input type="text" class="form-control"  placeholder="dd/mm/jjjj" value="{{ room.available.from | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.from" start-date="{{room.available.from}}" date-picker>
+                <input type="text" class="form-control"  placeholder="dd/mm/jjjj" value="{{ room.available.from | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.from" start-date="{{room.available.from}}" date-picker ng-disabled="available.immediately">
               </div>
-              <h4 class="col-sm-1">tot</h4>
-              <div class="form-group col-sm-5">
-                <input type="text" class="form-control" placeholder="dd/mm/jjjj" value="{{ room.available.till | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.till" start-date="{{room.available.till}}" min-date="room.available.from" date-picker>
+              <h4 class="col-sm-1" ng-class="{ 'disabled': available.immediately }">tot</h4>
+              <div class="form-group col-sm-5" ng-class="{ 'has-error': tabHasError('availability') }">
+                <input type="text" class="form-control" placeholder="dd/mm/jjjj" value="{{ room.available.till | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.till" start-date="{{room.available.till}}" min-date="room.available.from" date-picker ng-disabled="available.immediately">
               </div>
               <!-- <p><small class="red"><i class="icon-attention-1"></i> {{errorMessage}}</small></p> -->
              <!-- <button type="submit" class="btn btn-blue btn-block">Save</button> -->

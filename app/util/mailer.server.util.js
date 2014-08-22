@@ -3,7 +3,8 @@
 var path = require('path'),
   emailTemplates = require('swig-email-templates'),
   nodemailer = require('nodemailer'),
-  config = require('../../config/config');
+  config = require('../../config/config'),
+  _ = require('lodash');
 
 exports.send = function(template, context, to, subject) {
 
@@ -11,8 +12,9 @@ exports.send = function(template, context, to, subject) {
     root: path.join(__dirname, '../views/email'),
     // any other swig options allowed here
   };
+
   emailTemplates(options, function(err, render) {
-    render(template, context, function(err, html, text) {
+    render(template, _.assign(context, { app: config.app }), function(err, html, text) {
       sendMail(err, html, text);
     });
   });

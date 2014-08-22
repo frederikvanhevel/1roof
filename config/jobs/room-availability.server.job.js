@@ -10,13 +10,12 @@ function checkRoom(room) {
 
   var context = {
     user: room.user,
-    room: room
-    //editLink: 'http://' + req.headers.host + '/#!/rooms/' + room._id + '/edit'
+    room: room,
+    editLink: '/#!/rooms/' + room._id + '/edit'
   };
 
   room.save(function(err) {
     if (!err) {
-      console.log(room.user.settings);
       if (room.user.settings.mails.roomCheck) {
         winston.info('RoomCheck: Notifying user %s', room.user.displayName);
         mailer.send('expired-room.email.html', context, room.user.email, 'Advertentie verlopen');
