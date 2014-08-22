@@ -14,12 +14,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
 
             $scope.busy = true;
 
-            var data = {
-                credentials: $scope.credentials,
-                subscriptionPlan: 'FREE'
-            };
-
-            $http.post('/auth/signup', data).success(function(response) {
+            $http.post('/auth/signup', $scope.credentials).success(function(response) {
                 // If successful we assign the response to the global user model
                 $scope.authentication.user = response;
 

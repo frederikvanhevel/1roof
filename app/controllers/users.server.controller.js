@@ -66,11 +66,11 @@ exports.signup = function(req, res) {
 	// Add missing user fields
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
-
+  console.log(req.body);
 	// Then save the user 
 	user.save(function(err) {
 		if (err) {
-      winston.error('Error signing up user', user);
+      winston.error('Error signing up user', err);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});

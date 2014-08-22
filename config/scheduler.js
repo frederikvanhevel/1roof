@@ -8,8 +8,7 @@ var schedule = require('node-schedule'),
 exports.start = function() {
 
   var rule = new schedule.RecurrenceRule();
-  //rule.hour = 2;
-  rule.second = 20;
+  rule.hour = 2;
 
   schedule.scheduleJob(rule, roomAvailabilityJob.run);
   schedule.scheduleJob(rule, messageCheckJob.run);
