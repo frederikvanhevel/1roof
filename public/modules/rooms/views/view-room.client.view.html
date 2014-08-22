@@ -120,7 +120,7 @@
 								<ul>
 									<li>
 										<i class="glyphicon glyphicon-calendar"></i>
-										<span ng-if="room.available.immediately">onmiddelijk beschikbaar!></span>
+										<span ng-if="room.available.immediately"><strong>Onmiddelijk beschikbaar!</strong></span>
 										<span ng-if="!room.available.immediately">Beschikbaar van <strong>{{ room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
 										<span ng-if="!room.available.immediately" ng-show="room.available.till">tot <strong>{{ room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
 									</li>

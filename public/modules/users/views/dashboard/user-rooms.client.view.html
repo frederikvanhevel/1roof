@@ -19,6 +19,7 @@
                   <a href="/#!{{room.url}}">
                     {{room.info.title != '' ? room.info.title : room.location.street}}
                   </a>
+                  <a href="/#!/rooms/{{room._id}}/edit/" class=""><i class="icon-pencil"></i></a>
                 </h4>
 
                 <span class="indicator col-sm-1"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
@@ -26,12 +27,10 @@
                 <div class="select-style">
                   <select class="col-sm-2" ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
                 </div>
-
-                <a href="" class="btn btn-small btn-blue"><i class="icon-pencil"></i></a>
             </div>
 
             <small ng-if="!room.isInOrder">
-                <span class="red"><i class="icon-attention-1"></i> Je moet meer gegevens ingeven voor je deze ruimte online kan plaatsen. </span>
+                <span class="red"><i class="icon-attention-1"></i> Je moet meer gegevens invoeren voor je deze advertentie online kan plaatsen. </span>
                 
             </small>
 

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket',
-	function($rootScope, $scope, $stateParams, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket) {
+angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment',
+	function($rootScope, $scope, $stateParams, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
@@ -72,8 +72,13 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
     function setLanguage(language) {
       // TODO: save language in localStorage
       console.log('changing language to %s', language);
+
+      // gettext
       gettextCatalog.currentLanguage = language;
       gettextCatalog.debug = true;
+
+      // momentjs
+      amMoment.changeLanguage(language);
     }
 	}
 ]);

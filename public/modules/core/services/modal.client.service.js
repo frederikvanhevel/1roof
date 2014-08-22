@@ -74,6 +74,15 @@ angular.module('core').service('Modal', [ '$modal', '$location',
       return this.showModal(options, {});
     };
 
+    this.confirm = function() {
+      var options = {
+        templateUrl: 'modules/rooms/views/modals/confirm-modal.client.view.html',
+        windowClass: 'small'
+      };
+
+      return this.showModal(options, {});
+    };
+
     var modalDefaults = {
         backdrop: true,
         keyboard: true,

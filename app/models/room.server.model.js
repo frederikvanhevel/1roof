@@ -196,12 +196,13 @@ RoomSchema.pre('save', function(next) {
 	next();
 });
 
-RoomSchema.pre('remove', function (room) {
-  room.pictures.forEach(function(picture) {
+RoomSchema.pre('remove', function (next) {
+  this.pictures.forEach(function(picture) {
   	uploader.removeFromCloudinary(picture.link, function() {
-  		winston.info('Removed picture from room %s', room._id);
+  		winston.info('Removed picture from room %s', this._id);
   	});
   });
+  next();
 });
 
 RoomSchema.virtual('url').get(function() {

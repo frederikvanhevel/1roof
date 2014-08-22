@@ -68,23 +68,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             }, true);
         };
 
-        // Remove existing Room
-        $scope.remove = function(room) {
-            if (room) {
-                room.$remove();
-
-                for (var i in $scope.rooms) {
-                    if ($scope.rooms[i] === room) {
-                        $scope.rooms.splice(i, 1);
-                    }
-                }
-            } else {
-                $scope.room.$remove(function() {
-                    $location.path('rooms');
-                });
-            }
-        };
-
         // Update existing Room
         $scope.update = function() {
             // var room = angular.copy($scope.room);
@@ -181,6 +164,14 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
         $scope.visibilityText = function(item) {
             return item ? 'online' : 'offline';
+        };
+
+        $scope.deleteRoom = function() {
+            Modal.confirm().then(function() {
+                $scope.room.$remove(function() {
+                    $location.path('/dashboard/rooms');
+                });
+            });
         };
 
         function uploadImage(image) {
