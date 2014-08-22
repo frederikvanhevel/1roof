@@ -5,7 +5,8 @@
  */
 var mongoose = require('mongoose'),
   Statistic = mongoose.model('Statistic'),
-  _ = require('lodash');
+  _ = require('lodash'),
+  winston = require('winston');
 
 
 function getDateWithoutTime(date) {
@@ -30,6 +31,7 @@ exports.aggregate = function(req, res) {
 
   Statistic.update(find, increment, { upsert: true }, function(err) {
     if (err) {
+      winston.error('Error aggregating statistic', { query: find, type: req.body.type });
       return res.send(400);
     } else {
       res.send(200);
@@ -51,6 +53,7 @@ exports.lastMonth = function(req, res) {
 
   Statistic.find(query).exec(function(err, statistics) {
     if (err) {
+      winston.error('Error getting last month statistics', query);
       return res.send(400);
     } else {
       res.jsonp(statistics);

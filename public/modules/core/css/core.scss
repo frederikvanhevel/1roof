@@ -61,7 +61,7 @@ footer {
   background-color: #FFF;
 }
 
-// autocomplete above modal
+// autocomplete should be above modal
 .pac-container {
   z-index: 1051 !important;
 }
@@ -70,6 +70,50 @@ footer {
   .social-buttons li {
     display: inline-block;
   }
+}
+
+.select-style {
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ddd;
+    width: 120px;
+    border-radius: 3px;
+    overflow: hidden;
+    background-color: #fff;
+    height: 36px;
+    margin-top: 2px;
+    margin-left: 24px;
+
+    &:before {
+      content: '';
+      position: relative;
+      top: 15px;
+      right: 10px;
+      float: right;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 5px solid #506A85;
+    }
+
+    &:hover {
+      border-color: #ccc;
+    }
+}
+
+.select-style select {
+    width: 130%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+       -moz-appearance: none;
+            appearance: none;
+    margin-top: -7px;
+}
+
+.select-style select:focus {
+    outline: none;
 }
 
 .btn-social{position:relative;padding-left:50px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.btn-social :first-child{position:absolute;left:0;top:0;bottom:0;width:32px;line-height:34px;font-size:1.6em;text-align:center;border-right:1px solid rgba(0,0,0,0.2)}

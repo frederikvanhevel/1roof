@@ -5,12 +5,12 @@
 			<span class="pull-right">
 				<a href="/#!/rooms/{{room._id}}/edit/"><i class="icon-pencil"></i> Advertentie aanpassen <i class="icon-right-open"></i></a>
 			</span>
-			<!-- <span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
-      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline<span ng-if="room.isInOrder"> - you need to <a href="/#!/rooms/{{room._id}}/edit/">add some more details</a></span></span>
- -->
+
  			<div class="visibility-switch">
 	      <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
-	      <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
+	      <div class="select-style">
+		      <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
+		    </div>
 	    </div>
 		</div>
 	</div>
@@ -73,7 +73,7 @@
 		          <div class="col-sm-4">
 		          	<h6>Kosten <small>per {{room.price.period}}</small></h6>
 
-		            <table class="room-costs collapsed">
+<!-- 		            <table class="room-costs collapsed">
 		            	<tr>
 		            		<td></td>
 		            		<td></td>
@@ -97,23 +97,37 @@
 		            		<td></td>
 		            		<td><h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2></td>
 		            	</tr>
-		            </table>
+		            </table> -->
+
+		            <h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2>
+		            <a href="#">Meer informatie</a>
+
 		          </div>
 		          
 		        </div>
+
+		        <div class="room-header row" ng-if="room.cohabit.active">
+		        	<div class="col-xs-12">
+		        		<h6>Samenwonen</h6>								
+								<i class="icon-user" ng-repeat="person in room.cohabit.count"></i>
+								anderen in dit gebouw
+							</div>
+		        </div>
 						
-						<div class="room-info row">
-							<div class="room-properties col-xs-6">
+						<div class="room-header row">
+							
+							<div class="room-properties col-xs-5">
 								<ul>
 									<li>
 										<i class="glyphicon glyphicon-calendar"></i>
-										<span>Beschikbaar van <strong>{{ room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-										<span ng-show="room.available.till">tot <strong>{{ room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+										<span ng-if="isAvailableImmediately()">onmiddelijk beschikbaar></span>
+										<span ng-if="!isAvailableImmediately()">Beschikbaar van <strong>{{ room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+										<span ng-if="!isAvailableImmediately()" ng-show="room.available.till">tot <strong>{{ room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
 									</li>
 									<li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="room.updated"></span></li>
 								</ul>
 							</div>
-							<div class="room-extras col-xs-6">
+							<div class="room-extras col-xs-7">
 								<ul class="amenities">
 									<li ng-class="isAmenityChecked(room, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in amenities">{{amenity.name}}</li>
 								</ul>

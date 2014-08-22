@@ -43,6 +43,7 @@ exports.create = function(req, res) {
 
 	room.save(function(err) {
 		if (err) {
+			winston.error('Error creating new room', room._id);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -69,7 +70,7 @@ exports.update = function(req, res) {
 
 	room.save(function(err) {
 		if (err) {
-			winston.error('Error updating room', err);
+			winston.error('Error updating room', room._id);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -87,6 +88,7 @@ exports.delete = function(req, res) {
 
 	room.remove(function(err) {
 		if (err) {
+			winston.error('Error deleting room', room._id);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -127,7 +129,7 @@ exports.list = function(req, res) {
 
 	Room.find(query).exec(function(err, rooms) {
 		if (err) {
-			console.log(err);
+			winston.error('Error listing rooms', query);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -144,6 +146,7 @@ exports.listOfUserRooms = function(req, res) {
 	var user = req.user;
 	Room.find({ user: user }).exec(function(err, rooms) {
 		if (err) {
+			winston.error('Error getting rooms of user', user._id);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -167,6 +170,7 @@ exports.listOfRoomsInSameLocation= function(req, res) {
 
 	Room.find(query).exec(function(err, rooms) {
 		if (err) {
+			winston.error('Error getting rooms in same location', query);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -182,7 +186,10 @@ exports.listOfRoomsInSameLocation= function(req, res) {
  */
 exports.roomByID = function(req, res, next, id) {
 	Room.findById(id).populate('user', 'displayName').exec(function(err, room) {
-		if (err) return next(err);
+		if (err) {
+			winston.error('Error getting room by id', id);
+			return next(err);
+		}
 		if (!room) return next(new Error('Failed to load Room ' + id));
 		req.room = room;
 		next();
@@ -197,6 +204,7 @@ exports.getUserFavorites = function(req, res, next) {
 
 	Room.find({ '_id': { $in: user.favorites }, 'visible': true }).exec(function(err, rooms) {
 		if (err) {
+			winston.error('Error getting user favorites', user._id);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -222,7 +230,7 @@ exports.toggleFavorite = function(req, res, next) {
 
 	user.save(function(err) {
 		if (err) {
-			console.log(err);
+			winston.error('Error toggling favortie', { userId: user._id, roomId: room._id });
 			return res.send(400);
 		} else {
 			res.send(200);
@@ -243,6 +251,7 @@ exports.removePicture = function(req, res, next) {
 		room.pictures.splice(index, 1);
 		room.save(function(err) {
 			if (err) {
+				winston.error('Error removing picture', { roomId: room._id, pictureIndex: index });
 				return res.send(400);
 			} else {
 				res.jsonp(room);

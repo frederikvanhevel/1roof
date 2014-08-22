@@ -9,8 +9,15 @@
   }
 
   .room-header {
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 20px;
+    
+    &:not(:first-child) {
+      padding-top: 35px;
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 35px;
+    }
   }
 
   .room-image {
@@ -112,37 +119,34 @@
 
   }
 
-  .room-info {
-    margin-top: 30px;
 
-    ul.amenities {
-      li {
-        float:left;
-        display:inline;
-        width: 50%;
+  ul.amenities {
+    li {
+      float:left;
+      display:inline;
+      width: 50%;
 
-        &:before {
-          font-family: 'fontello';
-          font-weight: normal;
-          padding-top: 1px;
-          margin-left: -20px;
-          vertical-align: top;
-          position: absolute;
-        }
+      &:before {
+        font-family: 'fontello';
+        font-weight: normal;
+        padding-top: 1px;
+        margin-left: -20px;
+        vertical-align: top;
+        position: absolute;
+      }
 
-        &.checked:before {
-          content: '\2713';
-          color: #1ABB9C;
-        }
+      &.checked:before {
+        content: '\2713';
+        color: #1ABB9C;
+      }
 
-        &.crossed:before {
-          content: '\2715';
-          color: #FA6C65;
-        }
+      &.crossed:before {
+        content: '\2715';
+        color: #FA6C65;
       }
     }
   }
-
+  
   .contact-bottom {
     margin-bottom: 30px;
   }

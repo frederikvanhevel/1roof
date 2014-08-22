@@ -3064,7 +3064,7 @@ input:focus:-ms-input-placeholder {
 }
 
 .sidenav {
-  background: #F5F7FA;
+  background: #fff;
   padding: 0;
   border: 1px solid #E6E9ED;
   -webkit-border-radius: 3px;
@@ -6362,6 +6362,48 @@ footer {
   display: inline-block;
 }
 
+.select-style {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  width: 120px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  height: 36px;
+  margin-top: 2px;
+  margin-left: 24px;
+}
+.select-style:before {
+  content: '';
+  position: relative;
+  top: 15px;
+  right: 10px;
+  float: right;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #506A85;
+}
+.select-style:hover {
+  border-color: #ccc;
+}
+
+.select-style select {
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-top: -7px;
+}
+
+.select-style select:focus {
+  outline: none;
+}
+
 .btn-social {
   position: relative;
   padding-left: 50px;
@@ -6783,6 +6825,10 @@ ROOMS MODULE
   color: #B6B6B6;
 }
 
+.icon-record {
+  transition: color 500ms ease-out;
+}
+
 .room-owner-panel {
   height: 40px;
   position: fixed;
@@ -6796,14 +6842,6 @@ ROOMS MODULE
 .room-owner-panel .visibility-switch .indicator {
   float: left;
 }
-.room-owner-panel .visibility-switch select {
-  float: left;
-  width: 120px;
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 5px;
-  height: 30px;
-}
 
 .view-room .favorite-icon {
   cursor: pointer;
@@ -6811,9 +6849,12 @@ ROOMS MODULE
 .view-room .favorite-icon:hover:before {
   content: '\e803';
 }
-.view-room .room-header {
+.view-room .room-header:not(:first-child) {
+  padding-top: 35px;
+}
+.view-room .room-header:not(:last-child) {
   border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
+  padding-bottom: 35px;
 }
 .view-room .room-image {
   width: 100%;
@@ -6879,15 +6920,12 @@ ROOMS MODULE
 .view-room .room-costs.collapsed tr:not(.total) {
   display: none;
 }
-.view-room .room-info {
-  margin-top: 30px;
-}
-.view-room .room-info ul.amenities li {
+.view-room ul.amenities li {
   float: left;
   display: inline;
   width: 50%;
 }
-.view-room .room-info ul.amenities li:before {
+.view-room ul.amenities li:before {
   font-family: 'fontello';
   font-weight: normal;
   padding-top: 1px;
@@ -6895,11 +6933,11 @@ ROOMS MODULE
   vertical-align: top;
   position: absolute;
 }
-.view-room .room-info ul.amenities li.checked:before {
+.view-room ul.amenities li.checked:before {
   content: '\2713';
   color: #1ABB9C;
 }
-.view-room .room-info ul.amenities li.crossed:before {
+.view-room ul.amenities li.crossed:before {
   content: '\2715';
   color: #FA6C65;
 }

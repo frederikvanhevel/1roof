@@ -4,21 +4,21 @@ var mailer = require('../../app/util/mailer'),
   mongoose = require('mongoose'),
   winston = require('winston');
 
-mongoose.set('debug', true);
-
 function checkRoom(room) {
 
   room.visible = false;
 
   var context = {
     user: room.user,
-    room: room,
-    editLink: 'http://' + req.headers.host + '/#!/rooms/' + room._id + '/edit'
+    room: room
+    //editLink: 'http://' + req.headers.host + '/#!/rooms/' + room._id + '/edit'
   };
 
   room.save(function(err) {
     if (!err) {
+      console.log(room.user.settings);
       if (room.user.settings.mails.roomCheck) {
+        winston.info('RoomCheck: Notifying user %s', room.user.displayName);
         mailer.send('expired-room.email.html', context, room.user.email, 'Advertentie verlopen');
       }
     }
@@ -38,7 +38,7 @@ exports.run = function() {
   };
 
   Room.find(query).populate('user').exec(function(err, rooms) {
-    winston.info('%d rooms expired. Notifying users ..', rooms.length);
+    winston.info('RoomCheck: %d rooms expired.', rooms.length);
     rooms.forEach(checkRoom);
   });
 

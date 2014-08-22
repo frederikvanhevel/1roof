@@ -6,7 +6,8 @@
 var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	Room = mongoose.model('Room'),
-	crypto = require('crypto');
+	crypto = require('crypto'),
+	winston = require('winston');
 
 /**
  * A Validation function for local strategy properties
@@ -115,9 +116,12 @@ var UserSchema = new Schema({
  		defailt: 'FREE'
  	},
  	settings: {
- 		mails: {
- 			roomCheck: true,
- 			messageCheck: true
+ 		type: Object,
+ 		default: {
+ 			mails: {
+ 				roomCheck: true,
+ 				messageCheck: true
+ 			}
  		}
  	}
 });
@@ -136,7 +140,7 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.pre('remove', function (user) {
   Room.find({ '_id': { $in: user.favorites} }).remove(function(err) {
-	  console.log(err);
+	  winston.error('Error removing rooms', err);
 	});
 });
 

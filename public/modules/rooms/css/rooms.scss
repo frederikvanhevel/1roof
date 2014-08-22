@@ -6,6 +6,10 @@
   color: #B6B6B6;
 }
 
+.icon-record {
+  transition: color 500ms ease-out;
+}
+
 .room-owner-panel {
   height: 40px;
   position: fixed;
@@ -21,15 +25,6 @@
 
     .indicator {
       float: left;
-    }
-
-    select {
-      float: left;
-      width: 120px;
-      margin-left: 20px;
-      margin-right: 20px;
-      margin-top: 5px;
-      height: 30px;
     }
 
   }

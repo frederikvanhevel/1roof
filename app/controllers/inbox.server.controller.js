@@ -60,6 +60,7 @@ exports.sendMessage = function(req, res) {
 
   inbox.save(function(err) {
     if (err) {
+      winston.error('Error saving message', message);
       return res.send(400);
     } else {
       res.jsonp(inbox);
@@ -88,6 +89,7 @@ exports.update = function(req, res) {
 
   inbox.save(function(err) {
     if (err) {
+      winston.error('Error updating inbox', inbox._id);
       return res.send(400);
     } else {
       res.jsonp(inbox);
@@ -103,6 +105,7 @@ exports.delete = function(req, res) {
 
   inbox.remove(function(err) {
     if (err) {
+      winston.error('Error deleting inbox', inbox._id);
       return res.send(400);
     } else {
       res.jsonp(inbox);
@@ -123,6 +126,7 @@ exports.list = function(req, res) {
   .populate('room')
   .exec(function(err, inboxes) {
     if (err) {
+      winston.error('Error listing inboxes of user', user._id);
       return res.send(400);
     } else {
       res.jsonp(inboxes);
@@ -139,6 +143,7 @@ exports.getUnreadMessageCount = function(req, res) {
   Inbox.count({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ], 'messages.sender': { $ne: user._id }, 'messages.isRead': false  })
   .exec(function(err, inboxes) {
     if (err) {
+      winston.error('Error getting unread messages count', user._id);
       return res.send(400);
     } else {
       res.jsonp(inboxes);
@@ -152,7 +157,10 @@ exports.getUnreadMessageCount = function(req, res) {
 exports.inboxByID = function(req, res, next, id) {
   Inbox.findById(id).populate('room').populate('sender', 'displayName').populate('roomOwner', 'displayName')
   .exec(function(err, inbox) {
-    if (err) return next(err);
+    if (err) {
+      winston.error('Error getting inbox by id', id);
+      return next(err);
+    }
     if (!inbox) return next(new Error('Failed to load Inbox ' + id));
     req.inbox = inbox;
     next();

@@ -4,14 +4,14 @@
   <div class="room-owner-panel dark-bg">
     <div class="container">
       <span class="pull-right">
-        <a href="/#!{{room.url}}">bekijk de advertentie <i class="icon-right-open"></i></a>
+        <a href="/#!{{room.url}}"><i class="icon-eye-1"></i> bekijk de advertentie <i class="icon-right-open"></i></a>
       </span>
-<!--       <span ng-if="room.visible"><i class="icon-record online-icon"></i> online</span>
-      <span ng-if="!room.visible"><i class="icon-record offline-icon"></i> offline</span> -->
 
       <div class="visibility-switch">
         <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
-        <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="update()" ng-disabled="!room.isInOrder"></select>
+        <div class="select-style">
+          <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="update()" ng-disabled="!room.isInOrder"></select>
+        </div>
       </div>
       <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> Je moet meer details ingeven voor je deze advertentie online kan plaatsen</span>
     </div>
@@ -101,6 +101,13 @@
           </div>
           <div class="panel-body">
             <form class="form-inline row" role="form">
+              <div class="">
+                <label class="control-label">
+                  <input type="checkbox">
+                  Onmiddelijk beschikbaar
+                </label>
+              </div>
+              <br>
               <h4 class="col-sm-1">van</h4>
               <div class="form-group col-sm-5">
                 <input type="text" class="form-control"  placeholder="dd/mm/jjjj" value="{{ room.available.from | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.from" start-date="{{room.available.from}}" date-picker>
@@ -220,19 +227,19 @@
             <form role="form">
               <div class="form-group">
                 <label class="control-label">
-                  <input type="checkbox">
+                  <input type="checkbox" ng-model="room.cohabit.active">
                   Ik zoek een huisgenoot
                 </label>
               </div>
 
               <div class="form-group">
                 <label class="control-label">Met hoeveel mensen wil je samenwonen?</label>
-                <select>
-                  <option value="">1</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-                  <option value="">5</option>
+                <select ng-model="room.cohabit.count">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
                 </select>
               </div>
 

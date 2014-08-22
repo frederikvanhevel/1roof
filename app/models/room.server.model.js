@@ -104,6 +104,16 @@ var RoomSchema = new Schema({
 			trim: true
 		}
 	},
+	cohabit: {
+		active: {
+			type: Boolean,
+			default: false
+		},
+		count: {
+			type: Number,
+			default: 1
+		}
+	},
 	loc: {
 		type: { type: String },
 		coordinates: [Number]

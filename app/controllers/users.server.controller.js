@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
 	User = mongoose.model('User'),
 	mailer = require('../../app/util/mailer'),
 	_ = require('lodash'),
+  winston = require('winston'),
 
   LocalStrategy = require('passport-local').Strategy,
   bcrypt = require('bcrypt-nodejs'),
@@ -69,6 +70,7 @@ exports.signup = function(req, res) {
 	// Then save the user 
 	user.save(function(err) {
 		if (err) {
+      winston.error('Error signing up user', user);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
@@ -79,6 +81,7 @@ exports.signup = function(req, res) {
 
 			req.login(user, function(err) {
 				if (err) {
+          winston.error('Error logging in user', user._id);
 					res.send(400, err);
 				} else {
 					res.jsonp(user);
@@ -102,6 +105,7 @@ exports.signin = function(req, res, next) {
 
 			req.login(user, function(err) {
 				if (err) {
+          winston.error('Error logging in user', user._id);
 					res.send(400, err);
 				} else {
 					res.jsonp(user);
@@ -130,12 +134,14 @@ exports.update = function(req, res) {
 
 		user.save(function(err) {
 			if (err) {
+        winston.error('Error updating user', user._id);
 				return res.send(400, {
 					message: getErrorMessage(err)
 				});
 			} else {
 				req.login(user, function(err) {
 					if (err) {
+            winston.error('Error logging in user', user._id);
 						res.send(400, err);
 					} else {
 						res.jsonp(user);
@@ -167,12 +173,14 @@ exports.changePassword = function(req, res, next) {
 
 						user.save(function(err) {
 							if (err) {
+                winston.error('Error changing user password', user._id);
 								return res.send(400, {
 									message: getErrorMessage(err)
 								});
 							} else {
 								req.login(user, function(err) {
 									if (err) {
+                    winston.error('Error logging in user', user._id);
 										res.send(400, err);
 									} else {
 										res.send({
@@ -231,6 +239,7 @@ exports.oauthCallback = function(strategy) {
 			}
 			req.login(user, function(err) {
 				if (err) {
+          winston.error('Error logging in user', user._id);
 					return res.redirect('/#!/signin');
 				}
 
@@ -247,7 +256,10 @@ exports.userByID = function(req, res, next, id) {
 	User.findOne({
 		_id: id
 	}).exec(function(err, user) {
-		if (err) return next(err);
+		if (err) {
+      winston.error('Error finding user by id', id);
+      return next(err);
+    }
 		if (!user) return next(new Error('Failed to load User ' + id));
 		req.profile = user;
 		next();
