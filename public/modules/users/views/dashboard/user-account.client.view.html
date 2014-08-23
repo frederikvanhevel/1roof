@@ -3,15 +3,16 @@
 
   <div class="col-md-3">
     <ul class="sidenav white-bg">
-      <li ng-class="active"><a href="" class="active">Meldingen</a></li>
+      <li class="active"><a href="">Meldingen</a></li>
     </ul>
   </div>
 
   <div class="col-md-8 bordered">
+  <h3>Meldingen per email</h3>
   <fieldset>
      <div class="checkbox">
         <label>
-          <input type="checkbox"> Ik wil een email ontvangen wanneer de beschikbaarheidsdatum van mijn advertentie is verlopen.
+          <input type="checkbox" ng-model="user.settings.mail.roomCheck"> Ik wil een email ontvangen wanneer de beschikbaarheidsdatum van mijn advertentie is verlopen.
         </label>
       </div>
   </fieldset>

@@ -9,7 +9,7 @@
 
       <div class="visibility-switch">
         <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
-        <div class="select-style">
+        <div class="select-style" ng-class="{ 'disabled': !room.isInOrder }">
           <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="update()" ng-disabled="!room.isInOrder"></select>
         </div>
       </div>

@@ -81,8 +81,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             return item ? 'online' : 'offline';
         };
 
-        $scope.updateRoom = function() {
-            $scope.room.$update();
+        $scope.setVisibility = function() {
+            $http.put('/rooms/' + $scope.room._id, { visible: $scope.room.visible });
         };
 
         function sendFavorite() {
@@ -92,12 +92,12 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
                     Statistics.aggregate($scope.room._id, 'favorites');
 
                     Authentication.user.favorites.push($scope.room._id);
-                    Alert.add('success', 'Added to favorites!', 3000);
+                    Alert.add('success', 'Toegevoegd aan favorieten!', 3000);
                 } else {
                     Authentication.user.favorites.splice(index, 1);
                 }
             }).error(function(response) {
-                Alert.add('danger', 'There was a problem adding this favorite, try again later.', 5000);
+                Alert.add('danger', 'Er was een probleem bij het toevoegen aan je favorieten, probeer later eens opnieuw.', 5000);
             });
         }
 
@@ -105,9 +105,9 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             Statistics.aggregate($scope.room._id, 'messages');
 
             $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {
-                Alert.add('success', 'Your message has been sent!', 5000);
+                Alert.add('success', 'Je bericht is verzonden!', 500000);
             }).error(function(response) {
-                Alert.add('danger', 'There was a problem sending your message, try again later.', 5000);
+                Alert.add('danger', 'Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.', 5000);
             });
         }
 
@@ -116,9 +116,9 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
 
             $http.post('/rooms/' + $scope.room._id + '/message', { message: $scope.appointmentDate.getTime(), messageType: 'reservation' }).success(function(response) {
                 if (extraMessage) sendMessage(extraMessage);
-                else Alert.add('success', 'Your reservation has been sent!', 5000);
+                else Alert.add('success', 'Je aanvraag is verzonden!', 5000);
             }).error(function(response) {
-                Alert.add('danger', 'There was a problem sending your message, try again later.', 5000);
+                Alert.add('danger', 'Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.', 5000);
             });
         }
 

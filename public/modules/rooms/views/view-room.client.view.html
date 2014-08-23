@@ -8,14 +8,15 @@
 
  			<div class="visibility-switch">
 	      <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
-	      <div class="select-style">
-		      <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
+	      <div class="select-style" ng-class="{ 'disabled': !room.isInOrder }">
+		      <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="setVisibility()" ng-disabled="!room.isInOrder"></select>
 		    </div>
 	    </div>
+	    <span ng-if="!room.isInOrder" class="red"><i class="icon-attention-1 red"></i> Je moet meer details ingeven voor je deze advertentie online kan plaatsen</span>
 		</div>
 	</div>
 
-	<div class="inner" ng-class="{ 'container': !isOverlay() }">
+	<div class="inner-content" ng-class="{ 'container': !isOverlay() }">
 		<div class="page-header row">
 
 			<div class="crumbs col-sm-12">
@@ -163,10 +164,15 @@
 			          </div>
 			        </div>
 							
-							<div class="room-info row">
+							<div class="room-header row">
 								<div class="room-properties col-xs-6">
 									<ul>
-										<li><i class="glyphicon glyphicon-calendar"></i> <span>Beschikbaar van {{ otherRoom.available.from | amDateFormat: 'ddd D MMM'}}</span></li>
+										<li>
+											<i class="glyphicon glyphicon-calendar"></i>
+											<span ng-if="otherRoom.available.immediately"><strong>Onmiddelijk beschikbaar!</strong></span>
+											<span ng-if="!otherRoom.available.immediately">Beschikbaar van <strong>{{ otherRoom.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+											<span ng-if="!otherRoom.available.immediately" ng-show="otherRoom.available.till">tot <strong>{{ otherRoom.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+										</li>
 										<li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="otherRoom.updated"></span></li>
 									</ul>
 								</div>

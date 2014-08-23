@@ -188,7 +188,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 $scope.busy = false;
             }).error(function(response) {
                 $scope.busy = false;
-                Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
+                Alert.add('danger', 'Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.', 5000);
             });
         }
 
@@ -203,7 +203,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                     $scope.busy = false;
                 }).error(function(response) {
                     $scope.busy = false;
-                    Alert.add('danger', 'There was a problem adding this picture, try again later.', 5000);
+                    Alert.add('danger', 'Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.', 5000);
                 });
             });
         }

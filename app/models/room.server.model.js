@@ -17,7 +17,7 @@ var checkRoomCompleteness = function(room) {
 	
 	if (!room.info.title || room.info.title === '') complete = false;
   if (!room.price.base || room.price.base === 0) complete = false;
-  if (!room.available.from || !room.available.till || room.available.till < new Date()) complete = false;
+  if (!room.available.immediately && (!room.available.from || !room.available.till || new Date(room.available.till) < new Date())) complete = false;
 
   // Room is incomplete so can't be visible
   if (!complete) room.visible = false;
@@ -26,7 +26,7 @@ var checkRoomCompleteness = function(room) {
 };
 
 var slugify = function(text) {
-
+	if (!text) return '';
   return text.toString().toLowerCase()
     .replace(/\s+/g, '-')        // Replace spaces with -
     .replace(/[^\w\-]+/g, '')    // Remove all non-word chars

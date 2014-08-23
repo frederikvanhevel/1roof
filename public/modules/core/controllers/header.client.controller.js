@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment',
-	function($rootScope, $scope, $stateParams, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment) {
+angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state',
+	function($rootScope, $scope, $stateParams, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state) {
 		$scope.authentication = Authentication;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');
@@ -12,11 +12,10 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
 
     $scope.init = function() {
       $rootScope.language = window.navigator.userLanguage || window.navigator.language;
-
-      if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl');
+      if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl', false);
 
       $rootScope.$watch('language', function(newVal, oldVal) {
-        if(newVal !== oldVal) setLanguage(newVal);
+        if(newVal !== oldVal) setLanguage(newVal, true);
       });
 
       // subscribe to new messages
@@ -69,16 +68,19 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
       }
     };
 
-    function setLanguage(language) {
+    function setLanguage(language, reload) {
       // TODO: save language in localStorage
       console.log('changing language to %s', language);
 
       // gettext
-      gettextCatalog.currentLanguage = language;
-      gettextCatalog.debug = true;
+      gettextCatalog.setCurrentLanguage(language);
+      // gettextCatalog.debug = true;
 
       // momentjs
       amMoment.changeLanguage(language);
+
+      if (reload)
+        $state.reload();
     }
 	}
 ]);

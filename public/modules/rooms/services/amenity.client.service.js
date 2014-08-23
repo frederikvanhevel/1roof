@@ -9,7 +9,7 @@ angular.module('rooms').factory('Amenity', [
 					{ name: 'Internet', value: 'internet'},
 					{ name: 'Terras', value: 'terrace'},
 					{ name: 'Auto garage', value: 'parking' },
-					{ name: 'Fietsstalling parking', value: 'bicycleParking'},
+					{ name: 'Fietsstalling', value: 'bicycleParking'},
 					{ name: 'Dubbel glas', value: 'doubleGlass'},
 					{ name: 'Bemeubeld', value: 'furnished'},
 					{ name: 'Aparte badkamer', value: 'seperateBathroom'},
