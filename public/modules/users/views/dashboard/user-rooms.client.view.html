@@ -24,14 +24,13 @@
 
                 <span class="indicator col-sm-1"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
 
-                <div class="select-style">
+                <div class="select-style" ng-class="{ 'disabled': !room.isInOrder }">
                   <select class="col-sm-2" ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="updateRoom(room)" ng-disabled="!room.isInOrder"></select>
                 </div>
             </div>
 
             <small ng-if="!room.isInOrder">
                 <span class="red"><i class="icon-attention-1"></i> Je moet meer gegevens invoeren voor je deze advertentie online kan plaatsen. </span>
-                
             </small>
 
           </div>

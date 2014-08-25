@@ -1,96 +1,110 @@
-<section id="pricing-tables">
-  <div class="container inner">
-    
-    <div class="row">
-      <div class="col-sm-offset-2 col-sm-8 text-center">
-        <header>
-          <h1>Simple pricing, no surprises</h1>
-          <p>Magnis modipsae que voloratati andigen daepeditem quiate re porem aut labor. Laceaque quiae sitiorem rest non restibusaes maio es dem tumquam.</p>
-        </header>
+<div class="pricing-view" data-ng-controller="PricingController">
+
+  <section id="pricing-tables">
+    <div class="container inner">
+      
+      <div class="row">
+        <div class="col-sm-offset-2 col-sm-8 text-center">
+          <header>
+            <h1>Upgraden</h1>
+            <p>Je hebt het maximum aantal advertenties die je kan plaatsen bereikt. Indien je er meerdere wil toevoegen, en wil genieten van een aantal extra voordelen zoals analytics, kies dan voor een upgrade!</p>
+          </header>
+        </div>
+      </div>
+      
+      <div class="row pricing">
+        
+        <div class="col-md-4 col-sm-6 inner-top-sm">
+          <div class="plan">
+            
+            <header>
+              <h2>Student</h2>
+              
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">0</span>
+                <span class="period">/ Maand</span>
+              </div>
+              
+              <button ng-disabled="isCurrentPlan('FREE')" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('FREE') }" ng-click="choosePlan('FREE')">{{isCurrentPlan('FREE') ? 'Huidige plan' : 'Kies dit plan'}}</button>
+            </header>
+            
+            <ul class="features">
+              <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
+              <li><i class="icon-window"></i> 1 advertentie</li>
+              <li><i class="icon-window"></i> 4 afbeeldingen</li>
+              <li><i class="icon-hdd"></i> geen analytics</li>
+              <li><i class="icon-switch"></i> geen widgets</li>
+            </ul>
+            
+          </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6 inner-top-sm">
+          <div class="plan">
+            
+            <header>
+              <h2>Huisbaas</h2>
+              
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">9</span>
+                <span class="period">/ Maand</span>
+              </div>
+              
+              <button ng-disabled="isCurrentPlan('PRO')" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('PRO') }" ng-click="choosePlan('PRO')">{{isCurrentPlan('PRO') ? 'Huidige plan' : 'Kies dit plan'}}</button>
+            </header>
+            
+            <ul class="features">
+              <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
+              <li><i class="icon-window"></i> 4 advertenties</li>
+              <li><i class="icon-hdd"></i> 8 afbeeldingen per advertentie</li>
+              <li><i class="icon-switch"></i> Geen analytics</li>
+              <li><i class="icon-globe"></i> Aangepaste widgets</li>
+            </ul>
+            
+          </div>
+        </div>
+        
+        <div class="col-md-4 col-sm-6 inner-top-sm">
+          <div class="plan">
+            
+            <header>
+              <h2>Agentschap</h2>
+              
+              <div class="price">
+                <span class="currency">€</span>
+                <span class="amount">15</span>
+                <span class="period">/ Maand</span>
+              </div>
+              
+              <button ng-disabled="isCurrentPlan('BUSINESS')" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('BUSINESS') }" ng-click="choosePlan('BUSINESS')">{{isCurrentPlan('BUSINESS') ? 'Huidige plan' : 'Kies dit plan'}}</button>
+            </header>
+            
+            <ul class="features">
+              <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
+              <li><i class="icon-window"></i> Onbeperkt aantal advertenties</li>
+              <li><i class="icon-hdd"></i> Onbeperkt aantal afbeeldingen</li>
+              <li><i class="icon-switch"></i> Krachtige analytics</li>
+              <li><i class="icon-globe"></i> Aangepaste widgets</li>
+            </ul>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </section>
+
+  <section id="get-started" class="tint-bg">
+    <div class="container inner-sm">
+      <div class="row">
+        <div class="col-sm-11 center-block text-center animated fadeInUp">
+          <h1 class="single-block"><span translate>Hulp nodig?</span> <a href="#" class="btn btn-white btn-lg" translate>Contacteer ons!</a></h1>
+        </div>
       </div>
     </div>
-    
-    <div class="row pricing">
-      
-      <div class="col-md-4 col-sm-6 inner-top-sm">
-        <div class="plan">
-          
-          <header>
-            <h2>Persoonlijk</h2>
-            
-            <div class="price">
-              <span class="currency">€</span>
-              <span class="amount">0</span>
-              <span class="period">/ Mo</span>
-            </div>
-            
-            <button class="btn" ng-click="choosePlan('FREE')">Kies dit plan</a>
-          </header>
-          
-          <ul class="features">
-            <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
-            <li><i class="icon-window"></i> 1 advertentie</li>
-            <li><i class="icon-window"></i> 4 afbeeldingen</li>
-            <li><i class="icon-hdd"></i> geen analytics</li>
-            <li><i class="icon-switch"></i> geen widgets</li>
-          </ul>
-          
-        </div>
-      </div>
-      
-      <div class="col-md-4 col-sm-6 inner-top-sm">
-        <div class="plan">
-          
-          <header>
-            <h2>Professioneel</h2>
-            
-            <div class="price">
-              <span class="currency">€</span>
-              <span class="amount">9</span>
-              <span class="period">/ Mo</span>
-            </div>
-            
-            <button class="btn" ng-click="choosePlan('PRO')">Kies dit plan</a>
-          </header>
-          
-          <ul class="features">
-            <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
-            <li><i class="icon-window"></i> 4 advertenties</li>
-            <li><i class="icon-hdd"></i> 8 afbeeldingen per advertentie</li>
-            <li><i class="icon-switch"></i> Geen analytics</li>
-            <li><i class="icon-globe"></i> Aangepaste widgets</li>
-          </ul>
-          
-        </div>
-      </div>
-      
-      <div class="col-md-4 col-sm-6 inner-top-sm">
-        <div class="plan">
-          
-          <header>
-            <h2>Zakelijk</h2>
-            
-            <div class="price">
-              <span class="currency">€</span>
-              <span class="amount">15</span>
-              <span class="period">/ Mo</span>
-            </div>
-            
-            <button class="btn" ng-click="choosePlan('BUSINESS')">Kies dit plan</a>
-          </header>
-          
-          <ul class="features">
-            <li><i class="icon-users"></i> <strong>24/7 ondersteuning</strong></li>
-            <li><i class="icon-window"></i> Onbeperkt aantal advertenties</li>
-            <li><i class="icon-hdd"></i> Onbeperkt aantal afbeeldingen</li>
-            <li><i class="icon-switch"></i> Krachtige analytics</li>
-            <li><i class="icon-globe"></i> Aangepaste widgets</li>
-          </ul>
-          
-        </div>
-      </div>
-      
-    </div>
-    
-  </div>
-</section>
+  </section>
+
+</div>

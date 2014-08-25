@@ -6567,6 +6567,15 @@ html, body {
   z-index: 1051 !important;
 }
 
+.btn-white {
+  background: white;
+  color: #1ABB9C !important;
+}
+.btn-white:hover {
+  background: #E9E9E9 !important;
+  color: #506A85 !important;
+}
+
 .select-style {
   padding: 0;
   margin: 0;
@@ -6592,6 +6601,12 @@ html, body {
 }
 .select-style:hover {
   border-color: #ccc;
+}
+.select-style.disabled:before {
+  border-top-color: #ddd;
+}
+.select-style.disabled select {
+  cursor: not-allowed;
 }
 
 .select-style select {
@@ -6980,6 +6995,16 @@ footer .footer-bottom .social-buttons li {
   width: 350px;
 }
 
+.payment-modal .lock-icon {
+  font-size: 100px;
+}
+.payment-modal .creditcards {
+  padding-left: 0;
+}
+.payment-modal .creditcards li {
+  display: inline;
+}
+
 .home-view {
   margin-bottom: -20px;
 }
@@ -7004,14 +7029,6 @@ footer .footer-bottom .social-buttons li {
 }
 .home-view #share .col-sm-4 {
   padding: 0;
-}
-.home-view .btn-white {
-  background: white;
-  color: #1ABB9C !important;
-}
-.home-view .btn-white:hover {
-  background: #E9E9E9 !important;
-  color: #506A85 !important;
 }
 .home-view .home-content {
   padding-top: 50px;
@@ -7040,6 +7057,13 @@ footer .footer-bottom .social-buttons li {
 }
 .home-view #contact-us {
   padding: 80px 0;
+}
+
+.pricing-view {
+  margin-bottom: -20px;
+}
+.pricing-view .plan ul.features {
+  background: #FFF;
 }
 
 .statistics-chart {
@@ -7103,12 +7127,6 @@ ROOMS MODULE
 .room-owner-panel .visibility-switch .select-style {
   float: left;
   margin-right: 10px;
-}
-.room-owner-panel .visibility-switch .select-style.disabled:before {
-  border-top-color: #ddd;
-}
-.room-owner-panel .visibility-switch .select-style.disabled select {
-  cursor: not-allowed;
 }
 .room-owner-panel .visibility-switch .indicator {
   float: left;

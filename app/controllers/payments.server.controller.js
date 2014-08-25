@@ -39,7 +39,8 @@ function createSubscription(user, plan, done) {
     user.customerToken,
     { plan: plan },
     function(err, subscription) {
-      user.subscriptionToken = subscription.id;
+      console.log(subscription);
+      user.subscriptionToken = subscription;
 
       user.save(function(err) {
         if (err) {

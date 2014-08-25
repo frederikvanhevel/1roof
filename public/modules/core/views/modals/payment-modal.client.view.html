@@ -1,0 +1,43 @@
+<section class="payment-modal">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()">&times;</button>
+      <h4 class="modal-title"><i class="icon-magic"></i> Tariefplan wijzigen</h4>
+  </div>
+  <div class="modal-body row">
+
+    <div class="col-sm-3 text-center">
+      <i class="lock-icon icon-lock-1"></i>
+    </div>
+
+    <div class="col-sm-9">
+      <ul class="creditcards">
+        <li><img src="/modules/core/img/cards/visa.png"/></li>
+        <li><img src="/modules/core/img/cards/mastercard.png"/></li>
+        <li><img src="/modules/core/img/cards/amex.png"/></li>
+      </ul>
+
+      <form stripe-form="submitPayment"> 
+
+        <div class="form-group">
+          <label for="number">Kaartnumer <small>(geen streepjes of spaties)</small></label>
+          <input name="number" class="form-control" type="text" ng-model="number" payments-validate="card" payments-format="card" placeholder="1234 1234 1234 1234" required />
+        </div>
+
+        <div class="form-group">
+          <label for="expiry">Vervaldatum</label>
+          <input name="expiry" type="text" ng-model="expiry" payments-validate="expiry" payments-format="expiry" placeholder="01/12" />
+        </div>
+
+        <div class="form-group">
+          <label for="cvc">Beveiligingscode <small>(3 of 4 cijfers)</small></label>
+          <input name="cvc" type="text" ng-model="cvc" payments-validate="cvc" payments-format="cvc" placeholder="1234" />
+        </div>
+        
+        <button type="submit" class="btn btn-orange"><i class="icon-lock-1"></i> Veilig betalen</button>
+        <button class="btn-link" ng-click="$dismiss()">Annuleren</button>
+
+      </form>
+    </div>
+
+  </div>
+</div>

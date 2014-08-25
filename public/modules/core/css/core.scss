@@ -57,6 +57,16 @@ html, body {
   z-index: 1051 !important;
 }
 
+.btn-white {
+  background: white;
+  color: #1ABB9C !important;
+
+  &:hover {
+    background: #E9E9E9 !important;
+    color: #506A85 !important;
+  }
+}
+
 .select-style {
     padding: 0;
     margin: 0;
@@ -83,6 +93,15 @@ html, body {
 
     &:hover {
       border-color: #ccc;
+    }
+
+    &.disabled {
+      &:before {
+        border-top-color: #ddd;
+      }
+      select {
+        cursor: not-allowed;
+      }
     }
 }
 

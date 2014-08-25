@@ -21,7 +21,8 @@ var ApplicationConfiguration = (function() {
 		'angularMoment',
 		'gettext',
 		'btford.socket-io',
-		'once'
+		'once',
+		'angularPayments'
 	];
 
 	// Add a new vertical module

@@ -83,6 +83,16 @@ angular.module('core').service('Modal', [ '$modal', '$location',
       return this.showModal(options, {});
     };
 
+
+    this.payment = function() {
+      var options = {
+        templateUrl: 'modules/core/views/modals/payment-modal.client.view.html',
+        controller: 'ManageRoomController'
+      };
+
+      return this.showModal(options, {});
+    };
+
     var modalDefaults = {
         backdrop: true,
         keyboard: true,

@@ -26,16 +26,6 @@
     .select-style {
       float: left;
       margin-right: 10px;
-
-      &.disabled {
-        &:before {
-          border-top-color: #ddd;
-        }
-        select {
-          cursor: not-allowed;
-        }
-      }
-
     }
 
     .indicator {
