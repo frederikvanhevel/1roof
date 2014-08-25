@@ -29,6 +29,7 @@
     "angular-socket-io": "~0.6.0",
     "socket.io-client": "~1.0.6",
     "d3": "~3.4.11",
-    "angular-once": "~0.1.8"
+    "angular-once": "~0.1.8",
+    "angular-payments": "*"
   }
 }

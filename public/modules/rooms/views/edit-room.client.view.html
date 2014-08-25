@@ -86,6 +86,10 @@
                 <label class="control-label">Beschrijving</label>
                 <textarea ng-model="room.info.description" maxlength="200" limit-text="200" type="text"  placeholder="Geef een duidelijke beschrijving over je ruimte"></textarea>
               </div>
+              <div class="form-group">
+                <label class="control-label">Oppervlakte</label>
+                <input ng-model="room.surface" type="number" min="0" class="form-control"  placeholder="Oppervlakte in m²">
+              </div>
             </form>
             <hr>
             <div class="text-center">
@@ -141,7 +145,7 @@
 
               <div class="form-group" ng-class="{ 'has-error': tabHasError('costs') }">
                 <label class="control-label">Basis prijs</label>
-                <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="dd//mm/jjjj">
+                <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="Basis kosten">
               </div>
               
               <div class="form-group">

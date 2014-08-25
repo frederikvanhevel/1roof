@@ -69,7 +69,8 @@
 		          </div>
 		          <div class="col-sm-4">
 	              <h6>Contract</h6>
-		            <h2>{{room.leaseType}}</h2>
+		            <h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
+		            <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
 		          </div>
 		          <div class="col-sm-4">
 		          	<h6>Kosten <small>per {{room.price.period}}</small></h6>
@@ -101,7 +102,7 @@
 		            </table> -->
 
 		            <h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2>
-		            <a href="#">Meer informatie</a>
+		            <a href="#"><i class="icon-info-circle"></i> Meer informatie</a>
 
 		          </div>
 		          
@@ -109,9 +110,9 @@
 
 		        <div class="room-header row" ng-if="room.cohabit.active">
 		        	<div class="col-xs-12">
-		        		<h6>Samenwonen</h6>								
-								<i class="icon-user" ng-repeat="person in room.cohabit.count"></i>
-								anderen in dit gebouw
+		        		<h6>Samenwonen</h6>
+								<i class="icon-user" ng-repeat="i in getNumber(room.cohabit.count)"></i>
+								andere(n) in dit gebouw
 							</div>
 		        </div>
 						
@@ -153,7 +154,8 @@
 			          </div>
 			          <div class="col-xs-6 col-md-3">
 			          		<h6>Contract</h6>
-		              	<h2>{{otherRoom.leaseType}}</h2>
+		              	<h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
+		            		<h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
 			          </div>
 			          <div class="col-xs-6 col-md-3">
 		              	<h6>Kosten</h6>

@@ -10,11 +10,13 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             name: '',
             email: ''
         };
+        $scope.currentDate = new Date();
         $scope.appointmentDate = new Date();
         $scope.otherRooms = [];
         $scope.amenities = Amenity.list();
 
         $scope.isOverlay = false;
+
 
         $scope.init = function() {
             $scope.findOne();
@@ -85,6 +87,15 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             $http.put('/rooms/' + $scope.room._id, { visible: $scope.room.visible });
         };
 
+        // helper for repeating something n number of times
+        $scope.getNumber = function(num) {
+            var obj = [];
+            for (var i = 0; i < num; i++) {
+                obj.push(i);
+            }
+            return obj;
+        };
+
         function sendFavorite() {
             $http.post('/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);
@@ -105,7 +116,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             Statistics.aggregate($scope.room._id, 'messages');
 
             $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {
-                Alert.add('success', 'Je bericht is verzonden!', 500000);
+                Alert.add('success', 'Je bericht is verzonden!', 5000);
             }).error(function(response) {
                 Alert.add('danger', 'Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.', 5000);
             });

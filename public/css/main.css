@@ -6613,6 +6613,20 @@ html, body {
   outline: none;
 }
 
+.spinner.ng-hide-remove {
+  /* this is required as of 1.3x to properly
+     apply all styling in a show/hide animation */
+  transition: 0s linear all;
+}
+.spinner.ng-hide-remove {
+  opacity: 0;
+}
+.spinner.ng-hide-remove-active {
+  /* the transition is defined in the active class */
+  transition: 1s linear all;
+  opacity: 0;
+}
+
 .btn-social {
   position: relative;
   padding-left: 50px;

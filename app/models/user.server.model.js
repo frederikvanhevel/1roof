@@ -110,7 +110,10 @@ var UserSchema = new Schema({
  	customerToken: {
  		Type: String
  	},
- 	subscription: {
+ 	subscriptionToken: {
+ 		type: String
+ 	},
+ 	subscriptionPlan: {
  		type: String,
  		enum: ['FREE', 'PRO', 'BUSINESS'],
  		defailt: 'FREE'
@@ -142,6 +145,15 @@ UserSchema.pre('remove', function (user) {
   Room.find({ '_id': { $in: user.favorites} }).remove(function(err) {
 	  winston.error('Error removing rooms', err);
 	});
+
+	// if (this.customerToken) {
+	// 	stripe.customers.del(
+	// 	  this.customerToken,
+	// 	  function(err, confirmation) {
+	// 	    if (err) winston.error('Error removing stripe customer', err);
+	// 	  }
+	// 	);
+	// }
 });
 
 /**

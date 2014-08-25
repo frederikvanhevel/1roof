@@ -56,7 +56,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 info: $scope.room.info,
                 amenities: $scope.room.amenities,
                 price: $scope.room.price,
-                surface: $scope.room.surface
+                surface: $scope.room.surface,
+                cohabit: $scope.room.cohabit
               };
             }
 

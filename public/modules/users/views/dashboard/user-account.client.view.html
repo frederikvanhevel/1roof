@@ -8,14 +8,35 @@
   </div>
 
   <div class="col-md-8 bordered">
-  <h3>Meldingen per email</h3>
-  <fieldset>
-     <div class="checkbox">
-        <label>
-          <input type="checkbox" ng-model="user.settings.mail.roomCheck"> Ik wil een email ontvangen wanneer de beschikbaarheidsdatum van mijn advertentie is verlopen.
-        </label>
-      </div>
-  </fieldset>
+  <h3>Emails ontvangen</h3>
+  <form data-ng-submit="updateUserProfile()" class="signin" autocomplete="off">
+    <fieldset>
+
+       <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="user.settings.mail.roomCheck"> wanneer de beschikbaarheidsdatum van mijn advertentie is verlopen
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" ng-model="user.settings.mail.messageCheck"> wanneer ik een nieuw bericht ontvang in verband met een advertentie
+          </label>
+        </div>
+               
+        <br>
+
+        <div data-ng-show="success" class="text-success pull-right">
+          <strong>Instellingen opgeslaan!</strong>
+        </div>
+        <div data-ng-show="error" class="text-danger pull-right">
+          <strong>{{error}}</strong>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-large">Opslaan</button>
+        </div>
+
+    </fieldset>
+  </form>
   </div>
 
 
