@@ -1,19 +1,24 @@
 /*
 CORE MODULE
 */
-@import '../modules/core/css/theme';
-// @import '../modules/core/css/colors';
-@import '../modules/core/css/maki';
-@import '../modules/core/css/fontello';
-@import '../modules/core/css/errors';
+@import '../modules/core/css/theme/theme';
+// @import '../modules/core/css/theme/colors';
+@import '../modules/core/css/theme/maki';
+@import '../modules/core/css/theme/fontello';
+@import '../modules/core/css/theme/animations';
+
+@import '../modules/core/css/generic/charts';
+@import '../modules/core/css/generic/modals';
+@import '../modules/core/css/generic/datepicker';
+
 
 @import '../modules/core/css/core';
+@import '../modules/core/css/errors';
 @import '../modules/core/css/header';
 @import '../modules/core/css/footer';
-@import '../modules/core/css/modals';
 @import '../modules/core/css/home';
 @import '../modules/core/css/pricing';
-@import '../modules/core/css/charts';
+
 
 /*
 ROOMS MODULE
@@ -22,7 +27,7 @@ ROOMS MODULE
 @import '../modules/rooms/css/view';
 @import '../modules/rooms/css/create';
 @import '../modules/rooms/css/edit';
-@import '../modules/core/css/datepicker';
+
 
 /*
 SEARCH MODULE
