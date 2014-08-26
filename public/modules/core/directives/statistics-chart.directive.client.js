@@ -76,7 +76,8 @@ angular.module('core').directive('statisticsChart', [ '$window',
                 .scale(y)
                 .orient('left')
                 .tickSize(-width)
-                .ticks(5);
+                .ticks(5)
+                .tickFormat(d3.format('d'));
 
             var line = d3.svg.line()
                 .x(function(d) { return x( new Date(d.date) ); })

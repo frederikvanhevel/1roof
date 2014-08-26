@@ -63,11 +63,11 @@
 				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="room-header row">
-							<div class="col-sm-4">
+							<div class="col-sm-3" ng-if="room.surface != 0">
 		          	<h6>Oppervlakte</h6>
 	              <h2>{{ room.surface | number}} <span class="small text-muted">m²</span></h2>
 		          </div>
-		          <div class="col-sm-4">
+		          <div class="col-sm-5">
 	              <h6>Contract</h6>
 		            <h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
 		            <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
@@ -75,7 +75,7 @@
 		          <div class="col-sm-4">
 		          	<h6>Kosten <small>per {{room.price.period}}</small></h6>
 
-<!-- 		            <table class="room-costs collapsed">
+<!-- 		        <table class="room-costs collapsed">
 		            	<tr>
 		            		<td></td>
 		            		<td></td>
