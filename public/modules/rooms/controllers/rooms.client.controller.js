@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta',
-    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta', '$location',
+    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta, $location) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
@@ -26,7 +26,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         $scope.findOne = function() {
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
-            }, postLoad);
+            }, postLoad, loadFailure);
         };
 
         $scope.isAmenityChecked = function(room, amenity) {
@@ -145,6 +145,10 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             });
             $scope.$broadcast('room_loaded', $scope.room);
             if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
+        }
+
+        function loadFailure(response) {
+            $location.path('/rooms/notfound');
         }
     }
 ]);

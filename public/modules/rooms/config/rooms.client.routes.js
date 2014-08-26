@@ -16,6 +16,10 @@ angular.module('rooms').config(['$stateProvider',
 		state('editRoom', {
 			url: '/rooms/:roomId/edit/:nav',
 			templateUrl: 'modules/rooms/views/edit-room.client.view.html'
+		}).
+		state('notFound', {
+			url: '/rooms/notfound',
+			templateUrl: 'modules/rooms/views/not-found.client.view.html'
 		});
 	}
 ]);

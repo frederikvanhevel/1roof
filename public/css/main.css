@@ -6505,6 +6505,9 @@ input:focus:-ms-input-placeholder {
 }
 
 /* '' */
+.not-found-page {
+  margin-bottom: -20px;
+}
 .not-found-page h1, .not-found-page h2 {
   color: white;
 }

@@ -14,8 +14,8 @@ module.exports = function(app) {
 	app.route('/myrooms')
 		.get(users.requiresLogin, rooms.listOfUserRooms);
 	
-	app.route('/l/:roomId/:city/:title')
-		.get(rooms.read);
+	// app.route('/l/:roomId/:city/:title')
+	// 	.get(rooms.read);
 
 	app.route('/rooms/:roomId')
 		.get(rooms.read)
