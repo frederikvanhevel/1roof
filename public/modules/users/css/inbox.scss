@@ -54,6 +54,24 @@
         margin-bottom: 0;
       }
     }
+
+    &.deleted {
+      padding: 25px;
+
+      i {
+        font-size: 50px;
+        float: left;
+        color: #FA6C65;
+      }
+
+      h2 {
+        float: left;
+        margin-top: 6px;
+        margin-left: 15px;
+        margin-bottom: 0;
+      }
+
+    }
   }
 
   .messages {

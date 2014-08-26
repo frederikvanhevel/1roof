@@ -1,5 +1,12 @@
 .not-found-page {
-  margin-bottom: -20px;
+  // margin-bottom: -20px;
+  background-color: #3F8DBF !important;
+  color: #FFF !important;
+  position: absolute;
+  top: 52px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
   h1, h2 {
     color: white;

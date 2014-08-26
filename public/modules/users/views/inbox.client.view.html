@@ -33,7 +33,7 @@
       <div class="col-sm-6" ng-cloak>
 
         <div class="bordered room-card">
-          <a ng-href="/#!{{inbox.room.url}}">
+          <a ng-if="room != null" ng-href="/#!{{inbox.room.url}}">
             <div ng-if="inbox.room.pictures.length == 0" class="room-image empty tint-bg">
               <i class="icon-camera-1"></i>
             </div>
@@ -46,6 +46,11 @@
 
             <div class="clearfix"></div>
           </a>
+          <div ng-if="room == null" class="room-card deleted">
+            <i class="icon-attention"></i>
+            <h2>Advertentie is verwijderd</h2>
+            <div class="clearfix"></div>
+          </div>
         </div>
 
         <div class="messages bordered" ng-model="inbox.messages.length" scroll-bottom>
