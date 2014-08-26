@@ -35,21 +35,6 @@ var getErrorMessage = function(err) {
 	return message;
 };
 
-var checkRoomCount = function(user, done) {
-	Room.count({ 'user': user }).exec(function(err, count) {
-		if (err) {
-			winston.error('Error getting user rooms count', user._id);
-			done(err);
-		} else {
-			if (count >= config.subscription[user.subscriptionPlan].maxRooms) {
-				done(null, false);
-			} else {
-				done(null, true);
-			}
-		}
-	});
-};
-
 /**
  * Create a Room
  */
@@ -172,6 +157,23 @@ exports.listOfUserRooms = function(req, res) {
 	});
 };
 
+exports.checkUserRoomsCount = function(req, res, next) {
+	var user = req.user;
+
+	Room.count({ 'user': user }).exec(function(err, count) {
+		if (err) {
+			winston.error('Error getting user rooms count', user._id);
+			return res.send(400);
+		} else {
+			if (count >= config.subscription[user.subscriptionPlan].maxRooms) {
+				return res.send(403, 'User cannot create more rooms with this plan');
+			} else {
+				return res.send(200);
+			}
+		}
+	});
+};
+
 /**
  * List of other Rooms on location
  */
@@ -282,23 +284,16 @@ exports.removePicture = function(req, res, next) {
 exports.createRoomCheck = function(req, res, next) {
 	var user = req.user;
 
-	checkRoomCount(user, function(result) {
-		if (result) {
-			next();
+	Room.count({ 'user': user }).exec(function(err, count) {
+		if (err) {
+			winston.error('Error getting user rooms count', user._id);
+			return res.send(400);
 		} else {
-			return res.send(403, 'User cannot create more rooms with this plan');
-		}
-	});
-};
-
-exports.canCreateMoreRooms = function(req, res, next) {
-	var user = req.user;
-
-	checkRoomCount(user, function(result) {
-		if (result) {
-			res.send(200);
-		} else {
-			return res.send(403, 'User cannot create more rooms with this plan');
+			if (count >= config.subscription[user.subscriptionPlan].maxRooms) {
+				return res.send(403, 'User cannot create more rooms with this plan');
+			} else {
+				next();
+			}
 		}
 	});
 };

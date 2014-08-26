@@ -28,6 +28,10 @@
     padding: 0;
     margin-bottom: 10px;
 
+    &.ng-cloak {
+      display: none;
+    }
+
     .room-image {
       float: left;
       background-size: cover;

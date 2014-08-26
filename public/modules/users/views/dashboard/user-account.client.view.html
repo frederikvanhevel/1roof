@@ -1,43 +1,57 @@
-<section class="col-sm-offset-1" data-ng-controller="SettingsController">
+<section class="col-sm-offset-1" data-ng-controller="SettingsController" ng-init="nav = 'alerts'">
 
 
   <div class="col-md-3">
     <ul class="sidenav white-bg">
-      <li class="active"><a href="">Meldingen</a></li>
+      <li ng-class="{ active: nav == 'alerts'}"><a href="" ng-click="nav = 'alerts'">Meldingen</a></li>
+      <li ng-class="{ active: nav == 'subscription'}"><a href="" ng-click="nav = 'subscription'">Abonnement</a></li>
     </ul>
   </div>
 
-  <div class="col-md-8 bordered">
-  <h3>Emails ontvangen</h3>
-  <form data-ng-submit="updateUserProfile()" class="signin" autocomplete="off">
-    <fieldset>
+  <div class="col-md-8 bordered" ng-switch on="nav">
 
-       <div class="checkbox">
-          <label>
-            <input type="checkbox" ng-model="user.settings.mail.roomCheck"> wanneer de beschikbaarheidsdatum van mijn advertentie is verlopen
-          </label>
-        </div>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" ng-model="user.settings.mail.messageCheck"> wanneer ik een nieuw bericht ontvang in verband met een advertentie
-          </label>
-        </div>
-               
-        <br>
+    <div ng-switch-when="alerts">
+      <h3>Emails ontvangen</h3>
+      <form data-ng-submit="updateUserProfile()" class="signin" autocomplete="off">
+        <fieldset>
 
-        <div data-ng-show="success" class="text-success pull-right">
-          <strong>Instellingen opgeslaan!</strong>
-        </div>
-        <div data-ng-show="error" class="text-danger pull-right">
-          <strong>{{error}}</strong>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-large">Opslaan</button>
-        </div>
+           <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="user.settings.mail.roomCheck"> wanneer de beschikbaarheidsdatum van mijn advertentie is verlopen
+              </label>
+            </div>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" ng-model="user.settings.mail.messageCheck"> wanneer ik een nieuw bericht ontvang in verband met een advertentie
+              </label>
+            </div>
+                   
+            <br>
 
-    </fieldset>
-  </form>
+            <div data-ng-show="success" class="text-success pull-right">
+              <strong>Instellingen opgeslaan!</strong>
+            </div>
+            <div data-ng-show="error" class="text-danger pull-right">
+              <strong>{{error}}</strong>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-large">Opslaan</button>
+            </div>
+
+        </fieldset>
+      </form>
+    </div>
+
+
+    <div ng-switch-when="subscription">
+       <h3>Abonnement</h3>
+       <p>Huidig abonnement: <strong>{{getSubscription()}}</strong></p>
+
+       <a href="/#!/pricing" class="btn">Wijzigen</a>
+    </div>
+    
   </div>
+
 
 
 </section>

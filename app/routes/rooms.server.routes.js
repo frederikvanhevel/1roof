@@ -9,10 +9,13 @@ module.exports = function(app) {
 	// Rooms Routes
 	app.route('/rooms')
 		.get(rooms.list)
-		.post(users.requiresLogin, rooms.canCreateMoreRooms, rooms.create);
+		.post(users.requiresLogin, rooms.createRoomCheck, rooms.create);
 
 	app.route('/myrooms')
 		.get(users.requiresLogin, rooms.listOfUserRooms);
+
+	app.route('/roomcount')
+		.get(users.requiresLogin, rooms.checkUserRoomsCount);
 	
 	// app.route('/l/:roomId/:city/:title')
 	// 	.get(rooms.read);

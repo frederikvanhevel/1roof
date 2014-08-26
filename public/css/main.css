@@ -7886,6 +7886,9 @@ USERS MODULE
   padding: 0;
   margin-bottom: 10px;
 }
+.inbox .room-card.ng-cloak {
+  display: none;
+}
 .inbox .room-card .room-image {
   float: left;
   background-size: cover;

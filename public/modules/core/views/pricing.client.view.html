@@ -1,10 +1,10 @@
-<div class="pricing-view" data-ng-controller="PricingController">
+<div class="pricing-view" data-ng-controller="PricingController" ng-init="init()">
 
-  <section id="pricing-tables">
-    <div class="container inner">
+  <section class="pricing-tables">
+    <div class="container">
       
-      <div class="row">
-        <div class="col-sm-offset-2 col-sm-8 text-center" animate-element>
+      <div class="row" ng-if="upgrade">
+        <div class="col-sm-offset-2 col-sm-8 inner-top-sm text-center" animate-element>
           <header>
             <h1>Upgraden</h1>
             <p>Je hebt het maximum aantal advertenties die je kan plaatsen bereikt. Indien je er meerdere wil toevoegen, en wil genieten van een aantal extra voordelen zoals analytics, kies dan voor een upgrade!</p>
@@ -14,7 +14,7 @@
       
       <div class="row pricing">
         
-        <div class="col-md-4 col-sm-6 inner-top-sm" animate-element>
+        <div class="col-md-4 col-sm-6 inner-sm" animate-element>
           <div class="plan">
             
             <header>
@@ -40,7 +40,7 @@
           </div>
         </div>
         
-        <div class="col-md-4 col-sm-6 inner-top-sm" animate-element>
+        <div class="col-md-4 col-sm-6 inner-sm" animate-element>
           <div class="plan">
             
             <header>
@@ -66,7 +66,7 @@
           </div>
         </div>
         
-        <div class="col-md-4 col-sm-6 inner-top-sm" animate-element>
+        <div class="col-md-4 col-sm-6 inner-sm" animate-element>
           <div class="plan">
             
             <header>

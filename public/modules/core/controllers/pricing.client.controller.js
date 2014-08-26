@@ -1,12 +1,16 @@
 'use strict';
 
-angular.module('core').controller('PricingController', ['$scope', 'Authentication', 'Alert', 'Meta', '$http', 'Modal',
-  function ($scope, Authentication, Alert, Meta, $http, Modal) {
+angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', 'Meta', '$http', 'Modal',
+  function ($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal) {
     $scope.authentication = Authentication;
 
     $scope.plan = 'PRO';
 
     Meta.setTitle('Upgraden');
+
+    $scope.init = function() {
+      $scope.upgrade = $stateParams.upgrade;
+    };
 
     $scope.choosePlan = function() {
       Modal.payment();

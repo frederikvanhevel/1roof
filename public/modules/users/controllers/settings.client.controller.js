@@ -65,5 +65,13 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 				$scope.error = response.message;
 			});
 		};
+
+		$scope.getSubscription = function() {
+			var plan = Authentication.user.subscriptionPlan;
+
+			if (plan === 'FREE') return 'Student';
+			else if (plan === 'PRO') return 'Huisbaas';
+			else if (plan === 'BUSINESS') return 'Agentschap';
+		};
 	}
 ]);

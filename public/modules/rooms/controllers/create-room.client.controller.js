@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', 'Authentication', 'Rooms', 'Modal', 'Geocoder', 'Meta',
-	function($scope, $location, Authentication, Rooms, Modal, Geocoder, Meta) {
+angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', 'Meta', '$http',
+	function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, Meta, $http) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -15,11 +15,14 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         $scope.addressDetails = null;
         $scope.creationStep = 1;
         $scope.busy = false;
+        $scope.allowed = false;
 
         $scope.init = function() {
             Meta.setTitle('Advertentie toevoegen');
             
             if (Authentication.user) $scope.creationStep = 2;
+
+            checkUserRoomCount();
         };
 
         // Create new Room
@@ -58,6 +61,18 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
             $scope.createForm.address = '';
         };
 
+        $scope.openSingupModal = function() {
+            Modal.signup().then(function() {
+                $scope.creationStep = 2;
+            });
+        };
+
+        $scope.openSinginModal = function() {
+            Modal.signin().then(function() {
+                $scope.creationStep = 2;
+            });
+        };
+
         function doSearchLookup(address) {
           Geocoder.geocodeAddress(address).then(function(result) {
 
@@ -75,16 +90,12 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
           });
         }
 
-        $scope.openSingupModal = function() {
-            Modal.signup().then(function() {
-                $scope.creationStep = 2;
+        function checkUserRoomCount() {
+            $http.get('/roomcount').success(function() {
+                $scope.allowed = true;
+            }).error(function(response) {
+                $state.transitionTo('pricing', { upgrade: true });
             });
-        };
-
-        $scope.openSinginModal = function() {
-            Modal.signin().then(function() {
-                $scope.creationStep = 2;
-            });
-        };
+        }
 	}
 ]);
