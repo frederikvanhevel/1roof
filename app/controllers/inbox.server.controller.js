@@ -141,12 +141,12 @@ exports.getUnreadMessageCount = function(req, res) {
   var user = req.user;
 
   Inbox.count({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ], 'messages.sender': { $ne: user._id }, 'messages.isRead': false  })
-  .exec(function(err, inboxes) {
+  .exec(function(err, count) {
     if (err) {
       winston.error('Error getting unread messages count', user._id);
       return res.send(400);
     } else {
-      res.jsonp(inboxes);
+      res.jsonp(count);
     }
   });
 };

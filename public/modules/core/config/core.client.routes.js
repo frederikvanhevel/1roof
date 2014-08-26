@@ -17,6 +17,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
 		state('pricing', {
 			url: '/pricing',
 			templateUrl: 'modules/core/views/pricing.client.view.html'
+		}).
+		state('about', {
+			url: '/about',
+			templateUrl: 'modules/core/views/about.client.view.html'
 		});
 	}
 ]);

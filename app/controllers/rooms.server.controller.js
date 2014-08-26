@@ -6,6 +6,7 @@
 var mongoose = require('mongoose'),
 	Room = mongoose.model('Room'),
 	_ = require('lodash'),
+	config = require('../../config/config'),
 	cloudinary = require('../../app/util/uploader'),
 	mailer = require('../../app/util/mailer'),
   winston = require('winston');
@@ -32,6 +33,21 @@ var getErrorMessage = function(err) {
 	}
 
 	return message;
+};
+
+var checkRoomCount = function(user, done) {
+	Room.count({ 'user': user }).exec(function(err, count) {
+		if (err) {
+			winston.error('Error getting user rooms count', user._id);
+			done(err);
+		} else {
+			if (count >= config.subscription[user.subscriptionPlan].maxRooms) {
+				done(null, false);
+			} else {
+				done(null, true);
+			}
+		}
+	});
 };
 
 /**
@@ -257,6 +273,33 @@ exports.removePicture = function(req, res, next) {
 				res.jsonp(room);
 			}
 		});
+	});
+};
+
+/**
+ * Room creation middleware
+ */
+exports.createRoomCheck = function(req, res, next) {
+	var user = req.user;
+
+	checkRoomCount(user, function(result) {
+		if (result) {
+			next();
+		} else {
+			return res.send(403, 'User cannot create more rooms with this plan');
+		}
+	});
+};
+
+exports.canCreateMoreRooms = function(req, res, next) {
+	var user = req.user;
+
+	checkRoomCount(user, function(result) {
+		if (result) {
+			res.send(200);
+		} else {
+			return res.send(403, 'User cannot create more rooms with this plan');
+		}
 	});
 };
 

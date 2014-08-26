@@ -9,7 +9,7 @@ module.exports = function(app) {
 	// Rooms Routes
 	app.route('/rooms')
 		.get(rooms.list)
-		.post(users.requiresLogin, rooms.create);
+		.post(users.requiresLogin, rooms.canCreateMoreRooms, rooms.create);
 
 	app.route('/myrooms')
 		.get(users.requiresLogin, rooms.listOfUserRooms);
