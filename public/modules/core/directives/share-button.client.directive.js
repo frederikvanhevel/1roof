@@ -7,8 +7,6 @@ angular.module('core').directive('shareButton', [
         link: function(scope, element, attrs) {
             var site = attrs.shareButton;
 
-            console.log(attrs);
-
             if (site === 'facebook') {
               element.click(function(e) {
                 window.open(

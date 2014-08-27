@@ -11,16 +11,19 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 
     $scope.goToSearch = function() {
       if ($scope.searchDetails.geometry) {
-        $location.path('search/' + $scope.search.replace(/, /g, '--'))
-          .search('lat', $scope.searchDetails.geometry.location.lat())
-          .search('lng', $scope.searchDetails.geometry.location.lng());
+        changeLocation($scope.search.replace(/, /g, '--'), $scope.searchDetails.geometry.location.lat(), $scope.searchDetails.geometry.location.lng());
       } else {
         Geocoder.geocodeAddress($scope.search).then(function(result) {
-          $location.path('search/' + result.formattedAddress.replace(/, /g, '--'))
-            .search('lat', result.lat)
-            .search('lng', result.lng);
+          changeLocation(result.formattedAddress.replace(/, /g, '--'), result.lat, result.lng);
         });
       }
       $scope.searchDetails = {};
     };
+
+    function changeLocation(address, lat, lng) {
+      $location.path('search/' + address)
+            .search('lat', lat)
+            .search('lng', lng);
+    }
+
 }]);

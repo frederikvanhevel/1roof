@@ -70,8 +70,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.update = function() {
             // var room = angular.copy($scope.room);
             $scope.busy = true;
-            console.log('updating');
-            console.log($scope.room);
+
             $scope.room.$update(function() {
                 // $scope.room = room;
                 $scope.busy = false;

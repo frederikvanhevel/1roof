@@ -30,7 +30,6 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
         };
 
         $scope.updateRoom = function(room) {
-            console.log(room.visible);
             room.$update();
         };
 	}

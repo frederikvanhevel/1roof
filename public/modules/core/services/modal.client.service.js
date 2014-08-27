@@ -15,18 +15,10 @@ angular.module('core').service('Modal', [ '$modal', '$location',
     };
 
     this.signin = function() {
-      var currentPath = $location.path();
-      console.log(currentPath);
-
       var options = {
         templateUrl: 'modules/users/views/signin.client.view.html',
         controller: 'AuthenticationController',
-        windowClass: 'small',
-        resolve: {
-          redirectTo: function () {
-            return currentPath;
-          }
-        }
+        windowClass: 'small'
       };
 
       return this.showModal(options, {});

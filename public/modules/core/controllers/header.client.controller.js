@@ -11,9 +11,12 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
     $scope.messagesPopoverVisible = false;
 
     $scope.init = function() {
+
+      // detect browser language
       $rootScope.language = window.navigator.userLanguage || window.navigator.language;
       if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl', false);
 
+      // watch for language changes
       $rootScope.$watch('language', function(newVal, oldVal) {
         if(newVal !== oldVal) setLanguage(newVal, true);
       });
@@ -30,6 +33,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
           if ($scope.unreadMessageCount > 0) $scope.unreadMessageCount--;
         });
       }
+
     };
 
 		$scope.toggleCollapsibleMenu = function() {
@@ -38,14 +42,10 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
 
     $scope.goToSearch = function() {
       if ($scope.searchDetails.geometry) {
-        $location.path('search/' + $scope.search.replace(/, /g, '--'))
-          .search('lat', $scope.searchDetails.geometry.location.lat())
-          .search('lng', $scope.searchDetails.geometry.location.lng());
+        changeLocation($scope.search.replace(/, /g, '--'), $scope.searchDetails.geometry.location.lat(), $scope.searchDetails.geometry.location.lng());
       } else {
         Geocoder.geocodeAddress($scope.search).then(function(result) {
-          $location.path('search/' + result.formattedAddress.replace(/, /g, '--'))
-            .search('lat', result.lat)
-            .search('lng', result.lng);
+          changeLocation(result.formattedAddress.replace(/, /g, '--'), result.lat, result.lng);
         });
       }
       $scope.searchDetails = {};
@@ -61,12 +61,17 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
 
     $scope.getUnreadMessageCount = function() {
       if (Authentication.user) {
-        // TODO: interval for checking for new messages - or socket.io
         $http({ method: 'GET', url: '/users/unreadmessages'}).then(function(result) {
             $scope.unreadMessageCount = result.data;
         });
       }
     };
+
+    function changeLocation(address, lat, lng) {
+      $location.path('search/' + address)
+            .search('lat', lat)
+            .search('lng', lng);
+    }
 
     function setLanguage(language, reload) {
       // TODO: save language in localStorage

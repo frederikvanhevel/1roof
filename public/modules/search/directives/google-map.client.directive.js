@@ -57,7 +57,7 @@ angular.module('search').directive('googleMap', [ '$window',
               });
               markers.push(marker);
             });
-            console.log(markers.length);
+
           }
         });
         scope.$watch('center', function(newValue, oldValue) {

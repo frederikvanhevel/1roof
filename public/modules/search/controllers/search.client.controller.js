@@ -74,7 +74,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
 
     function doSearchLookup(address) {
       Geocoder.geocodeAddress(address).then(function(result) {
-        //$location.search('lat', result.lat).search('lng', result.lng);
         $scope.mapCenter = [result.lng, result.lat];
         $scope.filter.proximity = result.proximity;
       });

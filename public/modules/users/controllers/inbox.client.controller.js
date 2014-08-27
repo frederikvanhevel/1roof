@@ -35,7 +35,6 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
       $scope.inbox = Inbox.get({
           inboxId: inboxId
       }, function(inbox) {
-        console.log(inbox);
         if ($scope.hasUnreadMessages(inbox)) {
           setInboxAsRead(inbox);
 

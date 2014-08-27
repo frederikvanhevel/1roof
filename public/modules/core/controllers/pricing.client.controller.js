@@ -19,10 +19,11 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
 
     $scope.submitPayment = function(status, response) {
       if(response.error) {
-        // there was an error. Fix it.
+        // there was an error
         console.log(response.error);
+        Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
       } else {
-        // got stripe token, now charge it or smt
+        // got stripe token, now charge it
         console.log(response.id);
         saveSubscription(response.id, $scope.plan);
       }
