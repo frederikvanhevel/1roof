@@ -58,7 +58,7 @@ module.exports = function(grunt) {
         uglify: {
             production: {
                 options: {
-                    mangle: true
+                    mangle: false
                 },
                 files: {
                     'public/dist/application.min.js': '<%= applicationJavaScriptFiles %>'
