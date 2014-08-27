@@ -7560,6 +7560,10 @@ ROOMS MODULE
   height: 200px;
 }
 
+.analytics-view .row {
+  margin: 30px 0;
+}
+
 /*
 SEARCH MODULE
 */

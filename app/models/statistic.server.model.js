@@ -20,8 +20,13 @@ var StatisticSchema = new Schema({
     ref: 'Room'
   },
   views: {
-    type: Number,
-    default: 0
+    type: Number
+  },
+  favorites: {
+    type: Number
+  },
+  messages: {
+    type: Number
   }
 });
 

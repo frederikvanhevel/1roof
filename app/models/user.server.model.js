@@ -116,7 +116,7 @@ var UserSchema = new Schema({
  	subscriptionPlan: {
  		type: String,
  		enum: ['FREE', 'PRO', 'BUSINESS'],
- 		defailt: 'FREE'
+ 		default: 'FREE'
  	},
  	settings: {
  		type: Object,

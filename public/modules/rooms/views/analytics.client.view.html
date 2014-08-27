@@ -1,0 +1,13 @@
+<section data-ng-controller="AnalyticsController" data-ng-init="init()" class="analytics-view container">
+
+  <div class="row bordered">
+    <h4>Views</h4>
+    <statistics-chart class="statistics-chart" ng-model="statisticsData" data-value="views" data-aggregate="false"></statistics-chart>
+  </div>
+
+  <div class="row bordered">
+    <h4>Favorites</h4>
+    <statistics-chart class="statistics-chart" ng-model="statisticsData" data-value="favorites" data-aggregate="false"></statistics-chart>
+  </div>
+
+</section>

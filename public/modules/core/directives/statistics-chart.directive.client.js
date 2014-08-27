@@ -10,6 +10,11 @@ angular.module('core').directive('statisticsChart', [ '$window',
         },
         link: function(scope, element, attrs) {
 
+          function getValue(value) {
+            if (!value) return 0;
+            else return value;
+          }
+
           function generateDateRange(start, stop) {
             var dateArray = d3.time.day.range(start, stop);
             var newData = [];
@@ -25,18 +30,25 @@ angular.module('core').directive('statisticsChart', [ '$window',
             return newData;
           }
 
-          function interpolateDataInRange(data, range) {
+          function interpolateDataInRange(data, range, aggregate) {
             
             range.forEach(function(rangeObject) {
 
-              data.forEach(function(dataObject) {
+              for (var i = 0; i < data.length; i++) {
+                var dataObject = data[i];
+
                 dataObject.date = new Date(dataObject.date);
 
                 if (dataObject.date.getTime() === rangeObject.date.getTime()) {
-                  rangeObject[dataAttribute] = dataObject[dataAttribute];
-                }
 
-              });
+                  if (i === 0 || !aggregate) {
+                    rangeObject[dataAttribute] = getValue(dataObject[dataAttribute]);
+                  } else {
+                    rangeObject[dataAttribute] = getValue(data[i - 1][dataAttribute]) + getValue(dataObject[dataAttribute]);
+                  }
+                  
+                }
+              }
 
             });            
 
@@ -51,15 +63,15 @@ angular.module('core').directive('statisticsChart', [ '$window',
           scope.$watch('model', function(newValue) {
 
             if (newValue.length > 0) {
-              interpolateDataInRange(newValue, range);
+              interpolateDataInRange(newValue, range, attrs.aggregate);
               drawChart(range);
             }
           });
 
           function drawChart(data) {
 
-            var margin = {top: 20, right: 20, bottom: 30, left: 50},
-                width = 800 - margin.left - margin.right,
+            var margin = {top: 20, right: 30, bottom: 30, left: 30},
+                width = element.parent().outerWidth() - margin.left - margin.right - 55,
                 height = 200 - margin.top - margin.bottom;
 
             var x = d3.time.scale()
@@ -79,9 +91,20 @@ angular.module('core').directive('statisticsChart', [ '$window',
                 .ticks(5)
                 .tickFormat(d3.format('d'));
 
+            var keyAccessor = function(d) { 
+              return new Date(d.date);
+            };
+            var valueAccessor = function(d) {
+             return +d[dataAttribute];
+            };
+
             var line = d3.svg.line()
-                .x(function(d) { return x( new Date(d.date) ); })
-                .y(function(d) { return y( +d[dataAttribute] ); })
+                .x(function(d) {
+                  return x( keyAccessor(d) );
+                })
+                .y(function(d) {
+                  return y( valueAccessor(d) );
+                })
                 .interpolate('monotone');
 
             var svg = d3.select(element[0]).append('svg')
@@ -90,8 +113,8 @@ angular.module('core').directive('statisticsChart', [ '$window',
               .append('g')
                 .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
 
-            x.domain(d3.extent(data, function(d) { return new Date(d.date); }));
-            y.domain(d3.extent(data, function(d) { return d[dataAttribute]; }));
+           x.domain(d3.extent(data, keyAccessor));
+           y.domain(d3.extent(data, valueAccessor));
 
             svg.append('g')
                 .attr('class', 'x axis')
@@ -100,13 +123,7 @@ angular.module('core').directive('statisticsChart', [ '$window',
 
             svg.append('g')
                 .attr('class', 'y axis')
-                .call(yAxis)
-              .append('text')
-                .attr('transform', 'rotate(-90)')
-                .attr('y', 6)
-                .attr('dy', '.71em')
-                .style('text-anchor', 'end')
-                .text(dataAttribute);
+                .call(yAxis);
 
             svg.append('path')
                 .datum(data)
@@ -118,8 +135,12 @@ angular.module('core').directive('statisticsChart', [ '$window',
                 .data(data)
               .enter().append('circle')
                 .attr('class', 'data-point')
-                .attr('cx', function(d) { return x( new Date(d.date) ); })
-                .attr('cy', function(d) { return y( +d[dataAttribute] ); })
+                .attr('cx', function(d) {
+                  return x( keyAccessor(d) );
+                })
+                .attr('cy', function(d) {
+                  return y( valueAccessor(d) );
+                })
                 .attr('r', 3.5)
                 .attr('tooltip', 'JHDFISDHFSF');
           }

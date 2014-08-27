@@ -17,6 +17,10 @@ angular.module('rooms').config(['$stateProvider',
 			url: '/rooms/:roomId/edit/:nav',
 			templateUrl: 'modules/rooms/views/edit-room.client.view.html'
 		}).
+		state('analytics', {
+			url: '/rooms/:roomId/analytics',
+			templateUrl: 'modules/rooms/views/analytics.client.view.html'
+		}).
 		state('notFound', {
 			url: '/rooms/notfound',
 			templateUrl: 'modules/rooms/views/not-found.client.view.html'
