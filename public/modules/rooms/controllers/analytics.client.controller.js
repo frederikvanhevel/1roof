@@ -7,6 +7,8 @@ angular.module('rooms').controller('AnalyticsController', ['$rootScope', '$scope
 
         $scope.statisticsData = [];
 
+        Meta.setTitle('Analytics');
+
         $scope.init = function() {
             $scope.findOne();
         };

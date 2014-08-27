@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', 'Meta', '$http', 'Modal',
-  function ($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal) {
+angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', 'Meta', '$http', 'Modal', 'Enforcer',
+  function ($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal, Enforcer) {
     $scope.authentication = Authentication;
 
     Meta.setTitle('Upgraden');
@@ -11,8 +11,10 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
     };
 
     $scope.choosePlan = function(plan) {
-      if (!Authentication.user.customerToken) Modal.payment();
-      else saveSubscription(plan);
+      Enforcer.do(function() {
+        if (Authentication.user && !Authentication.user.customerToken) Modal.payment();
+        else saveSubscription(plan);
+      });
     };
 
     $scope.submitPayment = function(status, response) {
@@ -27,7 +29,8 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
     };
 
     $scope.isCurrentPlan = function(plan) {
-      return Authentication.user.subscriptionPlan === plan;
+      if (Authentication.user) return Authentication.user.subscriptionPlan === plan;
+      else return false;
     };
 
     function saveSubscription(plan, card) {

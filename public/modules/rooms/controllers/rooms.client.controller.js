@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta', '$location',
-    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta, $location) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta', '$location', 'Enforcer',
+    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta, $location, Enforcer) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
@@ -36,33 +36,21 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         };
 
         $scope.openReservationModal = function() {
-            if (!Authentication.user) {
-                Modal.signup().then(function() {
-                    Modal.reservation($scope.appointmentDate).then(sendReservation);
-                });
-            } else {
+            Enforcer.do(function() {
                 Modal.reservation($scope.appointmentDate).then(sendReservation);
-            }
+            });
         };
 
         $scope.openContactModal = function() {
-            if (!Authentication.user) {
-                Modal.signup().then(function() {
-                    Modal.contact($scope.contactInfo).then(sendMessage);
-                });
-            } else {
+            Enforcer.do(function() {
                 Modal.contact($scope.contactInfo).then(sendMessage);
-            }
+            });
         };
 
         $scope.toggleFavorite = function() {
-            if (!Authentication.user) {
-                Modal.signup().then(function() {
-                    sendFavorite();
-                });
-            } else {
+            Enforcer.do(function() {
                 sendFavorite();
-            }
+            });
         };
 
         $scope.isInfavorites = function() {
