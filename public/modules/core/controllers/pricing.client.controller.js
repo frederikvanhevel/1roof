@@ -35,7 +35,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
 
     function saveSubscription(plan, card) {
       $http.post('/subscription/choose', { plan: plan, card: card }).success(function(response) {
-        Alert.add('success', 'Je tariefplan is geupdate!', 5000);
+        Alert.add('success', 'Je tariefplan is geupdatet!', 5000);
       }).error(function(response) {
         Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
       });

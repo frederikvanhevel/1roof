@@ -2,9 +2,9 @@
 
 angular.module('core').factory('Socket', [ '$window', 'socketFactory',
   function($window, socketFactory) {
-    //return socketFactory();
 
-    var ioSocket = $window.io.connect('http://localhost:3001');
+    var host = 'http://' + window.location.hostname + ':3001';
+    var ioSocket = $window.io.connect(host);
 
     return socketFactory({
       ioSocket: ioSocket

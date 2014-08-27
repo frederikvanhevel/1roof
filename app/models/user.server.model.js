@@ -7,6 +7,8 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema,
 	Room = mongoose.model('Room'),
 	crypto = require('crypto'),
+	config = require('../../config/config'),
+	stripe = require('stripe')(config.stripe.secretkey),
 	winston = require('winston');
 
 /**
@@ -146,14 +148,14 @@ UserSchema.pre('remove', function (user) {
 	  winston.error('Error removing rooms', err);
 	});
 
-	// if (this.customerToken) {
-	// 	stripe.customers.del(
-	// 	  this.customerToken,
-	// 	  function(err, confirmation) {
-	// 	    if (err) winston.error('Error removing stripe customer', err);
-	// 	  }
-	// 	);
-	// }
+	if (this.customerToken) {
+		stripe.customers.del(
+		  this.customerToken,
+		  function(err, confirmation) {
+		    if (err) winston.error('Error removing stripe customer', err);
+		  }
+		);
+	}
 });
 
 /**

@@ -25,7 +25,7 @@ var getErrorMessage = function(err) {
 		switch (err.code) {
 			case 11000:
 			case 11001:
-				message = 'Username already exists';
+				message = 'Email already exists';
 				break;
 			default:
 				message = 'Something went wrong';
@@ -524,25 +524,7 @@ exports.resetPost = function(req, res) {
       		});
     	},
     	function(user, done) {
-      // 		var smtpTransport = nodemailer.createTransport('SMTP', {
-      //   		service: 'SendGrid',
-      //   		auth: {
-      //     			user: 'your_sendgrid_email@domain.com',
-      //     			pass: 'your_sendgrid_password'
-      //   		}
-      // 		});
-      // 		var mailOptions = {
-      //   		to: user.email,
-      //   		from: 'your_email@domain.com',
-      //   		subject: 'Your password has been changed',
-      //   		text: 'Hello,\n\n' +
-      //     		'This is a confirmation that the password for your account ' + user.email + ' has just been changed.\n'
-      // 		};
-      // 		smtpTransport.sendMail(mailOptions, function(err) {
-      // 			res.send(200, {
-						// 	message: 'Password changed successfully'
-						// });
-      // 		});
+        // send an email maybe?
     	}
   	], function(err) {
     	res.redirect('/');

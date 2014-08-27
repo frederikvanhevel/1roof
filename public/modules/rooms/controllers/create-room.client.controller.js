@@ -20,9 +20,10 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         $scope.init = function() {
             Meta.setTitle('Advertentie toevoegen');
             
-            if (Authentication.user) $scope.creationStep = 2;
-
-            checkUserRoomCount();
+            if (Authentication.user) {
+                $scope.creationStep = 2;
+                checkUserRoomCount();
+            }
         };
 
         // Create new Room

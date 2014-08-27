@@ -1,12 +1,13 @@
 'use strict';
 
 var sm = require('sitemap'),
-  Room = require('mongoose').model('Room');
+  Room = require('mongoose').model('Room'),
+  config = require('../../config/config');
 
 exports.create = function(req, res) {
 
   var sitemap = sm.createSitemap ({
-    hostname: 'http://localhost',
+    hostname: config.app.host,
     cacheTime: 600000 // 600 sec - cache purge period
   });
 
