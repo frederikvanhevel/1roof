@@ -5,7 +5,7 @@ angular.module('users').service('Enforcer', [ 'Authentication', 'Modal',
   function(Authentication, Modal) {
 
     this.do = function(callback) {
-      if (!this.user) {
+      if (!Authentication.user) {
         Modal.signup().then(callback);
       } else {
         callback();

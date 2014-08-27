@@ -21,6 +21,7 @@ function createCustomer(user, plan, card, done) {
     function(err, customer) {
       if (err) return done(err);
       user.customerToken = customer.id;
+      user.subscriptionToken = customer.subscriptions.data[0].id;
 
       user.save(function(err) {
         if (err) {
@@ -39,8 +40,9 @@ function createSubscription(user, plan, done) {
     user.customerToken,
     { plan: plan },
     function(err, subscription) {
-      console.log(subscription);
-      user.subscriptionToken = subscription;
+      if (err) done(err);
+
+      user.subscriptionToken = subscription.id;
 
       user.save(function(err) {
         if (err) {

@@ -76,10 +76,10 @@ angular.module('core').service('Modal', [ '$modal', '$location',
     };
 
 
-    this.payment = function() {
+    this.payment = function(plan) {
       var options = {
         templateUrl: 'modules/core/views/modals/payment-modal.client.view.html',
-        controller: 'ManageRoomController'
+        controller: 'PricingController'
       };
 
       return this.showModal(options, {});

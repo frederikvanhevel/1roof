@@ -4,6 +4,8 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
   function ($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal, Enforcer) {
     $scope.authentication = Authentication;
 
+    $scope.modalInstance = null;
+
     Meta.setTitle('Upgraden');
 
     $scope.init = function() {
@@ -11,21 +13,24 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
     };
 
     $scope.choosePlan = function(plan) {
+
       Enforcer.do(function() {
-        if (Authentication.user && !Authentication.user.customerToken) Modal.payment();
+        if (Authentication.user && !Authentication.user.customerToken) $scope.modalInstance = Modal.payment(plan);
         else saveSubscription(plan);
       });
     };
 
     $scope.submitPayment = function(status, response) {
+
+      saveSubscription('BUSINESS', response.id); // FOR TESTUNG!!!
+
       if(response.error) {
         // there was an error
         console.log(response.error);
         Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
       } else {
         // got stripe token, now charge it
-        console.log(response.id);
-        saveSubscription(response.id, $scope.plan);
+        saveSubscription('BUSINESS', response.id);
       }
     };
 
@@ -36,6 +41,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
 
     function saveSubscription(plan, card) {
       $http.post('/subscription/choose', { plan: plan, card: card }).success(function(response) {
+        if ($scope.modalInstance) $scope.modalInstance.$close();
         Alert.add('success', 'Je tariefplan is geupdatet!', 5000);
       }).error(function(response) {
         Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);

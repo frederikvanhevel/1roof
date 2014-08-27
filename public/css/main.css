@@ -6916,6 +6916,10 @@ html, body {
   opacity: 0;
 }
 
+.form-control-feedback {
+  top: 28px;
+}
+
 .btn-social {
   position: relative;
   padding-left: 50px;
