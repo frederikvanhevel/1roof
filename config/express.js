@@ -30,10 +30,10 @@ module.exports = function(db) {
 	var app = express();
 
 	// added for socketio
-	var server = require('http').Server(app);
-	var io = require('socket.io')(server);
+	var server = require('http').createServer(app);
+	var io = require('socket.io').listen(server);
 	io.serveClient(false);
-	server.listen(3001);
+	// server.listen(config.port);
 
 	// Globbing model files
 	config.getGlobbedFiles('./app/models/**/*.js').forEach(function(modelPath) {
