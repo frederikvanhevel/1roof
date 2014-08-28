@@ -100,7 +100,7 @@ exports.choosePlan = function(req, res, next) {
       if (err) {
           res.send(400, err);
         } else {
-          res.send(200);
+          res.jsonp(user);
         }
     });
   } else {
@@ -110,7 +110,7 @@ exports.choosePlan = function(req, res, next) {
         if (err) {
             res.send(400, err);
           } else {
-            res.send(200);
+            res.jsonp(user);
           }
       });
     }
@@ -120,7 +120,7 @@ exports.choosePlan = function(req, res, next) {
         if (err) {
             res.send(400, err);
           } else {
-            res.send(200);
+            res.jsonp(user);
           }
       });
     }
