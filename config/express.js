@@ -33,6 +33,8 @@ module.exports = function(db) {
 	var server = http.Server(app);
 	var io = require('socket.io').listen(server);
 	io.serveClient(false);
+
+	// Start the app by listening on <port>
 	server.listen(config.port);
 
 	// Globbing model files
