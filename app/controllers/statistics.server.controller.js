@@ -18,12 +18,14 @@ function getDateWithoutTime(date) {
  */
 exports.aggregate = function(req, res) {
   var user = req.user;
+  var room = req.room;
 
-  if (req.user && req.user._id.equals(req.room.user._id)) return res.send(200);
+  // TODO: for some reason user = null and this breaks..
+  // if (user && user._id.equals(room.user._id)) return res.send(200);
 
   var find = {
     date: getDateWithoutTime(new Date()),
-    room: req.room._id
+    room: room._id
   };
 
   var increment = { $inc: {} };

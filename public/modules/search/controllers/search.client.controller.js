@@ -151,8 +151,11 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         $window._.extend($stateParams,{ roomId: roomId, isOverlay: true });
 
         // remember the url of the search map and set the new url to the room
-        oldLocation = $location.url();
-        $location.url(url);
+        var currentUrl = $location.url();
+        if (currentUrl.indexOf('/search') !== -1) {
+          oldLocation = $location.url();
+          $location.url(url);
+        }  
 
         showRoomOverlay();
 
@@ -199,7 +202,7 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
       $scope.isOverLayOpen = false;
     }
 
-    function showRoomOverlay() {      
+    function showRoomOverlay() {
       $state.transitionTo('search.overlay', $stateParams, { reload: false, location: false });
       $scope.$broadcast('close_marker_popups');
 
