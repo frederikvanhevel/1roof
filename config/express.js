@@ -30,8 +30,8 @@ module.exports = function(db) {
 	var app = express();
 
 	// added for socketio
-	var server = http.createServer(app);
-	var io = require('socket.io').listen(server);
+	var server = require('http').Server(app);
+	var io = require('socket.io')(server);
 	io.serveClient(false);
 	server.listen(3001);
 

@@ -16,10 +16,10 @@
         <li><img src="/modules/core/img/cards/amex.png"/></li>
       </ul>
 
-      <form stripe-form="submitPayment" class="ng-valid"> 
+      <form stripe-form="submitPayment"> 
         {{subscriptionPlan}}
         <div class="form-group has-success has-feedback">
-          <label for="number">Kaartnumer <small>(geen streepjes of spaties)</small></label>
+          <label for="number">Kaartnummer <small>(geen streepjes of spaties)</small></label>
           <input name="number" class="form-control" type="text" ng-model="number" payments-validate="card" payments-format="card" placeholder="1234 1234 1234 1234" required />
           <span class="glyphicon glyphicon-ok form-control-feedback"></span>
         </div>

@@ -22,6 +22,7 @@ angular.module('rooms').controller('AnalyticsController', ['$rootScope', '$scope
 
         function getStatisticsData() {
             $http.get('/statistics/' + $scope.room._id + '/lastmonth').success(function(response) {
+                console.log(response);
                 $scope.statisticsData = response;
             });
         }
