@@ -17,10 +17,17 @@ function createCustomer(user, plan, card, done) {
   };
   if (card) options.card = card;
 
+  console.log(options);
+
   stripe.customers.create(options,
     function(err, customer) {
+      console.log(customer);
+
       if (err) return done(err);
+      console.log(err);
+
       user.customerToken = customer.id;
+      user.subscriptionPlan = plan;
       user.subscriptionToken = customer.subscriptions.data[0].id;
 
       user.save(function(err) {
@@ -37,12 +44,15 @@ function createCustomer(user, plan, card, done) {
 
 function createSubscription(user, plan, done) {
   stripe.customers.createSubscription(
-    user.customerToken,
+    user.customerToken + '',
     { plan: plan },
     function(err, subscription) {
       if (err) done(err);
 
-      user.subscriptionToken = subscription.id;
+      console.log(user.customerToken);
+      console.log(plan);
+      console.log(subscription);
+      user.subscriptionToken = subscription;
 
       user.save(function(err) {
         if (err) {
@@ -61,7 +71,18 @@ function changeSubscription(user, plan, done) {
     user.subscriptionToken,
     { plan: plan },
     function(err, subscription) {
-      done(err);
+      if (err) return done(err);
+
+      user.subscriptionPlan = plan;
+      user.subscriptionToken = subscription.id;
+
+      user.save(function(err) {
+        if (err) {
+          done(err);
+        } else {
+          done(null, user);
+        }
+      });
     }
   );
 }
@@ -71,7 +92,10 @@ exports.choosePlan = function(req, res, next) {
   var plan = req.body.plan;
   var card = req.body.card;
 
+  console.log(plan);
+
   if (!user.customerToken) {
+    console.log('no customerToken, creating customer');
     createCustomer(user, plan, card, function(err) {
       if (err) {
           res.send(400, err);
@@ -81,6 +105,7 @@ exports.choosePlan = function(req, res, next) {
     });
   } else {
     if (!user.subscriptionToken) {
+      console.log('has customerToken, creating subscription');
       createSubscription(user, plan, function(err) {
         if (err) {
             res.send(400, err);
@@ -90,6 +115,7 @@ exports.choosePlan = function(req, res, next) {
       });
     }
     else {
+      console.log('has subscription, changing');
       changeSubscription(user, plan, function(err) {
         if (err) {
             res.send(400, err);

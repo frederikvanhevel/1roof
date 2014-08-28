@@ -6,7 +6,7 @@ angular.module('core').service('Modal', [ '$modal', '$location',
 
     this.signup = function() {
       var options = {
-        templateUrl: 'modules/users/views/signup.client.view.html',
+        templateUrl: 'modules/users/views/modals/signup-modal.client.view.html',
         controller: 'AuthenticationController',
         windowClass: 'small'
       };
@@ -16,7 +16,7 @@ angular.module('core').service('Modal', [ '$modal', '$location',
 
     this.signin = function() {
       var options = {
-        templateUrl: 'modules/users/views/signin.client.view.html',
+        templateUrl: 'modules/users/views/modals/signin-modal.client.view.html',
         controller: 'AuthenticationController',
         windowClass: 'small'
       };
@@ -79,7 +79,12 @@ angular.module('core').service('Modal', [ '$modal', '$location',
     this.payment = function(plan) {
       var options = {
         templateUrl: 'modules/core/views/modals/payment-modal.client.view.html',
-        controller: 'PricingController'
+        controller: 'PricingController',
+        resolve: {
+          subscriptionPlan: function () {
+            return plan;
+          }
+        }
       };
 
       return this.showModal(options, {});

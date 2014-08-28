@@ -110,7 +110,7 @@ var UserSchema = new Schema({
  	},
  	// For stripe
  	customerToken: {
- 		Type: String
+ 		type: String
  	},
  	subscriptionToken: {
  		type: String

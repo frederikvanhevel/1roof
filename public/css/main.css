@@ -8091,3 +8091,13 @@ USERS MODULE
 .messages-overview .unread {
   color: #d9534f;
 }
+
+.authentication-view .bordered {
+  margin-top: 30px;
+}
+.authentication-view .sidelines {
+  margin-top: 5px;
+}
+.authentication-view .sidelines span {
+  background: #FFF;
+}

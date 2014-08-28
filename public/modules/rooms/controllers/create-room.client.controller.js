@@ -23,6 +23,8 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
             if (Authentication.user) {
                 $scope.creationStep = 2;
                 checkUserRoomCount();
+            } else {
+                $scope.allowed = true;
             }
         };
 
