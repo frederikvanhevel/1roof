@@ -3,7 +3,7 @@
 angular.module('core').directive('videoShuffle', [ '$window',
   function($window) {
     return {
-      template: '<video class="background-video" id="backgroundVideo" autoplay preload type="" src=""></video>' +
+      template: '<video class="background-video" id="backgroundVideo" autoplay preload type="" style="opacity:0;" src=""></video>' +
                 '<video class="background-video" id="stagingVideo" autoplay preload type="" style="opacity:0;" src=""></video>',
       restrict: 'A',
       link: function postLink(scope, element, attrs) {

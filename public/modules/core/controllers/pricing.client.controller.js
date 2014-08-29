@@ -26,7 +26,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
             $scope.busy = false;
           }, function(result) {
             if (result.error) {
-              Alert.add('danger', 'CHOOSE Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
+              Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
             }
             $scope.busy = false;
           });
@@ -52,7 +52,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
         Alert.add('success', 'Je tariefplan is geupdatet!', 5000);
         $scope.busy = false;
       }).error(function() {
-        Alert.add('danger', 'SAVE Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
+        Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
         $scope.busy = false;
       });
     }
