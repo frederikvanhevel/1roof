@@ -128,6 +128,11 @@ angular.module('core').directive('videoShuffle', [ '$window',
         buildInitialVideo();
         resize();
 
+        scope.$on('$destroy', function() {
+          clearTimeout(videoTimer);
+          settings.stagingContainer[0].pause();
+          settings.videoContainer[0].pause();
+        });
       }
     };
   }
