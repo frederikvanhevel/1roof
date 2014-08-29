@@ -36,6 +36,13 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         return z;
       }
 
+      // Fixes empty overlay window when clicking browser back button
+      $rootScope.$watch(function () {return $location.path();}, function (newLocation, oldLocation) {
+        if (newLocation.indexOf('/search') !== -1 && oldLocation.indexOf('/l/') !== -1) {
+          $scope.selectedRoomId = null;
+        }
+      });
+
       if ((!urlParamaters.lat || !urlParamaters.lng) && $stateParams.address) {
         doSearchLookup($stateParams.address);
       } else if (urlParamaters.lat && urlParamaters.lng) {
