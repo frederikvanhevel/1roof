@@ -34,7 +34,8 @@
           <input name="cvc" type="text" ng-model="cvc" payments-validate="cvc" payments-format="cvc" placeholder="1234" required />
         </div>
         
-        <button type="submit" class="btn btn-orange"><i class="icon-lock-1"></i> Veilig betalen</button>
+        <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+        <button type="submit" class="btn btn-orange" ng-disabled="busy"><i class="icon-lock-1"></i> Veilig betalen</button>
         <button class="btn-link" ng-click="$dismiss()">Annuleren</button>
 
       </form>

@@ -10,10 +10,11 @@
       <div class="visibility-switch">
         <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
         <div class="select-style" ng-class="{ 'disabled': !room.isInOrder }">
-          <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="update()" ng-disabled="!room.isInOrder"></select>
+          <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-disabled="!room.isInOrder"></select>
         </div>
       </div>
       <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> Je moet meer details ingeven voor je deze advertentie online kan plaatsen</span>
+      <span ng-if="!room.visible && errors.length == 0" class="green"><i class="icon-left-1 green"></i> Je kan deze advertentie online plaatsen</span>
     </div>
   </div>
 
@@ -67,20 +68,20 @@
     <div class="col-md-6" ng-switch on="nav">
         <div ng-switch-when="general" class="bordered">
           <div class="panel-heading">
-            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
             <h3 class="panel-title">Algemene informatie over de ruimte</h3>
           </div>
           <div class="panel-body">
             <form role="form">
               <div class="form-group" ng-class="{ 'has-error': tabHasError('general') }">
-                <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' characters left'"></small>
+                <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' karakters over'"></small>
                 <label class="control-label">Titel</label>
                 <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="Geef een gepaste titel in" required>
               </div>
               <div class="form-group">
-                <small class="pull-right" ng-bind="(200 - room.info.description.length) + ' characters left'"></small>
+                <small class="pull-right" ng-bind="(1500 - room.info.description.length) + ' karakters over'"></small>
                 <label class="control-label">Beschrijving</label>
-                <textarea ng-model="room.info.description" maxlength="200" limit-text="200" type="text"  placeholder="Geef een duidelijke beschrijving over je ruimte"></textarea>
+                <textarea ng-model="room.info.description" maxlength="1500" limit-text="1500" type="text"  placeholder="Geef een duidelijke beschrijving over je ruimte"></textarea>
               </div>
               <div class="form-group">
                 <label class="control-label">Oppervlakte</label>
@@ -96,7 +97,7 @@
 
         <div ng-switch-when="availability" class="bordered availability">
           <div class="panel-heading">
-            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
             <h3 class="panel-title">In welke periode is deze ruimte beschikbaar?</h3>
           </div>
           <div class="panel-body">
@@ -124,7 +125,7 @@
 
         <div ng-switch-when="costs" class="bordered">
           <div class="panel-heading">
-            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
             <h3 class="panel-title">Kosten</h3>
           </div>
           <div class="panel-body">
@@ -159,7 +160,7 @@
 
         <div ng-switch-when="address" class="bordered">
           <div class="panel-heading">
-            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
             <h3 class="panel-title">Adres van de ruimte</h3>
           </div>
           <div class="panel-body">
@@ -174,7 +175,7 @@
 
         <div ng-switch-when="amenities" class="bordered">
           <div class="panel-heading">
-            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
             <h3 class="panel-title">Beschikbare voorzieningen</h3>
           </div>
           <div class="panel-body">
@@ -221,7 +222,7 @@
 
         <div ng-switch-when="cohabit" class="bordered">
           <div class="panel-heading">
-            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
             <h3 class="panel-title">Samenwonen</h3>
             <small>Zoek je andere personen om met je mee samen te wonen in deze ruimte?</small>
           </div>
@@ -266,9 +267,9 @@
         </div>
 
         <div ng-switch-when="general">
-          <h5>
-            Geef een duidelijke titel miljaardedjuè!è
-          </h5>
+          <p>
+            Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie beschrijven. Je kan in de beschrijving meer uitleg geven.
+          </p>
         </div>
       </div>
 

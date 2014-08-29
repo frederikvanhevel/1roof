@@ -6545,6 +6545,29 @@ input:focus:-ms-input-placeholder {
   animation-name: fadeInUp;
 }
 
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
 .statistics-chart {
   font: 10px sans-serif;
 }
@@ -7508,6 +7531,10 @@ ROOMS MODULE
   margin: 0 auto;
 }
 
+.edit-room .blink-text {
+  color: #71DE22;
+  display: none;
+}
 .edit-room .edit-details {
   padding-top: 70px;
 }

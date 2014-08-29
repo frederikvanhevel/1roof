@@ -68,15 +68,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
         // Update existing Room
         $scope.update = function() {
-            // var room = angular.copy($scope.room);
-            $scope.busy = true;
-
             $scope.room.$update(function() {
-                // $scope.room = room;
-                $scope.busy = false;
+                flashSavedText();
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
-                $scope.busy = false;
             });
         };
 
@@ -151,14 +146,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             });
         };
 
-
-        $scope.setRoomVisible = function() {
-            if ($scope.errors.length === 0) {
-                $scope.room.visible = true;
-                $location.path($scope.room.url);
-            }
-        };
-
         $scope.visibilityText = function(item) {
             return item ? 'online' : 'offline';
         };
@@ -203,6 +190,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                     Alert.add('danger', 'Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.', 5000);
                 });
             });
+        }
+
+        function flashSavedText() {
+            $scope.$broadcast('blink_text');
         }
 
     }

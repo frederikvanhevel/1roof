@@ -26,7 +26,7 @@
                 <span class="period">/ Maand</span>
               </div>
               
-              <button ng-disabled="isCurrentPlan('FREE')" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('FREE') }" ng-click="choosePlan('FREE')">{{isCurrentPlan('FREE') ? 'Huidige plan' : 'Kies dit plan'}}</button>
+              <button ng-disabled="isCurrentPlan('FREE') || busy" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('FREE') }" ng-click="choosePlan('FREE')">{{isCurrentPlan('FREE') ? 'Huidige plan' : 'Kies dit plan'}}</button>
             </header>
             
             <ul class="features">
@@ -52,7 +52,7 @@
                 <span class="period">/ Maand</span>
               </div>
               
-              <button ng-disabled="isCurrentPlan('PRO')" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('PRO') }" ng-click="choosePlan('PRO')">{{isCurrentPlan('PRO') ? 'Huidige plan' : 'Kies dit plan'}}</button>
+              <button ng-disabled="isCurrentPlan('PRO') || busy" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('PRO') }" ng-click="choosePlan('PRO')">{{isCurrentPlan('PRO') ? 'Huidige plan' : 'Kies dit plan'}}</button>
             </header>
             
             <ul class="features">
@@ -78,7 +78,7 @@
                 <span class="period">/ Maand</span>
               </div>
               
-              <button ng-disabled="isCurrentPlan('BUSINESS')" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('BUSINESS') }" ng-click="choosePlan('BUSINESS')">{{isCurrentPlan('BUSINESS') ? 'Huidige plan' : 'Kies dit plan'}}</button>
+              <button ng-disabled="isCurrentPlan('BUSINESS') || busy" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('BUSINESS') }" ng-click="choosePlan('BUSINESS')">{{isCurrentPlan('BUSINESS') ? 'Huidige plan' : 'Kies dit plan'}}</button>
             </header>
             
             <ul class="features">

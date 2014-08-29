@@ -10,12 +10,14 @@ var mongoose = require('mongoose'),
   _ = require('lodash');
 
 
-function createCustomer(user, plan, card, done) {
+function createCustomer(user, plan, card, couponCode, done) {
   var options = {
     email: user.email,
     plan: plan
   };
+
   if (card) options.card = card;
+  if (couponCode) options.coupon = couponCode;
 
   stripe.customers.create(options,
     function(err, customer) {
@@ -37,10 +39,16 @@ function createCustomer(user, plan, card, done) {
   );
 }
 
-function createSubscription(user, plan, done) {
+function createSubscription(user, plan, couponCode, done) {
+  var options = {
+    plan: plan
+  };
+
+  if (couponCode) options.coupon = couponCode;
+
   stripe.customers.createSubscription(
     user.customerToken,
-    { plan: plan },
+    options,
     function(err, subscription) {
       if (err) done(err);
 
@@ -58,12 +66,19 @@ function createSubscription(user, plan, done) {
   );
 }
 
-function changeSubscription(user, plan, done) {
+function changeSubscription(user, plan, couponCode, done) {
+  var options = {
+    plan: plan
+  };
+
+  if (couponCode) options.coupon = couponCode;
+
   stripe.customers.updateSubscription(
     user.customerToken,
     user.subscriptionToken,
-    { plan: plan },
+    options,
     function(err, subscription) {
+      console.log(err);
       if (err) return done(err);
 
       user.subscriptionPlan = plan;
@@ -84,10 +99,12 @@ exports.choosePlan = function(req, res, next) {
   var user = req.user;
   var plan = req.body.plan;
   var card = req.body.card;
+  var couponCode = req.body.couponCode;
 
   if (!user.customerToken) {
-    createCustomer(user, plan, card, function(err) {
+    createCustomer(user, plan, card, couponCode, function(err) {
       if (err) {
+        console.log(err);
           res.send(400, err);
         } else {
           res.jsonp(user);
@@ -95,7 +112,7 @@ exports.choosePlan = function(req, res, next) {
     });
   } else {
     if (!user.subscriptionToken) {
-      createSubscription(user, plan, function(err) {
+      createSubscription(user, plan, couponCode, function(err) {
         if (err) {
             res.send(400, err);
           } else {
@@ -104,7 +121,7 @@ exports.choosePlan = function(req, res, next) {
       });
     }
     else {
-      changeSubscription(user, plan, function(err) {
+      changeSubscription(user, plan, couponCode, function(err) {
         if (err) {
             res.send(400, err);
           } else {

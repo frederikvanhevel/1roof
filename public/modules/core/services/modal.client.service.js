@@ -76,13 +76,13 @@ angular.module('core').service('Modal', [ '$modal', '$location',
     };
 
 
-    this.payment = function(plan) {
+    this.payment = function(paymentOptions) {
       var options = {
         templateUrl: 'modules/core/views/modals/payment-modal.client.view.html',
         controller: 'ModalPaymentController',
         resolve: {
-          subscriptionPlan: function () {
-            return plan;
+          options: function () {
+            return paymentOptions;
           }
         }
       };
