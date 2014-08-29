@@ -66,10 +66,16 @@ angular.module('core').service('Modal', [ '$modal', '$location',
       return this.showModal(options, {});
     };
 
-    this.confirm = function() {
+    this.confirm = function(type) {
       var options = {
         templateUrl: 'modules/rooms/views/modals/confirm-modal.client.view.html',
-        windowClass: 'small'
+        windowClass: 'small',
+        controller: 'ModalController',
+        resolve: {
+          modalContent: function () {
+            return type;
+          }
+        }
       };
 
       return this.showModal(options, {});

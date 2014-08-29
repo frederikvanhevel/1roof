@@ -151,7 +151,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         $scope.deleteRoom = function() {
-            Modal.confirm().then(function() {
+            Modal.confirm('room').then(function() {
                 $scope.room.$remove(function() {
                     $location.path('/dashboard/rooms');
                 });

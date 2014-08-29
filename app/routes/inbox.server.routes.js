@@ -10,8 +10,8 @@ module.exports = function(app) {
   
   app.route('/inbox/:inboxId')
     .get(inbox.read)
-    .put(users.requiresLogin, inbox.hasAuthorization, inbox.update);
-    //.delete(users.requiresLogin, inbox.hasAuthorization, inbox.delete);
+    .put(users.requiresLogin, inbox.hasAuthorization, inbox.update)
+    .delete(users.requiresLogin, inbox.hasAuthorization, inbox.delete);
 
   app.route('/inbox/:inboxId/sendmessage')
     .post(users.requiresLogin, inbox.hasAuthorization, inbox.sendMessage);

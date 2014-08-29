@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('InboxController', ['$rootScope', '$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication', 'Socket',
-	function($rootScope, $scope, $location, $http, $stateParams, Inbox, Authentication, Socket) {
+angular.module('users').controller('InboxController', ['$rootScope', '$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication', 'Socket', 'Modal',
+	function($rootScope, $scope, $location, $http, $stateParams, Inbox, Authentication, Socket, Modal) {
     $scope.authentication = Authentication;
     $scope.newMessage = '';
     $scope.busy = false;
@@ -93,6 +93,15 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
         if (message.sender !== Authentication.user._id && !message.isRead) return true;
       }
       return false;
+    };
+
+    $scope.deleteInbox = function(inbox, $index, $event) {
+      Modal.confirm('inbox').then(function() {
+        inbox.$remove(function(){
+          $scope.inboxes.splice($index, 1);
+        });
+      });
+      $event.preventDefault();
     };
 
     function setInboxAsRead(inbox) {

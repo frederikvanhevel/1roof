@@ -52,12 +52,6 @@ module.exports = function(db) {
 	// Set cloudinary config
 	cloudinary.config(config.cloudinary);
 
-	// SEO functions
-	app.use(seo({
-	    cacheClient: 'disk', // Can be 'disk' or 'redis'
-	    cacheDuration: 2 * 60 * 60 * 24 * 1000, // In milliseconds for disk cache
-	}));
-
 	// Passing the request url to environment locals
 	app.use(function(req, res, next) {
 		res.locals.url = req.protocol + ':// ' + req.headers.host + req.url;
@@ -126,6 +120,12 @@ module.exports = function(db) {
 	app.use(helmet.contentTypeOptions());
 	app.use(helmet.ienoopen());
 	app.disable('x-powered-by');
+
+	// SEO functions
+	app.use(seo({
+	    cacheClient: 'disk', // Can be 'disk' or 'redis'
+	    cacheDuration: 2 * 60 * 60 * 24 * 1000, // In milliseconds for disk cache
+	}));
 	
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
