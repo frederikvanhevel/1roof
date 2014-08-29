@@ -40,6 +40,15 @@ angular.module('core').directive('videoShuffle', [ '$window',
 
           var calculatedVideoHeight = wrapperWidth / (videoWidth / videoHeight);
 
+          settings.videoContainer.css({
+              'width': wrapperWidth,
+              'height': calculatedVideoHeight
+          });
+          settings.stagingContainer.css({
+              'width': wrapperWidth,
+              'height': calculatedVideoHeight
+          });
+
           settings.videoContainer.animate({opacity:1}, 2000);
         }
 
