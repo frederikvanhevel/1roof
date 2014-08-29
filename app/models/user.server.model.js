@@ -123,7 +123,7 @@ var UserSchema = new Schema({
  	settings: {
  		type: Object,
  		default: {
- 			mails: {
+ 			email: {
  				roomCheck: true,
  				messageCheck: true
  			}
