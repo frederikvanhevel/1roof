@@ -7,7 +7,8 @@ var mongoose = require('mongoose'),
   config = require('../../config/config'),
   stripe = require('stripe')(config.stripe.secretkey),
   async = require('async'),
-  _ = require('lodash');
+  _ = require('lodash'),
+  mailer = require('../util/mailer');
 
 
 function createCustomer(user, plan, card, couponCode, done) {
@@ -95,6 +96,14 @@ function changeSubscription(user, plan, couponCode, done) {
   );
 }
 
+function sendSuccessMail(user) {
+  var context = {
+    user: user,
+    changeLink: config.app.host + '/#!/pricing'
+  };
+  mailer.send('subscription-changed.email.html', context, user.email, 'Tariefplan gewijzigd');
+}
+
 exports.choosePlan = function(req, res, next) {
   var user = req.user;
   var plan = req.body.plan;
@@ -107,6 +116,7 @@ exports.choosePlan = function(req, res, next) {
         console.log(err);
           res.send(400, err);
         } else {
+          sendSuccessMail(user);
           res.jsonp(user);
         }
     });
@@ -116,6 +126,7 @@ exports.choosePlan = function(req, res, next) {
         if (err) {
             res.send(400, err);
           } else {
+            sendSuccessMail(user);
             res.jsonp(user);
           }
       });
@@ -125,6 +136,7 @@ exports.choosePlan = function(req, res, next) {
         if (err) {
             res.send(400, err);
           } else {
+            sendSuccessMail(user);
             res.jsonp(user);
           }
       });

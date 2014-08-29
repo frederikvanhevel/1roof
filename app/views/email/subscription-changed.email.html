@@ -1,0 +1,40 @@
+{% extends 'layout.email.html' %}
+
+{% block content %}
+
+  <!-- Full Width, Fluid Column : BEGIN -->
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            Beste {{ user.displayName }},
+            <br><br>
+            Je abonnement is met succes aangepast.
+            <br><br>
+            Je nieuwe tarfiefplan is nu: <strong>{{ user.subscriptionPlan }}</strong>
+            <br>
+            <hr class="line">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <!-- Full Width, Fluid Column : END -->
+  
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            Je kan je abonnement telkens aanpassen op de volgende link:
+
+            <a target="_blank" title="Activate Account" href="{{ changeLink }}" class="button">Abonnement wijzigen</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  
+            
+{% endblock %}
