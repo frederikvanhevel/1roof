@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('DashboardController', ['$scope', '$stateParams', '$location', 'Rooms', 'Authentication', 'Meta',
-	function($scope, $stateParams, $location, Rooms, Authentication, Meta) {
+angular.module('users').controller('DashboardController', ['$scope', '$stateParams', '$state', '$location', 'Rooms', 'Authentication', 'Meta',
+	function($scope, $stateParams, $state, $location, Rooms, Authentication, Meta) {
         $scope.authentication = Authentication;
         $scope.nav = 'rooms';
 
@@ -31,6 +31,14 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
 
         $scope.updateRoom = function(room) {
             room.$update();
+        };
+
+        $scope.viewAnalytics = function(room) {
+            if (Authentication.user.subscriptionPlan === 'FREE') {
+                $state.transitionTo('pricing', { message: 'analytics' });
+            } else {
+                $location.path('/rooms/' + room._id + '/analytics');
+            }
         };
 	}
 ]);

@@ -17,7 +17,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
 		state('pricing', {
 			url: '/pricing',
 			params: {
-				upgrade: { value: null }
+				message: { value: null }
 			},
 			templateUrl: 'modules/core/views/pricing.client.view.html'
 		}).

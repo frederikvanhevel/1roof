@@ -97,7 +97,7 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
             $http.get('/roomcount').success(function() {
                 $scope.allowed = true;
             }).error(function(response) {
-                $state.transitionTo('pricing', { upgrade: true });
+                $state.transitionTo('pricing', { message: 'upgrade' });
             });
         }
 	}

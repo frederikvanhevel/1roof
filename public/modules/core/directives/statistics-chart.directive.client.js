@@ -31,26 +31,28 @@ angular.module('core').directive('statisticsChart', [ '$window',
           }
 
           function interpolateDataInRange(data, range, aggregate) {
+
             
-            range.forEach(function(rangeObject) {
+            for (var i = 0; i < range.length; i++) {
 
-              for (var i = 0; i < data.length; i++) {
-                var dataObject = data[i];
+              for (var j = 0; j < data.length; j++) {
+                data[j].date = new Date(data[j].date);
 
-                dataObject.date = new Date(dataObject.date);
-
-                if (dataObject.date.getTime() === rangeObject.date.getTime()) {
+                if (data[j].date.getTime() === range[i].date.getTime()) {
 
                   if (i === 0 || !aggregate) {
-                    rangeObject[dataAttribute] = getValue(dataObject[dataAttribute]);
+                    range[i][dataAttribute] = getValue(data[j][dataAttribute]);
                   } else {
-                    rangeObject[dataAttribute] = getValue(data[i - 1][dataAttribute]) + getValue(dataObject[dataAttribute]);
+                    range[i][dataAttribute] = range[i - 1][dataAttribute] + getValue(data[j][dataAttribute]);
                   }
                   
                 }
               }
 
-            });            
+              if (i > 0 && aggregate) {
+                range[i][dataAttribute] += range[i - 1][dataAttribute];
+              }
+            }
 
           }
 
@@ -59,11 +61,12 @@ angular.module('core').directive('statisticsChart', [ '$window',
           var startDate = new Date();
           startDate = startDate.setDate(startDate.getDate() - 30);
           var range = generateDateRange(startDate, new Date());
+          var aggregateAttr = attrs.aggregate === 'true';
 
           scope.$watch('model', function(newValue) {
 
             if (newValue.length > 0) {
-              interpolateDataInRange(newValue, range, attrs.aggregate);
+              interpolateDataInRange(newValue, range, aggregateAttr);
               drawChart(range);
             }
           });
@@ -141,8 +144,7 @@ angular.module('core').directive('statisticsChart', [ '$window',
                 .attr('cy', function(d) {
                   return y( valueAccessor(d) );
                 })
-                .attr('r', 3.5)
-                .attr('tooltip', 'JHDFISDHFSF');
+                .attr('r', 3.5);
           }
 
         }

@@ -10,7 +10,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
     Meta.setTitle('Upgraden');
 
     $scope.init = function() {
-      $scope.upgrade = $stateParams.upgrade;
+      $scope.message = $stateParams.message;
 
       // TODO: use coupon code in query parameter
     };

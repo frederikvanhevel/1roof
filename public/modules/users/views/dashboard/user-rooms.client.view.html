@@ -20,7 +20,7 @@
                     {{room.info.title != '' ? room.info.title : room.location.street}}
                   </a>
                   <a href="/#!/rooms/{{room._id}}/edit/" tooltip="Advertentie aanpassen"><i class="icon-pencil"></i></a>
-                  <a href="/#!/rooms/{{room._id}}/analytics" tooltip="Statistieken bekijken"><i class="icon-chart-pie"></i></a>
+                  <a href="" ng-click="viewAnalytics(room)" tooltip="Statistieken bekijken"><i class="icon-chart-pie"></i></a>
                 </h4>
 
                 <span class="indicator col-sm-1"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
