@@ -1,8 +1,13 @@
 .about-view {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 52px;
+  bottom: 0;
 
   .bitcoin-icon {
-    width: 64px;
-    height: 64px;
+    width: 45px;
+    height: 45px;
   }
 
 }

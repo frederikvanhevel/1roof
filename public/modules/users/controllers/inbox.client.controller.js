@@ -6,6 +6,9 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
     $scope.newMessage = '';
     $scope.busy = false;
 
+    // If user is not signed in then redirect back home
+    if (!Authentication.user) $location.path('/');
+
     $scope.init = function() {
       $scope.findOne($stateParams.inboxId);
 

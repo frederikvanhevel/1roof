@@ -19,6 +19,12 @@
         <div class="slider-label"><h6>€ {{filter.minPrice}} - € {{filter.maxPrice}} <small>per maand</small></h6></div>
         <div class="slider" range-slidera ng-from="filter.minPrice" ng-to="filter.maxPrice" start="0" end="1200" step="50"></div>
       </div>
+
+      <div class="filter">
+        <label class="newrooms-email">
+          <input type="checkbox" ng-model="user.settings.email.newRooms" ng-change="updateSettings()"> hou me op de hoogte van nieuwe aanbiedingen
+        </label>
+      </div>
     </div>
 
     
@@ -38,9 +44,11 @@
             </div>
             <div class="result-info">
               <span class="result-price pull-right">€ {{room.price.total}}</span>
-              <a href="" class="result-location">{{room.location.street}}</a>
+              <a href="" class="result-location">
+                <span ng-if="isNewRoom(room)" class="red new-indicator">nieuw!</span> {{room.location.street}}
+              </a>
               <br>
-              <small>2 badkamers</small>
+              <small ng-if="room.cohabit.active">zoekt huisgenoot</small>
             </div>
             <div class="clearfix"></div>
         </li>

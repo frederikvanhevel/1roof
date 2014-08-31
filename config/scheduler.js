@@ -3,14 +3,21 @@
 var schedule = require('node-schedule'),
   mailer = require('../app/util/mailer'),
   roomAvailabilityJob = require('./jobs/room-availability'),
-  messageCheckJob = require('./jobs/newmessage-check');
+  messageCheckJob = require('./jobs/newmessage-check'),
+  newRoomsJob = require('./jobs/new-rooms');
 
 exports.start = function() {
 
-  var rule = new schedule.RecurrenceRule();
-  rule.hour = 2;
+  var everyday = new schedule.RecurrenceRule();
+  everyday.hour = 2;
 
-  schedule.scheduleJob(rule, roomAvailabilityJob.run);
-  schedule.scheduleJob(rule, messageCheckJob.run);
+  schedule.scheduleJob(everyday, roomAvailabilityJob.run);
+  schedule.scheduleJob(everyday, messageCheckJob.run);
+
+
+  var weekly = new schedule.RecurrenceRule();
+  everyday.dayOfWeek = 0;
+
+  schedule.scheduleJob(weekly, newRoomsJob.run);
 
 };

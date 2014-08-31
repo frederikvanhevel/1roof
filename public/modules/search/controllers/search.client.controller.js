@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users', 'localStorageService', 'Meta',
-	function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users, localStorageService, Meta) {
+angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users', 'localStorageService', 'Meta', 'Enforcer', 'UserSettings',
+	function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users, localStorageService, Meta, Enforcer, UserSettings) {
+    $scope.user = Authentication.user;
+
     $scope.mapCenter = [4.3517100, 50.8503400]; // Brussel
     $scope.mapZoom = 13;
     $scope.fetchOnMapChange = true;
@@ -23,7 +25,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
     var viewedRooms = localStorageService.get('viewedRooms') || [];
     var oldLocation = null;
     
-
     $scope.init = function() {
       Meta.setTitle('Zoeken in ' + $stateParams.address);
 
@@ -60,12 +61,18 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         showRoomOverlay();
       }
 
-      $scope.fetchRooms();
+      fetchRooms();
 
       $rootScope.$on('close_overlay', closeRoomOverlay);
 
       $scope.$watch('filter', function(newValue, oldValue) {
-        if (newValue !== oldValue) $scope.searchFunction();
+        if (newValue !== oldValue) {
+          searchFunction();
+
+          if ($scope.user && $scope.user.settings.email.newRooms) {
+            updateSettingsFunction();
+          }
+        }
       }, true);
     };
 
@@ -99,37 +106,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
       
     };
 
-    $scope.fetchRooms = function() {
-      Rooms.query($scope.filter, function(results) {
-
-        // Non-destructively rebuild the array of rooms, otherwise all the markers would
-        // be replaced and popups would be closed, confusing the user
-
-        var oldRooms = $scope.results;
-        var newRooms = results;
-
-        var oldIds = oldRooms.map(function(room) {
-          return room._id;
-        });
-        var newIds = newRooms.map(function(room) {
-          return room._id;
-        });
-
-        var toDelete = $window._.difference(oldIds, newIds);
-        var toAdd = $window._.difference(newIds, oldIds);
-
-        oldRooms = oldRooms.filter(function(room) {
-          return !$window._.contains(toDelete, room._id);
-        });
-
-        newRooms.forEach(function(room) {
-          if ($window._.contains(toAdd, room._id)) oldRooms.push(room);
-        });
-
-        $scope.results = oldRooms;
-      });
-    };
-
     $scope.toggleAmenitySelection = function(amenity) {
         var idx = $scope.filter.amenities.indexOf(amenity);
 
@@ -139,16 +115,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         else {
           $scope.filter.amenities.push(amenity);
         }
-    };
-
-    $scope.saveQueryAsUserAlert = function() {
-      if (Authentication.user) {
-        var query = angular.copy($scope.filter);
-
-        Authentication.user.alerts.push({ filters: query });
-        var user = new Users(Authentication.user);
-        user.$update();
-      }
     };
 
     $scope.selectRoom = function(roomId, url) {
@@ -194,6 +160,48 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
       else return [selection];
     };
 
+    $scope.isNewRoom = function(room) {
+      return (new Date() - new Date(room.updated)) <  86400000; // one day
+    };
+
+    // Update user profile
+    $scope.updateSettings = function() {
+      Enforcer.do(function() {
+        UserSettings.set('alert.filters', $scope.filter);
+      });
+    };
+
+    function fetchRooms() {
+      Rooms.query($scope.filter, function(results) {
+
+        // Non-destructively rebuild the array of rooms, otherwise all the markers would
+        // be replaced and popups would be closed, confusing the user
+
+        var oldRooms = $scope.results;
+        var newRooms = results;
+
+        var oldIds = oldRooms.map(function(room) {
+          return room._id;
+        });
+        var newIds = newRooms.map(function(room) {
+          return room._id;
+        });
+
+        var toDelete = $window._.difference(oldIds, newIds);
+        var toAdd = $window._.difference(newIds, oldIds);
+
+        oldRooms = oldRooms.filter(function(room) {
+          return !$window._.contains(toDelete, room._id);
+        });
+
+        newRooms.forEach(function(room) {
+          if ($window._.contains(toAdd, room._id)) oldRooms.push(room);
+        });
+
+        $scope.results = oldRooms;
+      });
+    }   
+
     function closeRoomOverlay() {
       $state.transitionTo('search', $stateParams, { reload: false, location: false });
 
@@ -216,6 +224,8 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
       $scope.isOverLayOpen = true;
     }
 
-    $scope.searchFunction = $window._.debounce($scope.fetchRooms, 400);
+    var searchFunction = $window._.debounce(fetchRooms, 400);
+    var updateSettingsFunction = $window._.debounce($scope.updateSettings, 400);
+
 	}
 ]);

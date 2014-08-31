@@ -22,6 +22,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.newAddress = '';
         $scope.newAddressDetails = {};
 
+        // If user is not signed in then redirect back home
+        if (!Authentication.user) $location.path('/');
+
          // Init
         $scope.init = function() {
             Meta.setTitle('Advertentie aanpassen');

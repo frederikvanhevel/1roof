@@ -7346,6 +7346,18 @@ footer .footer-bottom .social-buttons li {
   background: #FFF;
 }
 
+.about-view {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 52px;
+  bottom: 0;
+}
+.about-view .bitcoin-icon {
+  width: 45px;
+  height: 45px;
+}
+
 /*
 ROOMS MODULE
 */
@@ -7654,6 +7666,17 @@ SEARCH MODULE
 .search-view .sidebar .filter.type-filter .maki-icon {
   margin: 0 auto;
 }
+.search-view .sidebar .newrooms-email {
+  margin: 0;
+  margin-left: 9px;
+  margin-top: 15px;
+  font-weight: normal;
+  font-size: 11px;
+  cursor: pointer;
+}
+.search-view .sidebar .newrooms-email:hover {
+  color: #1ABB9C;
+}
 .search-view .sidebar .search-results ul.results-list {
   padding: 0;
 }
@@ -7684,6 +7707,10 @@ SEARCH MODULE
 }
 .search-view .sidebar .search-results ul.results-list li.search-result .result-info {
   width: 80%;
+}
+.search-view .sidebar .search-results ul.results-list li.search-result .new-indicator {
+  text-transform: uppercase;
+  font-size: 10px;
 }
 .search-view .map, .search-view .room-overlay {
   position: fixed;

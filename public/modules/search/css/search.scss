@@ -52,6 +52,19 @@
       }
     }
 
+    .newrooms-email {
+      margin: 0;
+      margin-left: 9px;
+      margin-top: 15px;
+      font-weight: normal;
+      font-size: 11px;
+      cursor: pointer;
+
+      &:hover {
+        color: #1ABB9C;
+      }
+    }
+
     .search-results {
 
       ul.results-list {
@@ -89,6 +102,11 @@
 
           .result-info {
             width: 80%;
+          }
+
+          .new-indicator {
+            text-transform: uppercase;
+            font-size: 10px;
           }
         }
       }

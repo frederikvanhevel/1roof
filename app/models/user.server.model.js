@@ -86,17 +86,6 @@ var UserSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	alerts: [new Schema({
-		enabled: {
-			type: Boolean,
-			default: true
-		},
-		lastChecked: {
-			type: Date,
-			default: Date.now
-		},
-		filters: String
-	}, {_id: false})],
 	favorites: [{
 		type: String,
 		ref: 'Room'
@@ -125,7 +114,12 @@ var UserSchema = new Schema({
  		default: {
  			email: {
  				roomCheck: true,
- 				messageCheck: true
+ 				messageCheck: true,
+ 				newRooms: true
+ 			},
+ 			alert: {
+		 		lastChecked: Date,
+				filters: Object
  			}
  		}
  	}
