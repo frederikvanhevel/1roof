@@ -61,6 +61,12 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         showRoomOverlay();
       }
 
+      // initial filter save (location)
+      if ($scope.user && $scope.user.settings.email.newRooms) {
+        $scope.updateSettings();
+      }
+
+      // initial rooms fetch
       fetchRooms();
 
       $rootScope.$on('close_overlay', closeRoomOverlay);
@@ -68,10 +74,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
       $scope.$watch('filter', function(newValue, oldValue) {
         if (newValue !== oldValue) {
           searchFunction();
-
-          if ($scope.user && $scope.user.settings.email.newRooms) {
-            updateSettingsFunction();
-          }
         }
       }, true);
     };
@@ -225,7 +227,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
     }
 
     var searchFunction = $window._.debounce(fetchRooms, 400);
-    var updateSettingsFunction = $window._.debounce($scope.updateSettings, 400);
 
 	}
 ]);

@@ -233,4 +233,37 @@ td.small {
   line-height: 15px;
   color: #aaa;
 }
+
+a {
+  color: #5A81FE;
+}
+
+
+td.room .image-wrapper {
+  height: 260px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 3px solid #f0f0f0;
+  position: relative;
+}
+
+td.room:last-child {
+  padding-bottom: 30px;
+}
+
+td.room .image-wrapper .room-price {
+  position: absolute;
+  bottom: 20px;
+  padding: 2px 5px;
+  background: #222222;
+  color: white;
+  font-size: 18px;
+}
+
+td.sponsor {
+  padding: 30px;
+  background: gray;
+  color: white;
+}
       
