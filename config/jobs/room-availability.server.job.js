@@ -15,7 +15,9 @@ function checkRoom(room) {
   };
 
   room.save(function(err) {
-    if (!err) {
+    if (err) {
+      winston.error('RoomCheckJob: Error saving room %s', room._id);
+    } else {
       if (room.user.settings.email.roomCheck) {
         winston.info('RoomCheck: Notifying user %s', room.user.displayName);
         mailer.send('expired-room.email.html', context, room.user.email, 'Advertentie verlopen');

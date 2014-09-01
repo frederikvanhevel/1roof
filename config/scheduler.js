@@ -10,13 +10,16 @@ exports.start = function() {
 
   var everyday = new schedule.RecurrenceRule();
   everyday.hour = 2;
+  everyday.minute = 0;
 
   schedule.scheduleJob(everyday, roomAvailabilityJob.run);
   schedule.scheduleJob(everyday, messageCheckJob.run);
 
 
   var weekly = new schedule.RecurrenceRule();
-  everyday.dayOfWeek = 0;
+  weekly.dayOfWeek = 0;
+  weekly.hour = 10;
+  weekly.minute = 0;
 
   schedule.scheduleJob(weekly, newRoomsJob.run);
 
