@@ -14,7 +14,7 @@ function findNewRooms(user) {
     visible: true,
   };
 
-  if (userSettings.location) {
+  if (userSettings.location && userSettings.proximity) {
     query.loc = {
       $near: {
         $geometry: {

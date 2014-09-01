@@ -169,7 +169,10 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
     // Update user profile
     $scope.updateSettings = function() {
       Enforcer.do(function() {
-        UserSettings.set('alert.filters', $scope.filter);
+        UserSettings.set('alert.filters', {
+          location: $scope.filter.location,
+          proximity: $scope.filter.proximity
+        });
       });
     };
 

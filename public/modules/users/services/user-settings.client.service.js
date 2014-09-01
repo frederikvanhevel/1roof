@@ -6,8 +6,8 @@ angular.module('users').service('UserSettings', [ 'Authentication', 'Users',
     var user = Authentication.user;
 
     this.set = function(property, value, callback) {
-      user.settings[property] = value;
-      console.log(value);
+      setProperty(user.settings, property, value);
+
       save(callback);
     };
 
@@ -16,13 +16,30 @@ angular.module('users').service('UserSettings', [ 'Authentication', 'Users',
     };
 
     function save(callback) {
-      var user = new Users(user);
+      var usr = new Users(user);
 
-      user.$update(function(response) {
+      usr.$update(function(response) {
         user = response;
 
         if (callback) callback(user);
       });
+    }
+
+    function setProperty(obj, path, value) {
+      var tags = path.split('.'), len = tags.length - 1;
+      var current = tags[0];
+
+      for (var i = 0; i < len; i++) {
+        current = tags[i];
+
+        if (obj[tags[i]] === undefined) {
+          obj[tags[i]] = {};
+        }
+
+      }
+      obj[current][tags[len]] = value;
+
+      user.settings = obj;
     }
 
   }
