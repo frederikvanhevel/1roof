@@ -4,9 +4,13 @@
     padding-top: 10px;
   }
 
+  .visibilty-switch-container {
+    margin-top: 8px;
+  }
+
   .visibility-switch {
     float: left;
-    
+
     & + .visibility-switch-text {
       float: left;
       margin-left: 15px;

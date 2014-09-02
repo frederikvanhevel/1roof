@@ -535,8 +535,8 @@ exports.resetPost = function(req, res) {
  * User authorizations routing middleware
  */
 exports.hasAnalytics = function(req, res, next) {
-  if(req.user.subscription === 'PRO' || req.user.subscription === 'BUSINESS') {
-    res.next();
+  if(req.user.subscriptionPlan === 'PRO' || req.user.subscriptionPlan === 'BUSINESS') {
+    next();
   } else {
      return res.send(400, {
         message: 'User is not authorized.'

@@ -32,26 +32,26 @@ angular.module('core').directive('statisticsChart', [ '$window',
 
           function interpolateDataInRange(data, range, aggregate) {
 
-            
             for (var i = 0; i < range.length; i++) {
+              var value = 0;
 
               for (var j = 0; j < data.length; j++) {
                 data[j].date = new Date(data[j].date);
 
                 if (data[j].date.getTime() === range[i].date.getTime()) {
-
-                  if (i === 0 || !aggregate) {
-                    range[i][dataAttribute] = getValue(data[j][dataAttribute]);
-                  } else {
-                    range[i][dataAttribute] = range[i - 1][dataAttribute] + getValue(data[j][dataAttribute]);
-                  }
-                  
+                  value = getValue(data[j][dataAttribute]);  
+                  break;
                 }
+
               }
 
-              if (i > 0 && aggregate) {
-                range[i][dataAttribute] += range[i - 1][dataAttribute];
+              if (i === 0 || !aggregate) {
+                range[i][dataAttribute] = value;
               }
+              else if (i > 0 && aggregate) {
+                range[i][dataAttribute] = range[i - 1][dataAttribute] + value;
+              }
+
             }
 
           }

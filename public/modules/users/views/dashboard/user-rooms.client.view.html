@@ -1,6 +1,6 @@
 
 <div ng-init="getMyRooms()" class="my-rooms col-sm-offset-1 col-sm-10">
-  <div class="col-sm-2">
+  <div class="col-sm-1">
 
   </div>
 
@@ -23,7 +23,7 @@
                   <a href="" ng-click="viewAnalytics(room)" tooltip="Statistieken bekijken"><i class="icon-chart-pie"></i></a>
                 </h4>
 
-                <div class="col-sm-4">
+                <div class="col-sm-4 visibilty-switch-container">
                   <div class="visibility-switch">
                     <input id="switch-button{{$index}}" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder" ng-change="setVisibility()">
                     <label for="switch-button{{$index}}"></label>

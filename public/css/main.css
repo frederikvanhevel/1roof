@@ -8172,6 +8172,9 @@ USERS MODULE
 .my-rooms h4, .my-rooms .indicator {
   padding-top: 10px;
 }
+.my-rooms .visibilty-switch-container {
+  margin-top: 8px;
+}
 .my-rooms .visibility-switch {
   float: left;
 }

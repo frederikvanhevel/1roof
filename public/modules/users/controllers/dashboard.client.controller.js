@@ -37,7 +37,7 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
         };
 
         $scope.viewAnalytics = function(room) {
-            if (Authentication.user.subscriptionPlan === 'FREE') {
+            if (Authentication.user.subscriptionPlan !== 'BUSINESS') {
                 $state.transitionTo('pricing', { message: 'analytics' });
             } else {
                 $location.path('/rooms/' + room._id + '/analytics');
