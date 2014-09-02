@@ -93,12 +93,17 @@ Switch button
   margin-left: -9999px;
   visibility: hidden;
 }
+.switch:disabled + label {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
 .switch + label {
   display: block;
   position: relative;
   cursor: pointer;
   outline: none;
   user-select: none;
+  transition: opacity .3s;
 }
 input.switch + label {
   padding: 1px;

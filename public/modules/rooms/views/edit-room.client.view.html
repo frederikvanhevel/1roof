@@ -6,20 +6,14 @@
       <span class="pull-right">
         <a href="/#!{{room.url}}"><i class="icon-eye-1"></i> bekijk de advertentie <i class="icon-right-open"></i></a>
       </span>
-
-      <div class="visibility-switch">
-        <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
-        <div class="select-style" ng-class="{ 'disabled': !room.isInOrder }">
-          <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-disabled="!room.isInOrder"></select>
-        </div>
-      </div>
-      <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> Je moet meer details ingeven voor je deze advertentie online kan plaatsen</span>
-      <span ng-if="!room.visible && errors.length == 0" class="green"><i class="icon-left-1 green"></i> Je kan deze advertentie online plaatsen</span>
       
-<!--       <div class="visibility-switch">
-        <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible">
+      <div class="visibility-switch">
+        <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder">
         <label for="switch-button"></label>
-      </div> -->
+      </div>
+      <span ng-if="room.visible && errors.length == 0" class="green pull-left">online</span>
+      <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> offline - Je moet meer details ingeven</span>
+      <span ng-if="!room.visible && errors.length == 0" class="green"><i class="icon-left-1 green"></i> Je kan deze advertentie online plaatsen</span>
 
     </div>
   </div>

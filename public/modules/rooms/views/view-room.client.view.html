@@ -6,13 +6,14 @@
 				<a href="/#!/rooms/{{room._id}}/edit/"><i class="icon-pencil"></i> Advertentie aanpassen <i class="icon-right-open"></i></a>
 			</span>
 
- 			<div class="visibility-switch">
-	      <span class="indicator"><i class="icon-record" ng-class="room.visible ? 'online-icon' : 'offline-icon'"></i></span>
-	      <div class="select-style" ng-class="{ 'disabled': !room.isInOrder }">
-		      <select ng-model="room.visible" ng-options="visibilityText(item) for item in [true, false]" ng-change="setVisibility()" ng-disabled="!room.isInOrder"></select>
-		    </div>
-	    </div>
-	    <span ng-if="!room.isInOrder" class="red"><i class="icon-attention-1 red"></i> Je moet meer details ingeven voor je deze advertentie online kan plaatsen</span>
+      <div class="visibility-switch">
+        <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder" ng-change="setVisibility()">
+        <label for="switch-button"></label>
+      </div>
+      <span ng-if="room.visible && room.isInOrder" class="green pull-left">online</span>
+      <span ng-if="!room.isInOrder" class="red"><i class="icon-attention-1 red"></i> offline - Je moet meer details ingeven</span>
+      <span ng-if="!room.visible && room.isInOrder">offline</span>
+
 		</div>
 	</div>
 

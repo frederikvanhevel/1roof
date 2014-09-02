@@ -6632,12 +6632,18 @@ Switch button
   visibility: hidden;
 }
 
+.switch:disabled + label {
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
 .switch + label {
   display: block;
   position: relative;
   cursor: pointer;
   outline: none;
   user-select: none;
+  transition: opacity .3s;
 }
 
 input.switch + label {
@@ -7342,12 +7348,6 @@ footer {
   position: absolute;
   bottom: 0;
 }
-footer .footer-bottom {
-  opacity: 1;
-}
-footer .footer-bottom.ng-hide {
-  opacity: 0;
-}
 footer .footer-bottom .language-select {
   margin-top: -7px;
   background-color: #42505F;
@@ -7478,6 +7478,11 @@ ROOMS MODULE
 .room-owner-panel .container {
   line-height: 40px;
   text-transform: uppercase;
+}
+.room-owner-panel .visibility-switch {
+  margin-top: 5px;
+  margin-right: 15px;
+  float: left;
 }
 .room-owner-panel .visibility-switch .select-style {
   float: left;
@@ -8166,6 +8171,15 @@ USERS MODULE
 
 .my-rooms h4, .my-rooms .indicator {
   padding-top: 10px;
+}
+.my-rooms .visibility-switch {
+  float: left;
+}
+.my-rooms .visibility-switch + .visibility-switch-text {
+  float: left;
+  margin-left: 15px;
+  margin-top: 4px;
+  text-transform: uppercase;
 }
 .my-rooms select[disabled] {
   color: gray;
