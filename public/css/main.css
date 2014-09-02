@@ -6547,29 +6547,6 @@ input:focus:-ms-input-placeholder {
   animation-name: fadeOut;
 }
 
-[ui-view].ng-enter, [ui-view].ng-leave {
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
-}
-
-[ui-view].ng-enter {
-  opacity: 0;
-}
-
-[ui-view].ng-enter-active {
-  opacity: 1;
-}
-
-[ui-view].ng-leave {
-  opacity: 0;
-}
-
-[ui-view].ng-leave-active {
-  opacity: 0;
-}
-
 /*
 Custom select inpyt
 */
@@ -7229,6 +7206,29 @@ html, body {
   color: #506A85 !important;
 }
 
+[ui-view].ng-enter, [ui-view].ng-leave {
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+
+[ui-view].ng-leave {
+  opacity: 0;
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
+}
+
 .not-found-page {
   background-color: #3F8DBF !important;
   color: #FFF !important;
@@ -7341,6 +7341,12 @@ footer {
   clear: both;
   position: absolute;
   bottom: 0;
+}
+footer .footer-bottom {
+  opacity: 1;
+}
+footer .footer-bottom.ng-hide {
+  opacity: 0;
 }
 footer .footer-bottom .language-select {
   margin-top: -7px;

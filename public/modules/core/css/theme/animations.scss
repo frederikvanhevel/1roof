@@ -65,26 +65,32 @@
   animation-name: fadeOut;
 }
 
+@mixin fadeInView($selector) {
 
-[ui-view].ng-enter, [ui-view].ng-leave {
-  -webkit-transition:all .2s ease-in-out;
-  -moz-transition:all .2s ease-in-out;
-  -o-transition:all .2s ease-in-out;
-  transition:all .2s ease-in-out;
+  #{$selector}.ng-enter, #{$selector}.ng-leave {
+    -webkit-transition:all .2s ease-in-out;
+    -moz-transition:all .2s ease-in-out;
+    -o-transition:all .2s ease-in-out;
+    transition:all .2s ease-in-out;
+  }
+
+  #{$selector}.ng-enter {
+    opacity: 0;
+  }
+
+  #{$selector}.ng-enter-active {
+    opacity: 1;
+  }
+
+  #{$selector}.ng-leave {
+    opacity: 0; 
+  }
+
+  #{$selector}.ng-leave-active {
+    opacity: 0;
+  }
+
 }
 
-[ui-view].ng-enter {
-  opacity: 0;
-}
 
-[ui-view].ng-enter-active {
-  opacity: 1;
-}
 
-[ui-view].ng-leave {
-  opacity: 0; 
-}
-
-[ui-view].ng-leave-active {
-  opacity: 0;
-}
