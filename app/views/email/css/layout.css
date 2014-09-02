@@ -261,6 +261,16 @@ td.room .image-wrapper .room-price {
   font-size: 18px;
 }
 
+td.room .image-wrapper .room.price:after {
+  content: "";
+  position: absolute;
+  display: block;
+  border-style: solid;
+  border-color: gray transparent transparent transparent;
+  bottom: -1em;
+}
+
+
 td.sponsor {
   padding: 30px;
   background: gray;

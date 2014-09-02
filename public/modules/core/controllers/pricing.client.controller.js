@@ -9,9 +9,6 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
 
     Meta.setTitle('Upgraden');
 
-    // If user is not signed in then redirect back home
-    if (!Authentication.user) $location.path('/');
-
     $scope.init = function() {
       $scope.message = $stateParams.message;
 

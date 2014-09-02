@@ -6547,6 +6547,383 @@ input:focus:-ms-input-placeholder {
   animation-name: fadeOut;
 }
 
+[ui-view].ng-enter, [ui-view].ng-leave {
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+}
+
+[ui-view].ng-leave {
+  opacity: 0;
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
+}
+
+/*
+Custom select inpyt
+*/
+.select-style {
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ddd;
+  width: 120px;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: #fff;
+  height: 36px;
+  margin-top: 2px;
+  margin-left: 15px;
+}
+.select-style:before {
+  content: '';
+  position: relative;
+  top: 15px;
+  right: 10px;
+  float: right;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #506A85;
+  pointer-events: none;
+}
+.select-style:hover {
+  border-color: #ccc;
+}
+.select-style.disabled:before {
+  border-top-color: #ddd;
+}
+.select-style.disabled select {
+  cursor: not-allowed;
+}
+
+.select-style select {
+  width: 130%;
+  border: none;
+  box-shadow: none;
+  background-color: transparent;
+  background-image: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin-top: -8px;
+}
+.select-style select:disabled {
+  opacity: 0.6;
+}
+
+.select-style select:focus {
+  outline: none;
+}
+
+/*
+Spinner
+*/
+.spinner.ng-hide-remove {
+  /* this is required as of 1.3x to properly
+     apply all styling in a show/hide animation */
+  transition: 0s linear all;
+}
+.spinner.ng-hide-remove {
+  opacity: 0;
+}
+.spinner.ng-hide-remove-active {
+  /* the transition is defined in the active class */
+  transition: 1s linear all;
+  opacity: 0;
+}
+
+.form-control-feedback {
+  top: 28px;
+}
+
+/*
+Switch button
+*/
+.switch {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+
+.switch + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+
+input.switch + label {
+  padding: 1px;
+  width: 60px;
+  height: 30px;
+  background-color: #dddddd;
+  border-radius: 30px;
+}
+
+input.switch + label:before,
+input.switch + label:after {
+  display: block;
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  bottom: 1px;
+  content: "";
+}
+
+input.switch + label:before {
+  right: 1px;
+  background-color: #f1f1f1;
+  border-radius: 30px;
+  transition: background 0.4s;
+}
+
+input.switch + label:after {
+  width: 29px;
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: margin 0.4s;
+}
+
+input.switch:checked + label:before {
+  background-color: #8ce196;
+}
+
+input.switch:checked + label:after {
+  margin-left: 30px;
+}
+
+/*
+Social buttons
+*/
+.btn-social {
+  position: relative;
+  padding-left: 50px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn-social :first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  line-height: 34px;
+  font-size: 1.6em;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.btn-social.btn-lg {
+  padding-left: 61px;
+}
+
+.btn-social.btn-lg :first-child {
+  line-height: 45px;
+  width: 45px;
+  font-size: 1.8em;
+}
+
+.btn-social.btn-sm {
+  padding-left: 38px;
+}
+
+.btn-social.btn-sm :first-child {
+  line-height: 28px;
+  width: 28px;
+  font-size: 1.4em;
+}
+
+.btn-social.btn-xs {
+  padding-left: 30px;
+}
+
+.btn-social.btn-xs :first-child {
+  line-height: 20px;
+  width: 20px;
+  font-size: 1.2em;
+}
+
+.btn-social-icon {
+  position: relative;
+  padding-left: 44px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 34px;
+  width: 34px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-social-icon :first-child {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 32px;
+  line-height: 34px;
+  font-size: 1.6em;
+  text-align: center;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.btn-social-icon.btn-lg {
+  padding-left: 61px;
+}
+
+.btn-social-icon.btn-lg :first-child {
+  line-height: 45px;
+  width: 45px;
+  font-size: 1.8em;
+}
+
+.btn-social-icon.btn-sm {
+  padding-left: 38px;
+}
+
+.btn-social-icon.btn-sm :first-child {
+  line-height: 28px;
+  width: 28px;
+  font-size: 1.4em;
+}
+
+.btn-social-icon.btn-xs {
+  padding-left: 30px;
+}
+
+.btn-social-icon.btn-xs :first-child {
+  line-height: 20px;
+  width: 20px;
+  font-size: 1.2em;
+}
+
+.btn-social-icon :first-child {
+  border: none;
+  text-align: center;
+  width: 100% !important;
+}
+
+.btn-social-icon.btn-lg {
+  height: 45px;
+  width: 45px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-social-icon.btn-sm {
+  height: 30px;
+  width: 30px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-social-icon.btn-xs {
+  height: 22px;
+  width: 22px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn-facebook {
+  color: #fff;
+  background-color: #3b5998;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-facebook:hover, .btn-facebook:focus, .btn-facebook:active, .btn-facebook.active, .open .dropdown-toggle.btn-facebook {
+  color: #fff;
+  background-color: #30487b;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-facebook:active, .btn-facebook.active, .open .dropdown-toggle.btn-facebook {
+  background-image: none;
+}
+
+.btn-facebook.disabled, .btn-facebook[disabled], fieldset[disabled] .btn-facebook, .btn-facebook.disabled:hover, .btn-facebook[disabled]:hover, fieldset[disabled] .btn-facebook:hover, .btn-facebook.disabled:focus, .btn-facebook[disabled]:focus, fieldset[disabled] .btn-facebook:focus, .btn-facebook.disabled:active, .btn-facebook[disabled]:active, fieldset[disabled] .btn-facebook:active, .btn-facebook.disabled.active, .btn-facebook[disabled].active, fieldset[disabled] .btn-facebook.active {
+  background-color: #3b5998;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-google-plus {
+  color: #fff;
+  background-color: #dd4b39;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-google-plus:hover, .btn-google-plus:focus, .btn-google-plus:active, .btn-google-plus.active, .open .dropdown-toggle.btn-google-plus {
+  color: #fff;
+  background-color: #ca3523;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-google-plus:active, .btn-google-plus.active, .open .dropdown-toggle.btn-google-plus {
+  background-image: none;
+}
+
+.btn-google-plus.disabled, .btn-google-plus[disabled], fieldset[disabled] .btn-google-plus, .btn-google-plus.disabled:hover, .btn-google-plus[disabled]:hover, fieldset[disabled] .btn-google-plus:hover, .btn-google-plus.disabled:focus, .btn-google-plus[disabled]:focus, fieldset[disabled] .btn-google-plus:focus, .btn-google-plus.disabled:active, .btn-google-plus[disabled]:active, fieldset[disabled] .btn-google-plus:active, .btn-google-plus.disabled.active, .btn-google-plus[disabled].active, fieldset[disabled] .btn-google-plus.active {
+  background-color: #dd4b39;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-linkedin {
+  color: #fff;
+  background-color: #007bb6;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-linkedin:hover, .btn-linkedin:focus, .btn-linkedin:active, .btn-linkedin.active, .open .dropdown-toggle.btn-linkedin {
+  color: #fff;
+  background-color: #005f8d;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-linkedin:active, .btn-linkedin.active, .open .dropdown-toggle.btn-linkedin {
+  background-image: none;
+}
+
+.btn-linkedin.disabled, .btn-linkedin[disabled], fieldset[disabled] .btn-linkedin, .btn-linkedin.disabled:hover, .btn-linkedin[disabled]:hover, fieldset[disabled] .btn-linkedin:hover, .btn-linkedin.disabled:focus, .btn-linkedin[disabled]:focus, fieldset[disabled] .btn-linkedin:focus, .btn-linkedin.disabled:active, .btn-linkedin[disabled]:active, fieldset[disabled] .btn-linkedin:active, .btn-linkedin.disabled.active, .btn-linkedin[disabled].active, fieldset[disabled] .btn-linkedin.active {
+  background-color: #007bb6;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-twitter {
+  color: #fff;
+  background-color: #2ba9e1;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-twitter:hover, .btn-twitter:focus, .btn-twitter:active, .btn-twitter.active, .open .dropdown-toggle.btn-twitter {
+  color: #fff;
+  background-color: #1c92c7;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.btn-twitter:active, .btn-twitter.active, .open .dropdown-toggle.btn-twitter {
+  background-image: none;
+}
+
+.btn-twitter.disabled, .btn-twitter[disabled], fieldset[disabled] .btn-twitter, .btn-twitter.disabled:hover, .btn-twitter[disabled]:hover, fieldset[disabled] .btn-twitter:hover, .btn-twitter.disabled:focus, .btn-twitter[disabled]:focus, fieldset[disabled] .btn-twitter:focus, .btn-twitter.disabled:active, .btn-twitter[disabled]:active, fieldset[disabled] .btn-twitter:active, .btn-twitter.disabled.active, .btn-twitter[disabled].active, fieldset[disabled] .btn-twitter.active {
+  background-color: #2ba9e1;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
 .statistics-chart {
   font: 10px sans-serif;
 }
@@ -6850,293 +7227,6 @@ html, body {
 .btn-white:hover {
   background: #E9E9E9 !important;
   color: #506A85 !important;
-}
-
-.select-style {
-  padding: 0;
-  margin: 0;
-  border: 1px solid #ddd;
-  width: 120px;
-  border-radius: 3px;
-  overflow: hidden;
-  background-color: #fff;
-  height: 36px;
-  margin-top: 2px;
-  margin-left: 15px;
-}
-.select-style:before {
-  content: '';
-  position: relative;
-  top: 15px;
-  right: 10px;
-  float: right;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid #506A85;
-  pointer-events: none;
-}
-.select-style:hover {
-  border-color: #ccc;
-}
-.select-style.disabled:before {
-  border-top-color: #ddd;
-}
-.select-style.disabled select {
-  cursor: not-allowed;
-}
-
-.select-style select {
-  width: 130%;
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
-  background-image: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  margin-top: -8px;
-}
-.select-style select:disabled {
-  opacity: 0.6;
-}
-
-.select-style select:focus {
-  outline: none;
-}
-
-.spinner.ng-hide-remove {
-  /* this is required as of 1.3x to properly
-     apply all styling in a show/hide animation */
-  transition: 0s linear all;
-}
-.spinner.ng-hide-remove {
-  opacity: 0;
-}
-.spinner.ng-hide-remove-active {
-  /* the transition is defined in the active class */
-  transition: 1s linear all;
-  opacity: 0;
-}
-
-.form-control-feedback {
-  top: 28px;
-}
-
-.btn-social {
-  position: relative;
-  padding-left: 50px;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.btn-social :first-child {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  line-height: 34px;
-  font-size: 1.6em;
-  text-align: center;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.btn-social.btn-lg {
-  padding-left: 61px;
-}
-
-.btn-social.btn-lg :first-child {
-  line-height: 45px;
-  width: 45px;
-  font-size: 1.8em;
-}
-
-.btn-social.btn-sm {
-  padding-left: 38px;
-}
-
-.btn-social.btn-sm :first-child {
-  line-height: 28px;
-  width: 28px;
-  font-size: 1.4em;
-}
-
-.btn-social.btn-xs {
-  padding-left: 30px;
-}
-
-.btn-social.btn-xs :first-child {
-  line-height: 20px;
-  width: 20px;
-  font-size: 1.2em;
-}
-
-.btn-social-icon {
-  position: relative;
-  padding-left: 44px;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  height: 34px;
-  width: 34px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.btn-social-icon :first-child {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 32px;
-  line-height: 34px;
-  font-size: 1.6em;
-  text-align: center;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-}
-
-.btn-social-icon.btn-lg {
-  padding-left: 61px;
-}
-
-.btn-social-icon.btn-lg :first-child {
-  line-height: 45px;
-  width: 45px;
-  font-size: 1.8em;
-}
-
-.btn-social-icon.btn-sm {
-  padding-left: 38px;
-}
-
-.btn-social-icon.btn-sm :first-child {
-  line-height: 28px;
-  width: 28px;
-  font-size: 1.4em;
-}
-
-.btn-social-icon.btn-xs {
-  padding-left: 30px;
-}
-
-.btn-social-icon.btn-xs :first-child {
-  line-height: 20px;
-  width: 20px;
-  font-size: 1.2em;
-}
-
-.btn-social-icon :first-child {
-  border: none;
-  text-align: center;
-  width: 100% !important;
-}
-
-.btn-social-icon.btn-lg {
-  height: 45px;
-  width: 45px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.btn-social-icon.btn-sm {
-  height: 30px;
-  width: 30px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.btn-social-icon.btn-xs {
-  height: 22px;
-  width: 22px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.btn-facebook {
-  color: #fff;
-  background-color: #3b5998;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-facebook:hover, .btn-facebook:focus, .btn-facebook:active, .btn-facebook.active, .open .dropdown-toggle.btn-facebook {
-  color: #fff;
-  background-color: #30487b;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-facebook:active, .btn-facebook.active, .open .dropdown-toggle.btn-facebook {
-  background-image: none;
-}
-
-.btn-facebook.disabled, .btn-facebook[disabled], fieldset[disabled] .btn-facebook, .btn-facebook.disabled:hover, .btn-facebook[disabled]:hover, fieldset[disabled] .btn-facebook:hover, .btn-facebook.disabled:focus, .btn-facebook[disabled]:focus, fieldset[disabled] .btn-facebook:focus, .btn-facebook.disabled:active, .btn-facebook[disabled]:active, fieldset[disabled] .btn-facebook:active, .btn-facebook.disabled.active, .btn-facebook[disabled].active, fieldset[disabled] .btn-facebook.active {
-  background-color: #3b5998;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-google-plus {
-  color: #fff;
-  background-color: #dd4b39;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-google-plus:hover, .btn-google-plus:focus, .btn-google-plus:active, .btn-google-plus.active, .open .dropdown-toggle.btn-google-plus {
-  color: #fff;
-  background-color: #ca3523;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-google-plus:active, .btn-google-plus.active, .open .dropdown-toggle.btn-google-plus {
-  background-image: none;
-}
-
-.btn-google-plus.disabled, .btn-google-plus[disabled], fieldset[disabled] .btn-google-plus, .btn-google-plus.disabled:hover, .btn-google-plus[disabled]:hover, fieldset[disabled] .btn-google-plus:hover, .btn-google-plus.disabled:focus, .btn-google-plus[disabled]:focus, fieldset[disabled] .btn-google-plus:focus, .btn-google-plus.disabled:active, .btn-google-plus[disabled]:active, fieldset[disabled] .btn-google-plus:active, .btn-google-plus.disabled.active, .btn-google-plus[disabled].active, fieldset[disabled] .btn-google-plus.active {
-  background-color: #dd4b39;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-linkedin {
-  color: #fff;
-  background-color: #007bb6;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-linkedin:hover, .btn-linkedin:focus, .btn-linkedin:active, .btn-linkedin.active, .open .dropdown-toggle.btn-linkedin {
-  color: #fff;
-  background-color: #005f8d;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-linkedin:active, .btn-linkedin.active, .open .dropdown-toggle.btn-linkedin {
-  background-image: none;
-}
-
-.btn-linkedin.disabled, .btn-linkedin[disabled], fieldset[disabled] .btn-linkedin, .btn-linkedin.disabled:hover, .btn-linkedin[disabled]:hover, fieldset[disabled] .btn-linkedin:hover, .btn-linkedin.disabled:focus, .btn-linkedin[disabled]:focus, fieldset[disabled] .btn-linkedin:focus, .btn-linkedin.disabled:active, .btn-linkedin[disabled]:active, fieldset[disabled] .btn-linkedin:active, .btn-linkedin.disabled.active, .btn-linkedin[disabled].active, fieldset[disabled] .btn-linkedin.active {
-  background-color: #007bb6;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-twitter {
-  color: #fff;
-  background-color: #2ba9e1;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-twitter:hover, .btn-twitter:focus, .btn-twitter:active, .btn-twitter.active, .open .dropdown-toggle.btn-twitter {
-  color: #fff;
-  background-color: #1c92c7;
-  border-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-twitter:active, .btn-twitter.active, .open .dropdown-toggle.btn-twitter {
-  background-image: none;
-}
-
-.btn-twitter.disabled, .btn-twitter[disabled], fieldset[disabled] .btn-twitter, .btn-twitter.disabled:hover, .btn-twitter[disabled]:hover, fieldset[disabled] .btn-twitter:hover, .btn-twitter.disabled:focus, .btn-twitter[disabled]:focus, fieldset[disabled] .btn-twitter:focus, .btn-twitter.disabled:active, .btn-twitter[disabled]:active, fieldset[disabled] .btn-twitter:active, .btn-twitter.disabled.active, .btn-twitter[disabled].active, fieldset[disabled] .btn-twitter.active {
-  background-color: #2ba9e1;
-  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .not-found-page {
