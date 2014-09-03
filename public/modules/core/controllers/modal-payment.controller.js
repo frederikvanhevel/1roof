@@ -3,7 +3,7 @@
 // Rooms controller
 angular.module('rooms').controller('ModalPaymentController', [ '$rootScope', '$scope', '$http', '$modalInstance', 'options', 'Alert',
     function($rootScope, $scope, $http, $modalInstance, options, Alert) {
-      $scope.subscriptionPlan = options.subscriptionPlan;
+      $scope.subscriptionPlan = options.plan;
 
       $scope.busy = false;
 

@@ -6980,6 +6980,9 @@ Social buttons
 .payment-modal .creditcards li {
   display: inline;
 }
+.payment-modal .creditcards li.active img {
+  outline: 1px solid green;
+}
 
 .pika-single {
   z-index: 9999;
