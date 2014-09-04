@@ -1,91 +1,94 @@
 'use strict';
 
 angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state',
-	function($rootScope, $scope, $stateParams, $location,  $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state) {
-		$scope.authentication = Authentication;
-		$scope.isCollapsed = false;
-		$scope.menu = Menus.getMenu('topbar');
-    $scope.search = '';
-    $scope.searchDetails = {};
-    $scope.unreadMessageCount = 0;
-    $scope.messagesPopoverVisible = false;
+    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state) {
+        $scope.authentication = Authentication;
+        $scope.isCollapsed = false;
+        $scope.menu = Menus.getMenu('topbar');
+        $scope.search = '';
+        $scope.searchDetails = {};
+        $scope.unreadMessageCount = 0;
+        $scope.messagesPopoverVisible = false;
 
-    $scope.init = function() {
+        $scope.init = function() {
 
-      // detect browser language
-      $rootScope.language = window.navigator.userLanguage || window.navigator.language;
-      if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl', false);
+            // detect browser language
+            $rootScope.language = window.navigator.userLanguage || window.navigator.language;
+            if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl', false);
 
-      // watch for language changes
-      $rootScope.$watch('language', function(newVal, oldVal) {
-        if(newVal !== oldVal) setLanguage(newVal, true);
-      });
+            // watch for language changes
+            $rootScope.$watch('language', function(newVal, oldVal) {
+                if (newVal !== oldVal) setLanguage(newVal, true);
+            });
 
-      // subscribe to new messages
-      if (Authentication.user) {
-        Socket.emit('join', Authentication.user._id);
-        Socket.on('newMessageCount', function(response) {
-          if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox)
-            $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
-        });
+            // subscribe to new messages
+            if (Authentication.user) {
+                Socket.emit('join', Authentication.user._id);
+                Socket.on('newMessageCount', function(response) {
+                    if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox)
+                        $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
+                });
 
-        $rootScope.$on('inbox_read', function() {
-          if ($scope.unreadMessageCount > 0) $scope.unreadMessageCount--;
-        });
-      }
+                $rootScope.$on('inbox_read', function() {
+                    if ($scope.unreadMessageCount > 0) $scope.unreadMessageCount--;
+                });
+            }
 
-    };
+        };
 
-		$scope.toggleCollapsibleMenu = function() {
-			$scope.isCollapsed = !$scope.isCollapsed;
-		};
+        $scope.toggleCollapsibleMenu = function() {
+            $scope.isCollapsed = !$scope.isCollapsed;
+        };
 
-    $scope.goToSearch = function() {
-      if ($scope.searchDetails.geometry) {
-        changeLocation($scope.search.replace(/, /g, '--'), $scope.searchDetails.geometry.location.lat(), $scope.searchDetails.geometry.location.lng());
-      } else {
-        Geocoder.geocodeAddress($scope.search).then(function(result) {
-          changeLocation(result.formattedAddress.replace(/, /g, '--'), result.lat, result.lng);
-        });
-      }
-      $scope.searchDetails = {};
-    };
+        $scope.goToSearch = function() {
+            if ($scope.searchDetails.geometry) {
+                changeLocation($scope.search.replace(/, /g, '--'), $scope.searchDetails.geometry.location.lat(), $scope.searchDetails.geometry.location.lng());
+            } else {
+                Geocoder.geocodeAddress($scope.search).then(function(result) {
+                    changeLocation(result.formattedAddress.replace(/, /g, '--'), result.lat, result.lng);
+                });
+            }
+            $scope.searchDetails = {};
+        };
 
-    $scope.openSignupModal = function() {
-      Modal.signup();
-    };
+        $scope.openSignupModal = function() {
+            Modal.signup();
+        };
 
-    $scope.openSigninModal = function() {
-      Modal.signin();
-    };
+        $scope.openSigninModal = function() {
+            Modal.signin();
+        };
 
-    $scope.getUnreadMessageCount = function() {
-      if (Authentication.user) {
-        $http({ method: 'GET', url: '/users/unreadmessages'}).then(function(result) {
-            $scope.unreadMessageCount = result.data;
-        });
-      }
-    };
+        $scope.getUnreadMessageCount = function() {
+            if (Authentication.user) {
+                $http({
+                    method: 'GET',
+                    url: '/users/unreadmessages'
+                }).then(function(result) {
+                    $scope.unreadMessageCount = result.data;
+                });
+            }
+        };
 
-    function changeLocation(address, lat, lng) {
-      $location.path('search/' + address)
-            .search('lat', lat)
-            .search('lng', lng);
+        function changeLocation(address, lat, lng) {
+            $location.path('search/' + address)
+                .search('lat', lat)
+                .search('lng', lng);
+        }
+
+        function setLanguage(language, reload) {
+            // TODO: save language in localStorage
+            console.log('changing language to %s', language);
+
+            // gettext
+            gettextCatalog.setCurrentLanguage(language);
+            // gettextCatalog.debug = true;
+
+            // momentjs
+            amMoment.changeLanguage(language);
+
+            if (reload)
+                $state.reload();
+        }
     }
-
-    function setLanguage(language, reload) {
-      // TODO: save language in localStorage
-      console.log('changing language to %s', language);
-
-      // gettext
-      gettextCatalog.setCurrentLanguage(language);
-      // gettextCatalog.debug = true;
-
-      // momentjs
-      amMoment.changeLanguage(language);
-
-      if (reload)
-        $state.reload();
-    }
-	}
 ]);

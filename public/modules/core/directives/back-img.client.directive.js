@@ -1,28 +1,29 @@
 'use strict';
 
 angular.module('core').directive('backImg', [
-  function() {
-    return {
-        restriction: 'A',
-        scope: {
-          imgProvider: '@',
-          imgLink: '@'
-        },
-        link: function(scope, element, attrs ) {
 
-            var url = '';
+    function() {
+        return {
+            restriction: 'A',
+            scope: {
+                imgProvider: '@',
+                imgLink: '@'
+            },
+            link: function(scope, element, attrs) {
 
-            if (!scope.imgProvider || !scope.imgLink) return;
-            
-            if (scope.imgProvider === 'cloudinary')
-              url = 'http://res.cloudinary.com/dv8yfamzc/image/upload/' + scope.imgLink + '.png';
-            else url = scope.imgLink;
+                var url = '';
 
-            element.css({
-                'background-image': 'url(' + url +')'
-            });
+                if (!scope.imgProvider || !scope.imgLink) return;
 
-        }
-    };
-  }
+                if (scope.imgProvider === 'cloudinary')
+                    url = 'http://res.cloudinary.com/dv8yfamzc/image/upload/' + scope.imgLink + '.png';
+                else url = scope.imgLink;
+
+                element.css({
+                    'background-image': 'url(' + url + ')'
+                });
+
+            }
+        };
+    }
 ]);

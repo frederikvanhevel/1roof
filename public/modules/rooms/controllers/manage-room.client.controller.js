@@ -4,7 +4,7 @@
 angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta',
     function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal, Alert, Meta) {
         $scope.authentication = Authentication;
-        
+
         $scope.createForm = {
             address: '',
             roomType: ''
@@ -25,7 +25,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         // If user is not signed in then redirect back home
         if (!Authentication.user) $location.path('/');
 
-         // Init
+        // Init
         $scope.init = function() {
             Meta.setTitle('Advertentie aanpassen');
 
@@ -46,19 +46,19 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             var updateFunction = $window._.debounce($scope.update, 800);
 
             function watchRoomProperties() {
-              return {
-                visible: $scope.room.visible,
-                pictures: $scope.room.pictures,
-                leaseType: $scope.room.leaseType,
-                available: $scope.room.available,
-                loc: $scope.room.loc,
-                location: $scope.room.location,
-                info: $scope.room.info,
-                amenities: $scope.room.amenities,
-                price: $scope.room.price,
-                surface: $scope.room.surface,
-                cohabit: $scope.room.cohabit
-              };
+                return {
+                    visible: $scope.room.visible,
+                    pictures: $scope.room.pictures,
+                    leaseType: $scope.room.leaseType,
+                    available: $scope.room.available,
+                    loc: $scope.room.loc,
+                    location: $scope.room.location,
+                    info: $scope.room.info,
+                    amenities: $scope.room.amenities,
+                    price: $scope.room.price,
+                    surface: $scope.room.surface,
+                    cohabit: $scope.room.cohabit
+                };
             }
 
             $scope.$watch(watchRoomProperties, function(newValue, oldValue) {
@@ -85,7 +85,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.removeImage = function(index) {
             $scope.busy = true;
 
-            $http.post('/rooms/' + $scope.room._id + '/removepicture', { index: index }).success(function(response) {
+            $http.post('/rooms/' + $scope.room._id + '/removepicture', {
+                index: index
+            }).success(function(response) {
                 $scope.room.pictures.splice(index, 1);
                 $scope.busy = false;
             }).error(function(response) {
@@ -97,9 +99,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             var idx = $scope.room.amenities.indexOf(amenity);
 
             if (idx > -1) {
-              $scope.room.amenities.splice(idx, 1);
+                $scope.room.amenities.splice(idx, 1);
             } else {
-              $scope.room.amenities.push(amenity);
+                $scope.room.amenities.push(amenity);
             }
         };
 
@@ -165,7 +167,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $scope.busy = true;
             $upload.upload({
                 url: 'rooms/' + $scope.room._id + '/upload',
-                data: { index: $scope.room.pictures.length },
+                data: {
+                    index: $scope.room.pictures.length
+                },
                 file: image
             }).success(function(data, status, headers, config) {
                 $scope.room.pictures.push({
@@ -182,7 +186,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         function onDropboxSelect(e, files) {
             $scope.busy = true;
             files.forEach(function(file) {
-                $http.post('/rooms/' + $scope.room._id + '/upload', { link: file.link, index: $scope.room.pictures.length }).success(function(data) {
+                $http.post('/rooms/' + $scope.room._id + '/upload', {
+                    link: file.link,
+                    index: $scope.room.pictures.length
+                }).success(function(data) {
                     $scope.room.pictures.push({
                         provider: 'cloudinary',
                         link: data.id

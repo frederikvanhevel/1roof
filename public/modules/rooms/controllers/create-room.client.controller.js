@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', 'Meta', '$http',
-	function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, Meta, $http) {
+    function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, Meta, $http) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -19,7 +19,7 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
 
         $scope.init = function() {
             Meta.setTitle('Advertentie toevoegen');
-            
+
             if (Authentication.user) {
                 $scope.creationStep = 2;
                 checkUserRoomCount();
@@ -77,28 +77,30 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         };
 
         function doSearchLookup(address) {
-          Geocoder.geocodeAddress(address).then(function(result) {
+            Geocoder.geocodeAddress(address).then(function(result) {
 
-            // we need a valid street address
-            if (result.accuracy < 7) return;
+                // we need a valid street address
+                if (result.accuracy < 7) return;
 
-            $scope.addressDetails = {
-                street: result.street + ' ' + result.streetNumber,
-                city: result.city,
-                country: result.country,
-                geo: [ result.lng, result.lat ]
-            };
+                $scope.addressDetails = {
+                    street: result.street + ' ' + result.streetNumber,
+                    city: result.city,
+                    country: result.country,
+                    geo: [result.lng, result.lat]
+                };
 
-            $scope.create();
-          });
+                $scope.create();
+            });
         }
 
         function checkUserRoomCount() {
             $http.get('/roomcount').success(function() {
                 $scope.allowed = true;
             }).error(function(response) {
-                $state.transitionTo('pricing', { message: 'upgrade' });
+                $state.transitionTo('pricing', {
+                    message: 'upgrade'
+                });
             });
         }
-	}
+    }
 ]);
