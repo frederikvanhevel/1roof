@@ -18,13 +18,13 @@ angular.module('search')
             $urlRouterProvider.deferIntercept();
         }
     ])
-    .run(['$rootScope', '$urlRouter', '$location', '$state',
-        function($rootScope, $urlRouter, $location, $state) {
+    .run(['$rootScope', '$urlRouter', '$location', '$state', 'Device',
+        function($rootScope, $urlRouter, $location, $state, Device) {
             $rootScope.$on('$locationChangeSuccess', function(e, newUrl, oldUrl) {
                 // Prevent $urlRouter's default handler from firing
                 e.preventDefault();
 
-                if (oldUrl.indexOf('/search/') !== -1 && newUrl.indexOf('/l/') !== -1) {
+                if (!Device.isMobile() && oldUrl.indexOf('/search/') !== -1 && newUrl.indexOf('/l/') !== -1) {
                     console.log('skipping route');
                 } else {
                     $urlRouter.sync();
