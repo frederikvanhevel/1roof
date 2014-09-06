@@ -7707,6 +7707,9 @@ ROOMS MODULE
   background-position: center;
   border: 1px solid #E6E9ED;
 }
+.edit-room .form-group.disabled label {
+  color: gray;
+}
 .edit-room .map-canvas {
   width: 100%;
   height: 200px;
@@ -7739,6 +7742,12 @@ SEARCH MODULE
   box-shadow: 10px 0px 10px -10px #aaaaaa;
   z-index: 5;
   padding: 10px;
+  /* Smartphones (portrait and landscape) ----------- */
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .search-view .sidebar {
+    width: 100%;
+  }
 }
 .search-view .sidebar .title {
   text-align: center;
@@ -7826,6 +7835,12 @@ SEARCH MODULE
 }
 .search-view .map {
   z-index: 1;
+  /* Smartphones (portrait and landscape) ----------- */
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .search-view .map {
+    display: none;
+  }
 }
 .search-view .map .map-canvas {
   height: 100%;

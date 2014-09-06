@@ -6,7 +6,7 @@
       <span class="pull-right">
         <a href="/#!{{room.url}}"><i class="icon-eye-1"></i> bekijk de advertentie <i class="icon-right-open"></i></a>
       </span>
-      
+
       <div class="visibility-switch">
         <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder">
         <label for="switch-button"></label>
@@ -26,19 +26,19 @@
       <ul class="sidenav">
         <li ng-class="{ active: nav == 'general'}">
           <a ng-click="setTab('general')" href="">
-            <i ng-if="tabHasError('general')" class="icon-attention-1 red"></i> 
+            <i ng-if="tabHasError('general')" class="icon-attention-1 red"></i>
             Algemeen
           </a>
         </li>
         <li ng-class="{ active: nav == 'availability'}">
           <a ng-click="setTab('availability')" href="">
-            <i ng-if="tabHasError('availability')" class="icon-attention-1 red"></i> 
+            <i ng-if="tabHasError('availability')" class="icon-attention-1 red"></i>
             Beschikbaarheid
           </a>
         </li>
         <li ng-class="{ active: nav == 'costs'}">
           <a ng-click="setTab('costs')" href="">
-            <i ng-if="tabHasError('costs')" class="icon-attention-1 red"></i> 
+            <i ng-if="tabHasError('costs')" class="icon-attention-1 red"></i>
             Kosten
           </a>
         </li>
@@ -144,7 +144,7 @@
                 <label class="control-label">Basis prijs</label>
                 <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="Basis kosten">
               </div>
-              
+
               <div class="form-group">
                 <label class="control-label">Gas, elektriciteit en water (optioneel)</label>
                 <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="Extra kosten">
@@ -154,7 +154,7 @@
                 <input ng-model="room.price.cleaning" type="number" min="0" class="form-control"  placeholder="Schoonmaak kosten">
               </div>
             </form>
-            
+
           </div>
         </div>
 
@@ -214,9 +214,9 @@
                 <div class="image" back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}"></div>
                 <button class="remove-button btn btn-red" ng-click="removeImage($index)"><i class="icon-trash-1"></i></button>
               </div>
-              
+
             </div>
-            
+
           </div>
         </div>
 
@@ -235,9 +235,9 @@
                 </label>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" ng-class="{ 'disabled': !room.cohabit.active }">
                 <label class="control-label">Met hoeveel mensen wil je samenwonen?</label>
-                <select ng-model="room.cohabit.count">
+                <select class="form-control" ng-model="room.cohabit.count" ng-disabled="!room.cohabit.active">
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
