@@ -121,14 +121,20 @@ module.exports = function(db) {
 	app.use(helmet.ienoopen());
 	app.disable('x-powered-by');
 
-	// SEO functions
-	app.use(seo({
-	    cacheClient: 'disk', // Can be 'disk' or 'redis'
-	    cacheDuration: 2 * 60 * 60 * 24 * 1000, // In milliseconds for disk cache
-	}));
-	
+
+
 	// Setting the app router and static folder
 	app.use(express.static(path.resolve('./public')));
+
+    // SEO functions
+    // app.use(seo({
+    //     cacheClient: 'disk', // Can be 'disk' or 'redis'
+    //     cacheDuration: 2 * 60 * 60 * 24 * 1000, // In milliseconds for disk cache
+    // }));
+    app.use(seo({
+        cacheClient: 'disk', // Can be 'disk' or 'redis'
+        cacheDuration: 0, // In milliseconds for disk cache
+    }));
 
 	// socketio middleware
 	app.use(function(req, res, next) {
