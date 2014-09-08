@@ -5,14 +5,14 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
         $scope.authentication = Authentication;
 
         $scope.busy = false;
-        $scope.couponCode = null;
+
+        var coupon = null;
 
         Meta.setTitle('Upgraden');
 
         $scope.init = function() {
             $scope.message = $stateParams.message;
-
-            // TODO: use coupon code in query parameter
+            coupon = $stateParams.coupon;
         };
 
         $scope.choosePlan = function(plan) {
@@ -22,7 +22,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
                 if (Authentication.user && !Authentication.user.customerToken) {
                     Modal.payment({
                         plan: plan,
-                        couponCode: $scope.couponCode
+                        couponCode: coupon
                     }).then(function(response) {
                         Authentication.user = response;
                         Alert.add('success', 'Je tariefplan is geupdatet!', 5000);
@@ -34,7 +34,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
                         $scope.busy = false;
                     });
                 } else {
-                    saveSubscription(plan, $scope.couponCode);
+                    saveSubscription(plan, coupon);
                 }
             });
         };

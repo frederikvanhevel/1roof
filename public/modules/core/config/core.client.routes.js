@@ -15,9 +15,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
             templateUrl: 'modules/core/views/home.client.view.html'
         }).
         state('pricing', {
-            url: '/pricing',
+            url: '/pricing?coupon',
             params: {
                 message: {
+                    value: null
+                },
+                coupon: {
                     value: null
                 }
             },
