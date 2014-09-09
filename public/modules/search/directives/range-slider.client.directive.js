@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('search').directive('rangeSlidera', ['$window',
+angular.module('search').directive('rangeSlider', ['$window',
     function($window) {
         return {
             restrict: 'A',

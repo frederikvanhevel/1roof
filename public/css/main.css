@@ -6497,7 +6497,6 @@ input:focus:-ms-input-placeholder {
     -webkit-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
-
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -6511,7 +6510,6 @@ input:focus:-ms-input-placeholder {
     -ms-transform: translate3d(0, 100%, 0);
     transform: translate3d(0, 100%, 0);
   }
-
   100% {
     opacity: 1;
     -webkit-transform: none;
@@ -6528,7 +6526,6 @@ input:focus:-ms-input-placeholder {
   0% {
     opacity: 1;
   }
-
   100% {
     opacity: 0;
   }
@@ -6537,7 +6534,6 @@ input:focus:-ms-input-placeholder {
   0% {
     opacity: 1;
   }
-
   100% {
     opacity: 0;
   }
@@ -6552,7 +6548,6 @@ input:focus:-ms-input-placeholder {
     opacity: 0;
     -webkit-transform: translate3d(0, 40px, 0) scale3d(0.1, 0.6, 1);
   }
-
   100% {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
@@ -6564,7 +6559,6 @@ input:focus:-ms-input-placeholder {
     -webkit-transform: translate3d(0, 40px, 0) scale3d(0.1, 0.6, 1);
     transform: translate3d(0, 40px, 0) scale3d(0.1, 0.6, 1);
   }
-
   100% {
     opacity: 1;
     -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
@@ -6582,7 +6576,6 @@ input:focus:-ms-input-placeholder {
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
@@ -6591,7 +6584,6 @@ input:focus:-ms-input-placeholder {
   0% {
     opacity: 0;
   }
-
   100% {
     opacity: 1;
   }
@@ -8371,3 +8363,5 @@ USERS MODULE
 .authentication-view .sidelines span {
   background: #FFF;
 }
+
+/*# sourceMappingURL=main.css.map */

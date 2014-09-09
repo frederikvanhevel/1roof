@@ -55,10 +55,15 @@ module.exports = function(grunt) {
                 src: ['public/modules/**/css/*.css']
             }
         },
+        scsslint: {
+            all: {
+                src: ['public/modules/**/css/*.scss']
+            }
+        },
         uglify: {
             production: {
                 options: {
-                    mangle: false
+                    mangle: true
                 },
                 files: {
                     'public/dist/application.min.js': '<%= applicationJavaScriptFiles %>'
@@ -137,7 +142,7 @@ module.exports = function(grunt) {
         },
     });
 
-    // Load NPM tasks 
+    // Load NPM tasks
     require('load-grunt-tasks')(grunt);
 
     // Making grunt default to force in order not to break the project.
@@ -156,13 +161,13 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['env:dev', 'dev']);
 
     // Run dev
-    grunt.registerTask('dev', ['jshint', 'sass' , 'concurrent']);
+    grunt.registerTask('dev', ['jshint', 'scsslint', 'sass' , 'concurrent']);
 
     // Lint task(s).
-    grunt.registerTask('lint', ['jshint']);
+    grunt.registerTask('lint', ['jshint', 'scsslint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['jshint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
+    grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
 
     // Run Build task(s).
     grunt.registerTask('runbuild', ['env:prod','build', 'concurrent']);

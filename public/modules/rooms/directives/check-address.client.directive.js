@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('rooms').directive('checkAddress', ['$parse',
-    function($parse) {
+angular.module('rooms').directive('checkAddress', [
+    function() {
         return {
             restrict: 'A',
             link: function(scope, element, attributes, formController) {
