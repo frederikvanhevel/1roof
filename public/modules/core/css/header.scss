@@ -69,6 +69,13 @@ header.navbar {
       font-size: 10px;
       margin: 0;
     }
+
+    span.ng-enter {
+        -webkit-animation-name: scale;
+        animation-name: scale;
+        -webkit-animation-duration: 0.25s;
+        animation-duration: 0.25s;
+    }
   }
 
   .messages-popover {

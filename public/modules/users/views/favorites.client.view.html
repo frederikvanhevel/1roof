@@ -26,18 +26,18 @@
     <div class="row">
 
       <div class="col-sm-4 favorite" ng-repeat="room in favorites">
-        <a ng-href="/#!{{room.url}}">
+        <a ng-href="{{room.url}}">
           <div class="image" ng-class="{ 'empty': room.pictures.length == 0 }" back-img img-provider="{{room.pictures[0].provider}}" img-link="{{room.pictures[0].link}}">
             <i class="icon-camera-1"></i>
           </div>
 
           <div class="bordered no-top-border">
-           
+
             <div class="info">
               <h4>{{room.info.title}}</h4>
               <p>{{room.location.street}} <small>{{room.location.city}}</small></p>
             </div>
-          
+
           </div>
         </a>
 

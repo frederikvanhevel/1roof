@@ -53,6 +53,10 @@
 
     li {
       display: inline;
+
+      &.active img {
+        outline: 1px solid green;
+      }
     }
 
   }

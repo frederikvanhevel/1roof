@@ -16,16 +16,19 @@ html, body {
 }
 
 .alert-item {
-  &.ng-leave {
-    -webkit-transition: opacity .5s;
-    transition: opacity .5s;
-  }
-  &.ng-leave.ng-leave-active {
-    opacity:0;
-  }
-  &.ng-leave {
-    opacity:1;
-  }
+
+    &.ng-enter, &.ng-leave {
+        -webkit-animation-name: scale;
+        animation-name: scale;
+        -webkit-animation-duration: 0.25s;
+        animation-duration: 0.25s;
+    }
+
+    &.ng-leave {
+        -webkit-animation-direction: reverse;
+        animation-direction: reverse;
+    }
+
 }
 
 .alert-container {
@@ -37,7 +40,7 @@ html, body {
 }
 
 .content {
-  min-height: 100%; 
+  min-height: 100%;
   padding-top: 50px;
   padding-bottom: 102px;
   // padding-bottom: 82px;
@@ -67,110 +70,5 @@ html, body {
   }
 }
 
-.select-style {
-    padding: 0;
-    margin: 0;
-    border: 1px solid #ddd;
-    width: 120px;
-    border-radius: 3px;
-    overflow: hidden;
-    background-color: #fff;
-    height: 36px;
-    margin-top: 2px;
-    margin-left: 15px;
-
-    &:before {
-      content: '';
-      position: relative;
-      top: 15px;
-      right: 10px;
-      float: right;
-      border-left: 5px solid transparent;
-      border-right: 5px solid transparent;
-      border-top: 5px solid #506A85;
-      pointer-events: none;
-    }
-
-    &:hover {
-      border-color: #ccc;
-    }
-
-    &.disabled {
-      &:before {
-        border-top-color: #ddd;
-      }
-      select {
-        cursor: not-allowed;
-      }
-    }
-}
-
-.select-style select {
-    width: 130%;
-    border: none;
-    box-shadow: none;
-    background-color: transparent;
-    background-image: none;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-    margin-top: -8px;
-    
-    &:disabled {
-      opacity: 0.6;
-    }
-}
-
-.select-style select:focus {
-    outline: none;
-}
-
-
-.spinner {
-
-  &.ng-hide-remove {
-    /* this is required as of 1.3x to properly
-       apply all styling in a show/hide animation */
-    transition:0s linear all;
-  }
-
-  &.ng-hide-remove {
-    opacity: 0;
-  }
-
-  &.ng-hide-remove-active {
-    /* the transition is defined in the active class */
-    transition:1s linear all;
-    opacity: 0;
-  }
-}
-
-.form-control-feedback {
-  top: 28px;
-}
-
-.btn-social{position:relative;padding-left:50px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.btn-social :first-child{position:absolute;left:0;top:0;bottom:0;width:32px;line-height:34px;font-size:1.6em;text-align:center;border-right:1px solid rgba(0,0,0,0.2)}
-.btn-social.btn-lg{padding-left:61px}.btn-social.btn-lg :first-child{line-height:45px;width:45px;font-size:1.8em}
-.btn-social.btn-sm{padding-left:38px}.btn-social.btn-sm :first-child{line-height:28px;width:28px;font-size:1.4em}
-.btn-social.btn-xs{padding-left:30px}.btn-social.btn-xs :first-child{line-height:20px;width:20px;font-size:1.2em}
-.btn-social-icon{position:relative;padding-left:44px;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:34px;width:34px;padding-left:0;padding-right:0}.btn-social-icon :first-child{position:absolute;left:0;top:0;bottom:0;width:32px;line-height:34px;font-size:1.6em;text-align:center;border-right:1px solid rgba(0,0,0,0.2)}
-.btn-social-icon.btn-lg{padding-left:61px}.btn-social-icon.btn-lg :first-child{line-height:45px;width:45px;font-size:1.8em}
-.btn-social-icon.btn-sm{padding-left:38px}.btn-social-icon.btn-sm :first-child{line-height:28px;width:28px;font-size:1.4em}
-.btn-social-icon.btn-xs{padding-left:30px}.btn-social-icon.btn-xs :first-child{line-height:20px;width:20px;font-size:1.2em}
-.btn-social-icon :first-child{border:none;text-align:center;width:100% !important}
-.btn-social-icon.btn-lg{height:45px;width:45px;padding-left:0;padding-right:0}
-.btn-social-icon.btn-sm{height:30px;width:30px;padding-left:0;padding-right:0}
-.btn-social-icon.btn-xs{height:22px;width:22px;padding-left:0;padding-right:0}
-.btn-facebook{color:#fff;background-color:#3b5998;border-color:rgba(0,0,0,0.2)}.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{color:#fff;background-color:#30487b;border-color:rgba(0,0,0,0.2)}
-.btn-facebook:active,.btn-facebook.active,.open .dropdown-toggle.btn-facebook{background-image:none}
-.btn-facebook.disabled,.btn-facebook[disabled],fieldset[disabled] .btn-facebook,.btn-facebook.disabled:hover,.btn-facebook[disabled]:hover,fieldset[disabled] .btn-facebook:hover,.btn-facebook.disabled:focus,.btn-facebook[disabled]:focus,fieldset[disabled] .btn-facebook:focus,.btn-facebook.disabled:active,.btn-facebook[disabled]:active,fieldset[disabled] .btn-facebook:active,.btn-facebook.disabled.active,.btn-facebook[disabled].active,fieldset[disabled] .btn-facebook.active{background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
-.btn-google-plus{color:#fff;background-color:#dd4b39;border-color:rgba(0,0,0,0.2)}.btn-google-plus:hover,.btn-google-plus:focus,.btn-google-plus:active,.btn-google-plus.active,.open .dropdown-toggle.btn-google-plus{color:#fff;background-color:#ca3523;border-color:rgba(0,0,0,0.2)}
-.btn-google-plus:active,.btn-google-plus.active,.open .dropdown-toggle.btn-google-plus{background-image:none}
-.btn-google-plus.disabled,.btn-google-plus[disabled],fieldset[disabled] .btn-google-plus,.btn-google-plus.disabled:hover,.btn-google-plus[disabled]:hover,fieldset[disabled] .btn-google-plus:hover,.btn-google-plus.disabled:focus,.btn-google-plus[disabled]:focus,fieldset[disabled] .btn-google-plus:focus,.btn-google-plus.disabled:active,.btn-google-plus[disabled]:active,fieldset[disabled] .btn-google-plus:active,.btn-google-plus.disabled.active,.btn-google-plus[disabled].active,fieldset[disabled] .btn-google-plus.active{background-color:#dd4b39;border-color:rgba(0,0,0,0.2)}
-.btn-linkedin{color:#fff;background-color:#007bb6;border-color:rgba(0,0,0,0.2)}.btn-linkedin:hover,.btn-linkedin:focus,.btn-linkedin:active,.btn-linkedin.active,.open .dropdown-toggle.btn-linkedin{color:#fff;background-color:#005f8d;border-color:rgba(0,0,0,0.2)}
-.btn-linkedin:active,.btn-linkedin.active,.open .dropdown-toggle.btn-linkedin{background-image:none}
-.btn-linkedin.disabled,.btn-linkedin[disabled],fieldset[disabled] .btn-linkedin,.btn-linkedin.disabled:hover,.btn-linkedin[disabled]:hover,fieldset[disabled] .btn-linkedin:hover,.btn-linkedin.disabled:focus,.btn-linkedin[disabled]:focus,fieldset[disabled] .btn-linkedin:focus,.btn-linkedin.disabled:active,.btn-linkedin[disabled]:active,fieldset[disabled] .btn-linkedin:active,.btn-linkedin.disabled.active,.btn-linkedin[disabled].active,fieldset[disabled] .btn-linkedin.active{background-color:#007bb6;border-color:rgba(0,0,0,0.2)}
-.btn-twitter{color:#fff;background-color:#2ba9e1;border-color:rgba(0,0,0,0.2)}.btn-twitter:hover,.btn-twitter:focus,.btn-twitter:active,.btn-twitter.active,.open .dropdown-toggle.btn-twitter{color:#fff;background-color:#1c92c7;border-color:rgba(0,0,0,0.2)}
-.btn-twitter:active,.btn-twitter.active,.open .dropdown-toggle.btn-twitter{background-image:none}
-.btn-twitter.disabled,.btn-twitter[disabled],fieldset[disabled] .btn-twitter,.btn-twitter.disabled:hover,.btn-twitter[disabled]:hover,fieldset[disabled] .btn-twitter:hover,.btn-twitter.disabled:focus,.btn-twitter[disabled]:focus,fieldset[disabled] .btn-twitter:focus,.btn-twitter.disabled:active,.btn-twitter[disabled]:active,fieldset[disabled] .btn-twitter:active,.btn-twitter.disabled.active,.btn-twitter[disabled].active,fieldset[disabled] .btn-twitter.active{background-color:#2ba9e1;border-color:rgba(0,0,0,0.2)}
+@include fadeInView('[ui-view]');
 

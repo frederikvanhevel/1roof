@@ -1,42 +1,42 @@
 'use strict';
 
-angular.module('search').directive('radioGroup', [ '$window', '$timeout',
-  function($window, $timeout) {
-    return {
-      require: 'ngModel',
-      restrict: 'A',
-      scope: {
-        model: '=ngModel',
-        outputFunction: '='
-      },
-      link: function postLink(scope, element, attrs) {
-        
-        var buttons = element.children('button');
-        var active = element.children('button.active');
+angular.module('search').directive('radioGroup', ['$window', '$timeout',
+    function($window, $timeout) {
+        return {
+            require: 'ngModel',
+            restrict: 'A',
+            scope: {
+                model: '=ngModel',
+                outputFunction: '='
+            },
+            link: function postLink(scope, element, attrs) {
 
-        function setModel(data) {
-          scope.model = scope.outputFunction ? scope.outputFunction(data) : data;
+                var buttons = element.children('button');
+                var active = element.children('button.active');
 
-          $timeout(function() {
-            scope.$apply();
-          });
-        }
+                function setModel(data) {
+                    scope.model = scope.outputFunction ? scope.outputFunction(data) : data;
 
-        setModel(active.attr('data-val'));
+                    $timeout(function() {
+                        scope.$apply();
+                    });
+                }
 
-        buttons.bind('click', function(e) {
-          var el = $window.$(e.currentTarget);
+                setModel(active.attr('data-val'));
 
-          if (!el.hasClass('active')) {
-            buttons.removeClass('active');
-            el.addClass('active');
-          }
+                buttons.bind('click', function(e) {
+                    var el = $window.$(e.currentTarget);
 
-          setModel(el.attr('data-val'));
+                    if (!el.hasClass('active')) {
+                        buttons.removeClass('active');
+                        el.addClass('active');
+                    }
 
-          e.stopPropagation();
-        });
-      }
-    };
-  }
+                    setModel(el.attr('data-val'));
+
+                    e.stopPropagation();
+                });
+            }
+        };
+    }
 ]);

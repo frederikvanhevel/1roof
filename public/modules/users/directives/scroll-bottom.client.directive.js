@@ -1,14 +1,14 @@
 'use strict';
 
-angular.module('users').directive('scrollBottom', [ '$timeout',
-  function($timeout) {
+angular.module('users').directive('scrollBottom', ['$timeout',
+    function($timeout) {
         return {
             require: 'ngModel',
             scope: {
                 model: '=ngModel'
             },
             restrict: 'A',
-            link: function(scope, $el, attrs){
+            link: function(scope, $el, attrs) {
                 var el = $el[0];
 
                 function scrollToBottom() {
@@ -19,8 +19,8 @@ angular.module('users').directive('scrollBottom', [ '$timeout',
                     $timeout(function() {
                         scrollToBottom();
                     }, 100);
-                });                
-                scope.$watch('model', function(newValue, oldValue){
+                });
+                scope.$watch('model', function(newValue, oldValue) {
                     if (newValue) scrollToBottom();
                 });
             }

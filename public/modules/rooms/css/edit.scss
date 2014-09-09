@@ -75,8 +75,12 @@
         border: 1px solid #E6E9ED;
       }
 
-    }    
+    }
 
+  }
+
+  .form-group.disabled label {
+    color: gray;
   }
 
   .map-canvas {

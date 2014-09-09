@@ -64,3 +64,75 @@
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut;
 }
+
+@-webkit-keyframes scale {
+    0% { opacity: 0; -webkit-transform: translate3d(0,40px,0) scale3d(0.1,0.6,1); }
+    100% { opacity: 1; -webkit-transform: translate3d(0,0,0) scale3d(1,1,1); }
+}
+
+@keyframes scale {
+    0% { opacity: 0; -webkit-transform: translate3d(0,40px,0) scale3d(0.1,0.6,1); transform: translate3d(0,40px,0) scale3d(0.1,0.6,1); }
+    100% { opacity: 1; -webkit-transform: translate3d(0,0,0) scale3d(1,1,1); transform: translate3d(0,0,0) scale3d(1,1,1); }
+}
+
+.scaleAnimation {
+    -webkit-animation-name: scale;
+    animation-name: scale;
+    -webkit-animation-duration: 0.25s;
+    animation-duration: 0.25s;
+}
+
+@mixin fadeInView($selector) {
+
+  #{$selector}.ng-enter, #{$selector}.ng-leave {
+    -webkit-transition:all .2s ease-in-out;
+    -moz-transition:all .2s ease-in-out;
+    -o-transition:all .2s ease-in-out;
+    transition:all .2s ease-in-out;
+  }
+
+  #{$selector}.ng-enter {
+    opacity: 0;
+  }
+
+  #{$selector}.ng-enter-active {
+    opacity: 1;
+  }
+
+  #{$selector}.ng-leave {
+    opacity: 0;
+  }
+
+  #{$selector}.ng-leave-active {
+    opacity: 0;
+  }
+
+}
+
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+

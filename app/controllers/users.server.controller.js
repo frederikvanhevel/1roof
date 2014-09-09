@@ -44,7 +44,7 @@ var getErrorMessage = function(err) {
  */
 exports.read = function(req, res) {
 	var user = req.user;
-	
+
 	delete user.salt;
 	delete user.password;
 	delete user.email;
@@ -58,7 +58,7 @@ exports.read = function(req, res) {
 exports.signup = function(req, res) {
 	// For security measurement we remove the roles from the req.body object
 	delete req.body.roles;
-	
+
 	// Init Variables
 	var user = new User(req.body);
 	var message = null;
@@ -67,7 +67,7 @@ exports.signup = function(req, res) {
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
   console.log(req.body);
-	// Then save the user 
+	// Then save the user
 	user.save(function(err) {
 		if (err) {
       winston.error('Error signing up user', err);
@@ -233,17 +233,17 @@ exports.me = function(req, res) {
  */
 exports.oauthCallback = function(strategy) {
 	return function(req, res, next) {
+        console.log(req.get('Referrer'));
 		passport.authenticate(strategy, function(err, user, redirectURL) {
 			if (err || !user) {
-				return res.redirect('/#!/signin');
+				return res.redirect('/signin');
 			}
 			req.login(user, function(err) {
 				if (err) {
-          winston.error('Error logging in user', user._id);
-					return res.redirect('/#!/signin');
+                    winston.error('Error logging in user', user._id);
+					return res.redirect('/signin');
 				}
-
-				return res.redirect(redirectURL || '/');
+				return res.redirect(redirectURL || 'back');
 			});
 		})(req, res, next);
 	};
@@ -366,7 +366,7 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 
 					// And save the user
 					user.save(function(err) {
-						return done(err, user, '/#!/settings/accounts');
+						return done(err, user, '/settings/accounts');
 					});
 				} else {
 					return done(err, user);
@@ -471,10 +471,10 @@ exports.resetGet = function(req, res) {
        		res.send(400, {
     					message: 'Password reset token is invalid or has expired.'
     			});
-      		return res.redirect('/#!/forgot');
+      		return res.redirect('/forgot');
     	}
 
-  		res.redirect('/#!/reset/' + req.params.token);
+  		res.redirect('/reset/' + req.params.token);
 
   	});
 };
@@ -535,8 +535,8 @@ exports.resetPost = function(req, res) {
  * User authorizations routing middleware
  */
 exports.hasAnalytics = function(req, res, next) {
-  if(req.user.subscription === 'PRO' || req.user.subscription === 'BUSINESS') {
-    res.next();
+  if(req.user.subscriptionPlan === 'PRO' || req.user.subscriptionPlan === 'BUSINESS') {
+    next();
   } else {
      return res.send(400, {
         message: 'User is not authorized.'

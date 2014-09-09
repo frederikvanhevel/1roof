@@ -1,7 +1,7 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('AnalyticsController', ['$rootScope', '$scope',  '$location', '$http', '$stateParams', 'Authentication', 'Rooms', 'Meta',
+angular.module('rooms').controller('AnalyticsController', ['$rootScope', '$scope', '$location', '$http', '$stateParams', 'Authentication', 'Rooms', 'Meta',
     function($rootScope, $scope, $location, $http, $stateParams, Authentication, Rooms, Meta) {
         $scope.authentication = Authentication;
 
@@ -24,7 +24,7 @@ angular.module('rooms').controller('AnalyticsController', ['$rootScope', '$scope
         };
 
         function getStatisticsData() {
-            $http.get('/statistics/' + $scope.room._id + '/lastmonth').success(function(response) {
+            $http.get('/api/statistics/' + $scope.room._id + '/lastmonth').success(function(response) {
                 $scope.statisticsData = response;
             });
         }

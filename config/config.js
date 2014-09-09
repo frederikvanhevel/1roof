@@ -27,7 +27,7 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
     // The output array
     var output = [];
 
-    // If glob pattern is array so we use each pattern in a recursive way, otherwise we use glob 
+    // If glob pattern is array so we use each pattern in a recursive way, otherwise we use glob
     if (_.isArray(globPatterns)) {
         globPatterns.forEach(function(globPattern) {
             output = _.union(output, _this.getGlobbedFiles(globPattern, removeRoot));
@@ -41,7 +41,7 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
             }, function(err, files) {
                 if (removeRoot) {
                     files = files.map(function(file) {
-                        return file.replace(removeRoot, '');
+                        return file.replace(removeRoot, '/');
                     });
                 }
 

@@ -11,10 +11,10 @@ var payments = require('../../app/controllers/payments');
 module.exports = function(app) {
 	// User Routes
 	var users = require('../../app/controllers/users');
-	app.route('/users/me').get(users.me);
-	app.route('/users').put(users.update);
-	app.route('/users/password').post(users.changePassword);
-	app.route('/users/accounts').delete(users.removeOAuthProvider);
+	app.route('/api/users/me').get(users.me);
+	app.route('/api/users').put(users.update);
+	app.route('/api/users/password').post(users.changePassword);
+	app.route('/api/users/accounts').delete(users.removeOAuthProvider);
 
 	// Setting up the users api
 	app.route('/auth/signup').post(users.signup);
@@ -48,11 +48,11 @@ module.exports = function(app) {
 	app.route('/auth/linkedin').get(passport.authenticate('linkedin'));
 	app.route('/auth/linkedin/callback').get(users.oauthCallback('linkedin'));
 
-	app.route('/users/unreadmessages').get(inbox.getUnreadMessageCount);
+	app.route('/api/users/unreadmessages').get(inbox.getUnreadMessageCount);
 
-	app.route('/users/:userId').get(users.read);
+	app.route('/api/users/:userId').get(users.read);
 
-	app.route('/users/:userId/favorites').get(rooms.getUserFavorites);
+	app.route('/api/users/:userId/favorites').get(rooms.getUserFavorites);
 
 	// Finish by binding the user middleware
 	app.param('userId', users.userByID);

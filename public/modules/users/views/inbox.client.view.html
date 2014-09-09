@@ -1,17 +1,17 @@
-<section data-ng-controller="InboxController" data-ng-init="init()" class="inbox">
+<section data-ng-controller="InboxController" data-ng-init="init()">
 
   <div class="dashboard-top-bar dark-bg " ng-cloak>
     <div class="container">
       <ul class="col-sm-offset-2">
-        <li><a href="/#!/dashboard/rooms" ng-click="setTab('rooms')">Mijn advertenties</a></li>
+        <li><a href="/dashboard/rooms" ng-click="setTab('rooms')">Mijn advertenties</a></li>
         <li class="active"><a href="" ng-click="setTab('messages')">Berichten</a></li>
-        <li><a href="/#!/dashboard/profile" ng-click="setTab('profile')">Profiel</a></li>
-        <li><a href="/#!/dashboard/account" ng-click="setTab('account')">Account</a></li>
+        <li><a href="/dashboard/profile" ng-click="setTab('profile')">Profiel</a></li>
+        <li><a href="/dashboard/account" ng-click="setTab('account')">Account</a></li>
       </ul>
     </div>
   </div>
 
-  <div class="container">
+  <div class="container inbox">
     <div class="row">
 
       <div class="col-sm-offset-1 col-sm-3">
@@ -20,20 +20,20 @@
           <li data-ng-repeat="other in inboxes" ng-class="{ active: other._id == inbox._id }">
             <a href="" ng-click="showInbox(other._id)">
               <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
-              
+
               <div class="profile-picture" ng-style="getUserPicture(other)"></div>
               <div class="sender-name">{{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}</div>
-              
+
             </a>
           </li>
         </ul>
 
       </div>
-      
+
       <div class="col-sm-6" ng-cloak>
 
         <div class="bordered room-card" ng-show="inbox.room != null">
-          <a ng-href="/#!{{inbox.room.url}}">
+          <a ng-href="{{inbox.room.url}}">
             <div ng-if="inbox.room.pictures.length == 0" class="room-image empty tint-bg">
               <i class="icon-camera-1"></i>
             </div>
@@ -69,7 +69,7 @@
               <i class="icon-calendar-1"></i>
               {{message.sender != authentication.user._id ? other.roomOwner.displayName : 'Je'}} wil een afspraak maken op <strong>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</strong>
             </div>
-          
+
           </div>
 
         </div>

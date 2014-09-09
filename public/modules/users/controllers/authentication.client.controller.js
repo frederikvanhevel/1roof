@@ -22,7 +22,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
                 if ($scope.$close) $scope.$close();
 
                 // And redirect to the index page
-                $location.path(redirectTo || '/');
+                // $location.path(redirectTo || '/');
 
                 deferred.resolve();
 
@@ -52,7 +52,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
                 if ($scope.$close) $scope.$close();
 
                 // And redirect to the index page
-                $location.path(redirectTo || '/');
+                // $location.path(redirectTo || '/');
 
                 deferred.resolve();
 

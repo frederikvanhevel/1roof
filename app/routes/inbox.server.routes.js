@@ -5,15 +5,15 @@ module.exports = function(app) {
   var inbox = require('../../app/controllers/inbox');
 
   // Inbox Routes
-  app.route('/inbox')
+  app.route('/api/inbox')
     .get(users.requiresLogin, inbox.list);
-  
-  app.route('/inbox/:inboxId')
+
+  app.route('/api/inbox/:inboxId')
     .get(inbox.read)
     .put(users.requiresLogin, inbox.hasAuthorization, inbox.update)
     .delete(users.requiresLogin, inbox.hasAuthorization, inbox.delete);
 
-  app.route('/inbox/:inboxId/sendmessage')
+  app.route('/api/inbox/:inboxId/sendmessage')
     .post(users.requiresLogin, inbox.hasAuthorization, inbox.sendMessage);
 
   // Finish by binding the Inbox middleware

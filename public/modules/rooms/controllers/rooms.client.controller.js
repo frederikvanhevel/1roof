@@ -72,7 +72,9 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         };
 
         $scope.setVisibility = function() {
-            $http.put('/rooms/' + $scope.room._id, { visible: $scope.room.visible });
+            $http.put('/api/rooms/' + $scope.room._id, {
+                visible: $scope.room.visible
+            });
         };
 
         // helper for repeating something n number of times
@@ -85,7 +87,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         };
 
         function sendFavorite() {
-            $http.post('/rooms/' + $scope.room._id + '/favorite').success(function(response) {
+            $http.post('/api/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);
                 if (index === -1) {
                     Statistics.aggregate($scope.room._id, 'favorites');
@@ -103,7 +105,9 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         function sendMessage(message) {
             Statistics.aggregate($scope.room._id, 'messages');
 
-            $http.post('/rooms/' + $scope.room._id + '/message', { message: message }).success(function(response) {
+            $http.post('/api/rooms/' + $scope.room._id + '/message', {
+                message: message
+            }).success(function(response) {
                 Alert.add('success', 'Je bericht is verzonden!', 5000);
             }).error(function(response) {
                 Alert.add('danger', 'Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.', 5000);
@@ -113,7 +117,10 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         function sendReservation(extraMessage) {
             Statistics.aggregate($scope.room._id, 'reservations');
 
-            $http.post('/rooms/' + $scope.room._id + '/message', { message: $scope.appointmentDate.getTime(), messageType: 'reservation' }).success(function(response) {
+            $http.post('/api/rooms/' + $scope.room._id + '/message', {
+                message: $scope.appointmentDate.getTime(),
+                messageType: 'reservation'
+            }).success(function(response) {
                 if (extraMessage) sendMessage(extraMessage);
                 else Alert.add('success', 'Je aanvraag is verzonden!', 5000);
             }).error(function(response) {

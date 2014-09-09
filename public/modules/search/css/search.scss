@@ -15,6 +15,13 @@
 
     padding: 10px;
 
+    /* Smartphones (portrait and landscape) ----------- */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+        width: 100%;
+    }
+
     .title {
       text-align: center;
       text-transform: uppercase;
@@ -82,7 +89,7 @@
 
           &:hover, &.active {
             border-right: 3px solid #FA6C65;
-            
+
           }
 
           &.is-seen {
@@ -110,7 +117,7 @@
           }
         }
       }
-      
+
     }
 
   }
@@ -126,7 +133,15 @@
 
   .map {
     z-index: 1;
-    
+
+    /* Smartphones (portrait and landscape) ----------- */
+    @media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 480px) {
+        display: none;
+    }
+
+
     .map-canvas {
       height: 100%;
     }
