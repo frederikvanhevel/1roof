@@ -60,6 +60,14 @@ module.exports = function(grunt) {
                 src: ['public/modules/**/css/*.scss']
             }
         },
+        ngAnnotate: {
+            options: {
+                singleQuotes: true
+            },
+            production: {
+                src: ['<%= applicationJavaScriptFiles %>']
+            }
+        },
         uglify: {
             production: {
                 options: {
@@ -82,7 +90,8 @@ module.exports = function(grunt) {
         },
         sass: {
             options: {
-                style: 'expanded'
+                style: 'expanded',
+                sourcemap: 'none'
             },
             all: {
                 files: { 'public/css/main.css': 'public/css/main.scss' }
@@ -167,7 +176,7 @@ module.exports = function(grunt) {
     grunt.registerTask('lint', ['jshint', 'scsslint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
+    grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'ngAnnotate', 'uglify' , 'sass' , 'cssmin']);
 
     // Run Build task(s).
     grunt.registerTask('runbuild', ['env:prod','build', 'concurrent']);

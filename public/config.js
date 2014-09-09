@@ -13,7 +13,6 @@ var ApplicationConfiguration = (function() {
         'ui.router',
         'ui.bootstrap',
         'ui.utils',
-        'ui-rangeSlider',
         'ngAutocomplete',
         'LocalStorageModule',
         'angularMoment',
