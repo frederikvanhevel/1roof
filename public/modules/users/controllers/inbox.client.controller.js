@@ -38,10 +38,11 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
             $scope.inbox = Inbox.get({
                 inboxId: inboxId
             }, function(inbox) {
-                if ($scope.hasUnreadMessages(inbox)) {
+                var unreadMessageCount = $scope.unreadMessages(inbox);
+                if (unreadMessageCount > 0) {
                     setInboxAsRead(inbox);
 
-                    $rootScope.$broadcast('inbox_read');
+                    $rootScope.$broadcast('inbox_read', unreadMessageCount);
                 }
 
             });
@@ -57,7 +58,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
             }).success(function(response) {
                 $scope.busy = false;
                 $scope.newMessage = '';
-                $scope.inbox = response;
+                // $scope.inbox.messages.push(response);
             }).error(function(response) {
                 $scope.busy = false;
             });
@@ -94,12 +95,13 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
             return inbox.messages[inbox.messages.length - 1];
         };
 
-        $scope.hasUnreadMessages = function(inbox) {
+        $scope.unreadMessages = function(inbox) {
+            var count = 0;
             for (var i = 0; i < inbox.messages.length; i++) {
                 var message = inbox.messages[i];
-                if (message.sender !== Authentication.user._id && !message.isRead) return true;
+                if (message.sender !== Authentication.user._id && !message.isRead) count++;
             }
-            return false;
+            return count;
         };
 
         $scope.deleteInbox = function(inbox, $index, $event) {

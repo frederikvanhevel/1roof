@@ -1,7 +1,7 @@
 <section class="create-room" data-ng-controller="CreateRoomController" ng-init="init()">
 
   <div ng-if="allowed">
-    <div class="blue-bg">
+    <div class="img-bg" style="background-image: url(/modules/rooms/img/create_bg.jpg);">
 
       <div class="container">
         <div class="room-creation-steps">
@@ -60,7 +60,7 @@
                 <div class="btn-group type-buttons" ng-model="createForm.roomType" radio-group>
                   <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> Volledig huis</button>
                   <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> Appartement</button>
-                  <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Kamer</button>          
+                  <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Kamer</button>
                 </div>
       		    </div>
       		  </div>

@@ -6547,6 +6547,60 @@ input:focus:-ms-input-placeholder {
   animation-name: fadeOut;
 }
 
+@-webkit-keyframes scale {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 40px, 0) scale3d(0.1, 0.6, 1);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+}
+@keyframes scale {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 40px, 0) scale3d(0.1, 0.6, 1);
+    transform: translate3d(0, 40px, 0) scale3d(0.1, 0.6, 1);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+}
+.scaleAnimation {
+  -webkit-animation-name: scale;
+  animation-name: scale;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
 /*
 Custom select inpyt
 */
@@ -7168,15 +7222,15 @@ html, body {
   text-decoration: none;
 }
 
-.alert-item.ng-leave {
-  -webkit-transition: opacity .5s;
-  transition: opacity .5s;
+.alert-item.ng-enter, .alert-item.ng-leave {
+  -webkit-animation-name: scale;
+  animation-name: scale;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
 }
-.alert-item.ng-leave.ng-leave-active {
-  opacity: 0;
-}
 .alert-item.ng-leave {
-  opacity: 1;
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
 }
 
 .alert-container {
@@ -7308,6 +7362,12 @@ header.navbar .header-messages-icon .label {
   font-size: 10px;
   margin: 0;
 }
+header.navbar .header-messages-icon span.ng-enter {
+  -webkit-animation-name: scale;
+  animation-name: scale;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+}
 header.navbar .messages-popover {
   position: absolute;
   left: 0;
@@ -7429,10 +7489,6 @@ footer .footer-bottom .social-buttons li {
 }
 .home-view .home-content .intro-image.intro-image-3 {
   background-image: url(/modules/core/img/home/intro_1.png);
-}
-.home-view .pricing .features {
-  background: white;
-  font-size: 18px;
 }
 .home-view #contact-us {
   padding: 80px 0;
@@ -7620,7 +7676,7 @@ ROOMS MODULE
   border-color: #E1E7ED;
   border-radius: 3px;
   padding: 20px 0;
-  opacity: .5;
+  opacity: .6;
 }
 .create-room .room-creation-steps .room-step h3 {
   color: #73879C;
@@ -8026,9 +8082,6 @@ USERS MODULE
   padding-bottom: 50px;
 }
 
-.dashboard-top-bar {
-  margin-bottom: 20px;
-}
 .dashboard-top-bar ul {
   position: relative;
   left: -10px;
@@ -8058,6 +8111,19 @@ USERS MODULE
   background: #1ABB9C;
 }
 
+.dashboard-bg {
+  height: 250px;
+  margin-bottom: 50px;
+}
+.dashboard-bg h1 {
+  color: white;
+  padding-left: 90px;
+  padding-top: 90px;
+}
+
+.inbox {
+  margin-top: 20px;
+}
 .inbox .sidenav {
   max-height: 468px;
   overflow: auto;
@@ -8133,6 +8199,12 @@ USERS MODULE
   margin-bottom: 25px;
   clear: both;
   height: 27px;
+}
+.inbox .messages .message.ng-enter {
+  -webkit-animation-name: scale;
+  animation-name: scale;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
 }
 .inbox .messages .reservation {
   text-align: center;

@@ -16,16 +16,19 @@ html, body {
 }
 
 .alert-item {
-  &.ng-leave {
-    -webkit-transition: opacity .5s;
-    transition: opacity .5s;
-  }
-  &.ng-leave.ng-leave-active {
-    opacity:0;
-  }
-  &.ng-leave {
-    opacity:1;
-  }
+
+    &.ng-enter, &.ng-leave {
+        -webkit-animation-name: scale;
+        animation-name: scale;
+        -webkit-animation-duration: 0.25s;
+        animation-duration: 0.25s;
+    }
+
+    &.ng-leave {
+        -webkit-animation-direction: reverse;
+        animation-direction: reverse;
+    }
+
 }
 
 .alert-container {
@@ -37,7 +40,7 @@ html, body {
 }
 
 .content {
-  min-height: 100%; 
+  min-height: 100%;
   padding-top: 50px;
   padding-bottom: 102px;
   // padding-bottom: 82px;

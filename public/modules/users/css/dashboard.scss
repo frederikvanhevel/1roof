@@ -1,11 +1,12 @@
+
 .dashboard-tabs {
   margin-top: 150px;
   padding-bottom: 50px;
 }
 
 .dashboard-top-bar {
-  margin-bottom: 20px;
-  
+  // margin-bottom: 20px;
+
   ul {
     position: relative;
     left: -10px;
@@ -34,10 +35,20 @@
           left: 16px;
           right: 16px;
           height: 4px;
-          //background: #cacccd;
           background: #1ABB9C;
         }
       }
     }
   }
+}
+
+.dashboard-bg {
+    height: 250px;
+    margin-bottom: 50px;
+
+    h1 {
+        color: white;
+        padding-left: 90px;
+        padding-top: 90px;
+    }
 }

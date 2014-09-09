@@ -35,8 +35,10 @@ exports.sendMessageOrCreate = function(req, res) {
       return res.send(400);
     } else {
 
-      if (!room.user._id.equals(req.user._id))
-        req.io.sockets.in(room.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
+        if (!room.user._id.equals(req.user._id)) {
+            req.io.sockets.in(inbox._id).emit('newMessage', message);
+            req.io.sockets.in(room.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
+        }
 
       res.send(200);
     }
@@ -63,7 +65,7 @@ exports.sendMessage = function(req, res) {
       winston.error('Error saving message', message);
       return res.send(400);
     } else {
-      res.jsonp(inbox);
+      res.jsonp(message);
 
       var notifyUser = message.sender.equals(inbox.roomOwner._id) ? inbox.sender._id : inbox.roomOwner._id;
 

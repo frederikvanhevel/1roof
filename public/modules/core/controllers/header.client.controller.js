@@ -29,8 +29,8 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
                         $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
                 });
 
-                $rootScope.$on('inbox_read', function() {
-                    if ($scope.unreadMessageCount > 0) $scope.unreadMessageCount--;
+                $rootScope.$on('inbox_read', function(event, count) {
+                    if (count > 0) $scope.unreadMessageCount -= count;
                 });
             }
 

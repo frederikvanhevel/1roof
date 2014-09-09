@@ -1,4 +1,5 @@
 .inbox {
+    margin-top: 20px;
 
   .sidenav {
     max-height: 468px;
@@ -86,11 +87,19 @@
     position: relative;
 
     .message {
-      position: relative; 
-      margin-top: 3px;
-      margin-bottom: 25px;
-      clear: both;
-      height: 27px;
+        position: relative;
+        margin-top: 3px;
+        margin-bottom: 25px;
+        clear: both;
+        height: 27px;
+
+        &.ng-enter {
+            -webkit-animation-name: scale;
+            animation-name: scale;
+            -webkit-animation-duration: 0.25s;
+            animation-duration: 0.25s;
+        }
+
     }
 
     .reservation {
