@@ -85,7 +85,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.removeImage = function(index) {
             $scope.busy = true;
 
-            $http.post('/rooms/' + $scope.room._id + '/removepicture', {
+            $http.post('/api/rooms/' + $scope.room._id + '/removepicture', {
                 index: index
             }).success(function(response) {
                 $scope.room.pictures.splice(index, 1);
@@ -113,7 +113,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
         $scope.setTab = function(tab) {
             $scope.nav = tab;
-            $location.path('rooms/' + $scope.room._id + '/edit/' + tab);
+            $location.path('/rooms/' + $scope.room._id + '/edit/' + tab);
         };
 
         $scope.checkRoomCompleteness = function() {
@@ -166,7 +166,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         function uploadImage(image) {
             $scope.busy = true;
             $upload.upload({
-                url: 'rooms/' + $scope.room._id + '/upload',
+                url: '/api/rooms/' + $scope.room._id + '/upload',
                 data: {
                     index: $scope.room.pictures.length
                 },
@@ -186,7 +186,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         function onDropboxSelect(e, files) {
             $scope.busy = true;
             files.forEach(function(file) {
-                $http.post('/rooms/' + $scope.room._id + '/upload', {
+                $http.post('/api/rooms/' + $scope.room._id + '/upload', {
                     link: file.link,
                     index: $scope.room.pictures.length
                 }).success(function(data) {

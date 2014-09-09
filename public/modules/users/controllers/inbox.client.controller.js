@@ -53,7 +53,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
 
             $scope.busy = true;
 
-            $http.post('/inbox/' + $scope.inbox._id + '/sendmessage', {
+            $http.post('/api/inbox/' + $scope.inbox._id + '/sendmessage', {
                 message: $scope.newMessage
             }).success(function(response) {
                 $scope.busy = false;
@@ -71,7 +71,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
         $scope.showInbox = function(inboxId) {
             $scope.findOne(inboxId);
 
-            $location.path('dashboard/messages/' + inboxId);
+            $location.path('/dashboard/messages/' + inboxId);
         };
 
         $scope.getUserPicture = function(inbox) {

@@ -21,7 +21,7 @@ angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$sc
         };
 
         function saveSubscription(plan, card, couponCode) {
-            $http.post('/subscription/choose', {
+            $http.post('/api/subscription/choose', {
                 plan: plan,
                 card: card,
                 couponCode: couponCode

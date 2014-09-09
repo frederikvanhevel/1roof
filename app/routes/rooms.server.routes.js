@@ -7,37 +7,37 @@ module.exports = function(app) {
 	var cloudinary = require('../../app/util/uploader');
 
 	// Rooms Routes
-	app.route('/rooms')
+	app.route('/api/rooms')
 		.get(rooms.list)
 		.post(users.requiresLogin, rooms.createRoomCheck, rooms.create);
 
-	app.route('/myrooms')
+	app.route('/api/myrooms')
 		.get(users.requiresLogin, rooms.listOfUserRooms);
 
-	app.route('/roomcount')
+	app.route('/api/roomcount')
 		.get(users.requiresLogin, rooms.checkUserRoomsCount);
-	
+
 	// app.route('/l/:roomId/:city/:title')
 	// 	.get(rooms.read);
 
-	app.route('/rooms/:roomId')
+	app.route('/api/rooms/:roomId')
 		.get(rooms.read)
 		.put(users.requiresLogin, rooms.hasAuthorization, rooms.update)
 	    .delete(users.requiresLogin, rooms.hasAuthorization, rooms.delete);
 
-  app.route('/rooms/:roomId/message')
+  app.route('/api/rooms/:roomId/message')
     .post(users.requiresLogin, inbox.sendMessageOrCreate);
 
-   app.route('/rooms/:roomId/favorite')
+   app.route('/api/rooms/:roomId/favorite')
     .post(users.requiresLogin, rooms.toggleFavorite);
 
-	app.route('/rooms/:roomId/same')
+	app.route('/api/rooms/:roomId/same')
 		.get(rooms.listOfRoomsInSameLocation);
 
-	app.route('/rooms/:roomId/upload')
+	app.route('/api/rooms/:roomId/upload')
 		.post(users.requiresLogin, rooms.hasAuthorization, cloudinary.upload);
 
-	app.route('/rooms/:roomId/removepicture')
+	app.route('/api/rooms/:roomId/removepicture')
 		.post(users.requiresLogin, rooms.hasAuthorization, rooms.removePicture);
 
 	// Finish by binding the Room middleware

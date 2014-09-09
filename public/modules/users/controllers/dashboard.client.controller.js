@@ -21,11 +21,11 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
 
         $scope.setTab = function(tab) {
             $scope.nav = tab;
-            $location.path('dashboard/' + tab);
+            $location.path('/dashboard/' + tab);
         };
 
         $scope.goToRoom = function(roomId) {
-            $location.path('rooms/' + roomId);
+            $location.path('/rooms/' + roomId);
         };
 
         $scope.visibilityText = function(item) {

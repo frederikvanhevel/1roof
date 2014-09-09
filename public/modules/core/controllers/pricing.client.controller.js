@@ -49,7 +49,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
         }
 
         function saveSubscription(plan, couponCode) {
-            $http.post('/subscription/choose', {
+            $http.post('/api/subscription/choose', {
                 plan: plan,
                 couponCode: couponCode
             }).success(function(response) {

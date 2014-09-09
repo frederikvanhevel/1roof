@@ -55,7 +55,7 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
 
             // Redirect after save
             room.$save(function(response) {
-                $location.path('rooms/' + response._id + '/edit/');
+                $location.path('/rooms/' + response._id + '/edit/');
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
             });
@@ -94,7 +94,7 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         }
 
         function checkUserRoomCount() {
-            $http.get('/roomcount').success(function() {
+            $http.get('/api/roomcount').success(function() {
                 $scope.allowed = true;
             }).error(function(response) {
                 $state.transitionTo('pricing', {

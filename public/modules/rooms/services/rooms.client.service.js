@@ -3,7 +3,7 @@
 //Rooms service used to communicate Rooms REST endpoints
 angular.module('rooms').factory('Rooms', ['$resource',
     function($resource) {
-        return $resource('rooms/:roomId', {
+        return $resource('/api/rooms/:roomId', {
             roomId: '@_id'
         }, {
             update: {
@@ -11,12 +11,12 @@ angular.module('rooms').factory('Rooms', ['$resource',
             },
             getMyRooms: {
                 method: 'GET',
-                url: '/myrooms',
+                url: '/api/myrooms',
                 isArray: true
             },
             getRoomsOfSameLocation: {
                 method: 'GET',
-                url: 'rooms/:roomId/same',
+                url: '/api/rooms/:roomId/same',
                 isArray: true
             }
         });

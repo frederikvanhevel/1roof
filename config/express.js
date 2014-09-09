@@ -23,7 +23,9 @@ var express = require('express'),
     scheduler = require('./scheduler'),
     // added for socketio
     http = require('http'),
-    seo = require('mean-seo');
+    seo = require('mean-seo'),
+    core = require('../app/controllers/core');
+
 
 module.exports = function(db) {
     // Initialize express app
@@ -140,6 +142,9 @@ module.exports = function(db) {
     config.getGlobbedFiles('./app/routes/**/*.js').forEach(function(routePath) {
         require(path.resolve(routePath))(app);
     });
+
+    // Catch-all route for pushstate
+    app.route('*').get(core.index);
 
     // Assume 'not found' in the error msgs is a 404. this is somewhat silly, but valid, you can do whatever you like, set properties, use instanceof etc.
     app.use(function(err, req, res, next) {

@@ -6,10 +6,10 @@ module.exports = function(app) {
   var statistics = require('../../app/controllers/statistics');
 
   // Statistics Routes
-  app.route('/statistics/:roomId/aggregate')
+  app.route('/api/statistics/:roomId/aggregate')
     .post(statistics.aggregate);
 
-  app.route('/statistics/:roomId/lastmonth')
+  app.route('/api/statistics/:roomId/lastmonth')
     .get(users.requiresLogin, users.hasAnalytics, statistics.lastMonth);
 
   // Finish by binding the Inbox middleware

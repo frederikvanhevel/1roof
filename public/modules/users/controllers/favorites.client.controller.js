@@ -8,7 +8,7 @@ angular.module('users').controller('FavoritesController', ['$scope', '$http', '$
         $scope.busy = false;
 
         $scope.init = function() {
-            $http.get('/users/' + $stateParams.userId).success(function(response) {
+            $http.get('/api/users/' + $stateParams.userId).success(function(response) {
                 $scope.user = response;
 
                 Meta.setTitle('Wishlist van ' + $scope.user.displayName);
@@ -19,7 +19,7 @@ angular.module('users').controller('FavoritesController', ['$scope', '$http', '$
 
 
         function getUserFavorites() {
-            $http.get('/users/' + $scope.user._id + '/favorites').success(function(response) {
+            $http.get('/api/users/' + $scope.user._id + '/favorites').success(function(response) {
                 $scope.favorites = response;
                 $scope.busy = false;
             }).error(function(response) {

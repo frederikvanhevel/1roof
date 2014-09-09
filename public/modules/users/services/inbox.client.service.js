@@ -2,7 +2,7 @@
 
 angular.module('users').factory('Inbox', ['$resource',
     function($resource) {
-        return $resource('inbox/:inboxId', {
+        return $resource('/api/inbox/:inboxId', {
             inboxId: '@_id'
         }, {
             update: {
@@ -10,7 +10,7 @@ angular.module('users').factory('Inbox', ['$resource',
             },
             sendMessage: {
                 method: 'POST',
-                url: 'inbox/:inboxId/sendmessage'
+                url: '/api/inbox/:inboxId/sendmessage'
             }
         });
     }

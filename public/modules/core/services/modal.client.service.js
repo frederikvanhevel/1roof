@@ -6,7 +6,7 @@ angular.module('core').service('Modal', ['$modal', '$location',
 
         this.signup = function() {
             var options = {
-                templateUrl: 'modules/users/views/modals/signup-modal.client.view.html',
+                templateUrl: '/modules/users/views/modals/signup-modal.client.view.html',
                 controller: 'AuthenticationController',
                 windowClass: 'small'
             };
@@ -16,7 +16,7 @@ angular.module('core').service('Modal', ['$modal', '$location',
 
         this.signin = function() {
             var options = {
-                templateUrl: 'modules/users/views/modals/signin-modal.client.view.html',
+                templateUrl: '/modules/users/views/modals/signin-modal.client.view.html',
                 controller: 'AuthenticationController',
                 windowClass: 'small'
             };
@@ -26,7 +26,7 @@ angular.module('core').service('Modal', ['$modal', '$location',
 
         this.contact = function(info) {
             var options = {
-                templateUrl: 'modules/rooms/views/modals/contact-modal.client.view.html',
+                templateUrl: '/modules/rooms/views/modals/contact-modal.client.view.html',
                 // controller: 'RoomsController',
                 resolve: {
                     contactInfo: function() {
@@ -40,7 +40,7 @@ angular.module('core').service('Modal', ['$modal', '$location',
 
         this.reservation = function(info) {
             var options = {
-                templateUrl: 'modules/rooms/views/modals/reservation-modal.client.view.html',
+                templateUrl: '/modules/rooms/views/modals/reservation-modal.client.view.html',
                 controller: 'ModalController',
                 resolve: {
                     modalContent: function() {
@@ -54,7 +54,7 @@ angular.module('core').service('Modal', ['$modal', '$location',
 
         this.changeAddress = function(addressDetails) {
             var options = {
-                templateUrl: 'modules/rooms/views/modals/change-address-modal.client.view.html',
+                templateUrl: '/modules/rooms/views/modals/change-address-modal.client.view.html',
                 controller: 'ManageRoomController',
                 resolve: {
                     addressDetails: function() {
@@ -68,7 +68,7 @@ angular.module('core').service('Modal', ['$modal', '$location',
 
         this.confirm = function(type) {
             var options = {
-                templateUrl: 'modules/rooms/views/modals/confirm-modal.client.view.html',
+                templateUrl: '/modules/rooms/views/modals/confirm-modal.client.view.html',
                 windowClass: 'small',
                 controller: 'ModalController',
                 resolve: {
@@ -84,7 +84,7 @@ angular.module('core').service('Modal', ['$modal', '$location',
 
         this.payment = function(paymentOptions) {
             var options = {
-                templateUrl: 'modules/core/views/modals/payment-modal.client.view.html',
+                templateUrl: '/modules/core/views/modals/payment-modal.client.view.html',
                 controller: 'ModalPaymentController',
                 resolve: {
                     options: function() {
@@ -100,7 +100,7 @@ angular.module('core').service('Modal', ['$modal', '$location',
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: 'modules/core/views/modal.client.view.html'
+            templateUrl: '/modules/core/views/modal.client.view.html'
         };
 
         var modalOptions = {

@@ -21,7 +21,7 @@ angular.module('core').service('Statistics', ['$http', 'localStorageService',
         };
 
         function postStatistic(roomId, type) {
-            $http.post('/statistics/' + roomId + '/aggregate', {
+            $http.post('/api/statistics/' + roomId + '/aggregate', {
                 type: type
             });
         }

@@ -1,7 +1,7 @@
 <div class="top-header" data-ng-controller="HeaderController" ng-init="init()">
 
 	<div class="navbar-header">
-			<a href="/#!/" class="navbar-brand"><i class="icon-rocket"></i> Apollo</a>
+			<a href="/" class="navbar-brand"><i class="icon-rocket"></i> Apollo</a>
 			<a class="btn responsive-menu pull-right collapsed navbar-toggle" data-ng-click="toggleCollapsibleMenu()" data-toggle="collapse" data-target=".navbar-collapse"><i class="icon-menu-1"></i></a>
 	</div>
 
@@ -16,11 +16,11 @@
 	    </div>
     </form>
 
-		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+<!-- 		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
 			<li data-ng-repeat="item in menu.items" data-ng-if="item.shouldRender(authentication.user);" ui-route="{{item.uiRoute}}" ng-class="{active: $uiRoute}">
-				<a href="/#!/{{item.link}}">{{item.title}}</a>
+				<a href="/{{item.link}}">{{item.title}}</a>
 			</li>
-		</ul>
+		</ul> -->
 
 		<div class="navbar-form navbar-right">
 			<div class="form-group">
@@ -47,25 +47,25 @@
         </a>
 				<ul class="dropdown-menu">
 					<li>
-						<a href="/#!/dashboard/rooms">Mijn advertenties</a>
+						<a href="/dashboard/rooms">Mijn advertenties</a>
 					</li>
 					<li>
-						<a href="/#!/dashboard/messages">Berichten</a>
+						<a href="/dashboard/messages">Berichten</a>
 					</li>
 					<li>
-						<a href="/#!/dashboard/profile">Profiel aanpassen</a>
+						<a href="/dashboard/profile">Profiel aanpassen</a>
 					</li>
 					<li>
-						<a href="/#!/dashboard/account">Account</a>
+						<a href="/dashboard/account">Account</a>
 					</li>
 					<li class="divider"></li>
 					<li>
-						<a href="/auth/signout">Uitloggen</a>
+						<a href="/auth/signout" target="_self">Uitloggen</a>
 					</li>
 				</ul>
 			</li>
 
-			<li ng-init="getUnreadMessageCount()"><a href="/#!/dashboard/messages" class="header-messages-icon">
+			<li ng-init="getUnreadMessageCount()"><a href="/dashboard/messages" class="header-messages-icon">
 				<span ng-if="unreadMessageCount != 0" class="label label-danger">{{unreadMessageCount}}</span> <i class="icon-mail-1"></i></a>
 				<!-- <div class="messages-popover" ng-show="messagesPopoverVisible">
 					<ul>
@@ -78,7 +78,7 @@
 				</div> -->
 			</li>
 
-			<li><a href="/#!/users/{{authentication.user._id}}/favorites"><i class="icon-heart-empty-1"></i> Mijn wishlist</a></li>
+			<li><a href="/users/{{authentication.user._id}}/favorites"><i class="icon-heart-empty-1"></i> Mijn wishlist</a></li>
 
 		</ul>
 

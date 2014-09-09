@@ -8,11 +8,11 @@ angular.module('search')
             $stateProvider.
             state('search', {
                 url: '/search/:address',
-                templateUrl: 'modules/search/views/search.client.view.html'
+                templateUrl: '/modules/search/views/search.client.view.html'
             })
                 .state('search.overlay', {
                     url: '/rooms/:roomId/:isOverlay',
-                    templateUrl: 'modules/rooms/views/view-room.client.view.html'
+                    templateUrl: '/modules/rooms/views/view-room.client.view.html'
                 });
 
             $urlRouterProvider.deferIntercept();

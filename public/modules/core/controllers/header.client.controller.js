@@ -63,7 +63,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             if (Authentication.user) {
                 $http({
                     method: 'GET',
-                    url: '/users/unreadmessages'
+                    url: '/api/users/unreadmessages'
                 }).then(function(result) {
                     $scope.unreadMessageCount = result.data;
                 });
@@ -71,7 +71,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         };
 
         function changeLocation(address, lat, lng) {
-            $location.path('search/' + address)
+            $location.path('/search/' + address)
                 .search('lat', lat)
                 .search('lng', lng);
         }

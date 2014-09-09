@@ -5,7 +5,7 @@ module.exports = function(app) {
   var payments = require('../../app/controllers/payments');
 
   // Payments Routes
-  app.route('/subscription/choose')
+  app.route('/api/subscription/choose')
     .post(users.requiresLogin, payments.choosePlan);
 
 };
