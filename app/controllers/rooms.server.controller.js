@@ -105,14 +105,14 @@ exports.delete = function(req, res) {
 exports.list = function(req, res) {
 	var params = req.query;
 	var query = { visible: true };
-	
+
 	if (params.location) {
 		query.loc = {
 			$near: {
 				$geometry: {
 					type: 'Point',
 					coordinates: [parseFloat(params.location[0]), parseFloat(params.location[1])]
-				}, $maxDistance: +params.proximity  
+				}, $maxDistance: +params.proximity
 			}
 		};
 	}
@@ -208,7 +208,14 @@ exports.roomByID = function(req, res, next, id) {
 			winston.error('Error getting room by id', id);
 			return next(err);
 		}
-		if (!room) return next(new Error('Failed to load Room ' + id));
+		if (!room) {
+            // res.status(404).render('404', {
+            //     url: req.originalUrl,
+            //     error: 'Not Found'
+            // });
+            return res.send(404);
+            // return next(new Error('Failed to load Room ' + id));
+        }
 		req.room = room;
 		next();
 	});

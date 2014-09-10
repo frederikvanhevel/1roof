@@ -23,7 +23,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
                 $scope.isCollapsed = true;
             });
             // re-initialize sockets on log in
-            $rootScope.on('logged_in', function() {
+            $rootScope.$on('logged_in', function() {
                 initializeSocket();
             });
 
