@@ -10,7 +10,7 @@
   "scripts": {
     "start": "grunt",
     "test": "grunt test",
-    "postinstall": "bower install --config.interactive=false --force-latest"
+    "postinstall": "bower install --config.interactive=false --force-latest && grunt build"
   },
   "dependencies": {
     "express": "~4.1.0",
