@@ -3,12 +3,10 @@
 angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state',
     function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state) {
         $scope.authentication = Authentication;
-        $scope.isCollapsed = false;
-        $scope.menu = Menus.getMenu('topbar');
+        $scope.isCollapsed = true;
         $scope.search = '';
         $scope.searchDetails = {};
         $scope.unreadMessageCount = 0;
-        $scope.messagesPopoverVisible = false;
 
         $scope.init = function() {
 
@@ -19,6 +17,10 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             // watch for language changes
             $rootScope.$watch('language', function(newVal, oldVal) {
                 if (newVal !== oldVal) setLanguage(newVal, true);
+            });
+            // always close the menu after navigating
+            $rootScope.$on('$locationChangeSuccess', function() {
+                $scope.isCollapsed = true;
             });
 
             // subscribe to new messages

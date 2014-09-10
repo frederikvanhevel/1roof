@@ -99,7 +99,7 @@
                         </div>
                     </div>
                     <div class="room-header row">
-                        <div class="room-properties col-xs-5">
+                        <div class="room-properties col-xs-12 col-sm-5">
                             <ul>
                                 <li>
                                     <i class="glyphicon glyphicon-calendar"></i>
@@ -110,7 +110,7 @@
                                 <li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="room.updated"></span></li>
                             </ul>
                         </div>
-                        <div class="room-extras col-xs-7">
+                        <div class="room-extras col-xs-12 col-sm-7">
                             <ul class="amenities">
                                 <li ng-class="isAmenityChecked(room, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name}}</li>
                             </ul>

@@ -7406,6 +7406,11 @@ footer .footer-bottom .language-select {
   margin-top: -7px;
   background-color: #42505F;
 }
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  footer .footer-bottom .language-select {
+    margin-top: 15px;
+  }
+}
 footer .footer-bottom .social-buttons li {
   display: inline-block;
 }
