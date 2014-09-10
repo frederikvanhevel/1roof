@@ -7628,6 +7628,9 @@ ROOMS MODULE
   float: left;
   display: inline;
   width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .view-room ul.amenities li:before {
   font-family: 'fontello';
