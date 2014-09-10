@@ -20,7 +20,6 @@ var ApplicationConfiguration = (function() {
         'angularMoment',
         'gettext',
         'btford.socket-io',
-        'once',
         'angularPayments'
     ];
 
