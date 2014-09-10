@@ -7624,6 +7624,9 @@ ROOMS MODULE
 .view-room .room-costs.collapsed tr:not(.total) {
   display: none;
 }
+.view-room .room-properties ul {
+  padding-left: 0;
+}
 .view-room ul.amenities li {
   float: left;
   display: inline;

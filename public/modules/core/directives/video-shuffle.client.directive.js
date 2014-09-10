@@ -1,12 +1,19 @@
 'use strict';
 
-angular.module('core').directive('videoShuffle', ['$window',
-    function($window) {
+angular.module('core').directive('videoShuffle', ['$window', 'Device',
+    function($window, Device) {
         return {
             template: '<video class="background-video" id="backgroundVideo" autoplay preload type="" style="opacity:0;" src=""></video>' +
                 '<video class="background-video" id="stagingVideo" autoplay preload type="" style="opacity:0;" src=""></video>',
             restrict: 'A',
             link: function postLink(scope, element, attrs) {
+
+                var FALLBACK_VIDEO_URL = '/modules/core/img/video/fallback_poster.jpg';
+
+                if (Device.isMobile()) {
+                    element.css({ 'background-image': 'url(' + FALLBACK_VIDEO_URL + ')' });
+                    return;
+                }
 
                 var videoTimer = null;
 
