@@ -8342,6 +8342,9 @@ USERS MODULE
   float: left;
   border: 2px solid white;
 }
+.my-favorites .favorite {
+  margin-bottom: 20px;
+}
 .my-favorites .favorite .bordered {
   padding: 20px;
 }
