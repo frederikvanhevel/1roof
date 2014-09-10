@@ -47,7 +47,7 @@ var UserSchema = new Schema({
 	},
 	email: {
 		type: String,
-		unique: 'testing error message',
+		unique: 'Email already used',
 		required: 'Please fill in an email',
 		trim: true,
 		default: '',
@@ -55,7 +55,7 @@ var UserSchema = new Schema({
 		match: [/.+\@.+\..+/, 'Please fill a valid email address']
 	},
 	username: {
-		type: String,	
+		type: String,
 		trim: true
 	},
 	password: {

@@ -1,7 +1,13 @@
 <section data-ng-controller="FavoritesController" ng-init="init()" class="my-favorites">
     <div class="favorites-header blue-bg">
         <div class="container">
-            <div class="col-sm-12">
+            <div class="col-sm-5">
+                <div class="profile-picture" user-picture user-model="user"></div>
+                <div class="sender-name">
+                    <h3>{{ user.firstName }}'s wishlist</h3>
+                </div>
+            </div>
+            <div class="col-sm-7">
                 <div class="pull-right">
                     <h3>Deel deze wishlist</h3>
                     <ul class="share-buttons">
@@ -10,10 +16,6 @@
                         <li><a href="#" share-button="twitter"><i class="icon-s-twitter"></i></a></li>
                         <li><a href="#" share-button="pinterest"><i class="icon-s-pinterest"></i></a></li>
                     </ul>
-                </div>
-                <div class="profile-picture" user-picture user-model="user"></div>
-                <div class="sender-name">
-                    <h3>{{ user.displayName }}'s wishlist</h3>
                 </div>
             </div>
         </div>

@@ -22,19 +22,12 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             $rootScope.$on('$locationChangeSuccess', function() {
                 $scope.isCollapsed = true;
             });
+            // re-initialize sockets on log in
+            $rootScope.on('logged_in', function() {
+                initializeSocket();
+            });
 
-            // subscribe to new messages
-            if (Authentication.user) {
-                Socket.emit('join', Authentication.user._id);
-                Socket.on('newMessageCount', function(response) {
-                    if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox)
-                        $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
-                });
-
-                $rootScope.$on('inbox_read', function(event, count) {
-                    if (count > 0) $scope.unreadMessageCount -= count;
-                });
-            }
+            initializeSocket();
 
             Analytics.initialize();
         };
@@ -72,6 +65,21 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
                 });
             }
         };
+
+        function initializeSocket() {
+            // subscribe to new messages
+            if (Authentication.user) {
+                Socket.emit('join', Authentication.user._id);
+                Socket.on('newMessageCount', function(response) {
+                    if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox)
+                        $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
+                });
+
+                $rootScope.$on('inbox_read', function(event, count) {
+                    if (count > 0) $scope.unreadMessageCount -= count;
+                });
+            }
+        }
 
         function changeLocation(address, lat, lng) {
             $location.path('/search/' + address)

@@ -175,6 +175,8 @@ var RoomSchema = new Schema({
 });
 
 RoomSchema.index({ loc: '2dsphere' });
+RoomSchema.index({ 'price.total': 1, 'classification': 1 });
+// RoomSchema.index({ 'price.total': 1, 'classification': 1, 'loc': '2dsphere' });
 
 /**
  * Hook a pre save method to update the total price and set updated date
