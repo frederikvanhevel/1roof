@@ -1,27 +1,23 @@
 <section data-ng-controller="FooterController">
-  <div ng-hide="hidden" class="footer-bottom">
-    <div class="container inner">
-      <p class="pull-left" translate>© 2014 APOLLO. Alle rechten voorbehouden.</p>
-
-      <ul class="social-buttons pull-right">
-        <li><a href="#"><i class="icon-s-facebook"></i></a></li>
-        <li><a href="#"><i class="icon-s-gplus"></i></a></li>
-        <li><a href="#"><i class="icon-s-twitter"></i></a></li>
-      </ul>
-
-      <ul class="footer-menu pull-right">
-        <li><a href="/">Home</a></li>
-        <li><a href="mailto:info@apollo.be">Contact</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
-
-      <div class="select-style language-select footer-menu pull-right">
-        <select ng-model="$root.language">
-          <option value="nl">Nederlands</option>
-          <option value="en">English</option>
-        </select>
-      </div>
-
+    <div ng-hide="hidden" class="footer-bottom">
+        <div class="container inner">
+            <p class="pull-left" translate>© 2014 APOLLO. Alle rechten voorbehouden.</p>
+            <ul class="social-buttons pull-right">
+                <li><a href="#"><i class="icon-s-facebook"></i></a></li>
+                <li><a href="#"><i class="icon-s-gplus"></i></a></li>
+                <li><a href="#"><i class="icon-s-twitter"></i></a></li>
+            </ul>
+            <ul class="footer-menu pull-right">
+                <li><a href="/">Home</a></li>
+                <li><a href="mailto:info@apollo.be">Contact</a></li>
+                <li><a href="/about">About</a></li>
+            </ul>
+            <div class="select-style language-select footer-menu pull-right">
+                <select ng-model="$root.language">
+                    <option value="nl">Nederlands</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
     </div>
-  </div>
 </section>

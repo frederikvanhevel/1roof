@@ -1,54 +1,41 @@
 <section data-ng-controller="FavoritesController" ng-init="init()" class="my-favorites">
-
-  <div class="favorites-header blue-bg">
-    <div class="container">
-
-      <div class="col-sm-12">
-        <div class="pull-right">
-            <h3>Deel deze wishlist</h3>
-            <ul class="share-buttons">
-                <li><a href="#" share-button="facebook"><i class="icon-s-facebook"></i></a></li>
-                <li><a href="#" share-button="google"><i class="icon-s-gplus"></i></a></li>
-                <li><a href="#" share-button="twitter"><i class="icon-s-twitter"></i></a></li>
-                <li><a href="#" share-button="pinterest"><i class="icon-s-pinterest"></i></a></li>
-            </ul>
-        </div>
-        <div class="profile-picture" user-picture user-model="user"></div>
-        <div class="sender-name">
-          <h3>{{ user.displayName }}'s wishlist</h3>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-
-    <div class="row">
-
-      <div class="col-sm-4 favorite" ng-repeat="room in favorites">
-        <a ng-href="{{room.url}}">
-          <div class="image" ng-class="{ 'empty': room.pictures.length == 0 }" back-img img-provider="{{room.pictures[0].provider}}" img-link="{{room.pictures[0].link}}">
-            <i class="icon-camera-1"></i>
-          </div>
-
-          <div class="bordered no-top-border">
-
-            <div class="info">
-              <h4>{{room.info.title}}</h4>
-              <p>{{room.location.street}} <small>{{room.location.city}}</small></p>
+    <div class="favorites-header blue-bg">
+        <div class="container">
+            <div class="col-sm-12">
+                <div class="pull-right">
+                    <h3>Deel deze wishlist</h3>
+                    <ul class="share-buttons">
+                        <li><a href="#" share-button="facebook"><i class="icon-s-facebook"></i></a></li>
+                        <li><a href="#" share-button="google"><i class="icon-s-gplus"></i></a></li>
+                        <li><a href="#" share-button="twitter"><i class="icon-s-twitter"></i></a></li>
+                        <li><a href="#" share-button="pinterest"><i class="icon-s-pinterest"></i></a></li>
+                    </ul>
+                </div>
+                <div class="profile-picture" user-picture user-model="user"></div>
+                <div class="sender-name">
+                    <h3>{{ user.displayName }}'s wishlist</h3>
+                </div>
             </div>
-
-          </div>
-        </a>
-
-      </div>
-
-      <div ng-if="favorites.length == 0" class="col-sm-12">
-        <h2>Nog geen advertenties in deze wishlist :)</h2>
-      </div>
-
+        </div>
     </div>
-
-  </div>
-
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 favorite" ng-repeat="room in favorites">
+                <a ng-href="{{room.url}}">
+                    <div class="image" ng-class="{ 'empty': room.pictures.length == 0 }" back-img img-provider="{{room.pictures[0].provider}}" img-link="{{room.pictures[0].link}}">
+                        <i class="icon-camera-1"></i>
+                    </div>
+                    <div class="bordered no-top-border">
+                        <div class="info">
+                            <h4>{{room.info.title}}</h4>
+                            <p>{{room.location.street}} <small>{{room.location.city}}</small></p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div ng-if="favorites.length == 0" class="col-sm-12">
+                <h2>Nog geen advertenties in deze wishlist :)</h2>
+            </div>
+        </div>
+    </div>
 </section>

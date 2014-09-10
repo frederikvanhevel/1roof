@@ -1,115 +1,108 @@
 <section data-ng-controller="HomeController" class="home-view">
-    
-  <div id="hero">
-    <div class="video-container" video-shuffle></div>
-    <div class="raster">
-      <div class="hero-content col-sm-offset-2 col-sm-8">
-        <h1 translate>Vind je ideale woonst.</h1>
-        <form class="form-inline" role="form" ng-submit="goToSearch()">
-          <div class="input-group input-group-lg col-sm-6">
-            <input ng-autocomplete details="searchDetails" ng-model="search" type="text" class="center-block form-control input-lg" placeholder="Waar wil je naartoe?">
-            <span class="input-group-btn"><button class="btn" type="submit">Ga</button></span>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
 
-
-  <section id="who-we-are">
-    <div class="container inner-top inner-bottom-sm">
-      
-      <div class="row">
-        <div class="col-md-8 col-sm-9 center-block text-center" animate-element>
-          <header>
-            <h1>Snel. Simpel. Krachtig.</h1>
-            <p>Ontdek prachtige accomodaties overal in België</p>
-          </header>
+    <div id="hero">
+        <div class="video-container" video-shuffle></div>
+        <div class="raster">
+            <div class="hero-content col-sm-offset-2 col-sm-8">
+                <h1 translate>Vind je ideale woonst.</h1>
+                <form class="form-inline" role="form" ng-submit="goToSearch()">
+                    <div class="input-group input-group-lg col-sm-6">
+                        <input ng-autocomplete details="searchDetails" ng-model="search" type="text" class="center-block form-control input-lg" placeholder="Waar wil je naartoe?">
+                        <span class="input-group-btn"><button class="btn" type="submit">Ga</button></span>
+                    </div>
+                </form>
+            </div>
         </div>
-      </div>
-            
-      <div class="row inner-top-sm text-center">
-                
-        <div class="col-sm-4 inner-bottom-xs" animate-element>
-          <div class="icon">
-            <i class="icon-paper-plane icn lg"></i>
-          </div>
-          <h2>Chat met je huisbaas</h2>
-          <p class="text-small">Praat en stel vragen met de huisbazen alsof ze naast jou zaten. Krijg vliegensvlug een antwoord.</p>
-        </div>
-        
-        <div class="col-sm-4 inner-bottom-xs" animate-element>
-          <div class="icon">
-            <i class="icon-calendar-1 icn lg"></i>
-          </div>
-          <h2>Maak een afspraak</h2>
-          <p class="text-small">Met amper twee klikken kan je een afspraak maken met een huisbaas. Geen tijd te verliezen!</p>
-        </div>
-        
-        <div class="col-sm-4 inner-bottom-xs" animate-element>
-          <div class="icon">
-            <i class="icon-lamp icn lg"></i>
-          </div>
-          <h2>Krijg meldingen</h2>
-          <p class="text-small">Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een email sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet.</p>
-        </div>
-        
-      </div>    
     </div>
-  </section>
+    <section id="who-we-are">
+        <div class="container inner-top inner-bottom-sm">
 
-  <section id="testimonials" class="light-bg img-bg-softer" style="background-image: url(/modules/core/img/pattern-background01.jpg);">
-    <div class="container inner">
-      
-      <div class="row">
-        <div class="col-md-8 col-sm-9 center-block text-center" animate-element>
-          <header>
-            <h1>Ontstaan uit de site <a href="http://www.kotzoeker.be">kotzoeker.be</a> en dus reeds vertrouwd door meer dan 1000 huisbazen.</h1>
-          </header>
+            <div class="row">
+                <div class="col-md-8 col-sm-9 center-block text-center" animate-element>
+                    <header>
+                        <h1>Snel. Simpel. Krachtig.</h1>
+                        <p>Ontdek prachtige accomodaties overal in België</p>
+                    </header>
+                </div>
+            </div>
+
+            <div class="row inner-top-sm text-center">
+
+                <div class="col-sm-4 inner-bottom-xs" animate-element>
+                    <div class="icon">
+                        <i class="icon-paper-plane icn lg"></i>
+                    </div>
+                    <h2>Chat met je huisbaas</h2>
+                    <p class="text-small">Praat en stel vragen met de huisbazen alsof ze naast jou zaten. Krijg vliegensvlug een antwoord.</p>
+                </div>
+
+                <div class="col-sm-4 inner-bottom-xs" animate-element>
+                    <div class="icon">
+                        <i class="icon-calendar-1 icn lg"></i>
+                    </div>
+                    <h2>Maak een afspraak</h2>
+                    <p class="text-small">Met amper twee klikken kan je een afspraak maken met een huisbaas. Geen tijd te verliezen!</p>
+                </div>
+
+                <div class="col-sm-4 inner-bottom-xs" animate-element>
+                    <div class="icon">
+                        <i class="icon-lamp icn lg"></i>
+                    </div>
+                    <h2>Krijg meldingen</h2>
+                    <p class="text-small">Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een email sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet.</p>
+                </div>
+
+            </div>
         </div>
-      </div>
-      
-    </div>
-  </section>
+    </section>
+    <section id="testimonials" class="light-bg img-bg-softer" style="background-image: url(/modules/core/img/pattern-background01.jpg);">
+        <div class="container inner">
 
-  <section id="share" class="light-bg">
-    
-    <div class="col-sm-4 reset-padding" animate-element>
-      <a href="#" class="btn-share-md">
-        <p class="name">Facebook</p>
-        <i class="icon-s-facebook"></i>
-        <p class="counter"></p>
-      </a>
-    </div>
-    
-    <div class="col-sm-4 reset-padding" animate-element>
-      <a href="#" class="btn-share-md">
-        <p class="name">Twitter</p>
-        <i class="icon-s-twitter"></i>
-        <p class="counter"></p>
-      </a>
-    </div>
-    
-    <div class="col-sm-4 reset-padding" animate-element>
-      <a href="#" class="btn-share-md">
-        <p class="name">Google +</p>
-        <i class="icon-s-gplus"></i>
-        <p class="counter"></p>
-      </a>
-    </div>
+            <div class="row">
+                <div class="col-md-8 col-sm-9 center-block text-center" animate-element>
+                    <header>
+                        <h1>Ontstaan uit de site <a href="http://www.kotzoeker.be">kotzoeker.be</a> en dus reeds vertrouwd door meer dan 1000 huisbazen.</h1>
+                    </header>
+                </div>
+            </div>
 
-    <div class="clearfix"></div>
-    
-  </section>
-
-  <section id="get-started" class="tint-bg">
-    <div class="container inner-sm">
-      <div class="row">
-        <div class="col-sm-11 center-block text-center" animate-element>
-          <h1 class="single-block"><span translate>Hulp nodig?</span> <a href="mailto:help@apollo.be" class="btn btn-white btn-lg" translate>Contacteer ons!</a></h1>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
+    <section id="share" class="light-bg">
 
+        <div class="col-sm-4 reset-padding" animate-element>
+            <a href="#" class="btn-share-md">
+                <p class="name">Facebook</p>
+                <i class="icon-s-facebook"></i>
+                <p class="counter"></p>
+            </a>
+        </div>
+
+        <div class="col-sm-4 reset-padding" animate-element>
+            <a href="#" class="btn-share-md">
+                <p class="name">Twitter</p>
+                <i class="icon-s-twitter"></i>
+                <p class="counter"></p>
+            </a>
+        </div>
+
+        <div class="col-sm-4 reset-padding" animate-element>
+            <a href="#" class="btn-share-md">
+                <p class="name">Google +</p>
+                <i class="icon-s-gplus"></i>
+                <p class="counter"></p>
+            </a>
+        </div>
+        <div class="clearfix"></div>
+
+    </section>
+    <section id="get-started" class="tint-bg">
+        <div class="container inner-sm">
+            <div class="row">
+                <div class="col-sm-11 center-block text-center" animate-element>
+                    <h1 class="single-block"><span translate>Hulp nodig?</span> <a href="mailto:help@apollo.be" class="btn btn-white btn-lg" translate>Contacteer ons!</a></h1>
+                </div>
+            </div>
+        </div>
+    </section>
 </section>

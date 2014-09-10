@@ -1,86 +1,71 @@
 <div class="top-header" data-ng-controller="HeaderController" ng-init="init()">
-
-	<div class="navbar-header">
-			<a href="/" class="navbar-brand"><i class="icon-rocket"></i> Apollo</a>
-			<a class="btn responsive-menu pull-right collapsed navbar-toggle" data-ng-click="toggleCollapsibleMenu()" data-toggle="collapse" data-target=".navbar-collapse"><i class="icon-menu-1"></i></a>
-	</div>
-
-	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-
-		<form ng-submit="goToSearch()" class="navbar-form navbar-left top-search" role="search">
-      <div class="input-group input-group-sm">
-	      <input  ng-autocomplete details="searchDetails" ng-model="search" class="form-control" placeholder="Waar wil je naartoe?" name="srch-term" type="text">
-	      <div class="input-group-btn">
-	        <button class="btn btn-blue" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-	      </div>
-	    </div>
-    </form>
-
-<!-- 		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-			<li data-ng-repeat="item in menu.items" data-ng-if="item.shouldRender(authentication.user);" ui-route="{{item.uiRoute}}" ng-class="{active: $uiRoute}">
-				<a href="/{{item.link}}">{{item.title}}</a>
-			</li>
-		</ul> -->
-
-		<div class="navbar-form navbar-right">
-			<div class="form-group">
-        <a class="btn btn-orange advertise-button" href="/rooms/new">Adverteer je ruimte</a>
-      </div>
-		</div>
-
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-			<li ui-route="/signup" ng-class="{active: $uiRoute}">
-				<a href="" ng-click="openSignupModal()">Registreer</a>
-			</li>
-			<li class="divider-vertical"></li>
-			<li ui-route="/signin" ng-class="{active: $uiRoute}">
-				<a href="" ng-click="openSigninModal()">Inloggen</a>
-			</li>
-		</ul>
-
-		<ul class="nav navbar-nav navbar-right" data-ng-if="authentication.user">
-
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle profile" data-toggle="dropdown">
-						<div class="profile-picture" user-picture user-model="authentication.user"></div>
-            <span class="profile-name">{{authentication.user.displayName}} <b class="caret"></b></span>
-        </a>
-				<ul class="dropdown-menu">
-					<li>
-						<a href="/dashboard/rooms">Mijn advertenties</a>
-					</li>
-					<li>
-						<a href="/dashboard/messages">Berichten</a>
-					</li>
-					<li>
-						<a href="/dashboard/profile">Profiel aanpassen</a>
-					</li>
-					<li>
-						<a href="/dashboard/account">Account</a>
-					</li>
-					<li class="divider"></li>
-					<li>
-						<a href="/auth/signout" target="_self">Uitloggen</a>
-					</li>
-				</ul>
-			</li>
-
-			<li ng-init="getUnreadMessageCount()"><a href="/dashboard/messages" class="header-messages-icon">
-				<span ng-if="unreadMessageCount != 0" class="label label-danger">{{unreadMessageCount}}</span> <i class="icon-mail-1"></i></a>
-				<!-- <div class="messages-popover" ng-show="messagesPopoverVisible">
-					<ul>
-						<li>
-							<p><strong>Frederik Vanhevel</strong></p>
-							<p>Jo vriend, cava nog me u e? dfkkjz akdjakzk az</p>
-						</li>
-					</ul>
-					<a class="view-all light-bg" href="/dashboard/messages">View all my messages</a>
-				</div> -->
-			</li>
-
-			<li><a href="/users/{{authentication.user._id}}/favorites"><i class="icon-heart-empty-1"></i> Mijn wishlist</a></li>
-
-		</ul>
-
-	</nav>
+    <div class="navbar-header">
+        <a href="/" class="navbar-brand"><i class="icon-rocket"></i> Apollo</a>
+        <a class="btn responsive-menu pull-right collapsed navbar-toggle" data-ng-click="toggleCollapsibleMenu()" data-toggle="collapse" data-target=".navbar-collapse"><i class="icon-menu-1"></i></a>
+    </div>
+    <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+        <form ng-submit="goToSearch()" class="navbar-form navbar-left top-search" role="search">
+            <div class="input-group input-group-sm">
+                <input  ng-autocomplete details="searchDetails" ng-model="search" class="form-control" placeholder="Waar wil je naartoe?" name="srch-term" type="text">
+                <div class="input-group-btn">
+                    <button class="btn btn-blue" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </div>
+            </div>
+        </form>
+        <div class="navbar-form navbar-right">
+            <div class="form-group">
+                <a class="btn btn-orange advertise-button btn-block" href="/rooms/new">Adverteer je ruimte</a>
+            </div>
+        </div>
+        <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
+            <li ui-route="/signup" ng-class="{active: $uiRoute}">
+                <a href="" ng-click="openSignupModal()">Registreer</a>
+            </li>
+            <li class="divider-vertical"></li>
+            <li ui-route="/signin" ng-class="{active: $uiRoute}">
+                <a href="" ng-click="openSigninModal()">Inloggen</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" data-ng-if="authentication.user">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle profile" data-toggle="dropdown">
+                    <div class="profile-picture" user-picture user-model="authentication.user"></div>
+                    <span class="profile-name">{{authentication.user.displayName}} <b class="caret"></b></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/dashboard/rooms">Mijn advertenties</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/messages">Berichten</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/profile">Profiel aanpassen</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/account">Account</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="/auth/signout" target="_self">Uitloggen</a>
+                    </li>
+                </ul>
+            </li>
+            <li ng-init="getUnreadMessageCount()">
+                <a href="/dashboard/messages" class="header-messages-icon">
+                    <span ng-if="unreadMessageCount != 0" class="label label-danger">{{unreadMessageCount}}</span> <i class="icon-mail-1"></i>
+                </a>
+            <!-- <div class="messages-popover" ng-show="messagesPopoverVisible">
+                    <ul>
+                            <li>
+                                    <p><strong>Frederik Vanhevel</strong></p>
+                                    <p>Jo vriend, cava nog me u e? dfkkjz akdjakzk az</p>
+                            </li>
+                    </ul>
+                    <a class="view-all light-bg" href="/dashboard/messages">View all my messages</a>
+            </div> -->
+            </li>
+            <li><a href="/users/{{authentication.user._id}}/favorites"><i class="icon-heart-empty-1"></i> Mijn wishlist</a></li>
+        </ul>
+    </nav>
 </div>

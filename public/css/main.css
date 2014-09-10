@@ -7312,7 +7312,6 @@ header.navbar .btn.responsive-menu.navbar-toggle {
 }
 @media all and (min-width: 768px) and (max-width: 1024px) {
   header.navbar .top-header {
-    display: table;
     padding: 0;
     margin-right: auto;
     margin-left: auto;
@@ -7669,6 +7668,7 @@ ROOMS MODULE
   border-radius: 3px;
   padding: 20px 0;
   opacity: .6;
+  /* Smartphones (portrait and landscape) ----------- */
 }
 .create-room .room-creation-steps .room-step h3 {
   color: #73879C;
@@ -7676,25 +7676,27 @@ ROOMS MODULE
 .create-room .room-creation-steps .room-step.active {
   opacity: 1;
 }
-.create-room .room-creation-steps .room-step:after, .create-room .room-creation-steps .room-step:before {
-  left: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: " ";
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-.create-room .room-creation-steps .room-step:after {
-  border-left-color: #FFF;
-  border-width: 20px;
-  margin-top: -20px;
-}
-.create-room .room-creation-steps .room-step:before {
-  border-left-color: #E1E7ED;
-  border-width: 23px;
-  margin-top: -23px;
+@media only screen and (min-device-width: 768px) {
+  .create-room .room-creation-steps .room-step:after, .create-room .room-creation-steps .room-step:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+  .create-room .room-creation-steps .room-step:after {
+    border-left-color: #FFF;
+    border-width: 20px;
+    margin-top: -20px;
+  }
+  .create-room .room-creation-steps .room-step:before {
+    border-left-color: #E1E7ED;
+    border-width: 23px;
+    margin-top: -23px;
+  }
 }
 .create-room .type-buttons .maki-icon {
   margin: 0 auto;

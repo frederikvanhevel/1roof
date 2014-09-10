@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                 }
             },
             clientCSS: {
-                files: ['public/css/main.scss', 'public/modules/**/css/*.scss'],
+                files: ['public/css/main.scss', 'public/modules/**/*.scss'],
                 tasks: ['sass'],
                 options: {
                     livereload: true,
@@ -94,7 +94,14 @@ module.exports = function(grunt) {
                     removeComments: true,
                     collapseWhitespace: true
                 },
-                src: [ 'public/modules/**/*.html' ]
+                files: [
+                    {
+                      expand: true,     // Enable dynamic expansion.
+                      cwd: 'public/modules/',      // Src matches are relative to this path.
+                      src: ['**/*.html'], // Actual pattern(s) to match.
+                      dest: 'public/dist/html',   // Destination path prefix.
+                    },
+                ]
             }
         },
         sass: {

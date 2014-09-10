@@ -30,28 +30,32 @@
         opacity: 1;
       }
 
-      &:after, &:before {
-        left: 100%;
-        top: 50%;
-        border: solid transparent;
-        content: " ";
-        height: 0;
-        width: 0;
-        position: absolute;
-        pointer-events: none;
-      }
+        /* Smartphones (portrait and landscape) ----------- */
+        @media only screen and (min-device-width : 768px) {
+          &:after, &:before {
+            left: 100%;
+            top: 50%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+          }
 
-      &:after {
-        border-left-color: #FFF;
-        border-width: 20px;
-        margin-top: -20px;
-      }
+          &:after {
+            border-left-color: #FFF;
+            border-width: 20px;
+            margin-top: -20px;
+          }
 
-      &:before {
-        border-left-color: #E1E7ED;
-        border-width: 23px;
-        margin-top: -23px;
-      }
+          &:before {
+            border-left-color: #E1E7ED;
+            border-width: 23px;
+            margin-top: -23px;
+          }
+        }
+
     }
   }
 

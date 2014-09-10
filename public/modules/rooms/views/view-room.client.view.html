@@ -1,226 +1,191 @@
 <section data-ng-controller="RoomsController" data-ng-init="init()" class="view-room">
-
     <div ng-if="!isOverlay() && room.user._id && room.user._id == authentication.user._id" class="room-owner-panel dark-bg" ng-cloak>
         <div class="container">
             <span class="pull-right">
-                <a href="/rooms/{{room._id}}/edit/"><i class="icon-pencil"></i> Advertentie aanpassen <i class="icon-right-open"></i></a>
+            <a href="/rooms/{{room._id}}/edit/"><i class="icon-pencil"></i> Advertentie aanpassen <i class="icon-right-open"></i></a>
             </span>
-
-      <div class="visibility-switch">
-        <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder" ng-change="setVisibility()">
-        <label for="switch-button"></label>
-      </div>
-      <span ng-if="room.visible && room.isInOrder" class="green pull-left">online</span>
-      <span ng-if="!room.isInOrder" class="red"><i class="icon-attention-1 red"></i> offline - Je moet meer details ingeven</span>
-      <span ng-if="!room.visible && room.isInOrder">offline</span>
-
+            <div class="visibility-switch">
+                <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder" ng-change="setVisibility()">
+                <label for="switch-button"></label>
+            </div>
+            <span ng-if="room.visible && room.isInOrder" class="green pull-left">online</span>
+            <span ng-if="!room.isInOrder" class="red"><i class="icon-attention-1 red"></i> offline - Je moet meer details ingeven</span>
+            <span ng-if="!room.visible && room.isInOrder">offline</span>
         </div>
     </div>
-
     <div class="inner-content" ng-class="{ 'container': !isOverlay() }">
         <div class="page-header row">
-
             <div class="crumbs col-sm-12">
                 <button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> Terug naar kaart</button>
                 <h1>
-                    <i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1': isInfavorites() }" tooltip="Add to wishlist" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{::room.info.title != '' ? room.info.title : room.location.street }}
+                <i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1': isInfavorites() }" tooltip="Add to wishlist" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{::room.info.title != '' ? room.info.title : room.location.street }}
                 </h1>
                 <i class="glyphicon" ng-class=""></i>
                 <a ng-href="/search/{{room.location.city}}--{{room.location.country}}">{{::room.location.city}}</a> <i class="icon-right-open"></i> {{::room.location.street}} <i class="icon-right-open"></i> <strong>{{::room.classification}}</strong>
                 <span class="text-muted pull-right">Laatst bijgewerkt {{::room.updated | date:'mediumDate'}}</span>
             </div>
         </div>
-
         <div class="row">
             <div class="leftcolumn col-lg-8">
-
                 <div class="panel panel-default">
-
-            <div class="room-image">
-
-              <div class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel owl-pagination="true">
-                <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
-                  <figure back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}"></figure>
-                </div>
-                <div class="item room-map">
+                    <div class="room-image">
+                        <div class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel owl-pagination="true">
+                            <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
+                            <figure back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}"></figure>
+                        </div>
+                        <div class="item room-map">
                             <div room-map class="map-canvas"></div>
-                          </div>
-                          <div class="item">
+                        </div>
+                        <div class="item">
                             <div street-view class="streetView"></div>
-                          </div>
-              </div>
-
-            </div>
-
-                </div>
-
-                <div ng-if="room.info.description != ''" class="panel panel-default">
-                    <div class="panel-body">
-                        <h6>Beschrijving</h6>
-                        <p>{{::room.info.description}}</p>
+                        </div>
                     </div>
                 </div>
-
-                <div class="panel panel-default">
+            </div>
+            <div ng-if="room.info.description != ''" class="panel panel-default">
+                <div class="panel-body">
+                    <h6>Beschrijving</h6>
+                    <p>{{::room.info.description}}</p>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="room-header row">
+                        <div class="col-sm-3" ng-if="room.surface != 0">
+                            <h6>Oppervlakte</h6>
+                            <h2>{{ ::room.surface | number}} <span class="small text-muted">m²</span></h2>
+                        </div>
+                        <div class="col-sm-5">
+                            <h6>Contract</h6>
+                            <h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
+                            <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
+                        </div>
+                        <div class="col-sm-4">
+                            <h6>Kosten <small>per {{::room.price.period}}</small></h6>
+                            <!--                <table class="room-costs collapsed">
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td><h4><span class="small text-muted">€ </span> {{ room.price.base | number}}</h4></td>
+                                </tr>
+                                <tr ng-show="room.price.egw != 0">
+                                    <td>+ </td>
+                                    <td>(E.G.W. <i class="icon-info-circled" tooltip="Elektriciteit, Gas en Water"></i>)</td>
+                                    <td><h4><span class="small text-muted">€ </span> {{ room.price.egw | number}}</h4></td>
+                                </tr>
+                                <tr ng-show="room.price.cleaning != 0">
+                                    <td>+ </td>
+                                    <td>(schoonmaak)</td>
+                                    <td><h4><span class="small text-muted">€ </span> {{ room.price.cleaning | number}}</h4></td>
+                                </tr>
+                                <tr class="divider">
+                                    <td colspan="3"></td>
+                                </tr>
+                                <tr class="total">
+                                    <td>= </td>
+                                    <td></td>
+                                    <td><h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2></td>
+                                </tr>
+                            </table> -->
+                            <h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2>
+                            <a href="#"><i class="icon-info-circle"></i> Meer informatie</a>
+                        </div>
+                    </div>
+                    <div class="room-header row" ng-if="room.cohabit.active">
+                        <div class="col-xs-12">
+                            <h6>Samenwonen</h6>
+                            <i class="icon-user" ng-repeat="i in getNumber(room.cohabit.count)"></i>
+                            andere(n) in dit pand
+                        </div>
+                    </div>
+                    <div class="room-header row">
+                        <div class="room-properties col-xs-5">
+                            <ul>
+                                <li>
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                    <span ng-if="room.available.immediately"><strong>Onmiddelijk beschikbaar!</strong></span>
+                                    <span ng-if="!room.available.immediately">Beschikbaar van <strong>{{ ::room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                    <span ng-if="!room.available.immediately" ng-show="room.available.till">tot <strong>{{ ::room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                </li>
+                                <li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="room.updated"></span></li>
+                            </ul>
+                        </div>
+                        <div class="room-extras col-xs-7">
+                            <ul class="amenities">
+                                <li ng-class="isAmenityChecked(room, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-bottom text-center">
+                <h3>Klaar om contact op te nemen met de eigenaar?</h3>
+                <button ng-click="openContactModal()" class="btn"><i class="glyphicon glyphicon-ok"></i> Stuur een bericht</button>
+            </div>
+            <div ng-hide="::otherRooms.length == 0">
+                <h4>{{::otherRooms.length}} andere ruimte(n) in deze woning</h4>
+                <div class="panel panel-default" ng-cloak ng-repeat="otherRoom in ::otherRooms">
                     <div class="panel-body">
                         <div class="room-header row">
-                            <div class="col-sm-3" ng-if="room.surface != 0">
-                    <h6>Oppervlakte</h6>
-                  <h2>{{ ::room.surface | number}} <span class="small text-muted">m²</span></h2>
-                  </div>
-                  <div class="col-sm-5">
-                  <h6>Contract</h6>
-                    <h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
-                    <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
-                  </div>
-                  <div class="col-sm-4">
-                    <h6>Kosten <small>per {{::room.price.period}}</small></h6>
-
-<!--                <table class="room-costs collapsed">
-                        <tr>
-                            <td></td>
-                            <td></td>
-                            <td><h4><span class="small text-muted">€ </span> {{ room.price.base | number}}</h4></td>
-                        </tr>
-                        <tr ng-show="room.price.egw != 0">
-                            <td>+ </td>
-                            <td>(E.G.W. <i class="icon-info-circled" tooltip="Elektriciteit, Gas en Water"></i>)</td>
-                            <td><h4><span class="small text-muted">€ </span> {{ room.price.egw | number}}</h4></td>
-                        </tr>
-                        <tr ng-show="room.price.cleaning != 0">
-                            <td>+ </td>
-                            <td>(schoonmaak)</td>
-                            <td><h4><span class="small text-muted">€ </span> {{ room.price.cleaning | number}}</h4></td>
-                        </tr>
-                        <tr class="divider">
-                            <td colspan="3"></td>
-                        </tr>
-                        <tr class="total">
-                            <td>= </td>
-                            <td></td>
-                            <td><h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2></td>
-                        </tr>
-                    </table> -->
-
-                    <h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2>
-                    <a href="#"><i class="icon-info-circle"></i> Meer informatie</a>
-
-                  </div>
-
-                </div>
-
-                <div class="room-header row" ng-if="room.cohabit.active">
-                    <div class="col-xs-12">
-                        <h6>Samenwonen</h6>
-                                <i class="icon-user" ng-repeat="i in getNumber(room.cohabit.count)"></i>
-                                andere(n) in dit pand
+                            <div class="col-xs-6 col-md-3">
+                                <h6>Oppervlakte</h6>
+                                <h2>{{ ::otherRoom.surface | number}} <span class="small text-muted">m²</span></h2>
                             </div>
-                </div>
-
+                            <div class="col-xs-6 col-md-3">
+                                <h6>Contract</h6>
+                                <h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
+                                <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <h6>Kosten</h6>
+                                <h2><span class="small text-muted">€</span> {{ otherRoom.price.total | number}}</h2>
+                            </div>
+                            <div class="col-xs-6 col-md-3">
+                                <a ng-href="{{otherRoom.url}}" class="btn">Bekijk deze ruimte</a>
+                            </div>
+                        </div>
                         <div class="room-header row">
-
-                            <div class="room-properties col-xs-5">
+                            <div class="room-properties col-xs-6">
                                 <ul>
                                     <li>
                                         <i class="glyphicon glyphicon-calendar"></i>
-                                        <span ng-if="room.available.immediately"><strong>Onmiddelijk beschikbaar!</strong></span>
-                                        <span ng-if="!room.available.immediately">Beschikbaar van <strong>{{ ::room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-                                        <span ng-if="!room.available.immediately" ng-show="room.available.till">tot <strong>{{ ::room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                        <span ng-if="otherRoom.available.immediately"><strong>Onmiddelijk beschikbaar!</strong></span>
+                                        <span ng-if="!otherRoom.available.immediately">Beschikbaar van <strong>{{ ::otherRoom.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                        <span ng-if="!otherRoom.available.immediately" ng-show="otherRoom.available.till">tot <strong>{{ ::otherRoom.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                                     </li>
-                                    <li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="room.updated"></span></li>
+                                    <li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="otherRoom.updated"></span></li>
                                 </ul>
                             </div>
-                            <div class="room-extras col-xs-7">
+                            <div class="room-extras col-xs-6">
                                 <ul class="amenities">
-                                    <li ng-class="isAmenityChecked(room, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name}}</li>
+                                    <li ng-class="isAmenityChecked(otherRoom, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name}}</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="contact-bottom text-center">
-                    <h3>Klaar om contact op te nemen met de eigenaar?</h3>
-                    <button ng-click="openContactModal()" class="btn"><i class="glyphicon glyphicon-ok"></i> Stuur een bericht</button>
-                </div>
-
-                <div ng-hide="::otherRooms.length == 0">
-                    <h4>{{::otherRooms.length}} andere ruimte(n) in deze woning</h4>
-                    <div class="panel panel-default" ng-cloak ng-repeat="otherRoom in ::otherRooms">
-                        <div class="panel-body">
-                            <div class="room-header row">
-                                <div class="col-xs-6 col-md-3">
-                          <h6>Oppervlakte</h6>
-                        <h2>{{ ::otherRoom.surface | number}} <span class="small text-muted">m²</span></h2>
-                      </div>
-                      <div class="col-xs-6 col-md-3">
-                            <h6>Contract</h6>
-                        <h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
-                            <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
-                      </div>
-                      <div class="col-xs-6 col-md-3">
-                        <h6>Kosten</h6>
-                        <h2><span class="small text-muted">€</span> {{ otherRoom.price.total | number}}</h2>
-                    </div>
-                      <div class="col-xs-6 col-md-3">
-                            <a ng-href="{{otherRoom.url}}" class="btn">Bekijk deze ruimte</a>
-                      </div>
-                    </div>
-
-                            <div class="room-header row">
-                                <div class="room-properties col-xs-6">
-                                    <ul>
-                                        <li>
-                                            <i class="glyphicon glyphicon-calendar"></i>
-                                            <span ng-if="otherRoom.available.immediately"><strong>Onmiddelijk beschikbaar!</strong></span>
-                                            <span ng-if="!otherRoom.available.immediately">Beschikbaar van <strong>{{ ::otherRoom.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-                                            <span ng-if="!otherRoom.available.immediately" ng-show="otherRoom.available.till">tot <strong>{{ ::otherRoom.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-                                        </li>
-                                        <li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="otherRoom.updated"></span></li>
-                                    </ul>
-                                </div>
-                                <div class="room-extras col-xs-6">
-                                    <ul class="amenities">
-                                        <li ng-class="isAmenityChecked(otherRoom, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name}}</li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
-
-
-            <div class="rightcolumn col-lg-4">
-                <div class="panel panel-default">
-                  <div class="panel-body">
+        </div>
+        <div class="rightcolumn col-lg-4">
+            <div class="panel panel-default">
+                <div class="panel-body">
                     <div class="datepicker" date-picker append-element date-model="appointmentDate"></div>
-
                     <button ng-click="openReservationModal()" class="btn btn-blue btn-block"><i class="icon-calendar-1"></i> Afspraak maken</button>
-
-                  </div>
-
                 </div>
-
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                        <form role="form">
-                          <h5>Vragen over deze ruimte?</h5>
-                          <h6><i class="icon-user"></i> {{::room.user.displayName}}</h6>
-
-                          <button ng-click="openContactModal()" class="btn btn-block"><i class="glyphicon glyphicon-envelope"></i> Bericht versturen</button>
-                        </form>
-                  </div>
-                </div>
-
-                <div class="text-center">
-                    <a href="mailto:abuse@apollo.be?subject=Misbruik&body=Advertentie nummer: {{::room._id}}"><i class="icon-flag"></i> Misbruik melden</a>
             </div>
-          </div>
-
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form role="form">
+                        <h5>Vragen over deze ruimte?</h5>
+                        <h6><i class="icon-user"></i> {{::room.user.displayName}}</h6>
+                        <button ng-click="openContactModal()" class="btn btn-block"><i class="glyphicon glyphicon-envelope"></i> Bericht versturen</button>
+                    </form>
+                </div>
+            </div>
+            <div class="text-center">
+                <a href="mailto:abuse@apollo.be?subject=Misbruik&body=Advertentie nummer: {{::room._id}}"><i class="icon-flag"></i> Misbruik melden</a>
+            </div>
         </div>
     </div>
+</div>
 </section>
