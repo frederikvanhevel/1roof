@@ -6,6 +6,7 @@ angular.module('core').directive('animateElement', ['$window', 'Device',
             restriction: 'A',
             link: function(scope, element, attrs) {
 
+                // we don't want animations on mobile
                 if (Device.isMobile()) return;
 
                 var waypointClass = 'main [class*="col-"]';

@@ -41,6 +41,10 @@
       .hero-content {
         padding-top: 200px;
 
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            padding-top: 145px;
+        }
+
         h1 {
           display: inline;
           color: white;

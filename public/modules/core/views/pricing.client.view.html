@@ -1,7 +1,7 @@
 <div class="pricing-view" data-ng-controller="PricingController" ng-init="init()">
     <section class="pricing-tables">
         <div class="container">
-            <div class="row" ng-if="message == 'upgrade'">
+            <div ng-if="message == 'upgrade'">
                 <div class="col-sm-offset-2 col-sm-8 inner-top-sm text-center" animate-element>
                     <header>
                         <h1>Upgraden</h1>
@@ -9,7 +9,7 @@
                     </header>
                 </div>
             </div>
-            <div class="row" ng-if="message == 'analytics'">
+            <div ng-if="message == 'analytics'">
                 <div class="col-sm-offset-2 col-sm-8 inner-top-sm text-center" animate-element>
                     <header>
                         <h1>Upgraden</h1>
@@ -17,7 +17,7 @@
                     </header>
                 </div>
             </div>
-            <div class="row pricing">
+            <div class="pricing">
                 <div class="col-md-4 col-sm-6 inner-sm" animate-element>
                     <div class="plan">
                         <header>
@@ -83,10 +83,8 @@
     </section>
     <section id="get-started" class="tint-bg">
         <div class="container inner-sm">
-            <div class="row">
-                <div class="col-sm-11 center-block text-center" animate-element>
-                    <h1 class="single-block"><span translate>Hulp nodig?</span> <a href="mailto:help@apollo.be" class="btn btn-white btn-lg" translate>Contacteer ons!</a></h1>
-                </div>
+            <div class="col-sm-11 center-block text-center" animate-element>
+                <h1 class="single-block"><span translate>Hulp nodig?</span> <a href="mailto:help@apollo.be" class="btn btn-white btn-lg" translate>Contacteer ons!</a></h1>
             </div>
         </div>
     </section>

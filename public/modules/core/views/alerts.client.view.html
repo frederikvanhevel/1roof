@@ -1,4 +1,4 @@
-<alert class="alert-item" ng-repeat="alert in alerts" type="alert.type" close="alert.close($index)">
+<alert class="alert-item col-sm-4 pull-right" ng-repeat="alert in alerts" type="alert.type" close="alert.close($index)">
     <i ng-class="{ 'icon-attention': alert.type == 'danger', 'icon-ok': alert.type == 'success' }"></i>
     {{ alert.msg }}
 </alert>
