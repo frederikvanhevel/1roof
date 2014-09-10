@@ -60,14 +60,6 @@ module.exports = function(grunt) {
                 src: ['public/modules/**/css/*.scss']
             }
         },
-        ngAnnotate: {
-            options: {
-                singleQuotes: true
-            },
-            production: {
-                src: ['<%= applicationJavaScriptFiles %>']
-            }
-        },
         uglify: {
             production: {
                 options: {

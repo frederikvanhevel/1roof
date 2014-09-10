@@ -28,7 +28,8 @@
     "socket.io-client": "~1.0.6",
     "d3": "~3.4.11",
     "angular-payments": "*",
-    "jquery-waypoints": "~2.0.5"
+    "jquery-waypoints": "~2.0.5",
+    "angular-google-analytics": "~0.0.5"
   },
   "resolutions": {
     "angular": "~1.3"

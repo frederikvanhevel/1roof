@@ -20,7 +20,8 @@ var ApplicationConfiguration = (function() {
         'angularMoment',
         'gettext',
         'btford.socket-io',
-        'angularPayments'
+        'angularPayments',
+        'angular-google-analytics'
     ];
 
     // Add a new vertical module

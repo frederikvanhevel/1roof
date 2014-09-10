@@ -29,7 +29,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
 
             initializeSocket();
 
-            Analytics.initialize();
+            // Analytics.initialize();
         };
 
         $scope.toggleCollapsibleMenu = function() {
