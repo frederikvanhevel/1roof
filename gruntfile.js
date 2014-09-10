@@ -96,10 +96,22 @@ module.exports = function(grunt) {
                 },
                 files: [
                     {
-                      expand: true,     // Enable dynamic expansion.
-                      cwd: 'public/modules/',      // Src matches are relative to this path.
-                      src: ['**/*.html'], // Actual pattern(s) to match.
-                      dest: 'public/dist/html',   // Destination path prefix.
+                      expand: true,
+                      cwd: 'public/modules/',
+                      src: ['**/*.html'],
+                      dest: 'public/dist/html'
+                    },
+                ]
+            }
+        },
+        imagemin: {
+            production: {
+                files: [
+                    {
+                      expand: true,
+                      cwd: 'public/modules/',
+                      src: ['**/*.{png,jpg,gif}'],
+                      dest: 'public/dist/img'
                     },
                 ]
             }
