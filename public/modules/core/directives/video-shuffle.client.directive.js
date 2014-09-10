@@ -10,6 +10,7 @@ angular.module('core').directive('videoShuffle', ['$window', 'Device',
 
                 var FALLBACK_VIDEO_URL = '/modules/core/img/video/fallback_poster.jpg';
 
+                // show a poster instead of a video on mobile
                 if (Device.isMobile()) {
                     element.css({ 'background-image': 'url(' + FALLBACK_VIDEO_URL + ')' });
                     return;

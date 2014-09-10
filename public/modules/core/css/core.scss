@@ -32,11 +32,10 @@ html, body {
 }
 
 .alert-container {
-  position: fixed;
-  width: 400px;
-  right: 50px;
-  top: 20px;
-  z-index: 99999;
+    position: fixed;
+    right: 50px;
+    top: 20px;
+    z-index: 99999;
 }
 
 .content {

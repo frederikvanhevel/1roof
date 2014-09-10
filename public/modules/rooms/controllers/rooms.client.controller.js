@@ -93,7 +93,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
                     Statistics.aggregate($scope.room._id, 'favorites');
 
                     Authentication.user.favorites.push($scope.room._id);
-                    Alert.add('success', 'Toegevoegd aan favorieten!', 3000);
+                    Alert.add('success', 'Toegevoegd aan favorieten!', 300000);
                 } else {
                     Authentication.user.favorites.splice(index, 1);
                 }
