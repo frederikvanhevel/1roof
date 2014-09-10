@@ -7557,6 +7557,10 @@ ROOMS MODULE
 .view-room .favorite-icon:hover:before {
   content: '\e803';
 }
+.view-room .page-header {
+  margin-left: 0;
+  margin-right: 0;
+}
 .view-room .room-header:not(:first-child) {
   padding-top: 35px;
 }

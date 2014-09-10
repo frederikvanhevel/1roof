@@ -6,11 +6,11 @@ angular.module('core').service('Analytics', ['$window', '$rootScope', '$location
         var ga = $window.ga;
 
         this.initialize = function() {
-            // ga('create', 'UA-54653288-1', 'auto');   // production
+            ga('create', 'UA-54653288-1', 'auto');   // production
 
-            ga('create', 'UA-54653288-1', { // localhost
-                'cookieDomain': 'none'
-            });
+            // ga('create', 'UA-54653288-1', { // localhost
+            //     'cookieDomain': 'none'
+            // });
 
             ga('send', 'pageview');
 

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', 'Meta', '$http', 'Modal', 'Enforcer',
-    function($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal, Enforcer) {
+angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', 'Meta', '$http', 'Modal', 'Enforcer', 'Analytics',
+    function($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal, Enforcer, Analytics) {
         $scope.authentication = Authentication;
 
         $scope.busy = false;
@@ -56,6 +56,8 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
                 Authentication.user = response;
                 Alert.add('success', 'Je tariefplan is geupdatet!', 5000);
                 $scope.busy = false;
+
+                Analytics.trackEvent('Subscription', 'Changed', plan);
             }).error(function() {
                 Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
                 $scope.busy = false;

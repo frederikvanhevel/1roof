@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$scope', '$http', '$modalInstance', 'options', 'Alert',
-    function($rootScope, $scope, $http, $modalInstance, options, Alert) {
+angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$scope', '$http', '$modalInstance', 'options', 'Alert', 'Analytics',
+    function($rootScope, $scope, $http, $modalInstance, options, Alert, Analytics) {
         $scope.subscriptionPlan = options.plan;
 
         $scope.busy = false;
@@ -28,6 +28,8 @@ angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$sc
             }).success(function(response) {
                 $modalInstance.close(response);
                 $scope.busy = false;
+
+                Analytics.trackEvent('Subscription', 'Changed', plan);
             }).error(function(response) {
                 $scope.busy = false;
                 $modalInstance.dismiss({

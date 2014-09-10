@@ -8,6 +8,11 @@
     }
   }
 
+  .page-header {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
   .room-header {
 
     &:not(:first-child) {

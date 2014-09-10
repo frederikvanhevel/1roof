@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta', '$location', 'Enforcer',
-    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta, $location, Enforcer) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta', '$location', 'Enforcer', 'Analytics',
+    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta, $location, Enforcer, Analytics) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
@@ -94,6 +94,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
 
                     Authentication.user.favorites.push($scope.room._id);
                     Alert.add('success', 'Toegevoegd aan favorieten!', 3000);
+
+                    Analytics.trackEvent('Room', 'Favorite');
                 } else {
                     Authentication.user.favorites.splice(index, 1);
                 }
@@ -109,6 +111,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
                 message: message
             }).success(function(response) {
                 Alert.add('success', 'Je bericht is verzonden!', 5000);
+                Analytics.trackEvent('Room', 'Message');
             }).error(function(response) {
                 Alert.add('danger', 'Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.', 5000);
             });
@@ -123,6 +126,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             }).success(function(response) {
                 if (extraMessage) sendMessage(extraMessage);
                 else Alert.add('success', 'Je aanvraag is verzonden!', 5000);
+                Analytics.trackEvent('Room', 'Reservation');
             }).error(function(response) {
                 Alert.add('danger', 'Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.', 5000);
             });
