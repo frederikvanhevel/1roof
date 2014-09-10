@@ -178,6 +178,9 @@ module.exports = function(grunt) {
     // Build task(s).
     grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
 
+    // Dist task(s).
+    grunt.registerTask('dist', ['loadConfig', 'uglify', 'cssmin']);
+
     // Run Build task(s).
     grunt.registerTask('runbuild', ['env:prod', 'build', 'concurrent']);
 
