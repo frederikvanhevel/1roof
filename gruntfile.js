@@ -88,6 +88,15 @@ module.exports = function(grunt) {
                 }
             }
         },
+        htmlmin: {
+            production: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                src: [ 'public/modules/**/*.html' ]
+            }
+        },
         sass: {
             options: {
                 style: 'expanded',
@@ -148,7 +157,7 @@ module.exports = function(grunt) {
                     'public/translations.js': ['lang/*.po']
                 }
             },
-        },
+        }
     });
 
     // Load NPM tasks
@@ -179,7 +188,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
 
     // Dist task(s).
-    grunt.registerTask('dist', ['loadConfig', 'uglify', 'cssmin']);
+    grunt.registerTask('dist', ['loadConfig', 'uglify', 'cssmin', 'htmlmin']);
 
     // Run Build task(s).
     grunt.registerTask('runbuild', ['env:prod', 'build', 'concurrent']);
