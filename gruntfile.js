@@ -176,10 +176,10 @@ module.exports = function(grunt) {
     grunt.registerTask('lint', ['jshint', 'scsslint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'ngAnnotate', 'uglify' , 'sass' , 'cssmin']);
+    grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
 
     // Run Build task(s).
-    grunt.registerTask('runbuild', ['env:prod','build', 'concurrent']);
+    grunt.registerTask('runbuild', ['env:prod', 'build', 'concurrent']);
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

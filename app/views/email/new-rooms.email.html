@@ -17,7 +17,7 @@
     </td>
   </tr>
   <!-- Full Width, Fluid Column : END -->
-  
+
   <tr>
     <td>
       <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
@@ -25,9 +25,9 @@
         <tr>
           <td class="default room">
 
-            <h2><a target=s"_blank" href="{{ app.host }}/#!{{ room.url }}">{{ room.info.title }}</a></h2>
-            
-            <a target=s"_blank" href="{{ app.host }}/#!{{ room.url }}">
+            <h2><a target=s"_blank" href="{{ app.host }}{{ room.url }}">{{ room.info.title }}</a></h2>
+
+            <a target=s"_blank" href="{{ app.host }}{{ room.url }}">
             {% if room.pictures.length > 0 %}
               <div class="image-wrapper" style="background-image: url('{{ room.pictures[0].link }}');">
                 <div class="room-price">€ {{ room.price.total }}</div>
@@ -38,13 +38,13 @@
               </div>
             {% endif %}
             </a>
-            
+
             <p>{{ room.info.description }}</p>
 
           </td>
         </tr>
         {% endfor %}
-        <!--      
+        <!--
           <tr>
             <td class="default sponsor">
 
@@ -55,6 +55,6 @@
       </table>
     </td>
   </tr>
-  
-            
+
+
 {% endblock %}

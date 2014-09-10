@@ -30,6 +30,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
         state('about', {
             url: '/about',
             templateUrl: '/modules/core/views/about.client.view.html'
+        }).
+        state('promote', {
+            url: '/promote',
+            templateUrl: '/modules/core/views/promote.client.view.html'
         });
     }
 ]);

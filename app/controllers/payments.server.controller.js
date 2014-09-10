@@ -99,7 +99,7 @@ function changeSubscription(user, plan, couponCode, done) {
 function sendSuccessMail(user) {
   var context = {
     user: user,
-    changeLink: config.app.host + '/#!/pricing'
+    changeLink: config.app.host + '/pricing'
   };
   mailer.send('subscription-changed.email.html', context, user.email, 'Tariefplan gewijzigd');
 }
@@ -156,7 +156,7 @@ exports.postSignup = function(req, res, next) {
       function(done) {
         createCustomer(user, plan, card, done);
       },
-      function(user, done) { 
+      function(user, done) {
         req.login(user, function(err) {
           if (err) {
             res.send(400, err);
