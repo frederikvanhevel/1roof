@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state',
-    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state) {
+angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics',
+    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics) {
         $scope.authentication = Authentication;
         $scope.isCollapsed = true;
         $scope.search = '';
@@ -36,6 +36,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
                 });
             }
 
+            Analytics.initialize();
         };
 
         $scope.toggleCollapsibleMenu = function() {
