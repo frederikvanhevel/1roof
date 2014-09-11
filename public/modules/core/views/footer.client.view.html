@@ -23,7 +23,7 @@
 
             <div class="col-sm-2">
                 <div class="select-style language-select footer-menu">
-                    <select ng-model="$root.language">
+                    <select ng-model="$root.language" ng-init="$root.language = $root.language || 'nl'">
                         <option value="nl">Nederlands</option>
                         <option value="en">English</option>
                     </select>

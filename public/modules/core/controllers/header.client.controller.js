@@ -96,7 +96,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             // gettextCatalog.debug = true;
 
             // momentjs
-            amMoment.changeLanguage(language);
+            amMoment.changeLocale(language);
 
             if (reload)
                 $state.reload();
