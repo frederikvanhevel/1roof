@@ -1,28 +1,28 @@
 <section data-ng-controller="SearchController" class="search-view" ng-init="init()">
     <div class="sidebar">
         <div class="filters bordered">
-            <h6 class="title">Zoekopdracht verfijnen</h6>
+            <h6 class="title" translate>Zoekopdracht verfijnen</h6>
             <div class="filter type-filter">
                 <div class="btn-group" ng-model="filter.roomType" output-function="setRoomType" radio-group>
-                    <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> Huis</button>
-                    <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> App.</button>
-                    <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> Kamer</button>
-                    <button type="button" class="btn minimal active" data-val="all">Alle</button>
+                    <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> <span translate>Huis</span></button>
+                    <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> <span translate>App.</span></button>
+                    <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> <span translate>Kamer</span></button>
+                    <button type="button" class="btn minimal active" data-val="all"><span translate>Alle</span></button>
                 </div>
             </div>
             <div class="filter">
-                <div class="slider-label"><h6>€ {{filter.minPrice}} - € {{filter.maxPrice}} <small>per maand</small></h6></div>
+                <div class="slider-label"><h6>€ {{filter.minPrice}} - € {{filter.maxPrice}} <small translate>per maand</small></h6></div>
                 <div class="slider" range-slider ng-from="filter.minPrice" ng-to="filter.maxPrice" start="0" end="1200" step="50"></div>
             </div>
             <div class="filter">
                 <label class="newrooms-email">
-                    <input type="checkbox" ng-model="user.settings.email.newRooms" ng-change="updateSettings()"> hou me op de hoogte van nieuwe aanbiedingen
+                    <input type="checkbox" ng-model="user.settings.email.newRooms" ng-change="updateSettings()"> <span translate>hou me op de hoogte van nieuwe aanbiedingen</span>
                 </label>
             </div>
         </div>
         <div class="sidebar-header">
-            <small class="text-center" ng-if="results.length > 0">{{results.length}} advertentie(s) gevonden</small>
-            <small class="text-center" ng-if="results.length == 0">
+            <small class="text-center" ng-if="results.length > 0" translate>{{results.length}} advertentie(s) gevonden</small>
+            <small class="text-center" ng-if="results.length == 0" translate>
             Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.
             </small>
         </div>
@@ -38,7 +38,7 @@
                             <span ng-if="isNewRoom(room)" class="red new-indicator">nieuw!</span> {{room.location.street}}
                         </a>
                         <br>
-                        <small ng-if="room.cohabit.active">zoekt huisgenoot</small>
+                        <small ng-if="room.cohabit.active" translate>zoekt huisgenoot</small>
                     </div>
                     <div class="clearfix"></div>
                 </li>
@@ -54,7 +54,7 @@
             </div>
             <div class="col-xs-12">
                 <div class="pull-right">
-                    <button class="btn btn-default btn-xs">Meer info <i class="icon-right-open-1"></i></button>
+                    <button class="btn btn-default btn-xs"><span translate>Meer info</span> <i class="icon-right-open-1"></i></button>
                 </div>
                 <h1>{{room.location.street}}</h1>
                 <span class="bottom-right">&euro; {{room.price.total}}</span>

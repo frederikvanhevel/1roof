@@ -3,8 +3,8 @@
   </div>
   <div class="col-sm-10">
     <div class="panel panel-default">
-      <div class="panel-heading">Mijn advertenties</div>
-      <div class="panel-body" ng-hide="myrooms.length > 0">
+      <div class="panel-heading" translate>Mijn advertenties</div>
+      <div class="panel-body" ng-hide="myrooms.length > 0" translate>
         Je hebt nog geen advertenties!
       </div>
       <div class="list-group">
@@ -27,12 +27,12 @@
             </div>
           </div>
           <small ng-if="!room.isInOrder">
-          <span class="red"><i class="icon-attention-1"></i> Je moet meer gegevens invoeren voor je deze advertentie online kan plaatsen. </span>
+          <span class="red"><i class="icon-attention-1"></i> <span translate>Je moet meer gegevens invoeren voor je deze advertentie online kan plaatsen.</span></span>
           </small>
         </div>
       </div>
       <div class="panel-footer">
-        <a href="/rooms/new" class="btn btn-sm pull-right"><i class="icon-plus-1"></i> Nieuwe advertentie</a>
+        <a href="/rooms/new" class="btn btn-sm pull-right"><i class="icon-plus-1"></i> <span translate>Nieuwe advertentie</span></a>
         <div class="clearfix"></div>
       </div>
     </div>

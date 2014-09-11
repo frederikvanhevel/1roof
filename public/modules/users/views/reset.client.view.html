@@ -2,19 +2,19 @@
     <div class="row">
 
         <div class="col-sm-4 col-sm-offset-4 bordered">
-            <h3 class="text-center">Wachtwoord opnieuw instellen</h3>
+            <h3 class="text-center" translate>Wachtwoord opnieuw instellen</h3>
             <form data-ng-submit="reset()" class="signin form-horizontal" autocomplete="off">
                 <fieldset>
                     <div class="form-group">
-                        <label for="newPassword">Nieuw wachtwoord</label>
+                        <label for="newPassword" translate>Nieuw wachtwoord</label>
                         <input type="password" id="newPassword" name="newPassword" class="form-control" data-ng-model="passwordDetails.newPassword" placeholder="New Password">
                     </div>
                     <div class="form-group">
-                        <label for="verifyPassword">Typ je wachtwoord opnieuw</label>
+                        <label for="verifyPassword" translate>Typ je wachtwoord opnieuw</label>
                         <input type="password" id="verifyPassword" name="verifyPassword" class="form-control" data-ng-model="passwordDetails.verifyPassword" placeholder="Verify Password">
                     </div>
                     <div class="text-center form-group">
-                        <button ng-class="{ disabled: busy }" type="submit" class="btn btn-large">Aanpassen</button>
+                        <button ng-class="{ disabled: busy }" type="submit" class="btn btn-large" translate>Aanpassen</button>
                         <!-- <img ng-show="busy" class="spinner" src="/modules/core/img/loaders/loading.svg"> -->
                     </div>
                     <div data-ng-show="error" class="text-center text-danger">

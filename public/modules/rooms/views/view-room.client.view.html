@@ -2,27 +2,27 @@
     <div ng-if="!isOverlay() && room.user._id && room.user._id == authentication.user._id" class="room-owner-panel dark-bg" ng-cloak>
         <div class="container">
             <span class="pull-right">
-            <a href="/rooms/{{room._id}}/edit/"><i class="icon-pencil"></i> Advertentie aanpassen <i class="icon-right-open"></i></a>
+            <a href="/rooms/{{room._id}}/edit/"><i class="icon-pencil"></i> <span translate>Advertentie aanpassen</span> <i class="icon-right-open"></i></a>
             </span>
             <div class="visibility-switch">
                 <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder" ng-change="setVisibility()">
                 <label for="switch-button"></label>
             </div>
             <span ng-if="room.visible && room.isInOrder" class="green pull-left">online</span>
-            <span ng-if="!room.isInOrder" class="red"><i class="icon-attention-1 red"></i> offline - Je moet meer details ingeven</span>
+            <span ng-if="!room.isInOrder" class="red"><i class="icon-attention-1 red"></i> offline - <span translate>Je moet meer details ingeven</span></span>
             <span ng-if="!room.visible && room.isInOrder">offline</span>
         </div>
     </div>
     <div class="inner-content" ng-class="{ 'container': !isOverlay() }">
         <div class="page-header row">
             <div class="crumbs col-sm-12">
-                <button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> Terug naar kaart</button>
+                <button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> <span translate>Terug naar kaart</span></button>
                 <h1>
                 <i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1': isInfavorites() }" tooltip="{{ isInfavorites() ? 'Verwijderen van wishlist' : 'Toevoegen aan wishlist' }}" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{::room.info.title != '' ? room.info.title : room.location.street }}
                 </h1>
                 <i class="glyphicon" ng-class=""></i>
                 <a ng-href="/search/{{room.location.city}}--{{room.location.country}}">{{::room.location.city}}</a> <i class="icon-right-open"></i> {{::room.location.street}} <i class="icon-right-open"></i> <strong>{{::room.classification}}</strong>
-                <span class="text-muted pull-right">Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}</span>
+                <span class="text-muted pull-right" translate>Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}</span>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
         </div>
         <div ng-if="room.info.description != ''" class="panel panel-default">
             <div class="panel-body">
-                <h6>Beschrijving</h6>
+                <h6 translate>Beschrijving</h6>
                 <p>{{::room.info.description}}</p>
             </div>
         </div>
@@ -52,16 +52,16 @@
             <div class="panel-body">
                 <div class="room-header row">
                     <div class="col-sm-3" ng-if="room.surface != 0">
-                        <h6>Oppervlakte</h6>
+                        <h6 translate>Oppervlakte</h6>
                         <h2>{{ ::room.surface | number}} <span class="small text-muted">m²</span></h2>
                     </div>
                     <div class="col-sm-5">
-                        <h6>Contract</h6>
-                        <h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
-                        <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
+                        <h6 translate>Contract</h6>
+                        <h2 ng-if="room.leaseType == 'lease'" translate>huurcontract</h2>
+                        <h2 ng-if="room.leaseType == 'sublease'" translate>onderverhuring</h2>
                     </div>
                     <div class="col-sm-4">
-                        <h6>Kosten <small>{{getCostPeriod(room.price.period)}}</small></h6>
+                        <h6><span translate>Kosten</span> <small>{{getCostPeriod(room.price.period)}}</small></h6>
                         <!--                <table class="room-costs collapsed">
                             <tr>
                                 <td></td>
@@ -88,14 +88,14 @@
                             </tr>
                         </table> -->
                         <h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2>
-                        <a href="#"><i class="icon-info-circle"></i> Meer informatie</a>
+                        <a href="#"><i class="icon-info-circle"></i> <span translate>Meer informatie</span></a>
                     </div>
                 </div>
                 <div class="room-header row" ng-if="room.cohabit.active">
                     <div class="col-xs-12">
-                        <h6>Samenwonen</h6>
+                        <h6 translate>Samenwonen</h6>
                         <i class="icon-user" ng-repeat="i in getNumber(room.cohabit.count)"></i>
-                        andere(n) in dit pand
+                        <span translate>andere(n) in dit pand</span>
                     </div>
                 </div>
                 <div class="room-header row">
@@ -103,11 +103,11 @@
                         <ul>
                             <li>
                                 <i class="glyphicon glyphicon-calendar"></i>
-                                <span ng-if="room.available.immediately"><strong>Onmiddelijk beschikbaar!</strong></span>
-                                <span ng-if="!room.available.immediately">Beschikbaar van <strong>{{ ::room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-                                <span ng-if="!room.available.immediately" ng-show="room.available.till">tot <strong>{{ ::room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                <span ng-if="room.available.immediately"><strong translate>Onmiddelijk beschikbaar!</strong></span>
+                                <span ng-if="!room.available.immediately"><span translate>Beschikbaar van</span> <strong>{{ ::room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                <span ng-if="!room.available.immediately" ng-show="room.available.till"><span translate>tot</span> <strong>{{ ::room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                             </li>
-                            <li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="room.updated"></span></li>
+                            <li><i class="glyphicon glyphicon-time"></i> <span translate>Bijgewerkt</span> <span am-time-ago="room.updated"></span></li>
                         </ul>
                     </div>
                     <div class="room-extras col-xs-12 col-sm-7">
@@ -119,29 +119,29 @@
             </div>
         </div>
         <div class="contact-bottom text-center">
-            <h3>Klaar om contact op te nemen met de eigenaar?</h3>
-            <button ng-click="openContactModal()" class="btn"><i class="glyphicon glyphicon-ok"></i> Stuur een bericht</button>
+            <h3 translate>Klaar om contact op te nemen met de eigenaar?</h3>
+            <button ng-click="openContactModal()" class="btn"><i class="glyphicon glyphicon-ok"></i> <span translate>Stuur een bericht</span></button>
         </div>
         <div ng-hide="::otherRooms.length == 0">
-            <h4>{{::otherRooms.length}} andere ruimte(n) in deze woning</h4>
+            <h4 translate>{{::otherRooms.length}} andere ruimte(n) in deze woning</h4>
             <div class="panel panel-default" ng-cloak ng-repeat="otherRoom in ::otherRooms">
                 <div class="panel-body">
                     <div class="room-header row">
                         <div class="col-xs-6 col-md-3">
-                            <h6>Oppervlakte</h6>
+                            <h6 translate>Oppervlakte</h6>
                             <h2>{{ ::otherRoom.surface | number}} <span class="small text-muted">m²</span></h2>
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            <h6>Contract</h6>
-                            <h2 ng-if="room.leaseType == 'lease'">huurcontract</h2>
-                            <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
+                            <h6 translate>Contract</h6>
+                            <h2 ng-if="room.leaseType == 'lease'" translate>huurcontract</h2>
+                            <h2 ng-if="room.leaseType == 'sublease'" translate>onderverhuring</h2>
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            <h6>Kosten <small>{{getCostPeriod(otherRoom.price.period)}}</small></h6>
+                            <h6><span translate>Kosten</span> <small>{{getCostPeriod(otherRoom.price.period)}}</small></h6>
                             <h2><span class="small text-muted">€</span> {{ otherRoom.price.total | number}}</h2>
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            <a ng-href="{{otherRoom.url}}" class="btn">Bekijk deze ruimte</a>
+                            <a ng-href="{{otherRoom.url}}" class="btn" translate>Bekijk deze ruimte</a>
                         </div>
                     </div>
                     <div class="room-header row">
@@ -149,11 +149,11 @@
                             <ul>
                                 <li>
                                     <i class="glyphicon glyphicon-calendar"></i>
-                                    <span ng-if="otherRoom.available.immediately"><strong>Onmiddelijk beschikbaar!</strong></span>
-                                    <span ng-if="!otherRoom.available.immediately">Beschikbaar van <strong>{{ ::otherRoom.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-                                    <span ng-if="!otherRoom.available.immediately" ng-show="otherRoom.available.till">tot <strong>{{ ::otherRoom.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                    <span ng-if="otherRoom.available.immediately"><strong translate>Onmiddelijk beschikbaar!</strong></span>
+                                    <span ng-if="!otherRoom.available.immediately"><span translate>Beschikbaar van</span> <strong>{{ ::otherRoom.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                    <span ng-if="!otherRoom.available.immediately" ng-show="otherRoom.available.till"><span translate>tot</span> <strong>{{ ::otherRoom.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                                 </li>
-                                <li><i class="glyphicon glyphicon-time"></i> Bijgewerkt <span am-time-ago="otherRoom.updated"></span></li>
+                                <li><i class="glyphicon glyphicon-time"></i> <span translate>Bijgewerkt</span> <span am-time-ago="otherRoom.updated"></span></li>
                             </ul>
                         </div>
                         <div class="room-extras col-xs-12 col-sm-7">
@@ -170,20 +170,20 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="datepicker" date-picker append-element date-model="appointmentDate"></div>
-                <button ng-click="openReservationModal()" class="btn btn-blue btn-block"><i class="icon-calendar-1"></i> Afspraak maken</button>
+                <button ng-click="openReservationModal()" class="btn btn-blue btn-block"><i class="icon-calendar-1"></i> <span translate>Afspraak maken</span></button>
             </div>
         </div>
         <div class="panel panel-default">
             <div class="panel-body">
                 <form role="form">
-                    <h5>Vragen over deze ruimte?</h5>
+                    <h5 translate>Vragen over deze ruimte?</h5>
                     <h6><i class="icon-user"></i> {{::room.user.displayName}}</h6>
-                    <button ng-click="openContactModal()" class="btn btn-block"><i class="glyphicon glyphicon-envelope"></i> Bericht versturen</button>
+                    <button ng-click="openContactModal()" class="btn btn-block"><i class="glyphicon glyphicon-envelope"></i> <span translate>Bericht versturen</span></button>
                 </form>
             </div>
         </div>
         <div class="text-center">
-            <a href="mailto:abuse@apollo.be?subject=Misbruik&body=Advertentie nummer: {{::room._id}}"><i class="icon-flag"></i> Misbruik melden</a>
+            <a href="mailto:abuse@apollo.be?subject=Misbruik&body=Advertentie nummer: {{::room._id}}"><i class="icon-flag"></i> <span translate>Misbruik melden</span></a>
         </div>
     </div>
 </div>

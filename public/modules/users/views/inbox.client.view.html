@@ -2,10 +2,10 @@
     <div class="dashboard-top-bar dark-bg " ng-cloak>
         <div class="container">
             <ul class="col-sm-offset-2">
-                <li><a href="/dashboard/rooms" ng-click="setTab('rooms')">Mijn advertenties</a></li>
-                <li class="active"><a href="" ng-click="setTab('messages')">Berichten</a></li>
-                <li><a href="/dashboard/profile" ng-click="setTab('profile')">Profiel</a></li>
-                <li><a href="/dashboard/account" ng-click="setTab('account')">Account</a></li>
+                <li><a href="/dashboard/rooms" ng-click="setTab('rooms')" translate>Mijn advertenties</a></li>
+                <li class="active"><a href="" ng-click="setTab('messages')" translate>Berichten</a></li>
+                <li><a href="/dashboard/profile" ng-click="setTab('profile')" translate>Profiel</a></li>
+                <li><a href="/dashboard/account" ng-click="setTab('account')" translate>Account</a></li>
             </ul>
         </div>
     </div>
@@ -58,7 +58,7 @@
                     <div class="input-group input-group-lg">
                         <input type="text" ng-model="newMessage" ng-maxlength="500" class="form-control input-lg" placeholder="Typ je bericht" required>
                         <span class="input-group-btn">
-                        <button type="submit" class="btn btn-blue" ng-disabled="busy">Verzend</button>
+                        <button type="submit" class="btn btn-blue" ng-disabled="busy" translate>Verzend</button>
                         </span>
                     </div>
                 </form>

@@ -1,20 +1,18 @@
 <div class="modal-header">
     <button type="button" class="close" ng-click="$dismiss()">&times;</button>
-    <h4 class="modal-title"><i class="icon-mail-1"></i> Verstuur een bericht</h4>
+    <h4 class="modal-title"><i class="icon-mail-1"></i> <span translate>Verstuur een bericht</span></h4>
 </div>
 <div class="modal-body">
     <form class="form-horizontal" name="messageForm" novalidate>
         <div class="form-group">
-            <label class="control-label col-sm-3" for="message">Bericht</label>
+            <label class="control-label col-sm-3" for="message" translate>Bericht</label>
             <div class="col-sm-9">
-                <textarea data-ng-model="message" id="message" placeholder="Wat is je vraag?" required>
-                Ik zou graag wat meer informatie krijgen over deze advertentie
-                </textarea>
+                <textarea data-ng-model="message" id="message" placeholder="Wat is je vraag?" required></textarea>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-3 col-sm-9">
-                <button class="btn" ng-click="$close(message)" ng-disabled="messageForm.$invalid">Verstuur</button>
+                <button class="btn" ng-click="$close(message)" ng-disabled="messageForm.$invalid" translate>Verstuur</button>
             </div>
         </div>
     </form>

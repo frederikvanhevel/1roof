@@ -1,16 +1,16 @@
 <section ng-controller="AuthenticationController" class="container authentication-view">
     <div class="col-sm-offset-4 col-sm-4">
         <div class="bordered">
-            <h4 class="text-center">Registreren</h4>
+            <h4 class="text-center" translate>Registreren</h4>
             <a href="/auth/facebook" target="_self" class="btn btn-blue btn-block btn-social btn-facebook"><i class="icon-s-facebook"></i> Facebook</a>
             <a href="/auth/google" target="_self" class="btn btn-red btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
-            <p class="sidelines text-center"><span>of</span></p>
+            <p class="sidelines text-center"><span translate>of</span></p>
             <form data-ng-submit="signup()" class="signin" novalidate autocomplete="off">
                 <input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="Voornaam">
                 <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Achternaam">
                 <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="voorbeeld@gmail.com">
                 <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Wachtwoord">
-                <button type="submit" class="btn btn-block" ng-disabled="busy">Registreren</button>
+                <button type="submit" class="btn btn-block" ng-disabled="busy" translate>Registreren</button>
             </form>
             <div data-ng-show="error" class="text-center text-danger">
                 <strong>{{error}}</strong>
@@ -18,8 +18,8 @@
         </div>
         <div class="modal-footer">
             <p>
-            Heb je al een account?
-            <a href="/signin"> Inloggen</a>
+            <span translate>Heb je al een account?</span>
+            <a href="/signin" translate> Inloggen</a>
             </p>
         </div>
     </div>

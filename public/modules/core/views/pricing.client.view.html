@@ -4,16 +4,16 @@
             <div ng-if="message == 'upgrade'">
                 <div class="col-sm-offset-2 col-sm-8 inner-top-sm text-center" animate-element>
                     <header>
-                        <h1>Upgraden</h1>
-                        <p>Je hebt het maximum aantal advertenties die je kan plaatsen bereikt. Indien je er meerdere wil toevoegen, en wil genieten van een aantal extra voordelen zoals analytics, kies dan voor een upgrade!</p>
+                        <h1 translate>Upgraden</h1>
+                        <p translate>Je hebt het maximum aantal advertenties die je kan plaatsen bereikt. Indien je er meerdere wil toevoegen, en wil genieten van een aantal extra voordelen zoals analytics, kies dan voor een upgrade!</p>
                     </header>
                 </div>
             </div>
             <div ng-if="message == 'analytics'">
                 <div class="col-sm-offset-2 col-sm-8 inner-top-sm text-center" animate-element>
                     <header>
-                        <h1>Upgraden</h1>
-                        <p>Om gebruik te maken van geavanceerde functies zoals analytics, heb je een upgrade nodig. Kies één van de onderstaande tariefplannen om verder te gaan.</p>
+                        <h1 translate>Upgraden</h1>
+                        <p translate>Om gebruik te maken van geavanceerde functies zoals analytics, heb je een upgrade nodig. Kies één van de onderstaande tariefplannen om verder te gaan.</p>
                     </header>
                 </div>
             </div>
@@ -21,11 +21,11 @@
                 <div class="col-md-4 col-sm-6 inner-sm" animate-element>
                     <div class="plan">
                         <header>
-                            <h2>Student</h2>
+                            <h2 translate>Student</h2>
                             <div class="price">
                                 <span class="currency">€</span>
                                 <span class="amount">0</span>
-                                <span class="period">/ Maand</span>
+                                <span class="period" translate>/ Maand</span>
                             </div>
                             <button ng-disabled="isCurrentPlan('FREE') || busy" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('FREE') }" ng-click="choosePlan('FREE')">{{isCurrentPlan('FREE') ? 'Huidige plan' : 'Kies dit plan'}}</button>
                         </header>
@@ -41,11 +41,11 @@
                 <div class="col-md-4 col-sm-6 inner-sm" animate-element>
                     <div class="plan">
                         <header>
-                            <h2>Huisbaas</h2>
+                            <h2 translate>Huisbaas</h2>
                             <div class="price">
                                 <span class="currency">€</span>
                                 <span class="amount">9</span>
-                                <span class="period">/ Maand</span>
+                                <span class="period" translate>/ Maand</span>
                             </div>
                             <button ng-disabled="isCurrentPlan('PRO') || busy" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('PRO') }" ng-click="choosePlan('PRO')">{{isCurrentPlan('PRO') ? 'Huidige plan' : 'Kies dit plan'}}</button>
                         </header>
@@ -61,11 +61,11 @@
                 <div class="col-md-4 col-sm-6 inner-sm" animate-element>
                     <div class="plan">
                         <header>
-                            <h2>Agentschap</h2>
+                            <h2 translate>Agentschap</h2>
                             <div class="price">
                                 <span class="currency">€</span>
                                 <span class="amount">45</span>
-                                <span class="period">/ Maand</span>
+                                <span class="period" translate>/ Maand</span>
                             </div>
                             <button ng-disabled="isCurrentPlan('BUSINESS') || busy" class="btn" ng-class="{ 'btn-gray': isCurrentPlan('BUSINESS') }" ng-click="choosePlan('BUSINESS')">{{isCurrentPlan('BUSINESS') ? 'Huidige plan' : 'Kies dit plan'}}</button>
                         </header>

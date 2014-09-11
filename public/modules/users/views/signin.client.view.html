@@ -1,14 +1,14 @@
 <section ng-controller="AuthenticationController" class="container authentication-view">
     <div class="col-sm-offset-4 col-sm-4">
         <div class="bordered">
-            <h4 class="text-center">Inloggen</h4>
+            <h4 class="text-center" translate>Inloggen</h4>
             <a href="/auth/facebook" target="_self" class="btn btn-blue btn-block btn-social btn-facebook"><i class="icon-s-facebook"></i> Facebook</a>
             <a href="/auth/google" target="_self" class="btn btn-red btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
-            <p class="sidelines text-center"><span>of</span></p>
+            <p class="sidelines text-center"><span translate>of</span></p>
             <form data-ng-submit="signin()" class="signin">
                 <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="voorbeeld@email.com">
                 <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="wachtwoord">
-                <button type="submit" class="btn btn-block" ng-disabled="busy">Inloggen</button>
+                <button type="submit" class="btn btn-block" ng-disabled="busy" translate>Inloggen</button>
             </form>
             <div data-ng-show="error" class="text-center text-danger">
                 <strong>{{error}}</strong>
@@ -16,10 +16,10 @@
         </div>
         <div class="modal-footer">
             <p class="pull-right">
-            <a href="/forgot" ng-click="$dismiss()">Wachtwoord vergeten?</a>
+            <a href="/forgot" ng-click="$dismiss()" translate>Wachtwoord vergeten?</a>
             </p>
             <p class="pull-left">
-            <a href="/signup"> Nieuwe account</a>
+            <a href="/signup" translate> Nieuwe account</a>
             </p>
         </div>
     </div>

@@ -1,24 +1,20 @@
 <section data-ng-controller="AnalyticsController" data-ng-init="init()" class="analytics-view">
     <div class="blue-bg">
         <div class="container analytics-header">
-            <h1><i class="icon-chart-line"></i> Analytics</h1>
+            <h1><i class="icon-chart-line"></i> <span translate>Analytics</span></h1>
         </div>
     </div>
     <div class="container">
-        <ul class="etabs text-center">
-            <li class="tab active"><a href="#tab-1" class="active">Room 12</a></li>
-            <li class="tab"><a href="#tab-2">Vergelijken met andere</a></li>
-        </ul>
         <div class="row bordered">
-            <h4>Impressies <small>aantal keer bekeken per dag</small></h4>
+            <h4><span translate>Impressies</span> <small translate>aantal keer bekeken per dag</small></h4>
             <statistics-chart class="statistics-chart" ng-model="statisticsData" data-value="views" data-aggregate="false">
-            <p ng-if="statisticsData.length == 0" ng-cloak>Nog geen data beschikbaar</p>
+            <p ng-if="statisticsData.length == 0" translate>Nog geen data beschikbaar</p>
             </statistics-chart>
         </div>
         <div class="row bordered">
-            <h4>Favorieten <small>totaal aantal favorieten per dag</small></h4>
+            <h4><span translate>Favorieten</span> <small translate>totaal aantal favorieten per dag</small></h4>
             <statistics-chart class="statistics-chart" ng-model="statisticsData" data-value="favorites" data-aggregate="true">
-            <p ng-if="statisticsData.length == 0" ng-cloak>Nog geen data beschikbaar</p>
+            <p ng-if="statisticsData.length == 0" translate>Nog geen data beschikbaar</p>
             </statistics-chart>
         </div>
     </div>

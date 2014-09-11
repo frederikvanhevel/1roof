@@ -14,16 +14,16 @@
         </form>
         <div class="navbar-form navbar-right">
             <div class="form-group">
-                <a class="btn btn-orange advertise-button btn-block" href="/rooms/new">Adverteer je ruimte</a>
+                <a class="btn btn-orange advertise-button btn-block" href="/rooms/new" translate>Adverteer je ruimte</a>
             </div>
         </div>
         <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
             <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                <a href="" ng-click="openSignupModal()">Registreer</a>
+                <a href="" ng-click="openSignupModal()" translate>Registreer</a>
             </li>
             <li class="divider-vertical"></li>
             <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                <a href="" ng-click="openSigninModal()">Inloggen</a>
+                <a href="" ng-click="openSigninModal()" translate>Inloggen</a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right" data-ng-if="authentication.user">
@@ -34,20 +34,20 @@
                 </a>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="/dashboard/rooms">Mijn advertenties</a>
+                        <a href="/dashboard/rooms" translate>Mijn advertenties</a>
                     </li>
                     <li>
-                        <a href="/dashboard/messages">Berichten</a>
+                        <a href="/dashboard/messages" translate>Berichten</a>
                     </li>
                     <li>
-                        <a href="/dashboard/profile">Profiel aanpassen</a>
+                        <a href="/dashboard/profile" translate>Profiel aanpassen</a>
                     </li>
                     <li>
-                        <a href="/dashboard/account">Account</a>
+                        <a href="/dashboard/account" translate>Account</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="/auth/signout" target="_self">Uitloggen</a>
+                        <a href="/auth/signout" target="_self" translate>Uitloggen</a>
                     </li>
                 </ul>
             </li>
@@ -56,7 +56,11 @@
                     <span ng-if="unreadMessageCount != 0" class="label label-danger">{{unreadMessageCount}}</span> <i class="icon-mail-1"></i>
                 </a>
             </li>
-            <li><a href="/users/{{authentication.user._id}}/favorites"><i class="icon-heart-empty-1"></i> Mijn wishlist</a></li>
+            <li>
+                <a href="/users/{{authentication.user._id}}/favorites">
+                    <i class="icon-heart-empty-1"></i> <span translate>Mijn wishlist</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </div>
