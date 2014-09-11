@@ -7322,6 +7322,42 @@ header.navbar .btn.responsive-menu.navbar-toggle {
     margin-left: 30px;
   }
 }
+@media (max-width: 890px) {
+  header.navbar .navbar-header {
+    float: none;
+  }
+  header.navbar .navbar-left, header.navbar .navbar-right {
+    float: none !important;
+  }
+  header.navbar .navbar-toggle {
+    display: block;
+  }
+  header.navbar .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  header.navbar .navbar-fixed-top {
+    top: 0;
+    border-width: 0 0 1px;
+  }
+  header.navbar .navbar-collapse.collapse {
+    display: none !important;
+  }
+  header.navbar .navbar-nav {
+    float: none !important;
+    margin-top: 7.5px;
+  }
+  header.navbar .navbar-nav > li {
+    float: none;
+  }
+  header.navbar .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  header.navbar .collapse.in {
+    display: block !important;
+  }
+}
 header.navbar .profile .profile-name {
   margin-left: 40px;
 }
@@ -8127,6 +8163,16 @@ USERS MODULE
 .dashboard-bg {
   height: 250px;
   margin-bottom: 50px;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .dashboard-bg {
+    height: 150px;
+  }
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .dashboard-bg {
+    height: 200px;
+  }
 }
 .dashboard-bg h1 {
   color: white;

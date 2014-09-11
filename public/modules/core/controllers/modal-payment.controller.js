@@ -29,7 +29,7 @@ angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$sc
                 $modalInstance.close(response);
                 $scope.busy = false;
 
-                Analytics.trackEvent('Subscription', 'Changed', plan);
+                Analytics.trackEvent('Subscription', 'Changed', plan, couponCode);
             }).error(function(response) {
                 $scope.busy = false;
                 $modalInstance.dismiss({

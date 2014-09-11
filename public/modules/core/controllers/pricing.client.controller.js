@@ -57,7 +57,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
                 Alert.add('success', 'Je tariefplan is geupdatet!', 5000);
                 $scope.busy = false;
 
-                Analytics.trackEvent('Subscription', 'Changed', plan);
+                Analytics.trackEvent('Subscription', 'Changed', plan, couponCode);
             }).error(function() {
                 Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
                 $scope.busy = false;
