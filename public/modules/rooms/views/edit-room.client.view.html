@@ -67,16 +67,16 @@
                         <div class="form-group" ng-class="{ 'has-error': tabHasError('general') }">
                             <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' karakters over'"></small>
                             <label class="control-label" translate>Titel</label>
-                            <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="Geef een gepaste titel in" required>
+                            <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="{{'Geef een gepaste titel in'|translate}}" required>
                         </div>
                         <div class="form-group">
                             <small class="pull-right" ng-bind="(1500 - room.info.description.length) + ' karakters over'"></small>
                             <label class="control-label" translate>Beschrijving</label>
-                            <textarea ng-model="room.info.description" maxlength="1500" limit-text="1500" type="text"  placeholder="Geef een duidelijke beschrijving over je ruimte"></textarea>
+                            <textarea ng-model="room.info.description" maxlength="1500" limit-text="1500" type="text"  placeholder="{{'Geef een duidelijke beschrijving over je ruimte'|translate}}"></textarea>
                         </div>
                         <div class="form-group">
                             <label class="control-label" translate>Oppervlakte</label>
-                            <input ng-model="room.surface" type="number" min="0" class="form-control"  placeholder="Oppervlakte in m²">
+                            <input ng-model="room.surface" type="number" min="0" class="form-control"  placeholder="{{'Oppervlakte in m²'|translate}}">
                         </div>
                     </form>
                     <hr>
@@ -127,15 +127,15 @@
                         </div>
                         <div class="form-group" ng-class="{ 'has-error': tabHasError('costs') }">
                             <label class="control-label" translate>Basis prijs</label>
-                            <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="Basis kosten">
+                            <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="{{'Basis kosten'|translate}}">
                         </div>
                         <div class="form-group">
                             <label class="control-label" translate>Gas, elektriciteit en water (optioneel)</label>
-                            <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="Extra kosten">
+                            <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="{{'Extra kosten'|translate}}">
                         </div>
                         <div class="form-group">
                             <label class="control-label" translate>Schoonmaak (optioneel)</label>
-                            <input ng-model="room.price.cleaning" type="number" min="0" class="form-control"  placeholder="Schoonmaak kosten">
+                            <input ng-model="room.price.cleaning" type="number" min="0" class="form-control"  placeholder="{{'Schoonmaak kosten'|translate}}">
                         </div>
                     </form>
                 </div>

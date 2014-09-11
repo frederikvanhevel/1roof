@@ -6,7 +6,7 @@
             <form data-ng-submit="forgot()" class="signin form-horizontal" autocomplete="off">
                 <fieldset>
                     <div class="form-group">
-                        <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="Vul je email in">
+                        <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="{{'Vul je email in'|translate}}">
                     </div>
                     <div class="text-center form-group">
                         <button ng-class="{ disabled: busy }" type="submit" class="btn" translate>Nieuw wachtwoord aanvragen</button>

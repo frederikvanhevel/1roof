@@ -7,7 +7,7 @@
         <div class="form-group" ng-class="{ 'has-error' : changeAddressForm.address.$invalid && !changeAddressForm.address.$pristine || changeAddressForm.$error.noStreet || changeAddressForm.$error.noStreetNumber}">
             <label class="control-label col-sm-3" for="address" translate>Nieuw adres</label>
             <div class="col-sm-9">
-                <input type="text"name="address" class="form-control" placeholder="Typ het adres" address-lookup result-object="modalContent.addressDetails" required>
+                <input type="text"name="address" class="form-control" placeholder="{{'Typ het adres'|translate}}" address-lookup result-object="modalContent.addressDetails" required>
                 <p ng-show="changeAddressForm.$error.noStreet && !changeAddressForm.address.$pristine" class="help-block" translate>Je moet een straat intypen.</p>
                 <p ng-show="changeAddressForm.$error.noStreetNumber && !changeAddressForm.address.$pristine" class="help-block" translate>Je moet een straatnummer ingeven.</p>
             </div>

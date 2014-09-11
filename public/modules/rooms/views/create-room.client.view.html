@@ -41,7 +41,7 @@
                         <div class="form-group" ng-class="{ 'has-error' : createRoomForm.address.$invalid && !createRoomForm.address.$pristine || createRoomForm.$error.noStreet || createRoomForm.$error.noStreetNumber}">
                             <label class="control-label col-sm-3" for="address" translate>Adres</label>
                             <div class="col-sm-9">
-                                <input type="text" ng-model="createForm.address" name="address" class="form-control" placeholder="Geef het adres in" data-options="autocompleteOptions" details="autoCompleteDetails"  ng-autocomplete check-address required>
+                                <input type="text" ng-model="createForm.address" name="address" class="form-control" placeholder="{{'Geef het adres in'|translate}}" data-options="autocompleteOptions" details="autoCompleteDetails"  ng-autocomplete check-address required>
                                 <p ng-show="createRoomForm.$error.noStreet && !createRoomForm.address.$pristine" class="help-block" translate>Je moet een straat intypen</p>
                                 <p ng-show="createRoomForm.$error.noStreetNumber && !createRoomForm.address.$pristine" class="help-block" translate>Je moet een huisnummer ingeven</p>
                             </div>

@@ -6,8 +6,8 @@
             <a href="/auth/google" target="_self" class="btn btn-red btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
             <p class="sidelines text-center"><span translate>of</span></p>
             <form data-ng-submit="signin()" class="signin">
-                <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="voorbeeld@email.com">
-                <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="wachtwoord">
+                <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="{{'voorbeeld@email.com'|translate}}">
+                <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="{{'wachtwoord'|translate}}">
                 <button type="submit" class="btn btn-block" ng-disabled="busy" translate>Inloggen</button>
             </form>
             <div data-ng-show="error" class="text-center text-danger">

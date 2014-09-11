@@ -17,6 +17,10 @@ msgstr ""
 msgid "Account"
 msgstr ""
 
+#: public/modules/users/views/signup.client.view.html
+msgid "Achternaam"
+msgstr ""
+
 #: public/modules/rooms/views/create-room.client.view.html
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Adres"
@@ -97,6 +101,10 @@ msgstr ""
 
 #: public/modules/rooms/services/amenity.client.service.js
 msgid "Auto garage"
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Basis kosten"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
@@ -197,6 +205,10 @@ msgid "Er was een probleem met het verzenden van je bericht, probeer later eens 
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
+msgid "Extra kosten"
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
 msgid "Facturatie periode"
 msgstr ""
 
@@ -230,6 +242,18 @@ msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie beschrijven. Je kan in de beschrijving meer uitleg geven."
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Geef een duidelijke beschrijving over je ruimte"
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Geef een gepaste titel in"
+msgstr ""
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Geef het adres in"
 msgstr ""
 
 #: public/modules/search/views/search.client.view.html
@@ -451,6 +475,10 @@ msgstr ""
 msgid "Oppervlakte"
 msgstr ""
 
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Oppervlakte in m²"
+msgstr ""
+
 #: public/modules/core/views/footer.client.view.html
 msgid "Over ons"
 msgstr ""
@@ -483,6 +511,10 @@ msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Schoonmaak (optioneel)"
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Schoonmaak kosten"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
@@ -530,12 +562,20 @@ msgstr ""
 msgid "Toegevoegd aan favorieten!"
 msgstr ""
 
+#: public/modules/users/views/inbox.client.view.html
+msgid "Typ je bericht"
+msgstr ""
+
 #: public/modules/users/views/reset.client.view.html
 msgid "Typ je wachtwoord opnieuw"
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Type ruimte"
+msgstr ""
+
+#: public/modules/users/views/reset.client.view.html
+msgid "Type wachtwoord opnieuw"
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
@@ -562,12 +602,29 @@ msgstr ""
 msgid "Volledig huis"
 msgstr ""
 
+#: public/modules/users/views/signup.client.view.html
+msgid "Voornaam"
+msgstr ""
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Voorzieningen"
 msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Vragen over deze ruimte?"
+msgstr ""
+
+#: public/modules/users/views/forgot.client.view.html
+msgid "Vul je email in"
+msgstr ""
+
+#: public/modules/core/views/header.client.view.html
+#: public/modules/core/views/home.client.view.html
+msgid "Waar wil je naartoe?"
+msgstr ""
+
+#: public/modules/users/views/signup.client.view.html
+msgid "Wachtwoord"
 msgstr ""
 
 #: public/modules/users/views/reset.client.view.html
@@ -647,6 +704,18 @@ msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "van"
+msgstr ""
+
+#: public/modules/users/views/signin.client.view.html
+msgid "voorbeeld@email.com"
+msgstr ""
+
+#: public/modules/users/views/signup.client.view.html
+msgid "voorbeeld@gmail.com"
+msgstr ""
+
+#: public/modules/users/views/signin.client.view.html
+msgid "wachtwoord"
 msgstr ""
 
 #: public/modules/search/views/search.client.view.html
