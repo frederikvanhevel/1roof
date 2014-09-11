@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').service('Modal', ['$modal', '$location',
-    function($modal, $location) {
+angular.module('core').service('Modal', ['$modal',
+    function($modal) {
         var modalInstance;
 
         this.signup = function() {

@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta', '$location', 'Enforcer', 'Analytics', 'gettext',
-    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta, $location, Enforcer, Analytics, gettext) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'Statistics', 'Meta', '$location', 'Enforcer', 'Analytics', 'gettext',
+    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, Statistics, Meta, $location, Enforcer, Analytics, gettext) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {

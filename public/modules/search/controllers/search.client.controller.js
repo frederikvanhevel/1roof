@@ -1,12 +1,11 @@
 'use strict';
 
-angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Amenity', 'Authentication', 'Users', 'localStorageService', 'Meta', 'Enforcer', 'UserSettings',
-    function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Amenity, Authentication, Users, localStorageService, Meta, Enforcer, UserSettings) {
+angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Authentication', 'localStorageService', 'Meta', 'Enforcer', 'UserSettings',
+    function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Authentication, localStorageService, Meta, Enforcer, UserSettings) {
         $scope.user = Authentication.user;
 
         $scope.mapCenter = [4.3517100, 50.8503400]; // Brussel
         $scope.mapZoom = 13;
-        $scope.fetchOnMapChange = true;
         $scope.filter = {
             location: [],
             proximity: 3600,
@@ -17,7 +16,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
             amenities: []
         };
         $scope.results = [];
-        $scope.amenities = Amenity.list();
 
         $scope.selectedRoomId = null;
         $scope.isOverLayOpen = false;

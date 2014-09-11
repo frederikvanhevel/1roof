@@ -1,19 +1,10 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta', 'gettext',
-    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal, Alert, Meta, gettext) {
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta', 'gettext',
+    function($scope, $stateParams, $location, Authentication, Rooms, $window, Amenity, $upload, $http, Modal, Alert, Meta, gettext) {
         $scope.authentication = Authentication;
 
-        $scope.createForm = {
-            address: '',
-            roomType: ''
-        };
-        $scope.autocompleteOptions = {
-            country: 'be',
-            watchEnter: true
-        };
-        $scope.addressDetails = null;
         $scope.busy = false;
         $scope.nav = 'general';
         $scope.amenities = Amenity.list();
