@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta',
-    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal, Alert, Meta) {
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta', 'gettext',
+    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal, Alert, Meta, gettext) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -179,7 +179,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 $scope.busy = false;
             }).error(function(response) {
                 $scope.busy = false;
-                Alert.add('danger', 'Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.', 5000);
+                Alert.add('danger', gettext('Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.'), 5000);
             });
         }
 
@@ -197,7 +197,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                     $scope.busy = false;
                 }).error(function(response) {
                     $scope.busy = false;
-                    Alert.add('danger', 'Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.', 5000);
+                    Alert.add('danger', gettext('Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.'), 5000);
                 });
             });
         }

@@ -22,7 +22,7 @@
                 </h1>
                 <i class="glyphicon" ng-class=""></i>
                 <a ng-href="/search/{{room.location.city}}--{{room.location.country}}">{{::room.location.city}}</a> <i class="icon-right-open"></i> {{::room.location.street}} <i class="icon-right-open"></i> <strong>{{::room.classification}}</strong>
-                <span class="text-muted pull-right">Laatst bijgewerkt {{::room.updated | date:'mediumDate'}}</span>
+                <span class="text-muted pull-right">Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}</span>
             </div>
         </div>
 
@@ -61,7 +61,7 @@
                         <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
                     </div>
                     <div class="col-sm-4">
-                        <h6>Kosten <small>per {{::room.price.period}}</small></h6>
+                        <h6>Kosten <small>{{getCostPeriod(room.price.period)}}</small></h6>
                         <!--                <table class="room-costs collapsed">
                             <tr>
                                 <td></td>
@@ -137,7 +137,7 @@
                             <h2 ng-if="room.leaseType == 'sublease'">onderverhuring</h2>
                         </div>
                         <div class="col-xs-6 col-md-3">
-                            <h6>Kosten</h6>
+                            <h6>Kosten <small>{{getCostPeriod(otherRoom.price.period)}}</small></h6>
                             <h2><span class="small text-muted">€</span> {{ otherRoom.price.total | number}}</h2>
                         </div>
                         <div class="col-xs-6 col-md-3">

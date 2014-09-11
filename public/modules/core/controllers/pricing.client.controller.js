@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', 'Meta', '$http', 'Modal', 'Enforcer', 'Analytics',
-    function($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal, Enforcer, Analytics) {
+angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', 'Meta', '$http', 'Modal', 'Enforcer', 'Analytics', 'gettext',
+    function($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal, Enforcer, Analytics, gettext) {
         $scope.authentication = Authentication;
 
         $scope.busy = false;
@@ -25,11 +25,11 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
                         couponCode: coupon
                     }).then(function(response) {
                         Authentication.user = response;
-                        Alert.add('success', 'Je tariefplan is geupdatet!', 5000);
+                        Alert.add('success', gettext('Je tariefplan is geupdatet!'), 5000);
                         $scope.busy = false;
                     }, function(result) {
                         if (result.error) {
-                            Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
+                            Alert.add('danger', gettext('Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.'), 5000);
                         }
                         $scope.busy = false;
                     });
@@ -54,12 +54,12 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
                 couponCode: couponCode
             }).success(function(response) {
                 Authentication.user = response;
-                Alert.add('success', 'Je tariefplan is geupdatet!', 5000);
+                Alert.add('success', gettext('Je tariefplan is geupdatet!'), 5000);
                 $scope.busy = false;
 
                 Analytics.trackEvent('Subscription', 'Changed', plan, couponCode);
             }).error(function() {
-                Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
+                Alert.add('danger', gettext('Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.'), 5000);
                 $scope.busy = false;
             });
         }

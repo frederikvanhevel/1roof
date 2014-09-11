@@ -10,60 +10,58 @@
         </div>
     </div>
     <div class="container inbox">
-        <div class="row">
-            <div class="col-sm-offset-1 col-sm-3">
-                <ul class="sidenav">
-                    <li data-ng-repeat="other in inboxes" ng-class="{ active: other._id == inbox._id }">
-                        <a href="" ng-click="showInbox(other._id)">
-                            <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
-                            <div class="profile-picture" ng-style="getUserPicture(other)"></div>
-                            <div class="sender-name">{{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}</div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-sm-6" ng-cloak>
-                <div class="bordered room-card" ng-show="inbox.room != null">
-                    <a ng-href="{{inbox.room.url}}">
-                        <div ng-if="inbox.room.pictures.length == 0" class="room-image empty tint-bg">
-                            <i class="icon-camera-1"></i>
-                        </div>
-                        <div ng-if="inbox.room.pictures.length > 0" class="room-image" back-img img-provider="{{inbox.room.pictures[0].provider}}" img-link="{{inbox.room.pictures[0].link}}"></div>
-                        <div class="room-info">
-                            <h3>{{inbox.room.info.title}}</h3>
-                            <p><small>{{inbox.room.location.street}}, {{inbox.room.location.city}}</small></p>
-                        </div>
-                        <div class="clearfix"></div>
+        <div class="col-sm-offset-1 col-sm-3">
+            <ul class="sidenav">
+                <li data-ng-repeat="other in inboxes" ng-class="{ active: other._id == inbox._id }">
+                    <a href="" ng-click="showInbox(other._id)">
+                        <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
+                        <div class="profile-picture" ng-style="getUserPicture(other)"></div>
+                        <div class="sender-name">{{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}</div>
                     </a>
-                </div>
-                <!--         <div ng-show="inbox.room == null" class="bordered room-card deleted">
-                    <i class="icon-attention"></i>
-                    <h2>Advertentie is verwijderd</h2>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-6" ng-cloak>
+            <div class="bordered room-card" ng-show="inbox.room != null">
+                <a ng-href="{{inbox.room.url}}">
+                    <div ng-if="inbox.room.pictures.length == 0" class="room-image empty tint-bg">
+                        <i class="icon-camera-1"></i>
+                    </div>
+                    <div ng-if="inbox.room.pictures.length > 0" class="room-image" back-img img-provider="{{inbox.room.pictures[0].provider}}" img-link="{{inbox.room.pictures[0].link}}"></div>
+                    <div class="room-info">
+                        <h3>{{inbox.room.info.title}}</h3>
+                        <p><small>{{inbox.room.location.street}}, {{inbox.room.location.city}}</small></p>
+                    </div>
                     <div class="clearfix"></div>
-                </div> -->
-                <div class="messages bordered" ng-model="inbox.messages.length" scroll-bottom>
-                    <div class="message" data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered">
-                        <!-- <div class="profile-picture" ng-style="getUserPicture()"></div> -->
-                        <!-- <div class="timestamp text-center claerfix"><small>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</small></div> -->
-                        <div ng-if="message.messageType == 'default'" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
-                            {{message.message}}
-                        </div>
-                        <div ng-if="message.messageType == 'reservation'" class="reservation orange-bg">
-                            <i class="icon-calendar-1"></i>
-                            {{message.sender != authentication.user._id ? other.roomOwner.displayName : 'Je'}} wil een afspraak maken op <strong>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</strong>
-                        </div>
+                </a>
+            </div>
+            <!--         <div ng-show="inbox.room == null" class="bordered room-card deleted">
+                <i class="icon-attention"></i>
+                <h2>Advertentie is verwijderd</h2>
+                <div class="clearfix"></div>
+            </div> -->
+            <div class="messages bordered" ng-model="inbox.messages.length" scroll-bottom>
+                <div class="message" data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered">
+                    <!-- <div class="profile-picture" ng-style="getUserPicture()"></div> -->
+                    <!-- <div class="timestamp text-center claerfix"><small>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</small></div> -->
+                    <div ng-if="message.messageType == 'default'" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">
+                        {{message.message}}
+                    </div>
+                    <div ng-if="message.messageType == 'reservation'" class="reservation orange-bg">
+                        <i class="icon-calendar-1"></i>
+                        {{message.sender != authentication.user._id ? other.roomOwner.displayName : 'Je'}} wil een afspraak maken op <strong>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</strong>
                     </div>
                 </div>
-                <div class="row message-input">
-                    <form ng-submit="sendMessage()" class="col-sm-12">
-                        <div class="input-group input-group-lg">
-                            <input type="text" ng-model="newMessage" ng-maxlength="500" class="form-control input-lg" placeholder="Typ je bericht" required>
-                            <span class="input-group-btn">
-                            <button type="submit" class="btn btn-blue" ng-disabled="busy">Verzend</button>
-                            </span>
-                        </div>
-                    </form>
-                </div>
+            </div>
+            <div class="message-input">
+                <form ng-submit="sendMessage()" class="col-sm-12">
+                    <div class="input-group input-group-lg">
+                        <input type="text" ng-model="newMessage" ng-maxlength="500" class="form-control input-lg" placeholder="Typ je bericht" required>
+                        <span class="input-group-btn">
+                        <button type="submit" class="btn btn-blue" ng-disabled="busy">Verzend</button>
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

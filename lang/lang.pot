@@ -3,16 +3,115 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: public/modules/core/views/home.client.view.html
-msgid "Contacteer ons!"
+#: public/modules/users/controllers/settings.client.controller.js
+msgid "Agentschap"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Aparte badkamer"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Aparte keuken"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Auto garage"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Bemeubeld"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
+#: public/modules/core/views/pricing.client.view.html
+msgid "Contacteer ons!"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Domicilie verplicht"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Dubbel glas"
+msgstr ""
+
+#: public/modules/core/controllers/modal-payment.controller.js
+#: public/modules/core/controllers/pricing.client.controller.js
+msgid "Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw."
+msgstr ""
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "Er was een probleem bij het toevoegen aan je favorieten, probeer later eens opnieuw."
+msgstr ""
+
+#: public/modules/rooms/controllers/manage-room.client.controller.js
+msgid "Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw."
+msgstr ""
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw."
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Fietsstalling"
+msgstr ""
+
+#: public/modules/users/controllers/settings.client.controller.js
+msgid "Huisbaas"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Huisdieren toegelaten"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+#: public/modules/core/views/pricing.client.view.html
 msgid "Hulp nodig?"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Internet"
+msgstr ""
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "Je bericht is verzonden!"
+msgstr ""
+
+#: public/modules/core/controllers/pricing.client.controller.js
+msgid "Je tariefplan is geupdatet!"
+msgstr ""
+
+#: public/modules/users/controllers/settings.client.controller.js
+msgid "Student"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "TV"
+msgstr ""
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Terras"
+msgstr ""
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "Toegevoegd aan favorieten!"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
 msgid "Vind je ideale woonst."
+msgstr ""
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "per drie maand"
+msgstr ""
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "per jaar"
+msgstr ""
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "per maand"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html

@@ -158,7 +158,7 @@ module.exports = function(grunt) {
         nggettext_extract: {
             pot: {
                 files: {
-                    'lang/lang.pot': ['public/modules/**/views/*.html']
+                    'lang/lang.pot': ['public/modules/**/views/*.html', 'public/modules/**/*.js']
                 }
             },
         },

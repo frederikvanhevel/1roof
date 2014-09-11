@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta', '$location', 'Enforcer', 'Analytics',
-    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta, $location, Enforcer, Analytics) {
+angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '$stateParams', '$http', 'Authentication', 'Rooms', 'Amenity', 'Modal', 'Alert', 'localStorageService', 'Statistics', 'Meta', '$location', 'Enforcer', 'Analytics', 'gettext',
+    function($rootScope, $scope, $stateParams, $http, Authentication, Rooms, Amenity, Modal, Alert, localStorageService, Statistics, Meta, $location, Enforcer, Analytics, gettext) {
         $scope.authentication = Authentication;
 
         $scope.contactInfo = {
@@ -86,6 +86,12 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             return obj;
         };
 
+        $scope.getCostPeriod = function(period) {
+            if (period === 'month') return gettext('per maand');
+            else if (period === 'month') return gettext('per drie maand');
+            else return gettext('per jaar');
+        };
+
         function sendFavorite() {
             $http.post('/api/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);
@@ -93,14 +99,14 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
                     Statistics.aggregate($scope.room._id, 'favorites');
 
                     Authentication.user.favorites.push($scope.room._id);
-                    Alert.add('success', 'Toegevoegd aan favorieten!', 3000);
+                    Alert.add('success', gettext('Toegevoegd aan favorieten!'), 3000);
 
                     Analytics.trackEvent('Room', 'Favorite');
                 } else {
                     Authentication.user.favorites.splice(index, 1);
                 }
             }).error(function(response) {
-                Alert.add('danger', 'Er was een probleem bij het toevoegen aan je favorieten, probeer later eens opnieuw.', 5000);
+                Alert.add('danger', gettext('Er was een probleem bij het toevoegen aan je favorieten, probeer later eens opnieuw.'), 5000);
             });
         }
 
@@ -110,10 +116,10 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             $http.post('/api/rooms/' + $scope.room._id + '/message', {
                 message: message
             }).success(function(response) {
-                Alert.add('success', 'Je bericht is verzonden!', 5000);
+                Alert.add('success', gettext('Je bericht is verzonden!'), 5000);
                 Analytics.trackEvent('Room', 'Message');
             }).error(function(response) {
-                Alert.add('danger', 'Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.', 5000);
+                Alert.add('danger', gettext('Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.'), 5000);
             });
         }
 
@@ -128,7 +134,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
                 else Alert.add('success', 'Je aanvraag is verzonden!', 5000);
                 Analytics.trackEvent('Room', 'Reservation');
             }).error(function(response) {
-                Alert.add('danger', 'Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.', 5000);
+                Alert.add('danger', gettext('Er was een probleem met het verzenden van je bericht, probeer later eens opnieuw.'), 5000);
             });
         }
 
