@@ -7214,22 +7214,31 @@ html, body {
   text-decoration: none;
 }
 
-.alert-item.ng-enter, .alert-item.ng-leave {
-  -webkit-animation-name: scale;
-  animation-name: scale;
-  -webkit-animation-duration: 0.25s;
-  animation-duration: 0.25s;
-}
-.alert-item.ng-leave {
-  -webkit-animation-direction: reverse;
-  animation-direction: reverse;
-}
-
 .alert-container {
   position: fixed;
   right: 50px;
   top: 20px;
   z-index: 99999;
+  max-width: 350px;
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .alert-container {
+    left: 20px;
+    right: 20px;
+  }
+}
+.alert-container .alert-item {
+  box-shadow: 0 25px 10px -15px rgba(0, 0, 0, 0.05);
+}
+.alert-container .alert-item.ng-enter, .alert-container .alert-item.ng-leave {
+  -webkit-animation-name: scale;
+  animation-name: scale;
+  -webkit-animation-duration: 0.25s;
+  animation-duration: 0.25s;
+}
+.alert-container .alert-item.ng-leave {
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
 }
 
 .content {
@@ -8147,22 +8156,31 @@ USERS MODULE
 .dashboard-top-bar ul li a:first-child {
   left: -16px;
 }
-.dashboard-top-bar ul li.active {
-  font-weight: bold;
-}
-.dashboard-top-bar ul li.active:after {
+.dashboard-top-bar ul li:after {
   position: absolute;
   content: '';
   bottom: 0;
   left: 16px;
   right: 16px;
   height: 4px;
+  background: transparent;
+  transition: transform 0.3s;
+  -webkit-transform: translate3d(0, 5px, 0);
+  transform: translate3d(0, 5px, 0);
+}
+.dashboard-top-bar ul li.active {
+  font-weight: bold;
+}
+.dashboard-top-bar ul li.active:after {
   background: #1ABB9C;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 
 .dashboard-bg {
   height: 250px;
   margin-bottom: 50px;
+  background-size: cover;
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .dashboard-bg {

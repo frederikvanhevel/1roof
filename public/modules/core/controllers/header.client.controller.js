@@ -13,6 +13,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             // detect browser language
             $rootScope.language = window.navigator.userLanguage || window.navigator.language;
             if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl', false);
+            else setLanguage('en', true);
 
             // watch for language changes
             $rootScope.$watch('language', function(newVal, oldVal) {

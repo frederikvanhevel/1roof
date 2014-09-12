@@ -2,8 +2,8 @@
     <div class="col-sm-offset-1 col-sm-10">
         <div class="panel panel-default">
             <div class="panel-heading" translate>Berichten</div>
-            <div class="panel-body" ng-hide="inboxes.length > 0" translate>
-                Je hebt nog geen berichten ontvangen :)
+            <div class="panel-body" ng-hide="inboxes.length > 0">
+                <p class="lead"><i class="icon-mail-1"></i> <span translate>Je hebt nog geen berichten ontvangen :)</span>
             </div>
             <div class="list-group">
                 <a ng-href="/dashboard/messages/{{inbox._id}}" class="list-group-item" ng-repeat="inbox in inboxes">

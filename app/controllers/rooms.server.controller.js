@@ -106,6 +106,10 @@ exports.list = function(req, res) {
 	var params = req.query;
 	var query = { visible: true };
 
+    if (!params.location || !params.minPrice || !params.maxPrice || !params.proximity) {
+        return res.send(405);
+    }
+
 	if (params.location) {
 		query.loc = {
 			$near: {
@@ -131,9 +135,7 @@ exports.list = function(req, res) {
 	Room.find(query).exec(function(err, rooms) {
 		if (err) {
 			winston.error('Error listing rooms', query);
-			return res.send(400, {
-				message: getErrorMessage(err)
-			});
+			return res.send(400);
 		} else {
 			res.jsonp(rooms);
 		}

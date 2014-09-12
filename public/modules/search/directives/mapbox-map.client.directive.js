@@ -47,6 +47,9 @@ angular.module('search').directive('mapboxMap', ['$compile', '$q', '$window', '$
                             lat: center.lat,
                             proximity: getBoundsDistance()
                         });
+
+                        foursquareMarkers.clearLayers();
+                        getFoursquareData();
                     });
                 }
 

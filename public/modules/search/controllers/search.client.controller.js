@@ -166,7 +166,7 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         };
 
         $scope.isNewRoom = function(room) {
-            return (new Date() - new Date(room.updated)) < 86400000; // one day
+            return (new Date().getTime() - new Date(room.created).getTime()) < 86400000; // one day
         };
 
         // Update user profile
