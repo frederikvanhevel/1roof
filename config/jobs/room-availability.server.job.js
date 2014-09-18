@@ -11,7 +11,7 @@ function checkRoom(room) {
   var context = {
     user: room.user,
     room: room,
-    editLink: '/#!/rooms/' + room._id + '/edit'
+    editLink: '/rooms/' + room._id + '/edit'
   };
 
   room.save(function(err) {

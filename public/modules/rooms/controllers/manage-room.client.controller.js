@@ -25,7 +25,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
-            }, $scope.watchForUpdates);
+            }, $scope.watchForUpdates, function() {
+                // room not found, redirect
+                $location.path('/dashboard/rooms');
+            });
 
             $scope.$on('dropbox_chosen', onDropboxSelect);
         };
@@ -155,6 +158,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         function uploadImage(image) {
+            if ($scope.room.pictures.length === 8) return;
+
             $scope.busy = true;
             $upload.upload({
                 url: '/api/rooms/' + $scope.room._id + '/upload',
@@ -175,6 +180,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         }
 
         function onDropboxSelect(e, files) {
+            if ($scope.room.pictures.length === 8) return;
+
             $scope.busy = true;
             files.forEach(function(file) {
                 $http.post('/api/rooms/' + $scope.room._id + '/upload', {

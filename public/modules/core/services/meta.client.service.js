@@ -8,6 +8,10 @@ angular.module('core').service('Meta', ['$rootScope',
             $rootScope.title = title;
         };
 
+        this.setTitlePrefix = function(text) {
+            $rootScope.titlePrefix = text + ' ';
+        };
+
         this.setDescription = function(text) {
             $rootScope.description = text;
         };

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics',
-    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics) {
+angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics', 'Meta',
+    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics, Meta) {
         $scope.authentication = Authentication;
         $scope.isCollapsed = true;
         $scope.search = '';
@@ -29,8 +29,6 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             });
 
             initializeSocket();
-
-            // Analytics.initialize();
         };
 
         $scope.toggleCollapsibleMenu = function() {
@@ -72,14 +70,24 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             if (Authentication.user) {
                 Socket.emit('join', Authentication.user._id);
                 Socket.on('newMessageCount', function(response) {
-                    if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox)
+                    if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox) {
                         $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
+                        if ( $scope.unreadMessageCount < 0)  $scope.unreadMessageCount = 0;
+                        Meta.setTitlePrefix('(' + $scope.unreadMessageCount + ')');
+
+                        playNewMessageSound();
+                    }
                 });
 
                 $rootScope.$on('inbox_read', function(event, count) {
                     if (count > 0) $scope.unreadMessageCount -= count;
                 });
             }
+        }
+
+        function playNewMessageSound() {
+            var audio = new Audio('/modules/core/img/woosh.wav');
+            audio.play();
         }
 
         function changeLocation(address, lat, lng) {

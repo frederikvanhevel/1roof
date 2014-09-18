@@ -49,6 +49,13 @@ exports.create = function(req, res) {
 				message: getErrorMessage(err)
 			});
 		} else {
+            var context = {
+                user: req.user,
+                room: room,
+                editLink: '/rooms/' + room._id + '/edit/'
+            };
+            mailer.send('create-room.email.html', context, req.user.email, 'Advertentie aangemaakt!');
+
 			res.jsonp(room);
 		}
 	});

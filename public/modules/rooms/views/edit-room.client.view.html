@@ -181,10 +181,10 @@
                 <div class="panel-body">
                     <div class="pictures-header">
                         <h5 class="pull-right"><small translate>{{room.pictures.length}} foto's</small></h5>
-                        <button class="btn-upload btn btn-blue btn-sm" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
+                        <button ng-disabled="room.pictures.length == 8" class="btn-upload btn btn-blue btn-sm" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
                         <i class="icon-upload-cloud"></i> <span translate>Foto uploaden</span>
                         </button>
-                        <button class="dropbox-button btn btn-sm" dropbox-chooser chooser-function="onDropboxSelect"><i class="icon-dropbox"></i> <span translate>Kiezen van Dropbox</span></button>
+                        <button ng-disabled="room.pictures.length == 8" class="dropbox-button btn btn-sm" dropbox-chooser chooser-function="onDropboxSelect"><i class="icon-dropbox"></i> <span translate>Kiezen van Dropbox</span></button>
                     </div>
                     <div class="pictures" ng-hide="room.pictures.length == 0">
                         <div class="picture col-sm-6" ng-repeat="picture in room.pictures">
