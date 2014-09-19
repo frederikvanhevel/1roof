@@ -24,9 +24,9 @@ function createCustomer(user, plan, card, couponCode, done) {
     function(err, customer) {
       if (err) return done(err);
 
-      user.customerToken = customer.id;
-      user.subscriptionPlan = plan;
-      user.subscriptionToken = customer.subscriptions.data[0].id;
+      user.subscription.token = customer.id;
+      user.subscription.plan = plan;
+      user.subscription.token = customer.subscriptions.data[0].id;
 
       user.save(function(err) {
         if (err) {
@@ -48,13 +48,13 @@ function createSubscription(user, plan, couponCode, done) {
   if (couponCode) options.coupon = couponCode;
 
   stripe.customers.createSubscription(
-    user.customerToken,
+    user.subscription.customerToken,
     options,
     function(err, subscription) {
       if (err) done(err);
 
-      user.subscriptionPlan = plan;
-      user.subscriptionToken = subscription.id;
+      user.subscription.plan = plan;
+      user.subscription.token = subscription.id;
 
       user.save(function(err) {
         if (err) {
@@ -75,15 +75,15 @@ function changeSubscription(user, plan, couponCode, done) {
   if (couponCode) options.coupon = couponCode;
 
   stripe.customers.updateSubscription(
-    user.customerToken,
-    user.subscriptionToken,
+    user.subscription.customerToken,
+    user.subscription.token,
     options,
     function(err, subscription) {
       console.log(err);
       if (err) return done(err);
 
-      user.subscriptionPlan = plan;
-      user.subscriptionToken = subscription.id;
+      user.subscription.plan = plan;
+      user.subscription.token = subscription.id;
 
       user.save(function(err) {
         if (err) {
@@ -121,7 +121,7 @@ exports.choosePlan = function(req, res, next) {
         }
     });
   } else {
-    if (!user.subscriptionToken) {
+    if (!user.subscription.token) {
       createSubscription(user, plan, couponCode, function(err) {
         if (err) {
             res.send(400, err);

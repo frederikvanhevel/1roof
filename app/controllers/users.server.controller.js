@@ -538,7 +538,7 @@ exports.resetPost = function(req, res) {
  * User authorizations routing middleware
  */
 exports.hasAnalytics = function(req, res, next) {
-  if(req.user.subscriptionPlan === 'PRO' || req.user.subscriptionPlan === 'BUSINESS') {
+  if(req.user.subscription.plan === 'PRO' || req.user.subscription.plan === 'BUSINESS') {
     next();
   } else {
      return res.send(400, {

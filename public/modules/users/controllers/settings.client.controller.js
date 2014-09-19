@@ -67,7 +67,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
         };
 
         $scope.getSubscription = function() {
-            var plan = Authentication.user.subscriptionPlan;
+            var plan = Authentication.user.subscription.plan;
 
             if (plan === 'FREE') return gettext('Student');
             else if (plan === 'PRO') return gettext('Huisbaas');

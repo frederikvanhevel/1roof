@@ -19,7 +19,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
             $scope.busy = true;
 
             Enforcer.do(function() {
-                if (Authentication.user && !Authentication.user.customerToken) {
+                if (Authentication.user && !Authentication.user.subscription.customerToken) {
                     Modal.payment({
                         plan: plan,
                         couponCode: coupon
@@ -40,12 +40,12 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
         };
 
         $scope.isCurrentPlan = function(plan) {
-            if (Authentication.user) return Authentication.user.subscriptionPlan === plan;
+            if (Authentication.user) return Authentication.user.subscription.plan === plan;
             else return false;
         };
 
         function setCurrentPlan(plan) {
-            Authentication.user.subscriptionPlan = plan;
+            Authentication.user.subscription.plan = plan;
         }
 
         function saveSubscription(plan, couponCode) {
