@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', 'Meta', '$http',
-    function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, Meta, $http) {
+angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', 'Meta', '$http', 'Analytics',
+    function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, Meta, $http, Analytics) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -55,8 +55,10 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
 
             // Redirect after save
             room.$save(function(response) {
+                Analytics.trackEvent('Room', 'Created', 'success');
                 $location.path('/rooms/' + response._id + '/edit/');
             }, function(errorResponse) {
+                Analytics.trackEvent('Room', 'Created', 'failure');
                 $scope.error = errorResponse.data.message;
             });
 

@@ -13,7 +13,6 @@ var ApplicationConfiguration = (function() {
         'ui.router',
         'ui.bootstrap',
         'ui.utils',
-        'ui-rangeSlider',
         'ngAutocomplete',
         'LocalStorageModule',
         'angularMoment',
@@ -21,8 +20,8 @@ var ApplicationConfiguration = (function() {
         'angularMoment',
         'gettext',
         'btford.socket-io',
-        'once',
-        'angularPayments'
+        'angularPayments',
+        'angular-google-analytics'
     ];
 
     // Add a new vertical module

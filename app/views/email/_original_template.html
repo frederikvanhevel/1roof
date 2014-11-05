@@ -1,0 +1,862 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+   <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+   <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+  <title></title> <!-- the <title> tag shows on email notifications on Android 4.4. -->
+  <style type="text/css">
+     
+     /* ensure that clients don’t add any padding or spaces around the email design and allow us to style emails for the entire width of the preview pane */
+      body,
+      #bodyTable {
+         height:100% !important;
+         width:100% !important;
+         margin:0;
+         padding:0;
+      }
+      
+      /* Ensures Webkit- and Windows-based clients don’t automatically resize the email text. */
+      body,
+      table,
+      td,
+      p,
+      a,
+      li,
+      blockquote {
+         -ms-text-size-adjust:100%;
+         -webkit-text-size-adjust:100%;
+      }
+
+      /* Forces Yahoo! to display emails at full width */
+      .msg-body {
+         width: 100% !important;
+         display: block !important
+      }
+
+    /* Forces Hotmail to display emails at full width */
+    .ReadMsgBody
+    .ExternalClass {
+         width: 100%;
+         background-color: #eeeeee;
+    }
+
+    /* Forces Hotmail to display normal line spacing. */
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {
+         line-height:100%;
+    }
+
+    /* Resolves webkit padding issue. */
+    table {
+         border-spacing:0;
+    }
+
+    /* Resolves the Outlook 2007, 2010, and Gmail td padding issue, and removes spacing around tables that Outlook adds. */
+    table,
+    td {
+         border-collapse:collapse;
+         mso-table-lspace:0pt;
+         mso-table-rspace:0pt;
+    }
+    
+    /* Corrects the way Internet Explorer renders resized images in emails. */
+    img {
+       -ms-interpolation-mode: bicubic;
+    }
+    
+    /* Ensures images don’t have borders or text-decorations applied to them by default. */
+    img,
+    a img {
+       border:0;
+       outline:none;
+       text-decoration:none;       
+    }
+
+    /* Styles Yahoo's auto-sensing link color and border */
+    .yshortcuts a {
+         border-bottom: none !important;
+    }
+    
+    /* Styles the tel URL scheme */
+    a[href^=tel]{
+       color:#000000 !important;
+    }
+      
+    /* Media queries for when the viewport is smaller than the default email width but not too narrow. */
+    @media screen and (max-device-width: 600px), screen and (max-width: 600px) {
+
+         /* Constrains email width for small screens */
+         table[class="email-container"] {
+            width: 100% !important;
+         }
+         /* Constrains tables for small screens */
+         table[class="fluid"] {
+            width: 100% !important;
+         }
+         
+         /* Forces images to resize to full width of their container */
+         img[class="fluid"],
+         img[class="force-col-center"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+         }
+         /* And centers these ones */
+            img[class="force-col-center"] {
+            margin: auto !important;
+         }
+         
+         /* Forces table cells into rows */
+         td[class="force-col"],
+         td[class="force-col-center"] {
+            display: block !important;
+            width: 100% !important;
+            clear: both;
+         }
+         /* And centers these ones */
+         td[class="force-col-center"] {
+            text-align: center !important;
+         }
+         
+         /* Forces table cells into rows */
+         /* Floats a previously stacked image to the left */
+         img[class="col-3-img-l"] {
+            float: left;
+            margin: 0 15px 15px 0;
+         }
+         /* Floats a previously stacked image to the right */
+         img[class="col-3-img-r"] {
+            float: right;
+            margin: 0 0 15px 15px;
+         }
+         
+         /* Makes buttons full width */
+         table[class="button"] {
+            width: 100% !important;
+         }
+         
+    }
+
+    /* Media queries for when the viewport is narrow. */
+    /* Rules prefixed with 'hh-' (for 'handheld') repeat much of what's above, but these don't trigger until the smaller screen width. */
+    @media screen and (max-device-width: 320px), screen and (max-width: 320px) {
+
+         /* Helper only visible on handhelds. All styles are inline along with a `display:none`, which this class overrides */
+         #textLogo {
+            display: none !important;
+            visibility: hidden !important;
+         }
+         
+         div[class="hh-visible"] {
+            display: block !important;
+         }
+         
+         /* Center stuff */
+         div[class="hh-center"] {
+            text-align: center;
+            width: 100% !important;
+         }
+         
+         /* Constrain tables for small screens */
+         table[class="hh-fluid"] {
+            width: 100% !important;
+         }
+         
+         /* Force images to resize to full width of their container */
+         img[class="hh-fluid"],
+         img[class="hh-force-col-center"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+         }
+         /* And center these ones */
+         img[class="hh-force-col-center"] {
+            margin: auto !important;
+         }
+         
+         /* Force table cells into rows */
+         td[class="hh-force-col"],
+         td[class="hh-force-col-center"] {
+            display: block !important;
+            width: 100% !important;
+            clear: both;
+         }
+         /* And center these ones */
+         td[class="hh-force-col-center"] {
+            text-align: center !important;
+         }
+         
+         /* Stack the previously floated images */
+         img[class="col-3-img-l"],
+         img[class="col-3-img-r"] {
+            float: none !important;
+            margin: 15px auto !important;
+            text-align: center !important;
+         }
+
+    }
+          
+  </style>
+</head>
+<body bgcolor="#f4f4f4" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0; padding:0;-webkit-text-size-adjust:none; -ms-text-size-adjust:none;background: #f4f4f4;">
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" bgcolor="#f4f4f4" style="background: #f4f4f4;" id="bodyTable"><tr><td>
+
+<!-- CSS Image background in Outlook : BEGIN -->
+<!-- Best used with absolute image paths -->
+<!--[if gte mso 9]>
+  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="tile" color="#eeeeee">
+  </v:fill>
+  </v:background>
+<![endif]-->
+<!-- CSS Image background in Outlook : END -->
+
+  <!-- Logo Left, Nav Right, 100% Nav Bar : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" style="text-align: center; background: #f4f4f4;">
+    <tr>
+      <td>
+        <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" style="margin: auto;" class="email-container">
+          <tr>
+            <td height="10" style="font-size: 0; line-height: 0;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td id="imglogo" class="hh-force-col-center" valign="middle" style="padding: 10px 0;text-align: left;">
+              <a href="http://www.yourwebsite.com" title="Visit Website"><img src="http://www.yourwebsite/img/logo" alt="Your website" height="40" width="100" border="0"></a>
+            </td>
+            <td id="textLogo" class="hh-force-col-center" valign="middle" style="padding: 10px 0;text-align: right;">
+              <!--<a href="http://www.yourwebsite.com" style="color: #bbb; letter-spacing:-1px; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important; text-decoration:none; text-transform:uppercase; font-size:14px !important;">yourwebsite</a>-->
+            </td>
+          </tr>
+          <tr>
+            <td height="10" style="font-size: 0; line-height: 0;">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!-- Logo Left, Nav Right, 100% Nav Bar : END -->
+   
+  <!-- Email Container : BEGIN -->
+  <!-- This table wraps the whole body email within it's width (600px), sets the background color (white) and border (thin, gray, solid) -->
+    <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" style="background: #ffffff;border: 1px solid #e5e5e5;" class="email-container">
+      
+      <!-- Full Width, Fluid Column : BEGIN -->
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 30px 30px 0px 30px; font-family: sans-serif; font-size: 15px; line-height: 22px; color: #656565;">
+                Dear Ms/Mr [surname],
+                <br><br>
+                Thank you for choosing to spend your holidays with us.<br>We would like to inform you that your reservation is confirmed as follows.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Full Width, Fluid Column : END -->
+      
+      <!-- Full Width, Fluid Column : BEGIN -->
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 20px 30px; font-family: sans-serif; font-size: 16px; line-height: 22px; color: #656565;">
+              <hr style="height:0; border:0; border-bottom:1px solid #f0f0f0;">
+                Reservation N° <strong>[comment]</strong>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Full Width, Fluid Column : END -->
+        
+      <!-- Four Column ==> Stacked Wide Layout ==> Stacked Narrow Layout : BEGIN -->
+      <tr>
+        <td style="padding: 10px 30px 20px 30px;">
+          <table border="0" cellpadding="0" cellspacing="0" class="columns-container">
+            <tr>
+              <td width="160" style="padding-right: 30px;font-family: sans-serif; font-size: 15px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Check-in</span><br>
+                [starting_date]
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="160" style="padding-right: 30px;font-family: sans-serif; font-size: 15px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Check-out</span><br>
+                [ending_date] 
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="160" style="padding-right: 30px; font-family: sans-serif; font-size: 15px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Rooms</span><br>
+            [rate_name]
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="160" style="font-family: sans-serif; font-size: 15px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Guests</span><br>
+            [people_num_tot]
+              </td>
+            </tr>
+          </table>
+          <hr style="height:0; border:0; border-bottom:1px solid #f0f0f0;">
+        </td>
+      </tr>
+      <!-- Four Column ==> Stacked Wide Layout ==> Stacked Narrow Layout : END -->
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 0px 30px; font-family: sans-serif; font-size: 15px; line-height: 22px; color: #656565;">
+                Please feel free to contact us back at your convenience if you need more info or have other particular requests.<br><br>
+                Kind regards,<br>
+                Contact name<br><br>
+                <hr style="height:0; border:0; border-bottom:1px solid #f0f0f0;">
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      
+      <!-- Full Width, Fluid Column : BEGIN -->
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" bgcolor="#fff">
+            <tr>
+              <td style="padding: 10px 30px 20px 30px; font-family: sans-serif; font-size: 10px; line-height: 15px; color: #aaa;">
+                <em><strong>Payment Policy</strong>
+                <br>
+                The hotel reserves the right to pre-authorize credit cards prior to arrival.
+                <br>
+                No charge will be made to your credit card and payment will be made directly to the hotel, unless otherwise stated.
+                <br><br>
+                <strong>Cancellation Policy</strong>
+                <br>
+                i) If cancelled up to 14 days before the date of arrival, no fee will be charged.
+                <br>
+                ii) If cancelled or modified or in case of no-show, 50% of the total price of the reservation will be charged.</em>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Full Width, Fluid Column : END -->
+
+  </table>
+  <!-- Email Container : END -->
+  
+  <!-- Footer : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="email-container">
+    <tr>
+      <td style="text-align: center;padding: 20px 30px;font-family: sans-serif; font-size: 11px; line-height: 18px;color: #888888;">
+        <strong>Confidentiality Note:</strong> The information transmitted, including attachments, is intended only for the person(s) or entity to which it is addressed and may contain confidential and/or privileged material. Any review, retransmission, dissemination or other use of, or taking of any action in reliance upon this information by persons or entities other than the intended recipient is prohibited. If you received this in error, please contact the sender and destroy any copies of this information.
+        <br><br>
+        <hr style="height:0; border:0; border-bottom:1px solid #ddd;">
+        <br>
+        <span style="font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important; font-size:17px; letter-spacing:-1px;">yourwebsite</span>
+        <br>
+        -
+        <br>
+        Kavos, 49080, Corfu<br>
+        <span class="mobile_link">(+00) 000-000</span> &bull; <span class="mobile_link">(+00) 0000-0000</span><br>
+        Mobile <span class="mobile_link">(+00) 000-00000</span>
+        <br>
+        -
+        <br>
+        <a href="http://www.facebook.com/" style="color:#888888; text-decoration:none;">Facebook</a> &bull; 
+        <a href="http://www.tripadvisor.com/.html" style="color:#888888; text-decoration:none;">Tripadvisor</a> &bull; 
+        <a href="http://www.twitter.com/" style="color:#888888; text-decoration:none;">Twitter</a> &bull; 
+        <a href="https://plus.google.com/" style="color:#888888; text-decoration:none;">Google+</a>
+        <br>
+        <a href="https://www.google.com/maps/place/" style="color:#888888; text-decoration:none;">Google Maps</a>
+        <br><br>
+      </td>
+    </tr>
+  </table>
+  <!-- Footer : END -->
+
+</td></tr></table>
+</body>
+</html>
+
+
+Invoice Template
+CODE: SELECT ALL
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+   <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+   <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+  <title>Seafront Apartments</title> <!-- the <title> tag shows on email notifications on Android 4.4. -->
+  <style type="text/css">
+     
+     /* ensure that clients don’t add any padding or spaces around the email design and allow us to style emails for the entire width of the preview pane */
+      body,
+      #bodyTable {
+         height:100% !important;
+         width:100% !important;
+         margin:0;
+         padding:0;
+      }
+      
+      /* Ensures Webkit- and Windows-based clients don’t automatically resize the email text. */
+      body,
+      table,
+      td,
+      p,
+      a,
+      li,
+      blockquote {
+         -ms-text-size-adjust:100%;
+         -webkit-text-size-adjust:100%;
+      }
+
+      /* Forces Yahoo! to display emails at full width */
+      .msg-body {
+         width: 100% !important;
+         display: block !important
+      }
+
+    /* Forces Hotmail to display emails at full width */
+    .ReadMsgBody
+    .ExternalClass {
+         width: 100%;
+         background-color: #eeeeee;
+    }
+
+    /* Forces Hotmail to display normal line spacing. */
+      .ExternalClass,
+      .ExternalClass p,
+      .ExternalClass span,
+      .ExternalClass font,
+      .ExternalClass td,
+      .ExternalClass div {
+         line-height:100%;
+    }
+
+    /* Resolves webkit padding issue. */
+    table {
+         border-spacing:0;
+    }
+
+    /* Resolves the Outlook 2007, 2010, and Gmail td padding issue, and removes spacing around tables that Outlook adds. */
+    table,
+    td {
+         border-collapse:collapse;
+         mso-table-lspace:0pt;
+         mso-table-rspace:0pt;
+    }
+    
+    /* Corrects the way Internet Explorer renders resized images in emails. */
+    img {
+       -ms-interpolation-mode: bicubic;
+    }
+    
+    /* Ensures images don’t have borders or text-decorations applied to them by default. */
+    img,
+    a img {
+       border:0;
+       outline:none;
+       text-decoration:none;       
+    }
+
+    /* Styles Yahoo's auto-sensing link color and border */
+    .yshortcuts a {
+         border-bottom: none !important;
+    }
+    
+    /* Styles the tel URL scheme */
+    a[href^=tel]{
+       color:#000000 !important;
+    }
+      
+    /* Media queries for when the viewport is smaller than the default email width but not too narrow. */
+    @media screen and (max-device-width: 600px), screen and (max-width: 600px) {
+
+         /* Constrains email width for small screens */
+         table[class="email-container"] {
+            width: 100% !important;
+         }
+         /* Constrains tables for small screens */
+         table[class="fluid"] {
+            width: 100% !important;
+         }
+         
+         /* Forces images to resize to full width of their container */
+         img[class="fluid"],
+         img[class="force-col-center"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+         }
+         /* And centers these ones */
+            img[class="force-col-center"] {
+            margin: auto !important;
+         }
+         
+         /* Forces table cells into rows */
+         td[class="force-col"],
+         td[class="force-col-center"] {
+            display: block !important;
+            width: 100% !important;
+            clear: both;
+         }
+         /* And centers these ones */
+         td[class="force-col-center"] {
+            text-align: center !important;
+         }
+         
+         /* Forces table cells into rows */
+         /* Floats a previously stacked image to the left */
+         img[class="col-3-img-l"] {
+            float: left;
+            margin: 0 15px 15px 0;
+         }
+         /* Floats a previously stacked image to the right */
+         img[class="col-3-img-r"] {
+            float: right;
+            margin: 0 0 15px 15px;
+         }
+         
+         /* Makes buttons full width */
+         table[class="button"] {
+            width: 100% !important;
+         }
+         
+    }
+
+    /* Media queries for when the viewport is narrow. */
+    /* Rules prefixed with 'hh-' (for 'handheld') repeat much of what's above, but these don't trigger until the smaller screen width. */
+    @media screen and (max-device-width: 320px), screen and (max-width: 320px) {
+
+         /* Helper only visible on handhelds. All styles are inline along with a `display:none`, which this class overrides */
+         #textLogo {
+            display: none !important;
+            visibility: hidden !important;
+         }
+         
+         div[class="hh-visible"] {
+            display: block !important;
+         }
+         
+         /* Center stuff */
+         div[class="hh-center"] {
+            text-align: center;
+            width: 100% !important;
+         }
+         
+         /* Constrain tables for small screens */
+         table[class="hh-fluid"] {
+            width: 100% !important;
+         }
+         
+         /* Force images to resize to full width of their container */
+         img[class="hh-fluid"],
+         img[class="hh-force-col-center"] {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: auto !important;
+         }
+         /* And center these ones */
+         img[class="hh-force-col-center"] {
+            margin: auto !important;
+         }
+         
+         /* Force table cells into rows */
+         td[class="hh-force-col"],
+         td[class="hh-force-col-center"] {
+            display: block !important;
+            width: 100% !important;
+            clear: both;
+         }
+         /* And center these ones */
+         td[class="hh-force-col-center"] {
+            text-align: center !important;
+         }
+         
+         /* Stack the previously floated images */
+         img[class="col-3-img-l"],
+         img[class="col-3-img-r"] {
+            float: none !important;
+            margin: 15px auto !important;
+            text-align: center !important;
+         }
+
+    }
+          
+  </style>
+</head>
+<body bgcolor="#f4f4f4" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0; padding:0;-webkit-text-size-adjust:none; -ms-text-size-adjust:none;background: #f4f4f4;">
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" bgcolor="#f4f4f4" style="background: #f4f4f4;" id="bodyTable"><tr><td>
+
+<!-- CSS Image background in Outlook : BEGIN -->
+<!-- Best used with absolute image paths -->
+<!--[if gte mso 9]>
+  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="tile" color="#eeeeee">
+  </v:fill>
+  </v:background>
+<![endif]-->
+<!-- CSS Image background in Outlook : END -->
+
+  <!-- Logo Left, Nav Right, 100% Nav Bar : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" style="text-align: center; background: #f4f4f4;">
+    <tr>
+      <td>
+        <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" style="margin: auto;" class="email-container">
+          <tr>
+            <td height="10" style="font-size: 0; line-height: 0;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td id="imglogo" class="hh-force-col-center" valign="middle" style="padding: 10px 0;text-align: left;">
+              <a href="http://www.yourwebsite.com" title="Visit Website"><img src="http://www.yourwebsite.com/img/logo" alt="yourwebsite" height="40" width="100" border="0"></a>
+            </td>
+            <td id="textLogo" class="hh-force-col-center" valign="middle" style="padding: 10px 0;text-align: right;">
+              <!--<a href="http://www.yourwebsite.com" style="color: #bbb; letter-spacing:-1px; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important; text-decoration:none; text-transform:uppercase; font-size:14px !important;">yourwebsite</a>-->
+            </td>
+          </tr>
+          <tr>
+            <td height="10" style="font-size: 0; line-height: 0;">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!-- Logo Left, Nav Right, 100% Nav Bar : END -->
+   
+  <!-- Email Container : BEGIN -->
+  <!-- This table wraps the whole body email within it's width (600px), sets the background color (white) and border (thin, gray, solid) -->
+    <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" style="background: #ffffff;border: 1px solid #e5e5e5;" class="email-container">
+      
+      <!-- Full Width, Fluid Column : BEGIN -->
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 30px 30px 0px 30px; font-family: sans-serif; font-size: 15px; line-height: 22px; color: #656565; text-align:right">
+                Invoice
+                <br>
+                #: [reservation_number]
+                <br>
+                Date: [today]
+                <br>
+                Amount Due: €[rest_to_pay_p]
+                <hr style="height:0; border:0; border-bottom:1px solid #f0f0f0;">
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Full Width, Fluid Column : END -->
+      
+      <!-- Full Width, Fluid Column : BEGIN 
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 20px 30px; font-family: sans-serif; font-size: 16px; line-height: 22px; color: #656565;">
+              <hr style="height:0; border:0; border-bottom:1px solid #f0f0f0;">
+                Reservation Details
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Full Width, Fluid Column : END -->
+        
+      <!-- Three Column ==> Stacked Wide Layout ==> Stacked Narrow Layout : BEGIN -->
+      <tr>
+        <td style="padding: 10px 30px 20px 30px;">
+          <table border="0" cellpadding="0" cellspacing="0" class="columns-container">
+            <tr>
+              <td width="200" style="padding-right: 30px;font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">To</span>
+                <br>
+                [name] [surname]
+                <br>
+                [email]
+                <br>
+                [telephone]
+                <br>
+                [street]
+                <br>
+                [city], [postal_code]
+                <br>
+                [nationality]
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="200" style="padding-right: 30px;font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">From</span>
+                <br>
+                <a href="http://www.yourwebsite.com">yourwebsite</a>
+                <br>
+                Contact name
+                <br>
+                <a href="mailto:info@yourwebsite.com">info@yourwebsite.com</a>
+                <br>
+                (+00) 000-000000
+                <br>
+                Address, postal code
+                <br>
+                City, nation
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="140" style="padding-right: 0px; font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Status</span><br>
+            <em>Sent</em>
+              </td>
+            </tr>
+          </table>
+          <hr style="height:0; border:0; border-bottom:1px solid #f0f0f0;">
+        </td>
+      </tr>
+      <!-- Four Column ==> Stacked Wide Layout ==> Stacked Narrow Layout : END -->
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 10px 30px 0 30px; font-family: sans-serif; font-size: 17px; line-height: 5px; color: #656565;">
+                Reservation Summary<br><br>
+                <hr style="height:0; border:0; border-bottom:1px solid #f0f0f0;">
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      
+      <!-- Three Column ==> Stacked Wide Layout ==> Stacked Narrow Layout : BEGIN -->
+      <tr>
+        <td bgcolor="#e9e9e9" style="padding: 10px 30px 10px 30px;">
+          <table border="0" cellpadding="0" cellspacing="0" class="columns-container">
+            <tr>
+              <td width="200" style="padding-right: 30px;font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Description</span><br>
+                <span>[rate_name]<br>([starting_date] ~ [ending_date])</span><br>
+                <span>[sel_extra_cost_name]</span>
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="100" style="padding-right: 30px;font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Nights</span><br>
+                <span>[periods_num]</span>
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="100" style="padding-right: 0px; font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Guests</span><br>
+                <span>[people_num]</span>
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="100" style="padding-right: 0px; font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Amount</span><br>
+                <span>€[rate_price_p]</span><br><br>
+                <span>€[sel_extra_cost_value_p]</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+            <tr>
+              <td style="padding: 30px 30px 0 30px; font-family: sans-serif; font-size: 17px; line-height: 5px; color: #656565;">
+                Payment Summary<br><br>
+                <hr style="height:0; border:0; border-bottom:1px solid #f0f0f0;">
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Three Column ==> Stacked Wide Layout ==> Stacked Narrow Layout : BEGIN -->
+      <tr>
+        <td bgcolor="#e9e9e9" style="padding: 10px 30px 10px 30px;">
+          <table border="0" cellpadding="0" cellspacing="0" class="columns-container">
+            <tr>
+              <td width="200" style="padding-right: 30px;font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Amount Details</span><br>
+                <span></span>
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="100" style="padding-right: 30px;font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Paid</span><br>
+                <span>€[paid_p]</span>
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="100" style="padding-right: 0px; font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Balance Due</span><br>
+                <span>€[rest_to_pay_p]</span>
+              </td>
+              <td style="font-size: 0; line-height: 0; display: none;" class="hh-spacer">&nbsp;</td>
+              <td width="100" style="padding-right: 0px; font-family: sans-serif; font-size: 13px; line-height: 22px;color: #656565;" valign="top" class="force-col">
+                <span style="color:#656565; font-weight:bold">Total</span><br>
+                <span>€[price_tot]</span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      
+      <!-- Full Width, Fluid Column : BEGIN -->
+      <tr>
+        <td>
+          <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" bgcolor="#fff">
+            <tr>
+              <td style="padding: 10px 30px 20px 30px; font-family: sans-serif; font-size: 10px; line-height: 15px; color: #aaa;">
+                <em><strong>Payment Policy</strong>
+                <br>
+                The hotel reserves the right to pre-authorize credit cards prior to arrival.
+                <br>
+                No charge will be made to your credit card and payment will be made directly to the hotel, unless otherwise stated.
+                <br><br>
+                <strong>Cancellation Policy</strong>
+                <br>
+                i) If cancelled up to 14 days before the date of arrival, no fee will be charged.
+                <br>
+                ii) If cancelled or modified or in case of no-show, 50% of the total price of the reservation will be charged.</em>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <!-- Full Width, Fluid Column : END -->
+
+  </table>
+  <!-- Email Container : END -->
+  
+  <!-- Footer : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="email-container">
+    <tr>
+      <td style="text-align: center;padding: 20px 30px;font-family: sans-serif; font-size: 11px; line-height: 18px;color: #888888;">
+        <strong>Confidentiality Note:</strong> The information transmitted, including attachments, is intended only for the person(s) or entity to which it is addressed and may contain confidential and/or privileged material. Any review, retransmission, dissemination or other use of, or taking of any action in reliance upon this information by persons or entities other than the intended recipient is prohibited. If you received this in error, please contact the sender and destroy any copies of this information.
+        <br><br>
+        <hr style="height:0; border:0; border-bottom:1px solid #ddd;">
+        <br>
+        <span style="font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important; font-size:17px; letter-spacing:-1px;">yourwebsite</span>
+        <br>
+        -
+        <br>
+        address<br>
+        <span class="mobile_link">(+00) 000-000000</span> &bull; <span class="mobile_link">(+00) 0000-000000</span><br>
+        Mobile <span class="mobile_link">(+00) 00000-0000000</span>
+        <br>
+        -
+        <br>
+        <a href="http://www.facebook.com/" style="color:#888888; text-decoration:none;">Facebook</a> &bull; 
+        <a href="http://www.tripadvisor.com/.html" style="color:#888888; text-decoration:none;">Tripadvisor</a> &bull; 
+        <a href="http://www.twitter.com/" style="color:#888888; text-decoration:none;">Twitter</a> &bull; 
+        <a href="https://plus.google.com/" style="color:#888888; text-decoration:none;">Google+</a>
+        <br>
+        <a href="https://www.google.com/maps/place/" style="color:#888888; text-decoration:none;">Google Maps</a>
+        <br><br>
+      </td>
+    </tr>
+  </table>
+  <!-- Footer : END -->
+
+</td></tr></table>
+</body>
+</html>

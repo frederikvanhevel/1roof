@@ -25,6 +25,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
             // instantly recieve new messages
             Socket.on('newMessage', function(message) {
                 $scope.inbox.messages.push(message);
+                // playNewMessageSound();
             });
         };
 
@@ -118,6 +119,11 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
                 if (message.sender !== Authentication.user._id) message.isRead = true;
             });
             inbox.$update();
+        }
+
+        function playNewMessageSound() {
+            var audio = new Audio('/modules/core/img/woosh.wav');
+            audio.play();
         }
 
     }

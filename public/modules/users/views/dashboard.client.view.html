@@ -2,35 +2,36 @@
     <div class="dashboard-top-bar dark-bg " ng-cloak>
         <div class="container">
             <ul class="col-sm-offset-2">
-                <li ng-class="{ active: nav == 'rooms'}"><a href="" ng-click="setTab('rooms')">Mijn advertenties</a></li>
-                <li ng-class="{ active: nav == 'messages'}"><a href="" ng-click="setTab('messages')">Berichten</a></li>
-                <li ng-class="{ active: nav == 'profile'}"><a href="" ng-click="setTab('profile')">Profiel</a></li>
-                <li ng-class="{ active: nav == 'account'}"><a href="" ng-click="setTab('account')">Account</a></li>
+                <li ng-class="{ active: nav == 'rooms'}"><a href="" ng-click="setTab('rooms')" translate>Mijn advertenties</a></li>
+                <li ng-class="{ active: nav == 'messages'}"><a href="" ng-click="setTab('messages')" translate>Berichten</a></li>
+                <li ng-class="{ active: nav == 'profile'}"><a href="" ng-click="setTab('profile')" translate>Profiel</a></li>
+                <li ng-class="{ active: nav == 'account'}"><a href="" ng-click="setTab('account')" translate>Account</a></li>
+                <li ng-class="{ active: nav == 'promote'}"><a href="" ng-click="setTab('promote')" translate>Adverteren</a></li>
             </ul>
         </div>
     </div>
     <div ng-switch="nav" class="">
         <div ng-switch-when="rooms">
             <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/rooms_bg.jpg);">
-                <h1>Mijn advertenties</h1>
+                <!-- <h1>Mijn advertenties</h1> -->
             </div>
             <div class="container" ng-include="'/modules/users/views/dashboard/user-rooms.client.view.html'"></div>
         </div>
         <div ng-switch-when="messages">
-            <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/messages_bg.jpg);background-position-y: 65% !important;">
-                <h1>Berichten</h1>
+            <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/messages_bg.jpg);background-position-y: 75% !important;">
+                <!-- <h1>Berichten</h1> -->
             </div>
             <div ng-include="'/modules/users/views/dashboard/user-messages.client.view.html'"></div>
         </div>
         <div ng-switch-when="profile">
             <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/profile_bg.jpg);">
-                <h1>Profiel</h1>
+                <!-- <h1>Profiel</h1> -->
             </div>
             <div ng-include="'/modules/users/views/dashboard/user-profile.client.view.html'"></div>
         </div>
         <div ng-switch-when="account">
             <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/account_bg.jpg);background-position-y: 47% !important;">
-                <h1>Account</h1>
+                <!-- <h1>Account</h1> -->
             </div>
             <div ng-include="'/modules/users/views/dashboard/user-account.client.view.html'"></div>
         </div>

@@ -1,27 +1,20 @@
 <section class="col-sm-offset-1" data-ng-controller="SettingsController" ng-init="nav = 'info'">
-
-
-  <div class="col-md-3">
-    <ul class="sidenav white-bg">
-      <li ng-class="{ active: nav == 'info'}"><a href="" ng-click="nav = 'info'">Mijn gegevens</a></li>
-      <li ng-class="{ active: nav == 'password'}"><a href="" ng-click="nav = 'password'">Wachtwoord</a></li>
-      <!-- <li ng-class="{ active: nav == 'social'}" data-ng-show="authentication.user.provider === 'local'"><a href="" ng-click="nav = 'social'">Sociale media</a></li> -->
-    </ul>
-  </div>
-
-  <div class="col-md-8 bordered" ng-switch on="nav">
-    <div ng-switch-when="info">
-      <div ng-include="'/modules/users/views/settings/edit-profile.client.view.html'"></div>
+    <div class="col-md-3">
+        <ul class="sidenav white-bg">
+            <li ng-class="{ active: nav == 'info'}"><a href="" ng-click="nav = 'info'" translate>Mijn gegevens</a></li>
+            <li ng-class="{ active: nav == 'password'}"><a href="" ng-click="nav = 'password'" translate>Wachtwoord</a></li>
+            <!-- <li ng-class="{ active: nav == 'social'}" data-ng-show="authentication.user.provider === 'local'"><a href="" ng-click="nav = 'social'">Sociale media</a></li> -->
+        </ul>
     </div>
-
-    <div ng-switch-when="password">
-      <div ng-include="'/modules/users/views/settings/change-password.client.view.html'"></div>
+    <div class="col-md-8 bordered" ng-switch on="nav">
+        <div ng-switch-when="info">
+            <div ng-include="'/modules/users/views/settings/edit-profile.client.view.html'"></div>
+        </div>
+        <div ng-switch-when="password">
+            <div ng-include="'/modules/users/views/settings/change-password.client.view.html'"></div>
+        </div>
+        <div ng-switch-when="social">
+            <div ng-include="'/modules/users/views/settings/social-accounts.client.view.html'"></div>
+        </div>
     </div>
-
-    <div ng-switch-when="social">
-      <div ng-include="'/modules/users/views/settings/social-accounts.client.view.html'"></div>
-    </div>
-  </div>
-
-
 </section>

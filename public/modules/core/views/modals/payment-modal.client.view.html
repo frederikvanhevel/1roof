@@ -1,44 +1,38 @@
 <section class="payment-modal">
-  <div class="modal-header">
-    <button type="button" class="close" ng-click="$dismiss()">&times;</button>
-      <h4 class="modal-title"><i class="icon-credit-card"></i> Tariefplan wijzigen naar: <strong>{{subscriptionPlan}}</strong></h4>
-  </div>
-  <div class="modal-body row">
-
-    <div class="col-sm-3 text-center">
-      <i class="lock-icon icon-lock-1"></i>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$dismiss()">&times;</button>
+        <h4 class="modal-title"><i class="icon-credit-card"></i> Tariefplan wijzigen naar: <strong>{{subscriptionPlan}}</strong></h4>
     </div>
-
-    <div class="col-sm-9">
-      <ul class="creditcards">
-        <li ng-class="{ 'active': type == 'visa' }"><img src="/modules/core/img/cards/visa.png"/></li>
-        <li><img src="/modules/core/img/cards/mastercard.png"/></li>
-        <li><img src="/modules/core/img/cards/amex.png"/></li>
-      </ul>
-
-      <form stripe-form="submitPayment" name="paymentForm"> 
-        
-        <div class="form-group" ng-class="{ 'has-error' : paymentForm.number.$invalid && !paymentForm.number.$pristine, 'has-feedback': paymentForm.number.$valid }">
-          <label for="number">Kaartnummer <small>(geen streepjes of spaties)</small></label>
-          <input name="number" class="form-control" type="text" ng-model="number" payments-type-model="type" payments-validate="card" payments-format="card" placeholder="1234 1234 1234 1234" required />
-          <span class="glyphicon glyphicon-ok form-control-feedback" ng-if="paymentForm.number.$valid"></span>
+    <div class="modal-body row">
+        <div class="col-sm-3 text-center">
+            <i class="lock-icon icon-lock-1"></i>
         </div>
+        <div class="col-sm-9">
+            <ul class="creditcards">
+                <li ng-class="{ 'active': type == 'visa' }"><img src="/modules/core/img/cards/visa.png"/></li>
+                <li><img src="/modules/core/img/cards/mastercard.png"/></li>
+                <li><img src="/modules/core/img/cards/amex.png"/></li>
+            </ul>
+            <form stripe-form="submitPayment" name="paymentForm">
 
-        <div class="form-group" ng-class="{ 'has-error' : paymentForm.expiry.$invalid && !paymentForm.expiry.$pristine, 'has-success': paymentForm.expiry.$valid }">
-          <label for="expiry">Vervaldatum</label>
-          <input name="expiry" type="text" ng-model="expiry" payments-validate="expiry" payments-format="expiry" placeholder="01/12" required />
-        </div>
-        <div class="form-group" ng-class="{ 'has-error' : paymentForm.cvc.$invalid && !paymentForm.cvc.$pristine, 'has-success': paymentForm.cvc.$valid }">
-          <label for="cvc">Beveiligingscode <small>(3 of 4 cijfers)</small></label>
-          <input name="cvc" type="text" ng-model="cvc" payments-validate="cvc" payments-format="cvc" placeholder="1234" required />
-        </div>
-        
-        <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-        <button type="submit" class="btn btn-orange" ng-class="{ disabled: busy || paymentForm.$invalid }"><i class="icon-lock-1"></i> Veilig betalen</button>
-        <button class="btn-link" ng-click="$dismiss()">Annuleren</button>
+                <div class="form-group" ng-class="{ 'has-error' : paymentForm.number.$invalid && !paymentForm.number.$pristine, 'has-feedback': paymentForm.number.$valid }">
+                    <label for="number">Kaartnummer <small>(geen streepjes of spaties)</small></label>
+                    <input name="number" class="form-control" type="text" ng-model="number" payments-type-model="type" payments-validate="card" payments-format="card" placeholder="1234 1234 1234 1234" required />
+                    <span class="glyphicon glyphicon-ok form-control-feedback" ng-if="paymentForm.number.$valid"></span>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : paymentForm.expiry.$invalid && !paymentForm.expiry.$pristine, 'has-success': paymentForm.expiry.$valid }">
+                    <label for="expiry">Vervaldatum</label>
+                    <input name="expiry" type="text" ng-model="expiry" payments-validate="expiry" payments-format="expiry" placeholder="01/12" required />
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : paymentForm.cvc.$invalid && !paymentForm.cvc.$pristine, 'has-success': paymentForm.cvc.$valid }">
+                    <label for="cvc">Beveiligingscode <small>(3 of 4 cijfers)</small></label>
+                    <input name="cvc" type="text" ng-model="cvc" payments-validate="cvc" payments-format="cvc" placeholder="1234" required />
+                </div>
 
-      </form>
+                <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+                <button type="submit" class="btn btn-orange" ng-class="{ disabled: busy || paymentForm.$invalid }"><i class="icon-lock-1"></i> Veilig betalen</button>
+                <button class="btn-link" ng-click="$dismiss()">Annuleren</button>
+            </form>
+        </div>
     </div>
-
-  </div>
 </div>

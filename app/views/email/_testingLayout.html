@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+   <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+   <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+  <title></title> <!-- the <title> tag shows on email notifications on Android 4.4. -->
+
+  <link rel="stylesheet" type="text/css" href="./css/layout.css">
+
+</head>
+<body bgcolor="#f4f4f4" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="margin:0; padding:0;-webkit-text-size-adjust:none; -ms-text-size-adjust:none;background: #f4f4f4;">
+<table cellpadding="0" cellspacing="0" border="0" height="100%" width="100%" bgcolor="#f4f4f4" style="background: #f4f4f4;" id="bodyTable"><tr><td>
+
+<!-- CSS Image background in Outlook : BEGIN -->
+<!-- Best used with absolute image paths -->
+<!--[if gte mso 9]>
+  <v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
+    <v:fill type="tile" color="#eeeeee">
+  </v:fill>
+  </v:background>
+<![endif]-->
+<!-- CSS Image background in Outlook : END -->
+
+  <!-- Logo Left, Nav Right, 100% Nav Bar : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" style="text-align: center; background: #f4f4f4;">
+    <tr>
+      <td>
+        <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" style="margin: auto;" class="email-container">
+          <tr>
+            <td height="10" style="font-size: 0; line-height: 0;">&nbsp;</td>
+          </tr>
+          <tr>
+            <td id="imglogo" class="hh-force-col-center" valign="middle" style="padding: 10px 0;text-align: left;">
+              <a href="{{ app.host }}" title="Visit Website"><img src="{{ app.host }}/modules/core/img/logo.png" alt="Your website" height="40" width="100" border="0"></a>
+            </td>
+            <td id="textLogo" class="hh-force-col-center" valign="middle" style="padding: 10px 0;text-align: right;">
+              <!--<a href="http://www.yourwebsite.com" style="color: #bbb; letter-spacing:-1px; font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important; text-decoration:none; text-transform:uppercase; font-size:14px !important;">yourwebsite</a>-->
+            </td>
+          </tr>
+          <tr>
+            <td height="10" style="font-size: 0; line-height: 0;">&nbsp;</td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!-- Logo Left, Nav Right, 100% Nav Bar : END -->
+
+  <!-- Email Container : BEGIN -->
+  <!-- This table wraps the whole body email within it's width (600px), sets the background color (white) and border (thin, gray, solid) -->
+  <table border="0" width="600" cellpadding="0" cellspacing="0" align="center" style="background: #ffffff;border: 1px solid #e5e5e5;" class="email-container">
+
+    <!-- Full Width, Fluid Column : BEGIN -->
+    <tr>
+      <td>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+          <tr>
+            <td class="default">
+
+              <h3>Nieuwe advertenties deze week:</h3>
+              <hr class="line">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+    <!-- Full Width, Fluid Column : END -->
+
+    <tr>
+      <td>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+          <tr>
+            <td class="default room">
+
+              <!-- <a target=s"_blank" href="{{ app.host }}{{ room.url }}"> -->
+
+                <h2><a target=s"_blank" href="{{ app.host }}{{ room.url }}">Nieuwbouw in gent</a></h2>
+
+                <div class="image-wrapper" style="background-image: url('http://res.cloudinary.com/kotzoeker/image/upload/v1409295378/54002411e4b02cd8159e5d72.jpg');"></div>
+
+                <p>Volledig nieuw geplaatst huis gelegen in een rustige buurt in Gent. Internet en TV aansluiting reeds aanwezig. Kosten €450, EGW inbegrepen. Domicilie verplicht en huisdieren zijn niet toegelaten.</p>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td class="default sponsor">
+
+              <p>Volledig nieuw geplaatst huis gelegen in een rustige buurt in Gent. Internet en TV aansluiting reeds aanwezig. Kosten €450, EGW inbegrepen. Domicilie verplicht en huisdieren zijn niet toegelaten.</p>
+
+            </td>
+          </tr>
+
+          <tr>
+            <td class="default room">
+
+              <!-- <a target=s"_blank" href="{{ app.host }}{{ room.url }}"> -->
+
+                <h2><a target=s"_blank" href="{{ app.host }}{{ room.url }}">Nieuwbouw in gent</a></h2>
+
+                <div class="image-wrapper" style="background-image: url('http://res.cloudinary.com/kotzoeker/image/upload/v1409295378/54002411e4b02cd8159e5d72.jpg');">
+                  <div class="room-price">€ 430</div>
+                </div>
+
+                <p>Volledig nieuw geplaatst huis gelegen in een rustige buurt in Gent. Internet en TV aansluiting reeds aanwezig. Kosten €450, EGW inbegrepen. Domicilie verplicht en huisdieren zijn niet toegelaten.</p>
+
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+
+  </table>
+  <!-- Email Container : END -->
+
+  <!-- Footer : BEGIN -->
+  <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center" class="email-container">
+    <tr>
+      <td style="text-align: center;padding: 0 30px;font-family: sans-serif; font-size: 11px; line-height: 18px;color: #888888;">
+        <p>Indien je geen emails meer wil ontavngen pas dan je instellingen via de website. Deze kan je wijzigen <a href="{{ app.host }}/user/account">via deze link</a></p>
+        <span style="font-family:'Lucida Sans Unicode', 'Lucida Grande', sans-serif !important; font-size:17px; letter-spacing:-1px;">© 1Roof</span>
+        <br>
+        -
+        <br>
+        <a href="http://www.facebook.com/" style="color:#888888; text-decoration:none;">Facebook</a> &bull;
+        <a href="http://www.twitter.com/" style="color:#888888; text-decoration:none;">Twitter</a> &bull;
+        <a href="https://plus.google.com/" style="color:#888888; text-decoration:none;">Google+</a>
+        <br><br>
+      </td>
+    </tr>
+  </table>
+  <!-- Footer : END -->
+
+</td></tr></table>
+</body>
+</html>

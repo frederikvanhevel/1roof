@@ -1,10 +1,13 @@
 'use strict';
 
-angular.module('core').directive('animateElement', ['$window',
-    function($window) {
+angular.module('core').directive('animateElement', ['$window', 'Device',
+    function($window, Device) {
         return {
             restriction: 'A',
             link: function(scope, element, attrs) {
+
+                // we don't want animations on mobile
+                if (Device.isMobile()) return;
 
                 var waypointClass = 'main [class*="col-"]';
                 var animationClass = 'fadeInUp';

@@ -1,27 +1,35 @@
 <section data-ng-controller="FooterController">
-  <div ng-hide="hidden" class="footer-bottom">
-    <div class="container inner">
-      <p class="pull-left" translate>© 2014 APOLLO. Alle rechten voorbehouden.</p>
+    <div ng-hide="hidden" class="footer-bottom">
+        <div class="container inner">
+            <div class="col-sm-5">
+                <p translate>© 2014 1Roof. Alle rechten voorbehouden.</p>
+            </div>
 
-      <ul class="social-buttons pull-right">
-        <li><a href="#"><i class="icon-s-facebook"></i></a></li>
-        <li><a href="#"><i class="icon-s-gplus"></i></a></li>
-        <li><a href="#"><i class="icon-s-twitter"></i></a></li>
-      </ul>
+            <div class="col-sm-2">
+                <ul class="social-buttons">
+                    <li><a href="#"><i class="icon-s-facebook"></i></a></li>
+                    <li><a href="#"><i class="icon-s-gplus"></i></a></li>
+                    <li><a href="#"><i class="icon-s-twitter"></i></a></li>
+                </ul>
+            </div>
 
-      <ul class="footer-menu pull-right">
-        <li><a href="/">Home</a></li>
-        <li><a href="mailto:info@apollo.be">Contact</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
+            <div class="col-sm-3">
+                <ul class="footer-menu">
+                    <li><a href="/" translate>Home</a></li>
+                    <li><a href="mailto:info@1roof.be" translate>Contact</a></li>
+                    <li><a href="/about" translate>Over ons</a></li>
+                </ul>
+            </div>
 
-      <div class="select-style language-select footer-menu pull-right">
-        <select ng-model="$root.language">
-          <option value="nl">Nederlands</option>
-          <option value="en">English</option>
-        </select>
-      </div>
+            <div class="col-sm-2">
+                <div class="select-style language-select footer-menu">
+                    <select ng-model="$root.language" ng-init="$root.language = $root.language || 'nl'">
+                        <option value="nl" translate>Nederlands</option>
+                        <option value="en" translate>English</option>
+                    </select>
+                </div>
+            </div>
 
+        </div>
     </div>
-  </div>
 </section>

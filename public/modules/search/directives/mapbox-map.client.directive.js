@@ -47,6 +47,9 @@ angular.module('search').directive('mapboxMap', ['$compile', '$q', '$window', '$
                             lat: center.lat,
                             proximity: getBoundsDistance()
                         });
+
+                        foursquareMarkers.clearLayers();
+                        getFoursquareData();
                     });
                 }
 
@@ -121,19 +124,12 @@ angular.module('search').directive('mapboxMap', ['$compile', '$q', '$window', '$
                         });
                     });
 
-                    //scope.map.on('zoomend', function() {
-                    //  if (scope.map.getZoom() >= 13) {
-                    //      foursquareMarkers.setFilter(function() { return true; });
-                    //  } else {
-                    //      foursquareMarkers.setFilter(function() { return false; });
-                    //  }
-                    //});
                 }
 
                 getFoursquareData();
 
             },
-            controller: function($scope) {
+            controller: ['$scope', function($scope) {
                 $scope.markers = [];
                 $scope.featureLayers = [];
 
@@ -152,7 +148,7 @@ angular.module('search').directive('mapboxMap', ['$compile', '$q', '$window', '$
                 }
 
                 this.$scope = $scope;
-            }
+            }]
         };
     }
 ]);

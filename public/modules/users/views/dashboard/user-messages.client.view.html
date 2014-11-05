@@ -1,40 +1,30 @@
 <section data-ng-controller="InboxController" ng-init="list()" class="messages-overview col-sm-offset-1 col-sm-10">
-
-  <div class="col-sm-offset-1 col-sm-10">
-    <div class="panel panel-default">
-      <div class="panel-heading">Berichten</div>
-        <div class="panel-body" ng-hide="inboxes.length > 0">
-          Je hebt nog geen berichten ontvangen :)
-        </div>
-        <div class="list-group">
-          <a ng-href="/dashboard/messages/{{inbox._id}}" class="list-group-item" ng-repeat="inbox in inboxes">
-
-            <button class="btn btn-sm pull-right">Antwoorden <i class="glyphicon glyphicon-share-alt"></i></button>
-            <h4 class="list-group-item-heading">
-              <i ng-if="unreadMessages(inbox) > 0" class="unread icon-asterisk"></i>
-              {{inbox.sender._id == authentication.user._id ? inbox.roomOwner.displayName : inbox.sender.displayName }}
-              <i tooltip="Inbox verwijderen" ng-click="deleteInbox(inbox, $index, $event)"class="icon-trash-1"></i>
-            </h4>
-
-            <p class="list-group-item-text">
-              <i ng-if="getLastMessage(inbox).sender == authentication.user._id" class="icon-reply"></i>
-
-
-              <span ng-if="getLastMessage(inbox).messageType == 'default'">
-                {{getLastMessage(inbox).message}}
-              </span>
-
-              <span ng-if="getLastMessage(inbox).messageType == 'reservation'">
-                {{getLastMessage(inbox).sender != authentication.user._id ? inbox.roomOwner.displayName : 'Je'}} wil een afspraak maken op {{ getLastMessage(inbox).sent | amDateFormat:'DD/MM/YYYY' }}
-              </span>
-
-            </p>
-
-            <small am-time-ago="inbox.messages[inbox.messages.length-1].sent"></small>
-
-          </a>
+    <div class="col-sm-offset-1 col-sm-10">
+        <div class="panel panel-default">
+            <div class="panel-heading" translate>Berichten</div>
+            <div class="panel-body" ng-hide="inboxes.length > 0">
+                <p class="lead"><i class="icon-mail-1"></i> <span translate>Je hebt nog geen berichten ontvangen :)</span>
+            </div>
+            <div class="list-group">
+                <a ng-href="/dashboard/messages/{{inbox._id}}" class="list-group-item" ng-repeat="inbox in inboxes">
+                    <button class="btn btn-sm pull-right hidden-xs"><span translate>Antwoorden</span> <i class="glyphicon glyphicon-share-alt"></i></button>
+                    <h4 class="list-group-item-heading">
+                    <i ng-if="unreadMessages(inbox) > 0" class="unread icon-asterisk"></i>
+                        {{inbox.sender._id == authentication.user._id ? inbox.roomOwner.displayName : inbox.sender.displayName }}
+                    <i tooltip="Inbox verwijderen" ng-click="deleteInbox(inbox, $index, $event)"class="icon-trash-1"></i>
+                    </h4>
+                    <p class="list-group-item-text">
+                    <i ng-if="getLastMessage(inbox).sender == authentication.user._id" class="icon-reply"></i>
+                    <span ng-if="getLastMessage(inbox).messageType == 'default'">
+                        {{getLastMessage(inbox).message}}
+                    </span>
+                    <span ng-if="getLastMessage(inbox).messageType == 'reservation'">
+                        {{getLastMessage(inbox).sender != authentication.user._id ? inbox.roomOwner.displayName : 'Je'}} wil een afspraak maken op {{ getLastMessage(inbox).    sent | amDateFormat:'DD/MM/YYYY' }}
+                    </span>
+                    </p>
+                    <small am-time-ago="inbox.messages[inbox.messages.length-1].sent"></small>
+                </a>
+            </div>
         </div>
     </div>
-  </div>
-
 </section>

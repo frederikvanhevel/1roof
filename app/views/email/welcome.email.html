@@ -1,0 +1,42 @@
+{% extends 'layout.email.html' %}
+
+{% block content %}
+
+  <!-- Full Width, Fluid Column : BEGIN -->
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            Beste {{ user.firstName }},
+            <br><br>
+            Bedankt om je te registreren!
+            <br><br>
+            Je kan inloggen met je email <strong>{{ user.email }} </strong> en je wachtwoord die je hebt ingegeven bij het registreren.
+            <br><br>
+            Indien je vragen hebt kan je ons altijd een mailtje sturen via <a href="mailto:info@1roof.be">info@1roof.be</a>
+            <br>
+            <hr class="line">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <!-- Full Width, Fluid Column : END -->
+
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            Veel success!
+
+            <a target="_blank" href="{{ app.host }}" class="button">Ga naar de website</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+
+{% endblock %}

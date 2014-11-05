@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$scope', '$http', '$modalInstance', 'options', 'Alert',
-    function($rootScope, $scope, $http, $modalInstance, options, Alert) {
+angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$scope', '$http', '$modalInstance', 'options', 'Alert', 'Analytics', 'gettext',
+    function($rootScope, $scope, $http, $modalInstance, options, Alert, Analytics, gettext) {
         $scope.subscriptionPlan = options.plan;
 
         $scope.busy = false;
@@ -13,7 +13,7 @@ angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$sc
             if (response.error) {
                 // there was an error
                 $scope.busy = false;
-                Alert.add('danger', 'Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.', 5000);
+                Alert.add('danger', gettext('Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.'), 5000);
             } else {
                 // got stripe token, now charge it
                 saveSubscription(options.plan, response.id, options.couponCode);
@@ -28,6 +28,8 @@ angular.module('rooms').controller('ModalPaymentController', ['$rootScope', '$sc
             }).success(function(response) {
                 $modalInstance.close(response);
                 $scope.busy = false;
+
+                Analytics.trackEvent('Subscription', 'Changed', plan, couponCode);
             }).error(function(response) {
                 $scope.busy = false;
                 $modalInstance.dismiss({

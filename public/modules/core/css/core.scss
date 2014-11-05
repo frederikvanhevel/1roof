@@ -15,28 +15,34 @@ html, body {
   text-decoration: none;
 }
 
-.alert-item {
-
-    &.ng-enter, &.ng-leave {
-        -webkit-animation-name: scale;
-        animation-name: scale;
-        -webkit-animation-duration: 0.25s;
-        animation-duration: 0.25s;
-    }
-
-    &.ng-leave {
-        -webkit-animation-direction: reverse;
-        animation-direction: reverse;
-    }
-
-}
-
 .alert-container {
-  position: fixed;
-  width: 400px;
-  right: 50px;
-  top: 20px;
-  z-index: 99999;
+    position: fixed;
+    right: 50px;
+    top: 20px;
+    z-index: 99999;
+    max-width: 350px;
+
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        left: 20px;
+        right: 20px;
+    }
+
+    .alert-item {
+        box-shadow: 0 25px 10px -15px rgba(0,0,0,0.05);
+
+        &.ng-enter, &.ng-leave {
+            -webkit-animation-name: scale;
+            animation-name: scale;
+            -webkit-animation-duration: 0.25s;
+            animation-duration: 0.25s;
+        }
+
+        &.ng-leave {
+            -webkit-animation-direction: reverse;
+            animation-direction: reverse;
+        }
+
+    }
 }
 
 .content {

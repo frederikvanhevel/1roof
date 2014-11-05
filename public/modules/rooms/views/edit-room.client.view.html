@@ -1,278 +1,257 @@
 <section data-ng-controller="ManageRoomController" data-ng-init="init()" class="edit-room">
-
-
-  <div class="room-owner-panel dark-bg">
-    <div class="container">
-      <span class="pull-right">
-        <a href="{{room.url}}"><i class="icon-eye-1"></i> bekijk de advertentie <i class="icon-right-open"></i></a>
-      </span>
-
-      <div class="visibility-switch">
-        <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder">
-        <label for="switch-button"></label>
-      </div>
-      <span ng-if="room.visible && errors.length == 0" class="green pull-left">online</span>
-      <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> offline - Je moet meer details ingeven</span>
-      <span ng-if="!room.visible && errors.length == 0" class="green"><i class="icon-left-1 green"></i> Je kan deze advertentie online plaatsen</span>
-
-    </div>
-  </div>
-
-
-
-  <div class="edit-details container">
-
-    <div class="col-md-3">
-      <ul class="sidenav">
-        <li ng-class="{ active: nav == 'general'}">
-          <a ng-click="setTab('general')" href="">
-            <i ng-if="tabHasError('general')" class="icon-attention-1 red"></i>
-            Algemeen
-          </a>
-        </li>
-        <li ng-class="{ active: nav == 'availability'}">
-          <a ng-click="setTab('availability')" href="">
-            <i ng-if="tabHasError('availability')" class="icon-attention-1 red"></i>
-            Beschikbaarheid
-          </a>
-        </li>
-        <li ng-class="{ active: nav == 'costs'}">
-          <a ng-click="setTab('costs')" href="">
-            <i ng-if="tabHasError('costs')" class="icon-attention-1 red"></i>
-            Kosten
-          </a>
-        </li>
-        <li ng-class="{ active: nav == 'address'}">
-          <a ng-click="setTab('address')" href="">
-            Adres
-          </a>
-        </li>
-        <li ng-class="{ active: nav == 'amenities'}">
-          <a ng-click="setTab('amenities')" href="">
-            Voorzieningen
-          </a>
-        </li>
-        <li ng-class="{ active: nav == 'pictures'}">
-          <a ng-click="setTab('pictures')" href="">
-            Afbeeldingen
-          </a>
-        </li>
-        <li ng-class="{ active: nav == 'cohabit'}">
-          <a ng-click="setTab('cohabit')" href="">
-            Samenwonen
-          </a>
-        </li>
-      </ul>
-    </div>
-
-    <div class="col-md-6" ng-switch on="nav">
-        <div ng-switch-when="general" class="bordered">
-          <div class="panel-heading">
-            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
-            <h3 class="panel-title">Algemene informatie over de ruimte</h3>
-          </div>
-          <div class="panel-body">
-            <form role="form">
-              <div class="form-group" ng-class="{ 'has-error': tabHasError('general') }">
-                <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' karakters over'"></small>
-                <label class="control-label">Titel</label>
-                <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="Geef een gepaste titel in" required>
-              </div>
-              <div class="form-group">
-                <small class="pull-right" ng-bind="(1500 - room.info.description.length) + ' karakters over'"></small>
-                <label class="control-label">Beschrijving</label>
-                <textarea ng-model="room.info.description" maxlength="1500" limit-text="1500" type="text"  placeholder="Geef een duidelijke beschrijving over je ruimte"></textarea>
-              </div>
-              <div class="form-group">
-                <label class="control-label">Oppervlakte</label>
-                <input ng-model="room.surface" type="number" min="0" class="form-control"  placeholder="Oppervlakte in m²">
-              </div>
-            </form>
-            <hr>
-            <div class="text-center">
-                <a href="" ng-click="deleteRoom()" class="text-danger">Verwijder deze advertentie</a>
+    <div class="room-owner-panel dark-bg">
+        <div class="container">
+            <span class="pull-right">
+            <a href="{{room.url}}"><i class="icon-eye-1"></i> <span translate>bekijk de advertentie</span> <i class="icon-right-open"></i></a>
+            </span>
+            <div class="visibility-switch">
+                <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder">
+                <label for="switch-button"></label>
             </div>
-          </div>
+            <span ng-if="room.visible && errors.length == 0" class="green pull-left">online</span>
+            <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> offline - <span translate>Je moet meer details ingeven</span></span>
+            <span ng-if="!room.visible && errors.length == 0" class="green"><i class="icon-left-1 green"></i> <span translate>Je kan deze advertentie online plaatsen</span></span>
         </div>
-
-        <div ng-switch-when="availability" class="bordered availability">
-          <div class="panel-heading">
-            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
-            <h3 class="panel-title">In welke periode is deze ruimte beschikbaar?</h3>
-          </div>
-          <div class="panel-body">
-
-            <form class="form-inline row" role="form">
-              <div class="">
-                <label class="control-label checkbox">
-                  <input type="checkbox" ng-model="room.available.immediately">
-                  Onmiddelijk beschikbaar
-                </label>
-              </div>
-              <br>
-              <h4 class="col-sm-1" ng-class="{ 'disabled': room.available.immediately }">van</h4>
-              <div class="form-group col-sm-5">
-                <input type="text" class="form-control"  placeholder="dd/mm/jjjj" value="{{ room.available.from | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.from" start-date="{{room.available.from}}" date-picker ng-disabled="room.available.immediately">
-              </div>
-              <h4 class="col-sm-1" ng-class="{ 'disabled': room.available.immediately }">tot</h4>
-              <div class="form-group col-sm-5" ng-class="{ 'has-error': tabHasError('availability') }">
-                <input type="text" class="form-control" placeholder="dd/mm/jjjj" value="{{ room.available.till | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.till" start-date="{{room.available.till}}" min-date="room.available.from" date-picker ng-disabled="room.available.immediately">
-              </div>
-            </form>
-
-          </div>
-        </div>
-
-        <div ng-switch-when="costs" class="bordered">
-          <div class="panel-heading">
-            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
-            <h3 class="panel-title">Kosten</h3>
-          </div>
-          <div class="panel-body">
-
-            <form role="form">
-              <div class="form-group">
-                <label class="control-label">Facturatie periode</label>
-                <select ng-model="room.price.period" >
-                  <option value="month">Maandelijks</option>
-                  <option value="quarter">Driemaandelijks</option>
-                  <option value="year">Jaarlijks</option>
-                </select>
-              </div>
-
-              <div class="form-group" ng-class="{ 'has-error': tabHasError('costs') }">
-                <label class="control-label">Basis prijs</label>
-                <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="Basis kosten">
-              </div>
-
-              <div class="form-group">
-                <label class="control-label">Gas, elektriciteit en water (optioneel)</label>
-                <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="Extra kosten">
-              </div>
-              <div class="form-group">
-                <label class="control-label">Schoonmaak (optioneel)</label>
-                <input ng-model="room.price.cleaning" type="number" min="0" class="form-control"  placeholder="Schoonmaak kosten">
-              </div>
-            </form>
-
-          </div>
-        </div>
-
-        <div ng-switch-when="address" class="bordered">
-          <div class="panel-heading">
-            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
-            <h3 class="panel-title">Adres van de ruimte</h3>
-          </div>
-          <div class="panel-body">
-            <h5><i class="icon-location"></i> {{room.location.street}} <small>{{room.location.city}}</small></h5>
-
-            <div room-map class="map-canvas"></div>
-
-            <button class="btn btn-blue btn-block" ng-click="openAddressModal()"><i class="icon-location-1"></i> Adres aanpassen</button>
-
-          </div>
-        </div>
-
-        <div ng-switch-when="amenities" class="bordered">
-          <div class="panel-heading">
-            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
-            <h3 class="panel-title">Beschikbare voorzieningen</h3>
-          </div>
-          <div class="panel-body">
-            <ul class="amenities">
-            <li class="checkbox" ng-repeat="amenity in amenities">
-              <label>
-                 <input
-                    type="checkbox"
-                    name="{{amenity.value}}"
-                    value="{{amenity.value}}"
-                    ng-checked="isAmenityChecked(amenity.value)"
-                    ng-click="toggleAmenitySelection(amenity.value)"
-                  > {{amenity.name}}
-              </label>
-            </li>
+    </div>
+    <div class="edit-details container">
+        <div class="col-md-3">
+            <ul class="sidenav">
+                <li ng-class="{ active: nav == 'general'}">
+                    <a ng-click="setTab('general')" href="">
+                        <i ng-if="tabHasError('general')" class="icon-attention-1 red"></i>
+                        <span translate>Algemeen</span>
+                    </a>
+                </li>
+                <li ng-class="{ active: nav == 'availability'}">
+                    <a ng-click="setTab('availability')" href="">
+                        <i ng-if="tabHasError('availability')" class="icon-attention-1 red"></i>
+                        <span translate>Beschikbaarheid</span>
+                    </a>
+                </li>
+                <li ng-class="{ active: nav == 'costs'}">
+                    <a ng-click="setTab('costs')" href="">
+                        <i ng-if="tabHasError('costs')" class="icon-attention-1 red"></i>
+                        <span translate>Kosten</span>
+                    </a>
+                </li>
+                <li ng-class="{ active: nav == 'address'}">
+                    <a ng-click="setTab('address')" href="">
+                        <span translate>Adres</span>
+                    </a>
+                </li>
+                <li ng-class="{ active: nav == 'amenities'}">
+                    <a ng-click="setTab('amenities')" href="">
+                        <span translate>Voorzieningen</span>
+                    </a>
+                </li>
+                <li ng-class="{ active: nav == 'pictures'}">
+                    <a ng-click="setTab('pictures')" href="">
+                        <span translate>Afbeeldingen</span>
+                    </a>
+                </li>
+                <li ng-class="{ active: nav == 'cohabit'}">
+                    <a ng-click="setTab('cohabit')" href="">
+                        <span translate>Samenwonen</span>
+                    </a>
+                </li>
             </ul>
-          </div>
         </div>
-
-        <div ng-switch-when="pictures" class="bordered">
-          <div class="panel-heading">
-            <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
-            <h3 class="panel-title">Afbeeldingen toevoegen</h3>
-            <small>Maximum 8 afbeeldingen per ruimte</small>
-          </div>
-          <div class="panel-body">
-            <div class="pictures-header">
-              <h5 class="pull-right"><small>{{room.pictures.length}} foto's</small></h5>
-              <button class="btn-upload btn btn-blue btn-sm" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
-                <i class="icon-upload-cloud"></i> Foto uploaden
-              </button>
-              <button class="dropbox-button btn btn-sm" dropbox-chooser chooser-function="onDropboxSelect"><i class="icon-dropbox"></i> Kiezen van Dropbox</button>
+        <div class="col-md-6" ng-switch on="nav">
+            <div ng-switch-when="general" class="bordered">
+                <div class="panel-heading">
+                    <span blink-text class="blink-text pull-right"><i class="icon-check"></i> <span translate>opgeslaan</span></span>
+                    <h3 class="panel-title" translate>Algemene informatie over de ruimte</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group" ng-class="{ 'has-error': tabHasError('general') }">
+                            <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' karakters over'"></small>
+                            <label class="control-label" translate>Titel</label>
+                            <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="{{'Geef een gepaste titel in'|translate}}" required>
+                        </div>
+                        <div class="form-group">
+                            <small class="pull-right" ng-bind="(1500 - room.info.description.length) + ' karakters over'"></small>
+                            <label class="control-label" translate>Beschrijving</label>
+                            <textarea ng-model="room.info.description" maxlength="1500" limit-text="1500" type="text"  placeholder="{{'Geef een duidelijke beschrijving over je ruimte'|translate}}"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" translate>Oppervlakte</label>
+                            <input ng-model="room.surface" type="number" min="0" class="form-control"  placeholder="{{'Oppervlakte in m²'|translate}}">
+                        </div>
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        <a href="" ng-click="deleteRoom()" class="text-danger" translate>Verwijder deze advertentie</a>
+                    </div>
+                </div>
             </div>
-            <div class="pictures" ng-hide="room.pictures.length == 0">
-              <div class="picture col-sm-6" ng-repeat="picture in room.pictures">
-                <div class="image" back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}"></div>
-                <button class="remove-button btn btn-red" ng-click="removeImage($index)"><i class="icon-trash-1"></i></button>
-              </div>
-
+            <div ng-switch-when="availability" class="bordered availability">
+                <div class="panel-heading">
+                    <span blink-text class="blink-text pull-right"><i class="icon-check"></i> <span translate>opgeslaan</span></span>
+                    <h3 class="panel-title" translate>In welke periode is deze ruimte beschikbaar?</h3>
+                </div>
+                <div class="panel-body">
+                    <form class="form-inline row" role="form">
+                        <div class="">
+                            <label class="control-label checkbox">
+                                <input type="checkbox" ng-model="room.available.immediately">
+                                <span translate>Onmiddelijk beschikbaar</span>
+                            </label>
+                        </div>
+                        <br>
+                        <h4 class="col-sm-1" ng-class="{ 'disabled': room.available.immediately }" translate>van</h4>
+                        <div class="form-group col-sm-5">
+                            <input type="text" class="form-control"  placeholder="dd/mm/jjjj" value="{{ room.available.from | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.from" start-date="{{room.available.from}}" date-picker ng-disabled="room.available.immediately">
+                        </div>
+                        <h4 class="col-sm-1" ng-class="{ 'disabled': room.available.immediately }" translate>tot</h4>
+                        <div class="form-group col-sm-5" ng-class="{ 'has-error': tabHasError('availability') }">
+                            <input type="text" class="form-control" placeholder="dd/mm/jjjj" value="{{ room.available.till | amDateFormat: 'DD/MM/YYYY' }}" date-model="room.available.till" start-date="{{room.available.till}}" min-date="room.available.from" date-picker ng-disabled="room.available.immediately">
+                        </div>
+                    </form>
+                </div>
             </div>
-
-          </div>
+            <div ng-switch-when="costs" class="bordered">
+                <div class="panel-heading">
+                    <span blink-text class="blink-text pull-right"><i class="icon-check"></i> <span translate>opgeslaan</span></span>
+                    <h3 class="panel-title" translate>Kosten</h3>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label class="control-label" translate>Facturatie periode</label>
+                            <select ng-model="room.price.period" >
+                                <option value="month" translate>Maandelijks</option>
+                                <option value="quarter" translate>Driemaandelijks</option>
+                                <option value="year" translate>Jaarlijks</option>
+                            </select>
+                        </div>
+                        <div class="form-group" ng-class="{ 'has-error': tabHasError('costs') }">
+                            <label class="control-label" translate>Basis prijs</label>
+                            <input ng-model="room.price.base" type="number" min="0" class="form-control"  placeholder="{{'Basis kosten'|translate}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" translate>Gas, elektriciteit en water (optioneel)</label>
+                            <input ng-model="room.price.egw" type="number" min="0" class="form-control"  placeholder="{{'Extra kosten'|translate}}">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" translate>Schoonmaak (optioneel)</label>
+                            <input ng-model="room.price.cleaning" type="number" min="0" class="form-control"  placeholder="{{'Schoonmaak kosten'|translate}}">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div ng-switch-when="address" class="bordered">
+                <div class="panel-heading">
+                    <span blink-text class="blink-text pull-right"><i class="icon-check"></i> <span translate>opgeslaan</span></span>
+                    <h3 class="panel-title" translate>Adres van de ruimte</h3>
+                </div>
+                <div class="panel-body">
+                    <h5><i class="icon-location"></i> {{room.location.street}} <small>{{room.location.city}}</small></h5>
+                    <div room-map class="map-canvas"></div>
+                    <button class="btn btn-blue btn-block" ng-click="openAddressModal()"><i class="icon-location-1"></i> <span translate>Adres aanpassen</span></button>
+                </div>
+            </div>
+            <div ng-switch-when="amenities" class="bordered">
+                <div class="panel-heading">
+                    <span blink-text class="blink-text pull-right"><i class="icon-check"></i> <span translate>opgeslaan</span></span>
+                    <h3 class="panel-title" translate>Beschikbare voorzieningen</h3>
+                </div>
+                <div class="panel-body">
+                    <ul class="amenities">
+                        <li class="checkbox" ng-repeat="amenity in amenities">
+                            <label>
+                                <input
+                                type="checkbox"
+                                name="{{amenity.value}}"
+                                value="{{amenity.value}}"
+                                ng-checked="isAmenityChecked(amenity.value)"
+                                ng-click="toggleAmenitySelection(amenity.value)"
+                                > {{amenity.name}}
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div ng-switch-when="pictures" class="bordered">
+                <div class="panel-heading">
+                    <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+                    <h3 class="panel-title" translate>Afbeeldingen toevoegen</h3>
+                    <small translate>Maximum 8 afbeeldingen per ruimte</small>
+                </div>
+                <div class="panel-body">
+                    <div class="pictures-header">
+                        <h5 class="pull-right"><small translate>{{room.pictures.length}} foto's</small></h5>
+                        <button ng-disabled="room.pictures.length == 8" class="btn-upload btn btn-blue btn-sm" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
+                        <i class="icon-upload-cloud"></i> <span translate>Foto uploaden</span>
+                        </button>
+                        <button ng-disabled="room.pictures.length == 8" class="dropbox-button btn btn-sm" dropbox-chooser chooser-function="onDropboxSelect"><i class="icon-dropbox"></i> <span translate>Kiezen van Dropbox</span></button>
+                    </div>
+                    <div class="pictures" ng-hide="room.pictures.length == 0">
+                        <div class="picture col-sm-6" ng-repeat="picture in room.pictures">
+                            <div class="image" back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}"></div>
+                            <button class="remove-button btn btn-red" ng-click="removeImage($index)"><i class="icon-trash-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-switch-when="cohabit" class="bordered">
+                <div class="panel-heading">
+                    <span blink-text class="blink-text pull-right"><i class="icon-check"></i> <span translate>opgeslaan</span></span>
+                    <h3 class="panel-title" translate>Samenwonen</h3>
+                    <small translate>Zoek je andere personen om met je mee samen te wonen in deze ruimte?</small>
+                </div>
+                <div class="panel-body">
+                    <form role="form">
+                        <div class="form-group">
+                            <label class="control-label">
+                                <input type="checkbox" ng-model="room.cohabit.active">
+                                <span translate>Ik zoek een huisgenoot</span>
+                            </label>
+                        </div>
+                        <div class="form-group" ng-class="{ 'disabled': !room.cohabit.active }">
+                            <label class="control-label" translate>Met hoeveel mensen wil je samenwonen?</label>
+                            <select class="form-control" ng-model="room.cohabit.count" ng-disabled="!room.cohabit.active">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-        <div ng-switch-when="cohabit" class="bordered">
-          <div class="panel-heading">
-            <span blink-text class="blink-text pull-right"><i class="icon-check"></i> opgeslaan</span>
-            <h3 class="panel-title">Samenwonen</h3>
-            <small>Zoek je andere personen om met je mee samen te wonen in deze ruimte?</small>
-          </div>
-          <div class="panel-body">
-            <form role="form">
-              <div class="form-group">
-                <label class="control-label">
-                  <input type="checkbox" ng-model="room.cohabit.active">
-                  Ik zoek een huisgenoot
-                </label>
-              </div>
-
-              <div class="form-group" ng-class="{ 'disabled': !room.cohabit.active }">
-                <label class="control-label">Met hoeveel mensen wil je samenwonen?</label>
-                <select class="form-control" ng-model="room.cohabit.count" ng-disabled="!room.cohabit.active">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                </select>
-              </div>
-
-            </form>
-          </div>
+        <div class="info col-sm-3">
+            <div ng-switch on="nav">
+                <div ng-switch-when="pictures">
+                    <h2>
+                    <i class="icon-lamp"></i>
+                    Tip
+                    </h2>
+                    <p translate>
+                    Foto's zijn het eerste waar iemand op let. Zorg er voor dus dat je veel en duidelijke foto's hebt! Op deze manier zal je advertentie veel sneller verhuurd worden!
+                    </p>
+                </div>
+                <div ng-switch-when="availability">
+                    <h2>
+                    <i class="icon-lamp"></i>
+                    Tip
+                    </h2>
+                    <p translate>
+                    Wanneer de einddatum die je ingegeven hebt verlopen is, zal je advertentie automatisch offline worden gezet.
+                    </p>
+                </div>
+                <div ng-switch-when="general">
+                    <h2>
+                    <i class="icon-lamp"></i>
+                    Tip
+                    </h2>
+                    <p translate>
+                    Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie beschrijven. Je kan in de beschrijving meer uitleg geven.
+                    </p>
+                </div>
+            </div>
         </div>
-
     </div>
-
-    <div class="info col-sm-3">
-
-      <h2>
-        <i class="icon-lamp"></i>
-        Tip
-      </h2>
-
-      <div ng-switch on="nav">
-        <div ng-switch-when="pictures">
-          <h5>
-            Foto's zijn het eerste waar iemand op let. Zorg er voor dus dat je veel en duidelijke foto's hebt! Op deze manier zal je advertentie veel sneller verhuurd worden!
-          </h5>
-        </div>
-
-        <div ng-switch-when="general">
-          <p>
-            Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie beschrijven. Je kan in de beschrijving meer uitleg geven.
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </div>
 </section>

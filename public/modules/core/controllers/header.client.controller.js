@@ -1,39 +1,34 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Menus', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state',
-    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Menus, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state) {
+angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics', 'Meta',
+    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics, Meta) {
         $scope.authentication = Authentication;
-        $scope.isCollapsed = false;
-        $scope.menu = Menus.getMenu('topbar');
+        $scope.isCollapsed = true;
         $scope.search = '';
         $scope.searchDetails = {};
         $scope.unreadMessageCount = 0;
-        $scope.messagesPopoverVisible = false;
 
         $scope.init = function() {
 
             // detect browser language
             $rootScope.language = window.navigator.userLanguage || window.navigator.language;
             if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl', false);
+            else setLanguage('en', true);
 
             // watch for language changes
             $rootScope.$watch('language', function(newVal, oldVal) {
                 if (newVal !== oldVal) setLanguage(newVal, true);
             });
+            // always close the menu after navigating
+            $rootScope.$on('$locationChangeSuccess', function() {
+                $scope.isCollapsed = true;
+            });
+            // re-initialize sockets on log in
+            $rootScope.$on('logged_in', function() {
+                initializeSocket();
+            });
 
-            // subscribe to new messages
-            if (Authentication.user) {
-                Socket.emit('join', Authentication.user._id);
-                Socket.on('newMessageCount', function(response) {
-                    if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox)
-                        $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
-                });
-
-                $rootScope.$on('inbox_read', function(event, count) {
-                    if (count > 0) $scope.unreadMessageCount -= count;
-                });
-            }
-
+            initializeSocket();
         };
 
         $scope.toggleCollapsibleMenu = function() {
@@ -70,6 +65,31 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             }
         };
 
+        function initializeSocket() {
+            // subscribe to new messages
+            if (Authentication.user) {
+                Socket.emit('join', Authentication.user._id);
+                Socket.on('newMessageCount', function(response) {
+                    if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox) {
+                        $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
+                        if ( $scope.unreadMessageCount < 0)  $scope.unreadMessageCount = 0;
+                        Meta.setTitlePrefix('(' + $scope.unreadMessageCount + ')');
+
+                        playNewMessageSound();
+                    }
+                });
+
+                $rootScope.$on('inbox_read', function(event, count) {
+                    if (count > 0) $scope.unreadMessageCount -= count;
+                });
+            }
+        }
+
+        function playNewMessageSound() {
+            var audio = new Audio('/modules/core/img/woosh.wav');
+            audio.play();
+        }
+
         function changeLocation(address, lat, lng) {
             $location.path('/search/' + address)
                 .search('lat', lat)
@@ -85,7 +105,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             // gettextCatalog.debug = true;
 
             // momentjs
-            amMoment.changeLanguage(language);
+            amMoment.changeLocale(language);
 
             if (reload)
                 $state.reload();

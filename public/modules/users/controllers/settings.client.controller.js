@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', '$stateParams', 'Users', 'Authentication',
-    function($scope, $http, $location, $stateParams, Users, Authentication) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', '$stateParams', 'Users', 'Authentication', 'gettext',
+    function($scope, $http, $location, $stateParams, Users, Authentication, gettext) {
         $scope.user = Authentication.user;
         $scope.busy = false;
         $scope.nav = 'info';
@@ -67,11 +67,12 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
         };
 
         $scope.getSubscription = function() {
-            var plan = Authentication.user.subscriptionPlan;
+            // TODO: request this from the API
+            var plan = Authentication.user.subscription.plan;
 
-            if (plan === 'FREE') return 'Student';
-            else if (plan === 'PRO') return 'Huisbaas';
-            else if (plan === 'BUSINESS') return 'Agentschap';
+            if (plan === 'FREE') return gettext('Student');
+            else if (plan === 'PRO') return gettext('Huisbaas');
+            else if (plan === 'BUSINESS') return gettext('Agentschap');
         };
     }
 ]);

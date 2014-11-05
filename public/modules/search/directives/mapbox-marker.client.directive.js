@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').directive('mapboxMarker', ['$compile', '$window', '$http',
-    function($compile, $window, $http) {
+angular.module('search').directive('mapboxMarker', ['$compile', '$window',
+    function($compile, $window) {
 
         var _colors = {
             navy: '#001f3f',

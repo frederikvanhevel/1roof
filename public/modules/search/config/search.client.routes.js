@@ -18,8 +18,8 @@ angular.module('search')
             $urlRouterProvider.deferIntercept();
         }
     ])
-    .run(['$rootScope', '$urlRouter', '$location', '$state', 'Device',
-        function($rootScope, $urlRouter, $location, $state, Device) {
+    .run(['$rootScope', '$urlRouter', 'Device',
+        function($rootScope, $urlRouter, Device) {
             $rootScope.$on('$locationChangeSuccess', function(e, newUrl, oldUrl) {
                 // Prevent $urlRouter's default handler from firing
                 e.preventDefault();

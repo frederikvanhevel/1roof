@@ -1,11 +1,8 @@
 'use strict';
 
 // Setting up route
-angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-    function($stateProvider, $urlRouterProvider, $locationProvider) {
-        // Enable html5 pushstate
-        $locationProvider.html5Mode(true);
-
+angular.module('core').config(['$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
         // Redirect to home view when route not found
         $urlRouterProvider.otherwise('/');
 
@@ -30,6 +27,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', '$locatio
         state('about', {
             url: '/about',
             templateUrl: '/modules/core/views/about.client.view.html'
+        }).
+        state('promote', {
+            url: '/promote',
+            templateUrl: '/modules/core/views/promote.client.view.html'
         });
     }
 ]);

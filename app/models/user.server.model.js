@@ -47,7 +47,7 @@ var UserSchema = new Schema({
 	},
 	email: {
 		type: String,
-		unique: 'testing error message',
+		unique: 'Email already used',
 		required: 'Please fill in an email',
 		trim: true,
 		default: '',
@@ -55,7 +55,7 @@ var UserSchema = new Schema({
 		match: [/.+\@.+\..+/, 'Please fill a valid email address']
 	},
 	username: {
-		type: String,	
+		type: String,
 		trim: true
 	},
 	password: {
@@ -97,18 +97,23 @@ var UserSchema = new Schema({
  	resetPasswordExpires: {
  		type: Date
  	},
- 	// For stripe
- 	customerToken: {
- 		type: String
- 	},
- 	subscriptionToken: {
- 		type: String
- 	},
- 	subscriptionPlan: {
- 		type: String,
- 		enum: ['FREE', 'PRO', 'BUSINESS'],
- 		default: 'FREE'
- 	},
+    sbscription: {
+        type: Schema.ObjectId,
+        ref: 'Subscription'
+    },
+ 	subscription: {
+        customerToken: {
+            type: String
+        },
+        token: {
+            type: String
+        },
+        plan: {
+            type: String,
+            enum: ['FREE', 'PRO', 'BUSINESS'],
+            default: 'FREE'
+        }
+    },
  	settings: {
  		type: Object,
  		default: {
@@ -142,9 +147,9 @@ UserSchema.pre('remove', function (user) {
 	  winston.error('Error removing rooms', err);
 	});
 
-	if (this.customerToken) {
+	if (this.subscription.customerToken) {
 		stripe.customers.del(
-		  this.customerToken,
+		  this.subscription.customerToken,
 		  function(err, confirmation) {
 		    if (err) winston.error('Error removing stripe customer', err);
 		  }

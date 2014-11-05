@@ -1,19 +1,10 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Geocoder', '$timeout', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta',
-    function($scope, $stateParams, $location, Authentication, Rooms, Geocoder, $timeout, $window, Amenity, $upload, $http, Modal, Alert, Meta) {
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta', 'gettext',
+    function($scope, $stateParams, $location, Authentication, Rooms, $window, Amenity, $upload, $http, Modal, Alert, Meta, gettext) {
         $scope.authentication = Authentication;
 
-        $scope.createForm = {
-            address: '',
-            roomType: ''
-        };
-        $scope.autocompleteOptions = {
-            country: 'be',
-            watchEnter: true
-        };
-        $scope.addressDetails = null;
         $scope.busy = false;
         $scope.nav = 'general';
         $scope.amenities = Amenity.list();
@@ -34,7 +25,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
-            }, $scope.watchForUpdates);
+            }, $scope.watchForUpdates, function() {
+                // room not found, redirect
+                $location.path('/dashboard/rooms');
+            });
 
             $scope.$on('dropbox_chosen', onDropboxSelect);
         };
@@ -164,6 +158,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         function uploadImage(image) {
+            if ($scope.room.pictures.length === 8) return;
+
             $scope.busy = true;
             $upload.upload({
                 url: '/api/rooms/' + $scope.room._id + '/upload',
@@ -179,11 +175,13 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 $scope.busy = false;
             }).error(function(response) {
                 $scope.busy = false;
-                Alert.add('danger', 'Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.', 5000);
+                Alert.add('danger', gettext('Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.'), 5000);
             });
         }
 
         function onDropboxSelect(e, files) {
+            if ($scope.room.pictures.length === 8) return;
+
             $scope.busy = true;
             files.forEach(function(file) {
                 $http.post('/api/rooms/' + $scope.room._id + '/upload', {
@@ -197,7 +195,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                     $scope.busy = false;
                 }).error(function(response) {
                     $scope.busy = false;
-                    Alert.add('danger', 'Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.', 5000);
+                    Alert.add('danger', gettext('Er was een probleem bij het toevoegen van de afbeelding, probeer later eens opnieuw.'), 5000);
                 });
             });
         }

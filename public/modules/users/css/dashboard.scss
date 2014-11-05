@@ -25,17 +25,29 @@
         }
       }
 
+      &:after {
+        position: absolute;
+        content: '';
+        bottom: 0;
+        left: 16px;
+        right: 16px;
+        height: 4px;
+        background: transparent;
+
+        transition: transform 0.3s;
+
+        -webkit-transform: translate3d(0,5px,0);
+        transform: translate3d(0,5px,0);
+      }
+
       &.active {
         font-weight: bold;
 
         &:after {
-          position: absolute;
-          content: '';
-          bottom: 0;
-          left: 16px;
-          right: 16px;
-          height: 4px;
-          background: #1ABB9C;
+            background: #1ABB9C;
+
+            -webkit-transform: translate3d(0,0,0);
+            transform: translate3d(0,0,0);
         }
       }
     }
@@ -45,6 +57,20 @@
 .dashboard-bg {
     height: 250px;
     margin-bottom: 50px;
+    background-size: cover;
+    // background-attachment: fixed;
+    // background-size: 100% auto;
+    // background-position-y: -50% !important;
+
+    @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+        // background-size: 150% auto;
+        // background-position-y: 20% !important;
+        height: 150px;
+    }
+    @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+        // background-position-y: 180% !important;
+        height: 200px;
+    }
 
     h1 {
         color: white;

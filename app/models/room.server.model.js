@@ -14,7 +14,7 @@ var mongoose = require('mongoose'),
  */
 var checkRoomCompleteness = function(room) {
 	var complete = true;
-	
+
 	if (!room.info.title || room.info.title === '') complete = false;
   if (!room.price.base || room.price.base === 0) complete = false;
   if (!room.available.immediately && (!room.available.from || !room.available.till || new Date(room.available.till) < new Date())) complete = false;
@@ -175,6 +175,8 @@ var RoomSchema = new Schema({
 });
 
 RoomSchema.index({ loc: '2dsphere' });
+RoomSchema.index({ 'price.total': 1, 'classification': 1 });
+// RoomSchema.index({ 'price.total': 1, 'classification': 1, 'loc': '2dsphere' });
 
 /**
  * Hook a pre save method to update the total price and set updated date
@@ -210,6 +212,7 @@ RoomSchema.virtual('url').get(function() {
 });
 // make sure the server sents our getter in the JSON object
 RoomSchema.set('toJSON', { virtuals: true });
+RoomSchema.set('toObject', { virtuals: true });
 
 // RoomSchema.index({ classification: 1, price: 1 }); // schema level
 

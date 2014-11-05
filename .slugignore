@@ -1,1 +1,3 @@
 /app/tests
+/public/modules/**/*.js
+/public/modules/**/*.scss

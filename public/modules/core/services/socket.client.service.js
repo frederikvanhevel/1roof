@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').factory('Socket', ['$window', 'socketFactory',
-    function($window, socketFactory) {
+angular.module('core').factory('Socket', ['socketFactory',
+    function(socketFactory) {
 
         return socketFactory();
 

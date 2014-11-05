@@ -10,7 +10,7 @@
   "scripts": {
     "start": "grunt",
     "test": "grunt test",
-    "postinstall": "bower install --config.interactive=false --force-latest"
+    "postinstall": "bower install --config.interactive=false --force-latest; ./node_modules/grunt-cli/bin/grunt dist"
   },
   "dependencies": {
     "express": "~4.1.0",
@@ -35,7 +35,6 @@
     "lodash": "~2.4.1",
     "forever": "~0.11.0",
     "bower": "~1.3.1",
-    "grunt-cli": "~0.1.13",
     "glob": "~3.2.9",
     "cloudinary": "~1.0.9",
     "multiparty": "~3.2.6",
@@ -49,30 +48,36 @@
     "bcrypt-nodejs": "0.0.3",
     "async": "~0.9.0",
     "stripe": "~2.8.0",
-    "mean-seo": "0.0.6"
-  },
-  "devDependencies": {
-    "should": "~3.2.0",
+    "mean-seo": "0.0.6",
+    "grunt": "~0.4.5",
+    "grunt-cli": "~0.1.13",
     "grunt-env": "~0.4.1",
     "grunt-node-inspector": "~0.1.3",
     "grunt-contrib-watch": "~0.6.1",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-csslint": "^0.2.0",
-    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-uglify": "~0.5.1",
     "grunt-contrib-cssmin": "~0.10.0",
     "grunt-nodemon": "~0.2.0",
     "grunt-concurrent": "~0.5.0",
     "grunt-mocha-test": "~0.10.0",
     "grunt-karma": "~0.8.2",
     "load-grunt-tasks": "~0.4.0",
+    "grunt-contrib-sass": "~0.8.1",
+    "grunt-angular-gettext": "~0.2.14",
+    "grunt-scss-lint": "~0.3.3",
+    "grunt-contrib-htmlmin": "~0.3.0",
+    "grunt-contrib-imagemin": "~0.8.1",
+    "bluebird": "~2.3.10"
+  },
+  "devDependencies": {
+    "should": "~3.2.0",
     "karma": "~0.12.0",
     "karma-jasmine": "~0.2.1",
     "karma-coverage": "~0.2.0",
     "karma-chrome-launcher": "~0.1.2",
     "karma-firefox-launcher": "~0.1.3",
     "karma-phantomjs-launcher": "~0.1.2",
-    "grunt-contrib-sass": "~0.7.3",
-    "grunt-angular-gettext": "~0.2.14",
     "supertest": "~0.13.0"
   }
 }

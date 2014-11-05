@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$scope', '$stateParams', '$http', '$location', '$q', 'Authentication', 'Modal',
-    function($scope, $stateParams, $http, $location, $q, Authentication, Modal) {
+angular.module('users').controller('AuthenticationController', ['$rootScope', '$scope', '$stateParams', '$http', '$location', '$q', 'Authentication', 'Modal',
+    function($rootScope, $scope, $stateParams, $http, $location, $q, Authentication, Modal) {
         $scope.authentication = Authentication;
 
         $scope.busy = false;
@@ -9,7 +9,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
         //If user is signed in then redirect back home
         if ($scope.authentication.user) $location.path('/');
 
-        $scope.signup = function(redirectTo) {
+        $scope.signup = function() {
             var deferred = $q.defer();
 
             $scope.busy = true;
@@ -21,10 +21,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
                 // CLose the modal if there is one
                 if ($scope.$close) $scope.$close();
 
-                // And redirect to the index page
-                // $location.path(redirectTo || '/');
-
                 deferred.resolve();
+
+                $rootScope.$broadcast('logged_in');
 
                 $scope.busy = false;
 
@@ -39,7 +38,7 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
             });
         };
 
-        $scope.signin = function(redirectTo) {
+        $scope.signin = function() {
             var deferred = $q.defer();
 
             $scope.busy = true;
@@ -51,10 +50,9 @@ angular.module('users').controller('AuthenticationController', ['$scope', '$stat
                 // CLose the modal if there is one
                 if ($scope.$close) $scope.$close();
 
-                // And redirect to the index page
-                // $location.path(redirectTo || '/');
-
                 deferred.resolve();
+
+                $rootScope.$broadcast('logged_in');
 
                 $scope.busy = false;
 

@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                 }
             },
             clientCSS: {
-                files: ['public/css/main.scss', 'public/modules/**/css/*.scss'],
+                files: ['public/css/main.scss', 'public/modules/**/*.scss'],
                 tasks: ['sass'],
                 options: {
                     livereload: true,
@@ -55,10 +55,15 @@ module.exports = function(grunt) {
                 src: ['public/modules/**/css/*.css']
             }
         },
+        scsslint: {
+            all: {
+                src: ['public/modules/**/css/*.scss']
+            }
+        },
         uglify: {
             production: {
                 options: {
-                    mangle: false
+                    mangle: true
                 },
                 files: {
                     'public/dist/application.min.js': '<%= applicationJavaScriptFiles %>'
@@ -75,9 +80,38 @@ module.exports = function(grunt) {
                 }
             }
         },
+        htmlmin: {
+            production: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: [
+                    {
+                      expand: true,
+                      cwd: 'public/modules/',
+                      src: ['**/*.html'],
+                      dest: 'public/dist/html'
+                    },
+                ]
+            }
+        },
+        imagemin: {
+            production: {
+                files: [
+                    {
+                      expand: true,
+                      cwd: 'public/modules/',
+                      src: ['**/*.{png,jpg,gif}'],
+                      dest: 'public/dist/img'
+                    },
+                ]
+            }
+        },
         sass: {
             options: {
-                style: 'expanded'
+                style: 'expanded',
+                sourcemap: 'none'
             },
             all: {
                 files: { 'public/css/main.css': 'public/css/main.scss' }
@@ -124,7 +158,7 @@ module.exports = function(grunt) {
         nggettext_extract: {
             pot: {
                 files: {
-                    'lang/lang.pot': ['public/modules/**/views/*.html']
+                    'lang/lang.pot': ['public/modules/**/views/*.html', 'public/modules/**/*.js']
                 }
             },
         },
@@ -134,10 +168,10 @@ module.exports = function(grunt) {
                     'public/translations.js': ['lang/*.po']
                 }
             },
-        },
+        }
     });
 
-    // Load NPM tasks 
+    // Load NPM tasks
     require('load-grunt-tasks')(grunt);
 
     // Making grunt default to force in order not to break the project.
@@ -156,16 +190,19 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['env:dev', 'dev']);
 
     // Run dev
-    grunt.registerTask('dev', ['jshint', 'sass' , 'concurrent']);
+    grunt.registerTask('dev', ['jshint', 'scsslint', 'sass' , 'concurrent']);
 
     // Lint task(s).
-    grunt.registerTask('lint', ['jshint']);
+    grunt.registerTask('lint', ['jshint', 'scsslint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['jshint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
+    grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
+
+    // Dist task(s).
+    grunt.registerTask('dist', ['loadConfig', 'uglify', 'cssmin']);
 
     // Run Build task(s).
-    grunt.registerTask('runbuild', ['env:prod','build', 'concurrent']);
+    grunt.registerTask('runbuild', ['env:prod', 'build', 'concurrent']);
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

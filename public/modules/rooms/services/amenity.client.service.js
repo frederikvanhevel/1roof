@@ -1,42 +1,41 @@
 'use strict';
 
-angular.module('rooms').factory('Amenity', [
-
-    function() {
+angular.module('rooms').factory('Amenity', [ 'gettext',
+    function(gettext) {
         return {
             list: function() {
                 return [{
-                    name: 'TV',
+                    name: gettext('TV'),
                     value: 'television'
                 }, {
-                    name: 'Internet',
+                    name: gettext('Internet'),
                     value: 'internet'
                 }, {
-                    name: 'Terras',
+                    name: gettext('Terras'),
                     value: 'terrace'
                 }, {
-                    name: 'Auto garage',
+                    name: gettext('Auto garage'),
                     value: 'parking'
                 }, {
-                    name: 'Fietsstalling',
+                    name: gettext('Fietsstalling'),
                     value: 'bicycleParking'
                 }, {
-                    name: 'Dubbel glas',
+                    name: gettext('Dubbel glas'),
                     value: 'doubleGlass'
                 }, {
-                    name: 'Bemeubeld',
+                    name: gettext('Bemeubeld'),
                     value: 'furnished'
                 }, {
-                    name: 'Aparte badkamer',
+                    name: gettext('Aparte badkamer'),
                     value: 'seperateBathroom'
                 }, {
-                    name: 'Aparte keuken',
+                    name: gettext('Aparte keuken'),
                     value: 'seperateKitchen'
                 }, {
-                    name: 'Huisdieren toegelaten',
+                    name: gettext('Huisdieren toegelaten'),
                     value: 'pets'
                 }, {
-                    name: 'Domicilie verplicht',
+                    name: gettext('Domicilie verplicht'),
                     value: 'domicile'
                 }];
             }

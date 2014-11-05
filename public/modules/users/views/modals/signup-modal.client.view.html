@@ -1,35 +1,28 @@
 <section ng-controller="AuthenticationController">
-  <div class="modal-header">
-    <button type="button" class="close" ng-click="$dismiss()">&times;</button>
-    <h4>Registreren</h4>
-  </div>
-
-  <div class="modal-body">
-    <a href="/auth/facebook" target="_self" class="btn btn-blue btn-block btn-social btn-facebook"><i class="icon-s-facebook"></i> Facebook</a>
-    <a href="/auth/google" target="_self" class="btn btn-red btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
-
-    <p class="sidelines text-center"><span>of</span></p>
-
-    <button ng-hide="emailSignupOpen" ng-click="emailSignupOpen = true" class="btn-link btn-block"> Registreer met je email</button>
-
-    <form ng-show="emailSignupOpen" data-ng-submit="signup()" class="signin" novalidate autocomplete="off">
-      <input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="Voornaam">
-      <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Achternaam">
-      <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="voorbeeld@gmail.com">
-      <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Wachtwoord">
-      <button type="submit" class="btn btn-block" ng-disabled="busy">Registreren</button>
-    </form>
-
-    <div data-ng-show="error" class="text-center text-danger">
-      <strong>{{error}}</strong>
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="$dismiss()">&times;</button>
+        <h4 translate>Registreren</h4>
     </div>
-
-  </div>
-
-  <div class="modal-footer">
-    <p>
-      Heb je al een account?
-      <a href="" ng-click="openSigninModal()"> Inloggen</a>
-    </p>
-  </div>
+    <div class="modal-body">
+        <a href="/auth/facebook" target="_self" class="btn btn-blue btn-block btn-social btn-facebook"><i class="icon-s-facebook"></i> Facebook</a>
+        <a href="/auth/google" target="_self" class="btn btn-red btn-block btn-social btn-google-plus"><i class="icon-s-gplus"></i> Google Plus</a>
+        <p class="sidelines text-center"><span translate>of</span></p>
+        <button ng-hide="emailSignupOpen" ng-click="emailSignupOpen = true" class="btn-link btn-block" translate> Registreer met je email</button>
+        <form ng-show="emailSignupOpen" data-ng-submit="signup()" class="signin" novalidate autocomplete="off">
+            <input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="Voornaam">
+            <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Achternaam">
+            <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="voorbeeld@gmail.com">
+            <input type="password" id="password" name="password" class="form-control" data-ng-model="credentials.password" placeholder="Wachtwoord">
+            <button type="submit" class="btn btn-block" ng-disabled="busy" translate>Registreren</button>
+        </form>
+        <div data-ng-show="error" class="text-center text-danger">
+            <strong>{{error}}</strong>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <p>
+        <span translate>Heb je al een account?</span>
+        <a href="" ng-click="openSigninModal()" translate> Inloggen</a>
+        </p>
+    </div>
 </section>

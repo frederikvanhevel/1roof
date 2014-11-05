@@ -1,18 +1,14 @@
-
 <div class="modal-header">
-  <button type="button" class="close" ng-click="$dismiss()">&times;</button>
+    <button type="button" class="close" ng-click="$dismiss()">&times;</button>
     <h4 class="modal-title">
-      <i class="icon-mail-1"></i> 
-      <span ng-if="modalContent == 'room'">Advertentie verwijderen</span>
-      <span ng-if="modalContent == 'inbox'">Inbox verwijderen</span>
+    <i class="icon-mail-1"></i>
+    <span ng-if="modalContent == 'room'" translate>Advertentie verwijderen</span>
+    <span ng-if="modalContent == 'inbox'" translate>Inbox verwijderen</span>
     </h4>
 </div>
 <div class="modal-body">
-
-  <p ng-if="modalContent == 'room'">Ben je zeker dat je deze advertentie wil verwijderen? Dit is een onomkeerbare actie.</p>
-  <p ng-if="modalContent == 'inbox'">Ben je zeker dat je deze inbox wil verwijderen?</p>
-
-  <button class="btn btn-red" ng-click="$close()">Verwijderen</button>
-  <button class="btn-link" ng-click="$dismiss()">Annuleren</button>
-
+    <p ng-if="modalContent == 'room'" translate>Ben je zeker dat je deze advertentie wil verwijderen? Dit is een onomkeerbare actie.</p>
+    <p ng-if="modalContent == 'inbox'" translate>Ben je zeker dat je deze inbox wil verwijderen?</p>
+    <button class="btn btn-red" ng-click="$close()" translate>Verwijderen</button>
+    <button class="btn-link" ng-click="$dismiss()" translate>Annuleren</button>
 </div>

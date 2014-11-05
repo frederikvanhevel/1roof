@@ -8,12 +8,13 @@ var mongoose = require('mongoose'),
 	User = mongoose.model('User'),
 	mailer = require('../../app/util/mailer'),
 	_ = require('lodash'),
-  winston = require('winston'),
+    winston = require('winston'),
 
-  LocalStrategy = require('passport-local').Strategy,
-  bcrypt = require('bcrypt-nodejs'),
-  async = require('async'),
-  crypto = require('crypto');
+    LocalStrategy = require('passport-local').Strategy,
+    bcrypt = require('bcrypt-nodejs'),
+    BPromise = require('bluebird'),
+    async = require('async'),
+    crypto = require('crypto');
 
 /**
  * Get the error message from error object
@@ -66,22 +67,24 @@ exports.signup = function(req, res) {
 	// Add missing user fields
 	user.provider = 'local';
 	user.displayName = user.firstName + ' ' + user.lastName;
-  console.log(req.body);
+
 	// Then save the user
 	user.save(function(err) {
 		if (err) {
-      winston.error('Error signing up user', err);
+            winston.error('Error signing up user', err);
 			return res.send(400, {
 				message: getErrorMessage(err)
 			});
 		} else {
+            mailer.send('welcome.email.html', { user: user }, user.email, 'Welkom!');
+
 			// Remove sensitive data before login
 			user.password = undefined;
 			user.salt = undefined;
 
 			req.login(user, function(err) {
 				if (err) {
-          winston.error('Error logging in user', user._id);
+                    winston.error('Error logging in user', user._id);
 					res.send(400, err);
 				} else {
 					res.jsonp(user);
@@ -105,7 +108,7 @@ exports.signin = function(req, res, next) {
 
 			req.login(user, function(err) {
 				if (err) {
-          winston.error('Error logging in user', user._id);
+                    winston.error('Error logging in user', user._id);
 					res.send(400, err);
 				} else {
 					res.jsonp(user);
@@ -134,14 +137,14 @@ exports.update = function(req, res) {
 
 		user.save(function(err) {
 			if (err) {
-        winston.error('Error updating user', user._id);
+                winston.error('Error updating user', user._id);
 				return res.send(400, {
 					message: getErrorMessage(err)
 				});
 			} else {
 				req.login(user, function(err) {
 					if (err) {
-            winston.error('Error logging in user', user._id);
+                        winston.error('Error logging in user', user._id);
 						res.send(400, err);
 					} else {
 						res.jsonp(user);
@@ -173,14 +176,14 @@ exports.changePassword = function(req, res, next) {
 
 						user.save(function(err) {
 							if (err) {
-                winston.error('Error changing user password', user._id);
+                                winston.error('Error changing user password', user._id);
 								return res.send(400, {
 									message: getErrorMessage(err)
 								});
 							} else {
 								req.login(user, function(err) {
 									if (err) {
-                    winston.error('Error logging in user', user._id);
+                                        winston.error('Error logging in user', user._id);
 										res.send(400, err);
 									} else {
 										res.send({
@@ -233,7 +236,6 @@ exports.me = function(req, res) {
  */
 exports.oauthCallback = function(strategy) {
 	return function(req, res, next) {
-        console.log(req.get('Referrer'));
 		passport.authenticate(strategy, function(err, user, redirectURL) {
 			if (err || !user) {
 				return res.redirect('/signin');
@@ -257,9 +259,9 @@ exports.userByID = function(req, res, next, id) {
 		_id: id
 	}).exec(function(err, user) {
 		if (err) {
-      winston.error('Error finding user by id', id);
-      return next(err);
-    }
+            winston.error('Error finding user by id', id);
+            return next(err);
+        }
 		if (!user) return next(new Error('Failed to load User ' + id));
 		req.profile = user;
 		next();
@@ -341,6 +343,8 @@ exports.saveOAuthUserProfile = function(req, providerUserProfile, done) {
 
 						// And save the user
 						user.save(function(err) {
+                            mailer.send('welcome.email.html', { user: user }, user.email, 'Welkom!');
+
 							return done(err, user);
 						});
 					});
@@ -414,51 +418,51 @@ exports.removeOAuthProvider = function(req, res, next) {
  * Forgot for reset password (forgot POST)
  */
 exports.forgot = function(req, res, next) {
-    async.waterfall([
-    	// Generate random token
-      function(done) {
-        crypto.randomBytes(20, function(err, buf) {
-            var token = buf.toString('hex');
-            done(err, token);
+
+    if (!req.body.email) {
+        return res.send(400, {
+            message: 'Email field must not be blank'
         });
-      },
-      // Lookup user by email address
-      function(token, done) {
-      	if (req.body.email) {
-        	User.findOne({ email: req.body.email }, function(err, user) {
-          		if (!user) {
-            		return res.send(400, {
-      						message: 'No account with that email address exists'
-      					});
-          		}
+    }
 
-          		user.resetPasswordToken = token;
-          		user.resetPasswordExpires = Date.now() + 86400000; // 1 day
+    new BPromise(function(resolve, reject) {
+        crypto.randomBytes(20, function(err, buf) {
+            if (err) reject(err);
 
-          		user.save(function(err) {
-          		    done(err, token, user);
-          		});
-        	});
-        } else {
-        	return res.send(400, {
-        		message: 'Email field must not be blank'
-        	});
-        }
+            var token = buf.toString('hex');
+            resolve(token);
+        });
+    }).then(function(token) {
+        var defer = BPromise.defer();
 
-    	},
-    	// If valid email, send reset email using service
-    	function(token, user, done) {
+        User.findOne({ email: req.body.email }, function(err, user) {
+            if (!user) {
+                return defer.reject(res.send(400, {
+                    message: 'No account with that email address exists'
+                }));
+            }
+
+            user.resetPasswordToken = token;
+            user.resetPasswordExpires = Date.now() + 86400000; // 1 day
+
+            user.save(function(err) {
+                defer.resolve([token, user]);
+            });
+        });
+
+        return defer.promise;
+    }).spread(function(token, user) {
         var context = {
-          user: user,
-          resetLink: 'http://' + req.headers.host + '/auth/reset/' + token
+            user: user,
+            resetLink: 'http://' + req.headers.host + '/auth/reset/' + token
         };
         mailer.send('resetpassword.email.html', context, user.email, 'Wachtwoord herstellen');
 
         res.send(200);
-  		}
-    ], function(err) {
-    	if (err) return next(err);
-  	});
+    }).catch(function(err) {
+        next(err);
+    });
+
 };
 
 /**
@@ -469,8 +473,8 @@ exports.resetGet = function(req, res) {
     	if (!user) {
     		  // res.render('404');
        		res.send(400, {
-    					message: 'Password reset token is invalid or has expired.'
-    			});
+				message: 'Password reset token is invalid or has expired.'
+			});
       		return res.redirect('/forgot');
     	}
 
@@ -487,55 +491,49 @@ exports.resetPost = function(req, res) {
   var passwordDetails = req.body;
   var message = null;
 
-	async.waterfall([
-    	function(done) {
-      		User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-	            if (!err && user) {
-                    if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
-                        user.password = passwordDetails.newPassword;
-                        user.resetPasswordToken = undefined;
-        				        user.resetPasswordExpires = undefined;
+  BPromise.resolve(User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }).exec()).then(function(user) {
+    if (user) {
+        if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
+            user.password = passwordDetails.newPassword;
+            user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
 
-                        user.save(function(err) {
-                            if (err) {
-                                return res.send(400, {
-                                    message: getErrorMessage(err)
-                                });
-                            } else {
-                                req.login(user, function(err) {
-                                    if (err) {
-                                        res.send(400, err);
-                                    } else {
-                                        done(err, user);
-                                    }
-                                });
-                            }
-                        });
+            var defer = BPromise.defer();
+
+            user.save(function(err) {
+                if (err) defer.reject(err);
+
+                req.login(user, function(err) {
+                    if (err) {
+                        defer.reject(err);
                     } else {
-                        return res.send(400, {
-                            message: 'Passwords do not match'
-                        });
+                        defer.resolve(user);
                     }
-	            } else {
-	                return res.send(400, {
-	                    message: 'Password reset token is invalid or has expired.'
-	                });
-	            }
-      		});
-    	},
-    	function(user, done) {
+                });
+            });
+        } else {
+            return res.send(400, {
+                message: 'Passwords do not match'
+            });
+        }
+    } else {
+        return res.send(400, {
+            message: 'Password reset token is invalid or has expired.'
+        });
+    }
+    }).then(function() {
         // send an email maybe?
-    	}
-  	], function(err) {
-    	res.redirect('/');
-  	});
+    }).catch(function() {
+        res.redirect('/');
+    });
+
 };
 
 /**
  * User authorizations routing middleware
  */
 exports.hasAnalytics = function(req, res, next) {
-  if(req.user.subscriptionPlan === 'PRO' || req.user.subscriptionPlan === 'BUSINESS') {
+  if(req.user.subscription.plan === 'PRO' || req.user.subscription.plan === 'BUSINESS') {
     next();
   } else {
      return res.send(400, {
