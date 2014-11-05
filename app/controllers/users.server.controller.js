@@ -8,12 +8,13 @@ var mongoose = require('mongoose'),
 	User = mongoose.model('User'),
 	mailer = require('../../app/util/mailer'),
 	_ = require('lodash'),
-  winston = require('winston'),
+    winston = require('winston'),
 
-  LocalStrategy = require('passport-local').Strategy,
-  bcrypt = require('bcrypt-nodejs'),
-  async = require('async'),
-  crypto = require('crypto');
+    LocalStrategy = require('passport-local').Strategy,
+    bcrypt = require('bcrypt-nodejs'),
+    BPromise = require('bluebird'),
+    async = require('async'),
+    crypto = require('crypto');
 
 /**
  * Get the error message from error object
@@ -490,48 +491,42 @@ exports.resetPost = function(req, res) {
   var passwordDetails = req.body;
   var message = null;
 
-	async.waterfall([
-    	function(done) {
-      		User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
-	            if (!err && user) {
-                    if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
-                        user.password = passwordDetails.newPassword;
-                        user.resetPasswordToken = undefined;
-        				        user.resetPasswordExpires = undefined;
+  BPromise.resolve(User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }).exec()).then(function(user) {
+    if (user) {
+        if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
+            user.password = passwordDetails.newPassword;
+            user.resetPasswordToken = undefined;
+            user.resetPasswordExpires = undefined;
 
-                        user.save(function(err) {
-                            if (err) {
-                                return res.send(400, {
-                                    message: getErrorMessage(err)
-                                });
-                            } else {
-                                req.login(user, function(err) {
-                                    if (err) {
-                                        res.send(400, err);
-                                    } else {
-                                        done(err, user);
-                                    }
-                                });
-                            }
-                        });
+            var defer = BPromise.defer();
+
+            user.save(function(err) {
+                if (err) defer.reject(err);
+
+                req.login(user, function(err) {
+                    if (err) {
+                        defer.reject(err);
                     } else {
-                        return res.send(400, {
-                            message: 'Passwords do not match'
-                        });
+                        defer.resolve(user);
                     }
-	            } else {
-	                return res.send(400, {
-	                    message: 'Password reset token is invalid or has expired.'
-	                });
-	            }
-      		});
-    	},
-    	function(user, done) {
+                });
+            });
+        } else {
+            return res.send(400, {
+                message: 'Passwords do not match'
+            });
+        }
+    } else {
+        return res.send(400, {
+            message: 'Password reset token is invalid or has expired.'
+        });
+    }
+    }).then(function() {
         // send an email maybe?
-    	}
-  	], function(err) {
-    	res.redirect('/');
-  	});
+    }).catch(function() {
+        res.redirect('/');
+    });
+
 };
 
 /**

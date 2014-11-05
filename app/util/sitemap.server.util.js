@@ -1,27 +1,30 @@
 'use strict';
 
 var sm = require('sitemap'),
-    async = require('async'),
+    BPromise = require('bluebird'),
     Room = require('mongoose').model('Room'),
     config = require('../../config/config');
 
 
 
-function getRooms(done, sitemapItems) {
+function getRooms() {
+    var defer = BPromise.defer();
+
     Room.find({ 'visible': true }, 'slug url updated', function(err, rooms) {
-        if (err) return done(err);
+        if (err) defer.reject(err);
         else {
-            var results = rooms.map(function(room) {
+            defer.resolve(rooms.map(function(room) {
                 return { url: room.url };
-            });
-            done(null, results);
+            }));
         }
     });
+
+    return defer.promise;
 }
 
-function getFavorites(done, sitemapItems) {
+function getFavorites() {
     // Not implemented yet
-    done(null, []);
+    return [];
 }
 
 function createSitemap(res, urls) {
@@ -39,23 +42,11 @@ exports.create = function(req, res) {
 
     var sitemapItems = [];
 
-    async.parallel([
-        function(done) {
-            getRooms(done, sitemapItems);
-        },
-        function(done) {
-            getFavorites(done, sitemapItems);
-        }
-        ],
-        function(err, results) {
-            var sitemapItems = [];
-
-            results.forEach(function(arr) {
-                sitemapItems = sitemapItems.concat(arr);
-            });
-
-            createSitemap(res, sitemapItems);
-        }
-    );
+    BPromise
+      .join(getRooms(), getFavorites(), function(rooms, favorites) {
+        return rooms.concat(favorites);
+      }).then(function(result) {
+        createSitemap(res, result);
+      });
 
 };

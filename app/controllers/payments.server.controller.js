@@ -7,11 +7,14 @@ var mongoose = require('mongoose'),
   config = require('../../config/config'),
   stripe = require('stripe')(config.stripe.secretkey),
   async = require('async'),
+  BPromise = require('bluebird'),
   _ = require('lodash'),
   mailer = require('../util/mailer');
 
 
-function createCustomer(user, plan, card, couponCode, done) {
+function createCustomer(user, plan, card, couponCode) {
+  var defer = BPromise.defer();
+
   var options = {
     email: user.email,
     plan: plan
@@ -22,7 +25,7 @@ function createCustomer(user, plan, card, couponCode, done) {
 
   stripe.customers.create(options,
     function(err, customer) {
-      if (err) return done(err);
+      if (err) defer.reject(err);
 
       user.subscription.token = customer.id;
       user.subscription.plan = plan;
@@ -30,17 +33,21 @@ function createCustomer(user, plan, card, couponCode, done) {
 
       user.save(function(err) {
         if (err) {
-          done(err);
+          defer.reject(err);
         } else {
-          done(null, user);
+          defer.resolve(user);
         }
       });
 
     }
   );
+
+  return defer.promise;
 }
 
-function createSubscription(user, plan, couponCode, done) {
+function createSubscription(user, plan, couponCode) {
+  var defer = BPromise.defer();
+
   var options = {
     plan: plan
   };
@@ -51,23 +58,27 @@ function createSubscription(user, plan, couponCode, done) {
     user.subscription.customerToken,
     options,
     function(err, subscription) {
-      if (err) done(err);
+      if (err) defer.reject(err);
 
       user.subscription.plan = plan;
       user.subscription.token = subscription.id;
 
       user.save(function(err) {
         if (err) {
-          done(err);
+          defer.reject(err);
         } else {
-          done(null);
+          defer.resolve(user);
         }
       });
     }
   );
+
+  return defer.promise;
 }
 
-function changeSubscription(user, plan, couponCode, done) {
+function changeSubscription(user, plan, couponCode) {
+  var defer = BPromise.defer();
+
   var options = {
     plan: plan
   };
@@ -80,20 +91,22 @@ function changeSubscription(user, plan, couponCode, done) {
     options,
     function(err, subscription) {
       console.log(err);
-      if (err) return done(err);
+      if (err) return defer.reject(err);
 
       user.subscription.plan = plan;
       user.subscription.token = subscription.id;
 
       user.save(function(err) {
         if (err) {
-          done(err);
+          defer.reject(err);
         } else {
-          done(null, user);
+          defer.resolve(user);
         }
       });
     }
   );
+
+  return defer.promise;
 }
 
 function sendSuccessMail(user) {
@@ -111,36 +124,39 @@ exports.choosePlan = function(req, res, next) {
   var couponCode = req.body.couponCode;
 
   if (!user.customerToken) {
-    createCustomer(user, plan, card, couponCode, function(err) {
-      if (err) {
-        console.log(err);
-          res.send(400, err);
-        } else {
-          sendSuccessMail(user);
-          res.jsonp(user);
-        }
+
+    createCustomer(user, plan, card, couponCode).then(function() {
+      sendSuccessMail(user);
+      res.jsonp(user);
+    }).catch(function(err) {
+      console.log(err);
+      res.send(400, err);
     });
+
   } else {
+
     if (!user.subscription.token) {
-      createSubscription(user, plan, couponCode, function(err) {
-        if (err) {
-            res.send(400, err);
-          } else {
-            sendSuccessMail(user);
-            res.jsonp(user);
-          }
+
+      createSubscription(user, plan, couponCode).then(function() {
+        sendSuccessMail(user);
+        res.jsonp(user);
+      }).catch(function(err) {
+        res.send(400, err);
       });
+
     }
     else {
-      changeSubscription(user, plan, couponCode, function(err) {
-        if (err) {
-            res.send(400, err);
-          } else {
-            sendSuccessMail(user);
-            res.jsonp(user);
-          }
+
+      changeSubscription(user, plan, couponCode).then(function() {
+        sendSuccessMail(user);
+        res.jsonp(user);
+
+      }).catch(function(err) {
+        res.send(400, err);
       });
+
     }
+
   }
 };
 
@@ -152,23 +168,17 @@ exports.postSignup = function(req, res, next) {
   var plan = req.body.subscriptionPlan;
   var card = req.body.stripeToken;
 
-  async.waterfall([
-      function(done) {
-        createCustomer(user, plan, card, done);
-      },
-      function(user, done) {
-        req.login(user, function(err) {
-          if (err) {
-            res.send(400, err);
-          } else {
-            res.jsonp(user);
-          }
-        });
-      },
-      function(err) {
+  createCustomer().then(function() {
+    req.login(user, function(err) {
+      if (err) {
         res.send(400, err);
+      } else {
+        res.jsonp(user);
       }
-  ]);
+    });
+  }).catch(function(err) {
+    res.send(400, err);
+  });
 
 };
 
