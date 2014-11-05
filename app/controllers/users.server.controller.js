@@ -425,23 +425,19 @@ exports.forgot = function(req, res, next) {
         });
     }
 
-    BPromise.resolve(function() {
-        var defer = BPromise.defer();
-
+    new BPromise(function(resolve, reject) {
         crypto.randomBytes(20, function(err, buf) {
-            if (err) defer.reject(err);
+            if (err) reject(err);
 
             var token = buf.toString('hex');
-            defer.resolve(token);
+            resolve(token);
         });
-
-        return defer.promise;
     }).then(function(token) {
         var defer = BPromise.defer();
 
         User.findOne({ email: req.body.email }, function(err, user) {
             if (!user) {
-                defer.reject(res.send(400, {
+                return defer.reject(res.send(400, {
                     message: 'No account with that email address exists'
                 }));
             }
@@ -450,12 +446,12 @@ exports.forgot = function(req, res, next) {
             user.resetPasswordExpires = Date.now() + 86400000; // 1 day
 
             user.save(function(err) {
-                defer.resolve(token, user);
+                defer.resolve([token, user]);
             });
         });
 
         return defer.promise;
-    }).then(function(token, user) {
+    }).spread(function(token, user) {
         var context = {
             user: user,
             resetLink: 'http://' + req.headers.host + '/auth/reset/' + token
