@@ -418,51 +418,55 @@ exports.removeOAuthProvider = function(req, res, next) {
  * Forgot for reset password (forgot POST)
  */
 exports.forgot = function(req, res, next) {
-    async.waterfall([
-    	// Generate random token
-      function(done) {
-        crypto.randomBytes(20, function(err, buf) {
-            var token = buf.toString('hex');
-            done(err, token);
+
+    if (!req.body.email) {
+        return res.send(400, {
+            message: 'Email field must not be blank'
         });
-      },
-      // Lookup user by email address
-      function(token, done) {
-      	if (req.body.email) {
-        	User.findOne({ email: req.body.email }, function(err, user) {
-          		if (!user) {
-            		return res.send(400, {
-      						message: 'No account with that email address exists'
-      					});
-          		}
+    }
 
-          		user.resetPasswordToken = token;
-          		user.resetPasswordExpires = Date.now() + 86400000; // 1 day
+    BPromise.resolve(function() {
+        var defer = BPromise.defer();
 
-          		user.save(function(err) {
-          		    done(err, token, user);
-          		});
-        	});
-        } else {
-        	return res.send(400, {
-        		message: 'Email field must not be blank'
-        	});
-        }
+        crypto.randomBytes(20, function(err, buf) {
+            if (err) defer.reject(err);
 
-    	},
-    	// If valid email, send reset email using service
-    	function(token, user, done) {
+            var token = buf.toString('hex');
+            defer.resolve(token);
+        });
+
+        return defer.promise;
+    }).then(function(token) {
+        var defer = BPromise.defer();
+
+        User.findOne({ email: req.body.email }, function(err, user) {
+            if (!user) {
+                defer.reject(res.send(400, {
+                    message: 'No account with that email address exists'
+                }));
+            }
+
+            user.resetPasswordToken = token;
+            user.resetPasswordExpires = Date.now() + 86400000; // 1 day
+
+            user.save(function(err) {
+                defer.resolve(token, user);
+            });
+        });
+
+        return defer.promise;
+    }).then(function(token, user) {
         var context = {
-          user: user,
-          resetLink: 'http://' + req.headers.host + '/auth/reset/' + token
+            user: user,
+            resetLink: 'http://' + req.headers.host + '/auth/reset/' + token
         };
         mailer.send('resetpassword.email.html', context, user.email, 'Wachtwoord herstellen');
 
         res.send(200);
-  		}
-    ], function(err) {
-    	if (err) return next(err);
-  	});
+    }).catch(function(err) {
+        next(err);
+    });
+
 };
 
 /**
