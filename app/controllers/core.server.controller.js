@@ -3,8 +3,17 @@
 /**
  * Module dependencies.
  */
+var config = require('../../config/config');
+
 exports.index = function(req, res) {
-    res.render('index', {
-        user: req.user || null
-    });
+
+    if(process.env.NODE_ENV === 'production' && req.headers['x-forwarded-proto'] !== 'https') {
+        res.redirect(config.app.host + req.url);
+    } else {
+        res.render('index', {
+            user: req.user || null
+        });
+    }
+
+
 };
