@@ -2,87 +2,87 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-	<title ng-bind="title">Apollo</title>
+    <title ng-bind="title">1Roof</title>
 
-	<!-- General META -->
-	<meta charset="utf-8">
-	<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
+    <!-- General META -->
+    <meta charset="utf-8">
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
 
     <!-- Crawler META -->
-	<meta name="fragment" content="!">
+    <meta name="fragment" content="!">
 
-	<!-- Semantic META -->
-	<meta name="keywords" content="{{keywords}}">
-	<meta name="description" content="{{description}}">
+    <!-- Semantic META -->
+    <meta name="keywords" content="{{keywords}}">
+    <meta name="description" content="{{description}}">
 
-	<!-- Facebook META -->
-	<meta property="fb:app_id" content="{{facebookAppId}}">
-	<meta property="og:site_name" content="{{title}}">
-	<meta property="og:title" content="{{title}}">
-	<meta property="og:description" content="{{description}}">
-	<meta property="og:url" content="{{url}}">
-	<meta property="og:image" content="/img/brand/logo.png">
-	<meta property="og:type" content="website">
+    <!-- Facebook META -->
+    <meta property="fb:app_id" content="{{facebookAppId}}">
+    <meta property="og:site_name" content="{{title}}">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
+    <meta property="og:url" content="{{url}}">
+    <meta property="og:image" content="/img/brand/logo.png">
+    <meta property="og:type" content="website">
 
-	<!-- Twitter META -->
-	<meta name="twitter:title" content="{{title}}">
-	<meta name="twitter:description" content="{{description}}">
-	<meta name="twitter:url" content="{{url}}">
-	<meta name="twitter:image" content="/img/brand/logo.png">
+    <!-- Twitter META -->
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{description}}">
+    <meta name="twitter:url" content="{{url}}">
+    <meta name="twitter:image" content="/img/brand/logo.png">
 
-	<!-- Webmaster Tools META -->
-	<meta name="google-site-verification" content="jz0njGtaUyA62DOqbW41EGfTE1ag5caBo9Na70tMwCY" />
+    <!-- Webmaster Tools META -->
+    <meta name="google-site-verification" content="jz0njGtaUyA62DOqbW41EGfTE1ag5caBo9Na70tMwCY" />
 
-	<!-- Fav Icon -->
-	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
+    <!-- Fav Icon -->
+    <link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-	<!-- Fonts -->
-	<link href="http://fonts.googleapis.com/css?family=Lato:400,900,300,700" rel="stylesheet">
-	<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Lato:400,900,300,700" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic" rel="stylesheet">
 
-	<!--Application CSS Files-->
-	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
-	{% endfor %}
+    <!--Application CSS Files-->
+    {% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
+    {% endfor %}
 
-	<!-- HTML5 Shim -->
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
+    <!-- HTML5 Shim -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
     <base href="/">
 </head>
 
 <body class="ng-cloak light-bg">
 
-	<div class="wrapper">
-		<header ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top"></header>
+    <div class="wrapper">
+        <header ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top"></header>
 
-		<div class="alert-container container" ng-include="'/modules/core/views/alerts.client.view.html'"></div>
+        <div class="alert-container container" ng-include="'/modules/core/views/alerts.client.view.html'"></div>
 
-		<section class="content">
-			{% block content %}{% endblock %}
-		</section>
+        <section class="content">
+            {% block content %}{% endblock %}
+        </section>
 
-		<footer ng-include="'/modules/core/views/footer.client.view.html'"></footer>
-	</div>
+        <footer ng-include="'/modules/core/views/footer.client.view.html'"></footer>
+    </div>
 
-	<!--Embedding The User Object-->
-	<script type="text/javascript">
-		var user = {{ user | json | safe }};
-	</script>
+    <!--Embedding The User Object-->
+    <script type="text/javascript">
+        var user = {{ user | json | safe }};
+    </script>
 
-	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
-	{% endfor %}
+    <!--Application JavaScript Files-->
+    {% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>
+    {% endfor %}
 
-	{% if process.env.NODE_ENV === 'development' %}
-	<!--Livereload script rendered -->
-	<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
-	{% endif %}
+    {% if process.env.NODE_ENV === 'development' %}
+    <!--Livereload script rendered -->
+    <script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
+    {% endif %}
 
-	<!-- Dropbox chooser -->
+    <!-- Dropbox chooser -->
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="q0gd55svz8d8gcy"></script>
 
     <!-- Stripe -->

@@ -3,6 +3,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: public/modules/core/views/home.client.view.html
+msgid "&lt;&lt;naam&gt;&gt; vindt de beste koten voor jou overal in Belgïe"
+msgstr ""
+
 #: public/modules/core/views/pricing.client.view.html
 msgid "/ Maand"
 msgstr ""
@@ -592,10 +596,6 @@ msgstr ""
 
 #: public/modules/users/views/inbox.client.view.html
 msgid "Verzend"
-msgstr ""
-
-#: public/modules/core/views/home.client.view.html
-msgid "Vind je ideale woonst."
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html

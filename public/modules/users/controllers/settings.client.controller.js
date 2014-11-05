@@ -67,6 +67,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
         };
 
         $scope.getSubscription = function() {
+            // TODO: request this from the API
             var plan = Authentication.user.subscription.plan;
 
             if (plan === 'FREE') return gettext('Student');
