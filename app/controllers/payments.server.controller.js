@@ -90,7 +90,7 @@ function changeSubscription(user, plan, couponCode) {
     user.subscription.token,
     options,
     function(err, subscription) {
-      console.log(err);
+      console.error(err);
       if (err) return defer.reject(err);
 
       user.subscription.plan = plan;
@@ -129,7 +129,7 @@ exports.choosePlan = function(req, res, next) {
       sendSuccessMail(user);
       res.jsonp(user);
     }).catch(function(err) {
-      console.log(err);
+      console.error(err);
       res.send(400, err);
     });
 

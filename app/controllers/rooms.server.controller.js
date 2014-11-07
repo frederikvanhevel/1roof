@@ -174,7 +174,6 @@ exports.checkUserRoomsCount = function(req, res, next) {
             winston.error('Error getting user rooms count', user._id);
             return res.send(400);
         } else {
-            console.log(user.subscription);
             if (count >= config.subscription[user.subscription.plan].maxRooms) {
                 return res.send(403, 'User cannot create more rooms with this plan');
             } else {

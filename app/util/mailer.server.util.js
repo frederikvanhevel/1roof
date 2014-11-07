@@ -22,7 +22,7 @@ exports.send = function(template, context, to, subject) {
 
   function sendMail(err, html, text) {
     if (err) {
-      console.log(err);
+      console.error(err);
     } else {
       // ## Send a single email
 
@@ -38,7 +38,7 @@ exports.send = function(template, context, to, subject) {
       // send mail with defined transport object
       transporter.sendMail(mailOptions, function(error, info) {
         if(error) {
-          console.log(error);
+          console.error(error);
         }else {
           console.log('Message sent: ' + info.response);
         }
