@@ -4,7 +4,7 @@
     // Manage rooms Controller Spec
     describe('Manage rooms Controller Tests', function() {
         // Initialize global variables
-        var ManageRoomsController,
+        var ManageRoomController,
             scope,
             $httpBackend,
             $stateParams,
@@ -45,14 +45,38 @@
             $location = _$location_;
 
             // Initialize the Manage rooms controller.
-            ManageRoomsController = $controller('ManageRoomsController', {
+            ManageRoomController = $controller('ManageRoomController', {
                 $scope: scope
             });
         }));
 
-        it('Should do some controller test', inject(function() {
-            // The test logic
-            // ...
+        it('$scope.update() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Rooms) {
+            // Create a sample Room object
+            var sampleRoomPostData = new Rooms({
+                name: 'New Room'
+            });
+
+            // Create a sample Room response
+            var sampleRoomResponse = new Rooms({
+                _id: '525cf20451979dea2c000001',
+                name: 'New Room'
+            });
+
+            // Fixture mock form input values
+            scope.name = 'New Room';
+
+            // Set POST response
+            $httpBackend.expectPOST('rooms', sampleRoomPostData).respond(sampleRoomResponse);
+
+            // Run controller functionality
+            scope.create();
+            $httpBackend.flush();
+
+            // Test form inputs are reset
+            expect(scope.name).toEqual('');
+
+            // Test URL redirection after the Room was created
+            expect($location.path()).toBe('/rooms/' + sampleRoomResponse._id);
         }));
     });
 }());

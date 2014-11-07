@@ -27,7 +27,7 @@ describe('Room Model Unit Tests:', function() {
 			provider: 'local'
 		});
 
-		user.save(function() { 
+		user.save(function() {
 			room = new Room({
 				surface: 30,
 				price: {
@@ -41,18 +41,18 @@ describe('Room Model Unit Tests:', function() {
 					title: 'Test room',
 					description: 'Description for test room'
 				},
-		    location: {
-	        country: 'België',
-	        city: 'Sint-Niklaas',
-	        street: 'Voskenslaan 5'
-		    },
-		    loc: {
-	        type: 'Point',
-	        coordinates: [ 
-	          4.160534200000029, 
-	          51.1555844
-	        ]
-		    },
+    		    location: {
+    	        country: 'België',
+    	        city: 'Sint-Niklaas',
+    	        street: 'Voskenslaan 5'
+    		    },
+    		    loc: {
+    	        type: 'Point',
+    	        coordinates: [
+    	          4.160534200000029,
+    	          51.1555844
+    	        ]
+    		    },
 				available: {
 					from: new Date(),
 					till: new Date()
@@ -74,7 +74,7 @@ describe('Room Model Unit Tests:', function() {
 			});
 		});
 
-		it('should calculate total price automatically based on other price fields', function(done) { 
+		it('should calculate total price automatically based on other price fields', function(done) {
 
 			return room .save(function(err) {
 				should.not.exist(err);
@@ -85,26 +85,46 @@ describe('Room Model Unit Tests:', function() {
 			});
 		});
 
-		it('should generate a slug based on certain properties', function(done) { 
+		it('should generate a slug based on certain properties', function(done) {
+            return room .save(function(err) {
+                var slug = 'sint-niklaas/test-room';
 
+                should.equal(room.slug, slug);
+
+                done();
+            });
 		});
 	});
 
 	describe('Method Delete', function() {
+
+        beforeEach(function(done) {
+            room.save(done);
+        });
+
+
 		it('should be able to delete without problems', function(done) {
+            return room .remove(function(err) {
+                should.not.exist(err);
+                done();
+            });
+		});
+
+		it.skip('should remove all pictures from the hosting provider', function(done) {
 
 		});
 
-		it('should remove all pictures from the hosting provider', function(done) { 
+		it('should remove the room id from users favorites', function(done) {
+            user.favorites.push(room._id);
 
-		});
-
-		it('should remove the room id from users favorites', function(done) { 
-
+            return room .remove(function(err) {
+                should(user.favorites).not.include(room._id);
+                done();
+            });
 		});
 	});
 
-	afterEach(function(done) { 
+	afterEach(function(done) {
 		Room .remove().exec();
 
 		User.remove().exec();

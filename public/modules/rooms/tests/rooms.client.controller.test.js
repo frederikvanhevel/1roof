@@ -2,7 +2,7 @@
 
 (function() {
     // Rooms Controller Spec
-    describe('Rooms Controller Tests', function() {
+    describe('RoomsController Tests', function() {
         // Initialize global variables
         var RoomsController,
             scope,
@@ -48,26 +48,6 @@
             RoomsController = $controller('RoomsController', {
                 $scope: scope
             });
-        }));
-
-        it('$scope.find() should create an array with at least one Room object fetched from XHR', inject(function(Rooms) {
-            // Create sample Room using the Rooms service
-            var sampleRoom = new Rooms({
-                name: 'New Room'
-            });
-
-            // Create a sample Rooms array that includes the new Room
-            var sampleRooms = [sampleRoom];
-
-            // Set GET response
-            $httpBackend.expectGET('rooms').respond(sampleRooms);
-
-            // Run controller functionality
-            scope.find();
-            $httpBackend.flush();
-
-            // Test scope value
-            expect(scope.rooms).toEqualData(sampleRooms);
         }));
 
         it('$scope.findOne() should create an array with one Room object fetched from XHR using a roomId URL parameter', inject(function(Rooms) {
