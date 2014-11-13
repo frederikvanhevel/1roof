@@ -7315,6 +7315,9 @@ header.navbar {
   z-index: 1000;
   min-height: initial;
 }
+header.navbar .navbar-brand img {
+  width: 65px;
+}
 header.navbar .btn.responsive-menu.navbar-toggle {
   padding: 7px 14px;
 }
@@ -7506,7 +7509,17 @@ footer .footer-bottom .social-buttons li {
 .home-view #hero .raster .hero-content h1 {
   display: inline;
   color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  background: #506A85;
+  box-shadow: -.500em 0 0 #506A85, .500em 0 0 #506A85;
+  padding: 15px;
+  padding-right: 15px;
+}
+.home-view #hero .raster .hero-content h1 span {
+  margin-bottom: 10px;
+}
+.home-view #hero .raster .hero-content a {
+  margin-top: 30px;
+  margin-left: -22px;
 }
 .home-view #hero .raster .hero-content form {
   margin-top: 30px;
@@ -7537,6 +7550,10 @@ footer .footer-bottom .social-buttons li {
 }
 .home-view #contact-us {
   padding: 80px 0;
+}
+
+.comingsoon-view #hero .video-container {
+  overflow: visible !important;
 }
 
 .pricing-view {

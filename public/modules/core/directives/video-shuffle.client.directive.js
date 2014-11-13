@@ -148,6 +148,10 @@ angular.module('core').directive('videoShuffle', ['$window', 'Device',
                     settings.stagingContainer[0].pause();
                     settings.videoContainer[0].pause();
                 });
+
+                // window.bind('resize', function () {
+                //     resize();
+                // });
             }
         };
     }

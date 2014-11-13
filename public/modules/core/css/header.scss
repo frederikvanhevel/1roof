@@ -5,6 +5,10 @@ header.navbar {
   z-index: 1000;
   min-height: initial;
 
+  .navbar-brand img {
+    width: 65px;
+  }
+
   .btn.responsive-menu.navbar-toggle {
     padding: 7px 14px;
   }

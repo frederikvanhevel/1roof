@@ -48,11 +48,26 @@
         h1 {
           display: inline;
           color: white;
-          text-shadow:
-            -1px -1px 0 #000,
-            1px -1px 0 #000,
-            -1px 1px 0 #000,
-            1px 1px 0 #000;
+          // text-shadow:
+          //   -1px -1px 0 #000,
+          //   1px -1px 0 #000,
+          //   -1px 1px 0 #000,
+          //   1px 1px 0 #000;
+
+          // added for comingsoon page
+          background: #506A85;
+          box-shadow: -.500em 0 0 #506A85, .500em 0 0 #506A85;
+          padding: 15px;
+          padding-right: 15px;
+
+          span {
+            margin-bottom: 10px;
+          }
+        }
+
+        a {
+          margin-top: 30px;
+          margin-left: -22px;
         }
 
         form {
