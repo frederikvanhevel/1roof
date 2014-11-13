@@ -9,7 +9,7 @@ var mongoose = require('mongoose'),
     config = require('../../config/config'),
     cloudinary = require('../../app/util/uploader'),
     mailer = require('../../app/util/mailer'),
-  winston = require('winston');
+    winston = require('winston');
 
 /**
  * Get the error message from error object
