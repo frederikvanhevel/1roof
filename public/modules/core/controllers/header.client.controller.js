@@ -7,6 +7,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         $scope.search = '';
         $scope.searchDetails = {};
         $scope.unreadMessageCount = 0;
+        $scope.isHomepage = $state.current.url === '/';
 
         $scope.init = function() {
 

@@ -575,7 +575,7 @@ figure + *,
 
 .sidelines span {
   position: relative;
-  top: .5em;
+  top: .2em;
   background: #FFF;
   padding: 0 .5em 0 0;
 }
@@ -7314,6 +7314,13 @@ header.navbar {
   position: fixed;
   z-index: 1000;
   min-height: initial;
+}
+header.navbar.transparent {
+  color: white;
+  font-weight: bold;
+  background: none;
+  box-shadow: none;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 header.navbar .navbar-brand img {
   width: 65px;

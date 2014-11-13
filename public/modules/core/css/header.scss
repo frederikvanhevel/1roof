@@ -5,6 +5,18 @@ header.navbar {
   z-index: 1000;
   min-height: initial;
 
+  &.transparent {
+    color: white;
+    font-weight: bold;
+    background: none;
+    box-shadow: none;
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+  }
+
   .navbar-brand img {
     width: 65px;
   }
