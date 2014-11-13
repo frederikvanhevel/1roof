@@ -7,7 +7,7 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
         $scope.search = '';
         $scope.searchDetails = {};
 
-        Meta.setTitle('1Roof', true);
+        Meta.setTitle('1ROOF', true);
 
         $scope.goToSearch = function() {
             if ($scope.searchDetails.geometry) {
