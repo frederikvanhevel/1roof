@@ -3,16 +3,17 @@
 /**
  * Module dependencies.
  */
-var passport = require('passport');
-var inbox = require('../../app/controllers/inbox');
-var rooms = require('../../app/controllers/rooms');
-var payments = require('../../app/controllers/payments');
+var passport = require('passport'),
+users = require('../../app/controllers/users'),
+inbox = require('../../app/controllers/inbox'),
+rooms = require('../../app/controllers/rooms'),
+payments = require('../../app/controllers/payments');
+
 
 module.exports = function(app) {
     // User Routes
-    var users = require('../../app/controllers/users');
     app.route('/api/users/me').get(users.me);
-    app.route('/api/users').put(users.update);
+    app.route('/api/users').put(users.update).delete(users.delete);
     app.route('/api/users/password').post(users.changePassword);
     app.route('/api/users/accounts').delete(users.removeOAuthProvider);
 

@@ -160,6 +160,24 @@ exports.update = function(req, res) {
 };
 
 /**
+ * Remove user
+ */
+exports.delete = function(req, res) {
+    var user = req.user;
+
+    user.remove(function(err) {
+        if (err) {
+            winston.error('Error deleting user', user._id);
+            return res.send(400, {
+                message: getErrorMessage(err)
+            });
+        } else {
+            res.send(200);
+        }
+    });
+};
+
+/**
  * Change Password
  */
 exports.changePassword = function(req, res, next) {

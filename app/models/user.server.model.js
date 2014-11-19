@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
 	crypto = require('crypto'),
 	config = require('../../config/config'),
 	stripe = require('stripe')(config.stripe.secretkey),
-	winston = require('winston');
+	winston = require('winston'),
+	BPromise = require('bluebird');
 
 /**
  * A Validation function for local strategy properties
@@ -142,19 +143,28 @@ UserSchema.pre('save', function(next) {
 	next();
 });
 
-UserSchema.pre('remove', function (user) {
-  Room.find({ '_id': { $in: user.favorites} }).remove(function(err) {
-	  winston.error('Error removing rooms', err);
+UserSchema.pre('remove', function(next) {
+
+	BPromise.resolve(Room.remove({ 'user': this.id }).exec()).then(function() {
+		var defer = BPromise.defer();
+
+		if (this.subscription.customerToken) {
+			stripe.customers.del(
+			  this.subscription.customerToken,
+			  function(err, confirmation) {
+			    if (err) defer.reject(err);
+			    else defer.resolve();
+			  }
+			);
+		} else defer.resolve();
+
+		return defer;
+	}).finally(function() {
+		next();
+	}).catch(function(err) {
+	  	winston.error('Error removing user', err);
 	});
 
-	if (this.subscription.customerToken) {
-		stripe.customers.del(
-		  this.subscription.customerToken,
-		  function(err, confirmation) {
-		    if (err) winston.error('Error removing stripe customer', err);
-		  }
-		);
-	}
 });
 
 /**

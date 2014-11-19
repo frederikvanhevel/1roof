@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', '$stateParams', 'Users', 'Authentication', 'gettext',
-    function($scope, $http, $location, $stateParams, Users, Authentication, gettext) {
+angular.module('users').controller('SettingsController', ['$scope', '$http', '$location', '$stateParams', 'Users', 'Authentication', 'gettext', 'Modal',
+    function($scope, $http, $location, $stateParams, Users, Authentication, gettext, Modal) {
         $scope.user = Authentication.user;
         $scope.busy = false;
         $scope.nav = 'info';
@@ -73,6 +73,16 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
             if (plan === 'FREE') return gettext('Student');
             else if (plan === 'PRO') return gettext('Huisbaas');
             else if (plan === 'BUSINESS') return gettext('Agentschap');
+        };
+
+        $scope.removeAccount = function() {
+            Modal.confirm('account').then(function() {
+                var user = new Users($scope.user);
+
+                user.$remove(function() {
+                    $location.path('/');
+                });
+            });
         };
     }
 ]);

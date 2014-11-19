@@ -68,7 +68,7 @@ angular.module('core').service('Modal', ['$modal',
 
         this.confirm = function(type) {
             var options = {
-                templateUrl: '/modules/rooms/views/modals/confirm-modal.client.view.html',
+                templateUrl: '/modules/core/views/modals/confirm-modal.client.view.html',
                 windowClass: 'small',
                 controller: 'ModalController',
                 resolve: {

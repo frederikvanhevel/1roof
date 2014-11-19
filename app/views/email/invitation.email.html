@@ -1,0 +1,59 @@
+{% extends 'layout.email.html' %}
+
+{% block content %}
+
+  <!-- Full Width, Fluid Column : BEGIN -->
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            <h1 style="text-align:center;">Je bent uitgenodigd!</h1>
+
+            <br>
+
+            1roof.be is een nieuwe applicatie die je helpt je kot te verhuren.
+            Naast de super eenvoudige manier om je kot toe te voegen (het duurt echt maar 10 seconden!) zijn er nog een tal van superhandige hulpmiddelen.
+
+            <br><br>
+
+            Je kan nu bijvoorbeeld:
+
+            <ul>
+            	<li>rechtstreeks <strong>chatten</strong> met een huurder, zonder de website te moeten verlaten of in je emails te moeten zoeken.</li>
+            	<li>met één klik een <strong>afspraak vastleggen</strong> met een huurder en deze in je kalender vastleggen.</li>
+            	<li>kijken hoe populair je advertentie is en hoeveel keer ze bezocht wordt</li>
+            	<li>zelf kiezen of je advertentie zichtbaar is voor iedereen.</li>
+            	<li>... en nog tal van andere voordelen!</li>
+            </ul>
+
+            Indien je dus nog een kot hebt dat te wachten staat om verhuurd te worden, aarzel dan niet en plaats het nu al online!
+
+            <br>
+            <hr class="line">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <!-- Full Width, Fluid Column : END -->
+
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            Veel plezier!
+
+            <a target="_blank" href="{{ app.host }}" class="button">Ga naar de website</a>
+
+            <small>Je krijgt deze mail omdat je ooit <a href="http://www.kotzoeker.be">kotzoeker.be</a> gebruikt hebt om je kot online te plaatsen.</small>
+            <small>Indien je vragen hebt kan je ons altijd een mailtje sturen via <a href="mailto:info@1roof.be">info@1roof.be</a></small>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+
+{% endblock %}

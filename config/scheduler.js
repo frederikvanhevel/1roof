@@ -4,7 +4,8 @@ var schedule = require('node-schedule'),
   mailer = require('../app/util/mailer'),
   roomAvailabilityJob = require('./jobs/room-availability'),
   messageCheckJob = require('./jobs/newmessage-check'),
-  newRoomsJob = require('./jobs/new-rooms');
+  newRoomsJob = require('./jobs/new-rooms'),
+  invitationJob = require('./jobs/send-invitation');
 
 exports.start = function() {
 
@@ -22,5 +23,11 @@ exports.start = function() {
   weekly.minute = 0;
 
   schedule.scheduleJob(weekly, newRoomsJob.run);
+
+
+  // var now = new schedule.RecurrenceRule();
+  // now.minute = 13;
+
+  // schedule.scheduleJob(now, invitationJob.run);
 
 };

@@ -2,19 +2,68 @@
     <div class="col-md-3">
         <ul class="sidenav white-bg">
             <li ng-class="{ active: nav == 'info'}"><a href="" ng-click="nav = 'info'" translate>Mijn gegevens</a></li>
+            <li ng-class="{ active: nav == 'alerts'}"><a href="" ng-click="nav = 'alerts'" translate>Meldingen</a></li>
+            <li ng-class="{ active: nav == 'subscription'}"><a href="" ng-click="nav = 'subscription'" translate>Abonnement</a></li>
             <li ng-class="{ active: nav == 'password'}"><a href="" ng-click="nav = 'password'" translate>Wachtwoord</a></li>
-            <!-- <li ng-class="{ active: nav == 'social'}" data-ng-show="authentication.user.provider === 'local'"><a href="" ng-click="nav = 'social'">Sociale media</a></li> -->
+            <li ng-class="{ active: nav == 'remove'}"><a href="" class="red" ng-click="nav = 'remove'" translate>Verwijderen</a></li>
         </ul>
     </div>
     <div class="col-md-8 bordered" ng-switch on="nav">
+
         <div ng-switch-when="info">
             <div ng-include="'/modules/users/views/settings/edit-profile.client.view.html'"></div>
         </div>
+
+        <div ng-switch-when="alerts">
+            <h3 translate>Emails ontvangen</h3>
+            <form data-ng-submit="updateUserProfile()" class="signin" autocomplete="off">
+                <fieldset>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="user.settings.email.roomCheck"> <span translate>wanneer de beschikbaarheidsdatum van mijn advertentie is verlopen</span>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="user.settings.email.messageCheck"> <span translate>wanneer ik een nieuw bericht ontvang in verband met een advertentie</span>
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="user.settings.email.newRooms"> <span translate>wanneer er nieuwe aanbiedingen zijn</span>
+                        </label>
+                    </div>
+                    <br>
+                    <div data-ng-show="success" class="text-success pull-right">
+                        <strong translate>Instellingen opgeslaan!</strong>
+                    </div>
+                    <div data-ng-show="error" class="text-danger pull-right">
+                        <strong>{{error}}</strong>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-large" translate>Opslaan</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+        <div ng-switch-when="subscription">
+            <h3 translate>Abonnement</h3>
+            <p><span translate>Huidig abonnement</span>: <strong>{{getSubscription()}}</strong></p>
+            <a href="/pricing" class="btn" translate>Wijzigen</a>
+        </div>
+
         <div ng-switch-when="password">
             <div ng-include="'/modules/users/views/settings/change-password.client.view.html'"></div>
         </div>
-        <div ng-switch-when="social">
-            <div ng-include="'/modules/users/views/settings/social-accounts.client.view.html'"></div>
+
+        <div ng-switch-when="remove">
+            <h3 translate>Account verwijderen</h3>
+            <p><i class="icon-attention-1"></i> Opgelet! Je kan deze actie niet ongedaan maken!</p>
+            <div class="text-center">
+                <a href="" ng-click="removeAccount()" class="text-danger" translate>Verwijder mijn account</a>
+            </div>
         </div>
+
     </div>
 </section>

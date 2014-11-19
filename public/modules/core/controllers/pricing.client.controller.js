@@ -28,7 +28,7 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
                         Alert.add('success', gettext('Je tariefplan is geupdatet!'), 5000);
                         $scope.busy = false;
                     }, function(result) {
-                        if (result.error) {
+                        if (result && result.error) {
                             Alert.add('danger', gettext('Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw.'), 5000);
                         }
                         $scope.busy = false;
