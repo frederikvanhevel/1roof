@@ -25,9 +25,6 @@ exports.start = function() {
   schedule.scheduleJob(weekly, newRoomsJob.run);
 
 
-  // var now = new schedule.RecurrenceRule();
-  // now.minute = 13;
-
-  // schedule.scheduleJob(now, invitationJob.run);
+  // invitationJob.run();
 
 };

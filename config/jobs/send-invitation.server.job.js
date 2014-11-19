@@ -5,6 +5,12 @@ var mailer = require('../../app/util/mailer'),
 
 exports.run = function() {
 
-  mailer.send('invitation.email.html', {}, 'frederik.vanhevel@telenet.be', 'Je bent uitgenodigd!');
+	var recipients = [
+		'frederik.vanhevel@telenet.be'
+	];
+
+	recipients.forEach(function(recipient) {
+		mailer.send('invitation.email.html', {}, recipient, 'Je bent uitgenodigd!');
+	});
 
 };
