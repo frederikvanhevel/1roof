@@ -25,7 +25,7 @@ angular.module('core').directive('userPicture', [
                     if (user.provider === 'google')
                         return user.providerData.picture;
                     else if (user.provider === 'facebook')
-                        return 'http://graph.facebook.com/' + user.providerData.id + '/picture?type=normal';
+                        return 'https://graph.facebook.com/' + user.providerData.id + '/picture?type=normal';
                     else return '/modules/core/img/default-user-icon.png';
 
                 }
