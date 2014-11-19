@@ -25,7 +25,7 @@ function createCustomer(user, plan, card, couponCode) {
 
   stripe.customers.create(options,
     function(err, customer) {
-      if (err) defer.reject(err);
+      if (err) return defer.reject(err);
 
       user.subscription.token = customer.id;
       user.subscription.plan = plan;
@@ -33,9 +33,9 @@ function createCustomer(user, plan, card, couponCode) {
 
       user.save(function(err) {
         if (err) {
-          defer.reject(err);
+          return defer.reject(err);
         } else {
-          defer.resolve(user);
+          return defer.resolve(user);
         }
       });
 
@@ -58,16 +58,16 @@ function createSubscription(user, plan, couponCode) {
     user.subscription.customerToken,
     options,
     function(err, subscription) {
-      if (err) defer.reject(err);
+      if (err) return defer.reject(err);
 
       user.subscription.plan = plan;
       user.subscription.token = subscription.id;
 
       user.save(function(err) {
         if (err) {
-          defer.reject(err);
+          return defer.reject(err);
         } else {
-          defer.resolve(user);
+          return defer.resolve(user);
         }
       });
     }
@@ -90,7 +90,6 @@ function changeSubscription(user, plan, couponCode) {
     user.subscription.token,
     options,
     function(err, subscription) {
-      console.error(err);
       if (err) return defer.reject(err);
 
       user.subscription.plan = plan;
@@ -98,9 +97,9 @@ function changeSubscription(user, plan, couponCode) {
 
       user.save(function(err) {
         if (err) {
-          defer.reject(err);
+          return defer.reject(err);
         } else {
-          defer.resolve(user);
+          return defer.resolve(user);
         }
       });
     }
@@ -129,7 +128,6 @@ exports.choosePlan = function(req, res, next) {
       sendSuccessMail(user);
       res.jsonp(user);
     }).catch(function(err) {
-      console.error(err);
       res.send(400, err);
     });
 
@@ -150,7 +148,6 @@ exports.choosePlan = function(req, res, next) {
       changeSubscription(user, plan, couponCode).then(function() {
         sendSuccessMail(user);
         res.jsonp(user);
-
       }).catch(function(err) {
         res.send(400, err);
       });

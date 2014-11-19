@@ -76,7 +76,7 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
             $http.post('/auth/forgot', $scope.credentials).success(function(response) {
                 // Show user success message and clear form
                 $scope.credentials = null;
-                $scope.success = rtrue;
+                $scope.success = true;
 
                 $scope.busy = false;
             }).error(function(response) {
