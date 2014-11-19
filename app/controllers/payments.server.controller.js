@@ -128,6 +128,7 @@ exports.choosePlan = function(req, res, next) {
       sendSuccessMail(user);
       res.jsonp(user);
     }).catch(function(err) {
+      console.error(err);
       res.send(400, err);
     });
 
@@ -139,6 +140,7 @@ exports.choosePlan = function(req, res, next) {
         sendSuccessMail(user);
         res.jsonp(user);
       }).catch(function(err) {
+        console.error(err);
         res.send(400, err);
       });
 
@@ -149,6 +151,7 @@ exports.choosePlan = function(req, res, next) {
         sendSuccessMail(user);
         res.jsonp(user);
       }).catch(function(err) {
+        console.error(err);
         res.send(400, err);
       });
 
