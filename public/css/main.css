@@ -7322,8 +7322,11 @@ header.navbar.transparent {
   box-shadow: none;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
+header.navbar .navbar-brand {
+  padding: 5px 15px;
+}
 header.navbar .navbar-brand img {
-  width: 65px;
+  width: 120px;
 }
 header.navbar .btn.responsive-menu.navbar-toggle {
   padding: 7px 14px;
