@@ -7,9 +7,9 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         $scope.search = '';
         $scope.searchDetails = {};
         $scope.unreadMessageCount = 0;
-        $scope.isHomepage = $state.current.url === '/';
-
+        
         $scope.init = function() {
+            $scope.isHomepage = document.location.pathname === '/';
 
             // detect browser language
             $rootScope.language = (window.navigator.userLanguage || window.navigator.language).split('-')[0];
@@ -24,6 +24,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             // always close the menu after navigating
             $rootScope.$on('$locationChangeSuccess', function() {
                 $scope.isCollapsed = true;
+                $scope.isHomepage = document.location.pathname === '/';
             });
             // re-initialize sockets on log in
             $rootScope.$on('logged_in', function() {
