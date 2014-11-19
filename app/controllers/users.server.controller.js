@@ -510,13 +510,13 @@ exports.resetPost = function(req, res) {
   var message = null;
 
   BPromise.resolve(User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }).exec()).then(function(user) {
+    var defer = BPromise.defer();
+
     if (user) {
         if (passwordDetails.newPassword === passwordDetails.verifyPassword) {
             user.password = passwordDetails.newPassword;
             user.resetPasswordToken = undefined;
             user.resetPasswordExpires = undefined;
-
-            var defer = BPromise.defer();
 
             user.save(function(err) {
                 if (err) defer.reject(err);
@@ -530,19 +530,17 @@ exports.resetPost = function(req, res) {
                 });
             });
         } else {
-            return res.send(400, {
-                message: 'Passwords do not match'
-            });
+            defer.reject('Passwords do not match');
         }
     } else {
-        return res.send(400, {
-            message: 'Password reset token is invalid or has expired.'
-        });
+    	defer.reject( 'Password reset token is invalid or has expired.');
     }
     }).then(function() {
         // send an email maybe?
-    }).catch(function() {
-        res.redirect('/');
+    }).catch(function(message) {
+        res.send(400, {
+            message: message
+        });
     });
 
 };

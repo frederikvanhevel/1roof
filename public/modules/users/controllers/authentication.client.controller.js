@@ -5,6 +5,7 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
         $scope.authentication = Authentication;
 
         $scope.busy = false;
+        $scope.success = false;
 
         //If user is signed in then redirect back home
         if ($scope.authentication.user) $location.path('/');
@@ -75,7 +76,7 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
             $http.post('/auth/forgot', $scope.credentials).success(function(response) {
                 // Show user success message and clear form
                 $scope.credentials = null;
-                $scope.success = response.message;
+                $scope.success = rtrue;
 
                 $scope.busy = false;
             }).error(function(response) {
@@ -95,7 +96,7 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
 
             $http.post('/auth/reset/' + $stateParams.token, $scope.passwordDetails).success(function(response) {
                 // If successful show success message and clear form
-                $scope.success = response.message;
+                $scope.success = true;
                 $scope.passwordDetails = null;
 
                 $scope.busy = false;

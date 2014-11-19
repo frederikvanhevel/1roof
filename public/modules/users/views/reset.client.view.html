@@ -17,6 +17,7 @@
                         <button ng-class="{ disabled: busy }" type="submit" class="btn btn-large" translate>Aanpassen</button>
                         <!-- <img ng-show="busy" class="spinner" src="/modules/core/img/loaders/loading.svg"> -->
                     </div>
+                    <h5 class="green text-center" ng-show="success"><i class="icon-ok"></i> <span translate>Je wachtwoord is met succes aangepast.</span></h5>
                     <div data-ng-show="error" class="text-center text-danger">
                         <strong>{{error}}</strong>
                     </div>

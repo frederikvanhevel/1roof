@@ -3,15 +3,18 @@
 
         <div class="col-sm-4 col-sm-offset-4 bordered">
             <h3 class="text-center" translate>Je wachtwoord vergeten?</h3>
+            <p class="text-center">Vul het email adres dat je gebruikt hebt om in te loggen onderaan in het tekstvak in. Je zal dan een email ontvangen met verdere instructies.</p>
+
             <form data-ng-submit="forgot()" class="signin form-horizontal" autocomplete="off">
                 <fieldset>
                     <div class="form-group">
                         <input type="text" id="email" name="email" class="form-control" data-ng-model="credentials.email" placeholder="{{'Vul je email in'|translate}}">
                     </div>
-                    <div class="text-center form-group">
+                    <div class="text-center form-group" ng-hide="success">
                         <button ng-class="{ disabled: busy }" type="submit" class="btn" translate>Nieuw wachtwoord aanvragen</button>
                         <!-- <img ng-show="busy" class="spinner" src="/modules/core/img/loaders/loading.svg"> -->
                     </div>
+                    <h5 class="green text-center" ng-show="success"><i class="icon-ok"></i> <span translate>Email verzonden. Hou je inbox in de gaten.</span></h5>
                     <div data-ng-show="error" class="text-center text-danger">
                         <strong>{{error}}</strong>
                     </div>
