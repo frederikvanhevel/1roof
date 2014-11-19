@@ -24,8 +24,7 @@ var express = require('express'),
     // added for socketio
     http = require('http'),
     seo = require('mean-seo'),
-    core = require('../app/controllers/core'),
-    forceSSL = require('express-force-ssl');
+    core = require('../app/controllers/core');
 
 
 module.exports = function(db) {
@@ -88,7 +87,6 @@ module.exports = function(db) {
         app.set('view cache', false);
     } else if (process.env.NODE_ENV === 'production') {
         app.locals.cache = 'memory';
-        app.use(forceSSL);
     }
 
     // Request body parsing middleware should be above methodOverride
