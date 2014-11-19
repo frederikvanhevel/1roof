@@ -68,7 +68,8 @@
     "grunt-scss-lint": "~0.3.3",
     "grunt-contrib-htmlmin": "~0.3.0",
     "grunt-contrib-imagemin": "~0.8.1",
-    "bluebird": "~2.3.10"
+    "bluebird": "~2.3.10",
+    "express-force-ssl": "~0.2.8"
   },
   "devDependencies": {
     "should": "~3.2.0",
