@@ -5,7 +5,6 @@
  */
 exports.index = function(req, res) {
     res.render('index', {
-        user: req.user || null,
-        isHome: req.route.path === '/'
+        user: req.user || null
     });
 };
