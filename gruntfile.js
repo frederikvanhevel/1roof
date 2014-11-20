@@ -221,7 +221,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['clean', 'jshint', 'scsslint', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'sass' , 'cssmin']);
 
     // Dist task(s).
-    grunt.registerTask('dist', ['clean', 'env:dev', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'cssmin', 'env:prod']);
+    grunt.registerTask('dist', ['clean', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'cssmin']);
 
     // Run Build task(s).
     grunt.registerTask('runbuild', ['build', 'env:prod', 'concurrent']);

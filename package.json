@@ -9,8 +9,7 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/forever -m 5 server.js",
-    "test": "grunt test",
-    "postinstall": "bower install --config.interactive=false --force-latest; ./node_modules/grunt-cli/bin/grunt dist"
+    "test": "grunt test"
   },
   "dependencies": {
     "express": "~4.1.0",
