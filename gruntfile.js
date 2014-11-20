@@ -60,13 +60,29 @@ module.exports = function(grunt) {
                 src: ['public/modules/**/css/*.scss']
             }
         },
+        concat: {
+            production: {
+                files: {
+                    'public/dist/application.min.js': '<%= applicationJavaScriptFiles %>',
+                    'public/dist/lib.min.js': '<%= applicationJavaScriptLibFiles %>'
+                }
+            }
+        },
+        ngAnnotate: {
+            production: {
+                files: {
+                    'public/dist/lib.min.js': '<%= applicationJavaScriptLibFiles %>'
+                }
+            }
+        },
         uglify: {
             production: {
                 options: {
                     mangle: true
                 },
                 files: {
-                    'public/dist/application.min.js': '<%= applicationJavaScriptFiles %>'
+                    'public/dist/application.min.js': 'public/dist/application.min.js',
+                    'public/dist/lib.min.js': 'public/dist/lib.min.js'
                 }
             }
         },
@@ -183,6 +199,7 @@ module.exports = function(grunt) {
     	var config = require('./config/config');
 
     	grunt.config.set('applicationJavaScriptFiles', config.assets.js);
+        grunt.config.set('applicationJavaScriptLibFiles', config.assets.lib.js);
     	grunt.config.set('applicationCSSFiles', config.assets.css);
     });
 
@@ -196,13 +213,13 @@ module.exports = function(grunt) {
     grunt.registerTask('lint', ['jshint', 'scsslint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig' , 'uglify' , 'sass' , 'cssmin']);
+    grunt.registerTask('build', ['jshint', 'scsslint', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'sass' , 'cssmin']);
 
     // Dist task(s).
-    grunt.registerTask('dist', ['loadConfig', 'uglify', 'cssmin']);
+    grunt.registerTask('dist', ['loadConfig', 'concat', 'ngAnnotate', 'uglify', 'cssmin']);
 
     // Run Build task(s).
-    grunt.registerTask('runbuild', ['env:prod', 'build', 'concurrent']);
+    grunt.registerTask('runbuild', ['build', 'env:prod', 'concurrent']);
 
     // Test task.
     grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

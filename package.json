@@ -8,9 +8,8 @@
     "npm": "1.4.x"
   },
   "scripts": {
-    "start": "grunt",
-    "test": "grunt test",
-    "postinstall": "bower install --config.interactive=false --force-latest; ./node_modules/grunt-cli/bin/grunt dist"
+    "start": "grunt runbuild",
+    "test": "grunt test"
   },
   "dependencies": {
     "express": "~4.1.0",
@@ -78,6 +77,8 @@
     "karma-chrome-launcher": "~0.1.2",
     "karma-firefox-launcher": "~0.1.3",
     "karma-phantomjs-launcher": "~0.1.2",
-    "supertest": "~0.13.0"
+    "supertest": "~0.13.0",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-ng-annotate": "~0.7.0"
   }
 }
