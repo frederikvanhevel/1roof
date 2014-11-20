@@ -9,7 +9,8 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/forever -m 5 server.js",
-    "test": "grunt test"
+    "test": "grunt test",
+    "postinstall": "bower install --config.interactive=false --force-latest; ./node_modules/grunt-cli/bin/grunt dist"
   },
   "dependencies": {
     "express": "~4.1.0",
@@ -58,6 +59,7 @@
     "grunt-contrib-uglify": "~0.5.1",
     "grunt-contrib-cssmin": "~0.10.0",
     "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-clean": "Õ.6.0",
     "grunt-ng-annotate": "~0.7.0",
     "grunt-nodemon": "~0.2.0",
     "grunt-concurrent": "~0.5.0",
