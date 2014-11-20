@@ -5,35 +5,20 @@
  */
 var should = require('should'),
 	mongoose = require('mongoose'),
-	User = mongoose.model('User'),
+	InboxMock = require('./mock/inbox'),
 	Inbox = mongoose.model('Inbox');
 
 /**
  * Globals
  */
-var user, inbox;
+var inbox;
 
 /**
  * Unit tests
  */
 describe('Inbox Model Unit Tests:', function() {
-	beforeEach(function(done) {
-		user = new User({
-			firstName: 'Full',
-			lastName: 'Name',
-			displayName: 'Full Name',
-			email: 'test@test.com',
-			password: 'password'
-		});
-
-		user.save(function() { 
-			inbox = new Inbox ({
-				// Add model fields
-				// ...
-			});
-
-			done();
-		});
+	beforeEach(function() {
+		inbox = new InboxMock();
 	});
 
 	describe('Method Save', function() {
@@ -46,8 +31,8 @@ describe('Inbox Model Unit Tests:', function() {
 	});
 
 	afterEach(function(done) { 
-		Inbox.remove().exec();
-		User.remove().exec();
+		inbox.remove();
+
 		done();
 	});
 });

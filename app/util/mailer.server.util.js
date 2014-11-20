@@ -29,7 +29,7 @@ exports.send = function(template, context, to, subject) {
       var transporter = nodemailer.createTransport(config.email);
 
       var mailOptions = {
-        from: '1ROOF <noreply@1roof.be>', // sender address
+        from: '1roof.be <noreply@1roof.be>', // sender address
         to: to, // list of receivers
         subject: subject, // Subject line
         html: html // html body

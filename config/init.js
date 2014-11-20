@@ -39,4 +39,5 @@ module.exports = function() {
     require.extensions['.server.routes.js'] = require.extensions['.js'];
     require.extensions['.server.util.js'] = require.extensions['.js'];
     require.extensions['.server.job.js'] = require.extensions['.js'];
+    require.extensions['.server.mock.js'] = require.extensions['.js'];
 };

@@ -34,6 +34,7 @@ exports.run = function() {
   var Room = mongoose.model('Room');
 
   var query = {
+    'available.immediately': false,
     'available.till': { $lt: new Date() },
     visible: true
   };

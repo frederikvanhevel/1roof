@@ -35,7 +35,7 @@ function loginUser(done) {
 /**
  * Unit tests
  */
-describe('Room Controller Unit Tests:', function() {
+describe.skip('Room Controller Unit Tests:', function() {
   beforeEach(function(done) {
     user = new User({
       firstName: 'Full',

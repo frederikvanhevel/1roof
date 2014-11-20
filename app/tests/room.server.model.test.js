@@ -6,69 +6,25 @@
 var should = require('should'),
 	mongoose = require('mongoose'),
 	User = mongoose.model('User'),
-	Room = mongoose.model('Room');
+	Room = mongoose.model('Room'),
+	RoomMock = require('./mock/room');
 
 /**
  * Globals
  */
-var user, room ;
+var room ;
 
 /**
  * Unit tests
  */
 describe('Room Model Unit Tests:', function() {
-	beforeEach(function(done) {
-		user = new User({
-			firstName: 'Full',
-			lastName: 'Name',
-			displayName: 'Full Name',
-			email: 'test@test.com',
-			password: 'password',
-			provider: 'local'
-		});
-
-		user.save(function() {
-			room = new Room({
-				surface: 30,
-				price: {
-					base: 450,
-					period: 'month',
-					egw: 50,
-					cleaning: 10
-				},
-				amenities: ['pets'],
-				info: {
-					title: 'Test room',
-					description: 'Description for test room'
-				},
-    		    location: {
-    	        country: 'België',
-    	        city: 'Sint-Niklaas',
-    	        street: 'Voskenslaan 5'
-    		    },
-    		    loc: {
-    	        type: 'Point',
-    	        coordinates: [
-    	          4.160534200000029,
-    	          51.1555844
-    	        ]
-    		    },
-				available: {
-					from: new Date(),
-					till: new Date()
-				},
-				classification: 'room',
-				leaseType: 'lease',
-				user: user
-			});
-
-			done();
-		});
+	beforeEach(function() {
+		room = new RoomMock();
 	});
 
 	describe('Method Save', function() {
 		it('should be able to save without problems', function(done) {
-			return room .save(function(err) {
+			return room.save(function(err) {
 				should.not.exist(err);
 				done();
 			});
@@ -76,7 +32,7 @@ describe('Room Model Unit Tests:', function() {
 
 		it('should calculate total price automatically based on other price fields', function(done) {
 
-			return room .save(function(err) {
+			return room.save(function(err) {
 				should.not.exist(err);
 
 				should.equal(room.price.total, 510);
@@ -86,7 +42,7 @@ describe('Room Model Unit Tests:', function() {
 		});
 
 		it('should generate a slug based on certain properties', function(done) {
-            return room .save(function(err) {
+            return room.save(function(err) {
                 var slug = 'sint-niklaas/test-room';
 
                 should.equal(room.slug, slug);
@@ -104,7 +60,7 @@ describe('Room Model Unit Tests:', function() {
 
 
 		it('should be able to delete without problems', function(done) {
-            return room .remove(function(err) {
+            return room.remove(function(err) {
                 should.not.exist(err);
                 done();
             });
@@ -114,20 +70,19 @@ describe('Room Model Unit Tests:', function() {
 
 		});
 
-		it('should remove the room id from users favorites', function(done) {
-            user.favorites.push(room._id);
+		it.skip('should remove the room id from users favorites', function(done) {
+            room.user.favorites.push(room._id);
 
-            return room .remove(function(err) {
-                should(user.favorites).not.include(room._id);
+            return room.remove(function(err) {
+                should(room.user.favorites).not.include(room._id);
                 done();
             });
 		});
 	});
 
 	afterEach(function(done) {
-		Room .remove().exec();
+		room.remove();
 
-		User.remove().exec();
 		done();
 	});
 });

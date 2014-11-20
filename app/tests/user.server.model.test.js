@@ -5,7 +5,8 @@
  */
 var should = require('should'),
 	mongoose = require('mongoose'),
-	User = mongoose.model('User');
+	User = mongoose.model('User'),
+	UserMock = require('./mock/user');
 
 /**
  * Globals
@@ -16,25 +17,8 @@ var user, user2;
  * Unit tests
  */
 describe('User Model Unit Tests:', function() {
-	before(function(done) {
-		user = new User({
-			firstName: 'Full',
-			lastName: 'Name',
-			displayName: 'Full Name',
-			email: 'test@test.com',
-			password: 'password',
-			provider: 'local'
-		});
-		user2 = new User({
-			firstName: 'Full',
-			lastName: 'Name',
-			displayName: 'Full Name',
-			email: 'test@test.com',
-			password: 'password',
-			provider: 'local'
-		});
-
-		done();
+	before(function() {
+		user = new UserMock();
 	});
 
 	describe('Method Save', function() {
@@ -51,6 +35,9 @@ describe('User Model Unit Tests:', function() {
 
 		it('should fail to save an existing user again', function(done) {
 			user.save();
+
+			var user2 = new UserMock();
+
 			return user2.save(function(err) {
 				should.exist(err);
 				done();

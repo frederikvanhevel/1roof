@@ -170,7 +170,6 @@ module.exports = function(db) {
 
     // allow socket clients to connect privately in rooms
     io.on('connection', function(socket) {
-        console.log('Socket client connected.');
         socket.on('join', function(room) {
             socket.join(room);
         });

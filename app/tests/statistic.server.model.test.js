@@ -5,46 +5,33 @@
  */
 var should = require('should'),
   mongoose = require('mongoose'),
-  User = mongoose.model('User'),
+  StatisticMock = require('./mock/statistic'),
   Statistic = mongoose.model('Statistic');
 
 /**
  * Globals
  */
-var user, statistic;
+var statistic;
 
 /**
  * Unit tests
  */
 describe('Statistic Model Unit Tests:', function() {
-  beforeEach(function(done) {
-    user = new User({
-      firstName: 'Full',
-      lastName: 'Name',
-      displayName: 'Full Name',
-      email: 'test@test.com',
-      password: 'password'
-    });
-
-    user.save(function() { 
-      statistic = new Statistic ({
-        // Add model fields
-        // ...
-      });
-
-      done();
-    });
+  beforeEach(function() {
+    statistic = new StatisticMock();
   });
 
   describe('Method Save', function() {
-    it('should aggregate views per day', function(done) {
-
+    it('should be able to save without problems', function(done) {
+      return statistic.save(function(err) {
+        should.not.exist(err);
+        done();
+      });
     });
   });
 
   afterEach(function(done) { 
-    Statistic.remove().exec();
-    User.remove().exec();
+    statistic.remove();
     done();
   });
 });
