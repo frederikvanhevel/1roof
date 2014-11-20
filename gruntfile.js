@@ -202,7 +202,7 @@ module.exports = function(grunt) {
     grunt.task.registerTask('loadConfig', 'Task that loads the config into a grunt option.', function() {
     	var init = require('./config/init')();
     	var config = require('./config/config');
-
+        console.log(config.assets.js);
     	grunt.config.set('applicationJavaScriptFiles', config.assets.js);
         grunt.config.set('applicationJavaScriptLibFiles', config.assets.lib.js);
     	grunt.config.set('applicationCSSFiles', config.assets.lib.css);
@@ -221,7 +221,7 @@ module.exports = function(grunt) {
     grunt.registerTask('build', ['clean', 'jshint', 'scsslint', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'sass' , 'cssmin']);
 
     // Dist task(s).
-    grunt.registerTask('dist', ['clean', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'cssmin']);
+    grunt.registerTask('dist', ['clean', 'env:dev', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'cssmin', 'env:prod']);
 
     // Run Build task(s).
     grunt.registerTask('runbuild', ['build', 'env:prod', 'concurrent']);
