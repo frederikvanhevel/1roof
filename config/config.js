@@ -77,6 +77,13 @@ module.exports.getJavaScriptAssets = function(includeTests) {
  * Get the modules CSS files
  */
 module.exports.getCSSAssets = function() {
-    var output = this.getGlobbedFiles(this.assets.lib.css.concat(this.assets.css), 'public/');
+    var output = [];
+    
+    if(process.env.NODE_ENV === 'production') {
+        output = this.getGlobbedFiles(this.assets.css, 'public/');
+    } else {
+        output = this.getGlobbedFiles(this.assets.lib.css.concat(this.assets.css), 'public/');
+    }
+
     return output;
 };

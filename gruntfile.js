@@ -89,10 +89,12 @@ module.exports = function(grunt) {
         cssmin: {
             combine: {
                 options: {
-                    report: 'min'
+                    report: 'min',
+                    keepSpecialComments: 0
                 },
                 files: {
-                    'public/dist/application.min.css': 'public/css/main.css'
+                    'public/dist/application.min.css': 'public/css/main.css',
+                    'public/dist/lib.min.css': '<%= applicationCSSFiles %>'
                 }
             }
         },
@@ -200,7 +202,7 @@ module.exports = function(grunt) {
 
     	grunt.config.set('applicationJavaScriptFiles', config.assets.js);
         grunt.config.set('applicationJavaScriptLibFiles', config.assets.lib.js);
-    	grunt.config.set('applicationCSSFiles', config.assets.css);
+    	grunt.config.set('applicationCSSFiles', config.assets.lib.css);
     });
 
     // Default task(s).
