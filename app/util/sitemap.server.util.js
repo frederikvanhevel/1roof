@@ -6,6 +6,13 @@ var sm = require('sitemap'),
     config = require('../../config/config');
 
 
+function getCommonPages() {
+    return [
+        '/rooms/new',
+        '/pricing',
+        '/about'
+    ];
+}
 
 function getRooms() {
     var defer = BPromise.defer();
