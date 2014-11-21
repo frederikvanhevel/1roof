@@ -6,6 +6,13 @@ var sm = require('sitemap'),
     config = require('../../config/config');
 
 
+function getCommonPages() {
+    return [
+        '/rooms/new',
+        '/pricing',
+        '/about'
+    ];
+}
 
 function getRooms() {
     var defer = BPromise.defer();
@@ -43,8 +50,8 @@ exports.create = function(req, res) {
     var sitemapItems = [];
 
     BPromise
-      .join(getRooms(), getFavorites(), function(rooms, favorites) {
-        return rooms.concat(favorites);
+      .join(getCommonPages(), getRooms(), getFavorites(), function(common, rooms, favorites) {
+        return common.concat(rooms, favorites);
       }).then(function(result) {
         createSitemap(res, result);
       });
