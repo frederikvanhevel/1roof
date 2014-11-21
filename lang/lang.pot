@@ -15,12 +15,6 @@ msgstr ""
 msgid "Aanpassen"
 msgstr ""
 
-#: public/modules/core/views/header.client.view.html
-#: public/modules/users/views/dashboard.client.view.html
-#: public/modules/users/views/inbox.client.view.html
-msgid "Account"
-msgstr ""
-
 #: public/modules/users/views/signup.client.view.html
 msgid "Achternaam"
 msgstr ""
@@ -48,10 +42,6 @@ msgstr ""
 
 #: public/modules/rooms/views/not-found.client.view.html
 msgid "Advertentie niet gevonden"
-msgstr ""
-
-#: public/modules/users/views/dashboard.client.view.html
-msgid "Adverteren"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
@@ -187,8 +177,8 @@ msgstr ""
 msgid "Dubbel glas"
 msgstr ""
 
-#: public/modules/core/views/footer.client.view.html
-msgid "English"
+#: public/modules/users/views/forgot.client.view.html
+msgid "Email verzonden. Hou je inbox in de gaten."
 msgstr ""
 
 #: public/modules/core/controllers/modal-payment.controller.js
@@ -350,6 +340,10 @@ msgstr ""
 msgid "Je tariefplan is geupdatet!"
 msgstr ""
 
+#: public/modules/users/views/reset.client.view.html
+msgid "Je wachtwoord is met succes aangepast."
+msgstr ""
+
 #: public/modules/users/views/forgot.client.view.html
 msgid "Je wachtwoord vergeten?"
 msgstr ""
@@ -418,6 +412,11 @@ msgstr ""
 msgid "Mijn advertenties"
 msgstr ""
 
+#: public/modules/users/views/dashboard.client.view.html
+#: public/modules/users/views/inbox.client.view.html
+msgid "Mijn profiel"
+msgstr ""
+
 #: public/modules/core/views/header.client.view.html
 msgid "Mijn wishlist"
 msgstr ""
@@ -428,10 +427,6 @@ msgstr ""
 
 #: public/modules/rooms/views/not-found.client.view.html
 msgid "Misschien is de advertentie reeds verhuurd en heeft de eigenaar ze offline gehaald."
-msgstr ""
-
-#: public/modules/core/views/footer.client.view.html
-msgid "Nederlands"
 msgstr ""
 
 #: public/modules/users/views/reset.client.view.html
@@ -491,19 +486,11 @@ msgstr ""
 msgid "Praat en stel vragen met de huisbazen alsof ze naast jou zaten. Krijg vliegensvlug een antwoord."
 msgstr ""
 
-#: public/modules/users/views/dashboard.client.view.html
-#: public/modules/users/views/inbox.client.view.html
-msgid "Profiel"
-msgstr ""
-
 #: public/modules/core/views/header.client.view.html
 msgid "Profiel aanpassen"
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
-msgid "Registreer"
-msgstr ""
-
 #: public/modules/users/views/signup.client.view.html
 msgid "Registreren"
 msgstr ""
@@ -735,5 +722,5 @@ msgid "{{room.pictures.length}} foto's"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
-msgid "© 2014 APOLLO. Alle rechten voorbehouden."
+msgid "© 2014 1ROOF. Alle rechten voorbehouden."
 msgstr ""

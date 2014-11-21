@@ -7633,9 +7633,12 @@ footer .footer-bottom .social-buttons li {
   padding: 80px 0;
 }
 
+.comingsoon-view #hero {
+  top: -15px;
+}
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .comingsoon-view #hero {
-    top: -50px;
+    top: 0;
   }
 }
 .comingsoon-view #hero .video-container {
