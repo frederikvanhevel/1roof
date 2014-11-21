@@ -6,8 +6,9 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
 
         $scope.search = '';
         $scope.searchDetails = {};
+        $scope.autocompleteOptions = { types: '(cities)', country: 'be' };
 
-        Meta.setTitle('1ROOF', true);
+        Meta.setTitle('1roof', true);
 
         $scope.goToSearch = function() {
             if ($scope.searchDetails.geometry) {

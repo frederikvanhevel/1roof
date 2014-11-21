@@ -7020,6 +7020,26 @@ Social buttons
   border-color: rgba(0, 0, 0, 0.2);
 }
 
+/*
+Google autocomplete
+*/
+.pac-container {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+.pac-container:after {
+  display: none;
+}
+.pac-container .pac-item {
+  cursor: pointer;
+}
+.pac-container .pac-item:hover {
+  color: #FFF !important;
+  background-color: #1ABB9C;
+}
+.pac-container .pac-item:hover .pac-icon {
+  background-position: -18px -161px;
+}
+
 .statistics-chart {
   font: 10px sans-serif;
 }
@@ -7445,6 +7465,9 @@ header.navbar .btn.responsive-menu.navbar-toggle {
   header.navbar .collapse.in {
     display: block !important;
   }
+}
+header.navbar .top-search input {
+  font-size: 16px;
 }
 header.navbar .profile .profile-name {
   margin-left: 40px;

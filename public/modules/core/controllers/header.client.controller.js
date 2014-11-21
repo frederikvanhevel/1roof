@@ -6,6 +6,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         $scope.isCollapsed = true;
         $scope.search = '';
         $scope.searchDetails = {};
+        $scope.autocompleteOptions = { types: '(cities)', country: 'be' };
         $scope.unreadMessageCount = 0;
         
         $scope.init = function() {
