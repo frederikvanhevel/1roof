@@ -1,29 +1,813 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Apollo\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: 1roof\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: en\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 1.6.8\n"
+"X-Generator: Poedit 1.6.10\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: en\n"
 
 #: public/modules/core/views/home.client.view.html
+msgid "&lt;&lt;naam&gt;&gt; vindt de beste koten voor jou overal in Belgïe"
+msgstr ""
+
+#: public/modules/core/views/pricing.client.view.html
+msgid "/ Maand"
+msgstr "/ Month"
+
+#: public/modules/users/views/reset.client.view.html
+msgid "Aanpassen"
+msgstr "Modify"
+
+#: public/modules/users/views/signup.client.view.html
+msgid "Achternaam"
+msgstr "Last name"
+
+#: public/modules/rooms/views/create-room.client.view.html
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Adres"
+msgstr "Address"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Adres aanpassen"
+msgstr "Edit address"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Adres van de ruimte"
+msgstr "Address of the premises"
+
+#: public/modules/core/views/header.client.view.html
+msgid "Adverteer je ruimte"
+msgstr "Advertise your space"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Advertentie aanpassen"
+msgstr "Modify advertisement"
+
+#: public/modules/rooms/views/not-found.client.view.html
+msgid "Advertentie niet gevonden"
+msgstr "Advertisement not found"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Afbeeldingen"
+msgstr "Images"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Afbeeldingen toevoegen"
+msgstr "Add images"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Afspraak maken"
+msgstr "Make appointment"
+
+#: public/modules/core/views/pricing.client.view.html
+#: public/modules/users/controllers/settings.client.controller.js
+msgid "Agentschap"
+msgstr "Agency"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Algemeen"
+msgstr "General"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Algemene informatie over de ruimte"
+msgstr "General information"
+
+#: public/modules/search/views/search.client.view.html
+msgid "Alle"
+msgstr "All"
+
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "Analytics"
+msgstr "Analytics"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Aparte badkamer"
+msgstr "Seperate bathroom"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Aparte keuken"
+msgstr "Seperate kitchen"
+
+#: public/modules/search/views/search.client.view.html
+msgid "App."
+msgstr "App."
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Appartement"
+msgstr "Appartment"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Auto garage"
+msgstr "Garage"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Basis kosten"
+msgstr "Base costs"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Basis prijs"
+msgstr "Base price"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Bekijk deze ruimte"
+msgstr "View this room"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Bemeubeld"
+msgstr "Furnished"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Bericht versturen"
+msgstr "Send message"
+
+#: public/modules/core/views/header.client.view.html
+#: public/modules/users/views/dashboard.client.view.html
+#: public/modules/users/views/inbox.client.view.html
+msgid "Berichten"
+msgstr "Messages"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Beschikbaar van"
+msgstr "Available from"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Beschikbaarheid"
+msgstr "Availability"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Beschikbare voorzieningen"
+msgstr "Available amenities"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Beschrijving"
+msgstr "Description"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Bijgewerkt"
+msgstr "Modified"
+
+#: public/modules/core/views/comingsoon.client.view.html
+#: public/modules/core/views/home.client.view.html
+msgid "Chat met je huisbaas"
+msgstr "Chat with your landlord"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Contact"
+msgstr "Contact"
+
+#: public/modules/core/views/home.client.view.html
+#: public/modules/core/views/pricing.client.view.html
 msgid "Contacteer ons!"
 msgstr "Contact us!"
 
-#: public/modules/core/views/home.client.view.html
-msgid "Hulp nodig?"
-msgstr "Need Help?"
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Contract"
+msgstr "Contract"
+
+#: public/modules/users/views/favorites.client.view.html
+msgid "Delen"
+msgstr "Share"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Domicilie verplicht"
+msgstr "Domicile required"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Driemaandelijks"
+msgstr "Quarterly"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Dubbel glas"
+msgstr "Double glass"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid ""
+"Elke aanpassing die je maakt, wordt automatisch opgeslaan. Begin met een "
+"duidelijke titel."
+msgstr "Every change you make is automatically saved. Start with a good title."
+
+#: public/modules/users/views/forgot.client.view.html
+msgid "Email verzonden. Hou je inbox in de gaten."
+msgstr "Email sent. Keep an eye on your inbox."
+
+#: public/modules/core/controllers/modal-payment.controller.js
+#: public/modules/core/controllers/pricing.client.controller.js
+msgid ""
+"Er is iets misgelopen met het updaten van je tariefplan, probeer later "
+"opnieuw."
+msgstr ""
+"Something went wrong with updating your subscription, please try again later."
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid ""
+"Er was een probleem bij het toevoegen aan je favorieten, probeer later eens "
+"opnieuw."
+msgstr ""
+"There was a problem adding it to your favorites, please try again later."
+
+#: public/modules/rooms/controllers/manage-room.client.controller.js
+msgid ""
+"Er was een probleem bij het toevoegen van de afbeelding, probeer later eens "
+"opnieuw."
+msgstr "There was a problem adding the image, try again later."
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid ""
+"Er was een probleem met het verzenden van je bericht, probeer later eens "
+"opnieuw."
+msgstr "There was a problem sending your message, please try again later."
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Extra kosten"
+msgstr "Extra costs"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Facturatie periode"
+msgstr "Billing period"
+
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "Favorieten"
+msgstr "Favorites"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Fietsstalling"
+msgstr "Bike shed"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Foto uploaden"
+msgstr "Upload image"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid ""
+"Foto's zijn het eerste waar iemand op let. Zorg er voor dus dat je veel en "
+"duidelijke foto's hebt! Op deze manier zal je advertentie veel sneller "
+"verhuurd worden!"
+msgstr ""
+"Photos are the first thing that someone pays attention to. Make sure that "
+"you have alot clear images! This way your ad will be leased much faster!"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Vind je ideale woonst."
-msgstr "Find your ideal place to live."
+msgid "Ga"
+msgstr "Go"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Ga verder"
+msgstr "Continue"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Gas, elektriciteit en water (optioneel)"
+msgstr "Gas, electricity and water (optional)"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid ""
+"Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie "
+"beschrijven. Je kan in de beschrijving meer uitleg geven."
+msgstr ""
+"Use a couple of good keywords in the title that describe your ad "
+"immediately . You can provide more information in the description."
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Geef een duidelijke beschrijving over je ruimte"
+msgstr "Type a clear description of the ad"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Geef een gepaste titel in"
+msgstr "Type a good title"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Geef het adres in"
+msgstr "Type in the address"
+
+#: public/modules/search/views/search.client.view.html
+msgid ""
+"Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op "
+"de kaart."
+msgstr "No results found. Try fewer filters or zoom out on the map."
+
+#: public/modules/users/views/signup.client.view.html
+msgid "Heb je al een account?"
+msgstr "Already have an account?"
 
 #: public/modules/core/views/footer.client.view.html
-msgid "© 2014 APOLLO. Alle rechten voorbehouden."
-msgstr "© 2014 APOLLO. All rights reserved."
+msgid "Home"
+msgstr "Home"
+
+#: public/modules/search/views/search.client.view.html
+msgid "Huis"
+msgstr "House"
+
+#: public/modules/core/views/pricing.client.view.html
+#: public/modules/users/controllers/settings.client.controller.js
+msgid "Huisbaas"
+msgstr "Landlord"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Huisdieren toegelaten"
+msgstr "Pets allowed"
+
+#: public/modules/core/views/home.client.view.html
+#: public/modules/core/views/pricing.client.view.html
+msgid "Hulp nodig?"
+msgstr "Need help?"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Ik zoek een huisgenoot"
+msgstr "I'm looking for a roommate"
+
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "Impressies"
+msgstr "Impressions"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "In welke periode is deze ruimte beschikbaar?"
+msgstr "In what period is this room available?"
+
+#: public/modules/core/views/header.client.view.html
+#: public/modules/rooms/views/create-room.client.view.html
+#: public/modules/users/views/signin.client.view.html
+#: public/modules/users/views/signup.client.view.html
+msgid "Inloggen"
+msgstr "Log in"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Internet"
+msgstr "Internet"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid ""
+"Items met een waarschuwing moet je oplossen voor je je advertentie online "
+"kan plaatsen."
+msgstr ""
+"Items with a warning must be solved before you can place your ad online ."
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Jaarlijks"
+msgstr "Yearly"
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "Je bericht is verzonden!"
+msgstr "Your message is sent!"
+
+#: public/modules/core/views/comingsoon.client.view.html
+#: public/modules/core/views/home.client.view.html
+msgid ""
+"Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een email "
+"sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet."
+msgstr ""
+"Haven't found your dreamhouse yet? Do not worry, we can send you an email "
+"when an advertisement is placed that matches your criteria."
+
+#: public/modules/core/views/pricing.client.view.html
+msgid ""
+"Je hebt het maximum aantal advertenties die je kan plaatsen bereikt. Indien "
+"je er meerdere wil toevoegen, en wil genieten van een aantal extra voordelen "
+"zoals analytics, kies dan voor een upgrade!"
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Je kan deze advertentie online plaatsen"
+msgstr "You can place this ad online"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Je moet een huisnummer ingeven"
+msgstr "You need to type a streetnumber"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Je moet een straat intypen"
+msgstr "You need to type in an address"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Je moet meer details ingeven"
+msgstr "You have to add more details"
+
+#: public/modules/core/controllers/pricing.client.controller.js
+msgid "Je tariefplan is geupdatet!"
+msgstr "Your subscription has been updated!"
+
+#: public/modules/users/views/reset.client.view.html
+msgid "Je wachtwoord is met succes aangepast."
+msgstr "Password successfully changed."
+
+#: public/modules/users/views/forgot.client.view.html
+msgid "Je wachtwoord vergeten?"
+msgstr "Forgot password?"
+
+#: public/modules/rooms/views/create-room.client.view.html
+#: public/modules/search/views/search.client.view.html
+msgid "Kamer"
+msgstr "Room"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Kiezen van Dropbox"
+msgstr "Choose from Dropbox"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Klaar om contact op te nemen met de eigenaar?"
+msgstr "Ready to contact the owner?"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Kosten"
+msgstr "Costs"
+
+#: public/modules/core/views/comingsoon.client.view.html
+#: public/modules/core/views/home.client.view.html
+msgid "Krijg meldingen"
+msgstr "Get alerts"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}"
+msgstr "Last modified {{room.updated | amDateFormat:'ll'}}"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Maak een account aan"
+msgstr "Create an account"
+
+#: public/modules/core/views/comingsoon.client.view.html
+#: public/modules/core/views/home.client.view.html
+msgid "Maak een afspraak"
+msgstr "Make an appointment"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Maandelijks"
+msgstr "Monthly"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Maximum 8 afbeeldingen per ruimte"
+msgstr "Maximum 8 pictures per space"
+
+#: public/modules/search/views/search.client.view.html
+msgid "Meer info"
+msgstr "More info"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Meer informatie"
+msgstr "More information"
+
+#: public/modules/core/views/comingsoon.client.view.html
+#: public/modules/core/views/home.client.view.html
+msgid ""
+"Met amper twee klikken kan je een afspraak maken met een huisbaas. Geen tijd "
+"te verliezen!"
+msgstr ""
+"With just two clicks you can make an appointment with a landlord. No time to "
+"lose!"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Met hoeveel mensen wil je samenwonen?"
+msgstr "With how many others do you want to live together?"
+
+#: public/modules/core/views/header.client.view.html
+#: public/modules/users/views/dashboard.client.view.html
+#: public/modules/users/views/inbox.client.view.html
+msgid "Mijn advertenties"
+msgstr "My advertisements"
+
+#: public/modules/users/views/dashboard.client.view.html
+#: public/modules/users/views/inbox.client.view.html
+msgid "Mijn profiel"
+msgstr "My profile"
+
+#: public/modules/core/views/header.client.view.html
+msgid "Mijn wishlist"
+msgstr "My wishlist"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Misbruik melden"
+msgstr "Report abuse"
+
+#: public/modules/rooms/views/not-found.client.view.html
+msgid ""
+"Misschien is de advertentie reeds verhuurd en heeft de eigenaar ze offline "
+"gehaald."
+msgstr ""
+
+#: public/modules/users/views/reset.client.view.html
+msgid "Nieuw wachtwoord"
+msgstr "New password"
+
+#: public/modules/users/views/forgot.client.view.html
+msgid "Nieuw wachtwoord aanvragen"
+msgstr "Get new password"
+
+#: public/modules/users/views/signin.client.view.html
+msgid "Nieuwe account"
+msgstr "New account"
+
+#: public/modules/users/views/favorites.client.view.html
+msgid "Nog geen advertenties in deze wishlist"
+msgstr "No ads in this wishlist"
+
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "Nog geen data beschikbaar"
+msgstr "No data available"
+
+#: public/modules/core/views/pricing.client.view.html
+msgid ""
+"Om gebruik te maken van geavanceerde functies zoals analytics, heb je een "
+"upgrade nodig. Kies één van de onderstaande tariefplannen om verder te gaan."
+msgstr ""
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid ""
+"Om verder te gaan moet je je registreren of inloggen met een bestaande "
+"account"
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Onmiddelijk beschikbaar"
+msgstr "Available immediately"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Onmiddelijk beschikbaar!"
+msgstr "Available immediately!"
+
+#: public/modules/core/views/home.client.view.html
+msgid "Ontdek prachtige accomodaties overal in België"
+msgstr ""
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Oppervlakte"
+msgstr "Surface"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Oppervlakte in m&sup2;"
+msgstr "Surface in m&sup2;"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Oppervlakte in m²"
+msgstr "Surface in m²"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Over ons"
+msgstr "About us"
+
+#: public/modules/core/views/comingsoon.client.view.html
+#: public/modules/core/views/home.client.view.html
+msgid ""
+"Praat en stel vragen met de huisbazen alsof ze naast jou zaten. Krijg "
+"vliegensvlug een antwoord."
+msgstr ""
+"Chat and ask questions with the landlords as if they were sitting next to "
+"you. Get an answer on the fly."
+
+#: public/modules/core/views/header.client.view.html
+msgid "Profiel aanpassen"
+msgstr "Edit profile"
+
+#: public/modules/core/views/header.client.view.html
+#: public/modules/users/views/signup.client.view.html
+msgid "Registreren"
+msgstr "Register"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Samenwonen"
+msgstr "Cohabit"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Schoonmaak (optioneel)"
+msgstr "Cleaning (optional)"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Schoonmaak kosten"
+msgstr "Cleaning costs"
+
+#: public/modules/core/views/home.client.view.html
+msgid "Snel. Simpel. Krachtig."
+msgstr "Fast. Simple. Powerfull"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Stap 1: meld je aan"
+msgstr "Step 1: log in"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Stap 2: maak een advertentie"
+msgstr "Step 2: create your ad"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Stap 3: pas ze aan"
+msgstr "Step 3: modify it"
+
+#: public/modules/core/views/pricing.client.view.html
+#: public/modules/users/controllers/settings.client.controller.js
+msgid "Student"
+msgstr "Student"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Stuur een bericht"
+msgstr "Send a message"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "TV"
+msgstr "TV"
+
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Terras"
+msgstr "Terrace"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Terug naar kaart"
+msgstr "Back to map"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Titel"
+msgstr "Title"
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "Toegevoegd aan favorieten!"
+msgstr "Added to favorites!"
+
+#: public/modules/users/views/inbox.client.view.html
+msgid "Typ je bericht"
+msgstr "Type your message"
+
+#: public/modules/users/views/reset.client.view.html
+msgid "Typ je wachtwoord opnieuw"
+msgstr "Type your password again"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Type ruimte"
+msgstr "Room type"
+
+#: public/modules/users/views/reset.client.view.html
+msgid "Type wachtwoord opnieuw"
+msgstr "Type your password again"
+
+#: public/modules/core/views/header.client.view.html
+msgid "Uitloggen"
+msgstr "Log out"
+
+#: public/modules/core/views/pricing.client.view.html
+msgid "Upgraden"
+msgstr "Upgrade"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Verwijder deze advertentie"
+msgstr "Remove this ad"
+
+#: public/modules/users/views/inbox.client.view.html
+msgid "Verzend"
+msgstr "Send"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Volledig huis"
+msgstr "House"
+
+#: public/modules/users/views/signup.client.view.html
+msgid "Voornaam"
+msgstr "First name"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Voorzieningen"
+msgstr "Ameneties"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Vragen over deze ruimte?"
+msgstr "Questions about this ad?"
+
+#: public/modules/users/views/forgot.client.view.html
+msgid "Vul je email in"
+msgstr "Enter your email"
+
+#: public/modules/core/views/header.client.view.html
+#: public/modules/core/views/home.client.view.html
+msgid "Waar wil je naartoe?"
+msgstr "Where do you want to go?"
+
+#: public/modules/users/views/signup.client.view.html
+msgid "Wachtwoord"
+msgstr "Password"
+
+#: public/modules/users/views/reset.client.view.html
+msgid "Wachtwoord opnieuw instellen"
+msgstr "Reset password"
+
+#: public/modules/users/views/signin.client.view.html
+msgid "Wachtwoord vergeten?"
+msgstr "Forgot password?"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid ""
+"Wanneer de einddatum die je ingegeven hebt verlopen is, zal je advertentie "
+"automatisch offline worden gezet."
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid ""
+"Wanneer je alles hebt ingevuld kan je de advertentie online zetten. Veel "
+"succes!"
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid ""
+"We leggen even uit hoe je je advertentie aanpast. Klik op volgende om verder "
+"te gaan."
+msgstr ""
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"
+msgstr ""
+
+#: public/modules/search/views/search.client.view.html
+msgid "Zoekopdracht verfijnen"
+msgstr "Refine search"
+
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "aantal keer bekeken per dag"
+msgstr "views per day"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "andere(n) in dit pand"
+msgstr "other(s) in this premises"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "bekijk de advertentie"
+msgstr "view this ad"
+
+#: public/modules/search/views/search.client.view.html
+msgid "hou me op de hoogte van nieuwe aanbiedingen"
+msgstr "keep me informed of new offers"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "huurcontract"
+msgstr "lease"
+
+#: public/modules/users/views/signin.client.view.html
+#: public/modules/users/views/signup.client.view.html
+msgid "of"
+msgstr "of"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "onderverhuring"
+msgstr "sublease"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "opgeslaan"
+msgstr "saved"
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "per drie maand"
+msgstr "quarterly"
+
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "per jaar"
+msgstr "per year"
+
+#: public/modules/search/views/search.client.view.html
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "per maand"
+msgstr "per month"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "tot"
+msgstr "till"
+
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "totaal aantal favorieten per dag"
+msgstr "total amount of favorites per day"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "van"
+msgstr "of"
+
+#: public/modules/users/views/signin.client.view.html
+msgid "voorbeeld@email.com"
+msgstr "example@email.com"
+
+#: public/modules/users/views/signup.client.view.html
+msgid "voorbeeld@gmail.com"
+msgstr "example@gmail.com"
+
+#: public/modules/users/views/signin.client.view.html
+msgid "wachtwoord"
+msgstr "password"
+
+#: public/modules/search/views/search.client.view.html
+msgid "zoekt huisgenoot"
+msgstr "looking for roommate"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "{{::otherRooms.length}} andere ruimte(n) in deze woning"
+msgstr "{{::otherRooms.length}} other rooms in this house"
+
+#: public/modules/search/views/search.client.view.html
+msgid "{{results.length}} advertentie(s) gevonden"
+msgstr "{{results.length}} ads found"
+
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "{{room.pictures.length}} foto's"
+msgstr "{{room.pictures.length}} pictures"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "© 2014 1roof.be Alle rechten voorbehouden."
+msgstr "© 2014 1roof.be All rights reserved."

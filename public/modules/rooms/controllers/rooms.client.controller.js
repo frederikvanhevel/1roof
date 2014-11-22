@@ -139,9 +139,13 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         }
 
         function postLoad() {
-            Meta.setTitle($scope.room.info.title + ' - ' + $scope.room.location.city, true);
-            Meta.setDescription($scope.room.info.description);
-
+            if (!$scope.room.info.title) {
+                Meta.setTitle($scope.room.location.street + ' - ' + $scope.room.location.city, true);
+            } else {
+                Meta.setTitle($scope.room.info.title + ' - ' + $scope.room.location.city, true);
+                Meta.setDescription($scope.room.info.description);
+            }
+            
             // increment view count for statistics
             Statistics.aggregate($scope.room._id, 'views');
 

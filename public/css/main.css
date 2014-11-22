@@ -7157,7 +7157,7 @@ Google autocomplete
 }
 
 .pika-single {
-  z-index: 9999;
+  z-index: 50;
   display: block;
   position: relative;
   width: 240px;
