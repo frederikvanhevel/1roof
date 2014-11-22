@@ -60,6 +60,26 @@ Custom select inpyt
 }
 
 /*
+Popover
+*/
+.popover {
+  min-width: 276px;
+  z-index: 50;
+  opacity: 0;
+  display: none;
+  transition: opacity .5s ease-out;
+
+  &.active {
+    opacity: 1;
+    display: block;
+  }
+
+  &.bottomleft .arrow {
+    left: 10%;
+  }
+}
+
+/*
 Spinner
 */
 .spinner {

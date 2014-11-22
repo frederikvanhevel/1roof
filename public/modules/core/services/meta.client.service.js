@@ -4,7 +4,7 @@ angular.module('core').service('Meta', ['$rootScope',
     function($rootScope) {
 
         this.setTitle = function(text, replace) {
-            var title = replace ? text : '1ROOF - ' + text;
+            var title = replace ? text : '1roof - ' + text;
             $rootScope.title = title;
         };
 

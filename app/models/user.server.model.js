@@ -126,7 +126,8 @@ var UserSchema = new Schema({
  			alert: {
 		 		lastChecked: Date,
 				filters: Object
- 			}
+ 			},
+ 			tutorial: true
  		}
  	}
 });

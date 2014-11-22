@@ -4,17 +4,23 @@
             <span class="pull-right">
             <a href="{{room.url}}"><i class="icon-eye-1"></i> <span translate>bekijk de advertentie</span> <i class="icon-right-open"></i></a>
             </span>
-            <div class="visibility-switch">
+            <div class="visibility-switch" id="popover4">
                 <input id="switch-button" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder">
                 <label for="switch-button"></label>
             </div>
             <span ng-if="room.visible && errors.length == 0" class="green pull-left">online</span>
             <span ng-if="errors.length > 0" class="red"><i class="icon-attention-1 red"></i> offline - <span translate>Je moet meer details ingeven</span></span>
-            <span ng-if="!room.visible && errors.length == 0" class="green"><i class="icon-left-1 green"></i> <span translate>Je kan deze advertentie online plaatsen</span></span>
+            <span ng-if="!room.visible && errors.length == 0" class="green flash"><i class="icon-left-1 green"></i> <span translate>Je kan deze advertentie online plaatsen</span></span>
         </div>
     </div>
+    <guided-tour step="4" ng-if="guide.enabled" laststep="true" guide="guide" connected-element="#popover4" alignment="bottomleft" translate>
+        Wanneer je alles hebt ingevuld kan je de advertentie online zetten. Veel succes!
+    </guided-tour>
     <div class="edit-details container">
         <div class="col-md-3">
+            <guided-tour ng-if="guide.enabled" guide="guide" step="3" connected-element="#popover3" alignment="right" translate>
+                Items met een waarschuwing moet je oplossen voor je je advertentie online kan plaatsen.
+            </guided-tour>
             <ul class="sidenav">
                 <li ng-class="{ active: nav == 'general'}">
                     <a ng-click="setTab('general')" href="">
@@ -28,7 +34,7 @@
                         <span translate>Beschikbaarheid</span>
                     </a>
                 </li>
-                <li ng-class="{ active: nav == 'costs'}">
+                <li ng-class="{ active: nav == 'costs'}" id="popover3">
                     <a ng-click="setTab('costs')" href="">
                         <i ng-if="tabHasError('costs')" class="icon-attention-1 red"></i>
                         <span translate>Kosten</span>
@@ -62,12 +68,20 @@
                     <span blink-text class="blink-text pull-right"><i class="icon-check"></i> <span translate>opgeslaan</span></span>
                     <h3 class="panel-title" translate>Algemene informatie over de ruimte</h3>
                 </div>
-                <div class="panel-body">
+
+                <guided-tour ng-if="guide.enabled"  guide="guide" step="1" connected-element="#popover1" translate>
+                    We leggen even uit hoe je je advertentie aanpast. Klik op volgende om verder te gaan.
+                </guided-tour>
+
+                <div class="panel-body" id="popover1">
                     <form role="form">
                         <div class="form-group" ng-class="{ 'has-error': tabHasError('general') }">
                             <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' karakters over'"></small>
                             <label class="control-label" translate>Titel</label>
-                            <input ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="{{'Geef een gepaste titel in'|translate}}" required>
+                            <input id="popover2" ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="{{'Geef een gepaste titel in'|translate}}" required>
+                            <guided-tour ng-if="guide.enabled"  step="2" guide="guide" connected-element="#popover2" alignment="bottom" translate>
+                                Elke aanpassing die je maakt, wordt automatisch opgeslaan. Begin met een duidelijke titel. 
+                            </guided-tour>
                         </div>
                         <div class="form-group">
                             <small class="pull-right" ng-bind="(1500 - room.info.description.length) + ' karakters over'"></small>
@@ -75,7 +89,7 @@
                             <textarea ng-model="room.info.description" maxlength="1500" limit-text="1500" type="text"  placeholder="{{'Geef een duidelijke beschrijving over je ruimte'|translate}}"></textarea>
                         </div>
                         <div class="form-group">
-                            <label class="control-label" translate>Oppervlakte</label>
+                            <label class="control-label" translate>Oppervlakte in m&sup2;</label>
                             <input ng-model="room.surface" type="number" min="0" class="form-control"  placeholder="{{'Oppervlakte in m²'|translate}}">
                         </div>
                     </form>

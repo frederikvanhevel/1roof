@@ -6660,6 +6660,27 @@ input:focus:-ms-input-placeholder {
   animation-duration: .75s;
 }
 
+@-webkit-keyframes flash {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+@keyframes flash {
+  0%, 50%, 100% {
+    opacity: 1;
+  }
+  25%, 75% {
+    opacity: 0;
+  }
+}
+.flash {
+  -webkit-animation-name: flash;
+  animation-name: flash;
+}
+
 /*
 Custom select inpyt
 */
@@ -6713,6 +6734,24 @@ Custom select inpyt
 
 .select-style select:focus {
   outline: none;
+}
+
+/*
+Popover
+*/
+.popover {
+  min-width: 276px;
+  z-index: 50;
+  opacity: 0;
+  display: none;
+  transition: opacity .5s ease-out;
+}
+.popover.active {
+  opacity: 1;
+  display: block;
+}
+.popover.bottomleft .arrow {
+  left: 10%;
 }
 
 /*
