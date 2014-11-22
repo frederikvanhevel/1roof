@@ -1,7 +1,12 @@
 .messages-overview {
 
-  .unread {
-    color: #d9534f;
-  }
+	.empty-icon {
+		font-size: 60px;
+		opacity: .7;
+	}
+
+	.unread {
+		color: #d9534f;
+	}
 
 }

@@ -8513,6 +8513,10 @@ USERS MODULE
   margin-top: 10px;
 }
 
+.my-rooms .empty-icon {
+  font-size: 60px;
+  opacity: .7;
+}
 .my-rooms h4, .my-rooms .indicator {
   padding-top: 10px;
 }
@@ -8553,6 +8557,10 @@ USERS MODULE
   height: 150px;
 }
 
+.my-favorites h2.heart {
+  font-size: 100px;
+  opacity: .7;
+}
 .my-favorites ul.social li {
   display: inline-block;
 }
@@ -8615,6 +8623,10 @@ USERS MODULE
   display: inline-block;
 }
 
+.messages-overview .empty-icon {
+  font-size: 60px;
+  opacity: .7;
+}
 .messages-overview .unread {
   color: #d9534f;
 }

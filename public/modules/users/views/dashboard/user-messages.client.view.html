@@ -3,7 +3,8 @@
         <div class="panel panel-default">
             <div class="panel-heading" translate>Berichten</div>
             <div class="panel-body" ng-hide="inboxes.length > 0">
-                <p class="lead" translate>Je hebt nog geen berichten ontvangen :)</p>
+                <h2 class="empty-icon text-center"><i class="icon-mail-1"></i></h2>
+                <p class="lead text-center" translate>Je hebt nog geen berichten ontvangen</p>
             </div>
             <div class="list-group">
                 <a ng-href="/dashboard/messages/{{inbox._id}}" class="list-group-item" ng-repeat="inbox in inboxes">
