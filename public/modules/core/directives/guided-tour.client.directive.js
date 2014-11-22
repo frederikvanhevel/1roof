@@ -18,7 +18,8 @@ angular.module('core').directive('guidedTour', [ '$window',
                 connectedElement: '@',
                 step: '@',
                 alignment: '@',
-                guide: '='
+                guide: '=',
+                onTourEnd: '&'
             },
             link: function(scope, element, attrs) {
 
@@ -71,6 +72,8 @@ angular.module('core').directive('guidedTour', [ '$window',
                 element.find('button').click(function(e) {
                     scope.guide.step++;
                     scope.$apply();
+
+                    if (attrs.laststep) scope.onTourEnd();
 
                     e.preventDefault();
                     e.stopPropagation();

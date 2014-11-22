@@ -36,9 +36,10 @@ angular.module('users').service('UserSettings', ['Authentication', 'Users',
                 if (obj[tags[i]] === undefined) {
                     obj[tags[i]] = {};
                 }
-
             }
-            obj[current][tags[len]] = value;
+
+            if (tags.length === 1) obj[current] = value;
+            else obj[current][tags[len]] = value;
 
             user.settings = obj;
         }

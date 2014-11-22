@@ -8515,7 +8515,7 @@ USERS MODULE
 
 .my-rooms .empty-icon {
   font-size: 60px;
-  opacity: .7;
+  opacity: .6;
 }
 .my-rooms h4, .my-rooms .indicator {
   padding-top: 10px;
@@ -8625,7 +8625,7 @@ USERS MODULE
 
 .messages-overview .empty-icon {
   font-size: 60px;
-  opacity: .7;
+  opacity: .6;
 }
 .messages-overview .unread {
   color: #d9534f;

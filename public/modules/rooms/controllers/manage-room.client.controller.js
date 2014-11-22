@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'Users', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta', 'gettext',
-    function($scope, $stateParams, $location, Authentication, Rooms, Users, $window, Amenity, $upload, $http, Modal, Alert, Meta, gettext) {
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'UserSettings', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta', 'gettext',
+    function($scope, $stateParams, $location, Authentication, Rooms, UserSettings, $window, Amenity, $upload, $http, Modal, Alert, Meta, gettext) {
         $scope.authentication = Authentication;
 
         $scope.busy = false;
@@ -14,7 +14,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.newAddressDetails = {};
 
         $scope.guide = {
-            enabled: true,
+            enabled: Authentication.user.settings.tutorial,
             step: 1
         };
 
@@ -36,12 +36,13 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             });
 
             $scope.$on('dropbox_chosen', onDropboxSelect);
+        };
 
-            if (Authentication.user.settings.tutorial) {
-                Authentication.user.settings.tutorial = false;
-                var user = new Users(Authentication.user);
-                user.$update();
-            }
+        $scope.guideEnded = function() {
+            $scope.guide.enabled = false;
+            UserSettings.set('tutorial', false);
+
+            $scope.$apply();
         };
 
         $scope.watchForUpdates = function() {

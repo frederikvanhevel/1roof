@@ -13,7 +13,7 @@
             <span ng-if="!room.visible && errors.length == 0" class="green flash"><i class="icon-left-1 green"></i> <span translate>Je kan deze advertentie online plaatsen</span></span>
         </div>
     </div>
-    <guided-tour step="4" ng-if="guide.enabled" laststep="true" guide="guide" connected-element="#popover4" alignment="bottomleft" translate>
+    <guided-tour step="4" ng-if="guide.enabled" laststep="true" guide="guide" connected-element="#popover4" alignment="bottomleft" on-tour-end="guideEnded()" translate>
         Wanneer je alles hebt ingevuld kan je de advertentie online zetten. Veel succes!
     </guided-tour>
     <div class="edit-details container">
