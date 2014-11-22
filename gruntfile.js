@@ -71,6 +71,7 @@ module.exports = function(grunt) {
         ngAnnotate: {
             production: {
                 files: {
+                    'public/dist/application.min.js': '<%= applicationJavaScriptFiles %>',
                     'public/dist/lib.min.js': '<%= applicationJavaScriptLibFiles %>'
                 }
             }

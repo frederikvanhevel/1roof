@@ -37,7 +37,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
             $scope.$on('dropbox_chosen', onDropboxSelect);
 
-            console.log(Authentication.user.settings.tutorial);
             if (Authentication.user.settings.tutorial) {
                 Authentication.user.settings.tutorial = false;
                 var user = new Users(Authentication.user);
