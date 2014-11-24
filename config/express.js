@@ -178,6 +178,14 @@ module.exports = function(db) {
         });
     });
 
+    // performance monitoring
+    if(process.env.NODETIME_ACCOUNT_KEY) {
+      require('nodetime').profile({
+        accountKey: process.env.NODETIME_ACCOUNT_KEY,
+        appName: '1roof'
+      });
+    }
+
     scheduler.start();
 
     return app;
