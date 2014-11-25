@@ -15,8 +15,8 @@
             <a href="{{room.url}}">
               {{room.info.title != '' ? room.info.title : room.location.street}}
             </a>
-            <a href="/rooms/{{room._id}}/edit/" tooltip="Advertentie aanpassen"><i class="icon-pencil"></i></a>
-            <a href="" ng-click="viewAnalytics(room)" tooltip="Statistieken bekijken"><i class="icon-chart-pie"></i></a>
+            <a class="btn btn-xs btn-blue" href="/rooms/{{room._id}}/edit/" tooltip="Advertentie aanpassen"><i class="icon-pencil"></i> aanpassen</a>
+            <a class="btn btn-xs btn-blue" href="" ng-click="viewAnalytics(room)" tooltip="Statistieken bekijken"><i class="icon-chart-pie"></i> statistieken</a>
             </h4>
             <div class="col-sm-4 visibilty-switch-container">
               <div class="visibility-switch">
