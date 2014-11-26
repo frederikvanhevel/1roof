@@ -18,7 +18,7 @@
     </guided-tour>
     <div class="edit-details container">
         <div class="col-md-3">
-            <guided-tour ng-if="guide.enabled" guide="guide" step="3" connected-element="#popover3" alignment="right" translate>
+            <guided-tour ng-if="guide.enabled" guide="guide" step="3" connected-element="#popover3" alignment="right" on-tour-end="guideEnded()" translate>
                 Items met een waarschuwing moet je oplossen voor je je advertentie online kan plaatsen.
             </guided-tour>
             <ul class="sidenav">
@@ -69,7 +69,7 @@
                     <h3 class="panel-title" translate>Algemene informatie over de ruimte</h3>
                 </div>
 
-                <guided-tour ng-if="guide.enabled"  guide="guide" step="1" connected-element="#popover1" translate>
+                <guided-tour ng-if="guide.enabled"  guide="guide" step="1" connected-element="#popover1" on-tour-end="guideEnded()" translate>
                     We leggen even uit hoe je je advertentie aanpast. Klik op volgende om verder te gaan.
                 </guided-tour>
 
@@ -79,7 +79,7 @@
                             <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' karakters over'"></small>
                             <label class="control-label" translate>Titel</label>
                             <input id="popover2" ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="{{'Geef een gepaste titel in'|translate}}" required>
-                            <guided-tour ng-if="guide.enabled"  step="2" guide="guide" connected-element="#popover2" alignment="bottom" translate>
+                            <guided-tour ng-if="guide.enabled"  step="2" guide="guide" connected-element="#popover2" alignment="bottom" on-tour-end="guideEnded()" translate>
                                 Elke aanpassing die je maakt, wordt automatisch opgeslaan. Begin met een duidelijke titel. 
                             </guided-tour>
                         </div>

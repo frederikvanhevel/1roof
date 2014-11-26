@@ -5,6 +5,9 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
     function($scope, $stateParams, $location, Authentication, Rooms, UserSettings, $window, Amenity, $upload, $http, Modal, Alert, Meta, gettext) {
         $scope.authentication = Authentication;
 
+        // If user is not signed in then redirect back home
+        if (!Authentication.user) $location.path('/');
+
         $scope.busy = false;
         $scope.nav = 'general';
         $scope.amenities = Amenity.list();
@@ -18,9 +21,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             step: 1
         };
 
-        // If user is not signed in then redirect back home
-        if (!Authentication.user) $location.path('/');
-
         // Init
         $scope.init = function() {
             Meta.setTitle('Advertentie aanpassen');
@@ -30,7 +30,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
-            }, $scope.watchForUpdates, function() {
+            }, postLoad, function() {
                 // room not found, redirect
                 $location.path('/dashboard/rooms');
             });
@@ -43,36 +43,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             UserSettings.set('tutorial', false);
 
             $scope.$apply();
-        };
-
-        $scope.watchForUpdates = function() {
-            $scope.$broadcast('room_loaded', $scope.room);
-            $scope.checkRoomCompleteness();
-
-            var updateFunction = $window._.debounce($scope.update, 800);
-
-            function watchRoomProperties() {
-                return {
-                    visible: $scope.room.visible,
-                    pictures: $scope.room.pictures,
-                    leaseType: $scope.room.leaseType,
-                    available: $scope.room.available,
-                    loc: $scope.room.loc,
-                    location: $scope.room.location,
-                    info: $scope.room.info,
-                    amenities: $scope.room.amenities,
-                    price: $scope.room.price,
-                    surface: $scope.room.surface,
-                    cohabit: $scope.room.cohabit
-                };
-            }
-
-            $scope.$watch(watchRoomProperties, function(newValue, oldValue) {
-                if (newValue !== oldValue && !$scope.busy) {
-                    $scope.checkRoomCompleteness();
-                    updateFunction();
-                }
-            }, true);
         };
 
         // Update existing Room
@@ -122,16 +92,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $location.path('/rooms/' + $scope.room._id + '/edit/' + tab);
         };
 
-        $scope.checkRoomCompleteness = function() {
-            var errors = [];
-
-            if (!$scope.room.info.title || $scope.room.info.title === '') errors.push('general');
-            if (!$scope.room.price.base || $scope.room.price.base === 0) errors.push('costs');
-            if (!$scope.room.available.immediately && (!$scope.room.available.from || !$scope.room.available.till || new Date($scope.room.available.till)) < new Date()) errors.push('availability');
-
-            $scope.errors = errors;
-        };
-
         $scope.tabHasError = function(tab) {
             return $scope.errors.indexOf(tab) !== -1;
         };
@@ -166,6 +126,52 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 });
             });
         };
+
+        function postLoad() {
+            if ($scope.room.user._id !== Authentication.user._id) $location.path('/');
+
+            watchForUpdates();
+        }
+
+       function watchForUpdates () {
+            $scope.$broadcast('room_loaded', $scope.room);
+            checkRoomCompleteness();
+
+            var updateFunction = $window._.debounce($scope.update, 800);
+
+            function watchRoomProperties() {
+                return {
+                    visible: $scope.room.visible,
+                    pictures: $scope.room.pictures,
+                    leaseType: $scope.room.leaseType,
+                    available: $scope.room.available,
+                    loc: $scope.room.loc,
+                    location: $scope.room.location,
+                    info: $scope.room.info,
+                    amenities: $scope.room.amenities,
+                    price: $scope.room.price,
+                    surface: $scope.room.surface,
+                    cohabit: $scope.room.cohabit
+                };
+            }
+
+            $scope.$watch(watchRoomProperties, function(newValue, oldValue) {
+                if (newValue !== oldValue && !$scope.busy) {
+                    checkRoomCompleteness();
+                    updateFunction();
+                }
+            }, true);
+        }
+
+        function checkRoomCompleteness() {
+            var errors = [];
+
+            if (!$scope.room.info.title || $scope.room.info.title === '') errors.push('general');
+            if (!$scope.room.price.base || $scope.room.price.base === 0) errors.push('costs');
+            if (!$scope.room.available.immediately && (!$scope.room.available.from || !$scope.room.available.till || new Date($scope.room.available.till)) < new Date()) errors.push('availability');
+
+            $scope.errors = errors;
+        }
 
         function uploadImage(image) {
             if ($scope.room.pictures.length === 8) return;

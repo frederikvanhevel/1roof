@@ -5,7 +5,7 @@ angular.module('core').directive('guidedTour', [ '$window',
         return {
             template: '<div class="popover">' +
                  '<div class="arrow"></div>' +
-                  '<h3 class="popover-title"><i class="icon-info-circled"></i> Rondleiding</h3>' +
+                  '<h3 class="popover-title"><a href="#" class="close">&times;</a><i class="icon-info-circled"></i> Rondleiding</h3>' +
                   '<div class="popover-content">' +
                     '<p class="tour-text"></p>' +
                     '<button style="display: none;" class="tour-close btn btn-blue btn-xs pull-right">Sluiten</button>' +
@@ -74,6 +74,12 @@ angular.module('core').directive('guidedTour', [ '$window',
                     scope.$apply();
 
                     if (attrs.laststep) scope.onTourEnd();
+
+                    e.preventDefault();
+                    e.stopPropagation();
+                });
+                element.find('.close').click(function(e) {
+                    scope.onTourEnd();
 
                     e.preventDefault();
                     e.stopPropagation();
