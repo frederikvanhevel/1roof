@@ -17,7 +17,7 @@
         Wanneer je alles hebt ingevuld kan je de advertentie online zetten. Veel succes!
     </guided-tour>
     <div class="edit-details container">
-        <div class="col-md-3">
+        <div class="col-md-offset-1 col-md-3">
             <guided-tour ng-if="guide.enabled" guide="guide" step="3" connected-element="#popover3" alignment="right" on-tour-end="guideEnded()" translate>
                 Items met een waarschuwing moet je oplossen voor je je advertentie online kan plaatsen.
             </guided-tour>
@@ -77,7 +77,7 @@
                     <form role="form">
                         <div class="form-group" ng-class="{ 'has-error': tabHasError('general') }">
                             <small class="pull-right" ng-bind="(50 - room.info.title.length) + ' karakters over'"></small>
-                            <label class="control-label" translate>Titel</label>
+                            <label class="control-label" translate>Titel <i class="icon-info-circled" tooltip="Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie beschrijven. Je kan in de beschrijving meer uitleg geven."></i></label>
                             <input id="popover2" ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="{{'Geef een gepaste titel in'|translate}}" required>
                             <guided-tour ng-if="guide.enabled"  step="2" guide="guide" connected-element="#popover2" alignment="bottom" on-tour-end="guideEnded()" translate>
                                 Elke aanpassing die je maakt, wordt automatisch opgeslaan. Begin met een duidelijke titel. 
@@ -233,37 +233,6 @@
                             </select>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-        <div class="info col-sm-3">
-            <div ng-switch on="nav">
-                <div ng-switch-when="pictures">
-                    <h2>
-                    <i class="icon-lamp"></i>
-                    Tip
-                    </h2>
-                    <p translate>
-                    Foto's zijn het eerste waar iemand op let. Zorg er voor dus dat je veel en duidelijke foto's hebt! Op deze manier zal je advertentie veel sneller verhuurd worden!
-                    </p>
-                </div>
-                <div ng-switch-when="availability">
-                    <h2>
-                    <i class="icon-lamp"></i>
-                    Tip
-                    </h2>
-                    <p translate>
-                    Wanneer de einddatum die je ingegeven hebt verlopen is, zal je advertentie automatisch offline worden gezet.
-                    </p>
-                </div>
-                <div ng-switch-when="general">
-                    <h2>
-                    <i class="icon-lamp"></i>
-                    Tip
-                    </h2>
-                    <p translate>
-                    Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie beschrijven. Je kan in de beschrijving meer uitleg geven.
-                    </p>
                 </div>
             </div>
         </div>

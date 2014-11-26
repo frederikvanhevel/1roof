@@ -25,6 +25,8 @@ angular.module('core').directive('guidedTour', [ '$window',
 
                 var connectedElement = $window.$(scope.connectedElement);
                 var popoverElement = element.find('.popover');
+                var nextButton = element.find('button');
+                var closeButton = element.find('.close');
 
                 if (scope.alignment) popoverElement.addClass(scope.alignment);
                 if (attrs.laststep) {
@@ -69,7 +71,7 @@ angular.module('core').directive('guidedTour', [ '$window',
                     if (newValue !== oldValue) showOrHide(newValue);
                 });
 
-                element.find('button').click(function(e) {
+                nextButton.click(function(e) {
                     scope.guide.step++;
                     scope.$apply();
 
@@ -78,7 +80,7 @@ angular.module('core').directive('guidedTour', [ '$window',
                     e.preventDefault();
                     e.stopPropagation();
                 });
-                element.find('.close').click(function(e) {
+                closeButton.click(function(e) {
                     scope.onTourEnd();
 
                     e.preventDefault();
@@ -87,6 +89,12 @@ angular.module('core').directive('guidedTour', [ '$window',
 
                 element.find('.tour-text').text(scope.content);
                 showOrHide(scope.guide.step);
+
+
+                scope.$on('$destroy', function() {
+                    nextButton.off('click');
+                    closeButton.off('click');
+                });
             },
             controller: function($scope, $transclude) {
                 $transclude(function(clone,scope) {
