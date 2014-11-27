@@ -63,6 +63,10 @@ angular.module('search').directive('mapboxMap', ['$compile', '$q', '$window', '$
                     });
                 });
 
+                scope.$watch('center', function() {
+                    scope.map.setView([scope.center[1], scope.center[0]], scope.zoom);
+                });
+
                 scope.map.on('popupopen', function(e) {
                     var popup = angular.element(document.getElementsByClassName('leaflet-popup-content'));
                     $compile(popup)(scope);

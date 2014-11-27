@@ -34,6 +34,29 @@ function getFavorites() {
     return [];
 }
 
+function getSearchPages() {
+    var links = [];
+    var cities = [
+        'Aalst',
+        'Antwerpen',
+        'Brussel',
+        'Mechelen',
+        'Geel',
+        'Gent',
+        'Genk',
+        'Hasselt',
+        'Kortrijk',
+        'Leuven',
+        'Turnhout'
+    ];
+
+    cities.forEach(function(city) {
+        links.push('/search/' + city + '--België');
+    });
+
+    return links;
+}
+
 function createSitemap(res, urls) {
     var sitemap = sm.createSitemap({
         hostname: config.app.host,
@@ -50,8 +73,8 @@ exports.create = function(req, res) {
     var sitemapItems = [];
 
     BPromise
-      .join(getCommonPages(), getRooms(), getFavorites(), function(common, rooms, favorites) {
-        return common.concat(rooms, favorites);
+      .join(getCommonPages(), getRooms(), getSearchPages(), getFavorites(), function(common, rooms, searchpages, favorites) {
+        return common.concat(rooms, searchpages, favorites);
       }).then(function(result) {
         createSitemap(res, result);
       });

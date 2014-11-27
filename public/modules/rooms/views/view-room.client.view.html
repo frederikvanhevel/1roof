@@ -18,7 +18,7 @@
             <div class="crumbs col-sm-12">
                 <button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> <span translate>Terug naar kaart</span></button>
                 <h1>
-                <i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1 bounce': isInfavorites() }" tooltip="{{ isInfavorites() ? 'Verwijderen van wishlist' : 'Toevoegen aan wishlist' }}" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{::room.info.title != '' ? room.info.title : room.location.street }}
+                <i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1 bounce red': isInfavorites() }" tooltip="{{ isInfavorites() ? 'Verwijderen van wishlist' : 'Toevoegen aan wishlist' }}" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{::room.info.title != '' ? room.info.title : room.location.street }}
                 </h1>
                 <i class="glyphicon" ng-class=""></i>
                 <a ng-href="/search/{{room.location.city}}--{{room.location.country}}">{{::room.location.city}}</a> <i class="icon-right-open"></i> {{::room.location.street}} <i class="icon-right-open"></i> <strong>{{::room.classification}}</strong>
