@@ -8,7 +8,7 @@ module.exports = function(app) {
 
 	// Rooms Routes
 	app.route('/api/rooms')
-		.get(rooms.list)
+		.get(rooms.allowCORS, rooms.list)
 		.post(users.requiresLogin, rooms.createRoomCheck, rooms.create);
 
 	app.route('/api/myrooms')
