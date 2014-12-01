@@ -21,15 +21,15 @@ module.exports = function(app) {
 	// 	.get(rooms.read);
 
 	app.route('/api/rooms/:roomId')
-		.get(rooms.read)
+		.get(rooms.allowCORS, rooms.read)
 		.put(users.requiresLogin, rooms.hasAuthorization, rooms.update)
 	    .delete(users.requiresLogin, rooms.hasAuthorization, rooms.delete);
 
   app.route('/api/rooms/:roomId/message')
-    .post(users.requiresLogin, inbox.sendMessageOrCreate);
+    .post(rooms.allowCORS, users.requiresLogin, inbox.sendMessageOrCreate);
 
    app.route('/api/rooms/:roomId/favorite')
-    .post(users.requiresLogin, rooms.toggleFavorite);
+    .post(rooms.allowCORS, users.requiresLogin, rooms.toggleFavorite);
 
 	app.route('/api/rooms/:roomId/same')
 		.get(rooms.listOfRoomsInSameLocation);
