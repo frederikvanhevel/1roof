@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 var passport = require('passport'),
+core = require('../../app/controllers/core'),
 users = require('../../app/controllers/users'),
 inbox = require('../../app/controllers/inbox'),
 rooms = require('../../app/controllers/rooms'),
@@ -18,9 +19,9 @@ module.exports = function(app) {
     app.route('/api/users/accounts').delete(users.removeOAuthProvider);
 
     // Setting up the users api
-    app.route('/auth/signup').post(users.signup);
-    app.route('/auth/signin').post(users.signin);
-    app.route('/auth/signout').get(users.signout);
+    app.route('/auth/signup').post(core.allowCORS, users.signup);
+    app.route('/auth/signin').post(core.allowCORS, users.signin);
+    app.route('/auth/signout').get(core.allowCORS, users.signout);
 
     app.route('/auth/forgot').post(users.forgot);
     app.route('/auth/reset/:token').get(users.resetGet);
