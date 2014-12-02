@@ -17,6 +17,10 @@ exports.index = function(req, res) {
  */
 exports.allowCORS = function(req, res, next) {
     var token = req.param('token');
+
+    if (req.method == 'OPTIONS') {
+        res.send(200);
+    }
    
     if (token == config.CORStoken) {
         res.header('Access-Control-Allow-Origin', '*');
