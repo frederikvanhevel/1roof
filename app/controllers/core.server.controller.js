@@ -18,10 +18,10 @@ exports.index = function(req, res) {
 exports.allowCORS = function(req, res, next) {
     var params = req.query;
    
-    if (params.token && params.token === config.CORStoken) {
+    // if (params.token && params.token === config.CORStoken) {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Headers', 'X-Requested-With');
-    }
+    // }
 
     next();
 };
