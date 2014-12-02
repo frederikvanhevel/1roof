@@ -2,7 +2,8 @@
 
 var schedule = require('node-schedule'),
   mailer = require('../app/util/mailer'),
-  roomAvailabilityJob = require('./jobs/room-availability'),
+  roomAvailabilityCheckJob = require('./jobs/room-availability-check'),
+  roomPicturesCheckJob = require('./jobs/room-pictures-check'),
   messageCheckJob = require('./jobs/newmessage-check'),
   newRoomsJob = require('./jobs/new-rooms'),
   invitationJob = require('./jobs/send-invitation');
@@ -13,7 +14,8 @@ exports.start = function() {
   everyday.hour = 2;
   everyday.minute = 0;
 
-  schedule.scheduleJob(everyday, roomAvailabilityJob.run);
+  schedule.scheduleJob(everyday, roomAvailabilityCheckJob.run);
+  // schedule.scheduleJob(everyday, roomPicturesCheckJob.run);
   schedule.scheduleJob(everyday, messageCheckJob.run);
 
 
