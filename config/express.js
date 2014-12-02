@@ -126,6 +126,15 @@ module.exports = function(db) {
     // Setting the app router and static folder
     app.use(express.static(path.resolve('./public')));
 
+    // Enable CORS resuests
+    app.use(function(req, res, next) {
+        if (req.method == 'OPTIONS') {
+            res.send(200);
+        } else {
+            next();
+        }
+    });
+
     // SEO functions
     app.use(seo({
         cacheClient: 'disk', // Can be 'disk' or 'redis'
