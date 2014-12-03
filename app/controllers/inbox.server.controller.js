@@ -82,23 +82,6 @@ exports.read = function(req, res) {
 	res.jsonp(req.inbox);
 };
 
-
-/**
- * Create an Inbox
- */
-exports.create = function(req, res) {
-  var inbox = new Inbox(req.body);
-
-  inbox.save(function(err) {
-    if (err) {
-      winston.error('Error creating inbox');
-      return res.send(400);
-    } else {
-      res.jsonp(inbox);
-    }
-  });
-};
-
 /**
  * Update an Inbox
  */

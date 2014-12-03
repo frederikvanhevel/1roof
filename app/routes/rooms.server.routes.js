@@ -26,11 +26,11 @@ module.exports = function(app) {
 		.put(users.requiresLogin, rooms.hasAuthorization, rooms.update)
 	    .delete(users.requiresLogin, rooms.hasAuthorization, rooms.delete);
 
-  app.route('/api/rooms/:roomId/message')
-    .post(users.requiresLogin, inbox.sendMessageOrCreate);
+  	app.route('/api/rooms/:roomId/message')
+    	.post(users.requiresLogin, inbox.sendMessageOrCreate);
 
-   app.route('/api/rooms/:roomId/favorite')
-    .post(users.requiresLogin, rooms.toggleFavorite);
+   	app.route('/api/rooms/:roomId/favorite')
+    	.post(users.requiresLogin, rooms.toggleFavorite);
 
 	app.route('/api/rooms/:roomId/same')
 		.get(rooms.listOfRoomsInSameLocation);
