@@ -9,7 +9,7 @@ module.exports = function(app) {
 
 	// Rooms Routes
 	app.route('/api/rooms')
-		.get(core.allowCORS, rooms.list)
+		.get(rooms.list)
 		.post(users.requiresLogin, rooms.createRoomCheck, rooms.create);
 
 	app.route('/api/myrooms')
@@ -22,15 +22,15 @@ module.exports = function(app) {
 	// 	.get(rooms.read);
 
 	app.route('/api/rooms/:roomId')
-		.get(core.allowCORS, rooms.read)
+		.get(rooms.read)
 		.put(users.requiresLogin, rooms.hasAuthorization, rooms.update)
 	    .delete(users.requiresLogin, rooms.hasAuthorization, rooms.delete);
 
   app.route('/api/rooms/:roomId/message')
-    .post(core.allowCORS, users.requiresLogin, inbox.sendMessageOrCreate);
+    .post(users.requiresLogin, inbox.sendMessageOrCreate);
 
    app.route('/api/rooms/:roomId/favorite')
-    .post(core.allowCORS, users.requiresLogin, rooms.toggleFavorite);
+    .post(users.requiresLogin, rooms.toggleFavorite);
 
 	app.route('/api/rooms/:roomId/same')
 		.get(rooms.listOfRoomsInSameLocation);
