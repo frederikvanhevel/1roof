@@ -13,7 +13,7 @@
             <ul class="sidenav">
                 <li data-ng-repeat="other in inboxes" ng-class="{ active: other._id == inbox._id }">
                     <a href="" ng-click="showInbox(other._id)">
-                        <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="glyphicon glyphicon-exclamation-sign"></i></span>
+                        <span ng-show="other.hasUnreadMessages && other._id !== inbox._id" class="pull-right"><i class="icon-attention-1"></i></span>
                         <div class="profile-picture" ng-style="getUserPicture(other)"></div>
                         <div class="sender-name">{{other.sender._id == authentication.user._id ? other.roomOwner.displayName : other.sender.displayName }}</div>
                     </a>

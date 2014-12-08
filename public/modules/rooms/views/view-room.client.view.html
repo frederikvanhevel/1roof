@@ -20,7 +20,6 @@
                 <h1>
                 <i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1 bounce red': isInfavorites() }" tooltip="{{ isInfavorites() ? 'Verwijderen van wishlist' : 'Toevoegen aan wishlist' }}" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{::room.info.title != '' ? room.info.title : room.location.street }}
                 </h1>
-                <i class="glyphicon" ng-class=""></i>
                 <a ng-href="/search/{{room.location.city}}--{{room.location.country}}">{{::room.location.city}}</a> <i class="icon-right-open"></i> {{::room.location.street}} <i class="icon-right-open"></i> <strong>{{::room.classification}}</strong>
                 <span class="text-muted pull-right" translate>Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}</span>
             </div>
@@ -101,12 +100,12 @@
                         <div class="room-properties col-xs-12 col-sm-5">
                             <ul>
                                 <li>
-                                    <i class="glyphicon glyphicon-calendar"></i>
+                                    <i class="icon-calendar-1"></i>
                                     <span ng-if="room.available.immediately"><strong translate>Onmiddelijk beschikbaar!</strong></span>
                                     <span ng-if="!room.available.immediately"><span translate>Beschikbaar van</span> <strong>{{ room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                                     <span ng-if="!room.available.immediately" ng-show="room.available.till"><span translate>tot</span> <strong>{{ room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                                 </li>
-                                <li><i class="glyphicon glyphicon-time"></i> <span translate>Bijgewerkt</span> <span am-time-ago="room.updated"></span></li>
+                                <li><i class="icon-clock"></i> <span translate>Bijgewerkt</span> <span am-time-ago="room.updated"></span></li>
                             </ul>
                         </div>
                         <div class="room-extras col-xs-12 col-sm-7">
@@ -119,7 +118,7 @@
             </div>
             <div class="contact-bottom text-center">
                 <h3 translate>Klaar om contact op te nemen met de eigenaar?</h3>
-                <button ng-click="openContactModal()" class="btn"><i class="glyphicon glyphicon-ok"></i> <span translate>Stuur een bericht</span></button>
+                <button ng-click="openContactModal()" class="btn"><i class="icon-ok"></i> <span translate>Stuur een bericht</span></button>
             </div>
             <div ng-hide="::otherRooms.length == 0">
                 <h4 translate>{{::otherRooms.length}} andere ruimte(n) in deze woning</h4>
@@ -147,12 +146,12 @@
                             <div class="room-properties col-xs-12 col-sm-5">
                                 <ul>
                                     <li>
-                                        <i class="glyphicon glyphicon-calendar"></i>
+                                        <i class="icon-calendar-1"></i>
                                         <span ng-if="otherRoom.available.immediately"><strong translate>Onmiddelijk beschikbaar!</strong></span>
                                         <span ng-if="!otherRoom.available.immediately"><span translate>Beschikbaar van</span> <strong>{{ otherRoom.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                                         <span ng-if="!otherRoom.available.immediately" ng-show="otherRoom.available.till"><span translate>tot</span> <strong>{{ otherRoom.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                                     </li>
-                                    <li><i class="glyphicon glyphicon-time"></i> <span translate>Bijgewerkt</span> <span am-time-ago="otherRoom.updated"></span></li>
+                                    <li><i class="icon-clock"></i> <span translate>Bijgewerkt</span> <span am-time-ago="otherRoom.updated"></span></li>
                                 </ul>
                             </div>
                             <div class="room-extras col-xs-12 col-sm-7">
@@ -178,7 +177,7 @@
                     <form role="form">
                         <h5 translate>Vragen over deze ruimte?</h5>
                         <h6><i class="icon-user"></i> {{::room.user.displayName}}</h6>
-                        <button ng-click="openContactModal()" class="btn btn-block"><i class="glyphicon glyphicon-envelope"></i> <span translate>Bericht versturen</span></button>
+                        <button ng-click="openContactModal()" class="btn btn-block"><i class="icon-mail-1"></i> <span translate>Bericht versturen</span></button>
                     </form>
                 </div>
             </div>

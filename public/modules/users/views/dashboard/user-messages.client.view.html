@@ -8,7 +8,7 @@
             </div>
             <div class="list-group">
                 <a ng-href="/dashboard/messages/{{inbox._id}}" class="list-group-item" ng-repeat="inbox in inboxes">
-                    <button class="btn btn-sm pull-right hidden-xs"><span translate>Antwoorden</span> <i class="glyphicon glyphicon-share-alt"></i></button>
+                    <button class="btn btn-sm pull-right hidden-xs"><span translate>Antwoorden</span> <i class="icon-reply"></i></button>
                     <h4 class="list-group-item-heading">
                     <i ng-if="unreadMessages(inbox) > 0" class="unread icon-asterisk"></i>
                         {{inbox.sender._id == authentication.user._id ? inbox.roomOwner.displayName : inbox.sender.displayName }}
