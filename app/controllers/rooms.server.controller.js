@@ -118,6 +118,8 @@ exports.list = function(req, res) {
     }
 
     if (params.location) {
+        if (typeof params.location === 'string') params.location = params.location.split(',');
+        
         query.loc = {
             $near: {
                 $geometry: {

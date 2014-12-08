@@ -6,6 +6,7 @@ module.exports = function(app) {
 
   // Inbox Routes
   app.route('/api/inbox')
+    .post(users.requiresLogin, inbox.create)
     .get(users.requiresLogin, inbox.list);
 
   app.route('/api/inbox/:inboxId')

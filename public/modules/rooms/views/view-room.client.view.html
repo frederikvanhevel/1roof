@@ -87,7 +87,7 @@
                                 </tr>
                             </table> -->
                             <h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2>
-                            <a href="#"><i class="icon-info-circle"></i> <span translate>Meer informatie</span></a>
+                            <!-- <a href="#"><i class="icon-info-circle"></i> <span translate>Meer informatie</span></a> -->
                         </div>
                     </div>
                     <div class="room-header row" ng-if="room.cohabit.active">
@@ -103,8 +103,8 @@
                                 <li>
                                     <i class="glyphicon glyphicon-calendar"></i>
                                     <span ng-if="room.available.immediately"><strong translate>Onmiddelijk beschikbaar!</strong></span>
-                                    <span ng-if="!room.available.immediately"><span translate>Beschikbaar van</span> <strong>{{ ::room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-                                    <span ng-if="!room.available.immediately" ng-show="room.available.till"><span translate>tot</span> <strong>{{ ::room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                    <span ng-if="!room.available.immediately"><span translate>Beschikbaar van</span> <strong>{{ room.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                    <span ng-if="!room.available.immediately" ng-show="room.available.till"><span translate>tot</span> <strong>{{ room.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                                 </li>
                                 <li><i class="glyphicon glyphicon-time"></i> <span translate>Bijgewerkt</span> <span am-time-ago="room.updated"></span></li>
                             </ul>
@@ -149,8 +149,8 @@
                                     <li>
                                         <i class="glyphicon glyphicon-calendar"></i>
                                         <span ng-if="otherRoom.available.immediately"><strong translate>Onmiddelijk beschikbaar!</strong></span>
-                                        <span ng-if="!otherRoom.available.immediately"><span translate>Beschikbaar van</span> <strong>{{ ::otherRoom.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
-                                        <span ng-if="!otherRoom.available.immediately" ng-show="otherRoom.available.till"><span translate>tot</span> <strong>{{ ::otherRoom.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                        <span ng-if="!otherRoom.available.immediately"><span translate>Beschikbaar van</span> <strong>{{ otherRoom.available.from | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
+                                        <span ng-if="!otherRoom.available.immediately" ng-show="otherRoom.available.till"><span translate>tot</span> <strong>{{ otherRoom.available.till | amDateFormat: 'ddd D MMM YYYY'}}</strong></span>
                                     </li>
                                     <li><i class="glyphicon glyphicon-time"></i> <span translate>Bijgewerkt</span> <span am-time-ago="otherRoom.updated"></span></li>
                                 </ul>

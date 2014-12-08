@@ -67,7 +67,7 @@ exports.sendMessage = function(req, res) {
     } else {
       res.jsonp(message);
 
-      var notifyUser = message.sender.equals(inbox.roomOwner._id) ? inbox.sender._id : inbox.roomOwner._id;
+      var notifyUser = message.sender.equals(inbox.room.user._id) ? inbox.sender._id : inbox.room.user._id;
 
       req.io.sockets.in(inbox._id).emit('newMessage', message);
       req.io.sockets.in(notifyUser).emit('newMessageCount', { count: 1, inbox: inbox._id });
@@ -80,6 +80,36 @@ exports.sendMessage = function(req, res) {
  */
 exports.read = function(req, res) {
 	res.jsonp(req.inbox);
+};
+
+/**
+ * Create an Inbox
+ */
+exports.create = function(req, res) {
+  var inbox = new Inbox(req.body);
+  inbox.sender = req.user._id;
+
+  Inbox.findOne({ $or: [ {'sender': inbox.sender }, { 'room': inbox.roomId } ] })
+  .exec(function(err, inbox) {
+    if (err) {
+      winston.error('Error finding inboxes');
+      return res.send(400);
+    } else {
+      if (inbox) {
+        res.jsonp(inbox);
+      } else {
+        inbox.save(function(err) {
+          if (err) {
+            winston.error('Error creating inbox', inbox._id);
+            return res.send(400);
+          } else {
+            res.jsonp(inbox);
+          }
+        });
+      }
+    }
+  });
+
 };
 
 /**
