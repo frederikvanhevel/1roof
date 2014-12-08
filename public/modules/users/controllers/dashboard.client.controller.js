@@ -6,7 +6,7 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
         $scope.nav = 'rooms';
 
         // If user is not signed in then redirect back home
-        if (!Authentication.user) $location.path('/');
+        if (!Authentication.user) $location.path('/signin');
 
         // Init
         $scope.init = function() {

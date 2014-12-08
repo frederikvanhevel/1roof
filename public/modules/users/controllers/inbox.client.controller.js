@@ -7,7 +7,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
         $scope.busy = false;
 
         // If user is not signed in then redirect back home
-        if (!Authentication.user) $location.path('/');
+        if (!Authentication.user) $location.path('/signin');
 
         $scope.init = function() {
             $scope.findOne($stateParams.inboxId);
