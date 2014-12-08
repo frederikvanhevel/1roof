@@ -7671,11 +7671,11 @@ footer .footer-bottom .social-buttons li {
   .home-view #hero .raster .hero-content h1 {
     display: inline;
     color: white !important;
-    background: rgba(80, 106, 133, 0.8);
-    box-shadow: -0.5em 0 0 rgba(80, 106, 133, 0.8), 0.5em 0 0 rgba(80, 106, 133, 0.8);
+    background: #506a85;
+    box-shadow: -0.5em 0 0 #506a85, 0.5em 0 0 #506a85;
     padding: 15px;
     padding-right: 15px;
-    font-size: 30px;
+    font-size: 55px;
   }
 }
 .home-view #hero .raster .hero-content h1 {
@@ -7683,7 +7683,7 @@ footer .footer-bottom .social-buttons li {
   color: white;
   padding-right: 15px;
   font-size: 23px;
-  color: rgba(80, 106, 133, 0.8);
+  color: #506a85;
 }
 .home-view #hero .raster .hero-content h1 span {
   margin-bottom: 10px;
