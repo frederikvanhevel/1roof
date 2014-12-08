@@ -7,9 +7,11 @@
 
     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
         height: 535px;
+        top: 0;
     }
 
     position: relative;
+    top: -50px;
 
     .video-container {
       position: absolute;
@@ -47,61 +49,39 @@
       height: 100%;
 
       .hero-content {
-        padding-top: 200px;
+        padding-top: 145px;
 
-        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-            padding-top: 145px;
-        }
-
-        .home-dialog {
-          width: 100%;
-          top: 150px;
-          position: absolute;
-          padding: 10px;
-          z-index: 999;
-          text-align: left;
-          color: #fafafa;
-          left: 5%;
+        @media only screen and (min-device-width : 480px) {
+          padding-top: 200px;
 
           h1 {
-            font-size: 33px;
-            line-height: 53px;
-            margin-bottom: 0;
-            color: white;
-
-            .h1-title {
-              text-transform: uppercase;
-              background-color: rgba(80, 106, 133, .8);
-              padding: 10px 24px 5px 7px;
-              // font-style: italic;
-            }
-
-            .h1-newline {
-              background-color: rgba(80, 106, 133, .8);
-              font-size: 15px;
-              padding: 5px 13px 5px 13px
-            }
-          }
-
-          input {
-            opacity: .9;
-
-            &:focus {
-              opacity: 1;
-            }
+            display: inline;
+            color: white !important;
+            background: rgba(80, 106, 133, .8);
+            box-shadow: -.500em 0 0 rgba(80, 106, 133, .8), .500em 0 0 rgba(80, 106, 133, .8);
+            padding: 15px;
+            padding-right: 15px;
+            font-size: 30px;
           }
         }
 
         h1 {
-          // display: inline;
-          // color: white;
-          // background: rgba(80, 106, 133, .8);
-          // box-shadow: -.500em 0 0 rgba(80, 106, 133, .8), .500em 0 0 rgba(80, 106, 133, .8);
-          // padding: 15px;
-          // padding-right: 15px;
+          display: inline;
+          color: white;
+          padding-right: 15px;
+          font-size: 23px;
+          color: rgba(80, 106, 133, .8);
 
           span {
             margin-bottom: 10px;
+          }
+        }
+
+        input {
+          opacity: .9;
+
+          &:focus {
+            opacity: 1;
           }
         }
 

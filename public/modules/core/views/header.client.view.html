@@ -5,7 +5,7 @@
             <a class="btn responsive-menu pull-right collapsed navbar-toggle" data-ng-click="toggleCollapsibleMenu()" data-toggle="collapse" data-target=".navbar-collapse"><i class="icon-menu-1"></i></a>
         </div>
         <nav class="collapse navbar-collapse" collapse="isCollapsed" role="navigation">
-            <form ng-submit="goToSearch()" class="navbar-form navbar-left top-search" role="search">
+            <form ng-submit="goToSearch()" class="navbar-form navbar-left top-search" role="search" ng-if="!isHomepage">
                 <div class="input-group input-group-sm">
                     <input  ng-autocomplete details="searchDetails" options="autocompleteOptions" ng-model="search" class="form-control" placeholder="{{'Waar wil je naartoe?'|translate}}" name="srch-term" type="text">
                     <div class="input-group-btn">
