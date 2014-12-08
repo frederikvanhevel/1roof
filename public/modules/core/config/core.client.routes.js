@@ -8,14 +8,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 
         // Home state routing
         $stateProvider.
-        // state('home', {
-        //     url: '/',
-        //     templateUrl: '/modules/core/views/home.client.view.html'
-        // }).
-        state('comingsoon', {
+        state('home', {
             url: '/',
-            templateUrl: '/modules/core/views/comingsoon.client.view.html'
+            templateUrl: '/modules/core/views/home.client.view.html'
         }).
+        // state('comingsoon', {
+        //     url: '/',
+        //     templateUrl: '/modules/core/views/comingsoon.client.view.html'
+        // }).
         state('pricing', {
             url: '/pricing?coupon',
             params: {

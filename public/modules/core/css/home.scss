@@ -24,6 +24,10 @@
       background-position: 50% 50%;
       background-repeat: no-repeat;
 
+      @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+          display: none;
+      }
+
       video {
         visibility: visible;
         margin: auto;
@@ -49,20 +53,52 @@
             padding-top: 145px;
         }
 
-        h1 {
-          display: inline;
-          color: white;
-          // text-shadow:
-          //   -1px -1px 0 #000,
-          //   1px -1px 0 #000,
-          //   -1px 1px 0 #000,
-          //   1px 1px 0 #000;
+        .home-dialog {
+          width: 100%;
+          top: 150px;
+          position: absolute;
+          padding: 10px;
+          z-index: 999;
+          text-align: left;
+          color: #fafafa;
+          left: 5%;
 
-          // added for comingsoon page
-          background: #506A85;
-          box-shadow: -.500em 0 0 #506A85, .500em 0 0 #506A85;
-          padding: 15px;
-          padding-right: 15px;
+          h1 {
+            font-size: 33px;
+            line-height: 53px;
+            margin-bottom: 0;
+            color: white;
+
+            .h1-title {
+              text-transform: uppercase;
+              background-color: rgba(80, 106, 133, .8);
+              padding: 10px 24px 5px 7px;
+              // font-style: italic;
+            }
+
+            .h1-newline {
+              background-color: rgba(80, 106, 133, .8);
+              font-size: 15px;
+              padding: 5px 13px 5px 13px
+            }
+          }
+
+          input {
+            opacity: .9;
+
+            &:focus {
+              opacity: 1;
+            }
+          }
+        }
+
+        h1 {
+          // display: inline;
+          // color: white;
+          // background: rgba(80, 106, 133, .8);
+          // box-shadow: -.500em 0 0 rgba(80, 106, 133, .8), .500em 0 0 rgba(80, 106, 133, .8);
+          // padding: 15px;
+          // padding-right: 15px;
 
           span {
             margin-bottom: 10px;

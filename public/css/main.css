@@ -7639,6 +7639,11 @@ footer .footer-bottom .social-buttons li {
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .home-view #hero .video-container {
+    display: none;
+  }
+}
 .home-view #hero .video-container video {
   visibility: visible;
   margin: auto;
@@ -7662,13 +7667,37 @@ footer .footer-bottom .social-buttons li {
     padding-top: 145px;
   }
 }
-.home-view #hero .raster .hero-content h1 {
-  display: inline;
+.home-view #hero .raster .hero-content .home-dialog {
+  width: 100%;
+  top: 150px;
+  position: absolute;
+  padding: 10px;
+  z-index: 999;
+  text-align: left;
+  color: #fafafa;
+  left: 5%;
+}
+.home-view #hero .raster .hero-content .home-dialog h1 {
+  font-size: 33px;
+  line-height: 53px;
+  margin-bottom: 0;
   color: white;
-  background: #506A85;
-  box-shadow: -.500em 0 0 #506A85, .500em 0 0 #506A85;
-  padding: 15px;
-  padding-right: 15px;
+}
+.home-view #hero .raster .hero-content .home-dialog h1 .h1-title {
+  text-transform: uppercase;
+  background-color: rgba(80, 106, 133, 0.8);
+  padding: 10px 24px 5px 7px;
+}
+.home-view #hero .raster .hero-content .home-dialog h1 .h1-newline {
+  background-color: rgba(80, 106, 133, 0.8);
+  font-size: 15px;
+  padding: 5px 13px 5px 13px;
+}
+.home-view #hero .raster .hero-content .home-dialog input {
+  opacity: .9;
+}
+.home-view #hero .raster .hero-content .home-dialog input:focus {
+  opacity: 1;
 }
 .home-view #hero .raster .hero-content h1 span {
   margin-bottom: 10px;
