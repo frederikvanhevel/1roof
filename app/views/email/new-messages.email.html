@@ -1,0 +1,42 @@
+{% extends 'layout.email.html' %}
+
+{% block content %}
+
+  <!-- Full Width, Fluid Column : BEGIN -->
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            <h1 style="text-align:center;">Je hebt nieuwe berichten!</h1>
+
+            <br>
+
+            Hey <%=  user.firstName  %>,
+            <br><br>
+            Je hebt nieuwe berichten ontvangen over een advertentie die je hebt geplaatst op 1roof.be
+            <br><br>
+            Ga naar de website om de reacties te bekijken en erop te antwoorden.
+            <br>
+            <hr class="line">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <!-- Full Width, Fluid Column : END -->
+
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            <a target="_blank" href="<%=  app.host  %>" class="button">Ga naar de website</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+
+{% endblock %}

@@ -10,7 +10,7 @@ exports.send = function(template, context, to, subject) {
 
   var options = {
     root: path.join(__dirname, '../views/email'),
-    // any other swig options allowed here
+    varControls: ['<%=', '%>']
   };
 
   emailTemplates(options, function(err, render) {
