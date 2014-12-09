@@ -22,9 +22,10 @@
         </div>
         <div class="sidebar-header">
             <small class="text-center" ng-if="results.length > 0" translate>{{results.length}} advertentie(s) gevonden</small>
-            <small class="text-center" ng-if="results.length == 0" translate>
-            Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.
-            </small>
+            <span class="text-center" ng-if="results.length == 0" translate>
+                <h2 class="empty-icon text-center"><i class="icon-home-1"></i></h2>
+                <p class="lead text-center" translate>Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.</p>
+            </span>
         </div>
         <div class="search-results">
             <ul class="results-list">

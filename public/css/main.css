@@ -8118,6 +8118,9 @@ SEARCH MODULE
 .search-view .sidebar .filter.type-filter .maki-icon {
   margin: 0 auto;
 }
+.search-view .sidebar .empty-icon {
+  opacity: 0.6;
+}
 .search-view .sidebar .newrooms-email {
   margin: 0;
   margin-left: 9px;
