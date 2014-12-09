@@ -21,7 +21,7 @@ function getRooms() {
         if (err) defer.reject(err);
         else {
             defer.resolve(rooms.map(function(room) {
-                return { url: room.url };
+                return { url: room.url, lastmod: room.updated };
             }));
         }
     });
