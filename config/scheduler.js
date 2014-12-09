@@ -15,8 +15,13 @@ exports.start = function() {
 
   schedule.scheduleJob(everyday, roomAvailabilityCheckJob.run);
   // schedule.scheduleJob(everyday, roomPicturesCheckJob.run);
-  schedule.scheduleJob(everyday, messageCheckJob.run);
 
+  var threedays = new schedule.RecurrenceRule();
+  threedays.dayOfWeek = [1, 3, 5];
+  threedays.hour = 12;
+  threedays.minute = 0;
+
+  schedule.scheduleJob(threedays, messageCheckJob.run);
 
   var weekly = new schedule.RecurrenceRule();
   weekly.dayOfWeek = 0;
