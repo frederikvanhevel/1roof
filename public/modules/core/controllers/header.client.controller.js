@@ -3,11 +3,15 @@
 angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics', 'Meta',
     function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics, Meta) {
         $scope.authentication = Authentication;
+
         $scope.isCollapsed = true;
-        $scope.search = '';
-        $scope.searchDetails = {};
-        $scope.autocompleteOptions = { types: '(cities)', country: 'be' };
         $scope.unreadMessageCount = 0;
+
+        $scope.search = {
+            input: '',
+            details: {},
+            autocompleteOptions: { types: '(cities)', country: 'be' }
+        };
         
         $scope.init = function() {
             $scope.isHomepage = document.location.pathname === '/';
@@ -40,14 +44,18 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         };
 
         $scope.goToSearch = function() {
-            if ($scope.searchDetails.geometry) {
-                changeLocation($scope.search.replace(/, /g, '--'), $scope.searchDetails.geometry.location.lat(), $scope.searchDetails.geometry.location.lng());
+            if ($scope.search.details.geometry) {
+                changeLocation(
+                    $scope.search.input.replace(/, /g, '--'),
+                    $scope.search.details.geometry.location.lat(),
+                    $scope.search.details.geometry.location.lng()
+                );
             } else {
-                Geocoder.geocodeAddress($scope.search).then(function(result) {
+                Geocoder.geocodeAddress($scope.search.input).then(function(result) {
                     changeLocation(result.formattedAddress.replace(/, /g, '--'), result.lat, result.lng);
                 });
             }
-            $scope.searchDetails = {};
+            $scope.search.details = {};
         };
 
         $scope.openSignupModal = function() {
