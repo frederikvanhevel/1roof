@@ -7680,6 +7680,9 @@ footer .footer-bottom .social-buttons li {
     font-size: 75px;
     font-style: italic;
   }
+  .home-view #hero .raster .hero-content h1:not(:first-child) {
+    line-height: 58px;
+  }
   .home-view #hero .raster .hero-content form input {
     font-size: 26px !important;
   }

@@ -58,6 +58,10 @@
               font-size: 75px;
               font-style: italic;
             }
+
+            &:not(:first-child) {
+              line-height: 58px;
+            }
           }
 
           form {
