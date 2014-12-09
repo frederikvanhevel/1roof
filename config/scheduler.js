@@ -5,8 +5,7 @@ var schedule = require('node-schedule'),
   roomAvailabilityCheckJob = require('./jobs/room-availability-check'),
   roomPicturesCheckJob = require('./jobs/room-pictures-check'),
   messageCheckJob = require('./jobs/newmessage-check'),
-  newRoomsJob = require('./jobs/new-rooms'),
-  invitationJob = require('./jobs/send-invitation');
+  newRoomsJob = require('./jobs/new-rooms');
 
 exports.start = function() {
 
@@ -25,8 +24,4 @@ exports.start = function() {
   weekly.minute = 0;
 
   schedule.scheduleJob(weekly, newRoomsJob.run);
-
-
-  // invitationJob.run();
-
 };

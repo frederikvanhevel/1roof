@@ -7518,6 +7518,14 @@ header.navbar .btn.responsive-menu.navbar-toggle {
 header.navbar .top-search input {
   font-size: 16px;
 }
+@media only screen and (min-device-width: 480px) {
+  header.navbar .top-search input {
+    width: 220px !important;
+  }
+}
+header.navbar .top-search input, header.navbar .top-search button {
+  height: 33px !important;
+}
 header.navbar .profile .profile-name {
   margin-left: 40px;
 }
@@ -7641,11 +7649,6 @@ footer .footer-bottom .social-buttons li {
   background-position: 50% 50%;
   background-repeat: no-repeat;
 }
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  .home-view #hero .video-container {
-    display: none;
-  }
-}
 .home-view #hero .video-container video {
   visibility: visible;
   margin: auto;
@@ -7662,20 +7665,26 @@ footer .footer-bottom .social-buttons li {
   height: 100%;
 }
 .home-view #hero .raster .hero-content {
-  padding-top: 145px;
+  padding-top: 55px;
 }
 @media only screen and (min-device-width: 480px) {
   .home-view #hero .raster .hero-content {
     padding-top: 200px;
   }
   .home-view #hero .raster .hero-content h1 {
-    display: inline;
-    color: white !important;
-    background: #506a85;
-    box-shadow: -0.5em 0 0 #506a85, 0.5em 0 0 #506a85;
     padding: 15px;
     padding-right: 15px;
     font-size: 55px;
+  }
+  .home-view #hero .raster .hero-content h1:first-child {
+    font-size: 75px;
+    font-style: italic;
+  }
+  .home-view #hero .raster .hero-content form input {
+    font-size: 26px !important;
+  }
+  .home-view #hero .raster .hero-content form button, .home-view #hero .raster .hero-content form input {
+    height: 56px;
   }
 }
 .home-view #hero .raster .hero-content h1 {
@@ -7684,15 +7693,16 @@ footer .footer-bottom .social-buttons li {
   padding-right: 15px;
   font-size: 23px;
   color: #506a85;
+  background: rgba(80, 106, 133, 0.7);
+  box-shadow: -0.5em 0 0 rgba(80, 106, 133, 0.7), 0.5em 0 0 rgba(80, 106, 133, 0.7);
+  color: white !important;
+}
+.home-view #hero .raster .hero-content h1:first-child {
+  font-size: 30px;
+  font-style: italic;
 }
 .home-view #hero .raster .hero-content h1 span {
   margin-bottom: 10px;
-}
-.home-view #hero .raster .hero-content input {
-  opacity: .9;
-}
-.home-view #hero .raster .hero-content input:focus {
-  opacity: 1;
 }
 .home-view #hero .raster .hero-content a {
   margin-top: 30px;
@@ -7700,6 +7710,16 @@ footer .footer-bottom .social-buttons li {
 }
 .home-view #hero .raster .hero-content form {
   margin-top: 30px;
+  position: relative;
+  left: -11px;
+  top: 30px;
+}
+.home-view #hero .raster .hero-content form input {
+  opacity: .9;
+  font-size: 16px;
+}
+.home-view #hero .raster .hero-content form input:focus {
+  opacity: 1;
 }
 .home-view #share .col-sm-4 {
   padding: 0;

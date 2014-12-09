@@ -1,24 +1,24 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: 1roof\n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.6.10\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Language: en\n"
-
-#: public/modules/core/views/home.client.view.html
-msgid "&lt;&lt;naam&gt;&gt; vindt de beste koten voor jou overal in Belgïe"
-msgstr ""
 
 #: public/modules/core/views/pricing.client.view.html
 msgid "/ Maand"
 msgstr "/ Month"
+
+#: public/modules/core/views/home.client.view.html
+msgid "1roof"
+msgstr ""
 
 #: public/modules/users/views/reset.client.view.html
 msgid "Aanpassen"
@@ -175,6 +175,11 @@ msgstr "Contract"
 msgid "Delen"
 msgstr "Share"
 
+#: public/modules/users/views/favorites.client.view.html
+#, fuzzy
+msgid "Deze persoon heeft nog geen advertenties in zijn wishlist geplaatst"
+msgstr "No ads in this wishlist"
+
 #: public/modules/rooms/services/amenity.client.service.js
 msgid "Domicilie verplicht"
 msgstr "Domicile required"
@@ -244,19 +249,6 @@ msgstr "Bike shed"
 msgid "Foto uploaden"
 msgstr "Upload image"
 
-#: public/modules/rooms/views/edit-room.client.view.html
-msgid ""
-"Foto's zijn het eerste waar iemand op let. Zorg er voor dus dat je veel en "
-"duidelijke foto's hebt! Op deze manier zal je advertentie veel sneller "
-"verhuurd worden!"
-msgstr ""
-"Photos are the first thing that someone pays attention to. Make sure that "
-"you have alot clear images! This way your ad will be leased much faster!"
-
-#: public/modules/core/views/home.client.view.html
-msgid "Ga"
-msgstr "Go"
-
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Ga verder"
 msgstr "Continue"
@@ -264,14 +256,6 @@ msgstr "Continue"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Gas, elektriciteit en water (optioneel)"
 msgstr "Gas, electricity and water (optional)"
-
-#: public/modules/rooms/views/edit-room.client.view.html
-msgid ""
-"Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie "
-"beschrijven. Je kan in de beschrijving meer uitleg geven."
-msgstr ""
-"Use a couple of good keywords in the title that describe your ad "
-"immediately . You can provide more information in the description."
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Geef een duidelijke beschrijving over je ruimte"
@@ -448,10 +432,6 @@ msgstr "Maximum 8 pictures per space"
 msgid "Meer info"
 msgstr "More info"
 
-#: public/modules/rooms/views/view-room.client.view.html
-msgid "Meer informatie"
-msgstr "More information"
-
 #: public/modules/core/views/comingsoon.client.view.html
 #: public/modules/core/views/home.client.view.html
 msgid ""
@@ -502,10 +482,6 @@ msgstr "Get new password"
 msgid "Nieuwe account"
 msgstr "New account"
 
-#: public/modules/users/views/favorites.client.view.html
-msgid "Nog geen advertenties in deze wishlist"
-msgstr "No ads in this wishlist"
-
 #: public/modules/rooms/views/analytics.client.view.html
 msgid "Nog geen data beschikbaar"
 msgstr "No data available"
@@ -532,7 +508,7 @@ msgstr "Available immediately!"
 
 #: public/modules/core/views/home.client.view.html
 msgid "Ontdek prachtige accomodaties overal in België"
-msgstr ""
+msgstr "Discover beautiful homes everywhere in Belgium"
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Oppervlakte"
@@ -619,8 +595,13 @@ msgid "Terug naar kaart"
 msgstr "Back to map"
 
 #: public/modules/rooms/views/edit-room.client.view.html
-msgid "Titel"
-msgstr "Title"
+msgid ""
+"Titel <i class=\"icon-info-circled\" tooltip=\"Gebruik voor de titel enkele "
+"kernwoorden die onmiddelijk je advertentie beschrijven. Je kan in de "
+"beschrijving meer uitleg geven.\"></i>"
+msgstr ""
+"Title <i class=\"icon-info-circled\" tooltip=\"Choose some good keywords for "
+"the title.\"></i>"
 
 #: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Toegevoegd aan favorieten!"
@@ -680,8 +661,8 @@ msgstr "Enter your email"
 
 #: public/modules/core/views/header.client.view.html
 #: public/modules/core/views/home.client.view.html
-msgid "Waar wil je naartoe?"
-msgstr "Where do you want to go?"
+msgid "Waar wil je iets huren?"
+msgstr "Where do you want to rent something?"
 
 #: public/modules/users/views/signup.client.view.html
 msgid "Wachtwoord"
@@ -694,12 +675,6 @@ msgstr "Reset password"
 #: public/modules/users/views/signin.client.view.html
 msgid "Wachtwoord vergeten?"
 msgstr "Forgot password?"
-
-#: public/modules/rooms/views/edit-room.client.view.html
-msgid ""
-"Wanneer de einddatum die je ingegeven hebt verlopen is, zal je advertentie "
-"automatisch offline worden gezet."
-msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid ""
@@ -717,6 +692,10 @@ msgstr ""
 msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"
 msgstr ""
 
+#: public/modules/core/views/home.client.view.html
+msgid "Zoeken"
+msgstr "Search"
+
 #: public/modules/search/views/search.client.view.html
 msgid "Zoekopdracht verfijnen"
 msgstr "Refine search"
@@ -732,6 +711,10 @@ msgstr "other(s) in this premises"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "bekijk de advertentie"
 msgstr "view this ad"
+
+#: public/modules/core/views/home.client.view.html
+msgid "een nieuwe, makkelijke manier om studentenhuisvesting te vinden."
+msgstr "a new, easy way to find student-friendly housing."
 
 #: public/modules/search/views/search.client.view.html
 msgid "hou me op de hoogte van nieuwe aanbiedingen"
@@ -811,3 +794,20 @@ msgstr "{{room.pictures.length}} pictures"
 #: public/modules/core/views/footer.client.view.html
 msgid "© 2014 1roof.be Alle rechten voorbehouden."
 msgstr "© 2014 1roof.be All rights reserved."
+
+#~ msgid ""
+#~ "Foto's zijn het eerste waar iemand op let. Zorg er voor dus dat je veel "
+#~ "en duidelijke foto's hebt! Op deze manier zal je advertentie veel sneller "
+#~ "verhuurd worden!"
+#~ msgstr ""
+#~ "Photos are the first thing that someone pays attention to. Make sure that "
+#~ "you have alot clear images! This way your ad will be leased much faster!"
+
+#~ msgid "Ga"
+#~ msgstr "Go"
+
+#~ msgid "Meer informatie"
+#~ msgstr "More information"
+
+#~ msgid "Titel"
+#~ msgstr "Title"

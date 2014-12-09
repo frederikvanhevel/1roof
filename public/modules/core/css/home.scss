@@ -26,10 +26,6 @@
       background-position: 50% 50%;
       background-repeat: no-repeat;
 
-      @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-          display: none;
-      }
-
       video {
         visibility: visible;
         margin: auto;
@@ -45,24 +41,36 @@
     }
 
     .raster {
-      // background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAHklEQVQIW2NkQAX/GZH4/4FsRpgAmAOSBBFwDkgAAIKuBATRTAAZAAAAAElFTkSuQmCC) repeat;
       height: 100%;
 
       .hero-content {
-        padding-top: 145px;
+        padding-top: 55px;
 
         @media only screen and (min-device-width : 480px) {
           padding-top: 200px;
 
-          h1 {
-            display: inline;
-            color: white !important;
-            background: rgba(80, 106, 133, 1);
-            box-shadow: -.500em 0 0 rgba(80, 106, 133, 1), .500em 0 0 rgba(80, 106, 133, 1);
+          h1 {            
             padding: 15px;
             padding-right: 15px;
             font-size: 55px;
+
+            &:first-child {
+              font-size: 75px;
+              font-style: italic;
+            }
           }
+
+          form {
+
+            input {
+              font-size: 26px !important;
+            }
+
+            button, input {
+              height: 56px;
+            }
+          }
+
         }
 
         h1 {
@@ -71,19 +79,21 @@
           padding-right: 15px;
           font-size: 23px;
           color: rgba(80, 106, 133, 1);
+          background: rgba(80, 106, 133, .7);
+          box-shadow: -.500em 0 0 rgba(80, 106, 133, .7), .500em 0 0 rgba(80, 106, 133, .7);
+          color: white !important;
+
+          &:first-child {
+            font-size: 30px;
+            font-style: italic;
+          }
 
           span {
             margin-bottom: 10px;
           }
         }
 
-        input {
-          opacity: .9;
 
-          &:focus {
-            opacity: 1;
-          }
-        }
 
         a {
           margin-top: 30px;
@@ -92,6 +102,18 @@
 
         form {
           margin-top: 30px;
+          position: relative;
+          left: -11px;
+          top: 30px;
+
+          input {
+            opacity: .9;
+            font-size: 16px;
+
+            &:focus {
+              opacity: 1;
+            }
+          }          
         }
       }
     }
