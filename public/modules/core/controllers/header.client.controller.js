@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics', 'Meta',
-    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics, Meta) {
+angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics',
+    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics) {
         $scope.authentication = Authentication;
 
         $scope.isCollapsed = true;
@@ -85,7 +85,6 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
                     if (!$stateParams.inboxId || $stateParams.inboxId !== response.inbox) {
                         $scope.unreadMessageCount = +$scope.unreadMessageCount + response.count;
                         if ( $scope.unreadMessageCount < 0)  $scope.unreadMessageCount = 0;
-                        Meta.setTitlePrefix('(' + $scope.unreadMessageCount + ')');
 
                         playNewMessageSound();
                     }

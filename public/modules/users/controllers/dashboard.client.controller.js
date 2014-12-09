@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('DashboardController', ['$scope', '$stateParams', '$state', '$location', 'Rooms', 'Authentication', 'Meta',
-    function($scope, $stateParams, $state, $location, Rooms, Authentication, Meta) {
+angular.module('users').controller('DashboardController', ['$scope', '$stateParams', '$state', '$location', 'Rooms', 'Authentication',
+    function($scope, $stateParams, $state, $location, Rooms, Authentication) {
         $scope.authentication = Authentication;
         $scope.nav = 'rooms';
 
@@ -10,8 +10,6 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
 
         // Init
         $scope.init = function() {
-            Meta.setTitle('Dashboard');
-
             if ($stateParams.nav) $scope.nav = $stateParams.nav;
         };
 

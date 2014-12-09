@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HomeController', ['$scope', '$location', 'Authentication', 'Geocoder', 'Alert', 'Meta',
-    function($scope, $location, Authentication, Geocoder, Alert, Meta) {
+angular.module('core').controller('HomeController', ['$scope', '$location', 'Authentication', 'Geocoder', 'Alert',
+    function($scope, $location, Authentication, Geocoder, Alert) {
         $scope.authentication = Authentication;
 
         $scope.search = {
@@ -9,8 +9,6 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
             details: {},
             autocompleteOptions: { types: '(cities)', country: 'be' }
         };
-
-        Meta.setTitle('1roof', true);
 
         $scope.goToSearch = function() {
             if ($scope.search.details.geometry) {

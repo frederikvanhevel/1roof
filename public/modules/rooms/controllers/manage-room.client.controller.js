@@ -1,8 +1,8 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'UserSettings', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'Meta', 'gettext',
-    function($scope, $stateParams, $location, Authentication, Rooms, UserSettings, $window, Amenity, $upload, $http, Modal, Alert, Meta, gettext) {
+angular.module('rooms').controller('ManageRoomController', ['$scope', '$stateParams', '$location', 'Authentication', 'Rooms', 'UserSettings', '$window', 'Amenity', '$upload', '$http', 'Modal', 'Alert', 'gettext',
+    function($scope, $stateParams, $location, Authentication, Rooms, UserSettings, $window, Amenity, $upload, $http, Modal, Alert, gettext) {
         $scope.authentication = Authentication;
 
         // If user is not signed in then redirect back home
@@ -23,8 +23,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
 
         // Init
         $scope.init = function() {
-            Meta.setTitle('Advertentie aanpassen');
-
             if ($stateParams.nav) $scope.nav = $stateParams.nav;
             if (!$stateParams.roomId) $location.path('/');
 

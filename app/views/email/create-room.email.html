@@ -12,7 +12,7 @@
 
             <br>
 
-            Beste {{ user.firstName }},
+            Beste <%=  user.firstName  %>,
             <br><br>
             Je advertentie is toegevoegd aan de website.
             <br><br>
@@ -35,7 +35,7 @@
           <td class="default">
             Veel success!
 
-            <a target="_blank" href="{{ app.host }}{{ editLink }}" class="button">Pas je advertentie aan</a>
+            <a target="_blank" href="<%=  app.host  %><%=  editLink  %>" class="button">Pas je advertentie aan</a>
           </td>
         </tr>
       </table>

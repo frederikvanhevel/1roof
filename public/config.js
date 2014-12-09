@@ -21,6 +21,7 @@ var ApplicationConfiguration = (function() {
         'gettext',
         'btford.socket-io',
         'angularPayments',
+        'meta',
         'angular-google-analytics'
     ];
 

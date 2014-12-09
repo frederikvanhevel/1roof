@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Authentication', 'localStorageService', 'Meta', 'Enforcer', 'UserSettings',
-    function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Authentication, localStorageService, Meta, Enforcer, UserSettings) {
+angular.module('search').controller('SearchController', ['$rootScope', '$scope', '$timeout', '$location', '$state', '$stateParams', 'Geocoder', 'Rooms', '$window', 'Authentication', 'localStorageService', 'Enforcer', 'UserSettings',
+    function($rootScope, $scope, $timeout, $location, $state, $stateParams, Geocoder, Rooms, $window, Authentication, localStorageService, Enforcer, UserSettings) {
         $scope.user = Authentication.user;
 
         $scope.mapCenter = [4.3517100, 50.8503400]; // Brussel
@@ -24,8 +24,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         var oldLocation = null;
 
         $scope.init = function() {
-            Meta.setTitle('Zoeken in ' + $stateParams.address);
-
             var urlParamaters = $location.search();
 
             function getZoomLevel(m) {
@@ -221,8 +219,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
                 $location.url(oldLocation);
                 oldLocation = null;
             }
-
-            Meta.setTitle('Zoeken in ' + $stateParams.address);
 
             $scope.selectedRoomId = null;
             $scope.isOverLayOpen = false;

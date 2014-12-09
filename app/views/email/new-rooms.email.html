@@ -25,21 +25,21 @@
         <tr>
           <td class="default room">
 
-            <h2><a target=s"_blank" href="{{ app.host }}{{ room.url }}">{{ room.info.title }}</a></h2>
+            <h2><a target=s"_blank" href="<%=  app.host  %><%=  room.url  %>"><%=  room.info.title  %></a></h2>
 
-            <a target=s"_blank" href="{{ app.host }}{{ room.url }}">
+            <a target=s"_blank" href="<%=  app.host  %><%=  room.url  %>">
             {% if room.pictures.length > 0 %}
-              <div class="image-wrapper" style="background-image: url('{{ room.pictures[0].link }}');">
-                <div class="room-price">€ {{ room.price.total }}</div>
+              <div class="image-wrapper" style="background-image: url('<%=  room.pictures[0].link  %>');">
+                <div class="room-price">€ <%=  room.price.total  %></div>
               </div>
             {% else %}
               <div class="image-wrapper empty">
-                <div class="room-price">€ {{ room.price.total }}</div>
+                <div class="room-price">€ <%=  room.price.total  %></div>
               </div>
             {% endif %}
             </a>
 
-            <p>{{ room.info.description }}</p>
+            <p><%=  room.info.description  %></p>
 
           </td>
         </tr>

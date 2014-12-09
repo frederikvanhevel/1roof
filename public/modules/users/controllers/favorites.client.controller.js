@@ -11,7 +11,9 @@ angular.module('users').controller('FavoritesController', ['$scope', '$http', '$
             $http.get('/api/users/' + $stateParams.userId).success(function(response) {
                 $scope.user = response;
 
-                Meta.setTitle('Wishlist van ' + $scope.user.displayName);
+                Meta.add('/l/:roomId/:city/:title', { 
+                    title: '1roof - wishlist van ' + $scope.user.displayName
+                });
 
                 getUserFavorites();
             });

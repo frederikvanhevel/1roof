@@ -8,11 +8,11 @@
       <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
         <tr>
           <td class="default">
-            Beste {{ user.firstName }},
+            Beste <%=  user.firstName  %>,
             <br><br>
             Bedankt om je te registreren!
             <br><br>
-            Je kan inloggen met je email <strong>{{ user.email }} </strong> en je wachtwoord die je hebt ingegeven bij het registreren.
+            Je kan inloggen met je email <strong><%=  user.email  %> </strong> en je wachtwoord die je hebt ingegeven bij het registreren.
             Indien je je geregistreerd hebt met Facebook of Google hoef je geen email of wachtwoord in te geven.
             <br><br>
             Indien je vragen hebt kan je ons altijd een mailtje sturen via <a href="mailto:info@1roof.be">info@1roof.be</a>
@@ -32,7 +32,7 @@
           <td class="default">
             Veel success!
 
-            <a target="_blank" href="{{ app.host }}" class="button">Ga naar de website</a>
+            <a target="_blank" href="<%=  app.host  %>" class="button">Ga naar de website</a>
           </td>
         </tr>
       </table>

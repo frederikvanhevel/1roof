@@ -140,10 +140,14 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
 
         function postLoad() {
             if (!$scope.room.info.title) {
-                Meta.setTitle($scope.room.location.street + ' - ' + $scope.room.location.city, true);
+                Meta.add('/l/:roomId/:city/:title', {
+                    title: '1roof - ' + $scope.room.location.street + ' - ' + $scope.room.location.city
+                });
             } else {
-                Meta.setTitle($scope.room.info.title + ' - ' + $scope.room.location.city, true);
-                Meta.setDescription($scope.room.info.description);
+                Meta.add('/l/:roomId/:city/:title', { 
+                    title: '1roof - ' + $scope.room.info.title + ' - ' + $scope.room.location.city,
+                    description: $scope.room.info.description
+                });
             }
             
             // increment view count for statistics

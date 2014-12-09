@@ -18,6 +18,7 @@ var express = require('express'),
     flash = require('connect-flash'),
     config = require('./config'),
     consolidate = require('consolidate'),
+    swig = require('swig'),
     path = require('path'),
     cloudinary = require('cloudinary'),
     scheduler = require('./scheduler'),
@@ -73,6 +74,9 @@ module.exports = function(db) {
 
     // Set swig as the template engine
     app.engine('server.view.html', consolidate[config.templateEngine]);
+    swig.setDefaults({
+       varControls: ['<%=', '%>']
+    });
 
     // Set views path and view engine
     app.set('view engine', 'server.view.html');

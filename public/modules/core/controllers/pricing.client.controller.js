@@ -1,14 +1,12 @@
 'use strict';
 
-angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', 'Meta', '$http', 'Modal', 'Enforcer', 'Analytics', 'gettext',
-    function($scope, $location, $stateParams, Authentication, Alert, Meta, $http, Modal, Enforcer, Analytics, gettext) {
+angular.module('core').controller('PricingController', ['$scope', '$location', '$stateParams', 'Authentication', 'Alert', '$http', 'Modal', 'Enforcer', 'Analytics', 'gettext',
+    function($scope, $location, $stateParams, Authentication, Alert, $http, Modal, Enforcer, Analytics, gettext) {
         $scope.authentication = Authentication;
 
         $scope.busy = false;
 
         var coupon = null;
-
-        Meta.setTitle('Upgraden');
 
         $scope.init = function() {
             $scope.message = $stateParams.message;

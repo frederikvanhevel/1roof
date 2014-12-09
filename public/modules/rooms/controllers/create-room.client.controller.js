@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', 'Meta', '$http', 'Analytics',
-    function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, Meta, $http, Analytics) {
+angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', '$http', 'Analytics',
+    function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, $http, Analytics) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -18,8 +18,6 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         $scope.allowed = false;
 
         $scope.init = function() {
-            Meta.setTitle('Advertentie toevoegen');
-
             if (Authentication.user) {
                 $scope.creationStep = 2;
                 checkUserRoomCount();

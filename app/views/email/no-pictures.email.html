@@ -8,9 +8,9 @@
       <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
         <tr>
           <td class="default">
-            Beste {{ user.firstName }},
+            Beste <%=  user.firstName  %>,
             <br><br>
-            Je advertentie <em>{{ room.info.title }}</em> staat online maar je hebt nog geen foto's toegevoegd. Je zal veel meer succes hebben indien je er enkele toevoegd. Let er ook op dat je steeds duidelijke foto's plaatst.
+            Je advertentie <em><%=  room.info.title  %></em> staat online maar je hebt nog geen foto's toegevoegd. Je zal veel meer succes hebben indien je er enkele toevoegd. Let er ook op dat je steeds duidelijke foto's plaatst.
             <br>
             <hr class="line">
           </td>
@@ -27,7 +27,7 @@
           <td class="default">
             Klik op de knop onderaan om foto's toe te voegen.
 
-            <a target="_blank" href="{{ app.host }}{{ editLink }}" class="button">Advertentie wijzigen</a>
+            <a target="_blank" href="<%=  app.host  %><%=  editLink  %>" class="button">Advertentie wijzigen</a>
           </td>
         </tr>
       </table>

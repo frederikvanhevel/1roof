@@ -11,4 +11,8 @@ angular.module('core').config(['AnalyticsProvider',
 
         AnalyticsProvider.setPageEvent('$stateChangeSuccess');
     }
+]).run(['Meta',
+    function(Meta) {
+        Meta.init();
+    }
 ]);

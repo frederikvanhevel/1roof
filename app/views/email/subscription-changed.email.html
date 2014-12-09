@@ -8,11 +8,11 @@
       <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
         <tr>
           <td class="default">
-            Beste {{ user.firstName }},
+            Beste <%=  user.firstName  %>,
             <br><br>
             Je abonnement is met succes aangepast.
             <br><br>
-            Je nieuwe tarfiefplan is nu: <strong>{{ user.subscription.plan }}</strong>
+            Je nieuwe tarfiefplan is nu: <strong><%=  user.subscription.plan  %></strong>
             <br>
             <hr class="line">
           </td>
@@ -29,7 +29,7 @@
           <td class="default">
             Je kan je abonnement telkens aanpassen op de volgende link:
 
-            <a target="_blank" href="{{ changeLink }}" class="button">Abonnement wijzigen</a>
+            <a target="_blank" href="<%=  changeLink  %>" class="button">Abonnement wijzigen</a>
           </td>
         </tr>
       </table>

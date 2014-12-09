@@ -1,13 +1,11 @@
 'use strict';
 
 // Rooms controller
-angular.module('rooms').controller('AnalyticsController', ['$scope', '$location', '$http', '$stateParams', 'Authentication', 'Rooms', 'Meta',
-    function($scope, $location, $http, $stateParams, Authentication, Rooms, Meta) {
+angular.module('rooms').controller('AnalyticsController', ['$scope', '$location', '$http', '$stateParams', 'Authentication', 'Rooms',
+    function($scope, $location, $http, $stateParams, Authentication, Rooms) {
         $scope.authentication = Authentication;
 
         $scope.statisticsData = [];
-
-        Meta.setTitle('Analytics');
 
         // If user is not signed in then redirect back home
         if (!Authentication.user) $location.path('/');
