@@ -61,6 +61,12 @@ module.exports = function(db) {
         next();
     });
 
+    // SEO functions
+    app.use(seo({
+        cacheClient: 'disk', // Can be 'disk' or 'redis'
+        cacheDuration: 2 * 60 * 60 * 24 * 1000, // In milliseconds for disk cache
+    }));
+
     // Should be placed before express.static
     app.use(compress({
         filter: function(req, res) {
@@ -132,12 +138,6 @@ module.exports = function(db) {
 
     // Enable CORS resuests
     app.use(core.allowCORS);
-
-    // SEO functions
-    app.use(seo({
-        cacheClient: 'disk', // Can be 'disk' or 'redis'
-        cacheDuration: 2 * 60 * 60 * 24 * 1000, // In milliseconds for disk cache
-    }));
 
     // socketio middleware
     app.use(function(req, res, next) {
