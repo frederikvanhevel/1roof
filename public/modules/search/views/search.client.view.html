@@ -16,7 +16,7 @@
             </div>
             <div class="filter">
                 <label class="newrooms-email">
-                    <input type="checkbox" ng-model="user.settings.email.newRooms" ng-change="updateSettings()"> <span translate>hou me op de hoogte van nieuwe aanbiedingen</span>
+                    <input type="checkbox" ng-model="user.settings.email.newRooms" ng-click="updateSettings($event)"> <span translate>hou me op de hoogte van nieuwe aanbiedingen</span>
                 </label>
             </div>
         </div>

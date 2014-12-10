@@ -55,6 +55,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
                     changeLocation(result.formattedAddress.replace(/, /g, '--'), result.lat, result.lng);
                 });
             }
+            $scope.search.input = '';
             $scope.search.details = {};
         };
 
