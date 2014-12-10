@@ -16,16 +16,18 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         $scope.init = function() {
             $scope.isHomepage = document.location.pathname === '/';
 
+            $rootScope.language = 'nl';
+            setLanguage('nl', false);
+
             // detect browser language
-            $rootScope.language = (window.navigator.userLanguage || window.navigator.language).split('-')[0];
-
-            if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl', false);
-            else setLanguage('en', true);
-
+            // $rootScope.language = (window.navigator.userLanguage || window.navigator.language).split('-')[0];
+            // if ($rootScope.language.indexOf('nl') !== -1) setLanguage('nl', false);
+            // else setLanguage('en', true);
             // watch for language changes
             $rootScope.$watch('language', function(newVal, oldVal) {
                 if (newVal !== oldVal) setLanguage(newVal, true);
             });
+
             // always close the menu after navigating
             $rootScope.$on('$locationChangeSuccess', function() {
                 $scope.isCollapsed = true;

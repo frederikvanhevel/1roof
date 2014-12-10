@@ -139,16 +139,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         }
 
         function postLoad() {
-            if (!$scope.room.info.title) {
-                Meta.add('/l/:roomId/:city/:title', {
-                    title: '1roof - ' + $scope.room.location.street + ' - ' + $scope.room.location.city
-                });
-            } else {
-                Meta.add('/l/:roomId/:city/:title', { 
-                    title: '1roof - ' + $scope.room.info.title + ' - ' + $scope.room.location.city,
-                    description: $scope.room.info.description
-                });
-            }
+
+            Meta.add('/l/:roomId/:city/:title', getMetaData());
             
             // increment view count for statistics
             Statistics.aggregate($scope.room._id, 'views');
@@ -158,6 +150,27 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             });
             $scope.$broadcast('room_loaded', $scope.room);
             if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
+        }
+
+        function getMetaData() {
+            var meta = {};
+
+            if (!$scope.room.info.title) {
+                meta.title = '1roof - ' + $scope.room.location.street + ' - ' + $scope.room.location.city;
+            } else {
+                meta.title = '1roof - ' + $scope.room.info.title + ' - ' + $scope.room.location.city;
+                meta.description = $scope.room.info.description;
+            }
+
+            if ($scope.room.pictures.length > 0) {
+                var picture = $scope.room.pictures[0];
+
+                if (picture.provider === 'cloudinary')
+                    meta.image = 'https://res.cloudinary.com/dv8yfamzc/image/upload/' + picture.link + '.png';
+                else meta.image = picture.link;
+            }
+
+            return meta;
         }
 
         function loadFailure(response) {
