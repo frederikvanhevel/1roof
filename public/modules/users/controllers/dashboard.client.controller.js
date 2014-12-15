@@ -11,6 +11,8 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
         // Init
         $scope.init = function() {
             if ($stateParams.nav) $scope.nav = $stateParams.nav;
+
+            $scope.htmlReady(); 
         };
 
         $scope.getMyRooms = function() {

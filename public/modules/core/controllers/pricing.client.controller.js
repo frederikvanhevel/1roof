@@ -11,6 +11,8 @@ angular.module('core').controller('PricingController', ['$scope', '$location', '
         $scope.init = function() {
             $scope.message = $stateParams.message;
             coupon = $stateParams.coupon;
+
+            $scope.htmlReady(); 
         };
 
         $scope.choosePlan = function(plan) {

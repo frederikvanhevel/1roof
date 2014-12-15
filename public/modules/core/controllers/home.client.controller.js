@@ -10,6 +10,10 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
             autocompleteOptions: { types: '(cities)', country: 'be' }
         };
 
+        $scope.init = function() {
+            $scope.htmlReady(); 
+        };
+
         $scope.goToSearch = function() {
             if ($scope.search.details.geometry) {
                 changeLocation(

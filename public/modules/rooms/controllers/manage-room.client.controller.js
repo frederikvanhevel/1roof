@@ -34,6 +34,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             });
 
             $scope.$on('dropbox_chosen', onDropboxSelect);
+
+            $scope.htmlReady(); 
         };
 
         $scope.guideEnded = function() {

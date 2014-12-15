@@ -29,7 +29,8 @@
     "angular-payments": "*",
     "jquery-waypoints": "~2.0.5",
     "angular-google-analytics": "~0.0.5",
-    "angular-meta": "https://github.com/defreek/angular-meta.git#master"
+    "angular-meta": "https://github.com/defreek/angular-meta.git#master",
+    "angular-seo": "*"
   },
   "resolutions": {
     "angular": "~1.3"

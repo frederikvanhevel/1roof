@@ -19,7 +19,6 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
 
 
         $scope.init = function() {
-            console.log('oj');
             $scope.findOne();
         };
 
@@ -151,6 +150,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             });
             $scope.$broadcast('room_loaded', $scope.room);
             if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
+
+            $scope.htmlReady(); 
         }
 
         function getMetaData() {

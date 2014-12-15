@@ -24,8 +24,12 @@ angular.module('users').controller('FavoritesController', ['$scope', '$http', '$
             $http.get('/api/users/' + $scope.user._id + '/favorites').success(function(response) {
                 $scope.favorites = response;
                 $scope.busy = false;
+
+                $scope.htmlReady(); 
             }).error(function(response) {
                 $scope.busy = false;
+
+                $scope.htmlReady(); 
             });
         }
 

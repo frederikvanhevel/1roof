@@ -207,6 +207,8 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
                 });
 
                 $scope.results = oldRooms;
+
+                $scope.htmlReady(); 
             });
         }
 

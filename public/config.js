@@ -22,7 +22,8 @@ var ApplicationConfiguration = (function() {
         'btford.socket-io',
         'angularPayments',
         'meta',
-        'angular-google-analytics'
+        'angular-google-analytics',
+        'seo'
     ];
 
     // Add a new vertical module

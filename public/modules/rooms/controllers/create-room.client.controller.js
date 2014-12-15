@@ -24,6 +24,8 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
             } else {
                 $scope.allowed = true;
             }
+
+            $scope.htmlReady(); 
         };
 
         // Create new Room
