@@ -28,7 +28,8 @@ angular.module('core').controller('HomeController', ['$scope', '$location', 'Aut
         function changeLocation(address, lat, lng) {
             $location.path('search/' + address)
                 .search('lat', lat)
-                .search('lng', lng);
+                .search('lng', lng)
+                .search('proximity', 3600);
         }
 
     }

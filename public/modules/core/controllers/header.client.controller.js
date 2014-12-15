@@ -57,8 +57,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
                     changeLocation(result.formattedAddress.replace(/, /g, '--'), result.lat, result.lng);
                 });
             }
-            $scope.search.input = '';
-            $scope.search.details = {};
+            
         };
 
         $scope.openSignupModal = function() {
@@ -105,9 +104,13 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         }
 
         function changeLocation(address, lat, lng) {
+            $scope.search.input = '';
+            $scope.search.details = {};
+            
             $location.path('/search/' + address)
                 .search('lat', lat)
-                .search('lng', lng);
+                .search('lng', lng)
+                .search('proximity', 3600);
         }
 
         function setLanguage(language, reload) {

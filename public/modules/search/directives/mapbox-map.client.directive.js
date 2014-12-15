@@ -20,7 +20,11 @@ angular.module('search').directive('mapboxMap', ['$compile', '$q', '$window', '$
 
             link: function(scope, element, attrs) {
 
-                scope.map = $window.L.mapbox.map(element[0], 'defreek.j27p0821')
+                var options = {
+                    minZoom: 11
+                };
+
+                scope.map = $window.L.mapbox.map(element[0], 'defreek.j27p0821', options)
                     .setView([scope.center[1], scope.center[0]], scope.zoom);
 
                 _mapboxMap.resolve(scope.map);
