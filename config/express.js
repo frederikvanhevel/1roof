@@ -63,8 +63,9 @@ module.exports = function(db) {
 
     // SEO functions
     app.use(seo({
-        cacheClient: 'disk', // Can be 'disk' or 'redis'
-        cacheDuration: 2 * 60 * 60 * 24 * 1000, // In milliseconds for disk cache
+        cacheClient: 'redis', // Can be 'disk' or 'redis'
+        redisURL: 'redis://frederik.vanhevel@telenet.be:Freeksken123@pub-redis-14425.us-east-1-4.4.ec2.garantiadata.com:14425',
+        cacheDuration: 2 * 60 * 60 * 24 * 1000 // In milliseconds for disk cache
     }));
 
     // Should be placed before express.static
