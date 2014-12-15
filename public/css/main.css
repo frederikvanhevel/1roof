@@ -7663,49 +7663,25 @@ footer .footer-bottom .social-buttons li {
 }
 .home-view #hero .raster {
   height: 100%;
+  background: rgba(0, 0, 0, 0.3);
 }
 .home-view #hero .raster .hero-content {
   padding-top: 55px;
+  text-align: center;
 }
 @media only screen and (min-device-width: 480px) {
   .home-view #hero .raster .hero-content {
-    padding-top: 200px;
-  }
-  .home-view #hero .raster .hero-content h1 {
-    padding: 15px;
-    padding-right: 15px;
-    font-size: 55px;
-  }
-  .home-view #hero .raster .hero-content h1:first-child {
-    font-size: 75px;
-    font-style: italic;
-  }
-  .home-view #hero .raster .hero-content h1:not(:first-child) {
-    line-height: 58px;
-  }
-  .home-view #hero .raster .hero-content form input {
-    font-size: 26px !important;
-  }
-  .home-view #hero .raster .hero-content form button, .home-view #hero .raster .hero-content form input {
-    height: 56px;
+    padding-top: 145px;
   }
 }
 .home-view #hero .raster .hero-content h1 {
-  display: inline;
-  color: white;
-  padding-right: 15px;
-  font-size: 23px;
-  color: #506a85;
-  background: rgba(80, 106, 133, 0.7);
-  box-shadow: -0.5em 0 0 rgba(80, 106, 133, 0.7), 0.5em 0 0 rgba(80, 106, 133, 0.7);
+  font-size: 60px;
   color: white !important;
 }
-.home-view #hero .raster .hero-content h1:first-child {
-  font-size: 30px;
-  font-style: italic;
-}
-.home-view #hero .raster .hero-content h1 span {
-  margin-bottom: 10px;
+.home-view #hero .raster .hero-content p {
+  color: white;
+  position: relative;
+  left: -3%;
 }
 .home-view #hero .raster .hero-content a {
   margin-top: 30px;
@@ -7717,9 +7693,12 @@ footer .footer-bottom .social-buttons li {
   left: -11px;
   top: 30px;
 }
+.home-view #hero .raster .hero-content form span.input-group-btn {
+  width: 1%;
+}
 .home-view #hero .raster .hero-content form input {
   opacity: .9;
-  font-size: 16px;
+  font-size: 20px;
 }
 .home-view #hero .raster .hero-content form input:focus {
   opacity: 1;
@@ -7752,6 +7731,136 @@ footer .footer-bottom .social-buttons li {
   padding: 80px 0;
 }
 
+.words {
+  display: inline;
+  padding-left: 3px;
+  font-weight: bold;
+}
+
+.words span {
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  -webkit-animation: rotateWord 18s ease infinite 0s;
+  -ms-animation: rotateWord 18s ease infinite 0s;
+  animation: rotateWord 18s ease infinite 0s;
+}
+
+.words span:nth-child(2) {
+  -webkit-animation-delay: 3s;
+  -ms-animation-delay: 3s;
+  animation-delay: 3s;
+}
+
+.words span:nth-child(3) {
+  -webkit-animation-delay: 6s;
+  -ms-animation-delay: 6s;
+  animation-delay: 6s;
+}
+
+.words span:nth-child(4) {
+  -webkit-animation-delay: 9s;
+  -ms-animation-delay: 9s;
+  animation-delay: 9s;
+}
+
+.words span:nth-child(5) {
+  -webkit-animation-delay: 12s;
+  -ms-animation-delay: 12s;
+  animation-delay: 12s;
+}
+
+.words span:nth-child(6) {
+  -webkit-animation-delay: 15s;
+  -ms-animation-delay: 15s;
+  animation-delay: 15s;
+}
+
+@-webkit-keyframes rotateWord {
+  0% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 0;
+    -webkit-transform: translateY(-30px);
+  }
+  5% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+  }
+  17% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+  }
+  20% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-ms-keyframes rotateWord {
+  0% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 0;
+    -ms-transform: translateY(-30px);
+  }
+  5% {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+  }
+  17% {
+    opacity: 1;
+    -ms-transform: translateY(0px);
+  }
+  20% {
+    opacity: 0;
+    -ms-transform: translateY(30px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes rotateWord {
+  0% {
+    opacity: 0;
+  }
+  2% {
+    opacity: 0;
+    -webkit-transform: translateY(-30px);
+    transform: translateY(-30px);
+  }
+  5% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  17% {
+    opacity: 1;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+  }
+  20% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .comingsoon-view #hero {
   top: -15px;
 }

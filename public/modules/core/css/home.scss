@@ -42,62 +42,26 @@
 
     .raster {
       height: 100%;
+      background: rgba(0,0,0,.3);
 
       .hero-content {
         padding-top: 55px;
+        text-align: center;
 
         @media only screen and (min-device-width : 480px) {
-          padding-top: 200px;
-
-          h1 {            
-            padding: 15px;
-            padding-right: 15px;
-            font-size: 55px;
-
-            &:first-child {
-              font-size: 75px;
-              font-style: italic;
-            }
-
-            &:not(:first-child) {
-              line-height: 58px;
-            }
-          }
-
-          form {
-
-            input {
-              font-size: 26px !important;
-            }
-
-            button, input {
-              height: 56px;
-            }
-          }
-
+          padding-top: 145px;  
         }
 
         h1 {
-          display: inline;
-          color: white;
-          padding-right: 15px;
-          font-size: 23px;
-          color: rgba(80, 106, 133, 1);
-          background: rgba(80, 106, 133, .7);
-          box-shadow: -.500em 0 0 rgba(80, 106, 133, .7), .500em 0 0 rgba(80, 106, 133, .7);
+          font-size: 60px;
           color: white !important;
-
-          &:first-child {
-            font-size: 30px;
-            font-style: italic;
-          }
-
-          span {
-            margin-bottom: 10px;
-          }
         }
 
-
+        p {
+          color: white;
+          position: relative;
+          left: -3%;
+        }
 
         a {
           margin-top: 30px;
@@ -110,9 +74,13 @@
           left: -11px;
           top: 30px;
 
+          span.input-group-btn {
+            width: 1%;
+          }
+
           input {
             opacity: .9;
-            font-size: 16px;
+            font-size: 20px;
 
             &:focus {
               opacity: 1;
@@ -163,4 +131,70 @@
     padding: 80px 0;
   }
 
+}
+
+.words {
+  display: inline;
+  padding-left: 3px;
+  font-weight: bold;
+}
+.words span{
+  position: absolute;
+  opacity: 0;
+  overflow: hidden;
+  -webkit-animation: rotateWord 18s ease infinite 0s;
+  -ms-animation: rotateWord 18s ease infinite 0s;
+  animation: rotateWord 18s ease infinite 0s;
+}
+.words span:nth-child(2) { 
+  -webkit-animation-delay: 3s; 
+  -ms-animation-delay: 3s; 
+  animation-delay: 3s; 
+}
+.words span:nth-child(3) { 
+  -webkit-animation-delay: 6s; 
+  -ms-animation-delay: 6s; 
+  animation-delay: 6s; 
+}
+.words span:nth-child(4) { 
+  -webkit-animation-delay: 9s; 
+  -ms-animation-delay: 9s; 
+  animation-delay: 9s; 
+}
+.words span:nth-child(5) { 
+  -webkit-animation-delay: 12s; 
+  -ms-animation-delay: 12s; 
+  animation-delay: 12s; 
+}
+.words span:nth-child(6) { 
+  -webkit-animation-delay: 15s; 
+  -ms-animation-delay: 15s; 
+  animation-delay: 15s; 
+}
+@-webkit-keyframes rotateWord {
+    0% { opacity: 0; }
+    2% { opacity: 0; -webkit-transform: translateY(-30px); }
+    5% { opacity: 1; -webkit-transform: translateY(0px);}
+    17% { opacity: 1; -webkit-transform: translateY(0px); }
+    20% { opacity: 0; -webkit-transform: translateY(30px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@-ms-keyframes rotateWord {
+    0% { opacity: 0; }
+    2% { opacity: 0; -ms-transform: translateY(-30px); }
+    5% { opacity: 1; -ms-transform: translateY(0px);}
+    17% { opacity: 1; -ms-transform: translateY(0px); }
+    20% { opacity: 0; -ms-transform: translateY(30px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
+}
+@keyframes rotateWord {
+    0% { opacity: 0; }
+    2% { opacity: 0; -webkit-transform: translateY(-30px); transform: translateY(-30px); }
+    5% { opacity: 1; -webkit-transform: translateY(0px); transform: translateY(0px);}
+    17% { opacity: 1; -webkit-transform: translateY(0px); transform: translateY(0px); }
+    20% { opacity: 0; -webkit-transform: translateY(30px); transform: translateY(30px); }
+    80% { opacity: 0; }
+    100% { opacity: 0; }
 }
