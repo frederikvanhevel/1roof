@@ -19,6 +19,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
 
 
         $scope.init = function() {
+            console.log('oj');
             $scope.findOne();
         };
 
@@ -174,7 +175,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         }
 
         function loadFailure(response) {
-            $location.path('/rooms/notfound');
+            console.log(response);
+            // $location.path('/rooms/notfound');
         }
     }
 ]);
