@@ -47,7 +47,7 @@
     "bcrypt-nodejs": "0.0.3",
     "async": "~0.9.0",
     "stripe": "~2.8.0",
-    "mean-seo": "https://github.com/defreek/mean-seo.git#1c3ec026027394dfae4afe3bb6cb22b4c4357ac3",
+    "mean-seo": "defreek/mean-seo#1c3ec026027394dfae4afe3bb6cb22b4c4357ac3",
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
     "grunt-env": "~0.4.1",
