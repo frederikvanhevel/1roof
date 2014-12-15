@@ -5,16 +5,16 @@ var schedule = require('node-schedule'),
   roomAvailabilityCheckJob = require('./jobs/room-availability-check'),
   roomPicturesCheckJob = require('./jobs/room-pictures-check'),
   messageCheckJob = require('./jobs/newmessage-check'),
-  newRoomsJob = require('./jobs/new-rooms');
+  newRoomsJob = require('./jobs/new-rooms'),
+  cacheJob = require('./jobs/cache');
 
 exports.start = function() {
 
   var everyday = new schedule.RecurrenceRule();
   everyday.hour = 2;
-  everyday.minute = 0;
 
   schedule.scheduleJob(everyday, roomAvailabilityCheckJob.run);
-  // schedule.scheduleJob(everyday, roomPicturesCheckJob.run);
+  schedule.scheduleJob(everyday, cacheJob.run);
 
   var threedays = new schedule.RecurrenceRule();
   threedays.dayOfWeek = [1, 3, 5];
