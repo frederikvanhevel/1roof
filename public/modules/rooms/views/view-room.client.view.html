@@ -15,12 +15,14 @@
     </div>
     <div class="inner-content" ng-class="{ 'container': !isOverlay() }">
         <div class="page-header row">
-            <div class="crumbs col-sm-12">
+            <div class="crumbs col-sm-12" itemscope itemtype="http://schema.org/Place">
                 <button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> <span translate>Terug naar kaart</span></button>
-                <h1>
+                <h1 itemprop="name">
                 <i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1 bounce red': isInfavorites() }" tooltip="{{ isInfavorites() ? 'Verwijderen van wishlist' : 'Toevoegen aan wishlist' }}" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{::room.info.title != '' ? room.info.title : room.location.street }}
                 </h1>
-                <a ng-href="/search/{{room.location.city}}--{{room.location.country}}">{{::room.location.city}}</a> <i class="icon-right-open"></i> {{::room.location.street}} <i class="icon-right-open"></i> <strong>{{::room.classification}}</strong>
+                <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <a ng-href="/search/{{room.location.city}}--{{room.location.country}}" itemprop="addressLocality">{{::room.location.city}}</a> <i class="icon-right-open"></i> <span itemprop="streetAddress">{{::room.location.street}}</span> <i class="icon-right-open"></i> <strong>{{::room.classification}}</strong>
+                </div>
                 <span class="text-muted pull-right" translate>Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}</span>
             </div>
         </div>
@@ -58,7 +60,8 @@
                             <h2 ng-if="room.leaseType == 'lease'" translate>huurcontract</h2>
                             <h2 ng-if="room.leaseType == 'sublease'" translate>onderverhuring</h2>
                         </div>
-                        <div class="col-sm-4">
+                        <div class="col-sm-4" itemscope itemtype="http://schema.org/Offer">
+                            <span itemprop="priceCurrency" content="EUR" />
                             <h6><span translate>Kosten</span> <small>{{getCostPeriod(room.price.period)}}</small></h6>
                             <!--                <table class="room-costs collapsed">
                                 <tr>
@@ -85,7 +88,7 @@
                                     <td><h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2></td>
                                 </tr>
                             </table> -->
-                            <h2><span class="small text-muted">€ </span> {{ room.price.total | number}}</h2>
+                            <h2><span class="small text-muted">€ </span> <span itemprop="price" content="{{ room.price.total }}">{{ room.price.total | number}}</span></h2>
                             <!-- <a href="#"><i class="icon-info-circle"></i> <span translate>Meer informatie</span></a> -->
                         </div>
                     </div>
@@ -176,7 +179,7 @@
                 <div class="panel-body">
                     <form role="form">
                         <h5 translate>Vragen over deze ruimte?</h5>
-                        <h6><i class="icon-user"></i> {{room.user.firstName}}</h6>
+                        <h6><i class="icon-user"></i> {{::room.user.displayName}}</h6>
                         <button ng-click="openContactModal()" class="btn btn-block"><i class="icon-mail-1"></i> <span translate>Bericht versturen</span></button>
                     </form>
                 </div>
