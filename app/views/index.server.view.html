@@ -2,4 +2,8 @@
 
 {% block content %}
 	<section ui-view></section>
+
+	<noscript>
+	{% include "./home_rendered.server.view.html" %}
+	</noscript>
 {% endblock %}

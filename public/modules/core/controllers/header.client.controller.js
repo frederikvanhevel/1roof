@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics',
-    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics) {
+angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '$stateParams', '$location', '$modal', '$http', '$interval', 'Authentication', 'Geocoder', 'Modal', 'gettextCatalog', 'Socket', 'amMoment', '$state', 'Analytics', 'localStorageService',
+    function($rootScope, $scope, $stateParams, $location, $modal, $http, $interval, Authentication, Geocoder, Modal, gettextCatalog, Socket, amMoment, $state, Analytics, localStorageService) {
         $scope.authentication = Authentication;
 
         $scope.isCollapsed = true;
@@ -16,8 +16,14 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         $scope.init = function() {
             $scope.isHomepage = document.location.pathname === '/';
 
-            $rootScope.language = 'nl';
-            setLanguage('nl', false);
+            var savedLanguage = localStorageService.get('viewedRooms');
+            if (savedLanguage) {
+                $rootScope.language = savedLanguage;
+                setLanguage(savedLanguage, false);
+            } else {
+                $rootScope.language = 'nl';
+                setLanguage('nl', false);
+            }
 
             // detect browser language
             // $rootScope.language = (window.navigator.userLanguage || window.navigator.language).split('-')[0];
