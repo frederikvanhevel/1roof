@@ -12,7 +12,7 @@ angular.module('users').controller('FavoritesController', ['$scope', '$http', '$
                 $scope.user = response;
 
                 Meta.add('/l/:roomId/:city/:title', { 
-                    title: '1roof - wishlist van ' + $scope.user.displayName
+                    title: '1Roof - Wishlist van ' + $scope.user.displayName
                 });
 
                 getUserFavorites();

@@ -158,9 +158,9 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             var meta = {};
 
             if (!$scope.room.info.title) {
-                meta.title = '1roof - ' + $scope.room.location.street + ' - ' + $scope.room.location.city;
+                meta.title = '1Roof - ' + $scope.room.location.street + ' - ' + $scope.room.location.city;
             } else {
-                meta.title = '1roof - ' + $scope.room.info.title + ' - ' + $scope.room.location.city;
+                meta.title = '1Roof - ' + $scope.room.info.title + ' - ' + $scope.room.location.city;
                 meta.description = $scope.room.info.description;
             }
 
