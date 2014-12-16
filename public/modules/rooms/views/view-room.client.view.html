@@ -31,7 +31,9 @@
                 <div class="room-image">
                     <div class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel owl-pagination="true">
                         <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
-                            <figure back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}"></figure>
+                            <figure back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}">
+                                <noscript><img back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}" is-img-tag="true" alt="Foto {{$index}}" /></noscript>
+                            </figure>
                         </div>
                         <div class="item room-map">
                             <div room-map class="map-canvas"></div>
@@ -123,7 +125,7 @@
                 <h3 translate>Klaar om contact op te nemen met de eigenaar?</h3>
                 <button ng-click="openContactModal()" class="btn"><i class="icon-ok"></i> <span translate>Stuur een bericht</span></button>
             </div>
-            <div ng-hide="::otherRooms.length == 0">
+            <div ng-if="otherRooms.length > 0">
                 <h4 translate>{{::otherRooms.length}} andere ruimte(n) in deze woning</h4>
                 <div class="panel panel-default" ng-cloak ng-repeat="otherRoom in ::otherRooms">
                     <div class="panel-body">
