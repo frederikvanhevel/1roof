@@ -103,7 +103,6 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
             $timeout(function() {
                 $scope.$apply();
             });
-
         };
 
         $scope.toggleAmenitySelection = function(amenity) {
