@@ -16,8 +16,11 @@ msgstr ""
 msgid "/ Maand"
 msgstr "/ Month"
 
-#: public/modules/core/views/home.client.view.html
-msgid "1roof"
+#: public/modules/search/views/search.client.view.html
+msgid ""
+"<h2 class=\"empty-icon text-center\"><i class=\"icon-home-1\"></i></h2>\n"
+"                <p class=\"lead text-center\" translate=\"\">Geen resultaten "
+"gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.</p>"
 msgstr ""
 
 #: public/modules/users/views/reset.client.view.html
@@ -64,6 +67,10 @@ msgstr "Add images"
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Afspraak maken"
 msgstr "Make appointment"
+
+#: public/modules/core/views/home.client.view.html
+msgid "Afspraken."
+msgstr "Appointments."
 
 #: public/modules/core/views/pricing.client.view.html
 #: public/modules/users/controllers/settings.client.controller.js
@@ -154,9 +161,12 @@ msgid "Bijgewerkt"
 msgstr "Modified"
 
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid "Chat met je huisbaas"
 msgstr "Chat with your landlord"
+
+#: public/modules/core/views/home.client.view.html
+msgid "Chatten."
+msgstr "Chat."
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Contact"
@@ -301,6 +311,10 @@ msgstr "Pets allowed"
 msgid "Hulp nodig?"
 msgstr "Need help?"
 
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Ik heb al een account"
+msgstr "I already have an account"
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Ik zoek een huisgenoot"
 msgstr "I'm looking for a roommate"
@@ -314,7 +328,6 @@ msgid "In welke periode is deze ruimte beschikbaar?"
 msgstr "In what period is this room available?"
 
 #: public/modules/core/views/header.client.view.html
-#: public/modules/rooms/views/create-room.client.view.html
 #: public/modules/users/views/signin.client.view.html
 #: public/modules/users/views/signup.client.view.html
 msgid "Inloggen"
@@ -339,8 +352,16 @@ msgstr "Yearly"
 msgid "Je bericht is verzonden!"
 msgstr "Your message is sent!"
 
-#: public/modules/core/views/comingsoon.client.view.html
 #: public/modules/core/views/home.client.view.html
+#, fuzzy
+msgid ""
+"Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een e-mail "
+"sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet."
+msgstr ""
+"Haven't found your dreamhouse yet? Do not worry, we can send you an email "
+"when an advertisement is placed that matches your criteria."
+
+#: public/modules/core/views/comingsoon.client.view.html
 msgid ""
 "Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een email "
 "sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet."
@@ -403,7 +424,6 @@ msgid "Kosten"
 msgstr "Costs"
 
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid "Krijg meldingen"
 msgstr "Get alerts"
 
@@ -416,7 +436,6 @@ msgid "Maak een account aan"
 msgstr "Create an account"
 
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid "Maak een afspraak"
 msgstr "Make an appointment"
 
@@ -428,9 +447,9 @@ msgstr "Monthly"
 msgid "Maximum 8 afbeeldingen per ruimte"
 msgstr "Maximum 8 pictures per space"
 
-#: public/modules/search/views/search.client.view.html
-msgid "Meer info"
-msgstr "More info"
+#: public/modules/core/views/home.client.view.html
+msgid "Meldingen."
+msgstr "Notifications."
 
 #: public/modules/core/views/comingsoon.client.view.html
 #: public/modules/core/views/home.client.view.html
@@ -688,6 +707,10 @@ msgid ""
 "te gaan."
 msgstr ""
 
+#: public/modules/core/views/home.client.view.html
+msgid "Welkom bij <strong>1roof</strong>"
+msgstr "Welcome to <strong>1roof</strong>"
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"
 msgstr ""
@@ -708,21 +731,33 @@ msgstr "views per day"
 msgid "andere(n) in dit pand"
 msgstr "other(s) in this premises"
 
+#: public/modules/core/views/home.client.view.html
+msgid "appartement"
+msgstr "appartment"
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "bekijk de advertentie"
 msgstr "view this ad"
-
-#: public/modules/core/views/home.client.view.html
-msgid "een nieuwe, makkelijke manier om studentenhuisvesting te vinden."
-msgstr "a new, easy way to find student-friendly housing."
 
 #: public/modules/search/views/search.client.view.html
 msgid "hou me op de hoogte van nieuwe aanbiedingen"
 msgstr "keep me informed of new offers"
 
+#: public/modules/core/views/home.client.view.html
+msgid "huis"
+msgstr "house"
+
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "huurcontract"
 msgstr "lease"
+
+#: public/modules/core/views/home.client.view.html
+msgid "kantoor"
+msgstr "office"
+
+#: public/modules/core/views/home.client.view.html
+msgid "kot"
+msgstr "room"
 
 #: public/modules/users/views/signin.client.view.html
 #: public/modules/users/views/signup.client.view.html
@@ -763,6 +798,10 @@ msgstr "total amount of favorites per day"
 msgid "van"
 msgstr "of"
 
+#: public/modules/core/views/home.client.view.html
+msgid "villa"
+msgstr "villa"
+
 #: public/modules/users/views/signin.client.view.html
 msgid "voorbeeld@email.com"
 msgstr "example@email.com"
@@ -774,6 +813,14 @@ msgstr "example@gmail.com"
 #: public/modules/users/views/signin.client.view.html
 msgid "wachtwoord"
 msgstr "password"
+
+#: public/modules/core/views/home.client.view.html
+msgid "woning"
+msgstr "home"
+
+#: public/modules/core/views/home.client.view.html
+msgid "zoek op een nieuwe en makkelijke manier je nieuwe"
+msgstr "a new and easy way to find your ideal"
 
 #: public/modules/search/views/search.client.view.html
 msgid "zoekt huisgenoot"
@@ -794,6 +841,9 @@ msgstr "{{room.pictures.length}} pictures"
 #: public/modules/core/views/footer.client.view.html
 msgid "© 2014 1roof.be Alle rechten voorbehouden."
 msgstr "© 2014 1roof.be All rights reserved."
+
+#~ msgid "Meer info"
+#~ msgstr "More info"
 
 #~ msgid ""
 #~ "Foto's zijn het eerste waar iemand op let. Zorg er voor dus dat je veel "

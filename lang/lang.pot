@@ -8,8 +8,10 @@ msgstr ""
 msgid "/ Maand"
 msgstr ""
 
-#: public/modules/core/views/home.client.view.html
-msgid "1roof"
+#: public/modules/search/views/search.client.view.html
+msgid ""
+"<h2 class=\"empty-icon text-center\"><i class=\"icon-home-1\"></i></h2>\n"
+"                <p class=\"lead text-center\" translate=\"\">Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.</p>"
 msgstr ""
 
 #: public/modules/users/views/reset.client.view.html
@@ -55,6 +57,10 @@ msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Afspraak maken"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "Afspraken."
 msgstr ""
 
 #: public/modules/core/views/pricing.client.view.html
@@ -146,8 +152,11 @@ msgid "Bijgewerkt"
 msgstr ""
 
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid "Chat met je huisbaas"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "Chatten."
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
@@ -278,6 +287,10 @@ msgstr ""
 msgid "Hulp nodig?"
 msgstr ""
 
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Ik heb al een account"
+msgstr ""
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Ik zoek een huisgenoot"
 msgstr ""
@@ -291,7 +304,6 @@ msgid "In welke periode is deze ruimte beschikbaar?"
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
-#: public/modules/rooms/views/create-room.client.view.html
 #: public/modules/users/views/signin.client.view.html
 #: public/modules/users/views/signup.client.view.html
 msgid "Inloggen"
@@ -313,8 +325,11 @@ msgstr ""
 msgid "Je bericht is verzonden!"
 msgstr ""
 
-#: public/modules/core/views/comingsoon.client.view.html
 #: public/modules/core/views/home.client.view.html
+msgid "Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een e-mail sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet."
+msgstr ""
+
+#: public/modules/core/views/comingsoon.client.view.html
 msgid "Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een email sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet."
 msgstr ""
 
@@ -370,7 +385,6 @@ msgid "Kosten"
 msgstr ""
 
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid "Krijg meldingen"
 msgstr ""
 
@@ -383,7 +397,6 @@ msgid "Maak een account aan"
 msgstr ""
 
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid "Maak een afspraak"
 msgstr ""
 
@@ -395,8 +408,8 @@ msgstr ""
 msgid "Maximum 8 afbeeldingen per ruimte"
 msgstr ""
 
-#: public/modules/search/views/search.client.view.html
-msgid "Meer info"
+#: public/modules/core/views/home.client.view.html
+msgid "Meldingen."
 msgstr ""
 
 #: public/modules/core/views/comingsoon.client.view.html
@@ -632,6 +645,10 @@ msgstr ""
 msgid "We leggen even uit hoe je je advertentie aanpast. Klik op volgende om verder te gaan."
 msgstr ""
 
+#: public/modules/core/views/home.client.view.html
+msgid "Welkom bij <strong>1roof</strong>"
+msgstr ""
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"
 msgstr ""
@@ -652,20 +669,32 @@ msgstr ""
 msgid "andere(n) in dit pand"
 msgstr ""
 
-#: public/modules/rooms/views/edit-room.client.view.html
-msgid "bekijk de advertentie"
+#: public/modules/core/views/home.client.view.html
+msgid "appartement"
 msgstr ""
 
-#: public/modules/core/views/home.client.view.html
-msgid "een nieuwe, makkelijke manier om studentenhuisvesting te vinden."
+#: public/modules/rooms/views/edit-room.client.view.html
+msgid "bekijk de advertentie"
 msgstr ""
 
 #: public/modules/search/views/search.client.view.html
 msgid "hou me op de hoogte van nieuwe aanbiedingen"
 msgstr ""
 
+#: public/modules/core/views/home.client.view.html
+msgid "huis"
+msgstr ""
+
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "huurcontract"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "kantoor"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "kot"
 msgstr ""
 
 #: public/modules/users/views/signin.client.view.html
@@ -707,6 +736,10 @@ msgstr ""
 msgid "van"
 msgstr ""
 
+#: public/modules/core/views/home.client.view.html
+msgid "villa"
+msgstr ""
+
 #: public/modules/users/views/signin.client.view.html
 msgid "voorbeeld@email.com"
 msgstr ""
@@ -717,6 +750,14 @@ msgstr ""
 
 #: public/modules/users/views/signin.client.view.html
 msgid "wachtwoord"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "woning"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "zoek op een nieuwe en makkelijke manier je nieuwe"
 msgstr ""
 
 #: public/modules/search/views/search.client.view.html
