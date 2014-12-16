@@ -10,8 +10,8 @@ angular.module('core').config([ 'MetaProvider',
 
           .otherwise({
             title: '1roof - snel, makkelijk, krachtig',
-            description: 'Zoek tussen alle koten in België. Vind de koten met beste prijs/kwaliteit. Zie echte fotos van oplijstingen',
-            image: '/modules/core/img/brand/logo_wide.png'
+            description: 'Zoek tussen alle huurwoningen in België. Vind de panden met beste prijs/kwaliteit. Zie echte fotos van oplijstingen.',
+            image: '/modules/core/img/brand/logo_big.png'
           });
     }
 ]);
