@@ -32,7 +32,9 @@
                     <div class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel owl-pagination="true">
                         <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
                             <figure back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}">
-                                <noscript><img back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}" is-img-tag="true" alt="Foto {{$index}}" /></noscript>
+                                <noscript>
+                                    <img back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}" is-img-tag="true" alt="Foto {{$index}}" />
+                                </noscript>
                             </figure>
                         </div>
                         <div class="item room-map">

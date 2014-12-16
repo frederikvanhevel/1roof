@@ -7678,6 +7678,9 @@ footer .footer-bottom .social-buttons li {
   font-size: 60px;
   color: white !important;
 }
+.home-view #hero .raster .hero-content span.light {
+  font-weight: 300;
+}
 .home-view #hero .raster .hero-content p {
   color: white;
   position: relative;
