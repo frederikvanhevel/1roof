@@ -7455,7 +7455,9 @@ header.navbar .navbar-brand {
   padding: 5px 15px;
 }
 header.navbar .navbar-brand img {
-  width: 120px;
+  height: 25px;
+  position: relative;
+  top: 8px;
 }
 header.navbar .btn.responsive-menu.navbar-toggle {
   padding: 7px 14px;
@@ -8176,6 +8178,59 @@ ROOMS MODULE
 }
 .analytics-view .row {
   margin: 30px 0;
+}
+
+/*
+PROMOTE MODULE
+*/
+.promote-view .promote-header {
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url(/modules/promote/img/promote.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 60px 60px;
+  margin-bottom: 60px;
+}
+.promote-view .promote-header h2 {
+  color: white !important;
+}
+.promote-view .promote-header .col-sm-6:first-child {
+  padding: 60px 0;
+}
+.promote-view .promote-header .map-container .map {
+  height: 300px;
+  width: 450px;
+  margin-left: 30px;
+  background: white;
+}
+.promote-view .highlight .blue-bg {
+  padding: 20px;
+}
+.promote-view h2.inline-border {
+  position: relative;
+  top: 15px;
+}
+.promote-view .features {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.promote-view .features img {
+  max-width: 100%;
+  padding: 22px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: white;
+}
+.promote-view .features p {
+  text-align: left;
+  padding-left: 5px;
+}
+.promote-view .features .col-sm-1 {
+  text-align: center;
+  margin-top: 15%;
+}
+.promote-view .features .col-sm-1 .plus-icon {
+  font-size: 60px;
+  color: rgba(0, 0, 0, 0.1);
 }
 
 /*
