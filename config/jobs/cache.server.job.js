@@ -41,7 +41,7 @@ function getSitemap() {
 
         i++;
 
-      }, 2000);
+      }, 4000);
 
 
     });

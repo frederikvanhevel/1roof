@@ -12,6 +12,7 @@ exports.start = function() {
 
   var everyday = new schedule.RecurrenceRule();
   everyday.hour = 2;
+  everyday.minute = 0;
 
   schedule.scheduleJob(everyday, roomAvailabilityCheckJob.run);
   schedule.scheduleJob(everyday, cacheJob.run);
