@@ -179,15 +179,17 @@
                     <button ng-click="openReservationModal()" class="btn btn-blue btn-block"><i class="icon-calendar-1"></i> <span translate>Afspraak maken</span></button>
                 </div>
             </div>
+
             <div class="panel panel-default">
                 <div class="panel-body">
                     <form role="form">
                         <h5 translate>Vragen over deze ruimte?</h5>
-                        <h6><i class="icon-user"></i> {{::room.user.displayName}}</h6>
+                        <p><span translate>Contactpersoon</span>: <strong>{{::room.user.displayName}}</strong></p>
                         <button ng-click="openContactModal()" class="btn btn-block"><i class="icon-mail-1"></i> <span translate>Bericht versturen</span></button>
                     </form>
                 </div>
             </div>
+
             <div class="text-center">
                 <a href="mailto:abuse@1roof.be?subject=Misbruik&body=Advertentie nummer: {{::room._id}}"><i class="icon-flag"></i> <span translate>Misbruik melden</span></a>
             </div>
