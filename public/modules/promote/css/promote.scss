@@ -1,5 +1,74 @@
 .promote-view {
 
+	.promote-header {
+		background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.1)), url(/modules/promote/img/promote.jpg);
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		padding: 60px 60px;
+		margin-bottom: 60px;
+
+		h2 {
+			color: white !important;
+		}
+
+		.col-sm-6:first-child {
+			padding: 60px 0;
+		}
+
+		.map-container {
+			
+			.map {
+				height: 300px;
+				width: 450px;
+				margin-left: 30px;
+				background: white;
+			}
+			
+		}
+	}
+
+	.highlight {
+
+		.blue-bg {
+			padding: 20px;
+		}
+		
+	}
+
+	h2.inline-border {
+		position: relative;
+		top: 15px;
+	}
+
+	.features {
+		margin-top: 50px;
+		margin-bottom: 50px;
+
+		img {
+			max-width: 100%;
+			padding: 22px;
+			border: 1px solid rgba(0,0,0,0.1);
+			background: white;
+		}
+
+		p {
+			text-align: left;
+			padding-left: 5px;
+		}
+
+		.col-sm-1 {
+			text-align: center;
+			margin-top: 15%;
+
+			.plus-icon {
+				font-size: 60px;
+				color: rgba(0,0,0,0.1);
+			}
+		}
+
+	}
+
 	
-	
+
 }
