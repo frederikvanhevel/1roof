@@ -106,6 +106,7 @@ msgid "App."
 msgstr "App."
 
 #: public/modules/rooms/views/create-room.client.view.html
+#: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Appartement"
 msgstr "Appartment"
 
@@ -294,6 +295,7 @@ msgid "Home"
 msgstr "Home"
 
 #: public/modules/search/views/search.client.view.html
+#: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Huis"
 msgstr "House"
 
@@ -407,6 +409,7 @@ msgstr "Forgot password?"
 
 #: public/modules/rooms/views/create-room.client.view.html
 #: public/modules/search/views/search.client.view.html
+#: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Kamer"
 msgstr "Room"
 
@@ -708,7 +711,8 @@ msgid ""
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Welkom bij <strong>1roof</strong>"
+#, fuzzy
+msgid "Welkom bij <span class=\"light\">1roof</span>"
 msgstr "Welcome to <strong>1roof</strong>"
 
 #: public/modules/rooms/views/edit-room.client.view.html
@@ -731,10 +735,6 @@ msgstr "views per day"
 msgid "andere(n) in dit pand"
 msgstr "other(s) in this premises"
 
-#: public/modules/core/views/home.client.view.html
-msgid "appartement"
-msgstr "appartment"
-
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "bekijk de advertentie"
 msgstr "view this ad"
@@ -743,21 +743,9 @@ msgstr "view this ad"
 msgid "hou me op de hoogte van nieuwe aanbiedingen"
 msgstr "keep me informed of new offers"
 
-#: public/modules/core/views/home.client.view.html
-msgid "huis"
-msgstr "house"
-
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "huurcontract"
 msgstr "lease"
-
-#: public/modules/core/views/home.client.view.html
-msgid "kantoor"
-msgstr "office"
-
-#: public/modules/core/views/home.client.view.html
-msgid "kot"
-msgstr "room"
 
 #: public/modules/users/views/signin.client.view.html
 #: public/modules/users/views/signup.client.view.html
@@ -798,10 +786,6 @@ msgstr "total amount of favorites per day"
 msgid "van"
 msgstr "of"
 
-#: public/modules/core/views/home.client.view.html
-msgid "villa"
-msgstr "villa"
-
 #: public/modules/users/views/signin.client.view.html
 msgid "voorbeeld@email.com"
 msgstr "example@email.com"
@@ -815,11 +799,8 @@ msgid "wachtwoord"
 msgstr "password"
 
 #: public/modules/core/views/home.client.view.html
-msgid "woning"
-msgstr "home"
-
-#: public/modules/core/views/home.client.view.html
-msgid "zoek op een nieuwe en makkelijke manier je nieuwe"
+#, fuzzy
+msgid "zoek op een nieuwe en makkelijke manier je toekomstige"
 msgstr "a new and easy way to find your ideal"
 
 #: public/modules/search/views/search.client.view.html
@@ -841,6 +822,24 @@ msgstr "{{room.pictures.length}} pictures"
 #: public/modules/core/views/footer.client.view.html
 msgid "© 2014 1roof.be Alle rechten voorbehouden."
 msgstr "© 2014 1roof.be All rights reserved."
+
+#~ msgid "appartement"
+#~ msgstr "appartment"
+
+#~ msgid "huis"
+#~ msgstr "house"
+
+#~ msgid "kantoor"
+#~ msgstr "office"
+
+#~ msgid "kot"
+#~ msgstr "room"
+
+#~ msgid "villa"
+#~ msgstr "villa"
+
+#~ msgid "woning"
+#~ msgstr "home"
 
 #~ msgid "Meer info"
 #~ msgstr "More info"

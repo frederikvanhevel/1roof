@@ -97,6 +97,7 @@ msgid "App."
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html
+#: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Appartement"
 msgstr ""
 
@@ -270,6 +271,7 @@ msgid "Home"
 msgstr ""
 
 #: public/modules/search/views/search.client.view.html
+#: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Huis"
 msgstr ""
 
@@ -368,6 +370,7 @@ msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html
 #: public/modules/search/views/search.client.view.html
+#: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Kamer"
 msgstr ""
 
@@ -646,7 +649,7 @@ msgid "We leggen even uit hoe je je advertentie aanpast. Klik op volgende om ver
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Welkom bij <strong>1roof</strong>"
+msgid "Welkom bij <span class=\"light\">1roof</span>"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
@@ -669,10 +672,6 @@ msgstr ""
 msgid "andere(n) in dit pand"
 msgstr ""
 
-#: public/modules/core/views/home.client.view.html
-msgid "appartement"
-msgstr ""
-
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "bekijk de advertentie"
 msgstr ""
@@ -681,20 +680,8 @@ msgstr ""
 msgid "hou me op de hoogte van nieuwe aanbiedingen"
 msgstr ""
 
-#: public/modules/core/views/home.client.view.html
-msgid "huis"
-msgstr ""
-
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "huurcontract"
-msgstr ""
-
-#: public/modules/core/views/home.client.view.html
-msgid "kantoor"
-msgstr ""
-
-#: public/modules/core/views/home.client.view.html
-msgid "kot"
 msgstr ""
 
 #: public/modules/users/views/signin.client.view.html
@@ -736,10 +723,6 @@ msgstr ""
 msgid "van"
 msgstr ""
 
-#: public/modules/core/views/home.client.view.html
-msgid "villa"
-msgstr ""
-
 #: public/modules/users/views/signin.client.view.html
 msgid "voorbeeld@email.com"
 msgstr ""
@@ -753,11 +736,7 @@ msgid "wachtwoord"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "woning"
-msgstr ""
-
-#: public/modules/core/views/home.client.view.html
-msgid "zoek op een nieuwe en makkelijke manier je nieuwe"
+msgid "zoek op een nieuwe en makkelijke manier je toekomstige"
 msgstr ""
 
 #: public/modules/search/views/search.client.view.html

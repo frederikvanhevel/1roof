@@ -35,7 +35,7 @@
                     </div>
                     <div class="result-info">
                         <span class="result-price pull-right">€ {{room.price.total}}</span>
-                        <a href="" class="result-location">
+                        <a href="{{room.url}}" onclick="return false;" class="result-location">
                             <span ng-if="isNewRoom(room)" class="red new-indicator">nieuw!</span> {{room.location.street}}
                         </a>
                         <br>

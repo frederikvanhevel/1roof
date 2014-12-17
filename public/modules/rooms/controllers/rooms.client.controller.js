@@ -92,6 +92,13 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             else return gettext('per jaar');
         };
 
+        $scope.getClasification = function() {
+            var classification = $scope.room.classification;
+            if (classification === 'room') return gettext('Kamer');
+            else if (classification === 'appartment') return gettext('Appartement');
+            else return gettext('Huis');
+        };
+
         function sendFavorite() {
             $http.post('/api/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);
