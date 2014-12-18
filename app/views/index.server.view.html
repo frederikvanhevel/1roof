@@ -1,9 +1,13 @@
 {% extends 'layout.server.view.html' %}
 
 {% block content %}
-	<section ui-view></section>
 
-	<noscript>
-	{% include "./home_rendered.server.view.html" %}
-	</noscript>
+	<section ui-view>
+
+		<noscript>
+		{% include "./home_rendered.server.view.html" %}
+		</noscript>
+
+	</section>
+
 {% endblock %}
