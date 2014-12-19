@@ -1,11 +1,34 @@
 'use strict';
 
-var mailer = require('../../app/util/mailer'),
-  winston = require('winston'),
+var winston = require('winston'),
   _ = require('lodash'),
-  https = require('https');
+  https = require('https'),
+  config = require('../config'),
+  BPromise = require('bluebird'),
+  seo = require('mean-seo');
 
-function getSitemap() {
+function cacheUrl(options) {
+  var defer = BPromise.defer();
+
+  winston.info('Start caching %s', options.url);
+
+  seo.forceCache(options, function(err) {
+    if (err) {
+      winston.error('Error caching %s', options.url);
+      return defer.reject(err);
+    }
+    else {
+      winston.info('Done caching %s', options.url);
+      return defer.resolve();
+    }
+  });
+
+  return defer.promise;
+}
+
+exports.run = function() {
+
+  winston.info('Cache job started ..');
 
   var options = {
     host: '1roof.be',
@@ -26,34 +49,18 @@ function getSitemap() {
 
       var urls = str.match(/<loc>(.*)<\/loc>/g);
 
-      var i = 0;
-      var gogo = setInterval(function() {
+      BPromise.reduce(urls, function(total, url) {
+        url = url.replace('<loc>', '').replace('</loc>', '');
+        var seoOptions = _.merge(config.seo, { url: url });
 
-        if (i === urls.length) {
-          clearInterval(gogo);
-          return;
-        }
-        var url = urls[i].replace('<loc>', '').replace('</loc>', '');
-
-        winston.info('Caching %s', url);
-
-        https.get(url + '?_escaped_fragment_=', function() {});
-
-        i++;
-
-      }, 4000);
-
+        return cacheUrl(seoOptions);
+      }).finally(function() {
+        winston.info('Done caching');
+      });
 
     });
   };
 
   https.get(options, callback).end();
-}
-
-exports.run = function() {
-
-  winston.info('Cache job started ..');
-
-  getSitemap();
 
 };

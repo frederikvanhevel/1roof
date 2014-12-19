@@ -62,11 +62,7 @@ module.exports = function(db) {
     });
 
     // SEO functions
-    app.use(seo({
-        cacheClient: 'redis', // Can be 'disk' or 'redis'
-        redisURL: 'redis://frederik.vanhevel@telenet.be:Freeksken123@pub-redis-14425.us-east-1-4.4.ec2.garantiadata.com:14425',
-        cacheDuration: 2 * 60 * 60 * 24 * 1000 // In milliseconds for disk cache
-    }));
+    app.use(seo.init(config.seo));
 
     // Should be placed before express.static
     app.use(compress({

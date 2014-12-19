@@ -28,3 +28,10 @@ exports.allowCORS = function(req, res, next) {
     }
 
 };
+
+exports.runCacheJob  = function(req, res, next) {
+    var cacheJob = require('../../config/jobs/cache');
+    cacheJob.run();
+
+    res.send(200);
+};

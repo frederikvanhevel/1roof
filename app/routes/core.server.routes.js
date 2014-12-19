@@ -9,4 +9,7 @@ module.exports = function(app) {
 
     // sitemap generation
     app.route('/sitemap.xml').get(sitemap.create);
+
+    // run cache job
+    app.route('/api/jobs/runcache').get(core.runCacheJob);
 };
