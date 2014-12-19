@@ -21,5 +21,9 @@ angular.module('core').controller('FooterController', ['$scope', '$rootScope', '
 
             return url;
         };
+
+        $scope.getCurrentYear = function() {
+            return new Date().getFullYear();
+        };
     }
 ]);

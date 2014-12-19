@@ -16,6 +16,10 @@ msgstr ""
 msgid "/ Maand"
 msgstr "/ Month"
 
+#: public/modules/core/views/about.client.view.html
+msgid "1ROOF maakt je leven makkelijker."
+msgstr "1ROOF makes your life easier."
+
 #: public/modules/core/views/footer.client.view.html
 msgid ""
 "1Roof is een website met een missie om voor jou alles makkelijker te maken. "
@@ -101,6 +105,10 @@ msgstr "General information"
 #: public/modules/search/views/search.client.view.html
 msgid "Alle"
 msgstr "All"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Alle rechten voorbehouden."
+msgstr "All rights reserved."
 
 #: public/modules/rooms/views/analytics.client.view.html
 msgid "Analytics"
@@ -203,6 +211,12 @@ msgstr "Contact"
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Contract"
 msgstr "Contract"
+
+#: public/modules/core/views/about.client.view.html
+msgid ""
+"Dankzij 1ROOF heb ik samen met mijn vriendin het ideale appartement "
+"gevonden. Bedankt voor jullie hulp!"
+msgstr ""
 
 #: public/modules/users/views/favorites.client.view.html
 msgid "Delen"
@@ -719,6 +733,12 @@ msgstr "Log out"
 msgid "Upgraden"
 msgstr "Upgrade"
 
+#: public/modules/core/views/about.client.view.html
+msgid ""
+"Veel makkelijker dan elke andere service. 1ROOF is de oplossing voor elke "
+"huisbaas!"
+msgstr ""
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Verwijder deze advertentie"
 msgstr "Remove this ad"
@@ -888,10 +908,6 @@ msgstr "{{results.length}} ads found"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
 msgstr "{{room.pictures.length}} pictures"
-
-#: public/modules/core/views/footer.client.view.html
-msgid "© 2014 1roof.be Alle rechten voorbehouden."
-msgstr "© 2014 1roof.be All rights reserved."
 
 #~ msgid "appartement"
 #~ msgstr "appartment"

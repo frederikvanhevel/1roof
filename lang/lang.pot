@@ -88,6 +88,10 @@ msgstr ""
 msgid "Alle"
 msgstr ""
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Alle rechten voorbehouden."
+msgstr ""
+
 #: public/modules/rooms/views/analytics.client.view.html
 msgid "Analytics"
 msgstr ""
@@ -823,8 +827,4 @@ msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
-msgstr ""
-
-#: public/modules/core/views/footer.client.view.html
-msgid "© 2014 1roof.be Alle rechten voorbehouden."
 msgstr ""
