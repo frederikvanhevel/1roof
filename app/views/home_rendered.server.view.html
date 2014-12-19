@@ -86,11 +86,54 @@
 
 </section>
 
-<footer class="ng-scope">
-    <section  class="ng-scope">
+<footer class="ng-scope"><section class="dark-bg ng-scope">
 
-        <div ng-hide="hidden" class="footer-bottom">
-            <div class="container inner">
+    <div class="container inner">
+        <div class="row">
+            
+            <div class="col-md-3 col-sm-6 inner links">
+                <h4><span class="ng-scope">Populaire steden</span></h4>
+
+                <a class="txt-btn" href="/search/Gent--Belgïe"><span class="ng-scope">Gent</span></a>
+                <a class="txt-btn" href="/search/Antwerpen--Belgïe"><span class="ng-scope">Antwerpen</span></a>
+                <a class="txt-btn" href="/search/Leuven--Belgïe"><span class="ng-scope">Leuven</span></a>
+                <a class="txt-btn" href="/search/Brussel--Belgïe"><span class="ng-scope">Brussel</span></a>
+                <a class="txt-btn" href="/search/Kortrijk--Belgïe"><span class="ng-scope">Kortrijk</span></a>
+                <a class="txt-btn" href="/search/Hasselt--Belgïe"><span class="ng-scope">Hasselt</span></a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 inner">
+                <h4><span class="ng-scope">Wie zijn we</span></h4>
+                <a href="/"><img class="logo img-intext" src="/modules/core/img/brand/logo.png" alt="1roof logo"></a>
+                <p><span class="ng-scope">1Roof is een website met een missie om voor jou alles makkelijker te maken. We streven ernaar om je op de simpelste manier dichterbij te brengen bij het pand van je dromen.</span></p>
+                <a href="/about" class="txt-btn"><span class="ng-scope">Meer over ons</span></a>
+            </div>
+            
+            <div class="col-md-3 col-sm-6 inner">
+                <h4><span class="ng-scope">Laatste online</span></h4>
+                
+                <div class="row thumbs gap-xs">
+
+                </div>
+            </div>
+            
+            
+            <div class="col-md-3 col-sm-6 inner">
+                <h4><span class="ng-scope">Neem contact op</span></h4>
+                <p><span class="ng-scope">Heb je een vraag, zit je met iets of wil je gewoon iets kwijt? Aarzel dan niet om ons te contacteren.</span></p>
+                <ul class="contacts">
+                    <li><a href="mailto:info@1roof.be"><i class="icon-mail-1 contact"></i> info@1roof.be</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+    <div ng-hide="hidden" class="footer-bottom">
+        <div class="container inner">
+
+            <div class="row">
+
                 <div class="col-sm-5">
                     <p><span class="ng-scope">© 2014 1roof.be Alle rechten voorbehouden.</span></p>
                 </div>
@@ -98,6 +141,7 @@
                 <div class="col-sm-2">
                     <ul class="social-buttons">
                         <li><a href="https://www.facebook.com/pages/1roofbe/1623672907859880?ref=hl"><i class="icon-s-facebook"></i></a></li>
+                        <li><a href="https://plus.google.com/116903800934073569983" rel="publisher"><i class="icon-s-gplus"></i></a></li>
                     </ul>
                 </div>
 
@@ -111,7 +155,7 @@
 
                 <div class="col-sm-2">
                     <div class="select-style language-select footer-menu">
-                        <select class="ng-pristine ng-untouched ng-valid">
+                        <select ng-model="$root.language" ng-init="$root.language = $root.language || 'nl'" class="ng-valid ng-dirty ng-valid-parse ng-touched">
                             <option value="nl">Nederlands</option>
                             <option value="en">English</option>
                         </select>
@@ -119,8 +163,8 @@
                 </div>
 
             </div>
+
         </div>
-
-    </section>
-
+    </div>
+</section>
 </footer>

@@ -8019,11 +8019,18 @@ footer .footer-bottom .social-buttons li {
 }
 
 .about-view {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 52px;
-  bottom: 0;
+  margin-bottom: -20px;
+}
+.about-view .about-header {
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.1), transparent), url(/modules/core/img/about.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: 100px 60px;
+  margin-bottom: 60px;
+}
+.about-view .about-header h2 {
+  color: white !important;
 }
 .about-view .bitcoin-icon {
   width: 45px;

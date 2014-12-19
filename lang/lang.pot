@@ -8,6 +8,10 @@ msgstr ""
 msgid "/ Maand"
 msgstr ""
 
+#: public/modules/core/views/about.client.view.html
+msgid "1ROOF maakt je leven makkelijker."
+msgstr ""
+
 #: public/modules/core/views/footer.client.view.html
 msgid "1Roof is een website met een missie om voor jou alles makkelijker te maken. We streven ernaar om je op de simpelste manier dichterbij te brengen bij het pand van je dromen."
 msgstr ""
@@ -184,6 +188,10 @@ msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Contract"
+msgstr ""
+
+#: public/modules/core/views/about.client.view.html
+msgid "Dankzij 1ROOF heb ik samen met mijn vriendin het ideale appartement gevonden. Bedankt voor jullie hulp!"
 msgstr ""
 
 #: public/modules/users/views/favorites.client.view.html
@@ -647,6 +655,10 @@ msgstr ""
 
 #: public/modules/core/views/pricing.client.view.html
 msgid "Upgraden"
+msgstr ""
+
+#: public/modules/core/views/about.client.view.html
+msgid "Veel makkelijker dan elke andere service. 1ROOF is de oplossing voor elke huisbaas!"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
