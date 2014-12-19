@@ -8,6 +8,10 @@ msgstr ""
 msgid "/ Maand"
 msgstr ""
 
+#: public/modules/core/views/footer.client.view.html
+msgid "1Roof is een website met een missie om voor jou alles makkelijker te maken. We streven ernaar om je op de simpelste manier dichterbij te brengen bij het pand van je dromen."
+msgstr ""
+
 #: public/modules/search/views/search.client.view.html
 msgid ""
 "<h2 class=\"empty-icon text-center\"><i class=\"icon-home-1\"></i></h2>\n"
@@ -84,6 +88,10 @@ msgstr ""
 msgid "Analytics"
 msgstr ""
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Antwerpen"
+msgstr ""
+
 #: public/modules/rooms/services/amenity.client.service.js
 msgid "Aparte badkamer"
 msgstr ""
@@ -117,10 +125,6 @@ msgstr ""
 msgid "Bekijk deze ruimte"
 msgstr ""
 
-#: public/modules/rooms/services/amenity.client.service.js
-msgid "Bemeubeld"
-msgstr ""
-
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Bericht versturen"
 msgstr ""
@@ -152,6 +156,10 @@ msgstr ""
 msgid "Bijgewerkt"
 msgstr ""
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Brussel"
+msgstr ""
+
 #: public/modules/core/views/comingsoon.client.view.html
 msgid "Chat met je huisbaas"
 msgstr ""
@@ -166,7 +174,12 @@ msgstr ""
 
 #: public/modules/core/views/home.client.view.html
 #: public/modules/core/views/pricing.client.view.html
+#: public/modules/promote/views/promote.client.view.html
 msgid "Contacteer ons!"
+msgstr ""
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Contactpersoon"
 msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
@@ -262,8 +275,24 @@ msgstr ""
 msgid "Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart."
 msgstr ""
 
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Gemeubeld"
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Gent"
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Hasselt"
+msgstr ""
+
 #: public/modules/users/views/signup.client.view.html
 msgid "Heb je al een account?"
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Heb je een vraag, zit je met iets of wil je gewoon iets kwijt? Aarzel dan niet om ons te contacteren."
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
@@ -286,6 +315,7 @@ msgstr ""
 
 #: public/modules/core/views/home.client.view.html
 #: public/modules/core/views/pricing.client.view.html
+#: public/modules/promote/views/promote.client.view.html
 msgid "Hulp nodig?"
 msgstr ""
 
@@ -382,6 +412,10 @@ msgstr ""
 msgid "Klaar om contact op te nemen met de eigenaar?"
 msgstr ""
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Kortrijk"
+msgstr ""
+
 #: public/modules/rooms/views/edit-room.client.view.html
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Kosten"
@@ -393,6 +427,14 @@ msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}"
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Laatste online"
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Leuven"
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html
@@ -409,6 +451,10 @@ msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Maximum 8 afbeeldingen per ruimte"
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Meer over ons"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
@@ -445,6 +491,10 @@ msgstr ""
 
 #: public/modules/rooms/views/not-found.client.view.html
 msgid "Misschien is de advertentie reeds verhuurd en heeft de eigenaar ze offline gehaald."
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Neem contact op"
 msgstr ""
 
 #: public/modules/users/views/reset.client.view.html
@@ -497,6 +547,10 @@ msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Over ons"
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Populaire steden"
 msgstr ""
 
 #: public/modules/core/views/comingsoon.client.view.html
@@ -650,6 +704,10 @@ msgstr ""
 
 #: public/modules/core/views/home.client.view.html
 msgid "Welkom bij <span class=\"light\">1roof</span>"
+msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Wie zijn we"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html

@@ -16,12 +16,25 @@ msgstr ""
 msgid "/ Maand"
 msgstr "/ Month"
 
+#: public/modules/core/views/footer.client.view.html
+msgid ""
+"1Roof is een website met een missie om voor jou alles makkelijker te maken. "
+"We streven ernaar om je op de simpelste manier dichterbij te brengen bij het "
+"pand van je dromen."
+msgstr ""
+"1Roof is a website with a mission to make everything easier for you. We are "
+"committed to bring you closer to the simplest to find the place of your "
+"dreams."
+
 #: public/modules/search/views/search.client.view.html
 msgid ""
 "<h2 class=\"empty-icon text-center\"><i class=\"icon-home-1\"></i></h2>\n"
 "                <p class=\"lead text-center\" translate=\"\">Geen resultaten "
 "gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.</p>"
 msgstr ""
+"<h2 class=\"empty-icon text-center\"><i class=\"icon-home-1\"></i></h2>\n"
+"                <p class=\"lead text-center\" translate=\"\">No results "
+"found. Try using less filters or zoom out of the map.</p>"
 
 #: public/modules/users/views/reset.client.view.html
 msgid "Aanpassen"
@@ -93,6 +106,10 @@ msgstr "All"
 msgid "Analytics"
 msgstr "Analytics"
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Antwerpen"
+msgstr "Antwerp"
+
 #: public/modules/rooms/services/amenity.client.service.js
 msgid "Aparte badkamer"
 msgstr "Seperate bathroom"
@@ -126,10 +143,6 @@ msgstr "Base price"
 msgid "Bekijk deze ruimte"
 msgstr "View this room"
 
-#: public/modules/rooms/services/amenity.client.service.js
-msgid "Bemeubeld"
-msgstr "Furnished"
-
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Bericht versturen"
 msgstr "Send message"
@@ -161,6 +174,10 @@ msgstr "Description"
 msgid "Bijgewerkt"
 msgstr "Modified"
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Brussel"
+msgstr "Brussels"
+
 #: public/modules/core/views/comingsoon.client.view.html
 msgid "Chat met je huisbaas"
 msgstr "Chat with your landlord"
@@ -175,8 +192,13 @@ msgstr "Contact"
 
 #: public/modules/core/views/home.client.view.html
 #: public/modules/core/views/pricing.client.view.html
+#: public/modules/promote/views/promote.client.view.html
 msgid "Contacteer ons!"
 msgstr "Contact us!"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Contactpersoon"
+msgstr "Contact"
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Contract"
@@ -187,7 +209,6 @@ msgid "Delen"
 msgstr "Share"
 
 #: public/modules/users/views/favorites.client.view.html
-#, fuzzy
 msgid "Deze persoon heeft nog geen advertenties in zijn wishlist geplaatst"
 msgstr "No ads in this wishlist"
 
@@ -286,9 +307,29 @@ msgid ""
 "de kaart."
 msgstr "No results found. Try fewer filters or zoom out on the map."
 
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Gemeubeld"
+msgstr "Furnished"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Gent"
+msgstr "Ghent"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Hasselt"
+msgstr "Hasselt"
+
 #: public/modules/users/views/signup.client.view.html
 msgid "Heb je al een account?"
 msgstr "Already have an account?"
+
+#: public/modules/core/views/footer.client.view.html
+msgid ""
+"Heb je een vraag, zit je met iets of wil je gewoon iets kwijt? Aarzel dan "
+"niet om ons te contacteren."
+msgstr ""
+"Have a question, wondering about something or just want to say something? "
+"Please do not hesitate to contact us."
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Home"
@@ -310,6 +351,7 @@ msgstr "Pets allowed"
 
 #: public/modules/core/views/home.client.view.html
 #: public/modules/core/views/pricing.client.view.html
+#: public/modules/promote/views/promote.client.view.html
 msgid "Hulp nodig?"
 msgstr "Need help?"
 
@@ -421,6 +463,10 @@ msgstr "Choose from Dropbox"
 msgid "Klaar om contact op te nemen met de eigenaar?"
 msgstr "Ready to contact the owner?"
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Kortrijk"
+msgstr "Kortrijk"
+
 #: public/modules/rooms/views/edit-room.client.view.html
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Kosten"
@@ -433,6 +479,14 @@ msgstr "Get alerts"
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}"
 msgstr "Last modified {{room.updated | amDateFormat:'ll'}}"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Laatste online"
+msgstr "Latest online"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Leuven"
+msgstr "Leuven"
 
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Maak een account aan"
@@ -449,6 +503,10 @@ msgstr "Monthly"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Maximum 8 afbeeldingen per ruimte"
 msgstr "Maximum 8 pictures per space"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Meer over ons"
+msgstr "More about us"
 
 #: public/modules/core/views/home.client.view.html
 msgid "Meldingen."
@@ -491,6 +549,10 @@ msgid ""
 "Misschien is de advertentie reeds verhuurd en heeft de eigenaar ze offline "
 "gehaald."
 msgstr ""
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Neem contact op"
+msgstr "Contact us"
 
 #: public/modules/users/views/reset.client.view.html
 msgid "Nieuw wachtwoord"
@@ -547,6 +609,10 @@ msgstr "Surface in m²"
 #: public/modules/core/views/footer.client.view.html
 msgid "Over ons"
 msgstr "About us"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Populaire steden"
+msgstr "Popular cities"
 
 #: public/modules/core/views/comingsoon.client.view.html
 #: public/modules/core/views/home.client.view.html
@@ -714,6 +780,10 @@ msgstr ""
 #, fuzzy
 msgid "Welkom bij <span class=\"light\">1roof</span>"
 msgstr "Welcome to <strong>1roof</strong>"
+
+#: public/modules/core/views/footer.client.view.html
+msgid "Wie zijn we"
+msgstr "Who we are"
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"

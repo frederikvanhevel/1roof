@@ -16,7 +16,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         $scope.init = function() {
             $scope.isHomepage = document.location.pathname === '/';
 
-            var savedLanguage = localStorageService.get('viewedRooms');
+            var savedLanguage = localStorageService.get('language');
             if (savedLanguage) {
                 $rootScope.language = savedLanguage;
                 setLanguage(savedLanguage, false);
@@ -129,6 +129,8 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
 
             // momentjs
             amMoment.changeLocale(language);
+
+            localStorageService.set('language', language);
 
             if (reload)
                 $state.reload();
