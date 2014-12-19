@@ -9,6 +9,11 @@ angular.module('rooms').factory('Rooms', ['$resource',
             update: {
                 method: 'PUT'
             },
+            getLatestRooms: {
+                method: 'GET',
+                url: '/api/latestrooms',
+                isArray: true
+            },
             getMyRooms: {
                 method: 'GET',
                 url: '/api/myrooms',

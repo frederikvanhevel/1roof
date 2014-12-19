@@ -23,7 +23,7 @@ angular.module('rooms').factory('Amenity', [ 'gettext',
                     name: gettext('Dubbel glas'),
                     value: 'doubleGlass'
                 }, {
-                    name: gettext('Bemeubeld'),
+                    name: gettext('Gemeubeld'),
                     value: 'furnished'
                 }, {
                     name: gettext('Aparte badkamer'),

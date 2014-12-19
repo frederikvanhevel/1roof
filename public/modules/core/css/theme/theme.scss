@@ -736,6 +736,95 @@ footer p {
     margin: 0;
 }
 
+.last-bottom {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+.last-right {
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+}
+.reset-margin {
+    margin: 0;
+}
+.reset-margin-left {
+    margin-left: 0;
+}
+.reset-margin-right {
+    margin-right: 0;
+}
+.reset-padding {
+    padding: 0;
+}
+.reset-padding-left {
+    padding-left: 0;
+}
+.reset-padding-right {
+    padding-right: 0;
+}
+.single-block {
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+h1 + .single-line,
+h2 + .single-line,
+h3 + .single-line,
+h4 + .single-line {
+    margin-top: -.5em;
+}
+.img-intext {
+    margin-bottom: 20px;
+}
+aside {
+    font-size: 16px;
+    line-height: 160%;
+}
+aside p {
+    margin-bottom: 15px;
+}
+aside .txt-btn {
+    font-size: 100%;
+}
+aside .thumb figure {
+    margin: 0;
+}
+.thumbs.no-gap {
+    margin-left: 0;
+    margin-right: 0;
+}
+.thumbs.no-gap .thumb {
+    padding: 0;
+}
+.thumbs.gap-xs {
+    margin-left: -5px;
+    margin-right: 0;
+}
+.thumbs.gap-xs .thumb {
+    padding: 0 0 5px 5px;
+}
+.thumbs.gap-sm {
+    margin-left: -10px;
+    margin-right: 0;
+}
+.thumbs.gap-sm .thumb {
+    padding: 0 0 10px 10px;
+}
+.thumbs.gap-md {
+    margin-left: -20px;
+    margin-right: 0;
+}
+.thumbs.gap-md .thumb {
+    padding: 0 0 20px 20px;
+}
+.thumbs.gap-lg {
+    margin-left: -30px;
+    margin-right: 0;
+}
+.thumbs.gap-lg .thumb {
+    padding: 0 0 30px 30px;
+}
+
 
 
 /*===================================================================================*/

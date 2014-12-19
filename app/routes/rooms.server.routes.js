@@ -12,6 +12,9 @@ module.exports = function(app) {
 		.get(rooms.list)
 		.post(users.requiresLogin, rooms.createRoomCheck, rooms.create);
 
+	app.route('/api/latestrooms')
+		.get(rooms.getLatestRooms);
+
 	app.route('/api/myrooms')
 		.get(users.requiresLogin, rooms.listOfUserRooms);
 

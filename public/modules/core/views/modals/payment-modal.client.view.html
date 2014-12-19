@@ -9,9 +9,9 @@
         </div>
         <div class="col-sm-9">
             <ul class="creditcards">
-                <li ng-class="{ 'active': type == 'visa' }"><img src="/modules/core/img/cards/visa.png"/></li>
-                <li><img src="/modules/core/img/cards/mastercard.png"/></li>
-                <li><img src="/modules/core/img/cards/amex.png"/></li>
+                <li ng-class="{ 'active': type == 'visa' }"><img src="/modules/core/img/cards/visa.png" alt="visa" /></li>
+                <li><img src="/modules/core/img/cards/mastercard.png" alt="mastercard" /></li>
+                <li><img src="/modules/core/img/cards/amex.png" alt="american express" /></li>
             </ul>
             <form stripe-form="submitPayment" name="paymentForm">
 
@@ -29,7 +29,7 @@
                     <input name="cvc" type="text" ng-model="cvc" payments-validate="cvc" payments-format="cvc" placeholder="1234" required />
                 </div>
 
-                <img ng-show="busy" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+                <img ng-show="busy" als="loading icon" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
                 <button type="submit" class="btn btn-orange" ng-class="{ disabled: busy || paymentForm.$invalid }"><i class="icon-lock-1"></i> Veilig betalen</button>
                 <button class="btn-link" ng-click="$dismiss()">Annuleren</button>
             </form>

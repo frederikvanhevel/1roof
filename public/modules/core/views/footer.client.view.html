@@ -1,33 +1,86 @@
-<section data-ng-controller="FooterController">
+<section data-ng-controller="FooterController" ng-init="init()" class="dark-bg">
+
+    <div class="container inner">
+        <div class="row">
+            
+            <div class="col-md-3 col-sm-6 inner links">
+                <h4>Populaire steden</h4>
+
+                <a class="txt-btn" href="/search/Gent--Belgïe">Gent</a>
+                <a class="txt-btn" href="/search/Antwerpen--Belgïe">Antwerpen</a>
+                <a class="txt-btn" href="/search/Leuven--Belgïe">Leuven</a>
+                <a class="txt-btn" href="/search/Brussel--Belgïe">Brussel</a>
+                <a class="txt-btn" href="/search/Kortrijk--Belgïe">Kortrijk</a>
+                <a class="txt-btn" href="/search/Hasselt--Belgïe">Hasselt</a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 inner">
+                <h4>Wie zijn we</h4>
+                <a href="/"><img class="logo img-intext" src="/modules/core/img/brand/logo.png" alt="1roof logo"></a>
+                <p>1Roof is een website met een missie om voor jou alles makkelijker te maken. We streven ernaar om je op de simpelste manier dichterbij te brengen bij het pand van je dromen.</p>
+                <a href="/about" class="txt-btn">Meer over ons</a>
+            </div>
+            
+            <div class="col-md-3 col-sm-6 inner">
+                <h4>Laatste online</h4>
+                
+                <div class="row thumbs gap-xs">
+                                                
+                    <div class="col-xs-6 thumb" ng-repeat="room in latestRooms">
+                        <figure class="icon-overlay icn-link">
+                            <a href="{{room.url}}"><span class="icn-more"></span><img src="{{getImageLink(room.pictures[0])}}" alt=""></a>
+                        </figure>
+                    </div>
+                    
+                </div>
+            </div>
+            
+            
+            <div class="col-md-3 col-sm-6 inner">
+                <h4>Neem contact op</h4>
+                <p>Heb je een vraag, zit je met iets of wil je gewoon iets kwijt? Aarzel dan niet om ons te contacteren.</p>
+                <ul class="contacts">
+                    <li><a href="mailto:info@1roof.be"><i class="icon-mail-1 contact"></i> info@1roof.be</a></li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
     <div ng-hide="hidden" class="footer-bottom">
         <div class="container inner">
-            <div class="col-sm-5">
-                <p translate>© 2014 1roof.be Alle rechten voorbehouden.</p>
-            </div>
 
-            <div class="col-sm-2">
-                <ul class="social-buttons">
-                    <li><a href="https://www.facebook.com/pages/1roofbe/1623672907859880?ref=hl"><i class="icon-s-facebook"></i></a></li>
-                    <li><a href="https://plus.google.com/116903800934073569983" rel="publisher"><i class="icon-s-gplus"></i></a></li>
-                    <!-- <li><a href="https://twitter.com/1roof_be"><i class="icon-s-twitter"></i></a></li> -->
-                </ul>
-            </div>
+            <div class="row">
 
-            <div class="col-sm-3">
-                <ul class="footer-menu">
-                    <li><a href="/" translate>Home</a></li>
-                    <li><a href="mailto:info@1roof.be" translate>Contact</a></li>
-                    <li><a href="/about" translate>Over ons</a></li>
-                </ul>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="select-style language-select footer-menu">
-                    <select ng-model="$root.language" ng-init="$root.language = $root.language || 'nl'">
-                        <option value="nl">Nederlands</option>
-                        <option value="en">English</option>
-                    </select>
+                <div class="col-sm-5">
+                    <p translate>© 2014 1roof.be Alle rechten voorbehouden.</p>
                 </div>
+
+                <div class="col-sm-2">
+                    <ul class="social-buttons">
+                        <li><a href="https://www.facebook.com/pages/1roofbe/1623672907859880?ref=hl"><i class="icon-s-facebook"></i></a></li>
+                        <li><a href="https://plus.google.com/116903800934073569983" rel="publisher"><i class="icon-s-gplus"></i></a></li>
+                        <!-- <li><a href="https://twitter.com/1roof_be"><i class="icon-s-twitter"></i></a></li> -->
+                    </ul>
+                </div>
+
+                <div class="col-sm-3">
+                    <ul class="footer-menu">
+                        <li><a href="/" translate>Home</a></li>
+                        <li><a href="mailto:info@1roof.be" translate>Contact</a></li>
+                        <li><a href="/about" translate>Over ons</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="select-style language-select footer-menu">
+                        <select ng-model="$root.language" ng-init="$root.language = $root.language || 'nl'">
+                            <option value="nl">Nederlands</option>
+                            <option value="en">English</option>
+                        </select>
+                    </div>
+                </div>
+
             </div>
 
         </div>
