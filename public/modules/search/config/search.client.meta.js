@@ -5,7 +5,8 @@ angular.module('search').config([ 'MetaProvider',
     function(MetaProvider) {
         MetaProvider
           .when('/search/:address', {
-            title: 'Zoeken in :address - 1Roof'
+            title: 'Huren in :address - 1Roof',
+            description: 'Bekijk alle appartementen, huizen en koten in :address'
           });
     }
 ]);
