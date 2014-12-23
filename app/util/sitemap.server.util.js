@@ -9,6 +9,8 @@ var sm = require('sitemap'),
 function getCommonPages() {
     return [
         '/rooms/new',
+        '/signin',
+        '/signup',
         '/pricing',
         '/about'
     ];
