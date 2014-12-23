@@ -22,6 +22,10 @@ msgid ""
 "                <p class=\"lead text-center\" translate=\"\">Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.</p>"
 msgstr ""
 
+#: public/modules/core/views/home.client.view.html
+msgid "Aanbieden."
+msgstr ""
+
 #: public/modules/users/views/reset.client.view.html
 msgid "Aanpassen"
 msgstr ""
@@ -369,10 +373,6 @@ msgstr ""
 msgid "Je bericht is verzonden!"
 msgstr ""
 
-#: public/modules/core/views/home.client.view.html
-msgid "Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een e-mail sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet."
-msgstr ""
-
 #: public/modules/core/views/comingsoon.client.view.html
 msgid "Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een email sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet."
 msgstr ""
@@ -383,6 +383,10 @@ msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Je kan deze advertentie online plaatsen"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "Je kan met één klik een afspraak maken met een huisbaas."
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html
@@ -465,21 +469,16 @@ msgstr ""
 msgid "Maximum 8 afbeeldingen per ruimte"
 msgstr ""
 
-#: public/modules/core/views/footer.client.view.html
-msgid "Meer over ons"
-msgstr ""
-
-#: public/modules/core/views/home.client.view.html
-msgid "Meldingen."
-msgstr ""
-
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid "Met amper twee klikken kan je een afspraak maken met een huisbaas. Geen tijd te verliezen!"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Met hoeveel mensen wil je samenwonen?"
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "Met slechts enkele klikken kan je je advertentie onlne plaatsen."
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
@@ -566,8 +565,11 @@ msgid "Populaire steden"
 msgstr ""
 
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid "Praat en stel vragen met de huisbazen alsof ze naast jou zaten. Krijg vliegensvlug een antwoord."
+msgstr ""
+
+#: public/modules/core/views/home.client.view.html
+msgid "Praat onmiddelijk met een eigenaar indien je geïnteresseerd bent."
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
@@ -593,7 +595,7 @@ msgid "Schoonmaak kosten"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Snel. Simpel. Krachtig."
+msgid "Snel. Simpel. Gemakkelijk."
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html

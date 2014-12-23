@@ -5,10 +5,12 @@ header.navbar {
   z-index: 1000;
   min-height: initial;
 
+  transition: background .2s ease;
+
   &.transparent {
     color: white;
     font-weight: bold;
-    background: none;
+    background: transparent;
     box-shadow: none;
   }
 

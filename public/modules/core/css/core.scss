@@ -7,8 +7,9 @@ html, body {
 }
 
 .wrapper {
-  min-height:100%;
-   position:relative;
+  min-height: 100%;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .undecorated-link:hover {
@@ -23,8 +24,8 @@ html, body {
     max-width: 350px;
 
     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-        left: 20px;
-        right: 20px;
+      left: 20px;
+      right: 20px;
     }
 
     .alert-item {
@@ -47,9 +48,8 @@ html, body {
 
 .content {
   min-height: 100%;
-  padding-top: 50px;
   padding-bottom: 102px;
-  // padding-bottom: 82px;
+  padding-top: 50px;
 }
 
 .panel-container {

@@ -40,6 +40,10 @@ msgstr ""
 "                <p class=\"lead text-center\" translate=\"\">No results "
 "found. Try using less filters or zoom out of the map.</p>"
 
+#: public/modules/core/views/home.client.view.html
+msgid "Aanbieden."
+msgstr "Add a space."
+
 #: public/modules/users/views/reset.client.view.html
 msgid "Aanpassen"
 msgstr "Modify"
@@ -410,15 +414,6 @@ msgstr "Yearly"
 msgid "Je bericht is verzonden!"
 msgstr "Your message is sent!"
 
-#: public/modules/core/views/home.client.view.html
-#, fuzzy
-msgid ""
-"Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een e-mail "
-"sturen als er een advertentie wordt geplaatst die aan jouw criteria voldoet."
-msgstr ""
-"Haven't found your dreamhouse yet? Do not worry, we can send you an email "
-"when an advertisement is placed that matches your criteria."
-
 #: public/modules/core/views/comingsoon.client.view.html
 msgid ""
 "Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een email "
@@ -437,6 +432,13 @@ msgstr ""
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Je kan deze advertentie online plaatsen"
 msgstr "You can place this ad online"
+
+#: public/modules/core/views/home.client.view.html
+#, fuzzy
+msgid "Je kan met één klik een afspraak maken met een huisbaas."
+msgstr ""
+"With just two clicks you can make an appointment with a landlord. No time to "
+"lose!"
 
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Je moet een huisnummer ingeven"
@@ -518,16 +520,7 @@ msgstr "Monthly"
 msgid "Maximum 8 afbeeldingen per ruimte"
 msgstr "Maximum 8 pictures per space"
 
-#: public/modules/core/views/footer.client.view.html
-msgid "Meer over ons"
-msgstr "More about us"
-
-#: public/modules/core/views/home.client.view.html
-msgid "Meldingen."
-msgstr "Notifications."
-
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid ""
 "Met amper twee klikken kan je een afspraak maken met een huisbaas. Geen tijd "
 "te verliezen!"
@@ -538,6 +531,10 @@ msgstr ""
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Met hoeveel mensen wil je samenwonen?"
 msgstr "With how many others do you want to live together?"
+
+#: public/modules/core/views/home.client.view.html
+msgid "Met slechts enkele klikken kan je je advertentie onlne plaatsen."
+msgstr "You can place this ad online"
 
 #: public/modules/core/views/header.client.view.html
 #: public/modules/users/views/dashboard.client.view.html
@@ -629,13 +626,16 @@ msgid "Populaire steden"
 msgstr "Popular cities"
 
 #: public/modules/core/views/comingsoon.client.view.html
-#: public/modules/core/views/home.client.view.html
 msgid ""
 "Praat en stel vragen met de huisbazen alsof ze naast jou zaten. Krijg "
 "vliegensvlug een antwoord."
 msgstr ""
 "Chat and ask questions with the landlords as if they were sitting next to "
 "you. Get an answer on the fly."
+
+#: public/modules/core/views/home.client.view.html
+msgid "Praat onmiddelijk met een eigenaar indien je geïnteresseerd bent."
+msgstr ""
 
 #: public/modules/core/views/header.client.view.html
 msgid "Profiel aanpassen"
@@ -660,8 +660,8 @@ msgid "Schoonmaak kosten"
 msgstr "Cleaning costs"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Snel. Simpel. Krachtig."
-msgstr "Fast. Simple. Powerfull"
+msgid "Snel. Simpel. Gemakkelijk."
+msgstr "Fast. Simple. Easy."
 
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Stap 1: meld je aan"
@@ -908,6 +908,21 @@ msgstr "{{results.length}} ads found"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
 msgstr "{{room.pictures.length}} pictures"
+
+#, fuzzy
+#~ msgid ""
+#~ "Je droomhuis nog niet kunnen vinden? Geen nood, we kunnen je een e-mail "
+#~ "sturen als er een advertentie wordt geplaatst die aan jouw criteria "
+#~ "voldoet."
+#~ msgstr ""
+#~ "Haven't found your dreamhouse yet? Do not worry, we can send you an email "
+#~ "when an advertisement is placed that matches your criteria."
+
+#~ msgid "Meer over ons"
+#~ msgstr "More about us"
+
+#~ msgid "Meldingen."
+#~ msgstr "Notifications."
 
 #~ msgid "appartement"
 #~ msgstr "appartment"

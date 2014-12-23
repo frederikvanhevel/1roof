@@ -3,7 +3,7 @@
 
   #hero {
     width: 100%;
-    height: 550px;
+    height: 570px;
 
     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
         height: 535px;
@@ -45,11 +45,24 @@
       background: rgba(0,0,0,.3);
 
       .hero-content {
-        padding-top: 55px;
+        padding-top: 40px;
         text-align: center;
 
         @media only screen and (min-device-width : 480px) {
           padding-top: 145px;  
+
+          p {
+            left: 5%;
+            text-align: center;
+          }
+
+          .words {
+            display: inline;
+          }
+
+          form input {
+            font-size: 20px;
+          }
         }
 
         h1 {
@@ -64,7 +77,7 @@
         p {
           color: white;
           position: relative;
-          left: -5%;
+          text-align: left;
         }
 
         a {
@@ -75,7 +88,6 @@
         form {
           margin-top: 30px;
           position: relative;
-          left: -11px;
           top: 30px;
 
           span.input-group-btn {
@@ -84,8 +96,7 @@
 
           input {
             opacity: .9;
-            font-size: 20px;
-
+            
             &:focus {
               opacity: 1;
             }
@@ -138,7 +149,6 @@
 }
 
 .words {
-  display: inline;
   padding-left: 3px;
   font-weight: bold;
 }
