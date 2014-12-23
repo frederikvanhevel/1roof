@@ -49,13 +49,16 @@ exports.run = function() {
 
       var urls = str.match(/<loc>(.*)<\/loc>/g);
 
+      // include homepage
+      urls.push('https://1roof.be/');
+
       BPromise.reduce(urls, function(total, url) {
         url = url.replace('<loc>', '').replace('</loc>', '');
         var seoOptions = _.merge(config.seo, { url: url });
 
         return cacheUrl(seoOptions);
       }).finally(function() {
-        winston.info('Done caching');
+        winston.info('Cache job finished.');
       });
 
     });
