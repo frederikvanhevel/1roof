@@ -8,7 +8,7 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         $scope.mapZoom = 13;
         $scope.filter = {
             location: [],
-            proximity: 3600,
+            proximity: 7000,
             roomType: [],
             minPrice: 0,
             maxPrice: 2000,

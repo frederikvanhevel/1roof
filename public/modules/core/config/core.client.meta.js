@@ -5,7 +5,7 @@ angular.module('core').config([ 'MetaProvider',
     function(MetaProvider) {
         MetaProvider
           .when('/about', {
-            title: 'Over ons - 1Roof'
+            title: 'Over ons'
           })
 
           .otherwise({
