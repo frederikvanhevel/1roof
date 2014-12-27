@@ -37,13 +37,15 @@ angular.module('users').controller('DashboardController', ['$scope', '$statePara
         };
 
         $scope.viewAnalytics = function(room) {
-            if (Authentication.user.subscription.plan !== 'BUSINESS') {
-                $state.transitionTo('pricing', {
-                    message: 'analytics'
-                });
-            } else {
-                $location.path('/rooms/' + room._id + '/analytics');
-            }
+            $location.path('/rooms/' + room._id + '/analytics');
+            
+            // if (Authentication.user.subscription.plan !== 'BUSINESS') {
+            //     $state.transitionTo('pricing', {
+            //         message: 'analytics'
+            //     });
+            // } else {
+            //     $location.path('/rooms/' + room._id + '/analytics');
+            // }
         };
     }
 ]);

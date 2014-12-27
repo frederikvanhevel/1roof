@@ -10,7 +10,7 @@ module.exports = function(app) {
     .post(statistics.aggregate);
 
   app.route('/api/statistics/:roomId/lastmonth')
-    .get(users.requiresLogin, users.hasAnalytics, statistics.lastMonth);
+    .get(users.requiresLogin, statistics.lastMonth);
 
   // Finish by binding the Inbox middleware
   app.param('roomId', rooms.roomByID);

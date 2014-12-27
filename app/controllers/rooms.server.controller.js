@@ -171,18 +171,20 @@ exports.listOfUserRooms = function(req, res) {
 exports.checkUserRoomsCount = function(req, res, next) {
     var user = req.user;
 
-    Room.count({ 'user': user }).exec(function(err, count) {
-        if (err) {
-            winston.error('Error getting user rooms count', user._id);
-            return res.send(400);
-        } else {
-            if (count >= config.subscription[user.subscription.plan].maxRooms) {
-                return res.send(403, 'User cannot create more rooms with this plan');
-            } else {
-                return res.send(200);
-            }
-        }
-    });
+    res.send(200);
+
+    // Room.count({ 'user': user }).exec(function(err, count) {
+    //     if (err) {
+    //         winston.error('Error getting user rooms count', user._id);
+    //         return res.send(400);
+    //     } else {
+    //         if (count >= config.subscription[user.subscription.plan].maxRooms) {
+    //             return res.send(403, 'User cannot create more rooms with this plan');
+    //         } else {
+    //             return res.send(200);
+    //         }
+    //     }
+    // });
 };
 
 /**

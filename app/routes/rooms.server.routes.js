@@ -10,7 +10,7 @@ module.exports = function(app) {
 	// Rooms Routes
 	app.route('/api/rooms')
 		.get(rooms.list)
-		.post(users.requiresLogin, rooms.createRoomCheck, rooms.create);
+		.post(users.requiresLogin, rooms.create);
 
 	app.route('/api/latestrooms')
 		.get(rooms.getLatestRooms);

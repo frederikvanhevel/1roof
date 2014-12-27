@@ -20,10 +20,11 @@
                 <h1 itemprop="name">
                 <i class="favorite-icon" ng-class="{ 'icon-heart-empty-1': !isInfavorites(), 'icon-heart-1 bounce red': isInfavorites() }" tooltip="{{ isInfavorites() ? 'Verwijderen van wishlist' : 'Toevoegen aan wishlist' }}" tooltip-placement="right" ng-click="toggleFavorite()"></i> {{::room.info.title != '' ? room.info.title : room.location.street }}
                 </h1>
-                <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                    <a ng-href="/search/{{room.location.city}}--{{room.location.country}}" itemprop="addressLocality">{{::room.location.city}}</a> <i class="icon-right-open"></i> <span itemprop="streetAddress">{{::room.location.street}}</span> <i class="icon-right-open"></i> <strong>{{getClasification()}}</strong>
-                </div>
                 <span class="text-muted pull-right" translate>Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}</span>
+                <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+                    <a ng-href="/search/{{room.location.city}}" itemprop="addressLocality">{{::room.location.city}}</a> <i class="icon-right-open"></i> <span itemprop="streetAddress">{{::room.location.street}}</span> <i class="icon-right-open"></i> <strong>{{getClasification()}}</strong>
+                </div>
+                
             </div>
         </div>
         <div class="leftcolumn col-lg-8">
