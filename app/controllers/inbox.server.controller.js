@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
   Inbox = mongoose.model('Inbox'),
   Message = mongoose.model('Message'),
 	_ = require('lodash'),
+  mailer = require('../../app/util/mailer'),
   winston = require('winston');
 
 
@@ -29,16 +30,24 @@ exports.sendMessageOrCreate = function(req, res) {
 
   if (req.body.messageType) message.messageType = req.body.messageType;
 
-  Inbox.update(contents, { $addToSet: { messages: message }}, { upsert: true }, function(err, inbox) {
+  Inbox.update(contents, { $addToSet: { messages: message }}, { upsert: true }, function(err, inbox, rawResult) {
     if (err) {
       winston.error('Error saving new inbox', { inbox: contents, message: message });
       return res.send(400);
     } else {
 
-        if (!room.user._id.equals(req.user._id)) {
-            req.io.sockets.in(inbox._id).emit('newMessage', message);
-            req.io.sockets.in(room.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
-        }
+      if (!rawResult.updatedExisting) {
+        var context = {
+          user: room.user
+        };
+
+        mailer.send('new-message.email.html', context, room.user.email, 'Nieuw bericht');
+      }
+
+      // if (!room.user._id.equals(req.user._id)) {
+      //     req.io.sockets.in(inbox._id).emit('newMessage', message);
+      //     req.io.sockets.in(room.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
+      // }
 
       res.send(200);
     }

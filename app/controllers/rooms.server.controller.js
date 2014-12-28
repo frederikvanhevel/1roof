@@ -216,7 +216,7 @@ exports.listOfRoomsInSameLocation= function(req, res) {
  * Room middleware
  */
 exports.roomByID = function(req, res, next, id) {
-    Room.findById(id).populate('user', 'displayName').exec(function(err, room) {
+    Room.findById(id).populate('user', 'displayName').populate('user', 'email').exec(function(err, room) {
         if (err) {
             winston.error('Error getting room by id', id);
             return next(err);
