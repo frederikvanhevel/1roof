@@ -82,7 +82,7 @@ module.exports = function(grunt) {
         uglify: {
             production: {
                 options: {
-                    mangle: true
+                    mangle: false
                 },
                 files: {
                     'public/dist/application.min.js': 'public/dist/application.min.js',
@@ -219,10 +219,10 @@ module.exports = function(grunt) {
     grunt.registerTask('lint', ['jshint', 'scsslint']);
 
     // Build task(s).
-    grunt.registerTask('build', ['clean', 'jshint', 'scsslint', 'loadConfig', 'concat', 'ngAnnotate', 'sass' , 'cssmin']);
+    grunt.registerTask('build', ['clean', 'jshint', 'scsslint', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'sass' , 'cssmin']);
 
     // Dist task(s).
-    grunt.registerTask('dist', ['clean', 'loadConfig', 'concat', 'ngAnnotate', 'cssmin']);
+    grunt.registerTask('dist', ['clean', 'loadConfig', 'concat', 'ngAnnotate', 'uglify', 'cssmin']);
 
     // Run Build task(s).
     grunt.registerTask('runbuild', ['build', 'env:prod', 'concurrent']);
