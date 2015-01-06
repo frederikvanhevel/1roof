@@ -259,7 +259,7 @@ exports.getLatestRooms = function(req, res, next) {
     var user = req.user;
     var limit = req.query.limit || 10;
 
-    Room.find({ pictures: {$not: {$size: 0}}, 'visible': true }).sort({updated:1}).limit(limit).exec(function(err, rooms) {
+    Room.find({ pictures: {$not: {$size: 0}}, 'visible': true }).sort({updated:-1}).limit(limit).exec(function(err, rooms) {
         if (err) {
             winston.error('Error getting latest rooms', user._id);
             return res.send(400, {
