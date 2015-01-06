@@ -11,14 +11,18 @@
       <div class="list-group">
         <div class="list-group-item" ng-repeat="room in myrooms">
           <div class="info row">
-            <h4 class="col-sm-8">
-            <a href="{{room.url}}">
-              {{room.info.title != '' ? room.info.title : room.location.street}}
-            </a>
-            <a class="btn btn-xs btn-blue" href="/rooms/{{room._id}}/edit/" tooltip="Advertentie aanpassen"><i class="icon-pencil"></i> aanpassen</a>
-            <a class="btn btn-xs btn-blue" href="" ng-click="viewAnalytics(room)" tooltip="Statistieken bekijken"><i class="icon-chart-pie"></i> statistieken</a>
+            <h4 class="col-sm-5">
+              <a href="{{room.url}}">
+                {{room.info.title != '' ? room.info.title : room.location.street}}
+              </a>
             </h4>
-            <div class="col-sm-4 visibilty-switch-container">
+            <div class="col-sm-4">
+              <h4>
+                <a class="btn btn-xs btn-blue" href="/rooms/{{room._id}}/edit/" tooltip="Advertentie aanpassen"><i class="icon-pencil"></i> aanpassen</a>
+                <a class="btn btn-xs btn-blue" href="" ng-click="viewAnalytics(room)" tooltip="Statistieken bekijken"><i class="icon-chart-pie"></i> statistieken</a>
+              </h4>.
+            </div>
+            <div class="col-sm-3 visibilty-switch-container">
               <div class="visibility-switch">
                 <input id="switch-button{{$index}}" class="switch switch-round" type="checkbox" ng-model="room.visible" ng-disabled="!room.isInOrder" ng-change="updateRoom(room)">
                 <label for="switch-button{{$index}}"></label>

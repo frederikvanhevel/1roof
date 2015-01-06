@@ -100,6 +100,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
 
                 $rootScope.$on('inbox_read', function(event, count) {
                     if (count > 0) $scope.unreadMessageCount -= count;
+                    if ( $scope.unreadMessageCount < 0)  $scope.unreadMessageCount = 0;
                 });
             }
         }

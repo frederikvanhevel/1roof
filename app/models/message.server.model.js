@@ -23,6 +23,10 @@ var MessageSchema = new Schema({
       type: Boolean,
       default: false
     },
+    isNotified: {
+      type: Boolean,
+      default: false
+    },
     messageType: {
       type: String,
       enum: ['default', 'reservation', 'server'],
