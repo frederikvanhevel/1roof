@@ -53,6 +53,17 @@
 
     .bordered {
       padding: 20px;
+
+      .info {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        h4 {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
     }
 
     .image {

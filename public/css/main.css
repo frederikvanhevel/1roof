@@ -8972,6 +8972,15 @@ USERS MODULE
 .my-favorites .favorite .bordered {
   padding: 20px;
 }
+.my-favorites .favorite .bordered .info {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.my-favorites .favorite .bordered .info h4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .my-favorites .favorite .image {
   width: 100%;
   height: 200px;

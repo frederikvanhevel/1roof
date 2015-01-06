@@ -86,7 +86,7 @@ angular.module('core').directive('videoShuffle', ['$window', 'Device',
                     settings.stagingContainer[0].load();
                     settings.stagingContainer[0].pause();
 
-                    videoTimer = window.setTimeout(function() {
+                    videoTimer = $window.setTimeout(function() {
                         loop();
                     }, clips[0][1]);
                 }
@@ -135,7 +135,7 @@ angular.module('core').directive('videoShuffle', ['$window', 'Device',
                     }
                     currentClip++;
 
-                    videoTimer = window.setTimeout(function() {
+                    videoTimer = $window.setTimeout(function() {
                         loop();
                     }, currentTime);
                 }
@@ -149,9 +149,10 @@ angular.module('core').directive('videoShuffle', ['$window', 'Device',
                     settings.videoContainer[0].pause();
                 });
 
-                // window.bind('resize', function () {
-                //     resize();
-                // });
+                var w = angular.element($window);
+                w.bind('resize', function () {
+                    resize();
+                });
             }
         };
     }
