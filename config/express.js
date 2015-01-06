@@ -134,7 +134,7 @@ module.exports = function(db) {
     app.use(express.static(path.resolve('./public')));
 
     // Enable CORS resuests
-    app.use(core.allowCORS);
+    // app.use(core.allowCORS);
 
     // socketio middleware
     app.use(function(req, res, next) {
