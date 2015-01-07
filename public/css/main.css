@@ -8134,6 +8134,9 @@ ROOMS MODULE
 .view-room .room-map .map-canvas {
   height: 100%;
 }
+.view-room .room-description {
+  white-space: pre-wrap;
+}
 .view-room .room-costs {
   width: 100%;
   vertical-align: bottom;
