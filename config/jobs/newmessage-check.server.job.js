@@ -8,16 +8,33 @@ var mailer = require('../../app/util/mailer'),
 function checkMessages(user) {
     var Inbox = mongoose.model('Inbox');
 
-    Inbox.count({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ], 'messages.sender': { $ne: user._id }, 'messages.isRead': false  })
-    .exec(function(err, count) {
-    if (err) return;
-    else {
-        if (count > 0) {
-            winston.info('MessageCheck: Notifying user %s', user.displayName);
-        mailer.send('new-message.email.html', { user: user }, user.email, 'Je hebt nieuwe berichten');
+    var query = {
+        $or: [ 
+            { 'sender': user._id },
+            { 'roomOwner': user._id }
+        ],
+        'messages.sender': { $ne: user._id },
+        'messages.isRead': false,
+        'messages.isNotified': false
+    };
+
+    Inbox.find(query).exec(function(err, inboxes) {
+        if (err) return;
+        else {
+            if (inboxes.length > 0) {
+
+                inboxes.forEach(function(inbox) {
+                    inbox.messages.forEach(function(message) { message.isNotified = true; });
+                    inbox.markModified('messages');
+                    inbox.save();     
+                });
+
+                winston.info('MessageCheck: Notifying user %s', user.displayName);
+                mailer.send('new-message.email.html', { user: user }, user.email, 'Je hebt nieuwe berichten');
+            }
         }
-    }
     });
+
 }
 
 exports.run = function() {

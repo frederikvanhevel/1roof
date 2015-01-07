@@ -10,24 +10,26 @@ var schedule = require('node-schedule'),
 
 exports.start = function() {
 
+  var everynight = new schedule.RecurrenceRule();
+  everynight.hour = 2;
+  everynight.minute = 0;
+  everynight.second = 30;
+
+  schedule.scheduleJob(everynight, roomAvailabilityCheckJob.run);
+  schedule.scheduleJob(everynight, cacheJob.run);
+
   var everyday = new schedule.RecurrenceRule();
-  everyday.hour = 2;
+  everyday.hour = 14;
   everyday.minute = 0;
+  everyday.second = 30;
 
-  schedule.scheduleJob(everyday, roomAvailabilityCheckJob.run);
-  schedule.scheduleJob(everyday, cacheJob.run);
-
-  var threedays = new schedule.RecurrenceRule();
-  threedays.dayOfWeek = [1, 3, 5];
-  threedays.hour = 12;
-  threedays.minute = 0;
-
-  schedule.scheduleJob(threedays, messageCheckJob.run);
+  schedule.scheduleJob(everyday, messageCheckJob.run);
 
   var weekly = new schedule.RecurrenceRule();
   weekly.dayOfWeek = 0;
   weekly.hour = 10;
   weekly.minute = 0;
+  weekly.second = 30;
 
-  schedule.scheduleJob(weekly, newRoomsJob.run);
+  // schedule.scheduleJob(weekly, newRoomsJob.run);
 };
