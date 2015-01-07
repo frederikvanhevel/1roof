@@ -194,7 +194,8 @@ exports.listOfRoomsInSameLocation= function(req, res) {
         '_id': { $ne: room._id },
         'location.street': room.location.street,
         'location.city': room.location.city,
-        'location.country': room.location.country
+        'location.country': room.location.country,
+        'visible': true
     };
 
     Room.find(query).exec(function(err, rooms) {
@@ -217,6 +218,8 @@ exports.listOfSimilarRooms= function(req, res) {
         'location.city': room.location.city,
         'location.country': room.location.country,
         'price.total': { $gte: room.price.total - 200, $lte: room.price.total + 200 },
+        'pictures': {$not: {$size: 0}}, 
+        'visible': true,
         'loc': { 
             $near: {
                 $geometry: {
