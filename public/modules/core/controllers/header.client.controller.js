@@ -16,14 +16,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         $scope.init = function() {
             $scope.isHomepage = document.location.pathname === '/';
 
-            var savedLanguage = localStorageService.get('language');
-            if (savedLanguage) {
-                $rootScope.language = savedLanguage;
-                setLanguage(savedLanguage, false);
-            } else {
-                $rootScope.language = 'nl';
-                setLanguage('nl', false);
-            }
+            determineLanguage();
 
             // detect browser language
             // $rootScope.language = (window.navigator.userLanguage || window.navigator.language).split('-')[0];
@@ -118,6 +111,22 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
                 .search('lat', lat)
                 .search('lng', lng)
                 .search('proximity', 3600);
+        }
+
+        function determineLanguage() {
+            if ($location.search().lang) {
+                $rootScope.language = $location.search().lang;
+                setLanguage('en', false);
+            } else {
+                var savedLanguage = localStorageService.get('language');
+                if (savedLanguage) {
+                    $rootScope.language = savedLanguage;
+                    setLanguage(savedLanguage, false);
+                } else {
+                    $rootScope.language = 'nl';
+                    setLanguage('nl', false);
+                }
+            }
         }
 
         function setLanguage(language, reload) {

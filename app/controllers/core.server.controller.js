@@ -8,6 +8,7 @@ var config = require('../../config/config');
 exports.index = function(req, res) {
     res.render('index', {
         user: req.user || null,
+        host: config.app.host,
         stripeKey: config.stripe.publickey
     });
 };

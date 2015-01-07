@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('AuthenticationController', ['$rootScope', '$scope', '$stateParams', '$http', '$location', '$q', 'Authentication', 'Modal',
-    function($rootScope, $scope, $stateParams, $http, $location, $q, Authentication, Modal) {
+angular.module('users').controller('AuthenticationController', ['$rootScope', '$scope', '$stateParams', '$http', '$location', '$q', 'Authentication', 'Modal', 'Alert', 'gettext',
+    function($rootScope, $scope, $stateParams, $http, $location, $q, Authentication, Modal, Alert, gettext) {
         $scope.authentication = Authentication;
 
         $scope.busy = false;
@@ -27,6 +27,8 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
                 $rootScope.$broadcast('logged_in');
 
                 $scope.busy = false;
+
+                Alert.add('success', gettext('Je account is met succes aangemaakt! Je bent nu ingelogd.'), 3000);
 
                 return deferred.promise;
             }).error(function(response) {
