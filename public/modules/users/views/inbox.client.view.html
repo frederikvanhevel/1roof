@@ -40,7 +40,7 @@
                 <div class="clearfix"></div>
             </div> -->
             <div class="messages bordered" ng-model="inbox.messages.length" scroll-bottom>
-                <div class="message" data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered">
+                <div class="message" data-ng-repeat="message in inbox.messages" on-repeat-done="messages_rendered" ng-class="{ 'pull-right': isMessageOwner(message), 'pull-left': !isMessageOwner(message) }">
                     <!-- <div class="profile-picture" ng-style="getUserPicture()"></div> -->
                     <!-- <div class="timestamp text-center claerfix"><small>{{ message.sent | amDateFormat:'DD/MM/YYYY' }}</small></div> -->
                     <div ng-if="message.messageType == 'default'" ng-class="{ 'bubble--alt': isMessageOwner(message), 'bubble': !isMessageOwner(message) }">

@@ -59,7 +59,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
             }).success(function(response) {
                 $scope.busy = false;
                 $scope.newMessage = '';
-                // $scope.inbox.messages.push(response);
+                $scope.inbox.messages.push(response);
             }).error(function(response) {
                 $scope.busy = false;
             });

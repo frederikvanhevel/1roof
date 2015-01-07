@@ -8838,7 +8838,6 @@ USERS MODULE
   margin-top: 3px;
   margin-bottom: 25px;
   clear: both;
-  height: 27px;
 }
 .inbox .messages .message.ng-enter {
   -webkit-animation-name: scale;
@@ -8861,11 +8860,12 @@ USERS MODULE
   max-width: 80%;
   min-width: 35px;
   color: #FFF;
+  display: table;
 }
 .inbox .messages .bubble {
-  float: left;
   margin-right: auto;
   background-color: #1ABB9C;
+  float: left;
 }
 .inbox .messages .bubble:after {
   content: ' ';
@@ -8879,10 +8879,10 @@ USERS MODULE
   border-color: #1ABB9C transparent transparent transparent;
 }
 .inbox .messages .bubble--alt {
-  float: right;
   margin-left: auto;
   text-align: right;
   background-color: #3F8DBF;
+  float: right;
 }
 .inbox .messages .bubble--alt:after {
   content: ' ';

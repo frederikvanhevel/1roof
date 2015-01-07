@@ -91,7 +91,6 @@
         margin-top: 3px;
         margin-bottom: 25px;
         clear: both;
-        height: 27px;
 
         &.ng-enter {
             -webkit-animation-name: scale;
@@ -120,12 +119,13 @@
       max-width: 80%;
       min-width: 35px;
       color: #FFF;
+      display: table;
     }
 
     .bubble {
-      float: left;
       margin-right: auto;
       background-color: #1ABB9C;
+      float: left;
 
       &:after {
         content: ' ';
@@ -142,10 +142,10 @@
     }
 
     .bubble--alt {
-      float: right;
       margin-left: auto;
       text-align: right;
       background-color: #3F8DBF;
+      float: right;
 
       &:after {
         content: ' ';
