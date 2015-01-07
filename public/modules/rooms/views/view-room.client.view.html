@@ -100,8 +100,9 @@
                     <div class="room-header row" ng-if="room.cohabit.active">
                         <div class="col-xs-12">
                             <h6 translate>Samenwonen</h6>
-                            <i class="icon-user" ng-repeat="i in getNumber(room.cohabit.count)"></i>
-                            <span translate>andere(n) in dit pand</span>
+                            <span translate>Je zal samenzitten met <strong>{{room.cohabit.count}}</strong> andere(n) in dit pand.</span>
+                            <!-- <i class="icon-user" ng-repeat="i in getNumber(room.cohabit.count)"></i>
+                            <span translate>andere(n) in dit pand</span> -->
                         </div>
                     </div>
                     <div class="room-header row">
@@ -185,15 +186,31 @@
                 <div class="panel-body">
                     <form role="form">
                         <h5 translate>Vragen over deze ruimte?</h5>
-                        <p><span translate>Contactpersoon</span>: <strong>{{::room.user.displayName}}</strong></p>
+                        <p><span translate>Contactpersoon</span>: <strong>{{::room.user.firstName}}</strong></p>
                         <button ng-click="openContactModal()" class="btn btn-block"><i class="icon-mail-1"></i> <span translate>Bericht versturen</span></button>
                     </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default" ng-if="similarRooms.length > 0">
+                <div class="panel-body">
+                    <h5>Vergelijkbare advertenties</h5>
+                    <div class="row thumbs gap-xs">
+                                                
+                        <div class="col-xs-6 thumb" ng-repeat="room in similarRooms">
+                            <figure class="icon-overlay icn-link">
+                                <a href="{{room.url}}"><span class="icn-more"></span><img src="{{getImageLink(room.pictures[0])}}" alt="foto van advertentie" width="200" height="200"></a>
+                            </figure>
+                        </div>
+
+                    </div>
                 </div>
             </div>
 
             <div class="text-center">
                 <a href="mailto:abuse@1roof.be?subject=Misbruik&body=Advertentie nummer: {{::room._id}}"><i class="icon-flag"></i> <span translate>Misbruik melden</span></a>
             </div>
+
         </div>
 
     </div>

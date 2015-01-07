@@ -159,9 +159,7 @@ exports.listOfUserRooms = function(req, res) {
     Room.find({ user: user }).exec(function(err, rooms) {
         if (err) {
             winston.error('Error getting rooms of user', user._id);
-            return res.send(400, {
-                message: getErrorMessage(err)
-            });
+            return res.send(400);
         } else {
             res.jsonp(rooms);
         }
@@ -201,10 +199,38 @@ exports.listOfRoomsInSameLocation= function(req, res) {
 
     Room.find(query).exec(function(err, rooms) {
         if (err) {
-            winston.error('Error getting rooms in same location', query);
-            return res.send(400, {
-                message: getErrorMessage(err)
-            });
+            winston.error('Error getting rooms in same location', err);
+            return res.send(400);
+        } else {
+            res.jsonp(rooms);
+        }
+    });
+};
+
+/**
+ * List of similar Rooms
+ */
+exports.listOfSimilarRooms= function(req, res) {
+    var room = req.room;
+    var query = {
+        '_id': { $ne: room._id },
+        'location.city': room.location.city,
+        'location.country': room.location.country,
+        'price.total': { $gte: room.price.total - 200, $lte: room.price.total + 200 },
+        'loc': { 
+            $near: {
+                $geometry: {
+                    type: 'Point',
+                    coordinates: room.loc.coordinates
+                }, $maxDistance: 10000
+            }
+        }
+    };
+
+    Room.find(query).limit(4).exec(function(err, rooms) {
+        if (err) {
+            winston.error('Error getting similar rooms', err);
+            return res.send(400);
         } else {
             res.jsonp(rooms);
         }
@@ -216,7 +242,7 @@ exports.listOfRoomsInSameLocation= function(req, res) {
  * Room middleware
  */
 exports.roomByID = function(req, res, next, id) {
-    Room.findById(id).populate('user', 'displayName').populate('user', 'email').exec(function(err, room) {
+    Room.findById(id).populate('user', 'email').populate('user', 'firstName').exec(function(err, room) {
         if (err) {
             winston.error('Error getting room by id', id);
             return next(err);
@@ -243,9 +269,7 @@ exports.getUserFavorites = function(req, res, next) {
     Room.find({ '_id': { $in: user.favorites }, 'visible': true }).exec(function(err, rooms) {
         if (err) {
             winston.error('Error getting user favorites', user._id);
-            return res.send(400, {
-                message: getErrorMessage(err)
-            });
+            return res.send(400);
         } else {
             res.jsonp(rooms);
         }
@@ -262,9 +286,7 @@ exports.getLatestRooms = function(req, res, next) {
     Room.find({ pictures: {$not: {$size: 0}}, 'visible': true }).sort({updated:-1}).limit(limit).exec(function(err, rooms) {
         if (err) {
             winston.error('Error getting latest rooms', user._id);
-            return res.send(400, {
-                message: getErrorMessage(err)
-            });
+            return res.send(400);
         } else {
             res.jsonp(rooms);
         }

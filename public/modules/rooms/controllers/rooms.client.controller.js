@@ -13,6 +13,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         $scope.currentDate = new Date();
         $scope.appointmentDate = new Date();
         $scope.otherRooms = [];
+        $scope.similarRooms = [];
         $scope.amenities = Amenity.list();
 
         $scope.isOverlay = false;
@@ -99,6 +100,16 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             else return gettext('Huis');
         };
 
+        $scope.getImageLink = function(picture) {
+            var url = '';
+
+            if (picture.provider === 'cloudinary')
+                url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/w_200,h_200,c_fill/' + picture.link + '.png';
+            else url = picture.link;
+
+            return url;
+        };
+
         function sendFavorite() {
             $http.post('/api/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);
@@ -153,6 +164,9 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             Statistics.aggregate($scope.room._id, 'views');
 
             $scope.otherRooms = Rooms.getRoomsOfSameLocation({
+                roomId: $scope.room._id
+            });
+            $scope.similarRooms = Rooms.getSimilarRooms({
                 roomId: $scope.room._id
             });
             $scope.$broadcast('room_loaded', $scope.room);

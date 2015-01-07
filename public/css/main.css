@@ -7512,6 +7512,13 @@ html, body {
   color: #506A85 !important;
 }
 
+.thumbs img {
+  transition: opacity .2s ease;
+}
+.thumbs img:hover {
+  opacity: 0.7;
+}
+
 [ui-view].ng-enter, [ui-view].ng-leave {
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
@@ -7733,12 +7740,6 @@ footer .links a {
 }
 footer .contacts {
   padding-left: 0;
-}
-footer .thumbs img {
-  transition: all .2s ease;
-}
-footer .thumbs img:hover {
-  opacity: 0.7;
 }
 footer .footer-bottom .container.inner {
   padding-top: 35px;

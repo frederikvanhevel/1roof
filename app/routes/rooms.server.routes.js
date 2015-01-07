@@ -38,6 +38,9 @@ module.exports = function(app) {
 	app.route('/api/rooms/:roomId/same')
 		.get(rooms.listOfRoomsInSameLocation);
 
+	app.route('/api/rooms/:roomId/similar')
+		.get(rooms.listOfSimilarRooms);
+
 	app.route('/api/rooms/:roomId/upload')
 		.post(users.requiresLogin, rooms.hasAuthorization, cloudinary.upload);
 

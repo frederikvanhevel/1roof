@@ -23,6 +23,11 @@ angular.module('rooms').factory('Rooms', ['$resource',
                 method: 'GET',
                 url: '/api/rooms/:roomId/same',
                 isArray: true
+            },
+            getSimilarRooms: {
+                method: 'GET',
+                url: '/api/rooms/:roomId/similar',
+                isArray: true
             }
         });
     }
