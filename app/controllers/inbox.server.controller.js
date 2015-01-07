@@ -36,13 +36,13 @@ exports.sendMessageOrCreate = function(req, res) {
       return res.send(400);
     } else {
 
-      if (!rawResult.updatedExisting) {
-        var context = {
-          user: room.user
-        };
+      // if (!rawResult.updatedExisting) {
+      //   var context = {
+      //     user: room.user
+      //   };
 
-        mailer.send('new-message.email.html', context, room.user.email, 'Nieuw bericht');
-      }
+      //   mailer.send('new-message.email.html', context, room.user.email, 'Nieuw bericht');
+      // }
 
       // if (!room.user._id.equals(req.user._id)) {
       //     req.io.sockets.in(inbox._id).emit('newMessage', message);
