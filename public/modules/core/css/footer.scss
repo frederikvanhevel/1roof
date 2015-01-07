@@ -29,9 +29,24 @@ footer {
     .language-select {
       margin-top: -7px;
       background-color: #42505F;
+      position: relative;
+      padding-top: 5px;
+      width: 140px;
 
         @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
             margin-top: 15px;
+        }
+
+        img {
+          margin-left: 10px;
+        }
+
+        &:before {
+          top: 10px;
+        }
+
+        select {
+          position: absolute;
         }
 
     }

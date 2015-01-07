@@ -114,10 +114,6 @@ msgstr "All"
 msgid "Alle rechten voorbehouden."
 msgstr "All rights reserved."
 
-#: public/modules/rooms/views/analytics.client.view.html
-msgid "Analytics"
-msgstr "Analytics"
-
 #: public/modules/core/views/footer.client.view.html
 msgid "Antwerpen"
 msgstr "Antwerp"
@@ -160,6 +156,7 @@ msgid "Bericht versturen"
 msgstr "Send message"
 
 #: public/modules/core/views/header.client.view.html
+#: public/modules/rooms/views/analytics.client.view.html
 #: public/modules/users/views/dashboard.client.view.html
 #: public/modules/users/views/inbox.client.view.html
 msgid "Berichten"
@@ -381,10 +378,6 @@ msgstr "I already have an account"
 msgid "Ik zoek een huisgenoot"
 msgstr "I'm looking for a roommate"
 
-#: public/modules/rooms/views/analytics.client.view.html
-msgid "Impressies"
-msgstr "Impressions"
-
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "In welke periode is deze ruimte beschikbaar?"
 msgstr "In what period is this room available?"
@@ -409,6 +402,10 @@ msgstr ""
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Jaarlijks"
 msgstr "Yearly"
+
+#: public/modules/users/controllers/authentication.client.controller.js
+msgid "Je account is met succes aangemaakt! Je bent nu ingelogd."
+msgstr "You have signed up successfully! You are now logged in."
 
 #: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Je bericht is verzonden!"
@@ -464,6 +461,13 @@ msgstr "Password successfully changed."
 #: public/modules/users/views/forgot.client.view.html
 msgid "Je wachtwoord vergeten?"
 msgstr "Forgot password?"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid ""
+"Je zal samenzitten met <strong>{{room.cohabit.count}}</strong> andere(n) in "
+"dit pand."
+msgstr ""
+"You will join <strong>{{room.cohabit.count}}</strong> other(s) in this place."
 
 #: public/modules/rooms/views/create-room.client.view.html
 #: public/modules/search/views/search.client.view.html
@@ -635,7 +639,7 @@ msgstr ""
 
 #: public/modules/core/views/home.client.view.html
 msgid "Praat onmiddelijk met een eigenaar indien je geïnteresseerd bent."
-msgstr ""
+msgstr "Immediately talk to the owner."
 
 #: public/modules/core/views/header.client.view.html
 msgid "Profiel aanpassen"
@@ -674,6 +678,10 @@ msgstr "Step 2: create your ad"
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Stap 3: pas ze aan"
 msgstr "Step 3: modify it"
+
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "Statistieken"
+msgstr "Statistics"
 
 #: public/modules/core/views/pricing.client.view.html
 #: public/modules/users/controllers/settings.client.controller.js
@@ -796,10 +804,13 @@ msgid ""
 "te gaan."
 msgstr ""
 
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "Weergaven"
+msgstr "Views"
+
 #: public/modules/core/views/home.client.view.html
-#, fuzzy
 msgid "Welkom bij <span class=\"light\">1roof</span>"
-msgstr "Welcome to <strong>1roof</strong>"
+msgstr "Welcome to <span class=\"light\">1roof</span>"
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Wie zijn we"
@@ -807,7 +818,7 @@ msgstr "Who we are"
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"
-msgstr ""
+msgstr "Are you looking for other people to live in this place with you?"
 
 #: public/modules/core/views/home.client.view.html
 msgid "Zoeken"
@@ -818,12 +829,12 @@ msgid "Zoekopdracht verfijnen"
 msgstr "Refine search"
 
 #: public/modules/rooms/views/analytics.client.view.html
+msgid "aantal contacten per dag"
+msgstr "total amount of messages per day"
+
+#: public/modules/rooms/views/analytics.client.view.html
 msgid "aantal keer bekeken per dag"
 msgstr "views per day"
-
-#: public/modules/rooms/views/view-room.client.view.html
-msgid "andere(n) in dit pand"
-msgstr "other(s) in this premises"
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "bekijk de advertentie"
@@ -908,6 +919,15 @@ msgstr "{{results.length}} ads found"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
 msgstr "{{room.pictures.length}} pictures"
+
+#~ msgid "Analytics"
+#~ msgstr "Analytics"
+
+#~ msgid "Impressies"
+#~ msgstr "Impressions"
+
+#~ msgid "andere(n) in dit pand"
+#~ msgstr "other(s) in this premises"
 
 #, fuzzy
 #~ msgid ""

@@ -74,9 +74,10 @@
 
                 <div class="col-sm-2">
                     <div class="select-style language-select footer-menu">
+                        <img ng-src="/modules/core/img/flags/{{language}}.png" />
                         <select ng-model="$root.language" ng-init="$root.language = $root.language || 'nl'">
                             <option value="nl">Nederlands</option>
-                            <option value="en">English</option>
+                            <option value="en"><img src="/modules/core/img/flags/en.png" /> English</option>
                         </select>
                     </div>
                 </div>

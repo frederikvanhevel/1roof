@@ -11,7 +11,6 @@ function getCommonPages() {
         '/rooms/new',
         '/signin',
         '/signup',
-        '/pricing',
         '/about'
     ];
 }
@@ -23,7 +22,7 @@ function getRooms() {
         if (err) defer.reject(err);
         else {
             defer.resolve(rooms.map(function(room) {
-                return { url: room.url, lastmod: room.updated };
+                return { url: room.url, changefreq: 'daily', lastmod: room.updated };
             }));
         }
     });

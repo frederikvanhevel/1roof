@@ -7748,11 +7748,23 @@ footer .footer-bottom .container.inner {
 footer .footer-bottom .language-select {
   margin-top: -7px;
   background-color: #42505F;
+  position: relative;
+  padding-top: 5px;
+  width: 140px;
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   footer .footer-bottom .language-select {
     margin-top: 15px;
   }
+}
+footer .footer-bottom .language-select img {
+  margin-left: 10px;
+}
+footer .footer-bottom .language-select:before {
+  top: 10px;
+}
+footer .footer-bottom .language-select select {
+  position: absolute;
 }
 footer .footer-bottom .social-buttons li {
   display: inline-block;

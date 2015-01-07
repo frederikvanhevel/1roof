@@ -96,10 +96,6 @@ msgstr ""
 msgid "Alle rechten voorbehouden."
 msgstr ""
 
-#: public/modules/rooms/views/analytics.client.view.html
-msgid "Analytics"
-msgstr ""
-
 #: public/modules/core/views/footer.client.view.html
 msgid "Antwerpen"
 msgstr ""
@@ -142,6 +138,7 @@ msgid "Bericht versturen"
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
+#: public/modules/rooms/views/analytics.client.view.html
 #: public/modules/users/views/dashboard.client.view.html
 #: public/modules/users/views/inbox.client.view.html
 msgid "Berichten"
@@ -343,10 +340,6 @@ msgstr ""
 msgid "Ik zoek een huisgenoot"
 msgstr ""
 
-#: public/modules/rooms/views/analytics.client.view.html
-msgid "Impressies"
-msgstr ""
-
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "In welke periode is deze ruimte beschikbaar?"
 msgstr ""
@@ -367,6 +360,10 @@ msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Jaarlijks"
+msgstr ""
+
+#: public/modules/users/controllers/authentication.client.controller.js
+msgid "Je account is met succes aangemaakt! Je bent nu ingelogd."
 msgstr ""
 
 #: public/modules/rooms/controllers/rooms.client.controller.js
@@ -412,6 +409,10 @@ msgstr ""
 
 #: public/modules/users/views/forgot.client.view.html
 msgid "Je wachtwoord vergeten?"
+msgstr ""
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Je zal samenzitten met <strong>{{room.cohabit.count}}</strong> andere(n) in dit pand."
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html
@@ -610,6 +611,10 @@ msgstr ""
 msgid "Stap 3: pas ze aan"
 msgstr ""
 
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "Statistieken"
+msgstr ""
+
 #: public/modules/core/views/pricing.client.view.html
 #: public/modules/users/controllers/settings.client.controller.js
 msgid "Student"
@@ -720,6 +725,10 @@ msgstr ""
 msgid "We leggen even uit hoe je je advertentie aanpast. Klik op volgende om verder te gaan."
 msgstr ""
 
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "Weergaven"
+msgstr ""
+
 #: public/modules/core/views/home.client.view.html
 msgid "Welkom bij <span class=\"light\">1roof</span>"
 msgstr ""
@@ -741,11 +750,11 @@ msgid "Zoekopdracht verfijnen"
 msgstr ""
 
 #: public/modules/rooms/views/analytics.client.view.html
-msgid "aantal keer bekeken per dag"
+msgid "aantal contacten per dag"
 msgstr ""
 
-#: public/modules/rooms/views/view-room.client.view.html
-msgid "andere(n) in dit pand"
+#: public/modules/rooms/views/analytics.client.view.html
+msgid "aantal keer bekeken per dag"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
