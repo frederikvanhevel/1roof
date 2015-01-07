@@ -24,8 +24,10 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
 
             // instantly recieve new messages
             Socket.on('newMessage', function(message) {
-                $scope.inbox.messages.push(message);
-                // playNewMessageSound();
+                if (message.sender !== Authentication.user._id) {
+                    $scope.inbox.messages.push(message);
+                    // playNewMessageSound();
+                }
             });
         };
 
