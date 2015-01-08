@@ -4,8 +4,6 @@
  * Module dependencies.
  */
 var express = require('express'),
-    crypto = require('crypto'),
-    fs = require('fs'),
     morgan = require('morgan'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
@@ -25,7 +23,7 @@ var express = require('express'),
     cloudinary = require('cloudinary'),
     scheduler = require('./scheduler'),
     // added for socketio
-    https = require('https'),
+    http = require('http'),
     seo = require('mean-seo'),
     core = require('../app/controllers/core');
 
@@ -34,13 +32,8 @@ module.exports = function(db) {
     // Initialize express app
     var app = express();
 
-    var credentials = {
-      key: fs.readFileSync('key.pem'),
-      cert: fs.readFileSync('cert.pem')
-    };
-
     // added for socketio
-    var server = https.Server(credentials, app);
+    var server = http.Server(app);
     var io = require('socket.io').listen(server);
     io.serveClient(false);
 
