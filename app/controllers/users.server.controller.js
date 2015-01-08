@@ -489,7 +489,6 @@ exports.forgot = function(req, res, next) {
 exports.resetGet = function(req, res) {
   	User.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } }, function(err, user) {
     	if (!user) {
-    		  // res.render('404');
        		res.send(400, {
 				message: 'Password reset token is invalid or has expired.'
 			});
@@ -537,6 +536,7 @@ exports.resetPost = function(req, res) {
     }
     }).then(function() {
         // send an email maybe?
+        res.send(200);
     }).catch(function(message) {
         res.send(400, {
             message: message
