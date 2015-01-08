@@ -37,9 +37,9 @@ module.exports = function(db) {
     var io = require('socket.io').listen(server);
     io.serveClient(false);
     // Do not use websockets right now, doesn't work with our SSL connection
-    // io.set('transports', [
-    //   'polling'
-    // ]);
+    io.set('transports', [
+      'polling'
+    ]);
 
     // Start the app by listening on <port>
     server.listen(config.port);
