@@ -78,6 +78,10 @@
     width: 100%;
     vertical-align: bottom;
 
+    .info-button {
+      display: none;
+    }
+
     i {
       cursor: pointer;
       opacity: 0.8;
@@ -116,8 +120,20 @@
 
     &.collapsed {
 
-      tr.total td:first-child {
-        display: none;
+      .info-button {
+        display: inline;
+      }
+
+      tr.total {
+        height: auto;
+
+        h2 {
+          text-align: left;
+        }
+
+        td:first-child {
+          display: none;
+        }
       }
 
       tr:not(.total) {

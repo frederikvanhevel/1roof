@@ -17,7 +17,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         $scope.amenities = Amenity.list();
 
         $scope.isOverlay = false;
-
+        $scope.showCostsDetails = false;
 
         $scope.init = function() {
             $scope.findOne();

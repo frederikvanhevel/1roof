@@ -470,6 +470,10 @@ msgstr ""
 msgid "Maximum 8 afbeeldingen per ruimte"
 msgstr ""
 
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Meer details"
+msgstr ""
+
 #: public/modules/core/views/comingsoon.client.view.html
 msgid "Met amper twee klikken kan je een afspraak maken met een huisbaas. Geen tijd te verliezen!"
 msgstr ""

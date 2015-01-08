@@ -8153,6 +8153,9 @@ ROOMS MODULE
   width: 100%;
   vertical-align: bottom;
 }
+.view-room .room-costs .info-button {
+  display: none;
+}
 .view-room .room-costs i {
   cursor: pointer;
   opacity: 0.8;
@@ -8173,6 +8176,15 @@ ROOMS MODULE
 .view-room .room-costs h2, .view-room .room-costs h4 {
   text-align: right;
   margin: 0;
+}
+.view-room .room-costs.collapsed .info-button {
+  display: inline;
+}
+.view-room .room-costs.collapsed tr.total {
+  height: auto;
+}
+.view-room .room-costs.collapsed tr.total h2 {
+  text-align: left;
 }
 .view-room .room-costs.collapsed tr.total td:first-child {
   display: none;
