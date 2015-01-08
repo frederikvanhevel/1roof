@@ -19,7 +19,12 @@
                     </div>
                 </fieldset>
 
-                <h5 class="green text-center" ng-show="success"><i class="icon-ok"></i> <span translate>Je wachtwoord is met succes aangepast!</span> <a href="/signin" translate>Inloggen</a></h5>
+                <h5 class="green text-center" ng-show="success"><i class="icon-ok"></i> <span translate>Je wachtwoord is met succes aangepast!</span></h5>
+
+                <h5 class="text-center" ng-show="success">
+                    <a href="/signin" class="txt-btn" translate>Inloggen</a>
+                </h5>
+
                 <div data-ng-show="error" class="text-center text-danger">
                     <strong>{{error}}</strong>
                 </div>

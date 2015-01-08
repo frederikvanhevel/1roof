@@ -18,7 +18,8 @@ function getCommonPages() {
 function getRooms() {
     var defer = BPromise.defer();
 
-    Room.find({ 'visible': true }, 'url updated', function(err, rooms) {
+    // Slug is apparently necessary, do not remove!
+    Room.find({ 'visible': true }, 'slug url updated', function(err, rooms) {
         if (err) defer.reject(err);
         else {
             defer.resolve(rooms.map(function(room) {
