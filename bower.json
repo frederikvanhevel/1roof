@@ -23,7 +23,7 @@
     "nouislider": "~6.2.0",
     "pikaday": "~1.2.0",
     "angular-gettext": "~1.1.4",
-    "angular-socket-io": "~0.6.0",
+    "angular-socket-io": "~0.7.0",
     "socket.io-client": "~1.1.0",
     "d3": "~3.4.11",
     "angular-payments": "*",
