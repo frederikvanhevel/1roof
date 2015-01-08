@@ -31,6 +31,10 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         state('about', {
             url: '/about',
             templateUrl: '/modules/core/views/about.client.view.html'
+        }).
+        state('privacy', {
+            url: '/privacy',
+            templateUrl: '/modules/core/views/privacy.client.view.html'
         });
     }
 ]);
