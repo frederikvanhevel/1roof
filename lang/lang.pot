@@ -4,6 +4,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "(basis)"
+msgstr ""
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "(schoonmaak)"
+msgstr ""
+
 #: public/modules/core/views/pricing.client.view.html
 msgid "/ Maand"
 msgstr ""
@@ -217,6 +225,10 @@ msgstr ""
 
 #: public/modules/rooms/services/amenity.client.service.js
 msgid "Dubbel glas"
+msgstr ""
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Elektriciteit, Gas en Water"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html

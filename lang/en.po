@@ -12,6 +12,14 @@ msgstr ""
 "X-Generator: Poedit 1.6.10\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "(basis)"
+msgstr "(base)"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "(schoonmaak)"
+msgstr "(cleaning)"
+
 #: public/modules/core/views/pricing.client.view.html
 msgid "/ Maand"
 msgstr "/ Month"
@@ -238,6 +246,10 @@ msgstr "Quarterly"
 #: public/modules/rooms/services/amenity.client.service.js
 msgid "Dubbel glas"
 msgstr "Double glass"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Elektriciteit, Gas en Water"
+msgstr "Electricity, Gas, and Water"
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid ""
