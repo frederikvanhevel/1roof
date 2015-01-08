@@ -387,6 +387,7 @@ msgid "In welke periode is deze ruimte beschikbaar?"
 msgstr "In what period is this room available?"
 
 #: public/modules/core/views/header.client.view.html
+#: public/modules/users/views/reset.client.view.html
 #: public/modules/users/views/signin.client.view.html
 #: public/modules/users/views/signup.client.view.html
 msgid "Inloggen"
@@ -459,8 +460,8 @@ msgid "Je tariefplan is geupdatet!"
 msgstr "Your subscription has been updated!"
 
 #: public/modules/users/views/reset.client.view.html
-msgid "Je wachtwoord is met succes aangepast."
-msgstr "Password successfully changed."
+msgid "Je wachtwoord is met succes aangepast!"
+msgstr "Your password is successfully changed!"
 
 #: public/modules/users/views/forgot.client.view.html
 msgid "Je wachtwoord vergeten?"
@@ -730,9 +731,8 @@ msgid "Toegevoegd aan favorieten!"
 msgstr "Added to favorites!"
 
 #: public/modules/users/views/reset.client.view.html
-#, fuzzy
 msgid "Typ het wachtwoord opnieuw"
-msgstr "Type your password again"
+msgstr "Type the password again"
 
 #: public/modules/users/views/inbox.client.view.html
 msgid "Typ je bericht"

@@ -353,6 +353,7 @@ msgid "In welke periode is deze ruimte beschikbaar?"
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
+#: public/modules/users/views/reset.client.view.html
 #: public/modules/users/views/signin.client.view.html
 #: public/modules/users/views/signup.client.view.html
 msgid "Inloggen"
@@ -412,7 +413,7 @@ msgid "Je tariefplan is geupdatet!"
 msgstr ""
 
 #: public/modules/users/views/reset.client.view.html
-msgid "Je wachtwoord is met succes aangepast."
+msgid "Je wachtwoord is met succes aangepast!"
 msgstr ""
 
 #: public/modules/users/views/forgot.client.view.html
