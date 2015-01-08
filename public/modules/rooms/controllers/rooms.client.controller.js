@@ -181,7 +181,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             if (!$scope.room.info.title) {
                 meta.title = $scope.room.location.street;
             } else {
-                meta.title = $scope.room.info.title;
+                meta.title = $scope.room.info.title + ' | ' + $scope.room.location.city;
                 meta.description = $scope.room.info.description;
             }
 
