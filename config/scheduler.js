@@ -19,7 +19,7 @@ exports.start = function() {
   schedule.scheduleJob(everynight, cacheJob.run);
 
   var everyday = new schedule.RecurrenceRule();
-  everyday.hour = 14;
+  everyday.hour = 7;
   everyday.minute = 0;
   everyday.second = 30;
 
