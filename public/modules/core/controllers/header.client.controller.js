@@ -130,8 +130,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
         }
 
         function setLanguage(language, reload) {
-            // TODO: save language in localStorage
-            console.log('changing language to %s', language);
+            // console.log('changing language to %s', language);
 
             // gettext
             gettextCatalog.setCurrentLanguage(language);
