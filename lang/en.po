@@ -351,14 +351,6 @@ msgid "Heb je al een account?"
 msgstr "Already have an account?"
 
 #: public/modules/core/views/footer.client.view.html
-msgid ""
-"Heb je een vraag, zit je met iets of wil je gewoon iets kwijt? Aarzel dan "
-"niet om ons te contacteren."
-msgstr ""
-"Have a question, wondering about something or just want to say something? "
-"Please do not hesitate to contact us."
-
-#: public/modules/core/views/footer.client.view.html
 msgid "Home"
 msgstr "Home"
 
@@ -520,6 +512,10 @@ msgstr "Latest online"
 msgid "Leuven"
 msgstr "Leuven"
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Like ons op facebook!"
+msgstr "Like us on facebook!"
+
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Maak een account aan"
 msgstr "Create an account"
@@ -580,10 +576,6 @@ msgid ""
 "Misschien is de advertentie reeds verhuurd en heeft de eigenaar ze offline "
 "gehaald."
 msgstr ""
-
-#: public/modules/core/views/footer.client.view.html
-msgid "Neem contact op"
-msgstr "Contact us"
 
 #: public/modules/users/views/reset.client.view.html
 msgid "Nieuw wachtwoord"
@@ -737,13 +729,14 @@ msgstr ""
 msgid "Toegevoegd aan favorieten!"
 msgstr "Added to favorites!"
 
+#: public/modules/users/views/reset.client.view.html
+#, fuzzy
+msgid "Typ het wachtwoord opnieuw"
+msgstr "Type your password again"
+
 #: public/modules/users/views/inbox.client.view.html
 msgid "Typ je bericht"
 msgstr "Type your message"
-
-#: public/modules/users/views/reset.client.view.html
-msgid "Typ je wachtwoord opnieuw"
-msgstr "Type your password again"
 
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Type ruimte"
@@ -939,6 +932,16 @@ msgstr "{{results.length}} ads found"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
 msgstr "{{room.pictures.length}} pictures"
+
+#~ msgid ""
+#~ "Heb je een vraag, zit je met iets of wil je gewoon iets kwijt? Aarzel dan "
+#~ "niet om ons te contacteren."
+#~ msgstr ""
+#~ "Have a question, wondering about something or just want to say something? "
+#~ "Please do not hesitate to contact us."
+
+#~ msgid "Neem contact op"
+#~ msgstr "Contact us"
 
 #~ msgid "Analytics"
 #~ msgstr "Analytics"

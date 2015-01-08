@@ -317,10 +317,6 @@ msgid "Heb je al een account?"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
-msgid "Heb je een vraag, zit je met iets of wil je gewoon iets kwijt? Aarzel dan niet om ons te contacteren."
-msgstr ""
-
-#: public/modules/core/views/footer.client.view.html
 msgid "Home"
 msgstr ""
 
@@ -466,6 +462,10 @@ msgstr ""
 msgid "Leuven"
 msgstr ""
 
+#: public/modules/core/views/footer.client.view.html
+msgid "Like ons op facebook!"
+msgstr ""
+
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Maak een account aan"
 msgstr ""
@@ -519,10 +519,6 @@ msgstr ""
 
 #: public/modules/rooms/views/not-found.client.view.html
 msgid "Misschien is de advertentie reeds verhuurd en heeft de eigenaar ze offline gehaald."
-msgstr ""
-
-#: public/modules/core/views/footer.client.view.html
-msgid "Neem contact op"
 msgstr ""
 
 #: public/modules/users/views/reset.client.view.html
@@ -664,12 +660,12 @@ msgstr ""
 msgid "Toegevoegd aan favorieten!"
 msgstr ""
 
-#: public/modules/users/views/inbox.client.view.html
-msgid "Typ je bericht"
+#: public/modules/users/views/reset.client.view.html
+msgid "Typ het wachtwoord opnieuw"
 msgstr ""
 
-#: public/modules/users/views/reset.client.view.html
-msgid "Typ je wachtwoord opnieuw"
+#: public/modules/users/views/inbox.client.view.html
+msgid "Typ je bericht"
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html
