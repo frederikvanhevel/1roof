@@ -582,6 +582,10 @@ msgstr ""
 msgid "Registreren"
 msgstr ""
 
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Roken toegelaten"
+msgstr ""
+
 #: public/modules/rooms/views/edit-room.client.view.html
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Samenwonen"

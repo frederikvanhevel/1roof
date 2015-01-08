@@ -650,6 +650,10 @@ msgstr "Edit profile"
 msgid "Registreren"
 msgstr "Register"
 
+#: public/modules/rooms/services/amenity.client.service.js
+msgid "Roken toegelaten"
+msgstr "Smoking allowed"
+
 #: public/modules/rooms/views/edit-room.client.view.html
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Samenwonen"
@@ -765,7 +769,7 @@ msgstr "First name"
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Voorzieningen"
-msgstr "Ameneties"
+msgstr "Amenities"
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Vragen over deze ruimte?"

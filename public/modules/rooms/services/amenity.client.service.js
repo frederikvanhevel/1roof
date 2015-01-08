@@ -37,6 +37,9 @@ angular.module('rooms').factory('Amenity', [ 'gettext',
                 }, {
                     name: gettext('Domicilie verplicht'),
                     value: 'domicile'
+                }, {
+                    name: gettext('Roken toegelaten'),
+                    value: 'smoking'
                 }];
             }
         };
