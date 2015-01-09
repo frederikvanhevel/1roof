@@ -8,7 +8,7 @@ angular.module('core').directive('backImg', [
             scope: {
                 imgProvider: '@',
                 imgLink: '@',
-                isImgTag: '@'
+                isImg: '@'
             },
             link: function(scope, element, attrs) {
 
@@ -20,7 +20,7 @@ angular.module('core').directive('backImg', [
                     url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/' + scope.imgLink + '.png';
                 else url = scope.imgLink;
 
-                if (scope.isImgTag) {
+                if (scope.isImg === 'true') {
                     element.attr('src', url);
                 } else {
                     element.css({

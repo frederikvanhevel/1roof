@@ -28,7 +28,7 @@
                                                     
                         <div class="col-xs-6 thumb" ng-repeat="room in latestRooms">
                             <figure class="icon-overlay icn-link">
-                                <a href="{{room.url}}"><span class="icn-more"></span><img ng-src="{{getImageLink(room.pictures[0])}}" alt="foto van advertentie" width="200" height="200"></a>
+                                <a href="{{room.url}}"><span class="icn-more"></span><img ng-src="{{getImageLink(room.pictures[0])}}" alt="Foto van {{getClasification(room)}} in {{room.location.city}}" width="200" height="200" title="{{room.info.title}}"></a>
                             </figure>
                         </div>
                         

@@ -41,7 +41,7 @@
                     <div class="result-info">
                         <span class="result-price pull-right">€ {{room.price.total}}</span>
                         <a href="{{room.url}}" onclick="return false;" class="result-location">
-                            <span ng-if="isNewRoom(room)" class="red new-indicator">nieuw!</span> {{room.location.street}}
+                            <span ng-if="isNewRoom(room)" class="red new-indicator">nieuw!</span> {{room.info.title}}
                         </a>
                         <br>
                         <small ng-if="room.cohabit.active" translate>zoekt huisgenoot</small>

@@ -8532,6 +8532,9 @@ SEARCH MODULE
 }
 .search-view .sidebar .search-results ul.results-list li.search-result .result-info {
   width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .search-view .sidebar .search-results ul.results-list li.search-result .new-indicator {
   text-transform: uppercase;

@@ -93,8 +93,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             else return gettext('per jaar');
         };
 
-        $scope.getClasification = function() {
-            var classification = $scope.room.classification;
+        $scope.getClasification = function(room) {
+            var classification = room.classification;
             if (classification === 'room') return gettext('Kamer');
             else if (classification === 'appartment') return gettext('Appartement');
             else return gettext('Huis');

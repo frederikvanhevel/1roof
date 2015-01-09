@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('FooterController', ['$scope', '$rootScope', 'Rooms',
-    function($scope, $rootScope, Rooms) {
+angular.module('core').controller('FooterController', ['$scope', '$rootScope', 'Rooms', 'gettext',
+    function($scope, $rootScope, Rooms, gettext) {
         $scope.hidden = false;
 
         $rootScope.$on('hide_footer', function(event) {
@@ -20,6 +20,13 @@ angular.module('core').controller('FooterController', ['$scope', '$rootScope', '
             else url = picture.link;
 
             return url;
+        };
+
+        $scope.getClasification = function(room) {
+            var classification = room.classification;
+            if (classification === 'room') return gettext('Kamer');
+            else if (classification === 'appartment') return gettext('Appartement');
+            else return gettext('Huis');
         };
 
         $scope.getCurrentYear = function() {
