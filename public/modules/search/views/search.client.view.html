@@ -22,12 +22,17 @@
         </div>
         <div class="sidebar-header">
             <small class="text-center" ng-if="results.length > 0" translate>{{results.length}} advertentie(s) gevonden</small>
+        </div>
+        <div class="search-results">
+            <div class="search-loading" ng-show="busy">
+                <img alt="loading icon" class="spinner" src="/modules/core/img/loaders/loading.svg">
+            </div>
+
             <span class="text-center" ng-if="results.length == 0" translate>
                 <h2 class="empty-icon text-center"><i class="icon-home-1"></i></h2>
                 <p class="lead text-center" translate>Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.</p>
             </span>
-        </div>
-        <div class="search-results">
+            
             <ul class="results-list">
                 <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id, room.url)" ng-mouseenter="openRoomPopup(room._id)" ng-class="{ 'active': room._id == selectedRoomId, 'is-seen': hasSeenRoom(room._id) }">
                     <div class="result-type">

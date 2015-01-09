@@ -77,6 +77,31 @@
     }
 
     .search-results {
+      position: relative;
+
+      .search-loading {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        background: rgba(255,255,255,.6);
+        width: 100%;
+        z-index: 10;
+
+        &.ng-hide-add, &.ng-hide-remove {
+          transition: 0s linear all;
+        }
+
+        &.ng-hide-add-active,
+        &.ng-hide-remove-active {
+          transition: .1s linear all;
+        }
+
+        .spinner {
+          width: 40px;
+          margin: auto;
+          display: block;
+        }
+      }
 
       ul.results-list {
         padding: 0;

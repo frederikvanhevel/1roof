@@ -6978,6 +6978,7 @@ Social buttons
   font-size: 1.6em;
   text-align: center;
   border-right: 1px solid rgba(0, 0, 0, 0.2);
+  padding-top: 5px;
 }
 
 .btn-social.btn-lg {
@@ -8478,6 +8479,28 @@ SEARCH MODULE
 }
 .search-view .sidebar .newrooms-email:hover {
   color: #1ABB9C;
+}
+.search-view .sidebar .search-results {
+  position: relative;
+}
+.search-view .sidebar .search-results .search-loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.6);
+  width: 100%;
+  z-index: 10;
+}
+.search-view .sidebar .search-results .search-loading.ng-hide-add, .search-view .sidebar .search-results .search-loading.ng-hide-remove {
+  transition: 0s linear all;
+}
+.search-view .sidebar .search-results .search-loading.ng-hide-add-active, .search-view .sidebar .search-results .search-loading.ng-hide-remove-active {
+  transition: .1s linear all;
+}
+.search-view .sidebar .search-results .search-loading .spinner {
+  width: 40px;
+  margin: auto;
+  display: block;
 }
 .search-view .sidebar .search-results ul.results-list {
   padding: 0;

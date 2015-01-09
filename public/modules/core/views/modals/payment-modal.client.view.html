@@ -29,7 +29,7 @@
                     <input name="cvc" type="text" ng-model="cvc" payments-validate="cvc" payments-format="cvc" placeholder="1234" required />
                 </div>
 
-                <img ng-show="busy" als="loading icon" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
+                <img ng-show="busy" alt="loading icon" class="spinner pull-right" src="/modules/core/img/loaders/loading.svg">
                 <button type="submit" class="btn btn-orange" ng-class="{ disabled: busy || paymentForm.$invalid }"><i class="icon-lock-1"></i> Veilig betalen</button>
                 <button class="btn-link" ng-click="$dismiss()">Annuleren</button>
             </form>

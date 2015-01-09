@@ -19,6 +19,7 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
 
         $scope.selectedRoomId = null;
         $scope.isOverLayOpen = false;
+        $scope.busy = false;
 
         var viewedRooms = localStorageService.get('viewedRooms') || [];
         var oldLocation = null;
@@ -179,6 +180,8 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         };
 
         function fetchRooms() {
+            $scope.busy = true;
+
             Rooms.query($scope.filter, function(results) {
 
                 // Non-destructively rebuild the array of rooms, otherwise all the markers would
@@ -207,7 +210,8 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
 
                 $scope.results = oldRooms;
 
-                $scope.htmlReady(); 
+                $scope.busy = false;
+                $scope.htmlReady();
             });
         }
 

@@ -38,7 +38,9 @@ module.exports = function(db) {
     io.serveClient(false);
     // Do not use websockets right now, doesn't work with our SSL connection
     io.set('transports', [
-      'polling'
+        'htmlfile',
+        'xhr-polling',
+        'polling'
     ]);
 
     // Start the app by listening on <port>
