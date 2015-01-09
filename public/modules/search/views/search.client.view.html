@@ -20,8 +20,8 @@
                 </label>
             </div>
         </div>
-        <div class="sidebar-header">
-            <small class="text-center" ng-if="results.length > 0" translate>{{results.length}} advertentie(s) gevonden</small>
+        <div class="sidebar-header text-center">
+            <small ng-if="results.length > 0" translate>{{results.length}} advertentie(s) gevonden</small>
         </div>
         <div class="search-results">
             <div class="search-loading" ng-show="busy">
@@ -44,7 +44,7 @@
                             <span ng-if="isNewRoom(room)" class="red new-indicator">nieuw!</span> {{room.info.title}}
                         </a>
                         <br>
-                        <small ng-if="room.cohabit.active" translate>zoekt huisgenoot</small>
+                        <small class="street">{{room.location.street}}</small>
                     </div>
                     <div class="clearfix"></div>
                 </li>

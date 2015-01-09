@@ -8530,11 +8530,17 @@ SEARCH MODULE
   font-size: 26px;
   padding: 7px;
 }
+.search-view .sidebar .search-results ul.results-list li.search-result .result-price {
+  font-weight: bold;
+}
 .search-view .sidebar .search-results ul.results-list li.search-result .result-info {
   width: 80%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.search-view .sidebar .search-results ul.results-list li.search-result .result-info .street {
+  color: #B0B0B0;
 }
 .search-view .sidebar .search-results ul.results-list li.search-result .new-indicator {
   text-transform: uppercase;
