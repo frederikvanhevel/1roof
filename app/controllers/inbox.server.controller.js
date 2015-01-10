@@ -161,7 +161,7 @@ exports.list = function(req, res) {
   var user = req.user;
 
   Inbox.find({ $or: [ {'sender': user._id }, { 'roomOwner': user._id } ] })
-  .sort('-updated')
+  .sort('-messages.sent')
   .populate('sender')
   .populate('roomOwner')
   .populate('room')

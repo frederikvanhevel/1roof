@@ -9,6 +9,7 @@
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="HandheldFriendly" content="true" />
 
     <!-- Crawler META -->
     <meta name="fragment" content="!">
@@ -89,9 +90,7 @@
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="q0gd55svz8d8gcy"></script>
 
     <!-- Stripe -->
-    <script>
-        Stripe.setPublishableKey('<%= stripeKey %>');
-    </script>
+    <script>Stripe.setPublishableKey('<%= stripeKey %>');</script>
 </body>
 
 </html>
