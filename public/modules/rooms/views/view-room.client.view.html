@@ -93,16 +93,12 @@
                                     <td><h2><span class="small text-muted">€ </span> {{ room.price.total | number}} <a href="#" class="info-button" ng-click="showCostsDetails = true" tooltip="{{'Meer details'|translate}}" tooltip-placement="right"><i class="icon-info-circle"></i></a></h2></td>
                                 </tr>
                             </table>
-             <!--                <h2><span class="small text-muted">€ </span> <span itemprop="price" content="{{ room.price.total }}">{{ room.price.total | number}}</span></h2 >-->
-                            <!-- <a href="#"><i class="icon-info-circle"></i> <span translate>Meer informatie</span></a> -->
                         </div>
                     </div>
                     <div class="room-header row" ng-if="room.cohabit.active">
                         <div class="col-xs-12">
                             <h6 translate>Samenwonen</h6>
                             <span translate>Je zal samenzitten met <strong>{{room.cohabit.count}}</strong> andere(n) in dit pand.</span>
-                            <!-- <i class="icon-user" ng-repeat="i in getNumber(room.cohabit.count)"></i>
-                            <span translate>andere(n) in dit pand</span> -->
                         </div>
                     </div>
                     <div class="room-header row">

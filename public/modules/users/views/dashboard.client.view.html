@@ -12,25 +12,21 @@
     <div ng-switch="nav" class="">
         <div ng-switch-when="rooms">
             <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/rooms_bg.jpg);">
-                <!-- <h1>Mijn advertenties</h1> -->
             </div>
             <div class="container" ng-include="'/modules/users/views/dashboard/user-rooms.client.view.html'"></div>
         </div>
         <div ng-switch-when="messages">
             <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/messages_bg.jpg);background-position-y: 75% !important;">
-                <!-- <h1>Berichten</h1> -->
             </div>
             <div class="container" ng-include="'/modules/users/views/dashboard/user-messages.client.view.html'"></div>
         </div>
         <div ng-switch-when="profile">
             <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/profile_bg.jpg);">
-                <!-- <h1>Profiel</h1> -->
             </div>
             <div ng-include="'/modules/users/views/dashboard/user-profile.client.view.html'"></div>
         </div>
         <div ng-switch-when="account">
             <div class="dashboard-bg img-bg" style="background-image: url(/modules/users/img/account_bg.jpg);background-position-y: 47% !important;">
-                <!-- <h1>Account</h1> -->
             </div>
             <div ng-include="'/modules/users/views/dashboard/user-account.client.view.html'"></div>
         </div>
