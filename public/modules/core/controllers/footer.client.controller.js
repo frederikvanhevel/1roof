@@ -2,11 +2,6 @@
 
 angular.module('core').controller('FooterController', ['$scope', '$rootScope', 'Rooms', 'gettext',
     function($scope, $rootScope, Rooms, gettext) {
-        $scope.hidden = false;
-
-        $rootScope.$on('hide_footer', function(event) {
-            $scope.hidden = true;
-        });
 
         $scope.init = function() {
         	$scope.latestRooms = Rooms.getLatestRooms({ limit: 4 });

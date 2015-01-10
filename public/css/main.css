@@ -7742,6 +7742,10 @@ footer .links a {
 footer .contacts {
   padding-left: 0;
 }
+footer .pad-sides {
+  padding-left: 10px;
+  padding-right: 10px;
+}
 footer .footer-bottom .container.inner {
   padding-top: 35px;
   padding-bottom: 25px;
@@ -7783,7 +7787,6 @@ footer .footer-bottom .social-buttons li {
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .home-view #hero {
     height: 535px;
-    top: 0;
   }
 }
 .home-view #hero .video-container {
@@ -7816,8 +7819,11 @@ footer .footer-bottom .social-buttons li {
   background: rgba(0, 0, 0, 0.3);
 }
 .home-view #hero .raster .hero-content {
-  padding-top: 40px;
+  padding-top: 90px;
   text-align: center;
+}
+.home-view #hero .raster .hero-content p.lead {
+  display: none;
 }
 @media only screen and (min-device-width: 480px) {
   .home-view #hero .raster .hero-content {
@@ -7827,8 +7833,14 @@ footer .footer-bottom .social-buttons li {
     left: 5%;
     text-align: center;
   }
+  .home-view #hero .raster .hero-content p.lead {
+    display: block;
+  }
   .home-view #hero .raster .hero-content .words {
     display: inline;
+  }
+  .home-view #hero .raster .hero-content form {
+    margin-top: 30px !important;
   }
   .home-view #hero .raster .hero-content form input {
     font-size: 20px;
@@ -7851,7 +7863,7 @@ footer .footer-bottom .social-buttons li {
   margin-left: -22px;
 }
 .home-view #hero .raster .hero-content form {
-  margin-top: 30px;
+  margin-top: 140px;
   position: relative;
   top: 30px;
 }

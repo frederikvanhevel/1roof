@@ -7,7 +7,6 @@
 
     @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
         height: 535px;
-        top: 0;
     }
 
     position: relative;
@@ -45,8 +44,12 @@
       background: rgba(0,0,0,.3);
 
       .hero-content {
-        padding-top: 40px;
+        padding-top: 90px;
         text-align: center;
+
+        p.lead {
+          display: none;
+        }
 
         @media only screen and (min-device-width : 480px) {
           padding-top: 145px;  
@@ -56,12 +59,20 @@
             text-align: center;
           }
 
+          p.lead {
+            display: block;
+          }
+
           .words {
             display: inline;
           }
 
-          form input {
-            font-size: 20px;
+          form {
+             margin-top: 30px !important;
+
+            input {
+              font-size: 20px;
+            }
           }
         }
 
@@ -86,7 +97,7 @@
         }
 
         form {
-          margin-top: 30px;
+          margin-top: 140px;
           position: relative;
           top: 30px;
 

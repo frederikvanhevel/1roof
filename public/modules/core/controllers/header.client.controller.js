@@ -31,6 +31,11 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             $rootScope.$on('$locationChangeSuccess', function() {
                 $scope.isCollapsed = true;
                 $scope.isHomepage = document.location.pathname === '/';
+                if (document.location.pathname.indexOf('/search') !== -1) {
+                    $rootScope.hideFooter = true;
+                } else {
+                    $rootScope.hideFooter = false;
+                }
             });
             // re-initialize sockets on log in
             $rootScope.$on('logged_in', function() {

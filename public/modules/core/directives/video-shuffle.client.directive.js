@@ -8,7 +8,7 @@ angular.module('core').directive('videoShuffle', ['$window', 'Device',
             restrict: 'A',
             link: function postLink(scope, element, attrs) {
 
-                var FALLBACK_VIDEO_URL = '/modules/core/img/video/fallback_poster.jpg';
+                var FALLBACK_VIDEO_URL = '/modules/core/img/video/fallback_poster.png';
 
                 // show a poster instead of a video on mobile
                 if (Device.isMobile()) {
