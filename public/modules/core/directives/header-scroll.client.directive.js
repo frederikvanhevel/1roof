@@ -5,18 +5,24 @@ angular.module('core').directive('headerScroll', [ '$window',
         return {
             restriction: 'A',
             link: function($scope, element, attrs) {
-                attrs.$observe('homepage', function(isHomepage) {
+                function setTransparency() {
+                    if ($window.pageYOffset >= 100) {
+                        element.removeClass('transparent');
+                    } else {
+                        element.addClass('transparent');
+                    }
+                }
+
+                attrs.$observe('transparent', function(isHomepage) {
                     var enabled = isHomepage === 'true';
 
                     element.toggleClass('transparent', enabled);
                     
                     if (enabled) {
+                        setTransparency();
+
                         angular.element($window).bind('scroll.header', function() {
-                            if (this.pageYOffset >= 100) {
-                                element.removeClass('transparent');
-                            } else {
-                                element.addClass('transparent');
-                            }
+                           setTransparency();
                         });
                     } else {
                         angular.element($window).unbind('scroll.header');
