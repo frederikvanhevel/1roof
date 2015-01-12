@@ -88,6 +88,7 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             setLanguage(language, true);
 
             $event.preventDefault();
+            $event.stopPropagation();
         };
 
         function initializeSocket() {
