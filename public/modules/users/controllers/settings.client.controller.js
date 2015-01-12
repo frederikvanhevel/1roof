@@ -35,6 +35,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
                 // If successful show success message and clear form
                 $scope.success = true;
                 $scope.user = Authentication.user = response;
+                flashSavedText();
             }).error(function(response) {
                 $scope.error = response.message;
             });
@@ -48,6 +49,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
             user.$update(function(response) {
                 $scope.success = true;
                 Authentication.user = response;
+                flashSavedText();
             }, function(response) {
                 $scope.error = response.data.message;
             });
@@ -61,6 +63,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
                 // If successful show success message and clear form
                 $scope.success = true;
                 $scope.passwordDetails = null;
+                flashSavedText();
             }).error(function(response) {
                 $scope.error = response.message;
             });
@@ -84,5 +87,9 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
                 });
             });
         };
+
+        function flashSavedText() {
+            $scope.$broadcast('blink_text');
+        }
     }
 ]);

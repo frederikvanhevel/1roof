@@ -82,7 +82,7 @@ msgid "Afspraak maken"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Afspraken."
+msgid "Afspraken"
 msgstr ""
 
 #: public/modules/core/views/pricing.client.view.html
@@ -141,7 +141,7 @@ msgid "Basis prijs"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Bekijk al je contacten met hurders op één plaats."
+msgid "Bekijk al je contacten met hurders op één plaats"
 msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
@@ -149,7 +149,7 @@ msgid "Bekijk deze ruimte"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Bekijk gedetailleerde statistieken over je advertentie."
+msgid "Bekijk gedetailleerde statistieken over je advertentie"
 msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
@@ -157,14 +157,11 @@ msgid "Bericht versturen"
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
+#: public/modules/core/views/home.client.view.html
 #: public/modules/rooms/views/analytics.client.view.html
 #: public/modules/users/views/dashboard.client.view.html
 #: public/modules/users/views/inbox.client.view.html
 msgid "Berichten"
-msgstr ""
-
-#: public/modules/core/views/home.client.view.html
-msgid "Berichten."
 msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
@@ -185,7 +182,7 @@ msgid "Beschrijving"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Bewaar de leukste aanbiedingen één plaats zodat je de beste er uit kan kiezen."
+msgid "Bewaar de leukste aanbiedingen één plaats zodat je de beste er uit kan kiezen"
 msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
@@ -201,7 +198,7 @@ msgid "Chat met je huisbaas"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Chatten."
+msgid "Chatten"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
@@ -283,12 +280,9 @@ msgstr ""
 msgid "Facturatie periode"
 msgstr ""
 
+#: public/modules/core/views/home.client.view.html
 #: public/modules/rooms/views/analytics.client.view.html
 msgid "Favorieten"
-msgstr ""
-
-#: public/modules/core/views/home.client.view.html
-msgid "Favorieten."
 msgstr ""
 
 #: public/modules/rooms/services/amenity.client.service.js
@@ -332,7 +326,7 @@ msgid "Gent"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Gratis."
+msgid "Gratis"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
@@ -420,7 +414,7 @@ msgid "Je kan deze advertentie online plaatsen"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Je kan met één klik een afspraak maken met een huisbaas."
+msgid "Je kan met één klik een afspraak maken met een huisbaas"
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html
@@ -604,7 +598,7 @@ msgid "Over ons"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Plaats je advertentie met slechts enkele klikken gratis online."
+msgid "Plaats je advertentie met slechts enkele klikken gratis online"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
@@ -616,7 +610,7 @@ msgid "Praat en stel vragen met de huisbazen alsof ze naast jou zaten. Krijg vli
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Praat onmiddelijk met een eigenaar indien je geïnteresseerd bent."
+msgid "Praat onmiddelijk met een eigenaar indien je geïnteresseerd bent"
 msgstr ""
 
 #: public/modules/core/views/header.client.view.html
@@ -665,12 +659,9 @@ msgstr ""
 msgid "Stap 3: pas ze aan"
 msgstr ""
 
+#: public/modules/core/views/home.client.view.html
 #: public/modules/rooms/views/analytics.client.view.html
 msgid "Statistieken"
-msgstr ""
-
-#: public/modules/core/views/home.client.view.html
-msgid "Statistieken."
 msgstr ""
 
 #: public/modules/core/views/pricing.client.view.html

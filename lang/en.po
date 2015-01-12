@@ -99,8 +99,8 @@ msgid "Afspraak maken"
 msgstr "Make appointment"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Afspraken."
-msgstr "Appointments."
+msgid "Afspraken"
+msgstr "Appointments"
 
 #: public/modules/core/views/pricing.client.view.html
 #: public/modules/users/controllers/settings.client.controller.js
@@ -158,31 +158,28 @@ msgid "Basis prijs"
 msgstr "Base price"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Bekijk al je contacten met hurders op één plaats."
-msgstr "View all your contacts with tenants in one place."
+msgid "Bekijk al je contacten met hurders op één plaats"
+msgstr "View all your contacts with tenants in one place"
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Bekijk deze ruimte"
 msgstr "View this room"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Bekijk gedetailleerde statistieken over je advertentie."
-msgstr "View detailed statistics of your ads."
+msgid "Bekijk gedetailleerde statistieken over je advertentie"
+msgstr "View detailed statistics of your advertisement"
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Bericht versturen"
 msgstr "Send message"
 
 #: public/modules/core/views/header.client.view.html
+#: public/modules/core/views/home.client.view.html
 #: public/modules/rooms/views/analytics.client.view.html
 #: public/modules/users/views/dashboard.client.view.html
 #: public/modules/users/views/inbox.client.view.html
 msgid "Berichten"
 msgstr "Messages"
-
-#: public/modules/core/views/home.client.view.html
-msgid "Berichten."
-msgstr "Messages."
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Beschikbaar van"
@@ -203,10 +200,8 @@ msgstr "Description"
 
 #: public/modules/core/views/home.client.view.html
 msgid ""
-"Bewaar de leukste aanbiedingen één plaats zodat je de beste er uit kan "
-"kiezen."
-msgstr ""
-"Save your preferred ads in one place so it's easier to make a decision."
+"Bewaar de leukste aanbiedingen één plaats zodat je de beste er uit kan kiezen"
+msgstr "Save your preferred ads in one place so you can choose the best one"
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Bijgewerkt"
@@ -221,8 +216,8 @@ msgid "Chat met je huisbaas"
 msgstr "Chat with your landlord"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Chatten."
-msgstr "Chat."
+msgid "Chatten"
+msgstr "Chat"
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Contact"
@@ -317,13 +312,10 @@ msgstr "Extra costs"
 msgid "Facturatie periode"
 msgstr "Billing period"
 
+#: public/modules/core/views/home.client.view.html
 #: public/modules/rooms/views/analytics.client.view.html
 msgid "Favorieten"
 msgstr "Favorites"
-
-#: public/modules/core/views/home.client.view.html
-msgid "Favorieten."
-msgstr "Favorites."
 
 #: public/modules/rooms/services/amenity.client.service.js
 msgid "Fietsstalling"
@@ -368,8 +360,8 @@ msgid "Gent"
 msgstr "Ghent"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Gratis."
-msgstr "Free."
+msgid "Gratis"
+msgstr "Free"
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Hasselt"
@@ -466,8 +458,8 @@ msgid "Je kan deze advertentie online plaatsen"
 msgstr "You can place this ad online"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Je kan met één klik een afspraak maken met een huisbaas."
-msgstr "Make an appointment with a landlord with just one click. "
+msgid "Je kan met één klik een afspraak maken met een huisbaas"
+msgstr "You can make an appointment with a landlord with just one click"
 
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Je moet een huisnummer ingeven"
@@ -663,8 +655,8 @@ msgid "Over ons"
 msgstr "About us"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Plaats je advertentie met slechts enkele klikken gratis online."
-msgstr "Post your ad in just a few clicks online for free ."
+msgid "Plaats je advertentie met slechts enkele klikken gratis online"
+msgstr "Place your ad online with just a few clicks"
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Populaire steden"
@@ -679,8 +671,8 @@ msgstr ""
 "you. Get an answer on the fly."
 
 #: public/modules/core/views/home.client.view.html
-msgid "Praat onmiddelijk met een eigenaar indien je geïnteresseerd bent."
-msgstr "Immediately talk to the owner."
+msgid "Praat onmiddelijk met een eigenaar indien je geïnteresseerd bent"
+msgstr "Immediately talk to the owner if you are interested"
 
 #: public/modules/core/views/header.client.view.html
 msgid "Profiel aanpassen"
@@ -728,13 +720,10 @@ msgstr "Step 2: create your ad"
 msgid "Stap 3: pas ze aan"
 msgstr "Step 3: modify it"
 
+#: public/modules/core/views/home.client.view.html
 #: public/modules/rooms/views/analytics.client.view.html
 msgid "Statistieken"
 msgstr "Statistics"
-
-#: public/modules/core/views/home.client.view.html
-msgid "Statistieken."
-msgstr "Statistics."
 
 #: public/modules/core/views/pricing.client.view.html
 #: public/modules/users/controllers/settings.client.controller.js
@@ -971,6 +960,45 @@ msgstr "{{::otherRooms.length}} other rooms in this house"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
 msgstr "{{room.pictures.length}} pictures"
+
+#~ msgid "Afspraken."
+#~ msgstr "Appointments."
+
+#~ msgid "Bekijk al je contacten met hurders op één plaats."
+#~ msgstr "View all your contacts with tenants in one place."
+
+#~ msgid "Bekijk gedetailleerde statistieken over je advertentie."
+#~ msgstr "View detailed statistics of your ads."
+
+#~ msgid "Berichten."
+#~ msgstr "Messages."
+
+#~ msgid ""
+#~ "Bewaar de leukste aanbiedingen één plaats zodat je de beste er uit kan "
+#~ "kiezen."
+#~ msgstr ""
+#~ "Save your preferred ads in one place so it's easier to make a decision."
+
+#~ msgid "Chatten."
+#~ msgstr "Chat."
+
+#~ msgid "Favorieten."
+#~ msgstr "Favorites."
+
+#~ msgid "Gratis."
+#~ msgstr "Free."
+
+#~ msgid "Je kan met één klik een afspraak maken met een huisbaas."
+#~ msgstr "Make an appointment with a landlord with just one click. "
+
+#~ msgid "Plaats je advertentie met slechts enkele klikken gratis online."
+#~ msgstr "Post your ad in just a few clicks online for free ."
+
+#~ msgid "Praat onmiddelijk met een eigenaar indien je geïnteresseerd bent."
+#~ msgstr "Immediately talk to the owner."
+
+#~ msgid "Statistieken."
+#~ msgstr "Statistics."
 
 #~ msgid "appartement"
 #~ msgstr "appartment"

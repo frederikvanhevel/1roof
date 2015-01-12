@@ -46,6 +46,10 @@ var UserSchema = new Schema({
 		type: String,
 		trim: true
 	},
+	organization: {
+		type: String,
+		trim: true
+	},
 	email: {
 		type: String,
 		unique: 'Email already used',
