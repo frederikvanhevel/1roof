@@ -804,6 +804,10 @@ msgid ""
 "huisbaas!"
 msgstr ""
 
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Vergelijkbare advertenties"
+msgstr "Similar rooms"
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Verwijder deze advertentie"
 msgstr "Remove this ad"

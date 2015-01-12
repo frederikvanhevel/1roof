@@ -22,7 +22,7 @@
                 </h1>
                 <span class="text-muted pull-right" translate>Laatst bijgewerkt {{room.updated | amDateFormat:'ll'}}</span>
                 <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-                    <a ng-href="/search/{{room.location.city}}" itemprop="addressLocality">{{::room.location.city}}</a> <i class="icon-right-open"></i> <span itemprop="streetAddress">{{::room.location.street}}</span> <i class="icon-right-open"></i> <strong>{{getClasification(room)}}</strong>
+                    <a ng-href="/search/{{room.location.city}}" itemprop="addressLocality">{{::room.location.city}}</a> <i class="icon-right-open"></i> <span itemprop="streetAddress">{{::room.location.street}}</span> <i class="icon-right-open"></i> <strong>{{getClasification(room) | translate}}</strong>
                 </div>
                 
             </div>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-sm-4" itemscope itemtype="http://schema.org/Offer">
                             <span itemprop="priceCurrency" content="EUR" />
-                            <h6><span translate>Kosten</span> <small>{{getCostPeriod(room.price.period)}}</small></h6>
+                            <h6><span translate>Kosten</span> <small>{{getCostPeriod(room.price.period) | translate}}</small></h6>
                             <table class="room-costs" ng-class="{ 'collapsed': !showCostsDetails }">
                                 <tr>
                                     <td></td>
@@ -115,7 +115,7 @@
                         </div>
                         <div class="room-extras col-xs-12 col-sm-7">
                             <ul class="amenities">
-                                <li ng-class="isAmenityChecked(room, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name}}</li>
+                                <li ng-class="isAmenityChecked(room, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name | translate}}</li>
                             </ul>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                 <h2 ng-if="room.leaseType == 'sublease'" translate>onderverhuring</h2>
                             </div>
                             <div class="col-xs-6 col-md-3">
-                                <h6><span translate>Kosten</span> <small>{{getCostPeriod(otherRoom.price.period)}}</small></h6>
+                                <h6><span translate>Kosten</span> <small>{{getCostPeriod(otherRoom.price.period) | translate}}</small></h6>
                                 <h2><span class="small text-muted">€</span> {{ otherRoom.price.total | number}}</h2>
                             </div>
                             <div class="col-xs-6 col-md-3">
@@ -161,7 +161,7 @@
                             </div>
                             <div class="room-extras col-xs-12 col-sm-7">
                                 <ul class="amenities">
-                                    <li ng-class="isAmenityChecked(otherRoom, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name}}</li>
+                                    <li ng-class="isAmenityChecked(otherRoom, amenity) ? 'checked' : 'crossed'" ng-repeat="amenity in ::amenities">{{::amenity.name | translate}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
 
             <div class="panel panel-default" ng-if="similarRooms.length > 0">
                 <div class="panel-body">
-                    <h5>Vergelijkbare advertenties</h5>
+                    <h5 translate>Vergelijkbare advertenties</h5>
                     <div class="row thumbs gap-xs">
                                                 
                         <div class="col-xs-6 thumb" ng-repeat="room in similarRooms">

@@ -734,6 +734,10 @@ msgstr ""
 msgid "Veel makkelijker dan elke andere service. 1ROOF is de oplossing voor elke huisbaas!"
 msgstr ""
 
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Vergelijkbare advertenties"
+msgstr ""
+
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Verwijder deze advertentie"
 msgstr ""
