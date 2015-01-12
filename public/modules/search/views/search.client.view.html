@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="sidebar-header text-center">
-            <small ng-if="results.length > 0" translate>{{results.length}} advertentie(s) gevonden</small>
+            <small ng-if="results.length > 0" translate translate-n="results.length" translate-plural="{{$count}} advertenties gevonden">1 advertentie gevonden</small>
         </div>
         <div class="search-results">
             <div class="search-loading" ng-show="busy">

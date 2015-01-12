@@ -7829,10 +7829,6 @@ footer .footer-bottom .social-buttons li {
   .home-view #hero .raster .hero-content {
     padding-top: 145px;
   }
-  .home-view #hero .raster .hero-content p {
-    left: 5%;
-    text-align: center;
-  }
   .home-view #hero .raster .hero-content p.lead {
     display: block;
   }
@@ -7856,14 +7852,14 @@ footer .footer-bottom .social-buttons li {
 .home-view #hero .raster .hero-content p {
   color: white;
   position: relative;
-  text-align: left;
+  left: -5%;
 }
 .home-view #hero .raster .hero-content a {
   margin-top: 30px;
   margin-left: -22px;
 }
 .home-view #hero .raster .hero-content form {
-  margin-top: 140px;
+  margin-top: 80px;
   position: relative;
   top: 30px;
 }
