@@ -13,11 +13,28 @@
                     </div>
                 </div>
             </form>
+            
             <div class="navbar-form navbar-right">
                 <div class="form-group">
                     <a class="btn btn-orange advertise-button btn-block" href="/rooms/new" translate>Adverteer je ruimte</a>
                 </div>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown" dropdown>
+                    <a href="#" class="dropdown-toggle language-select" dropdown-toggle>
+                        <img ng-src="/modules/core/img/flags/{{language}}.png" />
+                        <span class="language-select-text" translate> Taal selecteren</span>
+                    </a>
+                    <ul class="dropdown-menu language-dropdown">
+                        <li ng-class="{ 'disabled': language == 'nl' }">
+                            <a href="#" ng-click="changeLanguage('nl')"><img ng-src="/modules/core/img/flags/nl.png" /> Nederlands</a>
+                        </li>
+                        <li ng-class="{ 'disabled': language == 'en' }">
+                            <a href="#" ng-click="changeLanguage('en')"><img ng-src="/modules/core/img/flags/en.png" /> English</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
             <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
                 <li ui-route="/signup" ng-class="{active: $uiRoute}">
                     <a href="" ng-click="openSignupModal()" translate>Registreren</a>

@@ -686,6 +686,10 @@ msgstr ""
 msgid "TV"
 msgstr ""
 
+#: public/modules/core/views/header.client.view.html
+msgid "Taal selecteren"
+msgstr ""
+
 #: public/modules/rooms/services/amenity.client.service.js
 msgid "Terras"
 msgstr ""

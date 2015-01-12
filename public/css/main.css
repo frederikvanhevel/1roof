@@ -7638,6 +7638,13 @@ header.navbar .btn.responsive-menu.navbar-toggle {
   header.navbar .header-messages-icon .header-messages-text {
     display: inline !important;
   }
+  header.navbar .language-select {
+    font-size: 14px !important;
+    margin-left: 0 !important;
+  }
+  header.navbar .language-select .language-select-text {
+    display: inline !important;
+  }
 }
 header.navbar .top-search input {
   font-size: 16px;
@@ -7666,6 +7673,18 @@ header.navbar .profile .profile-picture {
   background-repeat: no-repeat;
   margin-left: 10px;
 }
+header.navbar .language-select {
+  margin-left: 20px;
+}
+header.navbar .language-select .language-select-text {
+  display: none;
+}
+header.navbar .language-dropdown img {
+  height: 10px;
+}
+header.navbar .language-dropdown li.disabled {
+  opacity: .6;
+}
 header.navbar .advertise-button {
   padding: 5px 13px 6px;
   margin-left: 5px;
@@ -7688,40 +7707,6 @@ header.navbar .header-messages-icon span.ng-enter {
   animation-name: scale;
   -webkit-animation-duration: 0.25s;
   animation-duration: 0.25s;
-}
-header.navbar .messages-popover {
-  position: absolute;
-  left: 0;
-  width: 300px;
-  background: #FFF;
-  border: 1px solid #ddd;
-  border-top: transparent;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
-}
-header.navbar .messages-popover ul {
-  padding: 0;
-  border-bottom: 1px solid #ddd;
-  margin-bottom: 21px;
-}
-header.navbar .messages-popover ul li {
-  padding: 0 5px;
-  cursor: pointer;
-}
-header.navbar .messages-popover ul li:hover {
-  background: #F7F7F7;
-}
-header.navbar .messages-popover ul li p {
-  margin: 0;
-  font-size: 12px;
-}
-header.navbar .messages-popover ul li a.view-all {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
 }
 
 footer {
