@@ -83,9 +83,11 @@ angular.module('core').controller('HeaderController', ['$rootScope', '$scope', '
             }
         };
 
-        $scope.changeLanguage = function(language) {
+        $scope.changeLanguage = function(language, $event) {
             $rootScope.language = language;
             setLanguage(language, true);
+
+            $event.preventDefault();
         };
 
         function initializeSocket() {
