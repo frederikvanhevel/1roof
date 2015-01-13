@@ -4,11 +4,11 @@
  * Module dependencies.
  */
 var passport = require('passport'),
-core = require('../../app/controllers/core'),
-users = require('../../app/controllers/users'),
-inbox = require('../../app/controllers/inbox'),
-rooms = require('../../app/controllers/rooms'),
-payments = require('../../app/controllers/payments');
+    core = require('../../app/controllers/core'),
+    users = require('../../app/controllers/users'),
+    inbox = require('../../app/controllers/inbox'),
+    rooms = require('../../app/controllers/rooms'),
+    payments = require('../../app/controllers/payments');
 
 
 module.exports = function(app) {

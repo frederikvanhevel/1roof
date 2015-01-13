@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = function(app) {
-  var users = require('../../app/controllers/users');
-  var ads = require('../../app/controllers/ads');
+  var users = require('../../app/controllers/users'),
+      ads = require('../../app/controllers/ads');
 
   // Inbox Routes
   app.route('/api/ad')

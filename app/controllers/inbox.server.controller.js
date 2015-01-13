@@ -49,6 +49,8 @@ exports.sendMessageOrCreate = function(req, res) {
       //     req.io.sockets.in(room.user._id).emit('newMessageCount', { count: 1, inbox: inbox._id });
       // }
 
+      // --> this all doesn't work because we don't get an id back
+
       res.send(200);
     }
   });
@@ -92,7 +94,7 @@ exports.read = function(req, res) {
 };
 
 /**
- * Create an Inbox
+ * Create an Inbox - not used currently
  */
 exports.create = function(req, res) {
   var inbox = new Inbox(req.body);

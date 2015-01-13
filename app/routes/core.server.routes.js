@@ -2,7 +2,7 @@
 
 module.exports = function(app) {
     var sitemap = require('../../app/util/sitemap'),
-    core = require('../../app/controllers/core');
+		core = require('../../app/controllers/core');
 
 	// Root routing
 	app.route('/').get(core.index);

@@ -166,8 +166,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         function checkRoomCompleteness() {
             var errors = [];
 
-            if (!$scope.room.info.title || $scope.room.info.title === '') errors.push('general');
-            if (!$scope.room.price.base || $scope.room.price.base === 0) errors.push('costs');
+            if (!$scope.room.info.title || $scope.room.info.title.trim() === '') errors.push('general');
+            if (!$scope.room.price.base || $scope.room.price.base <= 0) errors.push('costs');
             if (!$scope.room.available.immediately && (!$scope.room.available.from || !$scope.room.available.till || new Date($scope.room.available.till)) < new Date()) errors.push('availability');
 
             $scope.errors = errors;

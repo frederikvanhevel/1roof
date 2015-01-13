@@ -1,11 +1,11 @@
 'use strict';
 
 module.exports = function(app) {
-	var core = require('../../app/controllers/core');
-	var users = require('../../app/controllers/users');
-	var rooms = require('../../app/controllers/rooms');
-	var inbox = require('../../app/controllers/inbox');
-	var cloudinary = require('../../app/util/uploader');
+	var core = require('../../app/controllers/core'),
+		users = require('../../app/controllers/users'),
+		rooms = require('../../app/controllers/rooms'),
+		inbox = require('../../app/controllers/inbox'),
+		cloudinary = require('../../app/util/uploader');
 
 	// Rooms Routes
 	app.route('/api/rooms')

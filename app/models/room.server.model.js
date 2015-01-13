@@ -16,7 +16,7 @@ var checkRoomCompleteness = function(room) {
 	var complete = true;
 
 	if (!room.info.title || room.info.title === '') complete = false;
-    if (!room.price.base || room.price.base === 0) complete = false;
+    if (!room.price.base || room.price.base <= 0) complete = false;
     if (!room.available.immediately && (!room.available.from || !room.available.till || new Date(room.available.till) < new Date())) complete = false;
 
     // Room is incomplete so can't be visible
@@ -198,7 +198,7 @@ RoomSchema.pre('save', function(next) {
 	next();
 });
 
-RoomSchema.pre('remove', function (next) {
+RoomSchema.pre('remove', function(next) {
   this.pictures.forEach(function(picture) {
   	uploader.removeFromCloudinary(picture.link, function() {
   		winston.info('Removed picture from room %s', this._id);

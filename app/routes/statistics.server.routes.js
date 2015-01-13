@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = function(app) {
-  var rooms = require('../../app/controllers/rooms');
-  var users = require('../../app/controllers/users');
-  var statistics = require('../../app/controllers/statistics');
+  var rooms = require('../../app/controllers/rooms'),
+      users = require('../../app/controllers/users'),
+      statistics = require('../../app/controllers/statistics');
 
   // Statistics Routes
   app.route('/api/statistics/:roomId/aggregate')
