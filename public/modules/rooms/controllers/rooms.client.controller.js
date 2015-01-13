@@ -197,8 +197,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         }
 
         function loadFailure(response) {
-            console.log(response);
-            // $location.path('/rooms/notfound');
+            if (response.status === 404) $location.path('/rooms/notfound');
         }
     }
 ]);

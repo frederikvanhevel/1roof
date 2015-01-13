@@ -62,6 +62,9 @@
                                 <img ng-show="busy" alt="loading icon" class="spinner" src="/modules/core/img/loaders/loading.svg">
                             </div>
                         </div>
+                        <div data-ng-show="error" class="text-center text-danger">
+                            <strong>{{error}}</strong>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', '$http', 'Analytics',
-    function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, $http, Analytics) {
+angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', '$http', 'Analytics', 'Alert', 'gettext',
+    function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, $http, Analytics, Alert, gettext) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -30,6 +30,7 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
 
         // Create new Room
         $scope.create = function() {
+            $scope.busy = true;
 
             // we need a roomType
             if (!$scope.createForm.roomType) return;
@@ -59,11 +60,9 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
                 $location.path('/rooms/' + response._id + '/edit/');
             }, function(errorResponse) {
                 Analytics.trackEvent('Room', 'Created', 'failure');
-                $scope.error = errorResponse.data.message;
+                Alert.add('danger', gettext('Er is iets misgelopen met het opslaan van de advertentie, probeer later opnieuw.'), 5000);
+                $scope.busy = false;
             });
-
-            // Clear form fields
-            $scope.createForm.address = '';
         };
 
         $scope.openSingupModal = function() {

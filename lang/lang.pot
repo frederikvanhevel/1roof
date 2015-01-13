@@ -255,9 +255,17 @@ msgstr ""
 msgid "Email verzonden. Hou je inbox in de gaten."
 msgstr ""
 
+#: public/modules/rooms/controllers/create-room.client.controller.js
+msgid "Er is iets misgelopen met het opslaan van de advertentie, probeer later opnieuw."
+msgstr ""
+
 #: public/modules/core/controllers/modal-payment.controller.js
 #: public/modules/core/controllers/pricing.client.controller.js
 msgid "Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw."
+msgstr ""
+
+#: public/modules/rooms/controllers/manage-room.client.controller.js
+msgid "Er was een probleem bij het opslaan van je wijzigingen, probeer later opnieuw."
 msgstr ""
 
 #: public/modules/rooms/controllers/rooms.client.controller.js

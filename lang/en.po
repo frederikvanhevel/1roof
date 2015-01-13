@@ -277,6 +277,12 @@ msgstr "Every change you make is automatically saved. Start with a good title."
 msgid "Email verzonden. Hou je inbox in de gaten."
 msgstr "Email sent. Keep an eye on your inbox."
 
+#: public/modules/rooms/controllers/create-room.client.controller.js
+msgid ""
+"Er is iets misgelopen met het opslaan van de advertentie, probeer later "
+"opnieuw."
+msgstr "Something went wrong while saving the ad, try again later."
+
 #: public/modules/core/controllers/modal-payment.controller.js
 #: public/modules/core/controllers/pricing.client.controller.js
 msgid ""
@@ -284,6 +290,12 @@ msgid ""
 "opnieuw."
 msgstr ""
 "Something went wrong with updating your subscription, please try again later."
+
+#: public/modules/rooms/controllers/manage-room.client.controller.js
+msgid ""
+"Er was een probleem bij het opslaan van je wijzigingen, probeer later "
+"opnieuw."
+msgstr "Something went wrong while saving your changes, try again later."
 
 #: public/modules/rooms/controllers/rooms.client.controller.js
 msgid ""

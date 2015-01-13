@@ -12,30 +12,6 @@ var mongoose = require('mongoose'),
     winston = require('winston');
 
 /**
- * Get the error message from error object
- */
-var getErrorMessage = function(err) {
-    var message = '';
-
-    if (err.code) {
-        switch (err.code) {
-            case 11000:
-            case 11001:
-                message = 'Room already exists';
-                break;
-            default:
-                message = 'Something went wrong';
-        }
-    } else {
-        for (var errName in err.errors) {
-            if (err.errors[errName].message) message = err.errors[errName].message;
-        }
-    }
-
-    return message;
-};
-
-/**
  * Create a Room
  */
 exports.create = function(req, res) {
@@ -45,9 +21,7 @@ exports.create = function(req, res) {
     room.save(function(err) {
         if (err) {
             winston.error('Error creating new room', room._id);
-            return res.send(400, {
-                message: getErrorMessage(err)
-            });
+            return res.send(400);
         } else {
             var context = {
                 user: req.user,
@@ -79,9 +53,7 @@ exports.update = function(req, res) {
     room.save(function(err) {
         if (err) {
             winston.error('Error updating room', room._id);
-            return res.send(400, {
-                message: getErrorMessage(err)
-            });
+            return res.send(400);
         } else {
             res.jsonp(room);
         }
@@ -97,9 +69,7 @@ exports.delete = function(req, res) {
     room.remove(function(err) {
         if (err) {
             winston.error('Error deleting room', room._id);
-            return res.send(400, {
-                message: getErrorMessage(err)
-            });
+            return res.send(400);
         } else {
             res.jsonp(room);
         }

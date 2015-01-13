@@ -50,7 +50,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $scope.room.$update(function() {
                 flashSavedText();
             }, function(errorResponse) {
-                $scope.error = errorResponse.data.message;
+                Alert.add('danger', gettext('Er was een probleem bij het opslaan van je wijzigingen, probeer later opnieuw.'), 5000);
             });
         };
 

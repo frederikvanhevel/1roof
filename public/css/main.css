@@ -8222,6 +8222,9 @@ ROOMS MODULE
   border: none;
 }
 
+.create-room .spinner {
+  visibility: visible;
+}
 .create-room .creationStep-content {
   margin-top: 50px;
 }
