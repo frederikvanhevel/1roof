@@ -255,6 +255,10 @@ msgstr ""
 msgid "Email verzonden. Hou je inbox in de gaten."
 msgstr ""
 
+#: public/modules/users/controllers/inbox.client.controller.js
+msgid "Er is iets misgelopen met het laden van deze inbox. Probeer later opniew."
+msgstr ""
+
 #: public/modules/rooms/controllers/create-room.client.controller.js
 msgid "Er is iets misgelopen met het opslaan van de advertentie, probeer later opnieuw."
 msgstr ""
@@ -262,6 +266,14 @@ msgstr ""
 #: public/modules/core/controllers/modal-payment.controller.js
 #: public/modules/core/controllers/pricing.client.controller.js
 msgid "Er is iets misgelopen met het updaten van je tariefplan, probeer later opnieuw."
+msgstr ""
+
+#: public/modules/users/controllers/inbox.client.controller.js
+msgid "Er is iets misgelopen met het verwijderen van deze inbox. Probeer later opniew."
+msgstr ""
+
+#: public/modules/users/controllers/inbox.client.controller.js
+msgid "Er is iets misgelopen met het verzenden van je berucht. Probeer later opniew."
 msgstr ""
 
 #: public/modules/rooms/controllers/manage-room.client.controller.js

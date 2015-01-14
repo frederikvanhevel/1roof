@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('InboxController', ['$rootScope', '$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication', 'Socket', 'Modal',
-    function($rootScope, $scope, $location, $http, $stateParams, Inbox, Authentication, Socket, Modal) {
+angular.module('users').controller('InboxController', ['$rootScope', '$scope', '$location', '$http', '$stateParams', 'Inbox', 'Authentication', 'Socket', 'Modal', 'Alert', 'gettext',
+    function($rootScope, $scope, $location, $http, $stateParams, Inbox, Authentication, Socket, Modal, Alert, gettext) {
         $scope.authentication = Authentication;
         $scope.newMessage = '';
         $scope.busy = false;
@@ -48,6 +48,8 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
                     $rootScope.$broadcast('inbox_read', unreadMessageCount);
                 }
 
+            }, function() {
+                Alert.add('danger', gettext('Er is iets misgelopen met het laden van deze inbox. Probeer later opniew.'), 5000);
             });
         };
 
@@ -63,6 +65,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
                 $scope.newMessage = '';
                 $scope.inbox.messages.push(response);
             }).error(function(response) {
+                Alert.add('danger', gettext('Er is iets misgelopen met het verzenden van je berucht. Probeer later opniew.'), 5000);
                 $scope.busy = false;
             });
         };
@@ -111,6 +114,8 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
             Modal.confirm('inbox').then(function() {
                 inbox.$remove(function() {
                     $scope.inboxes.splice($index, 1);
+                }, function() {
+                    Alert.add('danger', gettext('Er is iets misgelopen met het verwijderen van deze inbox. Probeer later opniew.'), 5000);
                 });
             });
             $event.preventDefault();

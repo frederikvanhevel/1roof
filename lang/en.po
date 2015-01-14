@@ -277,6 +277,11 @@ msgstr "Every change you make is automatically saved. Start with a good title."
 msgid "Email verzonden. Hou je inbox in de gaten."
 msgstr "Email sent. Keep an eye on your inbox."
 
+#: public/modules/users/controllers/inbox.client.controller.js
+msgid ""
+"Er is iets misgelopen met het laden van deze inbox. Probeer later opniew."
+msgstr "Something went wrong while loading this inbox. Try again later."
+
 #: public/modules/rooms/controllers/create-room.client.controller.js
 msgid ""
 "Er is iets misgelopen met het opslaan van de advertentie, probeer later "
@@ -290,6 +295,17 @@ msgid ""
 "opnieuw."
 msgstr ""
 "Something went wrong with updating your subscription, please try again later."
+
+#: public/modules/users/controllers/inbox.client.controller.js
+msgid ""
+"Er is iets misgelopen met het verwijderen van deze inbox. Probeer later "
+"opniew."
+msgstr "Something went wrong while deleting this inbox. Try again later."
+
+#: public/modules/users/controllers/inbox.client.controller.js
+msgid ""
+"Er is iets misgelopen met het verzenden van je berucht. Probeer later opniew."
+msgstr "Something went wrong while sending your message. Try again later."
 
 #: public/modules/rooms/controllers/manage-room.client.controller.js
 msgid ""

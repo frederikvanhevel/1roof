@@ -202,9 +202,9 @@ exports.inboxByID = function(req, res, next, id) {
   .exec(function(err, inbox) {
     if (err) {
       winston.error('Error getting inbox by id', id);
-      return next(err);
+      return res.send(400);
     }
-    if (!inbox) return next(new Error('Failed to load Inbox ' + id));
+    if (!inbox) return res.send(400);
     req.inbox = inbox;
     next();
   });
