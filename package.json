@@ -71,7 +71,7 @@
     "grunt-contrib-htmlmin": "~0.3.0",
     "grunt-contrib-imagemin": "~0.8.1",
     "bluebird": "~2.3.10",
-    "nodetime": "~0.8.15"    
+    "newrelic": "~1.14.6"
   },
   "devDependencies": {
     "should": "~3.2.0",
