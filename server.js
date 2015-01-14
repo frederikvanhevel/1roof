@@ -2,11 +2,13 @@
 /**
  * Module dependencies.
  */
+
+// newrrelic reporting
+require('newrelic');
+
 var init = require('./config/init')(),
 	config = require('./config/config'),
 	mongoose = require('mongoose');
-
-require('newrelic');
 
 /**
  * Main application entry file.
