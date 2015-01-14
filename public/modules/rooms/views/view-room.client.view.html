@@ -14,6 +14,33 @@
         </div>
     </div>
     <div class="inner-content" ng-class="{ 'container': !isOverlay() }">
+
+        <div class="offline-overlay modal fade in" ng-class="{ 'visible': !room.visible && room.user._id != authentication.user._id }">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <i class="top-icon icon-cloud-thunder"></i>
+
+                        <h2 translate>Sorry, deze advertentie is momenteel offline gehaald door de eigenaar. Dit kan betekenen dat deze al verhuurd is.</h2>
+                        <h6 translate>Hier zijn alvast enkele vergelijkbare advertenties die we gevonden hebben voor jou:</h6>
+
+                        <div class="row thumbs gap-xs">
+
+                            <div class="col-xs-6 thumb" ng-repeat="room in similarRooms">
+                                <figure class="icon-overlay icn-link">
+                                    <a href="{{room.url}}"><span class="icn-more"></span><img ng-src="{{getImageLink(room.pictures[0])}}" alt="Foto van {{getClasification(room)}} in {{room.location.city}}" width="200" height="200" title="{{room.info.title}}"></a>
+                                </figure>
+                            </div>
+
+                        </div>
+
+                        <a href="/" translate>Ga naar de homepagina</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="page-header row">
             <div class="crumbs col-sm-12" itemscope itemtype="http://schema.org/Place">
                 <button class="btn btn-gray pull-right" ng-click="closeOverlay()" ng-if="isOverlay()"><i class="icon-globe-1"></i> <span translate>Terug naar kaart</span></button>
@@ -24,7 +51,7 @@
                 <div itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                     <a ng-href="/search/{{room.location.city}}" itemprop="addressLocality">{{::room.location.city}}</a> <i class="icon-right-open"></i> <span itemprop="streetAddress">{{::room.location.street}}</span> <i class="icon-right-open"></i> <strong>{{getClasification(room) | translate}}</strong>
                 </div>
-                
+
             </div>
         </div>
         <div class="leftcolumn col-lg-8">
@@ -192,7 +219,7 @@
                 <div class="panel-body">
                     <h5 translate>Vergelijkbare advertenties</h5>
                     <div class="row thumbs gap-xs">
-                                                
+
                         <div class="col-xs-6 thumb" ng-repeat="room in similarRooms">
                             <figure class="icon-overlay icn-link">
                                 <a href="{{room.url}}"><span class="icn-more"></span><img ng-src="{{getImageLink(room.pictures[0])}}" alt="Foto van {{getClasification(room)}} in {{room.location.city}}" width="200" height="200" title="{{room.info.title}}"></a>

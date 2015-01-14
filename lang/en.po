@@ -353,6 +353,10 @@ msgstr "Bike shed"
 msgid "Foto uploaden"
 msgstr "Upload image"
 
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Ga naar de homepagina"
+msgstr "Go to the homepage"
+
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Ga verder"
 msgstr "Continue"
@@ -398,6 +402,12 @@ msgstr "Hasselt"
 #: public/modules/users/views/signup.client.view.html
 msgid "Heb je al een account?"
 msgstr "Already have an account?"
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid ""
+"Hier zijn alvast enkele vergelijkbare advertenties die we gevonden hebben "
+"voor jou:"
+msgstr "Here are some similar ads for you:"
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Home"
@@ -735,6 +745,14 @@ msgstr "Cleaning costs"
 #: public/modules/core/views/home.client.view.html
 msgid "Snel. Simpel. Gemakkelijk."
 msgstr "Fast. Simple. Easy."
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid ""
+"Sorry, deze advertentie is momenteel offline gehaald door de eigenaar. Dit "
+"kan betekenen dat deze al verhuurd is."
+msgstr ""
+"Sorry, this ad has been taken offline by the owner. This may mean that it is "
+"already rented out."
 
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Stap 1: meld je aan"

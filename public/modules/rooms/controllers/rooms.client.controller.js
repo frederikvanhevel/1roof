@@ -104,7 +104,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             var url = '';
 
             if (picture.provider === 'cloudinary')
-                url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/w_200,h_200,c_fill/' + picture.link + '.png';
+                url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/w_300,h_300,c_fill/' + picture.link + '.png';
             else url = picture.link;
 
             return url;
@@ -159,7 +159,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         function postLoad() {
 
             Meta.add('/l/:roomId/:city/:title', getMetaData());
-            
+
             // increment view count for statistics
             Statistics.aggregate($scope.room._id, 'views');
 

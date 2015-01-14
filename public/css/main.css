@@ -8014,18 +8014,6 @@ footer .footer-bottom .social-buttons li {
     opacity: 0;
   }
 }
-.comingsoon-view #hero {
-  top: -15px;
-}
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  .comingsoon-view #hero {
-    top: 0;
-  }
-}
-.comingsoon-view #hero .video-container {
-  overflow: visible !important;
-}
-
 .pricing-view {
   margin-bottom: -20px;
 }
@@ -8090,6 +8078,19 @@ ROOMS MODULE
   float: left;
 }
 
+.view-room .offline-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 900;
+  top: 50px;
+  display: none;
+  text-align: center;
+}
+.view-room .offline-overlay.visible {
+  display: block;
+}
+.view-room .offline-overlay .top-icon {
+  font-size: 100px;
+}
 .view-room .favorite-icon {
   cursor: pointer;
 }

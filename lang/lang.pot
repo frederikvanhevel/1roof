@@ -313,6 +313,10 @@ msgstr ""
 msgid "Foto uploaden"
 msgstr ""
 
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Ga naar de homepagina"
+msgstr ""
+
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Ga verder"
 msgstr ""
@@ -355,6 +359,10 @@ msgstr ""
 
 #: public/modules/users/views/signup.client.view.html
 msgid "Heb je al een account?"
+msgstr ""
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Hier zijn alvast enkele vergelijkbare advertenties die we gevonden hebben voor jou:"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
@@ -665,6 +673,10 @@ msgstr ""
 
 #: public/modules/core/views/home.client.view.html
 msgid "Snel. Simpel. Gemakkelijk."
+msgstr ""
+
+#: public/modules/rooms/views/view-room.client.view.html
+msgid "Sorry, deze advertentie is momenteel offline gehaald door de eigenaar. Dit kan betekenen dat deze al verhuurd is."
 msgstr ""
 
 #: public/modules/rooms/views/create-room.client.view.html

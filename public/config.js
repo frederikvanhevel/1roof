@@ -15,7 +15,6 @@ var ApplicationConfiguration = (function() {
         'ui.utils',
         'ngAutocomplete',
         'LocalStorageModule',
-        'angularMoment',
         'angularFileUpload',
         'angularMoment',
         'gettext',

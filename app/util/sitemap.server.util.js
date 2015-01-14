@@ -19,7 +19,7 @@ function getRooms() {
     var defer = BPromise.defer();
 
     // Slug is apparently necessary, do not remove!
-    Room.find({ 'visible': true }, 'slug url updated', function(err, rooms) {
+    Room.find({ 'isInOrder': true }, 'slug url updated', function(err, rooms) {
         if (err) defer.reject(err);
         else {
             defer.resolve(rooms.map(function(room) {
