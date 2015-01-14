@@ -1,7 +1,7 @@
 'use strict';
 
 var mailer = require('../../app/util/mailer'),
-  winston = require('winston');
+    winston = require('winston');
 
 exports.run = function() {
 

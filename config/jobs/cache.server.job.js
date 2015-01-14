@@ -1,69 +1,69 @@
 'use strict';
 
 var winston = require('winston'),
-  _ = require('lodash'),
-  https = require('https'),
-  config = require('../config'),
-  BPromise = require('bluebird'),
-  seo = require('mean-seo');
+    _ = require('lodash'),
+    https = require('https'),
+    config = require('../config'),
+    BPromise = require('bluebird'),
+    seo = require('mean-seo');
 
 function cacheUrl(options) {
-  var defer = BPromise.defer();
+    var defer = BPromise.defer();
 
-  winston.info('Start caching %s', options.url);
+    winston.info('Start caching %s', options.url);
 
-  seo.forceCache(options, function(err) {
-    if (err) {
-      winston.error('Error caching %s', options.url);
-      return defer.reject(err);
-    }
-    else {
-      winston.info('Done caching %s', options.url);
-      return defer.resolve();
-    }
-  });
+    seo.forceCache(options, function(err) {
+        if (err) {
+            winston.error('Error caching %s', options.url);
+            return defer.reject(err);
+        }
+        else {
+            winston.info('Done caching %s', options.url);
+            return defer.resolve();
+        }
+    });
 
-  return defer.promise;
+    return defer.promise;
 }
 
 exports.run = function() {
 
-  winston.info('Cache job started ..');
+    winston.info('Cache job started ..');
 
-  var options = {
-    host: '1roof.be',
-    path: '/sitemap.xml'
-  };
+    var options = {
+        host: '1roof.be',
+        path: '/sitemap.xml'
+    };
 
-  var callback = function(response) {
+    var callback = function(response) {
 
-    var str = '';
+        var str = '';
 
-    //another chunk of data has been recieved, so append it to `str`
-    response.on('data', function (chunk) {
-      str += chunk;
-    });
+        //another chunk of data has been recieved, so append it to `str`
+        response.on('data', function (chunk) {
+            str += chunk;
+        });
 
-    //the whole response has been recieved, so we just print it out here
-    response.on('end', function () {
+        //the whole response has been recieved, so we just print it out here
+        response.on('end', function () {
 
-      var urls = str.match(/<loc>(.*)<\/loc>/g);
+            var urls = str.match(/<loc>(.*)<\/loc>/g);
 
-      // include homepage
-      urls.push('https://1roof.be/');
+            // include homepage
+            urls.push('https://1roof.be/');
 
-      BPromise.reduce(urls, function(total, url) {
-        url = url.replace('<loc>', '').replace('</loc>', '');
-        var seoOptions = _.merge(config.seo, { url: url });
+            BPromise.reduce(urls, function(total, url) {
+                url = url.replace('<loc>', '').replace('</loc>', '');
+                var seoOptions = _.merge(config.seo, { url: url });
 
-        return cacheUrl(seoOptions);
-      }).finally(function() {
-        winston.info('Cache job finished.');
-      });
+                return cacheUrl(seoOptions);
+            }).finally(function() {
+                winston.info('Cache job finished.');
+            });
 
-    });
-  };
+        });
+    };
 
-  https.get(options, callback).end();
+    https.get(options, callback).end();
 
 };

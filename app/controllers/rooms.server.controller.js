@@ -89,7 +89,7 @@ exports.list = function(req, res) {
 
     if (params.location) {
         if (typeof params.location === 'string') params.location = params.location.split(',');
-        
+
         query.loc = {
             $near: {
                 $geometry: {
@@ -188,9 +188,9 @@ exports.listOfSimilarRooms= function(req, res) {
         'location.city': room.location.city,
         'location.country': room.location.country,
         'price.total': { $gte: room.price.total - 200, $lte: room.price.total + 200 },
-        'pictures': {$not: {$size: 0}}, 
+        'pictures': {$not: {$size: 0}},
         'visible': true,
-        'loc': { 
+        'loc': {
             $near: {
                 $geometry: {
                     type: 'Point',

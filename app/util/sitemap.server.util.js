@@ -107,11 +107,10 @@ exports.create = function(req, res) {
 
     var sitemapItems = [];
 
-    BPromise
-      .join(getCommonPages(), getRooms(), getSearchPages(), getFavorites(), function(common, rooms, searchpages, favorites) {
+    BPromise.join(getCommonPages(), getRooms(), getSearchPages(), getFavorites(), function(common, rooms, searchpages, favorites) {
         return common.concat(rooms, searchpages, favorites);
-      }).then(function(result) {
+    }).then(function(result) {
         createSitemap(res, result);
-      });
+    });
 
 };
