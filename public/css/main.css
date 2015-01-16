@@ -8084,6 +8084,7 @@ ROOMS MODULE
   top: 50px;
   display: none;
   text-align: center;
+  overflow: auto;
 }
 .view-room .offline-overlay.visible {
   display: block;

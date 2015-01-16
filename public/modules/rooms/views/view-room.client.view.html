@@ -26,7 +26,7 @@
 
                         <div class="row thumbs gap-xs">
 
-                            <div class="col-xs-6 thumb" ng-repeat="room in similarRooms">
+                            <div class="col-xs-6 thumb" ng-repeat="room in similarRooms | limitTo: 2">
                                 <figure class="icon-overlay icn-link">
                                     <a href="{{room.url}}"><span class="icn-more"></span><img ng-src="{{getImageLink(room.pictures[0])}}" alt="Foto van {{getClasification(room)}} in {{room.location.city}}" width="200" height="200" title="{{room.info.title}}"></a>
                                 </figure>
@@ -117,7 +117,7 @@
                                 <tr class="total">
                                     <td>= </td>
                                     <td></td>
-                                    <td><h2><span class="small text-muted">€ </span> {{ room.price.total | number}} <a href="#" class="info-button" ng-click="showCostsDetails = true" tooltip="{{'Meer details'|translate}}" tooltip-placement="right"><i class="icon-info-circle"></i></a></h2></td>
+                                    <td><h2><span class="small text-muted">€ </span> <span temprop="price" content="{{ room.price.total | number}}">{{ room.price.total | number}}</span> <a href="#" class="info-button" ng-click="showCostsDetails = true" tooltip="{{'Meer details'|translate}}" tooltip-placement="right"><i class="icon-info-circle"></i></a></h2></td>
                                 </tr>
                             </table>
                         </div>
