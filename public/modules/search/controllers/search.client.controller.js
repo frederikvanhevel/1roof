@@ -43,6 +43,12 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
                 }
             });
 
+            $scope.$watch('filter', function(newValue, oldValue) {
+                if (newValue !== oldValue) {
+                    searchFunction();
+                }
+            }, true);
+
             if ((!urlParamaters.lat || !urlParamaters.lng) && $stateParams.address) {
                 doSearchLookup($stateParams.address);
             } else if (urlParamaters.lat && urlParamaters.lng) {
@@ -50,8 +56,14 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
 
                 $scope.mapCenter = $scope.filter.location;
                 $scope.mapZoom = getZoomLevel($scope.filter.proximity);
+
+                // initial rooms fetch
+                fetchRooms();
             } else {
                 $scope.mapZoom = 9;
+
+                // initial rooms fetch
+                fetchRooms();
             }
 
             // Show a room if its in the url
@@ -65,16 +77,7 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
                 $scope.updateSettings();
             }
 
-            // initial rooms fetch
-            fetchRooms();
-
             $rootScope.$on('close_overlay', closeRoomOverlay);
-
-            $scope.$watch('filter', function(newValue, oldValue) {
-                if (newValue !== oldValue) {
-                    searchFunction();
-                }
-            }, true);
         };
 
         function parseUrlParameters(urlParamaters) {
@@ -88,9 +91,13 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         }
 
         function doSearchLookup(address) {
-            Geocoder.geocodeAddress(address).then(function(result) {
+            Geocoder.geocodeAddress(address.replace('--', ' ')).then(function(result) {
                 $scope.mapCenter = [result.lng, result.lat];
-                $scope.filter.proximity = result.proximity;
+                $scope.filter.location = [result.lng, result.lat];
+                // $scope.filter.proximity = result.proximity;
+                // should be replaced with accuracy
+
+                if ($location.search()._escaped_fragment_ === '') fetchRooms();    // hack for google crawling
             });
         }
 
@@ -209,6 +216,11 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
                 });
 
                 $scope.results = oldRooms;
+
+                $scope.busy = false;
+                $scope.htmlReady();
+            }, function() {
+                $scope.results = [];
 
                 $scope.busy = false;
                 $scope.htmlReady();
