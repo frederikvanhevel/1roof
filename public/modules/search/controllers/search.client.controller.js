@@ -254,6 +254,5 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
         }
 
         var searchFunction = $window._.debounce(fetchRooms, 400);
-
     }
 ]);
