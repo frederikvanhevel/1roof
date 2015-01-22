@@ -15,7 +15,7 @@
     </div>
     <div class="inner-content" ng-class="{ 'container': !isOverlay() }">
 
-        <div class="offline-overlay modal fade in" ng-class="{ 'visible': !room.visible && room.user._id != authentication.user._id }">
+        <div class="offline-overlay modal" ng-class="{ 'visible': loaded && (!room.visible && room.user._id != authentication.user._id) }">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">

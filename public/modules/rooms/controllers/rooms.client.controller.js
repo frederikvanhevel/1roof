@@ -19,6 +19,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         $scope.isOverlay = false;
         $scope.showCostsDetails = false;
 
+        $scope.loaded = false;
+
         $scope.init = function() {
             $scope.findOne();
         };
@@ -172,6 +174,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             $scope.$broadcast('room_loaded', $scope.room);
             if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
 
+            $scope.loaded = true;
             $scope.htmlReady(); 
         }
 
