@@ -602,7 +602,7 @@ msgid "Onmiddelijk beschikbaar!"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Ontdek prachtige woningen overal in België"
+msgid "Ontdek prachtige woningen overal in België en Nederland"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html

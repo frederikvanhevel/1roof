@@ -669,8 +669,8 @@ msgid "Onmiddelijk beschikbaar!"
 msgstr "Available immediately!"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Ontdek prachtige woningen overal in België"
-msgstr "Discover beautiful homes throughout Belgium"
+msgid "Ontdek prachtige woningen overal in België en Nederland"
+msgstr "DIscover beautiful accomodations in Belgium and the Netherlands"
 
 #: public/modules/core/views/home.client.view.html
 msgid "Ontstaan uit de site"
@@ -1006,6 +1006,9 @@ msgstr "{{::otherRooms.length}} other rooms in this house"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
 msgstr "{{room.pictures.length}} pictures"
+
+#~ msgid "Ontdek prachtige woningen overal in België"
+#~ msgstr "Discover beautiful homes throughout Belgium"
 
 #~ msgid "Afspraken."
 #~ msgstr "Appointments."
