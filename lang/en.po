@@ -34,6 +34,10 @@ msgstr[1] "{{$count}} ads found"
 msgid "1ROOF maakt je leven makkelijker."
 msgstr "1ROOF makes your life easier."
 
+#: public/modules/core/config/core.client.meta.js
+msgid "1Roof - Vind je nieuwe woonst"
+msgstr "1Roof - Find your new place to live"
+
 #: public/modules/core/views/footer.client.view.html
 msgid ""
 "1Roof is een website met een missie om voor jou alles makkelijker te maken. "
@@ -76,7 +80,7 @@ msgstr "Address of the premises"
 
 #: public/modules/core/views/header.client.view.html
 msgid "Adverteer je ruimte"
-msgstr "Advertise your space"
+msgstr "Advertise your room"
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Advertentie aanpassen"
@@ -85,6 +89,10 @@ msgstr "Modify advertisement"
 #: public/modules/rooms/views/not-found.client.view.html
 msgid "Advertentie niet gevonden"
 msgstr "Advertisement not found"
+
+#: public/modules/rooms/config/rooms.client.meta.js
+msgid "Advertentie toevoegen"
+msgstr "Add a room"
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Afbeeldingen"
@@ -689,6 +697,7 @@ msgid "Oppervlakte in m²"
 msgstr "Surface in m²"
 
 #: public/modules/core/views/footer.client.view.html
+#: public/modules/core/config/core.client.meta.js
 msgid "Over ons"
 msgstr "About us"
 
@@ -915,6 +924,12 @@ msgstr "Who we are"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"
 msgstr "Are you looking for other people to live in this place with you?"
+
+#: public/modules/core/config/core.client.meta.js
+msgid ""
+"Zoek tussen alle huurwoningen in België en Nederland. Vind de panden met "
+"beste prijs/kwaliteit. Zie echte fotos van oplijstingen."
+msgstr ""
 
 #: public/modules/core/views/home.client.view.html
 msgid "Zoeken"

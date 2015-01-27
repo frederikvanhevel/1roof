@@ -26,6 +26,10 @@ msgstr[1] ""
 msgid "1ROOF maakt je leven makkelijker."
 msgstr ""
 
+#: public/modules/core/config/core.client.meta.js
+msgid "1Roof - Vind je nieuwe woonst"
+msgstr ""
+
 #: public/modules/core/views/footer.client.view.html
 msgid "1Roof is een website met een missie om voor jou alles makkelijker te maken. We streven ernaar om je op de simpelste manier dichterbij te brengen bij het pand van je dromen."
 msgstr ""
@@ -67,6 +71,10 @@ msgstr ""
 
 #: public/modules/rooms/views/not-found.client.view.html
 msgid "Advertentie niet gevonden"
+msgstr ""
+
+#: public/modules/rooms/config/rooms.client.meta.js
+msgid "Advertentie toevoegen"
 msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
@@ -622,6 +630,7 @@ msgid "Oppervlakte in m²"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
+#: public/modules/core/config/core.client.meta.js
 msgid "Over ons"
 msgstr ""
 
@@ -828,6 +837,10 @@ msgstr ""
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"
+msgstr ""
+
+#: public/modules/core/config/core.client.meta.js
+msgid "Zoek tussen alle huurwoningen in België en Nederland. Vind de panden met beste prijs/kwaliteit. Zie echte fotos van oplijstingen."
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
