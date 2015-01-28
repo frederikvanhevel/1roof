@@ -8,10 +8,12 @@ module.exports = function(app) {
     // Root routing
     app.route('/').get(core.index);
 
+
     // app.route('/testfacebook').get(function(req, res) {
     //     facebook.postToPage();
     //     res.send(200);
     // });
+
 
     // sitemap generation
     app.route('/sitemap.xml').get(sitemap.create);
