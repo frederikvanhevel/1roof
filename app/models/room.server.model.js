@@ -172,6 +172,10 @@ var RoomSchema = new Schema({
     user: {
         type: Schema.ObjectId,
         ref: 'User'
+    },
+    publishedToSocial: {
+        type: Boolean,
+        default: false
     }
 });
 

@@ -2,10 +2,16 @@
 
 module.exports = function(app) {
     var sitemap = require('../../app/util/sitemap'),
-        core = require('../../app/controllers/core');
+        core = require('../../app/controllers/core'),
+        facebook = require('../util/facebook');
 
     // Root routing
     app.route('/').get(core.index);
+
+    // app.route('/testfacebook').get(function(req, res) {
+    //     facebook.postToPage();
+    //     res.send(200);
+    // });
 
     // sitemap generation
     app.route('/sitemap.xml').get(sitemap.create);
