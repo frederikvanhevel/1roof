@@ -39,6 +39,8 @@ exports.create = function(req, res) {
  * Show the current Room
  */
 exports.read = function(req, res) {
+    res.setHeader('Cache-Control', 'public, max-age=1800000'); // 30 minute cache
+
     res.jsonp(req.room);
 };
 
