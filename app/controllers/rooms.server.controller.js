@@ -80,6 +80,8 @@ exports.delete = function(req, res) {
  * List of Rooms
  */
 exports.list = function(req, res) {
+    res.setHeader('Cache-Control', 'public, max-age=1800000'); // 30 minute cache
+
     var params = req.query;
     var query = { visible: true };
 
@@ -159,6 +161,8 @@ exports.checkUserRoomsCount = function(req, res, next) {
  * List of other Rooms on location
  */
 exports.listOfRoomsInSameLocation= function(req, res) {
+    res.setHeader('Cache-Control', 'public, max-age=1800000'); // 30 minute cache
+
     var room = req.room;
     var query = {
         '_id': { $ne: room._id },
@@ -182,6 +186,8 @@ exports.listOfRoomsInSameLocation= function(req, res) {
  * List of similar Rooms
  */
 exports.listOfSimilarRooms= function(req, res) {
+    res.setHeader('Cache-Control', 'public, max-age=1800000'); // 30 minute cache
+
     var room = req.room;
     var query = {
         '_id': { $ne: room._id },

@@ -137,7 +137,7 @@ module.exports = function(db) {
     app.disable('x-powered-by');
 
     // Setting the app router and static folder
-    app.use(express.static(path.resolve('./public')));
+    app.use(express.static(path.resolve('./public'), { maxAge: 86400000 }));
 
     // Enable CORS resuests
     // app.use(core.allowCORS);
