@@ -90,6 +90,18 @@ module.exports = function(grunt) {
                 }
             }
         },
+        uncss: {
+          dist: {
+            options: {
+                ignore: ['.ng-move', '.ng-enter', '.ng-leave', '.created_by_jQuery'],
+                stylesheets: ['../../../dist/application.min.css', '../../../dist/lib.min.css'],
+                report: 'min'
+            },
+            files: {
+              'public/dist/main.css': ['public/modules/**/views/*.html']
+            }
+          }
+        },
         cssmin: {
             combine: {
                 options: {

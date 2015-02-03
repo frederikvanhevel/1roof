@@ -97,7 +97,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
 
         $scope.getClasification = function(room) {
             var classification = room.classification;
-            if (classification === 'room') return gettext('Kamer');
+            if (classification === 'room') return gettext('Kot');
             else if (classification === 'appartment') return gettext('Appartement');
             else return gettext('Huis');
         };

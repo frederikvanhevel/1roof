@@ -34,10 +34,6 @@ msgstr[1] "{{$count}} ads found"
 msgid "1ROOF maakt je leven makkelijker."
 msgstr "1ROOF makes your life easier."
 
-#: public/modules/core/config/core.client.meta.js
-msgid "1Roof - Vind je nieuwe woonst"
-msgstr "1Roof - Find your new place to live"
-
 #: public/modules/core/views/footer.client.view.html
 msgid ""
 "1Roof is een website met een missie om voor jou alles makkelijker te maken. "
@@ -89,10 +85,6 @@ msgstr "Modify advertisement"
 #: public/modules/rooms/views/not-found.client.view.html
 msgid "Advertentie niet gevonden"
 msgstr "Advertisement not found"
-
-#: public/modules/rooms/config/rooms.client.meta.js
-msgid "Advertentie toevoegen"
-msgstr "Add a room"
 
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Afbeeldingen"
@@ -539,13 +531,6 @@ msgid ""
 msgstr ""
 "You will join <strong>{{room.cohabit.count}}</strong> other(s) in this place."
 
-#: public/modules/rooms/views/create-room.client.view.html
-#: public/modules/search/views/search.client.view.html
-#: public/modules/core/controllers/footer.client.controller.js
-#: public/modules/rooms/controllers/rooms.client.controller.js
-msgid "Kamer"
-msgstr "Room"
-
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "Kiezen van Dropbox"
 msgstr "Choose from Dropbox"
@@ -562,6 +547,13 @@ msgstr "Kortrijk"
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Kosten"
 msgstr "Costs"
+
+#: public/modules/rooms/views/create-room.client.view.html
+#: public/modules/search/views/search.client.view.html
+#: public/modules/core/controllers/footer.client.controller.js
+#: public/modules/rooms/controllers/rooms.client.controller.js
+msgid "Kot"
+msgstr "Room"
 
 #: public/modules/core/views/comingsoon.client.view.html
 msgid "Krijg meldingen"
@@ -697,7 +689,6 @@ msgid "Oppervlakte in m²"
 msgstr "Surface in m²"
 
 #: public/modules/core/views/footer.client.view.html
-#: public/modules/core/config/core.client.meta.js
 msgid "Over ons"
 msgstr "About us"
 
@@ -925,12 +916,6 @@ msgstr "Who we are"
 msgid "Zoek je andere personen om met je mee samen te wonen in deze ruimte?"
 msgstr "Are you looking for other people to live in this place with you?"
 
-#: public/modules/core/config/core.client.meta.js
-msgid ""
-"Zoek tussen alle huurwoningen in België en Nederland. Vind de panden met "
-"beste prijs/kwaliteit. Zie echte fotos van oplijstingen."
-msgstr ""
-
 #: public/modules/core/views/home.client.view.html
 msgid "Zoeken"
 msgstr "Search"
@@ -1021,6 +1006,15 @@ msgstr "{{::otherRooms.length}} other rooms in this house"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
 msgstr "{{room.pictures.length}} pictures"
+
+#~ msgid "1Roof - Vind je nieuwe woonst"
+#~ msgstr "1Roof - Find your new place to live"
+
+#~ msgid "Advertentie toevoegen"
+#~ msgstr "Add a room"
+
+#~ msgid "Kamer"
+#~ msgstr "Room"
 
 #~ msgid "Ontdek prachtige woningen overal in België"
 #~ msgstr "Discover beautiful homes throughout Belgium"

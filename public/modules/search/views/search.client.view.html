@@ -6,7 +6,7 @@
                 <div class="btn-group" ng-model="filter.roomType" output-function="setRoomType" radio-group>
                     <button type="button" class="btn minimal" data-val="house"><div class="maki-icon building"></div> <span translate>Huis</span></button>
                     <button type="button" class="btn minimal" data-val="appartment"><div class="maki-icon commercial"></div> <span translate>App.</span></button>
-                    <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> <span translate>Kamer</span></button>
+                    <button type="button" class="btn minimal" data-val="room"><div class="maki-icon lodging"></div> <span translate>Kot</span></button>
                     <button type="button" class="btn minimal active" data-val="all"><span translate>Alle</span></button>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                 <h2 class="empty-icon text-center"><i class="icon-home-1"></i></h2>
                 <p class="lead text-center" translate>Geen resultaten gevonden. Probeer minder filters te gebruiken of zoom uit op de kaart.</p>
             </span>
-            
+
             <ul class="results-list">
                 <li class="search-result" ng-repeat="room in results" ng-click="selectRoom(room._id, room.url)" ng-mouseenter="openRoomPopup(room._id)" ng-class="{ 'active': room._id == selectedRoomId, 'is-seen': hasSeenRoom(room._id) }">
                     <div class="result-type">
