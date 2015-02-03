@@ -47,6 +47,11 @@ exports.run = function() {
         //the whole response has been recieved, so we just print it out here
         response.on('end', function () {
 
+            if (response.statusCode !== 200) {
+                winston.error('Could not fetch sitemap. Aborting ..');
+                return;
+            }
+
             var urls = str.match(/<loc>(.*)<\/loc>/g);
 
             // include homepage
