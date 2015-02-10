@@ -11,8 +11,12 @@ angular.module('core').config(['AnalyticsProvider',
 
         AnalyticsProvider.setPageEvent('$stateChangeSuccess');
     }
-]).run(['Meta',
-    function(Meta) {
+]).run(['$window', 'Meta',
+    function($window, Meta) {
+        // Init meta stuff
         Meta.init();
+
+        //Init maps
+        $window.L.mapbox.accessToken = 'pk.eyJ1IjoiZGVmcmVlayIsImEiOiJzN2k4MTJ3In0.T9XzqH8K6OPNRmPXCopzXw';
     }
 ]);
