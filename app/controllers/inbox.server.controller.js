@@ -214,6 +214,6 @@ exports.inboxByID = function(req, res, next, id) {
  * Inbox authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-    if (req.inbox.sender.id === req.user.id || req.inbox.roomOwner.id === req.user.id) next();
+    if (req.inbox.sender.id === req.user.id || req.inbox.roomOwner.id === req.user.id || req.user.isAdmin()) next();
     else return res.send(403, 'User is not authorized');
 };

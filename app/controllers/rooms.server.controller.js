@@ -337,8 +337,9 @@ exports.createRoomCheck = function(req, res, next) {
  * Room authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-    if (req.room.user.id !== req.user.id) {
+    if (req.room.user.id === req.user.id || req.user.isAdmin()) {
+        next();
+    } else {
         return res.send(403, 'User is not authorized');
     }
-    next();
 };

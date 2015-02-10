@@ -22,7 +22,7 @@ angular.module('core').directive('statisticsChart', ['$window',
                     dateArray.forEach(function(value) {
 
                         var obj = {
-                            date: value
+                            date: new Date(value.getFullYear(), value.getMonth(), value.getDate())
                         };
                         obj[dataAttribute] = 0;
                         newData.push(obj);
@@ -30,31 +30,6 @@ angular.module('core').directive('statisticsChart', ['$window',
                     });
 
                     return newData;
-                }
-
-                function interpolateDataInRange(data, range, aggregate) {
-
-                    for (var i = 0; i < range.length; i++) {
-                        var value = 0;
-
-                        for (var j = 0; j < data.length; j++) {
-                            data[j].date = new Date(data[j].date);
-
-                            if (data[j].date.getTime() === range[i].date.getTime()) {
-                                value = getValue(data[j][dataAttribute]);
-                                break;
-                            }
-
-                        }
-
-                        if (i === 0 || !aggregate) {
-                            range[i][dataAttribute] = value;
-                        } else if (i > 0 && aggregate) {
-                            range[i][dataAttribute] = range[i - 1][dataAttribute] + value;
-                        }
-
-                    }
-
                 }
 
                 var d3 = $window.d3;
@@ -67,15 +42,29 @@ angular.module('core').directive('statisticsChart', ['$window',
                 scope.$watch('model', function(newValue) {
 
                     if (newValue.length > 0) {
-                        interpolateDataInRange(newValue, range, aggregateAttr);
-                        drawChart(range);
+
+                        newValue.forEach(function(obj) {
+                            var dt = new Date(obj.date);
+                            obj.date = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
+                        });
+
+                        var data = $window._.chain($window._.extend(range, newValue))
+                        .sortBy(function(obj) {
+                            return (new Date(obj.date)).getTime();
+                        })
+                        .uniq(function(obj) {
+                            return (new Date(obj.date)).getTime();
+                        })
+                        .forEach(function(obj) {
+                            if (!obj[dataAttribute]) obj[dataAttribute] = 0;
+                        })
+                        .value();
+
+                        drawChart(data);
                     }
                 });
 
                 function drawChart(data) {
-
-                    console.log(data);
-                    console.log(dataAttribute);
 
                     var margin = {
                             top: 20,

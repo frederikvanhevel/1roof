@@ -172,6 +172,10 @@ UserSchema.pre('remove', function(next) {
 
 });
 
+UserSchema.methods.isAdmin = function() {
+    return this.roles.indexOf('admin') !== -1;
+};
+
 /**
  * Create instance method for hashing a password
  */
