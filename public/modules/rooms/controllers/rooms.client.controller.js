@@ -185,7 +185,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
                 meta.title = $scope.room.location.street;
             } else {
                 meta.title = $scope.room.info.title + ' | ' + $scope.room.location.city;
-                meta.description = $scope.room.info.description;
+                meta.description = $scope.room.info.description.replace(/(\r\n|\n|\r)/gm,' ');
             }
 
             if ($scope.room.pictures.length > 0) {

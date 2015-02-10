@@ -20,7 +20,7 @@ exports.create = function(req, res) {
 
     room.save(function(err) {
         if (err) {
-            winston.error('Error creating new room', room._id);
+            winston.error('Error creating new room', err);
             return res.send(400);
         } else {
             var context = {
@@ -54,7 +54,7 @@ exports.update = function(req, res) {
 
     room.save(function(err) {
         if (err) {
-            winston.error('Error updating room', room._id);
+            winston.error('Error updating room', err);
             return res.send(400);
         } else {
             res.jsonp(room);
@@ -70,7 +70,7 @@ exports.delete = function(req, res) {
 
     room.remove(function(err) {
         if (err) {
-            winston.error('Error deleting room', room._id);
+            winston.error('Error deleting room', err);
             return res.send(400);
         } else {
             res.jsonp(room);
@@ -117,7 +117,7 @@ exports.list = function(req, res) {
 
     Room.find(query).exec(function(err, rooms) {
         if (err) {
-            winston.error('Error listing rooms', query);
+            winston.error('Error listing rooms', err);
             return res.send(400);
         } else {
             res.jsonp(rooms);
@@ -132,7 +132,7 @@ exports.listOfUserRooms = function(req, res) {
     var user = req.user;
     Room.find({ user: user }).exec(function(err, rooms) {
         if (err) {
-            winston.error('Error getting rooms of user', user._id);
+            winston.error('Error getting rooms of user', err);
             return res.send(400);
         } else {
             res.jsonp(rooms);
@@ -225,7 +225,7 @@ exports.listOfSimilarRooms= function(req, res) {
 exports.roomByID = function(req, res, next, id) {
     Room.findById(id).populate('user', 'email').populate('user', 'firstName').exec(function(err, room) {
         if (err) {
-            winston.error('Error getting room by id', id);
+            winston.error('Error getting room by id', err);
             return next(err);
         }
         if (!room) {
@@ -249,7 +249,7 @@ exports.getUserFavorites = function(req, res, next) {
 
     Room.find({ '_id': { $in: user.favorites }, 'visible': true }).exec(function(err, rooms) {
         if (err) {
-            winston.error('Error getting user favorites', user._id);
+            winston.error('Error getting user favorites', err);
             return res.send(400);
         } else {
             res.jsonp(rooms);
@@ -266,7 +266,7 @@ exports.getLatestRooms = function(req, res, next) {
 
     Room.find({ pictures: {$not: {$size: 0}}, 'visible': true }).sort({updated:-1}).limit(limit).exec(function(err, rooms) {
         if (err) {
-            winston.error('Error getting latest rooms', user._id);
+            winston.error('Error getting latest rooms', err);
             return res.send(400);
         } else {
             res.jsonp(rooms);
@@ -290,7 +290,7 @@ exports.toggleFavorite = function(req, res, next) {
 
     user.save(function(err) {
         if (err) {
-            winston.error('Error toggling favortie', { userId: user._id, roomId: room._id });
+            winston.error('Error toggling favortie', err);
             return res.send(400);
         } else {
             res.send(200);
@@ -307,16 +307,9 @@ exports.removePicture = function(req, res, next) {
     var index = req.body.index;
     var picture = room.pictures[index];
 
-    cloudinary.remove(req, res, next, index, function() {
-        room.pictures.splice(index, 1);
-        room.save(function(err) {
-            if (err) {
-                winston.error('Error removing picture', { roomId: room._id, pictureIndex: index });
-                return res.send(400);
-            } else {
-                res.jsonp(room);
-            }
-        });
+    cloudinary.remove(req, res, next, index, function(result) {
+        if (result.error) res.send(400);
+        else res.send(200);
     });
 };
 

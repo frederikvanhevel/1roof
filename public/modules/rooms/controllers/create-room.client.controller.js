@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('rooms').controller('CreateRoomController', ['$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', '$http', 'Analytics', 'Alert', 'gettext',
-    function($scope, $location, $state, Authentication, Rooms, Modal, Geocoder, $http, Analytics, Alert, gettext) {
+angular.module('rooms').controller('CreateRoomController', ['$rootScope', '$scope', '$location', '$state', 'Authentication', 'Rooms', 'Modal', 'Geocoder', '$http', 'Analytics', 'Alert', 'gettext',
+    function($rootScope, $scope, $location, $state, Authentication, Rooms, Modal, Geocoder, $http, Analytics, Alert, gettext) {
         $scope.authentication = Authentication;
 
         $scope.createForm = {
@@ -15,15 +15,16 @@ angular.module('rooms').controller('CreateRoomController', ['$scope', '$location
         $scope.addressDetails = null;
         $scope.creationStep = 1;
         $scope.busy = false;
-        $scope.allowed = false;
+        $scope.allowed = true;
 
         $scope.init = function() {
             if (Authentication.user) {
                 $scope.creationStep = 2;
-                checkUserRoomCount();
-            } else {
-                $scope.allowed = true;
             }
+
+            $rootScope.$on('logged_in', function(event) {
+                $scope.creationStep = 2;
+            });
 
             $scope.htmlReady(); 
         };

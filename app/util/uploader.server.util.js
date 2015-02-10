@@ -5,9 +5,12 @@ var cloudinary = require('cloudinary'),
 
 function uploadToCloudinary(roomId, url, index, res) {
     cloudinary.uploader.upload(url, function(result) {
-        res.send(200, {
-            id: result.public_id
-        });
+        if (result.error) res.send(400);
+        else {
+            res.send(200, {
+                id: result.public_id
+            });
+        }
     }, { public_id: roomId + '_' + index });
 }
 

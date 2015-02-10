@@ -80,7 +80,7 @@
                             <label class="control-label" translate>Titel <i class="icon-info-circled" tooltip="Gebruik voor de titel enkele kernwoorden die onmiddelijk je advertentie beschrijven. Je kan in de beschrijving meer uitleg geven."></i></label>
                             <input id="popover2" ng-model="room.info.title" maxlength="50" limit-text="50" type="text" class="form-control"  placeholder="{{'Geef een gepaste titel in'|translate}}" required>
                             <guided-tour ng-if="guide.enabled"  step="2" guide="guide" connected-element="#popover2" alignment="bottom" on-tour-end="guideEnded()" translate>
-                                Elke aanpassing die je maakt, wordt automatisch opgeslaan. Begin met een duidelijke titel. 
+                                Elke aanpassing die je maakt, wordt automatisch opgeslaan. Begin met een duidelijke titel.
                             </guided-tour>
                         </div>
                         <div class="form-group">
@@ -195,10 +195,10 @@
                 <div class="panel-body">
                     <div class="pictures-header">
                         <h5 class="pull-right"><small translate>{{room.pictures.length}} foto's</small></h5>
-                        <button ng-disabled="room.pictures.length == 8" class="btn-upload btn btn-blue btn-sm" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
+                        <button ng-disabled="room.pictures.length == 8 || busy" class="btn-upload btn btn-blue btn-sm" ng-file-select="onImageSelect($files)" accept="image/*" ng-disabled="busy">
                         <i class="icon-upload-cloud"></i> <span translate>Foto uploaden</span>
                         </button>
-                        <button ng-disabled="room.pictures.length == 8" class="dropbox-button btn btn-sm" dropbox-chooser chooser-function="onDropboxSelect"><i class="icon-dropbox"></i> <span translate>Kiezen van Dropbox</span></button>
+                        <button ng-disabled="room.pictures.length == 8 || busy" class="dropbox-button btn btn-sm" dropbox-chooser chooser-function="onDropboxSelect"><i class="icon-dropbox"></i> <span translate>Kiezen van Dropbox</span></button>
                     </div>
                     <div class="pictures" ng-hide="room.pictures.length == 0">
                         <div class="picture col-sm-6" ng-repeat="picture in room.pictures">

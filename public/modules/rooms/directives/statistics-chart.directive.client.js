@@ -74,6 +74,9 @@ angular.module('core').directive('statisticsChart', ['$window',
 
                 function drawChart(data) {
 
+                    console.log(data);
+                    console.log(dataAttribute);
+
                     var margin = {
                             top: 20,
                             right: 30,

@@ -548,11 +548,14 @@ msgstr "Kortrijk"
 msgid "Kosten"
 msgstr "Costs"
 
-#: public/modules/rooms/views/create-room.client.view.html
 #: public/modules/search/views/search.client.view.html
 #: public/modules/core/controllers/footer.client.controller.js
 #: public/modules/rooms/controllers/rooms.client.controller.js
 msgid "Kot"
+msgstr "Room"
+
+#: public/modules/rooms/views/create-room.client.view.html
+msgid "Kot / Kamer"
 msgstr "Room"
 
 #: public/modules/core/views/comingsoon.client.view.html
