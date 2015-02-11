@@ -78,6 +78,13 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
             }
 
             $rootScope.$on('close_overlay', closeRoomOverlay);
+            $rootScope.$on('keypress', function(event, data) {
+                if (data.which === 37) { // Left
+                    selectPreviousRoom();
+                } else if (data.which === 39) { // Right
+                    selectNextRoom();
+                }
+            });
         };
 
         function parseUrlParameters(urlParamaters) {
@@ -99,6 +106,27 @@ angular.module('search').controller('SearchController', ['$rootScope', '$scope',
 
                 if ($location.search()._escaped_fragment_ === '') fetchRooms();    // hack for google crawling
             });
+        }
+
+        function getCurrentRoomIndex() {
+            if (!$scope.selectedRoomId) return -1;
+            else return $window._.indexOf($window._.pluck($scope.results, '_id'), $scope.selectedRoomId);
+        }
+
+        function selectPreviousRoom() {
+            var currentIndex = getCurrentRoomIndex();
+            if (currentIndex !== -1 && currentIndex > 0) {
+                var room = $scope.results[currentIndex - 1];
+                $scope.selectRoom(room._id, room.url);
+            }
+        }
+
+        function selectNextRoom() {
+            var currentIndex = getCurrentRoomIndex();
+            if (currentIndex !== -1 && currentIndex < $scope.results.length - 1) {
+                var room = $scope.results[currentIndex + 1];
+                $scope.selectRoom(room._id, room.url);
+            }
         }
 
         $scope.mapChangedEvent = function(result) {
