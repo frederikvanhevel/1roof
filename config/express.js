@@ -141,6 +141,8 @@ module.exports = function(db) {
 
     // Enable CORS resuests
     // app.use(core.allowCORS);
+    // Redirect when using heroku domain name
+    app.use(core.redirectIfHeroko);
 
     // socketio middleware
     app.use(function(req, res, next) {

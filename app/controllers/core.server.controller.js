@@ -13,6 +13,12 @@ exports.index = function(req, res) {
     });
 };
 
+exports.redirectIfHeroko = function(req, res, next) {
+    if (req.header('host').indexOf('apollo2.herokuapp.com') !== -1) {
+        res.redirect(301, 'https://1roof.be' + req.path);
+    } else next();
+};
+
 /**
  * Allow CORS for this endpoint if the right token is sent
  */
