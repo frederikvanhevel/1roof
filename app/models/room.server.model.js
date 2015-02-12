@@ -174,8 +174,7 @@ var RoomSchema = new Schema({
         ref: 'User'
     },
     publishedToSocial: {
-        type: Boolean,
-        default: false
+        type: Boolean
     }
 });
 

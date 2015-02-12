@@ -6,7 +6,9 @@ var schedule = require('node-schedule'),
     roomPicturesCheckJob = require('./jobs/room-pictures-check'),
     messageCheckJob = require('./jobs/newmessage-check'),
     newRoomsJob = require('./jobs/new-rooms'),
-    cacheJob = require('./jobs/cache');
+    cacheJob = require('./jobs/cache'),
+    socialmediaJob = require('./jobs/social-media'),
+    facebook = require('../app/util/facebook');
 
 exports.start = function() {
 
@@ -18,18 +20,26 @@ exports.start = function() {
     schedule.scheduleJob(everynight, roomAvailabilityCheckJob.run);
     schedule.scheduleJob(everynight, cacheJob.run);
 
-    var everyday = new schedule.RecurrenceRule();
-    everyday.hour = 7;
-    everyday.minute = 0;
-    everyday.second = 30;
+    var everyMorning = new schedule.RecurrenceRule();
+    everyMorning.hour = 7;
+    everyMorning.minute = 0;
+    everyMorning.second = 30;
 
-    schedule.scheduleJob(everyday, messageCheckJob.run);
+    schedule.scheduleJob(everyMorning, messageCheckJob.run);
 
-    var weekly = new schedule.RecurrenceRule();
-    weekly.dayOfWeek = 0;
-    weekly.hour = 10;
-    weekly.minute = 0;
-    weekly.second = 30;
+    var everyAfternoon = new schedule.RecurrenceRule();
+    everyAfternoon.hour = 15;
+    everyAfternoon.minute = 0;
+    everyAfternoon.second = 30;
 
-    // schedule.scheduleJob(weekly, newRoomsJob.run);
+    schedule.scheduleJob(everyAfternoon, socialmediaJob.run);
+
+    var everyMonth = new schedule.RecurrenceRule();
+    everyMonth.dayOfMonth = 1;
+    everyMonth.dayOfWeek = 0;
+    everyMonth.hour = 10;
+    everyMonth.minute = 0;
+    everyMonth.second = 30;
+
+    schedule.scheduleJob(everyMonth, facebook.extendToken);
 };
