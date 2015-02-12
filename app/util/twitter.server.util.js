@@ -24,7 +24,7 @@ function getImageLink(picture) {
 
 exports.postToFeed = function(room) {
 
-    twitterClient.post('statuses/update', { status: room.info.title + ' https://1roof.be' + room.url }, function(err, data, response) {
+    twitterClient.post('statuses/update', { status: room.info.title + ' #' + room.location.city + ' https://1roof.be' + room.url }, function(err, data, response) {
         if (err) {
             winston.error('Error posting to twitter feed', err);
         } else {
