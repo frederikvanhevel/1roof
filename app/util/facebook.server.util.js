@@ -61,8 +61,6 @@ exports.postToPage = function(room) {
             if (response.error) {
                 winston.error('Facebook error', response.error);
             } else {
-                room.publishedToSocial = true;
-                room.save();
                 winston.info('Successfully posted to facebook wall');
             }
         }
