@@ -28,7 +28,7 @@ exports.start = function() {
     schedule.scheduleJob(everyMorning, messageCheckJob.run);
 
     var everyAfternoon = new schedule.RecurrenceRule();
-    everyAfternoon.hour = 15;
+    everyAfternoon.hour = 13;
     everyAfternoon.minute = 0;
     everyAfternoon.second = 30;
 
