@@ -33,7 +33,6 @@ exports.allowCORS = function(req, res, next) {
     } else {
         next();
     }
-
 };
 
 exports.runCacheJob  = function(req, res, next) {
