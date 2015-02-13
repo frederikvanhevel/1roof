@@ -17,7 +17,7 @@ var config = require('../../config/config'),
     winston = require('winston'),
     FB = require('fb');
 
-FB.setAccessToken(config.facebook.accessToken);
+
 
 function limitText(text) {
     var LIMIT_TO = 1000;
@@ -49,6 +49,8 @@ function getImageLink(picture) {
 exports.postToPage = function(room) {
 
     if (!isViableForFacebookPost(room)) return;
+
+    FB.setAccessToken(config.facebook.accessToken);
 
     FB.api(
         '/' + config.facebook.pageID + '/photos',

@@ -9,6 +9,9 @@ var mailer = require('../../app/util/mailer'),
 
 exports.run = function() {
 
+    // Do not run this in dev mode
+    if (process.env.NODE_ENV === 'development') return;
+
     winston.info('Socialmedia job started ..');
 
     var Room = mongoose.model('Room');

@@ -5,12 +5,7 @@ var config = require('../../config/config'),
     Twitter = require('twit'),
     http = require('http');
 
-var twitterClient = new Twitter({
-    consumer_key: config.twitter.clientID,
-    consumer_secret: config.twitter.clientSecret,
-    access_token: config.twitter.accesstoken,
-    access_token_secret: config.twitter.accesstokenSecret
-});
+var twitterClient;
 
 function getImageLink(picture) {
     var url = '';
@@ -22,9 +17,21 @@ function getImageLink(picture) {
     return url;
 }
 
+function getClient() {
+    if (!twitterClient) {
+        twitterClient = new Twitter({
+            consumer_key: config.twitter.clientID,
+            consumer_secret: config.twitter.clientSecret,
+            access_token: config.twitter.accesstoken,
+            access_token_secret: config.twitter.accesstokenSecret
+        });
+    }
+    return twitterClient;
+}
+
 exports.postToFeed = function(room) {
 
-    twitterClient.post('statuses/update', { status: room.info.title + ' #' + room.location.city + ' https://1roof.be' + room.url }, function(err, data, response) {
+    getClient().post('statuses/update', { status: room.info.title + ' #' + room.location.city + ' https://1roof.be' + room.url }, function(err, data, response) {
         if (err) {
             winston.error('Error posting to twitter feed', err);
         } else {
@@ -33,3 +40,4 @@ exports.postToFeed = function(room) {
     });
 
 };
+
