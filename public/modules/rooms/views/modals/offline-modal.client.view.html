@@ -1,0 +1,28 @@
+<div class="offline-overlay modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <i class="top-icon icon-cloud-thunder"></i>
+
+                <h2 translate>Sorry, deze advertentie is momenteel offline gehaald door de eigenaar. Dit kan betekenen dat deze al verhuurd is.</h2>
+
+                <div ng-if="similarRooms.length > 1">
+                    <h6 translate>Hier zijn alvast enkele vergelijkbare advertenties die we gevonden hebben voor jou:</h6>
+
+                    <div class="row thumbs gap-xs">
+
+                        <div class="col-xs-6 thumb" ng-repeat="room in similarRooms | limitTo: 2">
+                            <figure class="icon-overlay icn-link">
+                                <a href="{{room.url}}"><span class="icn-more"></span><img ng-src="{{getImageLink(room.pictures[0])}}" alt="Foto van {{getClasification(room)}} in {{room.location.city}}" width="200" height="200" title="{{room.info.title}}"></a>
+                            </figure>
+                        </div>
+
+                    </div>
+                </div>
+
+                <a href="/" translate>Ga naar de homepagina</a>
+
+            </div>
+        </div>
+    </div>
+</div>

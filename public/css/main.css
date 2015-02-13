@@ -8082,12 +8082,9 @@ ROOMS MODULE
   background: rgba(0, 0, 0, 0.7);
   z-index: 900;
   top: 50px;
-  display: none;
+  display: block;
   text-align: center;
   overflow: auto;
-}
-.view-room .offline-overlay.visible {
-  display: block;
 }
 .view-room .offline-overlay .top-icon {
   font-size: 100px;

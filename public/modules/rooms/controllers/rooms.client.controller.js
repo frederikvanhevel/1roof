@@ -19,7 +19,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
         $scope.isOverlay = false;
         $scope.showCostsDetails = false;
 
-        $scope.loaded = false;
+        $scope.showOfflineModal = false;
 
         $scope.init = function() {
             $scope.findOne();
@@ -112,6 +112,10 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             return url;
         };
 
+        function shouldShowOfflineModal() {
+            return !$scope.room.visible && (Authentication.user === null || $scope.room.user._id !== Authentication.user._id);
+        }
+
         function sendFavorite() {
             $http.post('/api/rooms/' + $scope.room._id + '/favorite').success(function(response) {
                 var index = Authentication.user.favorites.indexOf($scope.room._id);
@@ -174,7 +178,8 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
             $scope.$broadcast('room_loaded', $scope.room);
             if ($scope.room.pictures.length === 0) $scope.$emit('pictures_rendered');
 
-            $scope.loaded = true;
+            $scope.showOfflineModal = shouldShowOfflineModal();
+
             $scope.htmlReady(); 
         }
 
