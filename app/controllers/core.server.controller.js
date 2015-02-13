@@ -14,8 +14,9 @@ exports.index = function(req, res) {
 };
 
 exports.redirectIfHeroko = function(req, res, next) {
-    if (req.header('host').indexOf('apollo2.herokuapp.com') !== -1) {
-        res.redirect(301, 'https://1roof.be' + req.path);
+    var isBot = req.headers['user-agent'] && req.headers['user-agent'].indexOf('1roofbot') !== -1;
+    if (req.header('host').indexOf('apollo2.herokuapp.com') !== -1 && !isBot) {
+        res.redirect(301, 'https://1roof.be' + req.originalUrl);
     } else next();
 };
 
