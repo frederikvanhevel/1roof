@@ -199,4 +199,13 @@
             border: none;
         }
     }
+
+    .addthis_sharing_toolbox {
+        text-align: center;
+        padding-top: 5px;
+
+        &.padding-top {
+            padding-top: 30px;
+        }
+    }
 }

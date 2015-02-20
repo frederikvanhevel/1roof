@@ -8220,6 +8220,13 @@ ROOMS MODULE
   width: 100%;
   border: none;
 }
+.view-room .addthis_sharing_toolbox {
+  text-align: center;
+  padding-top: 5px;
+}
+.view-room .addthis_sharing_toolbox.padding-top {
+  padding-top: 30px;
+}
 
 .create-room .spinner {
   visibility: visible;
