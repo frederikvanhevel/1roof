@@ -61,7 +61,7 @@ exports.postToPage = function(room) {
         },
         function (response) {
             if (response.error) {
-                winston.error('Facebook error', response.error);
+                winston.error('Error posting to facebook wall', response.error);
             } else {
                 winston.info('Successfully posted to facebook wall');
             }

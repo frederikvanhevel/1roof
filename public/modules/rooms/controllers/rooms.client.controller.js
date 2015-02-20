@@ -197,7 +197,7 @@ angular.module('rooms').controller('RoomsController', ['$rootScope', '$scope', '
                 var picture = $scope.room.pictures[0];
 
                 if (picture.provider === 'cloudinary')
-                    meta.image = 'https://res.cloudinary.com/dv8yfamzc/image/upload/' + picture.link + '.png';
+                    meta.image = 'http://res.cloudinary.com/dv8yfamzc/image/upload/' + picture.link + '.png';
                 else meta.image = picture.link;
             }
 
