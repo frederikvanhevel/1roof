@@ -47,7 +47,7 @@ exports.run = function() {
     var query = {
         'isInOrder': false,
         'visible': false,
-        // 'created': { $lt: d },
+        'created': { $lt: d },
         'notifications': { $ne: 'unfinished' }
     };
 
