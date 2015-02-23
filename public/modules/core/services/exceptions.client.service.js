@@ -54,7 +54,8 @@ angular.module('core').factory('exceptionLoggingService', ['$log','$window', 'tr
                         message: errorMessage,
                         type: 'exception',
                         stackTrace: stackTrace,
-                        cause: ( cause || '')
+                        cause: ( cause || ''),
+                        agent: navigator.userAgent
                     })
                 });
             } catch (loggingError){
