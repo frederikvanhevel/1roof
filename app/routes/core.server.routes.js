@@ -21,6 +21,9 @@ module.exports = function(app) {
     // run cache job
     app.route('/api/jobs/runcache').get(core.runCacheJob);
 
+    // client error logger
+    app.route('/api/logger').post(core.clientLogger);
+
     app.route('/search/Aalst--Belg%C3%AFe?_escaped_fragment_=').get(function(req, res) {
         res.redirect(301, '/search/Aalst?_escaped_fragment_=');
     });

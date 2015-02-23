@@ -3,7 +3,8 @@
 /**
  * Module dependencies.
  */
-var config = require('../../config/config');
+var config = require('../../config/config'),
+    winston = require('winston');
 
 exports.index = function(req, res) {
     res.render('index', {
@@ -36,9 +37,17 @@ exports.allowCORS = function(req, res, next) {
     }
 };
 
-exports.runCacheJob  = function(req, res, next) {
+exports.runCacheJob = function(req, res, next) {
     var cacheJob = require('../../config/jobs/cache');
     cacheJob.run();
+
+    res.send(200);
+};
+
+exports.clientLogger = function(req, res, next) {
+    req.body.from = 'client';
+
+    winston.error(req.body);
 
     res.send(200);
 };
