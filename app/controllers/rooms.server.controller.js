@@ -52,9 +52,12 @@ exports.update = function(req, res) {
 
     room = _.extend(room, req.body);
 
+    // delete versionkey to precent errors
+    delete room.__v;
+
     room.save(function(err) {
         if (err) {
-            winston.error('Error updating room', err);
+            winston.error('Error updating room ' + room._id, err);
             return res.send(400);
         } else {
             res.jsonp(room);
@@ -70,7 +73,7 @@ exports.delete = function(req, res) {
 
     room.remove(function(err) {
         if (err) {
-            winston.error('Error deleting room', err);
+            winston.error('Error deleting room ' + room._id, err);
             return res.send(400);
         } else {
             res.jsonp(room);

@@ -42,9 +42,9 @@ var slugify = function(text) {
 var RoomSchema = new Schema({
     // custom short ids
     _id: {
-    type: String,
-    unique: true,
-    'default': shortId.generate
+        type: String,
+        unique: true,
+        default: shortId.generate
     },
     surface: {
         type: Number,
@@ -142,10 +142,6 @@ var RoomSchema = new Schema({
         enum: ['lease', 'sublease'],
         default: 'lease'
     },
-    isLeased: {
-        type: Boolean,
-        default: false
-    },
     pictures: [new Schema({
         provider: String,
         link: String
@@ -175,6 +171,9 @@ var RoomSchema = new Schema({
     },
     publishedToSocial: {
         type: Boolean
+    },
+    notifications: {
+        type: [String]
     }
 });
 
@@ -189,6 +188,10 @@ RoomSchema.pre('save', function(next) {
 
     // update 'updated' field
     this.updated = Date.now();
+
+    // normalize pricing fields
+    this.price.egw = this.price.egw || 0;
+    this.price.cleaning = this.price.cleaning || 0;
 
     // calculate total price
     this.price.total = this.price.base + this.price.egw + this.price.cleaning;

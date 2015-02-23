@@ -1,0 +1,44 @@
+{% extends 'layout.email.html' %}
+
+{% block content %}
+
+  <!-- Full Width, Fluid Column : BEGIN -->
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            <h1 style="text-align:center;">Hulp nodig?</h1>
+
+            <br>
+
+            Hey <%=  user.displayName  %>,
+            <br><br>
+            Je hebt onlangs een advertentie toegevoegd op 1roof.be, maar voor deze online geplaatst kan worden moet je nog wat meer informatie invullen.
+            <br><br>
+            Ga naar de website om de informatie aan te vullen en je advertentie online te plaatsen.
+            <br><br>
+            Indien je hierbij problemen hebt of met vragen zit kan je ons altijd bereiken op <a href="mailto:info@1roof.be">info@1roof.be</a>
+            <br>
+            <hr class="line">
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <!-- Full Width, Fluid Column : END -->
+
+  <tr>
+    <td>
+      <table border="0" width="100%" cellpadding="0" cellspacing="0" align="center">
+        <tr>
+          <td class="default">
+            <a target="_blank" href="<%=  app.host  %><%=  editLink  %>" class="button">Pas de advertentie aan</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+
+{% endblock %}
