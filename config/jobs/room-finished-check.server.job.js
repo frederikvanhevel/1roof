@@ -41,8 +41,9 @@ exports.run = function() {
 
     var Room = mongoose.model('Room');
 
+    // older than 12 hours
     var d = new Date();
-    d.setDate(d.getDate() - 1);
+    d.setHours(d.getHours() - 2);
 
     var query = {
         'isInOrder': false,
