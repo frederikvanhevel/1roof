@@ -5,6 +5,7 @@ var schedule = require('node-schedule'),
     roomAvailabilityCheckJob = require('./jobs/room-availability-check'),
     roomPicturesCheckJob = require('./jobs/room-pictures-check'),
     messageCheckJob = require('./jobs/newmessage-check'),
+    unfinishedCheckJob = require('./jobs/room-finished-check'),
     newRoomsJob = require('./jobs/new-rooms'),
     cacheJob = require('./jobs/cache'),
     socialmediaJob = require('./jobs/social-media'),
@@ -33,6 +34,7 @@ exports.start = function() {
     everyAfternoon.second = 30;
 
     schedule.scheduleJob(everyAfternoon, socialmediaJob.run);
+    schedule.scheduleJob(everyAfternoon, unfinishedCheckJob.run);
 
     var everyMonth = new schedule.RecurrenceRule();
     everyMonth.dayOfMonth = 1;
@@ -41,4 +43,5 @@ exports.start = function() {
     everyMonth.second = 30;
 
     schedule.scheduleJob(everyMonth, facebook.extendToken);
+
 };

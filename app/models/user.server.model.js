@@ -125,7 +125,6 @@ var UserSchema = new Schema({
             email: {
                 roomCheck: true,
                 messageCheck: true,
-                unfinishedCheck: true,
                 newRooms: true
             },
             alert: {

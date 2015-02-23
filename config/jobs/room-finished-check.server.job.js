@@ -4,6 +4,16 @@ var mailer = require('../../app/util/mailer'),
   mongoose = require('mongoose'),
   winston = require('winston');
 
+function getRoomErrors(room) {
+    var errors = [];
+
+    if (!room.info.title || room.info.title.trim() === '') errors.push('de titel');
+    if (!room.price.base || room.price.base <= 0) errors.push('de kostprijs');
+    if (!room.available.immediately && (!room.available.from || !room.available.till || new Date(room.available.till)) < new Date()) errors.push('de huurperiode');
+
+    return errors;
+}
+
 function checkRoom(room) {
     if (!room.notifications) room.notifications = [];
     room.notifications.push('unfinished');
@@ -11,6 +21,7 @@ function checkRoom(room) {
     var context = {
         user: room.user,
         room: room,
+        errors: getRoomErrors(room),
         editLink: '/rooms/' + room._id + '/edit'
     };
 
@@ -18,17 +29,15 @@ function checkRoom(room) {
         if (err) {
             winston.error('RoomCheckJob: Error saving room %s', room._id);
         } else {
-            if (room.user.settings.email.unfinishedCheck) {
-                winston.info('RoomCheck: Notifying user %s', room.user.displayName);
-                mailer.send('not-finished.email.html', context, room.user.email, 'Advertentie onvolledig');
-            }
+            winston.info('RoomCheck: Notifying user %s', room.user.displayName);
+            mailer.send('not-finished.email.html', context, room.user.email, 'Advertentie onvolledig');
         }
     });
 }
 
 exports.run = function() {
 
-    winston.info('Room finished check job started ..');
+    winston.info('Unfinished room check job started ..');
 
     var Room = mongoose.model('Room');
 
@@ -38,7 +47,7 @@ exports.run = function() {
     var query = {
         'isInOrder': false,
         'visible': false,
-        'created': { $lt: d },
+        // 'created': { $lt: d },
         'notifications': { $ne: 'unfinished' }
     };
 

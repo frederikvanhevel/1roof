@@ -14,8 +14,16 @@
 
             Hey <%=  user.displayName  %>,
             <br><br>
-            Je hebt onlangs een advertentie toegevoegd op 1roof.be, maar voor deze online geplaatst kan worden moet je nog wat meer informatie invullen.
+            Je hebt onlangs een advertentie toegevoegd op <a href="https://1roof.be">1roof.be</a>, maar voor deze online geplaatst kan worden moet je nog wat meer informatie invullen.
             <br><br>
+            Volgende zaken zijn onvolledig:
+
+            <ul>
+            {% for error in errors %}
+                <li><%= error %></li>
+            {% endfor %}
+            </ul>
+
             Ga naar de website om de informatie aan te vullen en je advertentie online te plaatsen.
             <br><br>
             Indien je hierbij problemen hebt of met vragen zit kan je ons altijd bereiken op <a href="mailto:info@1roof.be">info@1roof.be</a>
