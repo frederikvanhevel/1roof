@@ -11,7 +11,7 @@ function getImageLink(picture) {
     var url = '';
 
     if (picture.provider === 'cloudinary')
-        url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/' + picture.link + '.png';
+        url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/' + picture.link + '.jpg';
     else url = picture.link;
 
     return url;

@@ -17,7 +17,7 @@ angular.module('core').directive('backImg', [
                 if (!scope.imgProvider || !scope.imgLink) return;
 
                 if (scope.imgProvider === 'cloudinary')
-                    url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/' + scope.imgLink + '.png';
+                    url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/' + scope.imgLink + '.jpg';
                 else url = scope.imgLink;
 
                 if (scope.isImg === 'true') {

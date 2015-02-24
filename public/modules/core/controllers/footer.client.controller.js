@@ -11,7 +11,7 @@ angular.module('core').controller('FooterController', ['$scope', '$rootScope', '
         	var url = '';
 
             if (picture.provider === 'cloudinary')
-                url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/w_200,h_200,c_fill/' + picture.link + '.png';
+                url = 'https://res.cloudinary.com/dv8yfamzc/image/upload/w_200,h_200,c_fill/' + picture.link + '.jpg';
             else url = picture.link;
 
             return url;
