@@ -17,7 +17,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         $scope.newAddressDetails = {};
 
         $scope.guide = {
-            enabled: Authentication.user.settings.tutorial,
+            enabled:  Authentication.user ? Authentication.user.settings.tutorial : true,
             step: 1
         };
 

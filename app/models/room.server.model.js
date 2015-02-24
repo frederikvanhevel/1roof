@@ -193,13 +193,18 @@ RoomSchema.pre('save', function(next) {
     // update 'updated' field
     this.updated = Date.now();
 
+    // normalize info fields
+    this.info.title = this.info.title || '';
+    this.info.description = this.info.description || '';
+
     // limit info length
-    if (this.info.title && this.info.title.length > MAX_TITLE_LENGTH)
+    if (this.info.title.length > MAX_TITLE_LENGTH)
         this.info.title.length = this.info.title.length.substring(0, MAX_TITLE_LENGTH);
-    if (this.info.description && this.info.description.length > MAX_DESCRIPTION_LENGTH)
+    if (this.info.description.length > MAX_DESCRIPTION_LENGTH)
         this.info.description.length = this.info.description.length.substring(0, MAX_DESCRIPTION_LENGTH);
 
     // normalize pricing fields
+    this.price.base = this.price.base || 0;
     this.price.egw = this.price.egw || 0;
     this.price.cleaning = this.price.cleaning || 0;
 
