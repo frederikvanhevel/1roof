@@ -222,9 +222,11 @@ RoomSchema.pre('save', function(next) {
 
 RoomSchema.pre('remove', function(next) {
     this.pictures.forEach(function(picture) {
-        uploader.removeFromCloudinary(picture.link, function() {
-            winston.info('Removed picture from room %s', this._id);
-        });
+        if (picture.provider === 'cloudinary') {
+            uploader.removeFromCloudinary(picture.link, function() {
+                winston.info('Removed picture from room %s', this._id);
+            });
+        }
     });
     next();
 });
