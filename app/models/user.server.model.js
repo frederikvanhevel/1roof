@@ -150,7 +150,6 @@ UserSchema.pre('save', function(next) {
 
 UserSchema.pre('remove', function(next) {
     Room.remove({ 'user': this.id }).exec();
-
     next();
 });
 
