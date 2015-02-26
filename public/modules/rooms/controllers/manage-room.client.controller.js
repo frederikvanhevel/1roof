@@ -5,9 +5,6 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
     function($scope, $stateParams, $location, Authentication, Rooms, UserSettings, $window, Amenity, $upload, $http, Modal, Alert, gettext) {
         $scope.authentication = Authentication;
 
-        // If user is not signed in then redirect back home
-        if (!Authentication.user) $location.path('/');
-
         $scope.busy = false;
         $scope.nav = 'general';
         $scope.amenities = Amenity.list();
@@ -24,7 +21,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         // Init
         $scope.init = function() {
             if ($stateParams.nav) $scope.nav = $stateParams.nav;
-            if (!$stateParams.roomId) $location.path('/');
+            if (!Authentication.user || !$stateParams.roomId) {
+                $location.path('/');
+                return;
+            }
 
             $scope.room = Rooms.get({
                 roomId: $stateParams.roomId
@@ -55,6 +55,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
         };
 
         $scope.onImageSelect = function($files) {
+            $scope.busy = true;
             if ($files.length > 0) uploadImage($files[0]);
         };
 
@@ -67,6 +68,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                 $scope.room.pictures.splice(index, 1);
                 $scope.busy = false;
             }).error(function(response) {
+                Alert.add('danger', gettext('Er was een probleem bij het verwijderen van de afbeelding, probeer later opnieuw.'), 5000);
                 $scope.busy = false;
             });
         };
@@ -179,11 +181,8 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $scope.busy = true;
             $upload.upload({
                 url: '/api/rooms/' + $scope.room._id + '/upload',
-                data: {
-                    index: $scope.room.pictures.length
-                },
                 file: image
-            }).success(function(data, status, headers, config) {
+            }).success(function(data) {
                 $scope.room.pictures.push({
                     provider: 'cloudinary',
                     link: data.id
@@ -201,11 +200,10 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
             $scope.busy = true;
             files.forEach(function(file) {
                 $http.post('/api/rooms/' + $scope.room._id + '/upload', {
-                    link: file.link,
-                    index: $scope.room.pictures.length
+                    link: file.link
                 }).success(function(data) {
                     $scope.room.pictures.push({
-                        provider: 'cloudinary',
+                        provider: 'dropbox',
                         link: data.id
                     });
                     $scope.busy = false;

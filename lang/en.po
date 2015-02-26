@@ -31,6 +31,14 @@ msgstr[0] "{{results.length}} ads found"
 msgstr[1] "{{$count}} ads found"
 
 #: public/modules/core/views/about.client.view.html
+msgid ""
+"1ROOF is ontstaan uit de noodzaak aan een makkelijke en gratis oplossing "
+"voor het online plaatsen van panden. Bij deze willen we nog eens benadrukken "
+"dat wij <u>nooit</u> aan verhuurder noch huurder geld gaan vragen in ruil "
+"voor het gebruiken van deze website."
+msgstr ""
+
+#: public/modules/core/views/about.client.view.html
 msgid "1ROOF maakt je leven makkelijker."
 msgstr "1ROOF makes your life easier."
 
@@ -158,8 +166,8 @@ msgid "Basis prijs"
 msgstr "Base price"
 
 #: public/modules/core/views/home.client.view.html
-msgid "Bekijk al je contacten met hurders op één plaats"
-msgstr "View all your contacts with tenants in one place"
+msgid "Bekijk al je berichten van huurders op één plaats"
+msgstr "View all your messages in one place"
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Bekijk deze ruimte"
@@ -203,6 +211,12 @@ msgid ""
 "Bewaar de leukste aanbiedingen één plaats zodat je de beste er uit kan kiezen"
 msgstr "Save your preferred ads in one place so you can choose the best one"
 
+#: public/modules/core/views/about.client.view.html
+msgid ""
+"Bij vragen kan je ons altijd bereiken via <a href=\"mailto:info@1roof.be"
+"\">info@1roof.be</a>."
+msgstr ""
+
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Bijgewerkt"
 msgstr "Modified"
@@ -236,12 +250,6 @@ msgstr "Contact"
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Contract"
 msgstr "Contract"
-
-#: public/modules/core/views/about.client.view.html
-msgid ""
-"Dankzij 1ROOF heb ik samen met mijn vriendin het ideale appartement "
-"gevonden. Bedankt voor jullie hulp!"
-msgstr ""
 
 #: public/modules/users/views/favorites.client.view.html
 msgid "Delen"
@@ -353,10 +361,6 @@ msgstr "Bike shed"
 msgid "Foto uploaden"
 msgstr "Upload image"
 
-#: public/modules/rooms/views/view-room.client.view.html
-msgid "Ga naar de homepagina"
-msgstr "Go to the homepage"
-
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Ga verder"
 msgstr "Continue"
@@ -402,12 +406,6 @@ msgstr "Hasselt"
 #: public/modules/users/views/signup.client.view.html
 msgid "Heb je al een account?"
 msgstr "Already have an account?"
-
-#: public/modules/rooms/views/view-room.client.view.html
-msgid ""
-"Hier zijn alvast enkele vergelijkbare advertenties die we gevonden hebben "
-"voor jou:"
-msgstr "Here are some similar ads for you:"
 
 #: public/modules/core/views/footer.client.view.html
 msgid "Home"
@@ -749,14 +747,6 @@ msgstr "Cleaning costs"
 msgid "Snel. Simpel. Gemakkelijk."
 msgstr "Fast. Simple. Easy."
 
-#: public/modules/rooms/views/view-room.client.view.html
-msgid ""
-"Sorry, deze advertentie is momenteel offline gehaald door de eigenaar. Dit "
-"kan betekenen dat deze al verhuurd is."
-msgstr ""
-"Sorry, this ad has been taken offline by the owner. This may mean that it is "
-"already rented out."
-
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Stap 1: meld je aan"
 msgstr "Step 1: log in"
@@ -835,12 +825,6 @@ msgstr "Log out"
 #: public/modules/core/views/pricing.client.view.html
 msgid "Upgraden"
 msgstr "Upgrade"
-
-#: public/modules/core/views/about.client.view.html
-msgid ""
-"Veel makkelijker dan elke andere service. 1ROOF is de oplossing voor elke "
-"huisbaas!"
-msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Vergelijkbare advertenties"
@@ -1009,6 +993,24 @@ msgstr "{{::otherRooms.length}} other rooms in this house"
 #: public/modules/rooms/views/edit-room.client.view.html
 msgid "{{room.pictures.length}} foto's"
 msgstr "{{room.pictures.length}} pictures"
+
+#~ msgid "Bekijk al je contacten met hurders op één plaats"
+#~ msgstr "View all your contacts with tenants in one place"
+
+#~ msgid "Ga naar de homepagina"
+#~ msgstr "Go to the homepage"
+
+#~ msgid ""
+#~ "Hier zijn alvast enkele vergelijkbare advertenties die we gevonden hebben "
+#~ "voor jou:"
+#~ msgstr "Here are some similar ads for you:"
+
+#~ msgid ""
+#~ "Sorry, deze advertentie is momenteel offline gehaald door de eigenaar. "
+#~ "Dit kan betekenen dat deze al verhuurd is."
+#~ msgstr ""
+#~ "Sorry, this ad has been taken offline by the owner. This may mean that it "
+#~ "is already rented out."
 
 #~ msgid "1Roof - Vind je nieuwe woonst"
 #~ msgstr "1Roof - Find your new place to live"

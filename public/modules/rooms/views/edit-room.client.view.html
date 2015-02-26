@@ -203,7 +203,7 @@
                     <div class="pictures" ng-hide="room.pictures.length == 0">
                         <div class="picture col-sm-6" ng-repeat="picture in room.pictures">
                             <div class="image" back-img img-provider="{{picture.provider}}" img-link="{{picture.link}}"></div>
-                            <button class="remove-button btn btn-red" ng-click="removeImage($index)"><i class="icon-trash-1"></i></button>
+                            <button class="remove-button btn btn-red" ng-disabled="busy" ng-click="removeImage($index)"><i class="icon-trash-1"></i></button>
                         </div>
                     </div>
                 </div>

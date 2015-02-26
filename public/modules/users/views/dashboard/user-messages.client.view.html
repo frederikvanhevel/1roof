@@ -12,7 +12,6 @@
                     <h4 class="list-group-item-heading">
                     <i ng-if="unreadMessages(inbox) > 0" class="unread icon-asterisk"></i>
                         {{inbox.sender._id == authentication.user._id ? inbox.roomOwner.displayName : inbox.sender.displayName }}
-                    <i tooltip="Inbox verwijderen" ng-click="deleteInbox(inbox, $index, $event)"class="icon-trash-1"></i>
                     </h4>
                     <p class="list-group-item-text">
                     <i ng-if="getLastMessage(inbox).sender == authentication.user._id" class="icon-reply"></i>

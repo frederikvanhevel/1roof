@@ -3,7 +3,7 @@
 var cloudinary = require('cloudinary'),
   multiparty = require('multiparty');
 
-function uploadToCloudinary(roomId, url, index, res) {
+function uploadToCloudinary(url, res) {
     cloudinary.uploader.upload(url, function(result) {
         if (result.error) res.send(400);
         else {
@@ -11,7 +11,7 @@ function uploadToCloudinary(roomId, url, index, res) {
                 id: result.public_id
             });
         }
-    }, { public_id: roomId + '_' + index });
+    });
 }
 
 exports.removeFromCloudinary = function(link, callback) {
@@ -19,16 +19,15 @@ exports.removeFromCloudinary = function(link, callback) {
 };
 
 exports.upload = function(req, res) {
-    var room = req.room;
 
     if (req.body.link) {
-        uploadToCloudinary(room._id, req.body.link, req.body.index, res);
+        uploadToCloudinary(req.body.link, res);
     } else {
         var form = new multiparty.Form();
 
         form.parse(req, function(err, fields, files) {
             if (files === undefined || files.file.length === 0) return;
-            uploadToCloudinary(room._id, files.file[0].path, fields.index[0], res);
+            uploadToCloudinary(files.file[0].path, res);
         });
     }
 
@@ -36,5 +35,8 @@ exports.upload = function(req, res) {
 
 exports.remove = function(req, res, next, index, callback) {
     var room = req.room;
-    this.removeFromCloudinary(room.pictures[index].link, callback);
+    var picture = room.pictures[index];
+
+    if (picture) this.removeFromCloudinary(picture.link, callback);
+    else callback({ error: 'picture not found' });
 };

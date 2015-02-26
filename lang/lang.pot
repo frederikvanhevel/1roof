@@ -23,6 +23,10 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: public/modules/core/views/about.client.view.html
+msgid "1ROOF is ontstaan uit de noodzaak aan een makkelijke en gratis oplossing voor het online plaatsen van panden. Bij deze willen we nog eens benadrukken dat wij <u>nooit</u> aan verhuurder noch huurder geld gaan vragen in ruil voor het gebruiken van deze website."
+msgstr ""
+
+#: public/modules/core/views/about.client.view.html
 msgid "1ROOF maakt je leven makkelijker."
 msgstr ""
 
@@ -141,7 +145,7 @@ msgid "Basis prijs"
 msgstr ""
 
 #: public/modules/core/views/home.client.view.html
-msgid "Bekijk al je contacten met hurders op één plaats"
+msgid "Bekijk al je berichten van huurders op één plaats"
 msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
@@ -185,6 +189,10 @@ msgstr ""
 msgid "Bewaar de leukste aanbiedingen één plaats zodat je de beste er uit kan kiezen"
 msgstr ""
 
+#: public/modules/core/views/about.client.view.html
+msgid "Bij vragen kan je ons altijd bereiken via <a href=\"mailto:info@1roof.be\">info@1roof.be</a>."
+msgstr ""
+
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Bijgewerkt"
 msgstr ""
@@ -217,10 +225,6 @@ msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html
 msgid "Contract"
-msgstr ""
-
-#: public/modules/core/views/about.client.view.html
-msgid "Dankzij 1ROOF heb ik samen met mijn vriendin het ideale appartement gevonden. Bedankt voor jullie hulp!"
 msgstr ""
 
 #: public/modules/users/views/favorites.client.view.html
@@ -313,10 +317,6 @@ msgstr ""
 msgid "Foto uploaden"
 msgstr ""
 
-#: public/modules/rooms/views/view-room.client.view.html
-msgid "Ga naar de homepagina"
-msgstr ""
-
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Ga verder"
 msgstr ""
@@ -359,10 +359,6 @@ msgstr ""
 
 #: public/modules/users/views/signup.client.view.html
 msgid "Heb je al een account?"
-msgstr ""
-
-#: public/modules/rooms/views/view-room.client.view.html
-msgid "Hier zijn alvast enkele vergelijkbare advertenties die we gevonden hebben voor jou:"
 msgstr ""
 
 #: public/modules/core/views/footer.client.view.html
@@ -678,10 +674,6 @@ msgstr ""
 msgid "Snel. Simpel. Gemakkelijk."
 msgstr ""
 
-#: public/modules/rooms/views/view-room.client.view.html
-msgid "Sorry, deze advertentie is momenteel offline gehaald door de eigenaar. Dit kan betekenen dat deze al verhuurd is."
-msgstr ""
-
 #: public/modules/rooms/views/create-room.client.view.html
 msgid "Stap 1: meld je aan"
 msgstr ""
@@ -754,10 +746,6 @@ msgstr ""
 
 #: public/modules/core/views/pricing.client.view.html
 msgid "Upgraden"
-msgstr ""
-
-#: public/modules/core/views/about.client.view.html
-msgid "Veel makkelijker dan elke andere service. 1ROOF is de oplossing voor elke huisbaas!"
 msgstr ""
 
 #: public/modules/rooms/views/view-room.client.view.html

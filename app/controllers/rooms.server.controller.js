@@ -305,13 +305,13 @@ exports.toggleFavorite = function(req, res, next) {
  * Remove picture
  */
 exports.removePicture = function(req, res, next) {
-    var room = req.room;
-
     var index = req.body.index;
-    var picture = room.pictures[index];
 
     cloudinary.remove(req, res, next, index, function(result) {
-        if (result.error) res.send(400);
+        if (result.error) {
+            winston.error('Error removing picture');
+            res.send(400);
+        }
         else res.send(200);
     });
 };
