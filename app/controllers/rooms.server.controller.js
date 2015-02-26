@@ -52,7 +52,7 @@ exports.update = function(req, res) {
 
     room = _.extend(room, req.body);
 
-    // delete versionkey to precent errors
+    // delete versionkey to prevent errors
     delete room.__v;
 
     room.save(function(err) {

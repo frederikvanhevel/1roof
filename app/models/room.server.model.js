@@ -179,7 +179,7 @@ var RoomSchema = new Schema({
     notifications: {
         type: [String]
     }
-});
+}, { versionKey: false });
 
 RoomSchema.index({ loc: '2dsphere' });
 RoomSchema.index({ 'price.total': 1, 'classification': 1 });
