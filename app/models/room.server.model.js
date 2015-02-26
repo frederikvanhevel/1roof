@@ -224,7 +224,7 @@ RoomSchema.pre('remove', function(next) {
     this.pictures.forEach(function(picture) {
         if (picture.provider === 'cloudinary') {
             uploader.removeFromCloudinary(picture.link, function() {
-                winston.info('Removed picture from room %s', this._id);
+                winston.info('Removed picture %s', picture.link);
             });
         }
     });
