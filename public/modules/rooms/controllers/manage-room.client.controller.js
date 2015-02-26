@@ -203,7 +203,7 @@ angular.module('rooms').controller('ManageRoomController', ['$scope', '$statePar
                     link: file.link
                 }).success(function(data) {
                     $scope.room.pictures.push({
-                        provider: 'dropbox',
+                        provider: 'cloudinary',
                         link: data.id
                     });
                     $scope.busy = false;
