@@ -85,12 +85,11 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
 
             var pictureSrc = '';
 
-            if (user.provider === 'local')
-                pictureSrc = '/modules/core/img/default-user-icon.png';
-            else if (user.provider === 'google')
+            if (user.provider === 'google')
                 pictureSrc = user.providerData.image.url || user.providerData.picture || '/modules/core/img/default-user-icon.png';
             else if (user.provider === 'facebook')
                 pictureSrc = 'https://graph.facebook.com/' + user.providerData.id + '/picture?type=normal';
+            else pictureSrc = '/modules/core/img/default-user-icon.png';
 
             return {
                 'background-image': 'url(' + pictureSrc + ')'

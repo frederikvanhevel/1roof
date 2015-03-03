@@ -81,11 +81,13 @@ var RoomSchema = new Schema({
     info: {
         title: {
             type: String,
-            default: ''
+            default: '',
+            trim: true
         },
         description: {
             type: String,
-            default: ''
+            default: '',
+            trim: true
         }
     },
     location: {

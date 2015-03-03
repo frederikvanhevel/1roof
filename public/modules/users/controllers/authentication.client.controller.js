@@ -59,6 +59,8 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
 
                 $scope.busy = false;
 
+                if ($location.path() === '/signin') $location.path('/dashboard/rooms');
+
                 return deferred.promise;
             }).error(function(response) {
                 $scope.error = response.message;
