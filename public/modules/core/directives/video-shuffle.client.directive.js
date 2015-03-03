@@ -69,6 +69,9 @@ angular.module('core').directive('videoShuffle', ['$window', 'Device',
                 }
 
                 function buildInitialVideo() {
+                    // phantomjs doesnt support this
+                    if (settings.videoContainer[0].canPlayType === undefined) return;
+
                     if (settings.videoContainer[0].canPlayType('video/webm')) {
                         settings.supportedType = '.webm';
                         settings.videoContainer.attr('type', 'video/webm;codecs=\'vp8\'');
