@@ -78,6 +78,8 @@ exports.sendMessage = function(req, res) {
         } else {
             res.jsonp(message);
 
+            if (!inbox.room) return;
+
             var notifyUser = message.sender.equals(inbox.room.user._id) ? inbox.sender._id : inbox.room.user._id;
 
             req.io.sockets.in(inbox._id).emit('newMessage', message);
