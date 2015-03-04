@@ -6,10 +6,15 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
         $scope.newMessage = '';
         $scope.busy = false;
 
-        // If user is not signed in then redirect back home
-        if (!Authentication.user) $location.path('/signin');
+        function getCurrentUser() {
+            if (!Authentication.user) $location.path('/signin');
+            return Authentication.user;
+        }
 
         $scope.init = function() {
+            // If user is not signed in then redirect back home
+            if (!getCurrentUser()) $location.path('/signin');
+
             $scope.findOne($stateParams.inboxId);
 
             // subscribe to this inbox session
@@ -24,7 +29,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
 
             // instantly recieve new messages
             Socket.on('newMessage', function(message) {
-                if (message.sender !== Authentication.user._id) {
+                if (message.sender !== getCurrentUser()._id) {
                     $scope.inbox.messages.push(message);
                     // playNewMessageSound();
                 }
@@ -71,7 +76,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
         };
 
         $scope.isMessageOwner = function(message) {
-            return message.sender === Authentication.user._id;
+            return message.sender === getCurrentUser()._id;
         };
 
         $scope.showInbox = function(inboxId) {
@@ -81,13 +86,13 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
         };
 
         $scope.getUserPicture = function(inbox) {
-            var user = inbox.sender._id === Authentication.user._id ? inbox.roomOwner : inbox.sender;
+            var user = inbox.sender._id === getCurrentUser()._id ? inbox.roomOwner : inbox.sender;
 
             var pictureSrc = '';
 
-            if (user.provider === 'google')
+            if (user && user.provider === 'google')
                 pictureSrc = user.providerData.image.url || user.providerData.picture || '/modules/core/img/default-user-icon.png';
-            else if (user.provider === 'facebook')
+            else if (user && user.provider === 'facebook')
                 pictureSrc = 'https://graph.facebook.com/' + user.providerData.id + '/picture?type=normal';
             else pictureSrc = '/modules/core/img/default-user-icon.png';
 
@@ -104,7 +109,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
             var count = 0;
             for (var i = 0; i < inbox.messages.length; i++) {
                 var message = inbox.messages[i];
-                if (message.sender !== Authentication.user._id && !message.isRead) count++;
+                if (message.sender !== getCurrentUser()._id && !message.isRead) count++;
             }
             return count;
         };
@@ -122,7 +127,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
 
         function setInboxAsRead(inbox) {
             inbox.messages.forEach(function(message) {
-                if (message.sender !== Authentication.user._id) message.isRead = true;
+                if (message.sender !== getCurrentUser()._id) message.isRead = true;
             });
             inbox.$update();
         }
