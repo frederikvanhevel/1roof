@@ -91,7 +91,8 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
             var pictureSrc = '';
 
             if (user && user.provider === 'google')
-                pictureSrc = user.providerData.image.url || user.providerData.picture || '/modules/core/img/default-user-icon.png';
+                if (user.providerData.image && user.providerData.image.url) pictureSrc = user.providerData.image.url;
+                else pictureSrc = user.providerData.picture || '/modules/core/img/default-user-icon.png';
             else if (user && user.provider === 'facebook')
                 pictureSrc = 'https://graph.facebook.com/' + user.providerData.id + '/picture?type=normal';
             else pictureSrc = '/modules/core/img/default-user-icon.png';
