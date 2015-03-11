@@ -20,12 +20,16 @@ angular.module('search')
     ])
     .run(['$rootScope', '$urlRouter', 'Device',
         function($rootScope, $urlRouter, Device) {
+            function noop(){}
+
+            var isMobile = Device.isMobile();
+
             $rootScope.$on('$locationChangeSuccess', function(e, newUrl, oldUrl) {
                 // Prevent $urlRouter's default handler from firing
                 e.preventDefault();
 
-                if (!Device.isMobile() && oldUrl.indexOf('/search/') !== -1 && newUrl.indexOf('/l/') !== -1) {
-                    console.log('skipping route');
+                if (!isMobile && oldUrl.indexOf('/search/') !== -1 && newUrl.indexOf('/l/') !== -1) {
+                    noop();
                 } else {
                     $urlRouter.sync();
                 }
