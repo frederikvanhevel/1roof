@@ -32,7 +32,8 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
 
                 return deferred.promise;
             }).error(function(response) {
-                $scope.error = response.message;
+                if (response && response.message) $scope.error = response.message;
+
                 deferred.reject();
 
                 $scope.busy = false;
@@ -63,7 +64,8 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
 
                 return deferred.promise;
             }).error(function(response) {
-                $scope.error = response.message;
+                if (response && response.message) $scope.error = response.message;
+
                 deferred.reject();
 
                 $scope.busy = false;
@@ -86,7 +88,8 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
             }).error(function(response) {
                 // Show user error message and clear form
                 $scope.credentials = null;
-                $scope.error = response.message;
+
+                if (response && response.message) $scope.error = response.message;
 
                 $scope.busy = false;
             });
@@ -105,7 +108,7 @@ angular.module('users').controller('AuthenticationController', ['$rootScope', '$
 
                 $scope.busy = false;
             }).error(function(response) {
-                $scope.error = response.message;
+                if (response && response.message) $scope.error = response.message;
 
                 $scope.busy = false;
             });
