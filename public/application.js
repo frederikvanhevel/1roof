@@ -8,8 +8,6 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
     function($locationProvider) {
         // Enable html5 pushstate
         $locationProvider.html5Mode(true);
-
-        // $locationProvider.hashPrefix('!');
     }
 ]);
 
