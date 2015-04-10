@@ -76,7 +76,8 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
         };
 
         $scope.isMessageOwner = function(message) {
-            return message.sender === getCurrentUser()._id;
+            var currentUser = getCurrentUser();
+            return message.sender === currentUser._id;
         };
 
         $scope.showInbox = function(inboxId) {
