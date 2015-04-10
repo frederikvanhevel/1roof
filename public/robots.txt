@@ -1,7 +1,4 @@
 User-agent: *
-Disallow: /auth/google
-Disallow: /auth/facebook
-Disallow: /auth/twitter
 Disallow: /promote
 Disallow: /pricing
 Sitemap: https://1roof.be/sitemap.xml
