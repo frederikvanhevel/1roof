@@ -32,6 +32,10 @@
         </div>
         <div class="leftcolumn col-lg-8">
             <div class="panel panel-default">
+                <div responsive-ad class="wide-ad"></div>
+            </div>
+
+            <div class="panel panel-default">
                 <div class="room-image">
                     <div class="owl-carousel owl-inner-nav owl-ui-md" owl-carousel owl-pagination="true">
                         <div class="item" ng-repeat="picture in room.pictures" on-repeat-done="pictures_rendered">
@@ -46,6 +50,9 @@
                     </div>
                 </div>
             </div>
+
+
+
             <div ng-if="room.info.description != ''" class="panel panel-default">
                 <div class="panel-body">
                     <h6 translate>Beschrijving</h6>
@@ -123,10 +130,16 @@
                     </div>
                 </div>
             </div>
+
+            <div class="panel panel-default">
+                <div responsive-ad class="wide-ad"></div>
+            </div>
+
             <div class="contact-bottom text-center">
                 <h3 translate>Klaar om contact op te nemen met de eigenaar?</h3>
                 <button ng-click="openContactModal()" class="btn"><i class="icon-ok"></i> <span translate>Stuur een bericht</span></button>
             </div>
+
             <div ng-if="otherRooms.length > 0">
                 <h4 translate>{{::otherRooms.length}} andere ruimte(n) in deze woning</h4>
                 <div class="panel panel-default" ng-cloak ng-repeat="otherRoom in ::otherRooms">
@@ -174,18 +187,20 @@
 
         <div class="rightcolumn col-lg-4">
 
-            <div class="panel panel-default">
+<!--             <div class="panel panel-default">
                 <div class="panel-body">
                     <div addthis-toolbox class="addthis_sharing_toolbox"></div>
                 </div>
-            </div>
+            </div> -->
 
-            <div class="panel panel-default">
+
+
+<!--             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="datepicker" date-picker append-element date-model="appointmentDate"></div>
                     <button ng-click="openReservationModal()" class="btn btn-blue btn-block"><i class="icon-calendar-1"></i> <span translate>Afspraak maken</span></button>
                 </div>
-            </div>
+            </div> -->
 
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -194,6 +209,12 @@
                         <p><span translate>Contactpersoon</span>: <strong>{{::room.user.firstName}}</strong></p>
                         <button ng-click="openContactModal()" class="btn btn-block"><i class="icon-mail-1"></i> <span translate>Bericht versturen</span></button>
                     </form>
+                </div>
+            </div>
+
+            <div class="panel panel-default column-ad">
+                <div class="panel-body">
+                    <div responsive-ad></div>
                 </div>
             </div>
 

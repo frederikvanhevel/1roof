@@ -8101,6 +8101,12 @@ ROOMS MODULE
   float: left;
 }
 
+.view-room .wide-ad {
+  padding: 10px 0;
+}
+.view-room .column-ad {
+  padding: 25px 5px;
+}
 .view-room .offline-overlay {
   background: rgba(0, 0, 0, 0.7);
   z-index: 900;
