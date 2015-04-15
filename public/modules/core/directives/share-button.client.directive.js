@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('core').directive('shareButton', [
-
     function() {
         return {
             restriction: 'A',
