@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('core').directive('onRepeatDone', [
-
     function() {
         return {
             restriction: 'A',
