@@ -87,7 +87,7 @@ angular.module('users').controller('InboxController', ['$rootScope', '$scope', '
         };
 
         $scope.getUserPicture = function(inbox) {
-            var user = inbox.sender._id === getCurrentUser()._id ? inbox.roomOwner : inbox.sender;
+            var user = inbox.sender && inbox.sender._id === getCurrentUser()._id ? inbox.roomOwner : inbox.sender;
 
             var pictureSrc = '';
 

@@ -200,9 +200,9 @@ RoomSchema.pre('save', function(next) {
     this.info.description = this.info.description || '';
 
     // limit info length
-    if (this.info.title.length > MAX_TITLE_LENGTH)
+    if (this.info.title.length > MAX_TITLE_LENGTH && typeof this.info.title === 'string')
         this.info.title.length = this.info.title.length.substring(0, MAX_TITLE_LENGTH);
-    if (this.info.description.length > MAX_DESCRIPTION_LENGTH)
+    if (this.info.description.length > MAX_DESCRIPTION_LENGTH && typeof this.info.description === 'string')
         this.info.description.length = this.info.description.length.substring(0, MAX_DESCRIPTION_LENGTH);
 
     // normalize pricing fields
