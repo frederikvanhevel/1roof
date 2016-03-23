@@ -130,7 +130,7 @@ module.exports = function(db) {
     app.use(flash());
 
     // Use helmet to secure Express headers
-    app.use(helmet.xframe());
+    app.use(helmet.xframe('allow-from', 'http://www.kotzoeker.be'));
     app.use(helmet.iexss());
     app.use(helmet.contentTypeOptions());
     app.use(helmet.ienoopen());
