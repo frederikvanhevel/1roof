@@ -3,6 +3,7 @@
 var path = require('path'),
     emailTemplates = require('swig-email-templates'),
     nodemailer = require('nodemailer'),
+    sgTransport = require('nodemailer-sendgrid-transport'),
     config = require('../../config/config'),
     _ = require('lodash');
 
@@ -24,9 +25,9 @@ exports.send = function(template, context, to, subject) {
         if (err) {
             console.error(err);
         } else {
-          // ## Send a single email
+            // ## Send a single email
 
-            var transporter = nodemailer.createTransport(config.email);
+            var transporter = nodemailer.createTransport(sgTransport(config.email));
 
             var mailOptions = {
                 from: '1roof.be <noreply@1roof.be>', // sender address
