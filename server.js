@@ -1,14 +1,18 @@
-'use strict';
+"use strict";
 /**
  * Module dependencies.
  */
 
 // newrrelic reporting
-require('newrelic');
+// require('newrelic');
 
-var init = require('./config/init')(),
-	config = require('./config/config'),
-	mongoose = require('mongoose');
+var init = require("./config/init")(),
+  config = require("./config/config"),
+  mongoose = require("mongoose"),
+  session = require("express-session"),
+  mongoStore = require("connect-mongo")({
+    session: session
+  });
 
 /**
  * Main application entry file.
@@ -16,16 +20,16 @@ var init = require('./config/init')(),
  */
 
 // Bootstrap db connection
-var db = mongoose.connect(config.db);
+var db = mongoose.connect(config.db, { useMongoClient: true });
 
 // Init the express application
-var app = require('./config/express')(db);
+var app = require("./config/express")(db);
 
 // Bootstrap passport config
-require('./config/passport')();
+require("./config/passport")();
 
 // Expose app
 exports = module.exports = app;
 
 // Logging initialization
-console.log('MEAN.JS application started on port ' + config.port);
+console.log("MEAN.JS application started on port " + config.port);

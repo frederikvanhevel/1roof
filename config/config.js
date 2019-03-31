@@ -58,7 +58,7 @@ module.exports.getGlobbedFiles = function(globPatterns, removeRoot) {
  */
 module.exports.getJavaScriptAssets = function(includeTests) {
     var output = [];
-    
+
     if(process.env.NODE_ENV === 'production') {
         output = this.getGlobbedFiles(this.assets.js, 'public/');
     } else {
@@ -78,7 +78,7 @@ module.exports.getJavaScriptAssets = function(includeTests) {
  */
 module.exports.getCSSAssets = function() {
     var output = [];
-    
+
     if(process.env.NODE_ENV === 'production') {
         output = this.getGlobbedFiles(this.assets.css, 'public/');
     } else {
