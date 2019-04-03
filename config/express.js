@@ -24,7 +24,7 @@ var express = require("express"),
   scheduler = require("./scheduler"),
   // added for socketio
   http = require("http"),
-  seo = require("mean-seo"),
+  // seo = require("mean-seo"),
   core = require("../app/controllers/core");
 
 module.exports = function(db) {
@@ -63,7 +63,7 @@ module.exports = function(db) {
   });
 
   // SEO functions
-  app.use(seo.init(config.seo));
+  //app.use(seo.init(config.seo));
 
   // Should be placed before express.static
   app.use(
