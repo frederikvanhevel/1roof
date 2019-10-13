@@ -11,6 +11,8 @@ angular.module('rooms').directive('streetView', ['$window',
             link: function postLink(scope, element, attrs) {
 
                 scope.$on('room_loaded', function(event, room) {
+                    return
+                    
                     var coordinates = room.loc.coordinates;
                     var position = new $window.google.maps.LatLng(coordinates[1], coordinates[0]);
                     var streetview = new $window.google.maps.StreetViewPanorama(element[0], {
